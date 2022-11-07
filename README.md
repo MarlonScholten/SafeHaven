@@ -104,5 +104,5 @@ Assets
 │       │   Used for the .inputactions file from the new input system
 │
 └───Texures *
-│       │   Used for raw texture files
+        │   Used for raw texture files
 ```
