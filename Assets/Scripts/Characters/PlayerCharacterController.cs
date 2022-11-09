@@ -21,11 +21,15 @@ namespace Characters
                 Move(_movement.x, _movement.y);
         }
 
+        /// <summary>
+        /// Update the movement values whenever the player inputs movement keys
+        /// </summary>
+        /// <param name="context"></param>
         public void Move(InputAction.CallbackContext context)
         {
-            
+            _movement = context.action.ReadValue<Vector2>();
         }
-        
+
         /// <summary>
         /// Move the CharacterController in a given direction multiplied by movement speed
         /// </summary>
