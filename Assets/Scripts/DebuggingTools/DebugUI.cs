@@ -41,6 +41,10 @@ public class DebugUI : MonoBehaviour
     public void AddDebugGameObject(GameObject gameObjectToAdd)
     {
         debugGameObjects.Add(gameObjectToAdd);
+        
+        Instantiate(debugGameObjectWidget, debugContainer.transform)
+            .GetComponent<DebugGameObjectWidget>()
+            .Initialize(gameObjectToAdd);
     }
 
     private void OnShowDebuggingTools()
