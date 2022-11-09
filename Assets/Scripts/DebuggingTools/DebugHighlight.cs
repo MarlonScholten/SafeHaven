@@ -12,16 +12,18 @@ public class DebugHighlight : MonoBehaviour
     void Start()
     {
         _originalMaterials = GetComponent<MeshRenderer>().materials;
+        
+        FindObjectOfType<DebugUI>().AddHighlightGameObject(this);
     }
 
-    private void Highlight()
+    public void Highlight()
     {
         Material[] highlightedMaterials = Enumerable.Repeat(highlightMaterial, _originalMaterials.Length).ToArray();
 
         GetComponent<MeshRenderer>().materials = highlightedMaterials;
     }
 
-    private void UnHighlight()
+    public void UnHighlight()
     {
         GetComponent<MeshRenderer>().materials = _originalMaterials;
     }
