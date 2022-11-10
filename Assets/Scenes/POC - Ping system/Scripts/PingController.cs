@@ -18,8 +18,10 @@ public class PingController : MonoBehaviour
     {
     }
 
-    private void OnFire()
+    private void OnQuickPing()
     {
+        Debug.Log("QUICK PINGGGGG");
+        
         var ray = camera.ScreenPointToRay(Mouse.current.position.ReadValue());
 
         Debug.DrawRay(ray.origin, ray.direction * 10000f, Color.red, 3);
@@ -30,11 +32,6 @@ public class PingController : MonoBehaviour
             _pingPosition = hit.point;
             Debug.Log(_pingPosition);
         }
-    }
-
-    private void OnQuickPing()
-    {
-        Debug.Log("QUICK PINGGGGG");
     }
     
     private void OnLongPing()
