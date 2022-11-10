@@ -2,25 +2,46 @@ namespace Characters
 {
     public abstract class PlayerBaseState
     {
-        protected PlayerController Ctx;
+        protected PlayerController Context;
         protected PlayerStateFactory Factory;
 
         public PlayerBaseState(PlayerController currentContext, PlayerStateFactory playerStateFactory)
         {
-            Ctx = currentContext;
+            Context = currentContext;
             Factory = playerStateFactory;
         }
 
+        /// <summary>
+        /// Logic that's called whenever you enter this state
+        /// </summary>
         public abstract void EnterState();
+        
+        /// <summary>
+        /// Logic that needs to be called often or every frame while in this state
+        /// </summary>
         public abstract void UpdateState();
+        
+        /// <summary>
+        /// Logic that needs to be executed whenever you exit this state.
+        /// </summary>
+        /// <remarks>Use it for cleaning up any code, coroutines or references you don't need when not in this state</remarks>
         public abstract void ExitState();
+        
+        /// <summary>
+        /// Check to see if this state should swap to another state.
+        /// </summary>
+        /// <remarks>Usually runs within the <see cref="UpdateState"/> function</remarks>
         public abstract void CheckSwitchStates();
 
+        /// <summary>
+        /// Switch to another state. Calls <see cref="Exit"/> on the old state, <see cref="Enter"/> on the new state.
+        /// </summary>
+        /// <param name="newState">The state you want to switch to</param>
         protected void SwitchState(PlayerBaseState newState)
         {
             ExitState();
             newState.EnterState();
-            Ctx.CurrentState = newState;
+            Context.CurrentState = newState;
         }
     }
 }

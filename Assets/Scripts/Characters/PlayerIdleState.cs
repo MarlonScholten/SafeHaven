@@ -1,6 +1,3 @@
-using UnityEditor.Rendering.LookDev;
-using UnityEngine;
-
 namespace Characters
 {
     public class PlayerIdleState : PlayerBaseState
@@ -10,6 +7,7 @@ namespace Characters
 
         public override void EnterState()
         {
+            // No logic needed here yet.
         }
 
         public override void UpdateState()
@@ -19,11 +17,15 @@ namespace Characters
 
         public override void ExitState()
         {
+            // No logic needed here yet.
         }
 
+        /// <summary>
+        /// If the player is inputting movement, we should switch to the movement state.
+        /// </summary>
         public override void CheckSwitchStates()
         {
-            if(Ctx.IsMoving())
+            if(Context.IsMoving())
                 SwitchState(Factory.Move());
         }
     }
