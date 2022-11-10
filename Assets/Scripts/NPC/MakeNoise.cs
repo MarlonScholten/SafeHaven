@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using NPC;
 using UnityEngine;
 
 public class MakeNoise : MonoBehaviour
 {
     public float soundRadius = 10f;
+    public float noiseLevel = 1f;
 
     // Start is called before the first frame update
     void Start()
@@ -36,7 +38,9 @@ public class MakeNoise : MonoBehaviour
         Collider[] foundObjects = Physics.OverlapSphere(transform.position, soundRadius/2);
         foreach(var currentObject in foundObjects)
         {
-            currentObject.transform.gameObject.SendMessage("NoiseReceived", gameObject, SendMessageOptions.DontRequireReceiver);
+            float distance = Vector3.Distance(transform.position, currentObject.transform.position);
+            SoundSource source = new SoundSource(gameObject, noiseLevel/distance);
+            currentObject.transform.gameObject.SendMessage("NoiseReceived", source, SendMessageOptions.DontRequireReceiver);
         }
     }
 }
