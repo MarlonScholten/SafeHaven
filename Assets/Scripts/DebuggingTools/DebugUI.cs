@@ -25,11 +25,21 @@ public class DebugUI : MonoBehaviour
         _canvasComponent = GetComponent<Canvas>();
         _canvasComponent.enabled = _debuggerEnabled;
         
+        ClearWidgets();
+
         foreach (GameObject debugGameObject in debugGameObjects)
         {
             Instantiate(debugGameObjectWidget, debugContainer.transform)
                 .GetComponent<DebugGameObjectWidget>()
                 .Initialize(debugGameObject);
+        }
+    }
+
+    private void ClearWidgets()
+    {
+        for (int i = debugContainer.transform.childCount - 1; i >= 0; i--)
+        {
+            Destroy(debugContainer.transform.GetChild(i).gameObject);
         }
     }
 

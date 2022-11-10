@@ -5,6 +5,19 @@ using UnityEngine;
 
 public class DebugTransform : MonoBehaviour, IDebuggableObject
 {
+    [Header("Debug properties")]
+    
+    [SerializeField] 
+    private bool debugPosition = true;
+    
+    [SerializeField] 
+    private bool debugRotation = true;
+    
+    [SerializeField] 
+    private bool debugScale = true;
+    
+    [Header("Other")]
+    
     [SerializeField]
     private bool autoActivate = true;
     
@@ -17,11 +30,14 @@ public class DebugTransform : MonoBehaviour, IDebuggableObject
 
     public Dictionary<string, string> GetDebugValues()
     {
-        return new Dictionary<string, string>
-        {
-            { "Position", transform.position.ToString() },
-            { "Rotation", transform.rotation.eulerAngles.ToString() },
-            { "Scale", transform.localScale.ToString() } 
-        };
+        if (!debugPosition && !debugRotation && !debugScale) return new Dictionary<string, string> {};
+
+        Dictionary<string, string> debugDictionary = new Dictionary<string, string>();
+        
+        if (debugPosition) debugDictionary.Add("Position", transform.position.ToString());
+        if (debugRotation) debugDictionary.Add("Rotation", transform.rotation.eulerAngles.ToString());
+        if (debugScale) debugDictionary.Add("Scale", transform.localScale.ToString());
+
+        return debugDictionary;
     }
 }

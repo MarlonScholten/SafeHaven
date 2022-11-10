@@ -11,13 +11,13 @@ public class DebugGameObjectWidget : MonoBehaviour
     private GameObject debugHeaderWidget;
     
     private GameObject _debugGameObject;
-    private IDebuggableObject _debugGameObjectScript;
+    private IDebuggableObject[] _debugGameObjectScripts;
     private Dictionary<string, DebugKeyValueWidget> _debugWidgets = new();
 
     public void Initialize(GameObject debugGameObject)
     {
         _debugGameObject = debugGameObject;
-        _debugGameObjectScript = _debugGameObject.GetComponent<IDebuggableObject>();
+        _debugGameObjectScripts = _debugGameObject.GetComponents<IDebuggableObject>();
 
         CreateDebugHeader(_debugGameObject.name);
         StartCoroutine(UpdateDebugWidgetCoroutine());
@@ -34,9 +34,12 @@ public class DebugGameObjectWidget : MonoBehaviour
 
     private void UpdateDebugWidget()
     {
-        foreach (var debugValue in _debugGameObjectScript.GetDebugValues())
+        foreach (IDebuggableObject debugGameObjectScript in _debugGameObjectScripts)
         {
-            SetDebugValue(debugValue.Key, debugValue.Value);
+            foreach (var debugValue in debugGameObjectScript.GetDebugValues())
+            {
+                SetDebugValue(debugValue.Key, debugValue.Value);
+            }
         }
     }
     
