@@ -351,7 +351,7 @@ GameObject:
   - component: {fileID: 1408729917}
   m_Layer: 0
   m_Name: Sphere
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -369,6 +369,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
+  threshold: 3
 --- !u!135 &1408729918
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -462,7 +463,7 @@ GameObject:
   - component: {fileID: 1637497001}
   m_Layer: 0
   m_Name: Sphere (1)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -480,6 +481,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
+  threshold: 3
 --- !u!135 &1637497002
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -691,7 +693,7 @@ GameObject:
   - component: {fileID: 2063917632}
   m_Layer: 0
   m_Name: Sphere (2)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -709,6 +711,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
+  threshold: 3
 --- !u!135 &2063917633
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -819,7 +822,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4846577143ee2114db9a000249a88a98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundRadius: 20
+  noiseLevel: 20
 --- !u!65 &2133304122
 BoxCollider:
   m_ObjectHideFlags: 0
