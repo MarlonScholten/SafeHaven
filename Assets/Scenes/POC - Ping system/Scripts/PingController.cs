@@ -5,6 +5,9 @@ public class PingController : MonoBehaviour
 {
     public new Camera camera;
 
+    private Vector3 _pingPosition;
+    private const string ActionBrother = "Run";
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +18,7 @@ public class PingController : MonoBehaviour
     {
     }
 
-    void OnFire()
+    private void OnFire()
     {
         var ray = camera.ScreenPointToRay(Mouse.current.position.ReadValue());
 
@@ -24,7 +27,13 @@ public class PingController : MonoBehaviour
         {
             hit.transform.SendMessage("HitByRay");
 
-            Debug.Log(hit.transform);
+            _pingPosition = hit.point;
+            Debug.Log(_pingPosition);
         }
+    }
+
+    public Vector3 GetPingLocation()
+    {
+        return _pingPosition;
     }
 }
