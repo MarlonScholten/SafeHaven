@@ -23,7 +23,9 @@ public class BrotherAI : MonoBehaviour
     void FixedUpdate()
     {
         PickupAction(_pickup.transform, _pickup);           
-        
+
+        // Dont have a specific place for holding right now
+        // When the brother has an object the object location needs to be updated.
         if(inventory != null){
             HoldItem();
             MoveToLocation(_walkLocation);
