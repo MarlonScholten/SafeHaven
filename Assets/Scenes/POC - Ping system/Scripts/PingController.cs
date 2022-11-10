@@ -32,6 +32,16 @@ public class PingController : MonoBehaviour
         }
     }
 
+    private void OnQuickPing()
+    {
+        Debug.Log("QUICK PINGGGGG");
+    }
+    
+    private void OnLongPing()
+    {
+        Debug.Log("LONG PINGGGGG");
+    }
+
     public Vector3 GetPingLocation()
     {
         return _pingPosition;
