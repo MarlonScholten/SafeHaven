@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using NPC;
 using UnityEngine;
 
 public class ReceiveNoise : MonoBehaviour
 {
     public float speed = 1f;
+    public float threshold = 0.1f;
 
     private bool alerted = false;
-    private GameObject noiseMaker;
+    private SoundSource noiseMaker;
 
     // Start is called before the first frame update
     void Start()
@@ -19,13 +21,13 @@ public class ReceiveNoise : MonoBehaviour
     void Update()
     {
         //move to source when alerted
-        if (alerted)
+        if (alerted && noiseMaker.getVolume() > threshold)
         {
-            transform.position = Vector3.MoveTowards(transform.position, noiseMaker.transform.position, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, noiseMaker.getSource().transform.position, speed * Time.deltaTime);
         }
     }
 
-    void NoiseReceived(GameObject source)
+    void NoiseReceived(SoundSource source)
     {
         alerted = true;
         noiseMaker = source;
