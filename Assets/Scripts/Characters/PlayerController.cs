@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,13 +6,16 @@ namespace Characters
 {
     public class PlayerController : MonoBehaviour
     {
-        public float MovementSpeed => _movementSpeed;
+        [SerializeField] [Range(1f, 20f)] private float movementSpeed = 5f;
+        public float MovementSpeed => movementSpeed;
         public CharacterController CharacterController { get; private set; }
         public PlayerBaseState CurrentState { get; set; }
         public Vector2 Movement { get; private set; }
-        
-        private float _movementSpeed;
+
+        private readonly float _gravity = 9.8f;
+        [SerializeField] private float gravityMultiplier = 1f;
         private PlayerStateFactory _states;
+        private float _verticalSpeed;
 
         private void Awake()
         {
@@ -28,6 +32,7 @@ namespace Characters
         void Update()
         {
             CurrentState.UpdateState();
+            HandleGravity();
         }
         
         /// <summary>
@@ -46,6 +51,19 @@ namespace Characters
         public bool IsMoving()
         {
             return Movement.x != 0 || Movement.y != 0;
+        }
+
+        private void HandleGravity()
+        {
+            if (CharacterController.isGrounded && _verticalSpeed != 0)
+                _verticalSpeed = 0;
+
+            if (!CharacterController.isGrounded)
+            {
+                _verticalSpeed -= (_gravity * gravityMultiplier) * Time.deltaTime;
+                var velocity = new Vector3(0, _verticalSpeed, 0);
+                CharacterController.Move(velocity * Time.deltaTime);
+            }
         }
     }
 }
