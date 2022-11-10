@@ -5,14 +5,7 @@ using UnityEngine;
 
 public class MakeNoise : MonoBehaviour
 {
-    public float soundRadius = 10f;
-    public float noiseLevel = 1f;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float noiseLevel = 10f;
 
     // Update is called once per frame
     void Update()
@@ -20,7 +13,6 @@ public class MakeNoise : MonoBehaviour
         //when space bar pressed, make noise
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("BOOOOM!!!!");   
             spawnSound();         
             makeNoise();
         }
@@ -30,17 +22,22 @@ public class MakeNoise : MonoBehaviour
         GameObject sound = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
         sound.transform.position = transform.position;
         sound.transform.Translate(0, -0.5f, 0);
-        sound.transform.localScale = new Vector3(soundRadius, 0.1f, soundRadius);
+        sound.transform.localScale = new Vector3(noiseLevel, 0.1f, noiseLevel);
         sound.GetComponent<Renderer>().material.color = Color.red;
 }
 
     void makeNoise(){
-        Collider[] foundObjects = Physics.OverlapSphere(transform.position, soundRadius/2);
+        Collider[] foundObjects = Physics.OverlapSphere(transform.position, noiseLevel/2);
         foreach(var currentObject in foundObjects)
         {
-            float distance = Vector3.Distance(transform.position, currentObject.transform.position);
-            SoundSource source = new SoundSource(gameObject, noiseLevel/distance);
-            currentObject.transform.gameObject.SendMessage("NoiseReceived", source, SendMessageOptions.DontRequireReceiver);
+            if (currentObject.tag == "Enemy")
+            {
+                float distance = Vector3.Distance(transform.position, currentObject.transform.position);
+                SoundSource source = new SoundSource(gameObject, noiseLevel / distance);
+                Debug.Log("Noise: " + noiseLevel / distance + "For Object: " + currentObject.name);
+                currentObject.transform.gameObject.SendMessage("NoiseReceived", source,
+                    SendMessageOptions.DontRequireReceiver);
+            }
         }
     }
 }
