@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace DebuggingTools
 {
+    /// <summary>
+    /// Class <c>DebugHighlight</c> will highlight <c>GameObject</c>s while debugging is active.
+    /// </summary>
     public class DebugHighlight : MonoBehaviour
     {
         [SerializeField] 

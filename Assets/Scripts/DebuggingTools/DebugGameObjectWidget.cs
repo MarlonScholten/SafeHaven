@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace DebuggingTools
 {
+    /// <summary>
+    /// Class <c>DebugGameObjectWidget</c> handles displaying information about a <c>GameObject</c> in the debug menu
+    /// </summary>
     public class DebugGameObjectWidget : MonoBehaviour
     {
         [SerializeField] 
@@ -16,6 +19,11 @@ namespace DebuggingTools
         private IDebuggableObject[] _debugGameObjectScripts;
         private Dictionary<string, DebugKeyValueWidget> _debugWidgets = new();
 
+        /// <summary>
+        /// This method initializes the Game Object widget using a given <c>GameObject.</c>
+        /// This method has to be called before this widget can display information.
+        /// </summary>
+        /// <param name="debugGameObject">The <c>GameObject</c> that this widget represents</param>
         public void Initialize(GameObject debugGameObject)
         {
             _debugGameObject = debugGameObject;

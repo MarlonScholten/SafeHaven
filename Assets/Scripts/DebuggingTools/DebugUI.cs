@@ -8,8 +8,15 @@ namespace DebuggingTools
     {
     }
 
+    /// <summary>
+    /// Class <c>DebugUI</c> is the main class handling the debugging tool
+    /// </summary>
     public class DebugUI : MonoBehaviour
     {
+        /// <summary>
+        /// To this event can be subscribed to receive a event when the debugging tool is enabled or disabled
+        /// <returns>A boolean that resembles if the debugging tool is enabled or disabled</returns>
+        /// </summary>
         public ToggleEvent ToggleDebuggingTools;
     
         [SerializeField] 
@@ -24,6 +31,10 @@ namespace DebuggingTools
         private bool _debuggerEnabled;
         private Canvas _canvasComponent;
 
+        /// <summary>
+        /// This method adds a <c>GameObject</c> to be displayed in the debugging tool.
+        /// </summary>
+        /// <param name="gameObjectToAdd">The <c>GameObject</c> to add</param>
         public void AddDebugGameObject(GameObject gameObjectToAdd)
         {
             debugGameObjects.Add(gameObjectToAdd);

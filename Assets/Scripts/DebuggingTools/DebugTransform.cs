@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace DebuggingTools
 {
+    /// <summary>
+    /// Class <c>DebugTransform</c> handles displaying the transform of a object in the debugging tool.
+    /// </summary>
     public class DebugTransform : MonoBehaviour, IDebuggableObject
     {
         [Header("Debug properties")]
@@ -28,6 +31,10 @@ namespace DebuggingTools
             FindObjectOfType<DebugUI>().AddDebugGameObject(gameObject);
         }
 
+        /// <summary>
+        /// Sends debug values to the debugging tool
+        /// </summary>
+        /// <returns>A dictionary of all values to be displayed in the debugging tool</returns>
         public Dictionary<string, string> GetDebugValues()
         {
             if (!debugPosition && !debugRotation && !debugScale) return new Dictionary<string, string>();

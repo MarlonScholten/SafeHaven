@@ -3,6 +3,9 @@ using UnityEngine.VFX;
 
 namespace DebuggingTools
 {
+    /// <summary>
+    /// Class <c>DebugCircle</c> displays a circle around the object while in debugging mode.
+    /// </summary>
     public class DebugCircle : MonoBehaviour
     {
         [SerializeField]
