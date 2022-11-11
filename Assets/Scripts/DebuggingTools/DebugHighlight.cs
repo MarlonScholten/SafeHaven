@@ -1,32 +1,34 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class DebugHighlight : MonoBehaviour
+namespace DebuggingTools
 {
-    [SerializeField] private Material highlightMaterial;
-
-    private Material[] _originalMaterials;
-
-    void Start()
+    public class DebugHighlight : MonoBehaviour
     {
-        _originalMaterials = GetComponent<MeshRenderer>().materials;
+        [SerializeField] 
+        private Material highlightMaterial;
+
+        private Material[] _originalMaterials;
+
+        private void Start()
+        {
+            _originalMaterials = GetComponent<MeshRenderer>().materials;
         
-        FindObjectOfType<DebugUI>().ToggleDebuggingTools.AddListener(ToggleHighlight);
-    }
-
-    private void ToggleHighlight(bool isActivated)
-    {
-        if (isActivated)
-        {
-            Material[] highlightedMaterials = Enumerable.Repeat(highlightMaterial, _originalMaterials.Length).ToArray();
-
-            GetComponent<MeshRenderer>().materials = highlightedMaterials;
+            FindObjectOfType<DebugUI>().ToggleDebuggingTools.AddListener(ToggleHighlight);
         }
-        else
+
+        private void ToggleHighlight(bool isActivated)
         {
-            GetComponent<MeshRenderer>().materials = _originalMaterials;
+            if (isActivated)
+            {
+                Material[] highlightedMaterials = Enumerable.Repeat(highlightMaterial, _originalMaterials.Length).ToArray();
+
+                GetComponent<MeshRenderer>().materials = highlightedMaterials;
+            }
+            else
+            {
+                GetComponent<MeshRenderer>().materials = _originalMaterials;
+            }
         }
     }
 }

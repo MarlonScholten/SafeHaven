@@ -1,8 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public interface IDebuggableObject
+namespace DebuggingTools
 {
-    public Dictionary<string, string> GetDebugValues();
+    public interface IDebuggableObject
+    {
+        public Dictionary<string, string> GetDebugValues();
+    }
 }

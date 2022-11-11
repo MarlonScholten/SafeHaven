@@ -2,60 +2,63 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DebugGameObjectWidget : MonoBehaviour
+namespace DebuggingTools
 {
-    [SerializeField] 
-    private GameObject debugKeyValueWidget;
-    
-    [SerializeField] 
-    private GameObject debugHeaderWidget;
-    
-    private GameObject _debugGameObject;
-    private IDebuggableObject[] _debugGameObjectScripts;
-    private Dictionary<string, DebugKeyValueWidget> _debugWidgets = new();
-
-    public void Initialize(GameObject debugGameObject)
+    public class DebugGameObjectWidget : MonoBehaviour
     {
-        _debugGameObject = debugGameObject;
-        _debugGameObjectScripts = _debugGameObject.GetComponents<IDebuggableObject>();
+        [SerializeField] 
+        private GameObject debugKeyValueWidget;
+    
+        [SerializeField] 
+        private GameObject debugHeaderWidget;
+    
+        private GameObject _debugGameObject;
+        private IDebuggableObject[] _debugGameObjectScripts;
+        private Dictionary<string, DebugKeyValueWidget> _debugWidgets = new();
 
-        CreateDebugHeader(_debugGameObject.name);
-        StartCoroutine(UpdateDebugWidgetCoroutine());
-    }
-
-    private IEnumerator UpdateDebugWidgetCoroutine()
-    {
-        while (true)
+        public void Initialize(GameObject debugGameObject)
         {
-            UpdateDebugWidget();
-            yield return new WaitForSeconds(0.05f);
+            _debugGameObject = debugGameObject;
+            _debugGameObjectScripts = _debugGameObject.GetComponents<IDebuggableObject>();
+
+            CreateDebugHeader(_debugGameObject.name);
+            StartCoroutine(UpdateDebugWidgetCoroutine());
         }
-    }
 
-    private void UpdateDebugWidget()
-    {
-        foreach (IDebuggableObject debugGameObjectScript in _debugGameObjectScripts)
+        private IEnumerator UpdateDebugWidgetCoroutine()
         {
-            foreach (var debugValue in debugGameObjectScript.GetDebugValues())
+            while (true)
             {
-                SetDebugValue(debugValue.Key, debugValue.Value);
+                UpdateDebugWidget();
+                yield return new WaitForSeconds(0.05f);
             }
         }
-    }
-    
-    private void SetDebugValue(string variableName, string variableValue)
-    {
-        if (!_debugWidgets.ContainsKey(variableName))
-            _debugWidgets.Add(variableName, Instantiate(debugKeyValueWidget, transform).GetComponent<DebugKeyValueWidget>());
 
-        if (_debugWidgets.TryGetValue(variableName, out var debugWidget))
-            debugWidget.SetVariableName(variableName).SetVariableValue(variableValue);
-    }
+        private void UpdateDebugWidget()
+        {
+            foreach (IDebuggableObject debugGameObjectScript in _debugGameObjectScripts)
+            {
+                foreach (var debugValue in debugGameObjectScript.GetDebugValues())
+                {
+                    SetDebugValue(debugValue.Key, debugValue.Value);
+                }
+            }
+        }
     
-    private void CreateDebugHeader(string headerName)
-    {
-        Instantiate(debugHeaderWidget, transform)
-            .GetComponent<DebugHeaderWidget>()
-            .SetHeaderText(headerName);
+        private void SetDebugValue(string variableName, string variableValue)
+        {
+            if (!_debugWidgets.ContainsKey(variableName))
+                _debugWidgets.Add(variableName, Instantiate(debugKeyValueWidget, transform).GetComponent<DebugKeyValueWidget>());
+
+            if (_debugWidgets.TryGetValue(variableName, out var debugWidget))
+                debugWidget.SetVariableName(variableName).SetVariableValue(variableValue);
+        }
+    
+        private void CreateDebugHeader(string headerName)
+        {
+            Instantiate(debugHeaderWidget, transform)
+                .GetComponent<DebugHeaderWidget>()
+                .SetHeaderText(headerName);
+        }
     }
 }

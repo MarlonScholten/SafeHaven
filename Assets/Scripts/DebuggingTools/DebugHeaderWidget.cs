@@ -1,15 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class DebugHeaderWidget : MonoBehaviour
+namespace DebuggingTools
 {
-    [SerializeField] 
-    private TextMeshProUGUI textComponent;
-
-    public void SetHeaderText(string headerText)
+    public class DebugHeaderWidget : MonoBehaviour
     {
-        textComponent.SetText(headerText);
+        [SerializeField] 
+        private TextMeshProUGUI textComponent;
+
+        public void SetHeaderText(string headerText)
+        {
+            textComponent.SetText(headerText);
+        }
     }
 }

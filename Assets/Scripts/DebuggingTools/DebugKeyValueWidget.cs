@@ -1,27 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class DebugKeyValueWidget : MonoBehaviour
+namespace DebuggingTools
 {
-    [SerializeField] 
-    private TextMeshProUGUI keyWidget;
+    public class DebugKeyValueWidget : MonoBehaviour
+    {
+        [SerializeField] 
+        private TextMeshProUGUI keyWidget;
     
-    [SerializeField] 
-    private TextMeshProUGUI valueWidget;
+        [SerializeField] 
+        private TextMeshProUGUI valueWidget;
 
-    public DebugKeyValueWidget SetVariableName(string variableName)
-    {
-        keyWidget.SetText(variableName);
+        public DebugKeyValueWidget SetVariableName(string variableName)
+        {
+            keyWidget.SetText(variableName);
         
-        return this;
-    }
+            return this;
+        }
 
-    public DebugKeyValueWidget SetVariableValue(string variableValue)
-    {
-        valueWidget.SetText(variableValue);
+        public DebugKeyValueWidget SetVariableValue(string variableValue)
+        {
+            valueWidget.SetText(variableValue);
 
-        return this;
+            return this;
+        }
     }
 }
