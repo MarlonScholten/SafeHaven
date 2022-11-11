@@ -19,9 +19,6 @@ public class DebugUI : MonoBehaviour
     [SerializeField]
     private List<GameObject> debugGameObjects;
 
-    [SerializeField] 
-    private List<DebugHighlight> highlightGameObjects;
-
     public ToggleEvent ToggleDebuggingTools;
 
     private bool _debuggerEnabled;
@@ -57,11 +54,6 @@ public class DebugUI : MonoBehaviour
         }
     }
 
-    public void AddHighlightGameObject(DebugHighlight gameObjectToAdd)
-    {
-        highlightGameObjects.Add(gameObjectToAdd);
-    }
-
     public void AddDebugGameObject(GameObject gameObjectToAdd)
     {
         debugGameObjects.Add(gameObjectToAdd);
@@ -78,11 +70,5 @@ public class DebugUI : MonoBehaviour
         ToggleDebuggingTools.Invoke(_debuggerEnabled);
 
         _canvasComponent.enabled = _debuggerEnabled;
-        
-        foreach (DebugHighlight highlightGameObject in highlightGameObjects)
-        {
-            if (_debuggerEnabled) highlightGameObject.Highlight();
-            else highlightGameObject.UnHighlight();
-        }
     }
 }
