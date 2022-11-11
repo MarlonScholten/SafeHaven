@@ -5,6 +5,7 @@ using NPC;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 public class Enemy_Finite_State_Machine : MonoBehaviour
 {
@@ -21,6 +22,10 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     public float threshold = 0.1f;
     private bool _alerted = false;
 
+    
+    public int investigateDistance = 3;
+    public int waitAtWaypointInSeconds = 3;
+    public int investigateTimeInSeconds= 5;
     void Awake()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
@@ -30,8 +35,7 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     public void Enter_Patrol()
     { 
         _currentWpIndex = GetClosestWaypoint();
-       _targetWpLocation = _wayPoints[_currentWpIndex].position;
-       _navMeshAgent.SetDestination(_targetWpLocation);
+       DetermineNextWaypoint();
        // Play walk animation
     }
     public void Update_Patrol()
@@ -47,12 +51,12 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     }
     public void FixedUpdate_Patrol()
     {
-        if (Vector3.Distance(transform.position, _targetWpLocation) <= 2f)
+        if (CheckIfEnemyIsAtWaypoint())
         {
             if (_navMeshAgent.isStopped == false)
             {
-                _navMeshAgent.isStopped = true;
                 LookAround();
+                StartCoroutine(CallFunctionAfterSeconds(waitAtWaypointInSeconds, DetermineNextWaypoint));
             }
         }
     }
@@ -89,14 +93,28 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     /// INVESTIGATE ///
     public void Enter_Investigate()
     {
-        
+        CalculateInvestigateLocation();
     }
     public void Update_Investigate()
     {
-    
+        // if (checkVision())
+        // {
+        //     CustomEvent.Trigger(gameObject, "Chasing");
+        // }
+        // if checkVision() is false for 5 seconds then go back to patrol
+        
+        
     }
     public void FixedUpdate_Investigate()
     {
+        if (CheckIfEnemyIsAtWaypoint())
+        {
+            if (_navMeshAgent.isStopped == false)
+            {
+                LookAround();
+                StartCoroutine(CallFunctionAfterSeconds(waitAtWaypointInSeconds, CalculateInvestigateLocation));
+            }
+        }
     }
     
     public void Exit_Investigate()
@@ -137,33 +155,39 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
         }
         return closestIndex;
     }
-    IEnumerator DetermineNextWaypointAfterSeconds(int seconds)
+    private void LookAround()
+    {
+        _navMeshAgent.isStopped = true;
+        transform.Rotate(0, Random.Range(0, 360), 0);
+        // Play look around animation
+    }
+
+    private IEnumerator CallFunctionAfterSeconds(int seconds, Action method)
     {
         yield return new WaitForSeconds(seconds);
+        method();
+        // Play walk animation
+    }
+
+    private void DetermineNextWaypoint()
+    {
         _currentWpIndex = _currentWpIndex == _wayPoints.Count - 1 ? 0 : _currentWpIndex + 1;
         _targetWpLocation = _wayPoints[_currentWpIndex].position;
         _navMeshAgent.SetDestination(_targetWpLocation);
         _navMeshAgent.isStopped = false;
-        // Play walk animation
-    }
-    private void LookAround()
-    {
-        // Play look around animation
-        StartCoroutine(DetermineNextWaypointAfterSeconds(3));
     }
     
+
     private bool checkVision()
     {
         Collider[] foundObjects = Physics.OverlapSphere(transform.position, visionRange);
         Collider player = getPlayer(foundObjects);
         if (player != null)
         {
-            //check if player is in vision angle
             Vector3 directionToPlayer = player.transform.position - transform.position;
             float angleToPlayer = Vector3.Angle(transform.forward, directionToPlayer);
             if (angleToPlayer < visionAngle)
             {
-                //check if player is in line of sight
                 RaycastHit hit;
                 if (Physics.Raycast(transform.position, directionToPlayer, out hit, visionRange))
                 {
@@ -192,5 +216,18 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     {
         _noiseMaker = source;
         _alerted = true;
+    }
+    private void CalculateInvestigateLocation() {
+        Vector3 randDirection = Random.insideUnitSphere * investigateDistance;
+        randDirection += _noiseMaker.source.transform.position;
+        NavMeshHit navHit;
+        NavMesh.SamplePosition (randDirection, out navHit, investigateDistance, -1);
+        _targetWpLocation = navHit.position;
+        _navMeshAgent.SetDestination(navHit.position);
+        _navMeshAgent.isStopped = false;
+    }
+    private bool CheckIfEnemyIsAtWaypoint()
+    {
+        return Vector3.Distance(transform.position, _targetWpLocation) <= 2f;
     }
 }
