@@ -17,19 +17,15 @@ when pulling for the first time. you will notice that it takes a while to load u
 1. the main branch is only for a working version of the unity project. You should ***NEVER*** push or create a pull request directly to this branch. **If you don't know what this means, no worries, you don't have acces to fuck stuff up anyway.**
 2. the develop branch is used as an integration and test point before the main branch. If you have a working feature that you want to add to the game you should make a pull request to this branch. If you want to start working on a new feature then you should use this branch as a starting point for your own branch.
 3. Branches should be named like this: ```[Branch_Type]-[Branch_Name]```. For example, if you want to add a flowing river to the project, your branch should be called ```feature-flowing_water```, or if you want to add a model of a brigde, your branch should be called ```art-small_brigde```
-    The branch types are (work in progress):
-   1. feature  
-      Used for new features.
-   2. bug  
-      Used for bugfixes.
-   3. art  
-      Used for the import of new art assets.
-   4. wip  
-      Used for experiments, not something you nessesarily want to merge with the develop branch.
-   5. git  
-      Used for git shenanigans, only used by the git wizzards (∩｀-´)⊃━☆ﾟ.*･｡ﾟ
-   6. dev  
-      Used for internal integration per team. These branches are specific for each team so please don't make one
+    The branch types are:
+   The branch types are:
+  - `feature` Used for new features.
+  - `dev` Used for internal integration per team. These branches are specific for each team so please don't make one.
+  - `bug` Used for bugfixes.
+  - `art` Used for the import of new art assets.
+  - `wip` Used for experiments, not something you nessesarily want to merge with the develop branch.
+  - `git` Used for git shenanigans, only used by the git wizzards (∩｀-´)⊃━☆ﾟ.*･｡ﾟ
+  - `class` Used for practice during the Git workshop, these will be deleted on sight after the workshop.
 4. Do **NOT** use capital letter in your branch names. it makes it easier to type them out in git bash.
 
 ## Unity Folder Structure
