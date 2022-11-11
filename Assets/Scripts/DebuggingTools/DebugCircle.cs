@@ -28,7 +28,7 @@ namespace DebuggingTools
             visualEffectComponent.SetFloat("Radius", radius);
             visualEffectComponent.SetVector4("Color", color);
         
-            FindObjectOfType<DebugUI>().ToggleDebuggingTools.AddListener(ToggleDebuggingTools);
+            FindObjectOfType<DebugUI>().ToggleDebuggingToolsEvent.AddListener(ToggleDebuggingTools);
         }
 
         private void ToggleDebuggingTools(bool isActivated)

@@ -5,9 +5,9 @@ using UnityEngine;
 namespace DebuggingTools
 {
     /// <summary>
-    /// Class <c>DebugGameObjectWidget</c> handles displaying information about a <c>GameObject</c> in the debug menu
+    /// Class <c>DebugGameObjectUI</c> handles displaying information about a <c>GameObject</c> in the debug menu
     /// </summary>
-    public class DebugGameObjectWidget : MonoBehaviour
+    public class DebugGameObjectUI : MonoBehaviour
     {
         [SerializeField] 
         private GameObject debugKeyValueWidget;
@@ -17,7 +17,7 @@ namespace DebuggingTools
     
         private GameObject _debugGameObject;
         private IDebuggableObject[] _debugGameObjectScripts;
-        private Dictionary<string, DebugKeyValueWidget> _debugWidgets = new();
+        private Dictionary<string, DebugKeyValueUI> _debugWidgets = new();
 
         /// <summary>
         /// This method initializes the Game Object widget using a given <c>GameObject.</c>
@@ -56,7 +56,7 @@ namespace DebuggingTools
         private void SetDebugValue(string variableName, string variableValue)
         {
             if (!_debugWidgets.ContainsKey(variableName))
-                _debugWidgets.Add(variableName, Instantiate(debugKeyValueWidget, transform).GetComponent<DebugKeyValueWidget>());
+                _debugWidgets.Add(variableName, Instantiate(debugKeyValueWidget, transform).GetComponent<DebugKeyValueUI>());
 
             if (_debugWidgets.TryGetValue(variableName, out var debugWidget))
                 debugWidget.SetVariableName(variableName).SetVariableValue(variableValue);
@@ -65,7 +65,7 @@ namespace DebuggingTools
         private void CreateDebugHeader(string headerName)
         {
             Instantiate(debugHeaderWidget, transform)
-                .GetComponent<DebugHeaderWidget>()
+                .GetComponent<DebugHeaderUI>()
                 .SetHeaderText(headerName);
         }
     }

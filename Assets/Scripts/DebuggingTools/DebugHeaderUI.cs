@@ -4,10 +4,10 @@ using UnityEngine;
 namespace DebuggingTools
 {
     /// <summary>
-    /// Class <c>DebugHeaderWidget</c> displays a header in the debug menu.
+    /// Class <c>DebugHeaderUI</c> displays a header in the debug menu.
     /// <example>For example the name of a <c>GameObject</c></example>
     /// </summary>
-    public class DebugHeaderWidget : MonoBehaviour
+    public class DebugHeaderUI : MonoBehaviour
     {
         [SerializeField] 
         private TextMeshProUGUI textComponent;

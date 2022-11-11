@@ -4,9 +4,9 @@ using UnityEngine;
 namespace DebuggingTools
 {
     /// <summary>
-    /// Class <c>DebugKeyValueWidget</c> displays a variable name and a value next to each other
+    /// Class <c>DebugKeyValueUI</c> displays a variable name and a value next to each other
     /// </summary>
-    public class DebugKeyValueWidget : MonoBehaviour
+    public class DebugKeyValueUI : MonoBehaviour
     {
         [SerializeField] 
         private TextMeshProUGUI keyWidget;
@@ -19,7 +19,7 @@ namespace DebuggingTools
         /// </summary>
         /// <param name="variableName">The new variable name</param>
         /// <returns>returns itself to allow method chaining</returns>
-        public DebugKeyValueWidget SetVariableName(string variableName)
+        public DebugKeyValueUI SetVariableName(string variableName)
         {
             keyWidget.SetText(variableName);
         
@@ -31,7 +31,7 @@ namespace DebuggingTools
         /// </summary>
         /// <param name="variableValue">The new variable value</param>
         /// <returns>returns itself to allow method chaining</returns>
-        public DebugKeyValueWidget SetVariableValue(string variableValue)
+        public DebugKeyValueUI SetVariableValue(string variableValue)
         {
             valueWidget.SetText(variableValue);
 

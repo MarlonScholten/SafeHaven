@@ -17,7 +17,7 @@ namespace DebuggingTools
         {
             _originalMaterials = GetComponent<MeshRenderer>().materials;
         
-            FindObjectOfType<DebugUI>().ToggleDebuggingTools.AddListener(ToggleHighlight);
+            FindObjectOfType<DebugUI>().ToggleDebuggingToolsEvent.AddListener(ToggleHighlight);
         }
 
         private void ToggleHighlight(bool isActivated)

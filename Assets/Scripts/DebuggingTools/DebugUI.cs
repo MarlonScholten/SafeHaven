@@ -17,7 +17,7 @@ namespace DebuggingTools
         /// To this event can be subscribed to receive a event when the debugging tool is enabled or disabled
         /// <returns>A boolean that resembles if the debugging tool is enabled or disabled</returns>
         /// </summary>
-        public ToggleEvent ToggleDebuggingTools;
+        public ToggleEvent ToggleDebuggingToolsEvent;
     
         [SerializeField] 
         private GameObject debugContainer;
@@ -40,18 +40,18 @@ namespace DebuggingTools
             debugGameObjects.Add(gameObjectToAdd);
         
             Instantiate(debugGameObjectWidget, debugContainer.transform)
-                .GetComponent<DebugGameObjectWidget>()
+                .GetComponent<DebugGameObjectUI>()
                 .Initialize(gameObjectToAdd);
         }
         
         private void Awake()
         {
-            ToggleDebuggingTools = new ToggleEvent();
+            ToggleDebuggingToolsEvent = new ToggleEvent();
         }
 
         private void Start()
         {
-            ToggleDebuggingTools.Invoke(_debuggerEnabled);
+            ToggleDebuggingToolsEvent.Invoke(_debuggerEnabled);
         
             _canvasComponent = GetComponent<Canvas>();
             _canvasComponent.enabled = _debuggerEnabled;
@@ -61,7 +61,7 @@ namespace DebuggingTools
             foreach (GameObject debugGameObject in debugGameObjects)
             {
                 Instantiate(debugGameObjectWidget, debugContainer.transform)
-                    .GetComponent<DebugGameObjectWidget>()
+                    .GetComponent<DebugGameObjectUI>()
                     .Initialize(debugGameObject);
             }
         }
@@ -78,7 +78,7 @@ namespace DebuggingTools
         {
             _debuggerEnabled = !_debuggerEnabled;
         
-            ToggleDebuggingTools.Invoke(_debuggerEnabled);
+            ToggleDebuggingToolsEvent.Invoke(_debuggerEnabled);
 
             _canvasComponent.enabled = _debuggerEnabled;
         }
