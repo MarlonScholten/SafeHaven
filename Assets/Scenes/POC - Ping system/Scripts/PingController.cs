@@ -5,10 +5,12 @@ using UnityEngine.InputSystem;
 
 public class PingController : MonoBehaviour
 {
-    public new Camera camera;
+    [SerializeField]
+    private new Camera camera;
     public GameObject radialMenu;
 
-    public GameObject markerPrefab;
+    [SerializeField]
+    private GameObject markerPrefab;
     //public GameObject interact, use, hide, run;
     public Vector2 inputMouse;
 
