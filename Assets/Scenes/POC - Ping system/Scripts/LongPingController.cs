@@ -4,8 +4,8 @@ using UnityEngine.UI;
 
 public class LongPingController : MonoBehaviour
 {
-    public GameObject highlightedOption;
-    public GameObject radialMenu;
+    [SerializeField] private GameObject highlightedOption;
+    [SerializeField] private GameObject radialMenu;
 
     public Vector2 inputMouse;
     public int selectedOption;
