@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -365,6 +365,11 @@ PrefabInstance:
     - target: {fileID: 8639183443031115005, guid: e8c8f13517c180944b8fbe94a0270669,
         type: 3}
       propertyPath: m_ShowMaskGraphic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8639183443031115007, guid: e8c8f13517c180944b8fbe94a0270669,
+        type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8639183443042898181, guid: e8c8f13517c180944b8fbe94a0270669,
@@ -430,7 +435,7 @@ PrefabInstance:
     - target: {fileID: 8639183443858448980, guid: e8c8f13517c180944b8fbe94a0270669,
         type: 3}
       propertyPath: m_ShowMaskGraphic
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8639183443858448981, guid: e8c8f13517c180944b8fbe94a0270669,
         type: 3}
@@ -505,6 +510,11 @@ PrefabInstance:
     - target: {fileID: 8639183444313261352, guid: e8c8f13517c180944b8fbe94a0270669,
         type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8639183444313261354, guid: e8c8f13517c180944b8fbe94a0270669,
+        type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
@@ -988,7 +998,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &1306876892
 MeshCollider:
   m_ObjectHideFlags: 0
