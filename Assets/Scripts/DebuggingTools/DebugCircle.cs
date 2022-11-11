@@ -24,8 +24,15 @@ public class DebugCircle : MonoBehaviour
         visualEffectComponent.visualEffectAsset = circleVFX;
         visualEffectComponent.SetFloat("Radius", radius);
         visualEffectComponent.SetVector4("Color", color);
+        
+        FindObjectOfType<DebugUI>().ToggleDebuggingTools.AddListener(ToggleDebuggingTools);
     }
-    
+
+    private void ToggleDebuggingTools(bool isActivated)
+    {
+        gameObject.GetComponent<VisualEffect>().enabled = isActivated;
+    }
+
     void Update()
     {
         if (update)

@@ -2,6 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+
+public class ToggleEvent : UnityEvent<bool>
+{
+}
 
 public class DebugUI : MonoBehaviour
 {
@@ -17,11 +22,20 @@ public class DebugUI : MonoBehaviour
     [SerializeField] 
     private List<DebugHighlight> highlightGameObjects;
 
+    public ToggleEvent ToggleDebuggingTools;
+
     private bool _debuggerEnabled;
     private Canvas _canvasComponent;
 
+    private void Awake()
+    {
+        ToggleDebuggingTools = new ToggleEvent();
+    }
+
     void Start()
     {
+        ToggleDebuggingTools.Invoke(_debuggerEnabled);
+        
         _canvasComponent = GetComponent<Canvas>();
         _canvasComponent.enabled = _debuggerEnabled;
         
@@ -60,6 +74,8 @@ public class DebugUI : MonoBehaviour
     private void OnShowDebuggingTools()
     {
         _debuggerEnabled = !_debuggerEnabled;
+        
+        ToggleDebuggingTools.Invoke(_debuggerEnabled);
 
         _canvasComponent.enabled = _debuggerEnabled;
         
