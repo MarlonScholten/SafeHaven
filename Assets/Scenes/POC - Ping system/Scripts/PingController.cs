@@ -35,7 +35,6 @@ public class PingController : MonoBehaviour
         Debug.DrawRay(ray.origin, ray.direction * 10000f, Color.red, 3);
         if (!Physics.Raycast(ray.origin, ray.direction * 10000f, out var hit)) return;
         
-        hit.transform.SendMessage("HitByRay");
         _pingPosition = hit.point;
         
         ShowMarker(_pingPosition);
