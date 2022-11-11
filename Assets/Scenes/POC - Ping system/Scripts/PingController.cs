@@ -1,3 +1,4 @@
+using System.Globalization;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -6,6 +7,8 @@ public class PingController : MonoBehaviour
 {
     public new Camera camera;
     public GameObject radialMenu;
+
+    public GameObject markerPrefab;
     //public GameObject interact, use, hide, run;
     public Vector2 inputMouse;
 
@@ -33,7 +36,15 @@ public class PingController : MonoBehaviour
         hit.transform.SendMessage("HitByRay");
         _pingPosition = hit.point;
         
+        ShowMarker(_pingPosition);
+        
+        
         Debug.Log(_pingPosition);
+    }
+
+    private void ShowMarker(Vector3 position)
+    {
+        Instantiate(markerPrefab, position, Quaternion.identity);
     }
 
     private void OnLongPing()
