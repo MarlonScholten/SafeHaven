@@ -4,14 +4,16 @@ using UnityEngine.UI;
 
 public class LongPingController : MonoBehaviour
 {
-    [SerializeField] private GameObject highlightedOption;
     [SerializeField] private GameObject radialMenu;
+    [SerializeField] private GameObject highlightedOption;
+    [SerializeField] private GameObject cancelOption;
 
     public Vector2 inputMouse;
     public int selectedOption;
 
     public Text[] options;
-    public Color radialMenuNormal, radialMenuOptionHovered;
+    public Text cancel;
+    public Color radialMenuNormal, radialMenuOptionHovered, radialMenuCancel;
 
     private Vector3 _pingPosition;
 
@@ -24,6 +26,8 @@ public class LongPingController : MonoBehaviour
     private const float DegreesFull = 360f;
     private float _degreesPerSegment;
 
+    private const float SizeCircle = 45f;
+
     private void Update()
     {
         radialMenu.SetActive(true);
@@ -31,7 +35,6 @@ public class LongPingController : MonoBehaviour
         if (!radialMenu.activeInHierarchy) return;
         inputMouse.x = Mouse.current.position.ReadValue().x - Screen.width / Two;
         inputMouse.y = Mouse.current.position.ReadValue().y - Screen.height / Two;
-        inputMouse.Normalize();
 
         if (inputMouse == Vector2.zero) return;
         var angle = (Mathf.Atan2(inputMouse.y, -inputMouse.x) / Mathf.PI) * DegreesHalf + StartingPointCorrection;
@@ -42,16 +45,24 @@ public class LongPingController : MonoBehaviour
 
     private void ControlSegmentOptions(float angle)
     {
-        for (var i = Zero; i < options.Length; i++)
+        if (inputMouse.x is < SizeCircle and > -SizeCircle && inputMouse.y is < SizeCircle and > -SizeCircle)
         {
-            _degreesPerSegment = DegreesFull / options.Length;
-            if (angle > i * _degreesPerSegment && angle < (i + One) * _degreesPerSegment)
+            cancel.color = radialMenuCancel;
+        }
+        else
+        {
+            cancel.color = Color.white;
+            for (var i = Zero; i < options.Length; i++)
             {
-                ControlSegmentHoveredOver(i);
-            }
-            else
-            {
-                options[i].color = radialMenuNormal;
+                _degreesPerSegment = DegreesFull / options.Length;
+                if (angle > i * _degreesPerSegment && angle < (i + One) * _degreesPerSegment)
+                {
+                    ControlSegmentHoveredOver(i);
+                }
+                else
+                {
+                    options[i].color = radialMenuNormal;
+                }
             }
         }
     }
@@ -76,6 +87,7 @@ public class LongPingController : MonoBehaviour
         // TODO Ping location.
         // TODO Text enabled in UI.
         // TODO Radial menu disappear.
+        // TODO Disable outside when in middle.
     }
 
     public Vector3 GetPingLocation()
