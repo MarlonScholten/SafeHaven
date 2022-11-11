@@ -245,6 +245,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2561062188736845248, guid: e8c8f13517c180944b8fbe94a0270669,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 866
+      objectReference: {fileID: 0}
+    - target: {fileID: 2561062188736845248, guid: e8c8f13517c180944b8fbe94a0270669,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 866
+      objectReference: {fileID: 0}
     - target: {fileID: 2561062188736845249, guid: e8c8f13517c180944b8fbe94a0270669,
         type: 3}
       propertyPath: m_Type
@@ -254,7 +264,8 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: 21300000, guid: feb39fb3f9efe2f478512ee5a8bc7c96,
+        type: 3}
     - target: {fileID: 2561062188736845249, guid: e8c8f13517c180944b8fbe94a0270669,
         type: 3}
       propertyPath: m_Color.a
@@ -263,17 +274,27 @@ PrefabInstance:
     - target: {fileID: 2561062188736845249, guid: e8c8f13517c180944b8fbe94a0270669,
         type: 3}
       propertyPath: m_Color.b
-      value: 0.8301887
+      value: 0.4716981
       objectReference: {fileID: 0}
     - target: {fileID: 2561062188736845249, guid: e8c8f13517c180944b8fbe94a0270669,
         type: 3}
       propertyPath: m_Color.g
-      value: 0.78874767
+      value: 0.4716981
       objectReference: {fileID: 0}
     - target: {fileID: 2561062188736845249, guid: e8c8f13517c180944b8fbe94a0270669,
         type: 3}
       propertyPath: m_Color.r
-      value: 0.5200427
+      value: 0.4716981
+      objectReference: {fileID: 0}
+    - target: {fileID: 2561062188736845249, guid: e8c8f13517c180944b8fbe94a0270669,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2561062188736845251, guid: e8c8f13517c180944b8fbe94a0270669,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8639183442275597969, guid: e8c8f13517c180944b8fbe94a0270669,
         type: 3}
@@ -491,21 +512,27 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: 21300000, guid: feb39fb3f9efe2f478512ee5a8bc7c96,
+        type: 3}
+    - target: {fileID: 8639183444313261352, guid: e8c8f13517c180944b8fbe94a0270669,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.41568628
+      objectReference: {fileID: 0}
     - target: {fileID: 8639183444313261352, guid: e8c8f13517c180944b8fbe94a0270669,
         type: 3}
       propertyPath: m_Color.b
-      value: 0.6981132
+      value: 0.6037736
       objectReference: {fileID: 0}
     - target: {fileID: 8639183444313261352, guid: e8c8f13517c180944b8fbe94a0270669,
         type: 3}
       propertyPath: m_Color.g
-      value: 0.59914565
+      value: 0.6037736
       objectReference: {fileID: 0}
     - target: {fileID: 8639183444313261352, guid: e8c8f13517c180944b8fbe94a0270669,
         type: 3}
       propertyPath: m_Color.r
-      value: 0.4175507
+      value: 0.6037736
       objectReference: {fileID: 0}
     - target: {fileID: 8639183444313261352, guid: e8c8f13517c180944b8fbe94a0270669,
         type: 3}
@@ -516,6 +543,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8639183444313261355, guid: e8c8f13517c180944b8fbe94a0270669,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 866
+      objectReference: {fileID: 0}
+    - target: {fileID: 8639183444313261355, guid: e8c8f13517c180944b8fbe94a0270669,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 866
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8639183444023332151, guid: e8c8f13517c180944b8fbe94a0270669, type: 3}
@@ -722,7 +759,7 @@ MonoBehaviour:
   - {fileID: 1949371444}
   - {fileID: 919818113}
   radialMenuNormal: {r: 1, g: 1, b: 1, a: 1}
-  radialMenuOptionHovered: {r: 0.9716981, g: 0.50712043, b: 0.1686721, a: 1}
+  radialMenuOptionHovered: {r: 0.015686275, g: 0.33333334, b: 0.5294118, a: 1}
 --- !u!114 &898611939 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8639183442771407453, guid: e8c8f13517c180944b8fbe94a0270669,
