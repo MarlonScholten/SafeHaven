@@ -1,10 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using NPC;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using Object = System.Object;
 using Random = UnityEngine.Random;
 
 public class Enemy_Finite_State_Machine : MonoBehaviour
@@ -17,15 +19,20 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     public float visionRange = 10f;
     public float visionAngle = 45f;
     
-    
     private SoundSource _noiseMaker;
+    private Vector3 _locationOfNoise;
     public float threshold = 0.1f;
-    private bool _alerted = false;
-
     
     public int investigateDistance = 3;
-    public int waitAtWaypointInSeconds = 3;
-    public int investigateTimeInSeconds= 5;
+    public int waitAtWaypointInSeconds = 4;
+    public int waitAtWaypointDuringInvestigatingInSeconds = 2;
+    public int investigateTimeInSeconds= 10;
+    private bool _investigationTimeIsStarted ;
+    private bool _alerted;
+    private Vector3 _spottedPlayerLastPosition;
+    private GameObject _spottedPlayer;
+    private bool _waitingAtWaypoint;
+
     void Awake()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
@@ -34,16 +41,17 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     /// PATROLLING ///
     public void Enter_Patrol()
     { 
+        _alerted = false;
         _currentWpIndex = GetClosestWaypoint();
        DetermineNextWaypoint();
        // Play walk animation
     }
     public void Update_Patrol()
     {
-        // if (checkVision())
-        // {
-        //     CustomEvent.Trigger(gameObject, "Alerted");
-        // }
+        if (checkVision())
+        {
+            CustomEvent.Trigger(gameObject, "Alerted");
+        }
         if (_alerted)
         {
             CustomEvent.Trigger(gameObject, "Alerted");
@@ -66,20 +74,26 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     /// ALERTED ///
     public void Enter_Alerted()
     {
-        
+        _navMeshAgent.isStopped = true;
+        StartCoroutine(CallFunctionAfterSeconds(3, () => { _navMeshAgent.isStopped = false; }));
     }
     public void Update_Alerted()
     {
-        if (_alerted && _noiseMaker.getVolume() > threshold)
+        // rotate to random directions 
+        if (_navMeshAgent.isStopped == false)
         {
-            CustomEvent.Trigger(gameObject, "Investigate");
-        }
-        else if(_alerted && _noiseMaker.getVolume() <= threshold)
-        {
-            CustomEvent.Trigger(gameObject, "Patrol");
-        } else if(!_alerted)
-        {
-            CustomEvent.Trigger(gameObject, "Chasing");
+            if (_alerted && _noiseMaker.getVolume() > threshold)
+            {
+                CustomEvent.Trigger(gameObject, "Investigate");
+            }
+            else if (_alerted && _noiseMaker.getVolume() <= threshold)
+            {
+                CustomEvent.Trigger(gameObject, "Patrol");
+            }
+            else if (!_alerted)
+            {
+                CustomEvent.Trigger(gameObject, "Chasing");
+            }
         }
     }
     public void FixedUpdate_Alerted()
@@ -88,6 +102,7 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     
     public void Exit_Alerted()
     {
+  
     }
     
     /// INVESTIGATE ///
@@ -97,22 +112,26 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     }
     public void Update_Investigate()
     {
-        // if (checkVision())
-        // {
-        //     CustomEvent.Trigger(gameObject, "Chasing");
-        // }
-        // if checkVision() is false for 5 seconds then go back to patrol
-        
-        
+        if (checkVision())
+        {
+            CustomEvent.Trigger(gameObject, "Chasing");
+        }
+
     }
     public void FixedUpdate_Investigate()
     {
         if (CheckIfEnemyIsAtWaypoint())
         {
-            if (_navMeshAgent.isStopped == false)
+            if (_waitingAtWaypoint && !_investigationTimeIsStarted)
             {
+                _investigationTimeIsStarted = true;
+                StartCoroutine(CallFunctionAfterSeconds(investigateTimeInSeconds, () => CustomEvent.Trigger(gameObject, "Patrol")));
+            }
+            if (!_waitingAtWaypoint)
+            {
+                _waitingAtWaypoint = true;
                 LookAround();
-                StartCoroutine(CallFunctionAfterSeconds(waitAtWaypointInSeconds, CalculateInvestigateLocation));
+                StartCoroutine(CallFunctionAfterSeconds(waitAtWaypointDuringInvestigatingInSeconds, CalculateInvestigateLocation));
             }
         }
     }
@@ -124,14 +143,27 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     /// CHASING ///
     public void Enter_Chasing()
     {
-        
     }
     public void Update_Chasing()
     {
-    
+        if(!checkVision() && Vector3.Distance(transform.position, _spottedPlayerLastPosition) <= 2f)
+        {
+            CustomEvent.Trigger(gameObject, "Investigate");
+            Debug.Log("Investigate");
+        }
     }
     public void FixedUpdate_Chasing()
     {
+        if (checkVision())
+        {
+            _navMeshAgent.SetDestination(_spottedPlayer.transform.position);
+            Debug.Log("Chasing to Player");
+        }
+        else
+        {
+            _navMeshAgent.SetDestination(_spottedPlayerLastPosition);
+            Debug.Log("Chasing to Point" + _spottedPlayerLastPosition );
+        }
     }
     
     public void Exit_Chasing()
@@ -159,6 +191,7 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     {
         _navMeshAgent.isStopped = true;
         transform.Rotate(0, Random.Range(0, 360), 0);
+
         // Play look around animation
     }
 
@@ -181,7 +214,7 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     private bool checkVision()
     {
         Collider[] foundObjects = Physics.OverlapSphere(transform.position, visionRange);
-        Collider player = getPlayer(foundObjects);
+        Collider player = GetPlayer(foundObjects);
         if (player != null)
         {
             Vector3 directionToPlayer = player.transform.position - transform.position;
@@ -193,6 +226,9 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
                 {
                     if (hit.collider.gameObject.CompareTag("Player"))
                     {
+                        var hitPlayer = hit.collider.gameObject;
+                        _spottedPlayer = hitPlayer;
+                        _spottedPlayerLastPosition = hitPlayer.transform.position;
                         return true;
                     }
                 }
@@ -201,7 +237,7 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
         return false;
     }
     
-    private Collider getPlayer(Collider[] objects)
+    private Collider GetPlayer(Collider[] objects)
     {
         foreach (Collider obj in objects)
         {
@@ -215,16 +251,26 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     void NoiseReceived(SoundSource source)
     {
         _noiseMaker = source;
+        _locationOfNoise = _noiseMaker.source.transform.position;
         _alerted = true;
     }
     private void CalculateInvestigateLocation() {
         Vector3 randDirection = Random.insideUnitSphere * investigateDistance;
-        randDirection += _noiseMaker.source.transform.position;
+        if (_alerted)
+        {
+            randDirection += _locationOfNoise;
+        }
+        else
+        {
+            randDirection += _spottedPlayerLastPosition;
+        }
         NavMeshHit navHit;
         NavMesh.SamplePosition (randDirection, out navHit, investigateDistance, -1);
         _targetWpLocation = navHit.position;
         _navMeshAgent.SetDestination(navHit.position);
         _navMeshAgent.isStopped = false;
+        _waitingAtWaypoint = false;
+        Debug.Log("Investigate Location is " + _targetWpLocation);
     }
     private bool CheckIfEnemyIsAtWaypoint()
     {
