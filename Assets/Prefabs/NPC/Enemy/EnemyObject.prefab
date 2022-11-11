@@ -157,6 +157,10 @@ MonoBehaviour:
   visionRange: 10
   visionAngle: 45
   threshold: 0.1
+  investigateDistance: 3
+  waitAtWaypointInSeconds: 4
+  waitAtWaypointDuringInvestigatingInSeconds: 2
+  investigateTimeInSeconds: 10
 --- !u!195 &338110988751728088
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -193,7 +197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_OverrideArea: 0
   m_Area: 0
-  m_IgnoreFromBuild: 0
+  m_IgnoreFromBuild: 1
   m_AffectedAgents: ffffffff
 --- !u!1 &5187349603412910400
 GameObject:
