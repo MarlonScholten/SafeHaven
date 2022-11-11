@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17612395, g: 0.22041984, b: 0.30274808, a: 1}
+  m_IndirectSpecularColor: {r: 0.17611448, g: 0.22040826, b: 0.30273524, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -247,7 +247,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 285156878}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.122, z: 0}
+  m_LocalPosition: {x: 0, y: 5.37, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -307,7 +307,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 285156883}
         m_TargetAssemblyTypeName: Characters.PlayerController, Assembly-CSharp
-        m_MethodName: OnMove
+        m_MethodName: OnMovementInput
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -320,7 +320,19 @@ MonoBehaviour:
     m_ActionId: 2f43f6c3-c3eb-4543-af3d-0471ab93aed6
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 285156883}
+        m_TargetAssemblyTypeName: Characters.PlayerController, Assembly-CSharp
+        m_MethodName: OnLookInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: f3ed1e3b-ce95-45ba-af96-4590d8adb9bf
     m_ActionName: Player/Look[/Mouse/delta]
   - m_PersistentCalls:
@@ -385,6 +397,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 5
+  lookSensitivity: 5
   gravityMultiplier: 1
 --- !u!1 &441966951
 GameObject:

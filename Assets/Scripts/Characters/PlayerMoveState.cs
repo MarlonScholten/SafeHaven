@@ -13,12 +13,13 @@ namespace Characters
         }
 
         /// <summary>
-        /// Move the character if we don't need to switch states.
+        /// Set the context movement if we don't have to switch states.
         /// </summary>
         public override void UpdateState()
         {
             CheckSwitchStates();
-            Move(Context.Movement);
+            var movement = CalculateMovement(Context.MovementInput);
+            SetContextMovement(movement);
         }
 
         public override void ExitState()
@@ -36,14 +37,22 @@ namespace Characters
         }
 
         /// <summary>
-        /// Move the player character in a direction, based on input, with the Context's movement speed.
+        /// Calculate the movement of the player.
         /// </summary>
-        /// <param name="movement">The movement input regarding the x and z axis</param>
-        private void Move(Vector2 movement)
+        /// <param name="movementInput">The movement input regarding the x and z axis</param>
+        private Vector3 CalculateMovement(Vector2 movementInput)
         {
-            var direction = new Vector3(movement.x, 0f, movement.y);
-            var velocity = direction * Context.MovementSpeed;
-            Context.CharacterController.SimpleMove(velocity);
+            var direction = new Vector3(movementInput.x, 0f, movementInput.y);
+            var movement = direction * Context.MovementSpeed;
+            return movement;
+        }
+
+        /// <summary>
+        /// Set the movement of the context.
+        /// </summary>
+        private void SetContextMovement(Vector3 movement)
+        {
+            Context.Movement = movement;
         }
     }
 }

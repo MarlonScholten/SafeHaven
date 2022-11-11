@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,10 +6,14 @@ namespace Characters
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] [Range(1f, 20f)] private float movementSpeed = 5f;
+        [SerializeField] [Range(1f, 20f)] private float lookSensitivity = 5f;
         public float MovementSpeed => movementSpeed;
         public CharacterController CharacterController { get; private set; }
         public PlayerBaseState CurrentState { get; set; }
-        public Vector2 Movement { get; private set; }
+        public Vector2 MovementInput { get; private set; }
+        private Vector3 _movement;
+        public Vector3 Movement { set => _movement = value; }
+        private Vector2 LookInput { get; set; }
 
         private readonly float _gravity = 9.8f;
         [SerializeField] private float gravityMultiplier = 1f;
@@ -27,21 +30,32 @@ namespace Characters
         }
         
         /// <summary>
-        /// Call the Update function of whatever state we are in on every frame.
+        /// Call the Update function of whatever state we are in on every frame and move the player.
         /// </summary>
+        /// <remarks>Movement is here too because gravity influences all kinds of movement</remarks>
         void Update()
         {
             CurrentState.UpdateState();
-            HandleGravity();
+            ApplyGravity();
+            Look();
+            CharacterController.Move(_movement * Time.deltaTime);
         }
         
         /// <summary>
         /// Update the movement values whenever the player inputs movement keys
         /// </summary>
         /// <param name="context"></param>
-        public void OnMove(InputAction.CallbackContext context)
+        public void OnMovementInput(InputAction.CallbackContext context)
         {
-            Movement = context.action.ReadValue<Vector2>();
+            MovementInput = context.action.ReadValue<Vector2>();
+        }
+
+        /// <summary>
+        /// Look input to rotate the camera.
+        /// </summary>
+        public void OnLookInput(InputAction.CallbackContext context)
+        {
+            LookInput = context.ReadValue<Vector2>();
         }
 
         /// <summary>
@@ -50,10 +64,22 @@ namespace Characters
         /// <returns>true if the player is pressing movement-related input</returns>
         public bool IsMoving()
         {
-            return Movement.x != 0 || Movement.y != 0;
+            return MovementInput.x != 0 || MovementInput.y != 0;
         }
 
-        private void HandleGravity()
+        /// <summary>
+        /// Rotate the player based on look input
+        /// </summary>
+        private void Look()
+        {
+            transform.Rotate(new Vector3(0f, LookInput.x * lookSensitivity * Time.deltaTime, 0f));
+            _movement = transform.rotation * _movement;
+        }
+
+        /// <summary>
+        /// Apply gravity to the calculated movement when not grounded.
+        /// </summary>
+        private void ApplyGravity()
         {
             if (CharacterController.isGrounded && _verticalSpeed != 0)
                 _verticalSpeed = 0;
@@ -61,8 +87,7 @@ namespace Characters
             if (!CharacterController.isGrounded)
             {
                 _verticalSpeed -= (_gravity * gravityMultiplier) * Time.deltaTime;
-                var velocity = new Vector3(0, _verticalSpeed, 0);
-                CharacterController.Move(velocity * Time.deltaTime);
+                _movement.y = _verticalSpeed;
             }
         }
     }
