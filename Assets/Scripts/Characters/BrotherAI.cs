@@ -25,15 +25,10 @@ public class BrotherAI : MonoBehaviour
         _navMeshAgent.SetDestination(walkLocation.position);
     }
 
-//action will become an enum
     public void PingBrother(object action){
-        // if(action instanceof HideAction ){
-        // HideAction hideAction = action;
-        // hideAction.hide();
-        // hideNearLocation(location);
-        // }
-        // if(action instanceof PanicHide){
-        // panicHide();
-        // }
+
     }
+
+
+    
 }
