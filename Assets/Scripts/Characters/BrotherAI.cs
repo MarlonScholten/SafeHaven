@@ -15,6 +15,9 @@ public class BrotherAI : MonoBehaviour
 
     private GameObject inventory = null;
 
+    private Pinger ping;
+
+
     void Awake()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
@@ -30,6 +33,8 @@ public class BrotherAI : MonoBehaviour
             HoldItem();
             MoveToLocation(_walkLocation);
         }
+
+        if(ping)
 
         if(_navMeshAgent.remainingDistance < 1 && inventory != null){
             DropItem();

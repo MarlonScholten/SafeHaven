@@ -1,0 +1,6 @@
+using UnityEngine;
+
+namesace Pinger {
+
+}
+
