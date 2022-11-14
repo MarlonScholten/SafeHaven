@@ -48,6 +48,8 @@ public class LongPingController : MonoBehaviour
         if (inputMouse.x is < SizeCircle and > -SizeCircle && inputMouse.y is < SizeCircle and > -SizeCircle)
         {
             cancel.color = radialMenuCancel;
+            highlightedOption.SetActive(false);
+            options[selectedOption].color = Color.white;
         }
         else
         {
@@ -71,6 +73,7 @@ public class LongPingController : MonoBehaviour
     {
         options[i].color = radialMenuOptionHovered;
         selectedOption = i;
+        highlightedOption.SetActive(true);
         highlightedOption.transform.rotation = Quaternion.Euler(0, 0, i * -_degreesPerSegment);
     }
 
