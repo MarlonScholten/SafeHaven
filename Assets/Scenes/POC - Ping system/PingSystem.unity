@@ -388,8 +388,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 648a154739180634ea5b641fb9b1e33a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 1219210233}
-  markerPrefab: {fileID: 4852335383087449349, guid: 51f106024b02e1c4c98cb73e851ad245,
+  _camera: {fileID: 1219210233}
+  _markerPrefab: {fileID: 4852335383087449349, guid: 51f106024b02e1c4c98cb73e851ad245,
     type: 3}
 --- !u!136 &867855652
 CapsuleCollider:
@@ -513,9 +513,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b75838c0c4093164da44f8be19742f20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radialMenu: {fileID: 2561062189413266493}
-  highlightedOption: {fileID: 8639183443539134661}
-  cancelOption: {fileID: 1319126078}
+  _radialMenu: {fileID: 1219210231}
+  _highlightedOption: {fileID: 8639183443539134661}
   inputMouse: {x: 0, y: 0}
   selectedOption: 0
   options:
