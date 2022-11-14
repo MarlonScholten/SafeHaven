@@ -24,4 +24,7 @@ jobs:
           enable-latex: false
         # Extra alpine packages for the build environment
           additional-packages: false
-        
+      - uses: actions/upload-artifact@v3
+        with:
+          name: doxygenBuild
+          path: Doxygen/html # or path/to/artifact
