@@ -28,7 +28,7 @@ namespace DebuggingTools
         {
             if (!autoActivate) return;
         
-            FindObjectOfType<DebugUI>().AddDebugGameObject(gameObject);
+            FindObjectOfType<DebugData>().AddDebugGameObject(gameObject);
         }
 
         /// <summary>

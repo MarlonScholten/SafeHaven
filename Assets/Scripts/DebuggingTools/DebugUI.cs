@@ -5,70 +5,21 @@ using UnityEngine.Events;
 
 namespace DebuggingTools
 {
-    public class ToggleEvent : UnityEvent<bool>
-    {
-    }
-
     /// <summary>
     /// Class <c>DebugUI</c> is the main class handling the debugging tool
     /// </summary>
     public class DebugUI : MonoBehaviour
     {
-        /// <summary>
-        /// To this event can be subscribed to receive a event when the debugging tool is enabled or disabled
-        /// <returns>A boolean that resembles if the debugging tool is enabled or disabled</returns>
-        /// </summary>
-        public ToggleEvent ToggleDebuggingToolsEvent;
-
         [SerializeField] private GameObject debugContainer;
 
         [SerializeField] private GameObject debugGameObjectWidget;
 
-        [SerializeField] private List<GameObject> debugGameObjects;
-
-        private bool _debuggerEnabled;
-        private Canvas _canvasComponent;
-
-        /// <summary>
-        /// This method adds a <c>GameObject</c> to be displayed in the debugging tool.
-        /// </summary>
-        /// <param name="gameObjectToAdd">The <c>GameObject</c> to add</param>
-        public void AddDebugGameObject(GameObject gameObjectToAdd)
-        {
-            debugGameObjects.Add(gameObjectToAdd);
-
-            Instantiate(debugGameObjectWidget, debugContainer.transform)
-                .GetComponent<DebugGameObjectUI>()
-                .Initialize(gameObjectToAdd);
-        }
-
-        private void Awake()
-        {
-            ToggleDebuggingToolsEvent = new ToggleEvent();
-        }
-
         private void Start()
         {
-            _canvasComponent = GetComponent<Canvas>();
-            _canvasComponent.enabled = _debuggerEnabled;
+            FindObjectOfType<DebugToggle>().ToggleDebuggingToolsEvent.AddListener(ToggleDebuggingTools);
+            FindObjectOfType<DebugData>().DebugDataChangedEvent.AddListener(RebuildUI);
 
-            ClearWidgets();
-
-            foreach (GameObject debugGameObject in debugGameObjects)
-            {
-                Instantiate(debugGameObjectWidget, debugContainer.transform)
-                    .GetComponent<DebugGameObjectUI>()
-                    .Initialize(debugGameObject);
-            }
-
-            StartCoroutine(LateStart());
-        }
-
-        private IEnumerator LateStart()
-        {
-            yield return new WaitForEndOfFrame();
-            
-            ToggleDebuggingToolsEvent.Invoke(_debuggerEnabled);
+            gameObject.SetActive(false);
         }
 
         private void ClearWidgets()
@@ -79,13 +30,27 @@ namespace DebuggingTools
             }
         }
 
-        private void OnShowDebuggingTools()
+        private void RebuildUI(List<GameObject> debugGameObjects)
         {
-            _debuggerEnabled = !_debuggerEnabled;
-        
-            ToggleDebuggingToolsEvent.Invoke(_debuggerEnabled);
+            if (!gameObject.activeSelf) return;
+            
+            ClearWidgets();
 
-            _canvasComponent.enabled = _debuggerEnabled;
+            foreach (GameObject debugGameObject in debugGameObjects)
+            {
+                Instantiate(debugGameObjectWidget, debugContainer.transform)
+                    .GetComponent<DebugGameObjectUI>()
+                    .Initialize(debugGameObject);
+            }
+        }
+
+        private void ToggleDebuggingTools(bool isActivated)
+        {
+            gameObject.SetActive(isActivated);
+
+            if (!isActivated) return;
+            
+            RebuildUI(FindObjectOfType<DebugData>().GetDebugGameObjects());
         }
     }
 }
