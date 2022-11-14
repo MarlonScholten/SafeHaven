@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 5614149512549148619}
   - component: {fileID: 5614149512549148628}
   - component: {fileID: 5614149512549148616}
-  - component: {fileID: 5614149512549148623}
   m_Layer: 5
   m_Name: DebugCanvas
   m_TagString: Untagged
@@ -77,7 +76,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
+  m_ScaleFactor: 0.8
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
@@ -118,39 +117,6 @@ MonoBehaviour:
   debugContainer: {fileID: 5614149514111291522}
   debugGameObjectWidget: {fileID: 7443981117728889392, guid: e2bfc9b3ccd506b45b6bba1bd42f02cc,
     type: 3}
-  debugGameObjects: []
-  highlightGameObjects: []
---- !u!114 &5614149512549148623
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5614149512549148629}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 4e56221ada36c814785109d05f9d7f23,
-    type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: UI
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!1 &5614149512559585046
 GameObject:
   m_ObjectHideFlags: 0
@@ -903,8 +869,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5614149513063684079}
   m_HandleRect: {fileID: 5614149513063684072}
   m_Direction: 0
-  m_Value: 1
-  m_Size: 1
+  m_Value: 0
+  m_Size: 0.99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -944,8 +910,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.00045090017}
-  m_SizeDelta: {x: -382.99994, y: 40}
+  m_AnchoredPosition: {x: 0, y: 0.0007084627}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &5614149514111291527
 MonoBehaviour:
