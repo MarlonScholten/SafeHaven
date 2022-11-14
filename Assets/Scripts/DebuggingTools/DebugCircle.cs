@@ -23,6 +23,7 @@ namespace DebuggingTools
         private void Start()
         {
             VisualEffect visualEffectComponent = gameObject.AddComponent<VisualEffect>();
+            visualEffectComponent.enabled = false;
         
             visualEffectComponent.visualEffectAsset = circleVFX;
             visualEffectComponent.SetFloat("Radius", radius);

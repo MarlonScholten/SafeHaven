@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -18,16 +19,13 @@ namespace DebuggingTools
         /// <returns>A boolean that resembles if the debugging tool is enabled or disabled</returns>
         /// </summary>
         public ToggleEvent ToggleDebuggingToolsEvent;
-    
-        [SerializeField] 
-        private GameObject debugContainer;
 
-        [SerializeField] 
-        private GameObject debugGameObjectWidget;
+        [SerializeField] private GameObject debugContainer;
 
-        [SerializeField]
-        private List<GameObject> debugGameObjects;
-    
+        [SerializeField] private GameObject debugGameObjectWidget;
+
+        [SerializeField] private List<GameObject> debugGameObjects;
+
         private bool _debuggerEnabled;
         private Canvas _canvasComponent;
 
@@ -38,12 +36,12 @@ namespace DebuggingTools
         public void AddDebugGameObject(GameObject gameObjectToAdd)
         {
             debugGameObjects.Add(gameObjectToAdd);
-        
+
             Instantiate(debugGameObjectWidget, debugContainer.transform)
                 .GetComponent<DebugGameObjectUI>()
                 .Initialize(gameObjectToAdd);
         }
-        
+
         private void Awake()
         {
             ToggleDebuggingToolsEvent = new ToggleEvent();
@@ -51,11 +49,9 @@ namespace DebuggingTools
 
         private void Start()
         {
-            ToggleDebuggingToolsEvent.Invoke(_debuggerEnabled);
-        
             _canvasComponent = GetComponent<Canvas>();
             _canvasComponent.enabled = _debuggerEnabled;
-        
+
             ClearWidgets();
 
             foreach (GameObject debugGameObject in debugGameObjects)
@@ -64,6 +60,15 @@ namespace DebuggingTools
                     .GetComponent<DebugGameObjectUI>()
                     .Initialize(debugGameObject);
             }
+
+            StartCoroutine(LateStart());
+        }
+
+        private IEnumerator LateStart()
+        {
+            yield return new WaitForEndOfFrame();
+            
+            ToggleDebuggingToolsEvent.Invoke(_debuggerEnabled);
         }
 
         private void ClearWidgets()
