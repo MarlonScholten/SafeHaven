@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -31,6 +30,7 @@ public class LongPingController : MonoBehaviour
     private void Start()
     {
         _radialMenu.SetActive(false);
+        Cursor.visible = false; 
     }
     
     private void Update()
@@ -105,8 +105,9 @@ public class LongPingController : MonoBehaviour
     {
         // TODO Move code to OnLongPing method.
         // TODO Ping location.
-        // TODO Text enabled in UI.
         // TODO Radial menu disappear.
+        
+        Cursor.visible = true; 
     }
 
     public Vector3 GetPingLocation()
