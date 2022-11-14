@@ -5,6 +5,9 @@ using UnityEngine.Events;
 
 namespace DebuggingTools
 {
+    /// <summary>
+    /// Unity event that returns a <c>bool</c> that resembles if the debugging tool is enabled or disabled
+    /// </summary>
     public class ToggleEvent : UnityEvent<bool>
     {
     }

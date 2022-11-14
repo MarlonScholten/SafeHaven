@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using System.Globalization;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace DebuggingTools
 {
+    /// <summary>
+    /// Test class to test the debugging tool, should not be used for other reasons.
+    /// </summary>
     public class TestTracking : MonoBehaviour, IDebuggableObject
     {
         [SerializeField]
