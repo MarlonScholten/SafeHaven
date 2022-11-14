@@ -1,12 +1,12 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class LongPingController : MonoBehaviour
 {
-    [SerializeField] private GameObject radialMenu;
-    [SerializeField] private GameObject highlightedOption;
-    [SerializeField] private GameObject cancelOption;
+    [SerializeField] private GameObject _radialMenu;
+    [SerializeField] private GameObject _highlightedOption;
 
     public Vector2 inputMouse;
     public int selectedOption;
@@ -28,11 +28,21 @@ public class LongPingController : MonoBehaviour
 
     private const float SizeCircle = 45f;
 
+    private void Start()
+    {
+        _radialMenu.SetActive(false);
+    }
+    
     private void Update()
     {
-        radialMenu.SetActive(true);
+        ActivateRadialMenu();
+    }
 
-        if (!radialMenu.activeInHierarchy) return;
+    private void ActivateRadialMenu()
+    {
+        _radialMenu.SetActive(true);
+
+        if (!_radialMenu.activeInHierarchy) return;
         inputMouse.x = Mouse.current.position.ReadValue().x - Screen.width / Two;
         inputMouse.y = Mouse.current.position.ReadValue().y - Screen.height / Two;
 
@@ -41,15 +51,15 @@ public class LongPingController : MonoBehaviour
 
         angle = SetDegreesFull(angle);
         ControlSegmentOptions(angle);
+
+        //radialMenu.SetActive(false);
     }
 
     private void ControlSegmentOptions(float angle)
     {
         if (inputMouse.x is < SizeCircle and > -SizeCircle && inputMouse.y is < SizeCircle and > -SizeCircle)
         {
-            cancel.color = radialMenuCancel;
-            highlightedOption.SetActive(false);
-            options[selectedOption].color = Color.white;
+            ControlSegmentHoveredOverMiddle();
         }
         else
         {
@@ -59,7 +69,7 @@ public class LongPingController : MonoBehaviour
                 _degreesPerSegment = DegreesFull / options.Length;
                 if (angle > i * _degreesPerSegment && angle < (i + One) * _degreesPerSegment)
                 {
-                    ControlSegmentHoveredOver(i);
+                    ControlSegmentHoveredOverOutside(i);
                 }
                 else
                 {
@@ -69,12 +79,19 @@ public class LongPingController : MonoBehaviour
         }
     }
 
-    private void ControlSegmentHoveredOver(int i)
+    private void ControlSegmentHoveredOverMiddle()
+    {
+        cancel.color = radialMenuCancel;
+        _highlightedOption.SetActive(false);
+        options[selectedOption].color = Color.white;
+    }
+
+    private void ControlSegmentHoveredOverOutside(int i)
     {
         options[i].color = radialMenuOptionHovered;
         selectedOption = i;
-        highlightedOption.SetActive(true);
-        highlightedOption.transform.rotation = Quaternion.Euler(0, 0, i * -_degreesPerSegment);
+        _highlightedOption.SetActive(true);
+        _highlightedOption.transform.rotation = Quaternion.Euler(0, 0, i * -_degreesPerSegment);
     }
 
     private static float SetDegreesFull(float angle)
@@ -90,7 +107,6 @@ public class LongPingController : MonoBehaviour
         // TODO Ping location.
         // TODO Text enabled in UI.
         // TODO Radial menu disappear.
-        // TODO Disable outside when in middle.
     }
 
     public Vector3 GetPingLocation()
