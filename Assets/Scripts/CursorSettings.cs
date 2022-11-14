@@ -2,11 +2,14 @@ using UnityEngine;
 
 public class CursorSettings : MonoBehaviour
 {
-    [SerializeField] private bool hideCursor = true;
+    /// <summary>
+    /// Customize settings related to the cursor.
+    /// </summary>
+    [SerializeField] private bool _hideCursor = true;
 
     private void Awake()
     {
-        Cursor.visible = hideCursor;
+        Cursor.visible = _hideCursor;
         Cursor.lockState = CursorLockMode.Locked;
     }
 }

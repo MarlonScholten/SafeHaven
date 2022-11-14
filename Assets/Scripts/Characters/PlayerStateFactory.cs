@@ -6,17 +6,17 @@ namespace Characters
     /// <summary>
     /// This class initializes all the necessary player-related states so they can easily be called by other code.
     /// </summary>
+    /// <remarks>Make sure to add any new states to the dictionary and write a function for easy access.</remarks>
     public class PlayerStateFactory
     {
         private readonly Dictionary<String, PlayerBaseState> _states;
 
         public PlayerStateFactory(PlayerController currentContext)
         {
-            var context = currentContext;
             _states = new Dictionary<string, PlayerBaseState>
             {
-                {"Idle", new PlayerIdleState(context, this)},
-                {"Move", new PlayerMoveState(context, this)}
+                {"Idle", new PlayerIdleState(currentContext, this)},
+                {"Move", new PlayerMoveState(currentContext, this)}
             };
         }
 

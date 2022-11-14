@@ -3,9 +3,12 @@ using UnityEngine.InputSystem;
 
 namespace Characters
 {
+    /// <summary>
+    /// A simple character controller that moves the player.
+    /// </summary>
     public class PlayerCharacterController : MonoBehaviour
     {
-        [SerializeField] private float movementSpeed;
+        [SerializeField] private float _movementSpeed;
         private CharacterController _controller;
         private Vector2 _movement;
 
@@ -37,7 +40,7 @@ namespace Characters
         private void Move(float x, float z)
         {
             var direction = new Vector3(x, 0f, z);
-            var velocity = direction * movementSpeed;
+            var velocity = direction * _movementSpeed;
             _controller.SimpleMove(velocity);
         }
     }
