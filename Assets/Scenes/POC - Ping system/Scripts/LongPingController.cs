@@ -7,6 +7,10 @@ public class LongPingController : MonoBehaviour
 {
     [SerializeField] private GameObject _radialMenu;
     [SerializeField] private GameObject _highlightedOption;
+    private bool _radialMenuIsSetActive = false;
+    private bool _holdSucceeded = false;
+    
+    [SerializeField] private int _slowmotionFactor = 4;
 
     private PingSystem _pingSystem;
     public Vector2 inputMouse;
@@ -21,6 +25,7 @@ public class LongPingController : MonoBehaviour
     private const int Zero = 0;
     private const int One = 1;
     private const int Two = 2;
+    private const int StandardTimeFactor = 1;
 
     private const float StartingPointCorrection = 90f;
     private const float DegreesHalf = 180f;
@@ -34,13 +39,24 @@ public class LongPingController : MonoBehaviour
         _pingSystem = new();
         _pingSystem.Player.LongPing.performed += OnLongPing;
         _pingSystem.Player.LongPing.canceled += OnLongPingRelease;
-        
-        _pingSystem.Player.LongPing.started += (ctx) =>
-        {
-            Debug.Log("started");
-        };
     }
 
+    
+
+    private void Start()
+    {
+        _radialMenu.SetActive(false);
+        // Cursor.visible = false; 
+    }
+    
+    private void Update()
+    {
+        if (_radialMenuIsSetActive)
+        {
+            ActivateRadialMenu();
+        }
+    }
+    
     public void OnEnable()
     {
         _pingSystem.Enable();
@@ -49,17 +65,6 @@ public class LongPingController : MonoBehaviour
     public void OnDisable()
     {
         _pingSystem.Disable();
-    }
-
-    private void Start()
-    {
-        _radialMenu.SetActive(false);
-        Cursor.visible = false; 
-    }
-    
-    private void Update()
-    {
-        ActivateRadialMenu();
     }
 
     private void ActivateRadialMenu()
@@ -131,13 +136,19 @@ public class LongPingController : MonoBehaviour
         // TODO Ping location.
         // TODO Radial menu disappear.
         // TODO Disable outside when in middle.
+        _holdSucceeded = true;
         Debug.Log("performed");
-        Time.timeScale /= 4;
+        Time.timeScale /= _slowmotionFactor;
     }
     
     private void OnLongPingRelease(InputAction.CallbackContext callbackContext)
     {
-        
+        Debug.Log("release");
+        if (_holdSucceeded)
+        {
+            _holdSucceeded = false;
+            _radialMenuIsSetActive = true;
+        }
     }
 
     public Vector3 GetPingLocation()
