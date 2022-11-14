@@ -19,9 +19,17 @@ jobs:
         # Path to Doxyfile
           doxyfile-path: ./Doxyfile
         # Working directory
-          working-directory: ./Doxygen
+          working-directory: .
         # Generate latex documentation
           enable-latex: false
         # Extra alpine packages for the build environment
         #  additional-packages:
-        
+      - uses: actions/upload-artifact@v3
+        with:
+          name: doxygenBuild
+          path: Doxygen/html # or path/to/artifact
+      - name: Deploy Doxygen site
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./Doxygen/html
