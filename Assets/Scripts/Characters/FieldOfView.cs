@@ -9,8 +9,19 @@ public class FieldOfView : MonoBehaviour
 
     public LayerMask targetMask;
 
-    void FindClosestHidingSpot(){
+    public void FindClosestHidingSpot(){
         Collider[] objectsInView = Physics.OverlapSphere(transform.position, viewRadius, targetMask);
+        if(objectsInView.Length != 0){
+            Transform closestHidingSpot = objectsInView[0].transform;
+
+            for(int i = 0; i<objectsInView.Length; i++){
+                if(Vector3.Distance(transform.position,objectsInView[i].transform.position)<
+                    Vector3.Distance(closestHidingSpot.position,transform.position)){
+                        closestHidingSpot = objectsInView[i].transform;
+                    }
+            }
+            Debug.Log(closestHidingSpot.position);
+        }        
     }
 
     // Start is called before the first frame update

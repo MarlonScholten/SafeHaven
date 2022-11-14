@@ -1,6 +1,0 @@
-using UnityEngine;
-
-namesace Pinger {
-
-}
-
