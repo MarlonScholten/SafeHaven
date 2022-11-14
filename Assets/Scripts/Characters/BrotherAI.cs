@@ -21,8 +21,7 @@ public class BrotherAI : MonoBehaviour
 
     void FixedUpdate()
     {
-            // MoveToLocation(_walkLocation);
-            fieldOfView.FindClosestHidingSpot();
+            MoveToLocation(fieldOfView.FindClosestHidingSpot());
     }
 
     private void MoveToLocation(Transform walkLocation){
