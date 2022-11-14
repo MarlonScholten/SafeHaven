@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -8,6 +9,7 @@ public class LongPingController : MonoBehaviour
     [SerializeField] private GameObject highlightedOption;
     [SerializeField] private GameObject cancelOption;
 
+    private PingSystem _pingSystem;
     public Vector2 inputMouse;
     public int selectedOption;
 
@@ -27,6 +29,28 @@ public class LongPingController : MonoBehaviour
     private float _degreesPerSegment;
 
     private const float SizeCircle = 45f;
+
+    private void Awake()
+    {
+        _pingSystem = new();
+        _pingSystem.Player.LongPing.performed += OnLongPing;
+        _pingSystem.Player.LongPing.canceled += OnLongPingRelease;
+        
+        _pingSystem.Player.LongPing.started += (ctx) =>
+        {
+            Debug.Log("started");
+        };
+    }
+
+    public void OnEnable()
+    {
+        _pingSystem.Enable();
+    }
+
+    public void OnDisable()
+    {
+        _pingSystem.Disable();
+    }
 
     private void Update()
     {
@@ -84,13 +108,20 @@ public class LongPingController : MonoBehaviour
         return angle;
     }
 
-    private void OnLongPing()
+    private void OnLongPing(InputAction.CallbackContext callbackContext)
     {
         // TODO Move code to OnLongPing method.
         // TODO Ping location.
         // TODO Text enabled in UI.
         // TODO Radial menu disappear.
         // TODO Disable outside when in middle.
+        Debug.Log("performed");
+        Time.timeScale /= 4;
+    }
+    
+    private void OnLongPingRelease(InputAction.CallbackContext callbackContext)
+    {
+        
     }
 
     public Vector3 GetPingLocation()
