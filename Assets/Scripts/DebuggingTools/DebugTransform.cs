@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace DebuggingTools
 {
@@ -11,22 +12,22 @@ namespace DebuggingTools
         [Header("Debug properties")]
     
         [SerializeField] 
-        private bool debugPosition = true;
+        private bool _debugPosition = true;
     
         [SerializeField] 
-        private bool debugRotation = true;
+        private bool _debugRotation = true;
     
         [SerializeField] 
-        private bool debugScale = true;
-    
+        private bool _debugScale = true;
+        
         [Header("Other")]
     
         [SerializeField]
-        private bool autoActivate = true;
+        private bool _autoActivate = true;
     
         private void Start()
         {
-            if (!autoActivate) return;
+            if (!_autoActivate) return;
         
             FindObjectOfType<DebugData>().AddDebugGameObject(gameObject);
         }
@@ -37,13 +38,13 @@ namespace DebuggingTools
         /// <returns>A dictionary of all values to be displayed in the debugging tool</returns>
         public Dictionary<string, string> GetDebugValues()
         {
-            if (!debugPosition && !debugRotation && !debugScale) return new Dictionary<string, string>();
+            if (!_debugPosition && !_debugRotation && !_debugScale) return new Dictionary<string, string>();
 
             Dictionary<string, string> debugDictionary = new Dictionary<string, string>();
         
-            if (debugPosition) debugDictionary.Add("Position", transform.position.ToString());
-            if (debugRotation) debugDictionary.Add("Rotation", transform.rotation.eulerAngles.ToString());
-            if (debugScale) debugDictionary.Add("Scale", transform.localScale.ToString());
+            if (_debugPosition) debugDictionary.Add("Position", transform.position.ToString());
+            if (_debugRotation) debugDictionary.Add("Rotation", transform.rotation.eulerAngles.ToString());
+            if (_debugScale) debugDictionary.Add("Scale", transform.localScale.ToString());
 
             return debugDictionary;
         }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.VFX;
 
 namespace DebuggingTools
@@ -9,25 +10,25 @@ namespace DebuggingTools
     public class DebugCircle : MonoBehaviour
     {
         [SerializeField]
-        private VisualEffectAsset circleVFX;
+        private VisualEffectAsset _circleVFX;
 
         [SerializeField] 
-        private float radius = 10.0f;
+        private float _radius = 10.0f;
 
         [SerializeField] 
-        private Color color = Color.red;
+        private Color _color = Color.red;
 
         [SerializeField] 
-        private bool update;
+        private bool _update;
 
         private void Start()
         {
             VisualEffect visualEffectComponent = gameObject.AddComponent<VisualEffect>();
             visualEffectComponent.enabled = false;
         
-            visualEffectComponent.visualEffectAsset = circleVFX;
-            visualEffectComponent.SetFloat("Radius", radius);
-            visualEffectComponent.SetVector4("Color", color);
+            visualEffectComponent.visualEffectAsset = _circleVFX;
+            visualEffectComponent.SetFloat("Radius", _radius);
+            visualEffectComponent.SetVector4("Color", _color);
         
             FindObjectOfType<DebugToggle>().ToggleDebuggingToolsEvent.AddListener(ToggleDebuggingTools);
         }
@@ -39,10 +40,10 @@ namespace DebuggingTools
 
         private void Update()
         {
-            if (update)
+            if (_update)
             {
                 UpdateVisualEffect();
-                update = false;
+                _update = false;
             }
         }
 
@@ -50,8 +51,8 @@ namespace DebuggingTools
         {
             VisualEffect visualEffectComponent = gameObject.GetComponent<VisualEffect>();
         
-            visualEffectComponent.SetFloat("Radius", radius);
-            visualEffectComponent.SetVector4("Color", color); 
+            visualEffectComponent.SetFloat("Radius", _radius);
+            visualEffectComponent.SetVector4("Color", _color); 
         
             visualEffectComponent.Reinit();
         }

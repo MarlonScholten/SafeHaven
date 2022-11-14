@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace DebuggingTools
 {
@@ -10,7 +11,7 @@ namespace DebuggingTools
     public class DebugHeaderUI : MonoBehaviour
     {
         [SerializeField] 
-        private TextMeshProUGUI textComponent;
+        private TextMeshProUGUI _textComponent;
 
         /// <summary>
         /// Set the text displayed in the header
@@ -18,7 +19,7 @@ namespace DebuggingTools
         /// <param name="headerText">The new text that the header will display</param>
         public void SetHeaderText(string headerText)
         {
-            textComponent.SetText(headerText);
+            _textComponent.SetText(headerText);
         }
     }
 }

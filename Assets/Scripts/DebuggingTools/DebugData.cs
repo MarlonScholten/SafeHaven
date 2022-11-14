@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace DebuggingTools
 {
@@ -11,7 +12,7 @@ namespace DebuggingTools
     
     public class DebugData : MonoBehaviour
     {
-        [SerializeField] private List<GameObject> debugGameObjects;
+        [SerializeField] private List<GameObject> _debugGameObjects;
 
         public DebugDataChangeEvent DebugDataChangedEvent;
 
@@ -22,14 +23,14 @@ namespace DebuggingTools
 
         public void AddDebugGameObject(GameObject gameObjectToAdd)
         {
-            debugGameObjects.Add(gameObjectToAdd);
+            _debugGameObjects.Add(gameObjectToAdd);
             
-            DebugDataChangedEvent.Invoke(debugGameObjects);
+            DebugDataChangedEvent.Invoke(_debugGameObjects);
         }
 
         public List<GameObject> GetDebugGameObjects()
         {
-            return debugGameObjects;
+            return _debugGameObjects;
         }
     }
 }

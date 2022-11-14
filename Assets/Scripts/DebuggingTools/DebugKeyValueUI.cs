@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace DebuggingTools
 {
@@ -9,10 +10,10 @@ namespace DebuggingTools
     public class DebugKeyValueUI : MonoBehaviour
     {
         [SerializeField] 
-        private TextMeshProUGUI keyWidget;
+        private TextMeshProUGUI _keyWidget;
     
         [SerializeField] 
-        private TextMeshProUGUI valueWidget;
+        private TextMeshProUGUI _valueWidget;
 
         /// <summary>
         /// This method sets the <c>variable name</c> that is displayed
@@ -21,7 +22,7 @@ namespace DebuggingTools
         /// <returns>returns itself to allow method chaining</returns>
         public DebugKeyValueUI SetVariableName(string variableName)
         {
-            keyWidget.SetText(variableName);
+            _keyWidget.SetText(variableName);
         
             return this;
         }
@@ -33,7 +34,7 @@ namespace DebuggingTools
         /// <returns>returns itself to allow method chaining</returns>
         public DebugKeyValueUI SetVariableValue(string variableValue)
         {
-            valueWidget.SetText(variableValue);
+            _valueWidget.SetText(variableValue);
 
             return this;
         }

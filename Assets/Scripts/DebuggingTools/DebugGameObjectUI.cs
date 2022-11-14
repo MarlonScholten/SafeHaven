@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace DebuggingTools
 {
@@ -10,10 +11,10 @@ namespace DebuggingTools
     public class DebugGameObjectUI : MonoBehaviour
     {
         [SerializeField] 
-        private GameObject debugKeyValueWidget;
+        private GameObject _debugKeyValueWidget;
     
         [SerializeField] 
-        private GameObject debugHeaderWidget;
+        private GameObject _debugHeaderWidget;
     
         private GameObject _debugGameObject;
         private IDebuggableObject[] _debugGameObjectScripts;
@@ -56,7 +57,7 @@ namespace DebuggingTools
         private void SetDebugValue(string variableName, string variableValue)
         {
             if (!_debugWidgets.ContainsKey(variableName))
-                _debugWidgets.Add(variableName, Instantiate(debugKeyValueWidget, transform).GetComponent<DebugKeyValueUI>());
+                _debugWidgets.Add(variableName, Instantiate(_debugKeyValueWidget, transform).GetComponent<DebugKeyValueUI>());
 
             if (_debugWidgets.TryGetValue(variableName, out var debugWidget))
                 debugWidget.SetVariableName(variableName).SetVariableValue(variableValue);
@@ -64,7 +65,7 @@ namespace DebuggingTools
     
         private void CreateDebugHeader(string headerName)
         {
-            Instantiate(debugHeaderWidget, transform)
+            Instantiate(_debugHeaderWidget, transform)
                 .GetComponent<DebugHeaderUI>()
                 .SetHeaderText(headerName);
         }

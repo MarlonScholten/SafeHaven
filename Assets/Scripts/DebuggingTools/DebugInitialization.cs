@@ -1,15 +1,16 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace DebuggingTools
 {
     public class DebugInitialization : MonoBehaviour
     {
         [SerializeField]
-        private GameObject debugUI;
+        private GameObject _debugUI;
 
         private void Awake()
         {
-            Instantiate(debugUI);
+            Instantiate(_debugUI);
         }
     }
 }

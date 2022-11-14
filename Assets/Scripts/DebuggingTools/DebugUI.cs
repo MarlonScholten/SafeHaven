@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace DebuggingTools
 {
@@ -10,9 +11,9 @@ namespace DebuggingTools
     /// </summary>
     public class DebugUI : MonoBehaviour
     {
-        [SerializeField] private GameObject debugContainer;
+        [SerializeField] private GameObject _debugContainer;
 
-        [SerializeField] private GameObject debugGameObjectWidget;
+        [SerializeField] private GameObject _debugGameObjectWidget;
 
         private void Start()
         {
@@ -24,9 +25,9 @@ namespace DebuggingTools
 
         private void ClearWidgets()
         {
-            for (int i = debugContainer.transform.childCount - 1; i >= 0; i--)
+            for (int i = _debugContainer.transform.childCount - 1; i >= 0; i--)
             {
-                Destroy(debugContainer.transform.GetChild(i).gameObject);
+                Destroy(_debugContainer.transform.GetChild(i).gameObject);
             }
         }
 
@@ -38,7 +39,7 @@ namespace DebuggingTools
 
             foreach (GameObject debugGameObject in debugGameObjects)
             {
-                Instantiate(debugGameObjectWidget, debugContainer.transform)
+                Instantiate(_debugGameObjectWidget, _debugContainer.transform)
                     .GetComponent<DebugGameObjectUI>()
                     .Initialize(debugGameObject);
             }
