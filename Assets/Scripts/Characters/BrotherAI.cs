@@ -18,20 +18,22 @@ public class BrotherAI : MonoBehaviour
 
     private NavMeshAgent _navMeshAgent;
 
-    public FieldOfView fieldOfView;
+    private FindHidingSpot findClosestHidingSpot;
+
+    private Transform pingLocation;
 
 
 
     void Awake()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
-        fieldOfView = gameObject.GetComponent<FieldOfView>();
+        findClosestHidingSpot = gameObject.GetComponent<FindHidingSpot>();
 
     }
 
     void FixedUpdate()
     {
-            MoveToLocation(fieldOfView.FindClosestHidingSpot());
+            
     }
 
     private void MoveToLocation(Transform walkLocation){
@@ -40,25 +42,16 @@ public class BrotherAI : MonoBehaviour
 
 //action will become an enum
     public void PingBrother(PingType ping, Transform location){
-        if(ping == PingType.PanicHide){
-            CustomEvent.Trigger(this.gameObject, "PanicHide");
-        }
-        // if(action instanceof HideAction ){
-        // HideAction hideAction = action;
-        // hideAction.hide();
-        // hideNearLocation(location);
-        // }
-        // if(action instanceof PanicHide){
-        // panicHide();
-        // }
+        CustomEvent.Trigger(this.gameObject, ping.ToString());
+        pingLocation = location;
     }
 
     public void FollowEnter(){
-
+        
     }
 
     public void FollowUpdate(){
-
+        MoveToLocation(findClosestHidingSpot.FindClosestHidingSpot());
     }
 
     public void FollowFixedUpdate(){
@@ -74,7 +67,8 @@ public class BrotherAI : MonoBehaviour
     }
 
     public void PanicHideUpdate(){
-
+        Transform hidingSpot = findClosestHidingSpot.FindClosestHidingSpot();
+        MoveToLocation(hidingSpot);
     }
 
     public void PanicHideFixedUpdate(){
@@ -82,6 +76,38 @@ public class BrotherAI : MonoBehaviour
     }
 
     public void PanicHideExit(){
+        
+    }
+
+    public void HideEnter(){
+
+    }
+
+    public void HideUpdate(){
+        MoveToLocation(pingLocation);
+    }
+
+    public void HideFixedUpdate(){
+
+    }
+
+    public void HideExit(){
+        
+    }
+
+    public void WalkEnter(){
+
+    }
+
+    public void WalkUpdate(){
+        MoveToLocation(pingLocation);
+    }
+
+    public void WalkFixedUpdate(){
+
+    }
+
+    public void WalkExit(){
         
     }
 }
