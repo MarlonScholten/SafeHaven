@@ -179,12 +179,12 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
             if (!_waitingAtWaypoint)
             {
                 _waitingAtWaypoint = true;
-                LookAround();
+               
                 _waitingAtWaypointCoroutine =
                     CallFunctionAfterSeconds(waitAtInvestigatingWaypointTime, CalculateInvestigateLocation);
                 StartCoroutine(_waitingAtWaypointCoroutine);
             }
-           
+            LookAround();
         }
     }
     
@@ -250,8 +250,13 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     {
         _navMeshAgent.isStopped = true;
         // rotate towards random direction smoothly
-        Quaternion lookRotation = Quaternion.LookRotation((target.position - transform.position).normalized);
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, 5f * Time.deltaTime);
+        // add random rotation to vector 3
+        var x = Random.rotation;
+        var y = Random.rotation;
+        var z = Random.rotation;
+        var randomRotation = new Vector3(x.x, Random.Range(transform.position.y - 50, transform.position.y + 50), z.z);
+        Quaternion lookRotation = Quaternion.LookRotation((randomRotation- transform.position).normalized);
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, 2f * Time.deltaTime);
 
         // Play look around animation
     }
