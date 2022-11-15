@@ -14,15 +14,17 @@ public enum PingType {
 }
 public class BrotherAI : MonoBehaviour
 {
+    private float fear = 0;
     [SerializeField] Transform _walkLocation;
+
+    public float _walkSpeed = 3.5f;
+    public float _runSpeed = 5f;
 
     private NavMeshAgent _navMeshAgent;
 
     private FindHidingSpot findClosestHidingSpot;
 
     private Transform pingLocation;
-
-
 
     void Awake()
     {
@@ -31,16 +33,16 @@ public class BrotherAI : MonoBehaviour
 
     }
 
-    void FixedUpdate()
-    {
-            
-    }
-
-    private void MoveToLocation(Transform walkLocation){
+    private void MoveToLocation(Transform walkLocation, float speed){
         _navMeshAgent.SetDestination(walkLocation.position);
     }
 
-//action will become an enum
+    public void Comfort(){
+        if(fear > 0){
+        fear -= 0.1f;
+        }
+    }
+
     public void PingBrother(PingType ping, Transform location){
         CustomEvent.Trigger(this.gameObject, ping.ToString());
         pingLocation = location;
@@ -51,7 +53,7 @@ public class BrotherAI : MonoBehaviour
     }
 
     public void FollowUpdate(){
-        MoveToLocation(findClosestHidingSpot.FindClosestHidingSpot());
+        MoveToLocation(findClosestHidingSpot.FindClosestHidingSpot(), _walkSpeed);
     }
 
     public void FollowFixedUpdate(){
@@ -68,7 +70,7 @@ public class BrotherAI : MonoBehaviour
 
     public void PanicHideUpdate(){
         Transform hidingSpot = findClosestHidingSpot.FindClosestHidingSpot();
-        MoveToLocation(hidingSpot);
+        MoveToLocation(hidingSpot, _walkSpeed);
     }
 
     public void PanicHideFixedUpdate(){
@@ -84,7 +86,7 @@ public class BrotherAI : MonoBehaviour
     }
 
     public void HideUpdate(){
-        MoveToLocation(pingLocation);
+        MoveToLocation(pingLocation, _walkSpeed);
     }
 
     public void HideFixedUpdate(){
@@ -100,7 +102,7 @@ public class BrotherAI : MonoBehaviour
     }
 
     public void WalkUpdate(){
-        MoveToLocation(pingLocation);
+        MoveToLocation(pingLocation, _walkSpeed);
     }
 
     public void WalkFixedUpdate(){

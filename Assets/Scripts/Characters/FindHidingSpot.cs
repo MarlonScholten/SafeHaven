@@ -12,29 +12,27 @@ public class FindHidingSpot : MonoBehaviour
 
     public Transform FindClosestHidingSpot(){
         Collider[] hidingSpots = Physics.OverlapSphere(transform.position, _viewRadius, _targetMask);
-        Transform closestHidingSpot = null;
-        if(hidingSpots.Length != 0){
-            
-
+        Transform closestHidingSpot = null;         
   
-            foreach(Collider spot in hidingSpots){
-                Transform hidingSpot = spot.transform;
-                Vector3 dirToObject = (hidingSpot.position - transform.position).normalized;
-                if(Vector3.Angle(transform.forward, dirToObject) < _viewAngle / 2){
-                    float distanceToSpot = Vector3.Distance(transform.position,hidingSpot.position);
+        foreach(Collider spot in hidingSpots){
+            Transform hidingSpot = spot.transform;
+            Vector3 dirToObject = (hidingSpot.position - transform.position).normalized;
+                //Check if the spot is in the brothers view
+            if(Vector3.Angle(transform.forward, dirToObject) < _viewAngle / 2){
+                float distanceToSpot = Vector3.Distance(transform.position,hidingSpot.position);
 
-                    if(!Physics.Raycast(transform.position, dirToObject, distanceToSpot, _obstacleMask)){
-                        if(closestHidingSpot == null){
-                            closestHidingSpot = hidingSpot;
-                        }
+                if(!Physics.Raycast(transform.position, dirToObject, distanceToSpot, _obstacleMask)){
+                        //If there is not a current closest spot, then set one
+                    if(closestHidingSpot == null){
+                        closestHidingSpot = hidingSpot;
+                    }
                         //Check if other location is closer than current closest location
-                        else if(distanceToSpot < Vector3.Distance(closestHidingSpot.transform.position, transform.position)){
-                                closestHidingSpot = hidingSpot;
-                        }
+                    else if(distanceToSpot < Vector3.Distance(closestHidingSpot.transform.position, transform.position)){
+                            closestHidingSpot = hidingSpot;
                     }
                 }
             }
-        }
+        }       
         if(closestHidingSpot == null){
             return null;
         }
@@ -43,7 +41,6 @@ public class FindHidingSpot : MonoBehaviour
         }        
     }
 
-    // Start is called before the first frame update
     public Vector3 DirFromAngle(float angleInDegrees, bool angleIsGLobal){
         if(!angleIsGLobal){
             angleInDegrees += transform.eulerAngles.y;
