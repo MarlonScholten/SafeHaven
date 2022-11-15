@@ -305,8 +305,7 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
             float angleToPlayer = Vector3.Angle(transform.forward, directionToPlayer);
             if (angleToPlayer < visionAngle)
             {
-                RaycastHit hit;
-                if (Physics.Raycast(transform.position, directionToPlayer, out hit, visionRange))
+                if (Physics.Raycast(transform.position, directionToPlayer, out RaycastHit hit, visionRange))
                 {
                     if (hit.collider.gameObject.CompareTag("Player"))
                     {
@@ -344,7 +343,7 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
         Vector3 randDirection = Random.insideUnitSphere * investigateDistance;
         if (_alertedBySound) randDirection += _locationOfNoise;
         else if(_alertedByVision) randDirection += _spottedPlayerLastPosition;
-        NavMesh.SamplePosition (randDirection, out var navHit, investigateDistance, 1);
+        NavMesh.SamplePosition (randDirection, out NavMeshHit navHit, investigateDistance, 1);
         _targetWpLocation = navHit.position;
         _navMeshAgent.SetDestination(_targetWpLocation);
         _waitingAtWaypoint = false;
