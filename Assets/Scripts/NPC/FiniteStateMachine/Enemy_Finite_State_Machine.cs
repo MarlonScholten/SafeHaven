@@ -330,7 +330,6 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     void NoiseReceived(SoundSource source)
     {
         if (source.getVolume() <= thresholdLoudSounds && source.getVolume() >= thresholdSmallSounds)_numberOfSmallSoundsHeard++;
-        Debug.Log("Heard sound"+ _numberOfSmallSoundsHeard);
         if (_numberOfSmallSoundsHeard >= numberOfSmallSoundsToInvestigate || source.getVolume() > thresholdLoudSounds)
         {
             _numberOfSmallSoundsHeard = 0;
