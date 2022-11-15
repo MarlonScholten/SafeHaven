@@ -3,8 +3,12 @@ using UnityEngine.InputSystem;
 
 public class QuickPingController : MonoBehaviour
 {
+    //TODO Integrate
+    //private BrotherAI _brotherAI;
+    
     [SerializeField] private Camera _camera;
     [SerializeField] private GameObject _markerPrefab;
+    [SerializeField] private GameObject _radialMenu;
 
     private Vector3 _pingPosition;
     private const float Correction = 10000f;
@@ -30,13 +34,19 @@ public class QuickPingController : MonoBehaviour
     private void OnQuickPing(InputAction.CallbackContext callbackContext)
     {
         Debug.Log("onquickping");
-        var ray = _camera.ScreenPointToRay(Mouse.current.position.ReadValue());
-        Debug.DrawRay(ray.origin, ray.direction * Correction, Color.red, 3);
+        if (!_radialMenu.activeSelf)
+        {
+            var ray = _camera.ScreenPointToRay(Mouse.current.position.ReadValue());
+            Debug.DrawRay(ray.origin, ray.direction * Correction, Color.red, 3);
 
-        if (!Physics.Raycast(ray.origin, ray.direction * Correction, out var hit)) return;
-        _pingPosition = hit.point;
-        ShowMarker(_pingPosition);
-        _pingPosition = hit.point;
+            if (!Physics.Raycast(ray.origin, ray.direction * Correction, out var hit)) return;
+            _pingPosition = hit.point;
+            ShowMarker(_pingPosition);
+            _pingPosition = hit.point;
+            
+            //TODO Integrate
+            //_brotherAI.PingBrother(PingType.Run, _pingPosition)
+        }
     }
 
     private void ShowMarker(Vector3 position)

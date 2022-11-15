@@ -8,6 +8,8 @@ public class LongPingController : MonoBehaviour
 {
     [SerializeField] private GameObject _radialMenu;
     [SerializeField] private GameObject _highlightedOption;
+    [SerializeField] private GameObject _markerPrefab;
+    [SerializeField] private Camera _camera;
 
     private bool _radialMenuIsSetActive = false;
     private bool _holdSucceeded = false;
@@ -25,10 +27,12 @@ public class LongPingController : MonoBehaviour
     public Color radialMenuNormal, radialMenuOptionHovered, radialMenuCancel;
 
     private Vector3 _pingPosition;
-    
+    private PingType _pingAction;
+
     private const int Zero = 0;
     private const int One = 1;
     private const int Two = 2;
+    private const float Correction = 10000f;
     private const int StandardTimeFactor = 1;
 
     private const float StartingPointCorrection = 90f;
@@ -44,39 +48,12 @@ public class LongPingController : MonoBehaviour
         _pingSystem.Player.LongPing.performed += OnLongPing;
         _pingSystem.Player.LongPing.canceled += OnLongPingRelease;
         _pingSystem.Player.Fire.started += OnLeftMouseButton;
-
     }
-
-    private void SelectAction()
-    {
-        Debug.Log("selectaction");
-        // _chosenAction
-    }
-
-    // private PingType SwitchAction()
-    // {
-    //     switch (_chosenAction)
-    //     {
-    //         case PingType.Hide:
-    //             break;
-    //         case PingType.Interact:
-    //             break;
-    //         case PingType.Pickup:
-    //             break;
-    //         case PingType.Run:
-    //             break;
-    //         case PingType.Use:
-    //             break;
-    //     }
-    //
-    //     return _chosenAction;
-    // }
-
 
     private void Start()
     {
         _radialMenu.SetActive(false);
-        // Cursor.visible = false; 
+        //TODO: Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Update()
@@ -85,7 +62,6 @@ public class LongPingController : MonoBehaviour
         {
             ActivateRadialMenu();
         }
-        
     }
 
     public void OnEnable()
@@ -152,14 +128,12 @@ public class LongPingController : MonoBehaviour
         _selectedOption = i;
         _highlightedOption.SetActive(true);
         _highlightedOption.transform.rotation = Quaternion.Euler(0, 0, i * -_degreesPerSegment);
-        
-        if(Enum.TryParse(options[i].text,  out PingType pingType))
+
+        if (Enum.TryParse(options[i].text, out PingType pingType))
         {
             _chosenAction = pingType;
-            Debug.Log(_chosenAction);
+           // Debug.Log(_chosenAction);
         }
-
-       // _chosenAction = Enum.TryParse(options[i].text, out PingType pingType) ? pingType : _chosenAction;
     }
 
     private static float SetDegreesFull(float angle)
@@ -174,19 +148,30 @@ public class LongPingController : MonoBehaviour
         if (_radialMenu.activeSelf)
         {
             SelectAction();
-            // SwitchAction(_);
+            _radialMenuIsSetActive = false;
+            _radialMenu.SetActive(false);
+            Time.timeScale = StandardTimeFactor;
         }
+    }
+
+    private void SelectAction()
+    {
+        _pingAction = _chosenAction;
+        
     }
 
     private void OnLongPing(InputAction.CallbackContext callbackContext)
     {
-        // TODO Move code to OnLongPing method.
-        // TODO Ping location.
-        // TODO Radial menu disappear.
-        // TODO Disable outside when in middle.
+        // TODO Disable outside when in middle.?
         _holdSucceeded = true;
+        // TODO: Cursor.lockState = CursorLockMode.None;
         Debug.Log("performed");
         Time.timeScale /= _slowmotionFactor;
+    }
+
+    private void ShowMarker(Vector3 position)
+    {
+        Instantiate(_markerPrefab, position, Quaternion.identity);
     }
 
     private void OnLongPingRelease(InputAction.CallbackContext callbackContext)
@@ -194,6 +179,14 @@ public class LongPingController : MonoBehaviour
         Debug.Log("release");
         if (_holdSucceeded)
         {
+            var ray = _camera.ScreenPointToRay(Mouse.current.position.ReadValue());
+            Debug.DrawRay(ray.origin, ray.direction * Correction, Color.red, 3);
+
+            if (!Physics.Raycast(ray.origin, ray.direction * Correction, out var hit)) return;
+            _pingPosition = hit.point;
+            ShowMarker(_pingPosition);
+            _pingPosition = hit.point;
+
             _holdSucceeded = false;
             _radialMenuIsSetActive = true;
         }
@@ -202,5 +195,10 @@ public class LongPingController : MonoBehaviour
     public Vector3 GetPingLocation()
     {
         return _pingPosition;
+    }
+
+    public PingType GetPingAction()
+    {
+        return _pingAction;
     }
 }
