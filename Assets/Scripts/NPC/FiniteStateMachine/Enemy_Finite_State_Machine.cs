@@ -90,6 +90,14 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
                 CustomEvent.Trigger(gameObject, "Alerted");
             }
         }
+        if (_numberOfSmallSoundsHeard > 0 && !_smallSoundReducer)
+        {
+            _smallSoundReducer = true; 
+            StartCoroutine(CallFunctionAfterSeconds(reduceSmallSoundsTime, () => { 
+                _numberOfSmallSoundsHeard--;
+                _smallSoundReducer = false;
+            }));
+        }
     }
     public void FixedUpdate_Patrol()
     {
@@ -130,14 +138,6 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     }
     public void Update_Alerted()
     {
-        if (_numberOfSmallSoundsHeard > 0 && !_smallSoundReducer)
-        {
-            _smallSoundReducer = true; 
-            StartCoroutine(CallFunctionAfterSeconds(reduceSmallSoundsTime, () => { 
-                _numberOfSmallSoundsHeard--;
-                _smallSoundReducer = false;
-            }));
-        }
         if (_alertedCoroutineIsRunning == false)
         {
             if (_alertedBySound)
@@ -258,7 +258,7 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     {
         float closestDistance = Mathf.Infinity;
         int closestIndex = 0;
-        for (int i = 0; i < _wayPoints.Count; i++)
+        for (var i = 0; i < _wayPoints.Count; i++)
         {
             float distance = Vector3.Distance(transform.position, _wayPoints[i].position);
             if (distance < closestDistance)
@@ -271,10 +271,7 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     }
     private void LookAround()
     {
-        // rotate towards random direction smoothly
-        // add random rotation to vector 3
         var x = Random.rotation;
-        var y = Random.rotation;
         var z = Random.rotation;
         var randomRotation = new Vector3(x.x, Random.Range(transform.position.y - 50, transform.position.y + 50), z.z);
         Quaternion lookRotation = Quaternion.LookRotation((randomRotation- transform.position).normalized);
@@ -334,19 +331,19 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     void NoiseReceived(SoundSource source)
     {
         if (source.getVolume() <= thresholdLoudSounds && source.getVolume() >= thresholdSmallSounds)_numberOfSmallSoundsHeard++;
+        Debug.Log("Heard sound"+ _numberOfSmallSoundsHeard);
         if (_numberOfSmallSoundsHeard >= numberOfSmallSoundsToInvestigate || source.getVolume() > thresholdLoudSounds)
         {
             _numberOfSmallSoundsHeard = 0;
             _noiseMaker = source;
             _locationOfNoise = _noiseMaker.source.transform.position;
-            _alertedBySound = true;
+            _alertedBySound = true; 
         }
     }
     private void CalculateInvestigateLocation() {
         Vector3 randDirection = Random.insideUnitSphere * investigateDistance;
         if (_alertedBySound) randDirection += _locationOfNoise;
         else if(_alertedByVision) randDirection += _spottedPlayerLastPosition;
-        
         NavMesh.SamplePosition (randDirection, out var navHit, investigateDistance, 1);
         _targetWpLocation = navHit.position;
         _navMeshAgent.SetDestination(_targetWpLocation);
