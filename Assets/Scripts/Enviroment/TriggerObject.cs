@@ -5,14 +5,18 @@ using UnityEngine;
 public class TriggerObject : MonoBehaviour
 {
     //list of serializable ITrigger objects
-    [SerializeField, SerializeReference] private List<ITrigger> _triggerObjects;
+    [SerializeField] private List<GameObject> _triggerObjects;
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(_triggerObjects.Count);
+        Debug.Log("Trigger");
         foreach (var triggerObject in _triggerObjects)
         {
-            triggerObject.trigger();
+            if (triggerObject.GetComponent<ITrigger>() != null)
+            {
+                //trigger the object
+                triggerObject.GetComponent<ITrigger>().trigger();
+            }
         }
     }
 }

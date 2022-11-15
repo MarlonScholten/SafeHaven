@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class Light : MonoBehaviour, ITrigger
 {
-    public GameObject triggerObject {get;}
-    Light light;
 
     void Start()
     {
-        light = gameObject.GetComponent<Light>();
+        
     }
 
     public void trigger()
     {
-        light.enabled = !light.enabled;
+        //set object active
+        gameObject.SetActive(!gameObject.activeSelf);
     }
 }
