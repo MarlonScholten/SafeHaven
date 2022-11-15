@@ -48,9 +48,15 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     
     private IEnumerator _patrolCoroutine;
     private IEnumerator _investigateCoroutine;
-    private IEnumerator _waitingAtWaypointCoroutine;
+    private IEnumerator _waitingAtWaypointDuringInvestigationCoroutine;
     private IEnumerator _alertedCoroutine;
+    private bool _waitingAtWaypointCoroutineIsRunning;
+    private bool _patrolCoroutineIsRunning;
+    private bool _waitingAtWaypointDuringInvestigationCoroutineIsRunning;
+    private bool _investigateCoroutineIsRunning;
+    private bool _alertedCoroutineIsRunning;
     
+
     void Awake()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
@@ -61,6 +67,7 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     { 
         _alertedBySound = false;
         _currentWpIndex = GetClosestWaypoint();
+      
         DetermineNextWaypoint();
        // Play walk animation
     }
@@ -88,16 +95,23 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     {
         if (CheckIfEnemyIsAtWaypoint())
         {
-            if (_navMeshAgent.isStopped == false)
+            if (!_waitingAtWaypointCoroutineIsRunning)
             {
+                _waitingAtWaypointCoroutineIsRunning = true;
                 LookAround();
-                StartCoroutine(CallFunctionAfterSeconds(waitAtWaypointTime, DetermineNextWaypoint));
+                _patrolCoroutine = CallFunctionAfterSeconds(waitAtWaypointTime, () =>
+                {
+                    DetermineNextWaypoint();
+                    _waitingAtWaypointCoroutineIsRunning = false;
+                });
+                StartCoroutine(_patrolCoroutine);
             }
         }
     }
     public void Exit_Patrol()
     {
-        // StopCoroutine(_patrolCoroutine);
+        if(_waitingAtWaypointCoroutineIsRunning)StopCoroutine(_patrolCoroutine);
+        _waitingAtWaypointCoroutineIsRunning = false;
     }
     /// ALERTED ///
     public void Enter_Alerted()
@@ -105,26 +119,26 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
         if (_alertedBySound)
         {
             _navMeshAgent.isStopped = true;
-            _alertedCoroutine = CallFunctionAfterSeconds(stopWhenAlertedTime, () => { _navMeshAgent.isStopped = false; });
+            _alertedCoroutineIsRunning = true;
+            _alertedCoroutine = CallFunctionAfterSeconds(stopWhenAlertedTime, () =>
+            {
+                _navMeshAgent.isStopped = false; 
+                _alertedCoroutineIsRunning = false;
+            });
             StartCoroutine(_alertedCoroutine);
         }
     }
     public void Update_Alerted()
     {
-    
-        // if numberofsoundssmall sounds is not zero then delete lower numberofsmall sounds after 10 seconds
-        
         if (_numberOfSmallSoundsHeard > 0 && !_smallSoundReducer)
-            {
-                _smallSoundReducer = true; 
-                StartCoroutine(CallFunctionAfterSeconds(reduceSmallSoundsTime, () => { 
-                    _numberOfSmallSoundsHeard--;
-                    _smallSoundReducer = false;
-                }));
-            }
-
-
-        if (_navMeshAgent.isStopped == false)
+        {
+            _smallSoundReducer = true; 
+            StartCoroutine(CallFunctionAfterSeconds(reduceSmallSoundsTime, () => { 
+                _numberOfSmallSoundsHeard--;
+                _smallSoundReducer = false;
+            }));
+        }
+        if (_alertedCoroutineIsRunning == false)
         {
             if (_alertedBySound)
             {
@@ -147,15 +161,14 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     
     public void Exit_Alerted()
     {
-        if(_alertedBySound)StopCoroutine(_alertedCoroutine);
+        if(_alertedCoroutineIsRunning)StopCoroutine(_alertedCoroutine);
+        _alertedCoroutineIsRunning = false;
     }
     
     /// INVESTIGATE ///
     public void Enter_Investigate()
     {
         CalculateInvestigateLocation();
- 
-
     }
     public void Update_Investigate()
     {
@@ -169,20 +182,29 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     {
         if (CheckIfEnemyIsAtWaypoint())
         {
-            if (_waitingAtWaypoint && !_investigationTimeIsStarted)
+            if (_waitingAtWaypoint && !_investigateCoroutineIsRunning)
             {
-                _investigationTimeIsStarted = true;
+                _investigateCoroutineIsRunning = true;
                 _investigateCoroutine =
-                    CallFunctionAfterSeconds(investigateTime, () => CustomEvent.Trigger(gameObject, "Patrol"));
+                    CallFunctionAfterSeconds(investigateTime, () =>
+                    {
+                        CustomEvent.Trigger(gameObject, "Patrol");
+                        _investigateCoroutineIsRunning = false;
+                    });
                 StartCoroutine(_investigateCoroutine);
             }
             if (!_waitingAtWaypoint)
             {
                 _waitingAtWaypoint = true;
-               
-                _waitingAtWaypointCoroutine =
-                    CallFunctionAfterSeconds(waitAtInvestigatingWaypointTime, CalculateInvestigateLocation);
-                StartCoroutine(_waitingAtWaypointCoroutine);
+                _waitingAtWaypointDuringInvestigationCoroutineIsRunning = true;
+                _waitingAtWaypointDuringInvestigationCoroutine =
+                    CallFunctionAfterSeconds(waitAtInvestigatingWaypointTime, () =>
+                    {
+                        CalculateInvestigateLocation();
+                        _waitingAtWaypointDuringInvestigationCoroutineIsRunning = false;
+                        
+                    });
+                StartCoroutine(_waitingAtWaypointDuringInvestigationCoroutine);
             }
             LookAround();
         }
@@ -190,9 +212,10 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     
     public void Exit_Investigate()
     {
-        if(_investigationTimeIsStarted)StopCoroutine(_investigateCoroutine);
-        if(_waitingAtWaypoint)StopCoroutine(_waitingAtWaypointCoroutine);
-        _investigationTimeIsStarted = false;
+        if(_investigateCoroutineIsRunning)StopCoroutine(_investigateCoroutine);
+        _investigateCoroutineIsRunning = false;
+        if(_waitingAtWaypointDuringInvestigationCoroutineIsRunning)StopCoroutine(_waitingAtWaypointDuringInvestigationCoroutine);
+        _waitingAtWaypointDuringInvestigationCoroutineIsRunning = false;
     }
     
     /// CHASING ///
@@ -248,7 +271,6 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     }
     private void LookAround()
     {
-        _navMeshAgent.isStopped = true;
         // rotate towards random direction smoothly
         // add random rotation to vector 3
         var x = Random.rotation;
@@ -273,7 +295,6 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
         _currentWpIndex = _currentWpIndex == _wayPoints.Count - 1 ? 0 : _currentWpIndex + 1;
         _targetWpLocation = _wayPoints[_currentWpIndex].position;
         _navMeshAgent.SetDestination(_targetWpLocation);
-        _navMeshAgent.isStopped = false;
     }
     
 
@@ -324,12 +345,11 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     private void CalculateInvestigateLocation() {
         Vector3 randDirection = Random.insideUnitSphere * investigateDistance;
         if (_alertedBySound) randDirection += _locationOfNoise;
-        if(_alertedByVision) randDirection += _spottedPlayerLastPosition;
+        else if(_alertedByVision) randDirection += _spottedPlayerLastPosition;
         
         NavMesh.SamplePosition (randDirection, out var navHit, investigateDistance, 1);
         _targetWpLocation = navHit.position;
         _navMeshAgent.SetDestination(_targetWpLocation);
-        _navMeshAgent.isStopped = false;
         _waitingAtWaypoint = false;
     }
     private bool CheckIfEnemyIsAtWaypoint()
