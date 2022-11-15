@@ -26,10 +26,13 @@ public class BrotherAI : MonoBehaviour
 
     private Transform pingLocation;
 
+    private FearSystem _fearSystem;
+
     void Awake()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
         findClosestHidingSpot = gameObject.GetComponent<FindHidingSpot>();
+        _fearSystem = GetComponent<FearSystem>();
 
     }
 
@@ -38,9 +41,7 @@ public class BrotherAI : MonoBehaviour
     }
 
     public void Comfort(){
-        if(fear > 0){
-        fear -= 0.1f;
-        }
+        _fearSystem.Comfort();
     }
 
     public void PingBrother(PingType ping, Transform location){

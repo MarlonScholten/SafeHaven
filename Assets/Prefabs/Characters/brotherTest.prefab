@@ -163,6 +163,7 @@ GameObject:
   - component: {fileID: 815375424505866083}
   - component: {fileID: -6007438852365005137}
   - component: {fileID: 3286405281515219051}
+  - component: {fileID: 4130807608511132513}
   m_Layer: 0
   m_Name: brotherTest
   m_TagString: Untagged
@@ -222,7 +223,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _walkLocation: {fileID: 0}
-  _pickup: {fileID: 0}
-  _runSpeed: 10
   _walkSpeed: 5
-  _hand: {fileID: 7643525385402998036}
+  _runSpeed: 10
+--- !u!114 &4130807608511132513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7979130868257695881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e14077f787c8ae40bf2c178c2e92cf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
