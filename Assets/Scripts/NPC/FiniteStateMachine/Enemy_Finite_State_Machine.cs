@@ -23,15 +23,19 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     private SoundSource _noiseMaker;
     private Vector3 _locationOfNoise;
     public float thresholdSmallSounds = 0.1f;
-    public float thresholdLoudSounds = 100f;
+    public float thresholdLoudSounds = 6f;
     
     public int investigateDistance = 3;
-    public int waitAtWaypointInSeconds = 4;
-    public int waitAtWaypointDuringInvestigatingInSeconds = 2;
-    public int investigateTimeInSeconds= 10;
+    public int waitAtWaypointTime = 4;
+    public int waitAtInvestigatingWaypointTime = 2;
+    public int investigateTime= 10;
     
     public int numberOfSmallSoundsToInvestigate = 3;
+    public int reduceSmallSoundsTime = 3;
+    public int stopWhenAlertedTime = 3;
     private int _numberOfSmallSoundsHeard;
+    private bool _smallSoundReducer;
+    
     
     private bool _investigationTimeIsStarted ;
     private bool _alertedBySound;
@@ -87,7 +91,7 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
             if (_navMeshAgent.isStopped == false)
             {
                 LookAround();
-                StartCoroutine(CallFunctionAfterSeconds(waitAtWaypointInSeconds, DetermineNextWaypoint));
+                StartCoroutine(CallFunctionAfterSeconds(waitAtWaypointTime, DetermineNextWaypoint));
             }
         }
     }
@@ -101,12 +105,25 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
         if (_alertedBySound)
         {
             _navMeshAgent.isStopped = true;
-            _alertedCoroutine = CallFunctionAfterSeconds(3, () => { _navMeshAgent.isStopped = false; });
+            _alertedCoroutine = CallFunctionAfterSeconds(stopWhenAlertedTime, () => { _navMeshAgent.isStopped = false; });
             StartCoroutine(_alertedCoroutine);
         }
     }
     public void Update_Alerted()
     {
+    
+        // if numberofsoundssmall sounds is not zero then delete lower numberofsmall sounds after 10 seconds
+        
+        if (_numberOfSmallSoundsHeard > 0 && !_smallSoundReducer)
+            {
+                _smallSoundReducer = true; 
+                StartCoroutine(CallFunctionAfterSeconds(reduceSmallSoundsTime, () => { 
+                    _numberOfSmallSoundsHeard--;
+                    _smallSoundReducer = false;
+                }));
+            }
+
+
         if (_navMeshAgent.isStopped == false)
         {
             if (_alertedBySound)
@@ -130,7 +147,7 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     
     public void Exit_Alerted()
     {
-        StopCoroutine(_alertedCoroutine);
+        if(_alertedBySound)StopCoroutine(_alertedCoroutine);
     }
     
     /// INVESTIGATE ///
@@ -156,7 +173,7 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
             {
                 _investigationTimeIsStarted = true;
                 _investigateCoroutine =
-                    CallFunctionAfterSeconds(investigateTimeInSeconds, () => CustomEvent.Trigger(gameObject, "Patrol"));
+                    CallFunctionAfterSeconds(investigateTime, () => CustomEvent.Trigger(gameObject, "Patrol"));
                 StartCoroutine(_investigateCoroutine);
             }
             if (!_waitingAtWaypoint)
@@ -164,9 +181,10 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
                 _waitingAtWaypoint = true;
                 LookAround();
                 _waitingAtWaypointCoroutine =
-                    CallFunctionAfterSeconds(waitAtWaypointDuringInvestigatingInSeconds, CalculateInvestigateLocation);
+                    CallFunctionAfterSeconds(waitAtInvestigatingWaypointTime, CalculateInvestigateLocation);
                 StartCoroutine(_waitingAtWaypointCoroutine);
             }
+           
         }
     }
     
@@ -196,9 +214,9 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
         } 
         else if (!checkVision() && inVision.AddSeconds(2) > DateTime.Now)
         {
-            var position = _spottedPlayer.transform.position;
-            _navMeshAgent.SetDestination(position);
-            _spottedPlayerLastPosition = position;
+            
+            _spottedPlayerLastPosition = _spottedPlayer.transform.position;;
+            CalculateInvestigateLocation();
         }
         else 
         {
@@ -231,7 +249,9 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     private void LookAround()
     {
         _navMeshAgent.isStopped = true;
-        transform.Rotate(0, Random.Range(0, 360), 0);
+        // rotate towards random direction smoothly
+        Quaternion lookRotation = Quaternion.LookRotation((target.position - transform.position).normalized);
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, 5f * Time.deltaTime);
 
         // Play look around animation
     }
@@ -290,6 +310,7 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
         if (source.getVolume() <= thresholdLoudSounds && source.getVolume() >= thresholdSmallSounds)_numberOfSmallSoundsHeard++;
         if (_numberOfSmallSoundsHeard >= numberOfSmallSoundsToInvestigate || source.getVolume() > thresholdLoudSounds)
         {
+            _numberOfSmallSoundsHeard = 0;
             _noiseMaker = source;
             _locationOfNoise = _noiseMaker.source.transform.position;
             _alertedBySound = true;
