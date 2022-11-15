@@ -25,7 +25,6 @@ public class LongPingController : MonoBehaviour
     public Color radialMenuNormal, radialMenuOptionHovered, radialMenuCancel;
 
     private Vector3 _pingPosition;
-
     
     private const int Zero = 0;
     private const int One = 1;

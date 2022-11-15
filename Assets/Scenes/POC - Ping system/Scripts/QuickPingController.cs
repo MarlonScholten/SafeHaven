@@ -14,11 +14,22 @@ public class QuickPingController : MonoBehaviour
     private void Awake()
     {
         _pingSystem = new();
-        _pingSystem.Player.LongPing.performed += OnQuickPing;
+        _pingSystem.Player.QuickPing.performed += OnQuickPing;
+    }
+    
+    public void OnEnable()
+    {
+        _pingSystem.Enable();
+    }
+
+    public void OnDisable()
+    {
+        _pingSystem.Disable();
     }
 
     private void OnQuickPing(InputAction.CallbackContext callbackContext)
     {
+        Debug.Log("onquickping");
         var ray = _camera.ScreenPointToRay(Mouse.current.position.ReadValue());
         Debug.DrawRay(ray.origin, ray.direction * Correction, Color.red, 3);
 
