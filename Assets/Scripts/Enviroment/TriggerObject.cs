@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This class is used to activate a light in the scene when the player enters a trigger object
+/// </summary>
 public class TriggerObject : MonoBehaviour
 {
     //list of serializable ITrigger objects
