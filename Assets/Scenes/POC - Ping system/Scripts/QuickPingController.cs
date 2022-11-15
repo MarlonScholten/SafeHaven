@@ -8,8 +8,16 @@ public class QuickPingController : MonoBehaviour
 
     private Vector3 _pingPosition;
     private const float Correction = 10000f;
+    
+    private PingSystem _pingSystem;
 
-    private void OnQuickPing()
+    private void Awake()
+    {
+        _pingSystem = new();
+        _pingSystem.Player.LongPing.performed += OnQuickPing;
+    }
+
+    private void OnQuickPing(InputAction.CallbackContext callbackContext)
     {
         var ray = _camera.ScreenPointToRay(Mouse.current.position.ReadValue());
         Debug.DrawRay(ray.origin, ray.direction * Correction, Color.red, 3);

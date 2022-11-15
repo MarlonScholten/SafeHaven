@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -7,14 +8,17 @@ public class LongPingController : MonoBehaviour
 {
     [SerializeField] private GameObject _radialMenu;
     [SerializeField] private GameObject _highlightedOption;
+
     private bool _radialMenuIsSetActive = false;
     private bool _holdSucceeded = false;
-    
+
+    private PingType _chosenAction;
+
     [SerializeField] private int _slowmotionFactor = 4;
 
     private PingSystem _pingSystem;
-    public Vector2 inputMouse;
-    public int selectedOption;
+    private Vector2 _inputMouse;
+    private int _selectedOption;
 
     public Text[] options;
     public Text cancel;
@@ -22,6 +26,7 @@ public class LongPingController : MonoBehaviour
 
     private Vector3 _pingPosition;
 
+    
     private const int Zero = 0;
     private const int One = 1;
     private const int Two = 2;
@@ -39,24 +44,51 @@ public class LongPingController : MonoBehaviour
         _pingSystem = new();
         _pingSystem.Player.LongPing.performed += OnLongPing;
         _pingSystem.Player.LongPing.canceled += OnLongPingRelease;
+        _pingSystem.Player.Fire.started += OnLeftMouseButton;
+
     }
 
-    
+    private void SelectAction()
+    {
+        Debug.Log("selectaction");
+        // _chosenAction
+    }
+
+    // private PingType SwitchAction()
+    // {
+    //     switch (_chosenAction)
+    //     {
+    //         case PingType.Hide:
+    //             break;
+    //         case PingType.Interact:
+    //             break;
+    //         case PingType.Pickup:
+    //             break;
+    //         case PingType.Run:
+    //             break;
+    //         case PingType.Use:
+    //             break;
+    //     }
+    //
+    //     return _chosenAction;
+    // }
+
 
     private void Start()
     {
         _radialMenu.SetActive(false);
         // Cursor.visible = false; 
     }
-    
+
     private void Update()
     {
         if (_radialMenuIsSetActive)
         {
             ActivateRadialMenu();
         }
+        
     }
-    
+
     public void OnEnable()
     {
         _pingSystem.Enable();
@@ -72,11 +104,11 @@ public class LongPingController : MonoBehaviour
         _radialMenu.SetActive(true);
 
         if (!_radialMenu.activeInHierarchy) return;
-        inputMouse.x = Mouse.current.position.ReadValue().x - Screen.width / Two;
-        inputMouse.y = Mouse.current.position.ReadValue().y - Screen.height / Two;
+        _inputMouse.x = Mouse.current.position.ReadValue().x - Screen.width / Two;
+        _inputMouse.y = Mouse.current.position.ReadValue().y - Screen.height / Two;
 
-        if (inputMouse == Vector2.zero) return;
-        var angle = (Mathf.Atan2(inputMouse.y, -inputMouse.x) / Mathf.PI) * DegreesHalf + StartingPointCorrection;
+        if (_inputMouse == Vector2.zero) return;
+        var angle = (Mathf.Atan2(_inputMouse.y, -_inputMouse.x) / Mathf.PI) * DegreesHalf + StartingPointCorrection;
 
         angle = SetDegreesFull(angle);
         ControlSegmentOptions(angle);
@@ -86,7 +118,7 @@ public class LongPingController : MonoBehaviour
 
     private void ControlSegmentOptions(float angle)
     {
-        if (inputMouse.x is < SizeCircle and > -SizeCircle && inputMouse.y is < SizeCircle and > -SizeCircle)
+        if (_inputMouse.x is < SizeCircle and > -SizeCircle && _inputMouse.y is < SizeCircle and > -SizeCircle)
         {
             ControlSegmentHoveredOverMiddle();
         }
@@ -112,15 +144,23 @@ public class LongPingController : MonoBehaviour
     {
         cancel.color = radialMenuCancel;
         _highlightedOption.SetActive(false);
-        options[selectedOption].color = Color.white;
+        options[_selectedOption].color = Color.white;
     }
 
     private void ControlSegmentHoveredOverOutside(int i)
     {
         options[i].color = radialMenuOptionHovered;
-        selectedOption = i;
+        _selectedOption = i;
         _highlightedOption.SetActive(true);
         _highlightedOption.transform.rotation = Quaternion.Euler(0, 0, i * -_degreesPerSegment);
+        
+        if(Enum.TryParse(options[i].text,  out PingType pingType))
+        {
+            _chosenAction = pingType;
+            Debug.Log(_chosenAction);
+        }
+
+       // _chosenAction = Enum.TryParse(options[i].text, out PingType pingType) ? pingType : _chosenAction;
     }
 
     private static float SetDegreesFull(float angle)
@@ -128,6 +168,15 @@ public class LongPingController : MonoBehaviour
         if (!(angle < Zero)) return angle;
         angle += DegreesFull;
         return angle;
+    }
+
+    private void OnLeftMouseButton(InputAction.CallbackContext callbackContext)
+    {
+        if (_radialMenu.activeSelf)
+        {
+            SelectAction();
+            // SwitchAction(_);
+        }
     }
 
     private void OnLongPing(InputAction.CallbackContext callbackContext)
@@ -140,7 +189,7 @@ public class LongPingController : MonoBehaviour
         Debug.Log("performed");
         Time.timeScale /= _slowmotionFactor;
     }
-    
+
     private void OnLongPingRelease(InputAction.CallbackContext callbackContext)
     {
         Debug.Log("release");
