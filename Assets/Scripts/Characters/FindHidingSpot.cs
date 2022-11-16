@@ -9,10 +9,8 @@ public class FindHidingSpot : MonoBehaviour
     public LayerMask _targetMask;
     public LayerMask _obstacleMask;
 
-    private GameObject[] _hidingSpots;
-
     public Transform FindClosestHidingSpot(){
-        _hidingSpots = GameObject.FindGameObjectsWithTag("hideable");
+        GameObject[] _hidingSpots = GameObject.FindGameObjectsWithTag("hideable");
         GameObject bestSpot = null;
         float bestSpotValue = -1;
         foreach(GameObject spot in _hidingSpots){
@@ -54,7 +52,7 @@ public class FindHidingSpot : MonoBehaviour
 
     private void CalculateObscurityValue(GameObject spot){
         HidingSpot hidingSpot = spot.GetComponent<HidingSpot>();
-        hidingSpot._obscurityValue = hidingSpot._grade + (Vector3.Distance(hidingSpot.transform.position, transform.position) * 0.05f);
+        hidingSpot._obscurityValue = hidingSpot._grade - (Vector3.Distance(hidingSpot.transform.position, transform.position) * 0.05f);
         if(CheckIfSpotInEnemyFov()){
             hidingSpot._obscurityValue *= 0.01f;
         }

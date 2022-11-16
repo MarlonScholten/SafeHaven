@@ -48,11 +48,11 @@ public class BrotherAI : MonoBehaviour
     }
 
     public void FollowEnter(){
-        
+        MoveToLocation(findClosestHidingSpot.FindClosestHidingSpot(), _walkSpeed);
     }
 
     public void FollowUpdate(){
-        MoveToLocation(findClosestHidingSpot.FindClosestHidingSpot(), _walkSpeed);
+        
     }
 
     public void FollowFixedUpdate(){
