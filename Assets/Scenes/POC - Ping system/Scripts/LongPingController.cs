@@ -170,7 +170,7 @@ public class LongPingController : MonoBehaviour
     private void CloseRadialMenu()
     {
         _radialMenuIsSetActive = false;
-        _radialMenu.SetActive(false);
+        _radialMenu.SetActive(_radialMenuIsSetActive);
         Time.timeScale = StandardTimeFactor;
     }
 
@@ -212,7 +212,7 @@ public class LongPingController : MonoBehaviour
 
             if (!Physics.Raycast(ray.origin, ray.direction * Correction, out var hit)) return;
             _pingPosition = hit.point;
-            ShowMarker(_pingPosition);
+            //ShowMarker(_pingPosition);
             //_pingPosition = hit.point;
 
             _holdSucceeded = false;
