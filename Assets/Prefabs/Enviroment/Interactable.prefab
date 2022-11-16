@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3383818817966738775
 RectTransform:
   m_ObjectHideFlags: 0
@@ -182,8 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92827b96c2b8de54b88be186ee05dc81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _waypoint1: {fileID: 4553237809128049425}
-  _waypoint2: {fileID: 4553237808088142859}
+  _instructions: {fileID: 5322834486942361498}
 --- !u!1 &4553237808088142859
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,7 +197,7 @@ GameObject:
   - component: {fileID: 4553237808088142857}
   - component: {fileID: 5658937318544671737}
   m_Layer: 0
-  m_Name: Reference
+  m_Name: Reference 2
   m_TagString: EditorOnly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -294,6 +293,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34616525969acd2469bd38518df6c253, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _linkedWaypoint: {fileID: 4553237809128049425}
+  _oneWay: 0
 --- !u!1 &4553237808281766943
 GameObject:
   m_ObjectHideFlags: 0
@@ -340,7 +341,7 @@ GameObject:
   - component: {fileID: 4553237809128049423}
   - component: {fileID: 166421727886932372}
   m_Layer: 0
-  m_Name: Reference
+  m_Name: Reference 1
   m_TagString: EditorOnly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -436,6 +437,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34616525969acd2469bd38518df6c253, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _linkedWaypoint: {fileID: 4553237808088142859}
+  _oneWay: 0
 --- !u!1 &4553237809814338500
 GameObject:
   m_ObjectHideFlags: 0
