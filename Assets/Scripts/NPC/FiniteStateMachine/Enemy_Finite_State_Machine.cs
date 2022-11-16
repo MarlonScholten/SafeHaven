@@ -14,25 +14,35 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
 {
     private NavMeshAgent _navMeshAgent;
     private Vector3 _targetWpLocation;
-    public List<Transform> _wayPoints;
+    [SerializeField]
+    private List<Transform> wayPoints;
     private int _currentWpIndex;
+    [SerializeField]
+    private float visionRange = 10f;
+    [SerializeField]
+    private float visionAngle = 45f;
     
-    public float visionRange = 10f;
-    public float visionAngle = 45f;
-    
-    private SoundSource _noiseMaker;
     private Vector3 _locationOfNoise;
-    public float thresholdSmallSounds = 0.1f;
-    public float thresholdLoudSounds = 6f;
+    [SerializeField]
+    private float thresholdSmallSounds = 0.1f;
+    [SerializeField]
+    private float thresholdLoudSounds = 6f;
     
-    public int investigateDistance = 3;
-    public int waitAtWaypointTime = 4;
-    public int waitAtInvestigatingWaypointTime = 2;
-    public int investigateTime= 10;
+    [SerializeField]
+    private int investigateDistance = 3;
+    [SerializeField]
+    private int waitAtWaypointTime = 4;
+    [SerializeField]
+    private int waitAtInvestigatingWaypointTime = 2;
+    [SerializeField]
+    private int investigateTime= 10;
     
-    public int numberOfSmallSoundsToInvestigate = 3;
-    public int reduceSmallSoundsTime = 3;
-    public int stopWhenAlertedTime = 3;
+    [SerializeField]
+    private int numberOfSmallSoundsToInvestigate = 3;
+    [SerializeField]
+    private int reduceSmallSoundsTime = 3;
+    [SerializeField]
+    private int stopWhenAlertedTime = 3;
     private int _numberOfSmallSoundsHeard;
     private bool _smallSoundReducer;
     
@@ -44,7 +54,7 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     private GameObject _spottedPlayer;
     private bool _waitingAtWaypoint;
 
-    private DateTime inVision;
+    private DateTime _inVision;
     
     private IEnumerator _patrolCoroutine;
     private IEnumerator _investigateCoroutine;
@@ -69,7 +79,7 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
         _currentWpIndex = GetClosestWaypoint();
       
         DetermineNextWaypoint();
-       // Play walk animation
+       // TODO: Play walk animation
     }
     public void Update_Patrol()
     {
@@ -122,6 +132,7 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
         _waitingAtWaypointCoroutineIsRunning = false;
     }
     /// ALERTED ///
+    // generate documentation
     public void Enter_Alerted()
     {
         if (_alertedBySound)
@@ -224,7 +235,7 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     }
     public void Update_Chasing()
     {
-        if(!checkVision() && inVision.AddSeconds(2) < DateTime.Now && Vector3.Distance(transform.position, _spottedPlayerLastPosition) <= 2f)
+        if(!checkVision() && _inVision.AddSeconds(2) < DateTime.Now && Vector3.Distance(transform.position, _spottedPlayerLastPosition) <= 2f)
         {
             CustomEvent.Trigger(gameObject, "Investigate");
         }
@@ -235,7 +246,7 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
         {
             _navMeshAgent.SetDestination(_spottedPlayer.transform.position);
         } 
-        else if (!checkVision() && inVision.AddSeconds(2) > DateTime.Now)
+        else if (!checkVision() && _inVision.AddSeconds(2) > DateTime.Now)
         {
             
             _spottedPlayerLastPosition = _spottedPlayer.transform.position;;
@@ -254,13 +265,16 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     
     
     /// METHODS ///
+    /// /// <summary>
+    /// This method check for the closest waypoint to the enemy and returns the index of that waypoint.
+    /// </summary>
     private int GetClosestWaypoint()
     {
         float closestDistance = Mathf.Infinity;
         int closestIndex = 0;
-        for (var i = 0; i < _wayPoints.Count; i++)
+        for (var i = 0; i < wayPoints.Count; i++)
         {
-            float distance = Vector3.Distance(transform.position, _wayPoints[i].position);
+            float distance = Vector3.Distance(transform.position, wayPoints[i].position);
             if (distance < closestDistance)
             {
                 closestDistance = distance;
@@ -269,6 +283,9 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
         }
         return closestIndex;
     }
+    /// <summary>
+    /// This method rotates the enemy to a random direction.
+    /// </summary>
     private void LookAround()
     {
         var x = Random.rotation;
@@ -277,24 +294,34 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
         Quaternion lookRotation = Quaternion.LookRotation((randomRotation- transform.position).normalized);
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, 2f * Time.deltaTime);
 
-        // Play look around animation
+        // TODO: Play look around animation
     }
 
+    /// <summary>
+    /// This method calls a method after a certain amount of seconds.
+    /// <param name="seconds">Amount of seconds that takes to call the method.</param>
+    /// <param name="method">The method that need to be called after the amount of seconds.</param>
+    /// </summary>
     private IEnumerator CallFunctionAfterSeconds(int seconds, Action method)
     {
         yield return new WaitForSeconds(seconds);
         method();
-        // Play walk animation
+        // TODO: Play walk animation
     }
 
+    /// <summary>
+    /// This method determines the next waypoint based on the index of the current waypoint.
+    /// </summary>
     private void DetermineNextWaypoint()
     {
-        _currentWpIndex = _currentWpIndex == _wayPoints.Count - 1 ? 0 : _currentWpIndex + 1;
-        _targetWpLocation = _wayPoints[_currentWpIndex].position;
+        _currentWpIndex = _currentWpIndex == wayPoints.Count - 1 ? 0 : _currentWpIndex + 1;
+        _targetWpLocation = wayPoints[_currentWpIndex].position;
         _navMeshAgent.SetDestination(_targetWpLocation);
     }
     
-
+    /// <summary>
+    /// This method checks if the player is in the vision of the enemy.
+    /// </summary>
     private bool checkVision()
     {
         Collider[] foundObjects = Physics.OverlapSphere(transform.position, visionRange);
@@ -314,7 +341,7 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
                         _spottedPlayerLastPosition = hitPlayer.transform.position;
                         _alertedByVision = true;
                         _alertedBySound = false;
-                        inVision = DateTime.Now;
+                        _inVision = DateTime.Now;
                         return true;
                     }
                 }
@@ -323,21 +350,36 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
         return false;
     }
     
+    /// <summary>
+    /// This method check if the player is in the list of colliders.
+    /// <param name="objects">Collided objects.</param>
+    /// <returns>The player collider if exists.</returns>
+    /// </summary>
     private Collider GetPlayer(Collider[] objects)
     {
         return objects.FirstOrDefault(obj => obj.gameObject.CompareTag("Player"));
     }
+    /// <summary>
+    /// This method is called by another script to alert the enemy.
+    /// This method raised the number of small sounds heard if it receives a small sound.
+    /// When the number of small sounds heard is higher or equal than the numberOfSmallSoundsToInvestigate, the enemy will investigate.
+    /// When the sound is a louder than thresholdLoudSounds, the enemy will investigate.
+    /// <param name="source">The SoundSource object of the played sound.</param>
+    /// </summary>
     void NoiseReceived(SoundSource source)
     {
         if (source.getVolume() <= thresholdLoudSounds && source.getVolume() >= thresholdSmallSounds)_numberOfSmallSoundsHeard++;
         if (_numberOfSmallSoundsHeard >= numberOfSmallSoundsToInvestigate || source.getVolume() > thresholdLoudSounds)
         {
             _numberOfSmallSoundsHeard = 0;
-            _noiseMaker = source;
-            _locationOfNoise = _noiseMaker.source.transform.position;
+            _locationOfNoise = source.source.transform.position;
             _alertedBySound = true; 
         }
     }
+    /// <summary>
+    /// This method calculates the location where the enemy will investigate.
+    /// The NavMeshSamplePosition method is used to find a closest point on the NavMesh to the location of the noise.
+    /// </summary>
     private void CalculateInvestigateLocation() {
         Vector3 randDirection = Random.insideUnitSphere * investigateDistance;
         if (_alertedBySound) randDirection += _locationOfNoise;
@@ -347,6 +389,9 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
         _navMeshAgent.SetDestination(_targetWpLocation);
         _waitingAtWaypoint = false;
     }
+    /// <summary>
+    /// This method checks if the enemy is at the waypoint.
+    /// </summary>
     private bool CheckIfEnemyIsAtWaypoint()
     {
         return Vector3.Distance(transform.position, _targetWpLocation) <= 2f;
