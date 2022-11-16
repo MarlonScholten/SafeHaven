@@ -167,7 +167,7 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     }
     public void FixedUpdate_Alerted()
     {
-        // rotate to random directions 
+        LookAround();
     }
     
     public void Exit_Alerted()
