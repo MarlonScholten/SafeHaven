@@ -234,4 +234,9 @@ public class LongPingController : MonoBehaviour
     {
         return _cancelled;
     }
+
+    public Tuple<PingType, Vector3> GetPingActionAndLocation()
+    {
+        return Tuple.Create(GetPingAction(), GetPingLocation());
+    }
 }
