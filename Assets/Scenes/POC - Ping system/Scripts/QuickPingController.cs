@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Interactions;
 
 public class QuickPingController : MonoBehaviour
 {
@@ -10,14 +11,13 @@ public class QuickPingController : MonoBehaviour
     [SerializeField] private GameObject _markerPrefab;
     [SerializeField] private GameObject _radialMenu;
 
+    private PingSystem _pingSystem;
     private Vector3 _pingPosition;
     private const float Correction = 10000f;
-    
-    private PingSystem _pingSystem;
 
     private void Awake()
     {
-        _pingSystem = new();
+        _pingSystem = new PingSystem();
         _pingSystem.Player.QuickPing.performed += OnQuickPing;
     }
     
@@ -34,19 +34,19 @@ public class QuickPingController : MonoBehaviour
     private void OnQuickPing(InputAction.CallbackContext callbackContext)
     {
         Debug.Log("onquickping");
-        if (!_radialMenu.activeSelf)
-        {
-            var ray = _camera.ScreenPointToRay(Mouse.current.position.ReadValue());
-            Debug.DrawRay(ray.origin, ray.direction * Correction, Color.red, 3);
+        Debug.Log("HEREEEEEEEEE" + callbackContext.interaction.GetType());
+        if (_radialMenu.activeSelf) return;
+        //|| callbackContext.interaction < 0.2f maxTapduration
+        var ray = _camera.ScreenPointToRay(Mouse.current.position.ReadValue());
+        Debug.DrawRay(ray.origin, ray.direction * Correction, Color.red, 3);
 
-            if (!Physics.Raycast(ray.origin, ray.direction * Correction, out var hit)) return;
-            _pingPosition = hit.point;
-            ShowMarker(_pingPosition);
-            _pingPosition = hit.point;
+        if (!Physics.Raycast(ray.origin, ray.direction * Correction, out var hit)) return;
+        _pingPosition = hit.point;
+        ShowMarker(_pingPosition);
+        //_pingPosition = hit.point;
             
-            //TODO Integrate
-            //_brotherAI.PingBrother(PingType.Run, _pingPosition)
-        }
+        //TODO Integrate
+        //_brotherAI.PingBrother(PingType.Run, _pingPosition)
     }
 
     private void ShowMarker(Vector3 position)
