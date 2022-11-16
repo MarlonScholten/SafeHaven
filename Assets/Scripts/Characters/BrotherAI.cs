@@ -14,8 +14,6 @@ public enum PingType {
 }
 public class BrotherAI : MonoBehaviour
 {
-    private float fear = 0;
-    [SerializeField] Transform _walkLocation;
 
     public float _walkSpeed = 3.5f;
     public float _runSpeed = 5f;
