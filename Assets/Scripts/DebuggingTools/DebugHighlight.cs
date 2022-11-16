@@ -1,5 +1,6 @@
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace DebuggingTools
 {
@@ -9,7 +10,7 @@ namespace DebuggingTools
     public class DebugHighlight : MonoBehaviour
     {
         [SerializeField] 
-        private Material highlightMaterial;
+        private Material _highlightMaterial;
 
         private Material[] _originalMaterials;
 
@@ -17,14 +18,14 @@ namespace DebuggingTools
         {
             _originalMaterials = GetComponent<MeshRenderer>().materials;
         
-            FindObjectOfType<DebugUI>().ToggleDebuggingToolsEvent.AddListener(ToggleHighlight);
+            FindObjectOfType<DebugToggle>().ToggleDebuggingToolsEvent.AddListener(ToggleHighlight);
         }
 
         private void ToggleHighlight(bool isActivated)
         {
             if (isActivated)
             {
-                Material[] highlightedMaterials = Enumerable.Repeat(highlightMaterial, _originalMaterials.Length).ToArray();
+                Material[] highlightedMaterials = Enumerable.Repeat(_highlightMaterial, _originalMaterials.Length).ToArray();
 
                 GetComponent<MeshRenderer>().materials = highlightedMaterials;
             }
