@@ -193,8 +193,11 @@ public class LongPingController : MonoBehaviour
     {
         _holdSucceeded = true;
         // TODO: Cursor.lockState = CursorLockMode.None;
-        Debug.Log("performed");
-        Time.timeScale /= _slowmotionFactor;
+        if (!_radialMenu.activeSelf)
+        {
+            Debug.Log("performed");
+            Time.timeScale /= _slowmotionFactor;
+        }
     }
 
     private void ShowMarker(Vector3 position)
@@ -205,8 +208,9 @@ public class LongPingController : MonoBehaviour
     private void OnLongPingRelease(InputAction.CallbackContext callbackContext)
     {
         Debug.Log("release");
-        if (_holdSucceeded)
+        if (!_radialMenuIsSetActive && _holdSucceeded)
         {
+            Debug.Log("if longping");
             var ray = _camera.ScreenPointToRay(Mouse.current.position.ReadValue());
             Debug.DrawRay(ray.origin, ray.direction * Correction, Color.red, 3);
 

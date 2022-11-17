@@ -42,7 +42,7 @@ public class QuickPingController : MonoBehaviour
     private void OnQuickPing(InputAction.CallbackContext callbackContext)
     {
         Debug.Log("onquickping");
-        if (!_radialMenu.activeSelf || !_holdSucceeded)
+        if (!_radialMenu.activeSelf && !_holdSucceeded)
         {
             if (_radialMenu.activeSelf.Equals(true)) return;
             var ray = _camera.ScreenPointToRay(Mouse.current.position.ReadValue());
