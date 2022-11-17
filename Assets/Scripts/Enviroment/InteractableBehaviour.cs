@@ -21,7 +21,9 @@ public class InteractableBehaviour : MonoBehaviour
 {
     // Public.
     [Header("Events")]
+    [Tooltip("Takes 'OneWay' into consideration.")]
     public InteractableEvent OnTraversalRestricted;
+    [Tooltip("Does not take 'OneWay' into consideration.")]
     public InteractableEvent OnTraversalUnrestricted;
 
     // Private.
@@ -96,8 +98,8 @@ public class InteractableBehaviour : MonoBehaviour
     /// Fetches the closest waypoint, and invokes the corresponding traversal event to be handled.
     /// </summary>
     /// <remarks>
-    /// <para><see cref="OnTraversalRestricted"/> invoked when <see cref="WaypointBehaviour.OneWay"/> is enabled.</para>
-    /// <para><see cref="OnTraversalUnrestricted"/> invoked when <see cref="WaypointBehaviour.OneWay"/> is not enabled.</para>
+    /// <para><see cref="OnTraversalRestricted"/> invoked when <see cref="WaypointBehaviour.OneWay"/> is not enabled.</para>
+    /// <para><see cref="OnTraversalUnrestricted"/> invoked regarldess of <see cref="WaypointBehaviour.OneWay"/>.</para>
     /// </remarks>
     /// <param name="context"></param>
     public void OnInteractInput(InputAction.CallbackContext context)
@@ -110,8 +112,10 @@ public class InteractableBehaviour : MonoBehaviour
         GameObject closest = _waypointsInRange.Select(x => x.gameObject).GetClosestGameObject(originPos);
         WaypointBehaviour converted = closest.GetComponent<WaypointBehaviour>();
 
-        if (converted.OneWay || converted.Waypoint1.GetComponent<WaypointBehaviour>().OneWay)
+        // Only traverse restricted if the linked waypoint isn't marked as a one way.
+        if (!converted.Waypoint2.GetComponent<WaypointBehaviour>().OneWay)
             OnTraversalRestricted?.Invoke(converted);
-        else OnTraversalUnrestricted?.Invoke(converted);
+
+        OnTraversalUnrestricted?.Invoke(converted);
     }
 }
