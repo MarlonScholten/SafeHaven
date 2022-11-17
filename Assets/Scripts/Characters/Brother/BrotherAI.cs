@@ -15,23 +15,31 @@ public enum PingType {
 public class BrotherAI : MonoBehaviour
 {
 
-    public float _walkSpeed = 3.5f;
-    public float _runSpeed = 5f;
+    [SerializeField] private float _walkSpeed = 3.5f;
+    [SerializeField] private float _runSpeed = 5f;
+
+    [SerializeField] private float _pathEndThreshold = 0.1f;
 
     private NavMeshAgent _navMeshAgent;
 
-    private FindHidingSpot findClosestHidingSpot;
+    private FindHidingSpot _findHidingSpot;
 
-    private Transform pingLocation;
+    private Transform _pingLocation;
 
     private FearSystem _fearSystem;
+
+    private GameObject _player;
 
     void Awake()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
-        findClosestHidingSpot = gameObject.GetComponent<FindHidingSpot>();
+        _findHidingSpot = gameObject.GetComponent<FindHidingSpot>();
         _fearSystem = GetComponent<FearSystem>();
+        _player = GameObject.FindGameObjectWithTag("Player");
+    }
 
+    private bool PathCompleted(){
+        return _navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance + _pathEndThreshold;
     }
 
     private void MoveToLocation(Transform walkLocation, float speed){
@@ -44,15 +52,18 @@ public class BrotherAI : MonoBehaviour
 
     public void PingBrother(PingType ping, Transform location){
         CustomEvent.Trigger(this.gameObject, ping.ToString());
-        pingLocation = location;
+        _pingLocation = location;
     }
 
     public void FollowEnter(){
-        MoveToLocation(findClosestHidingSpot.FindClosestHidingSpot(), _walkSpeed);
+        // MoveToLocation(FindHidingSpot.FindBestHidingSpot(), _walkSpeed);
     }
 
     public void FollowUpdate(){
-        
+        if(Input.GetKey(KeyCode.W)){
+            CustomEvent.Trigger(this.gameObject, "panicHide");
+        }
+        Debug.Log("Follow");
     }
 
     public void FollowFixedUpdate(){
@@ -64,12 +75,14 @@ public class BrotherAI : MonoBehaviour
     }
 
     public void PanicHideEnter(){
-
+        MoveToLocation(_findHidingSpot.FindBestHidingSpot(), _walkSpeed);
     }
 
     public void PanicHideUpdate(){
-        Transform hidingSpot = findClosestHidingSpot.FindClosestHidingSpot();
-        MoveToLocation(hidingSpot, _walkSpeed);
+        if(PathCompleted()){
+            Debug.Log("Brother Hidden");
+            //Hide();
+        }
     }
 
     public void PanicHideFixedUpdate(){
@@ -81,11 +94,13 @@ public class BrotherAI : MonoBehaviour
     }
 
     public void HideEnter(){
-
+        MoveToLocation(_pingLocation, _walkSpeed);
     }
 
     public void HideUpdate(){
-        MoveToLocation(pingLocation, _walkSpeed);
+        if(PathCompleted()){
+            //Hide();
+        }    
     }
 
     public void HideFixedUpdate(){
@@ -97,11 +112,11 @@ public class BrotherAI : MonoBehaviour
     }
 
     public void WalkEnter(){
-
+        MoveToLocation(_pingLocation, _walkSpeed);
     }
 
     public void WalkUpdate(){
-        MoveToLocation(pingLocation, _walkSpeed);
+        
     }
 
     public void WalkFixedUpdate(){
@@ -109,6 +124,22 @@ public class BrotherAI : MonoBehaviour
     }
 
     public void WalkExit(){
+        
+    }
+
+    public void RunEnter(){
+        MoveToLocation(_pingLocation, _runSpeed);
+    }
+
+    public void RunUpdate(){
+        
+    }
+
+    public void RunFixedUpdate(){
+
+    }
+
+    public void RunExit(){
         
     }
 }

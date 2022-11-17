@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class FearSystem : MonoBehaviour
 {
-    protected float _fear = 0f;
+    [SerializeField]protected float _fear = 0f;
     private float _maxFearLevel = 1;
-    private float _comfort = 0.1f;
-    private float _fearIncement = 0.02f;
+    [SerializeField]private float _comfortIncrement = 0.1f;
+    [SerializeField]private float _fearIncement = 0.02f;
 
-    private float _maxFearDistance = 20f;
+    [SerializeField]private float _maxFearDistance = 20f;
 
-    private float _viewRadius = 30f;
+    [SerializeField]private float _viewRadius = 30f;
     [SerializeField] LayerMask _EnemyMask;
 
     void Update(){
@@ -40,7 +40,7 @@ public class FearSystem : MonoBehaviour
 
     public void Comfort(){
         if(_fear > 0){
-            _fear -= _comfort;
+            _fear -= _comfortIncrement;
         }
     }
 }

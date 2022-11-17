@@ -222,9 +222,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95c77daae5521744f91ec5535b0869e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _walkLocation: {fileID: 0}
   _walkSpeed: 5
   _runSpeed: 10
+  _pathEndThreshold: 0.1
 --- !u!114 &4130807608511132513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,3 +237,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e14077f787c8ae40bf2c178c2e92cf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _fear: 0
+  _comfortIncrement: 0.1
+  _fearIncement: 0.02
+  _maxFearDistance: 20
+  _viewRadius: 30
+  _EnemyMask:
+    serializedVersion: 2
+    m_Bits: 0
