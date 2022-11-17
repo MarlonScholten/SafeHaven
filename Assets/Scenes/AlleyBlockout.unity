@@ -3824,6 +3824,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &489069761 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2621100770767435, guid: 57c2e413e92e2634aae9e69583ecad77,
+    type: 3}
+  m_PrefabInstance: {fileID: 849083266}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15b3e16deaa217a43abaa40881534372, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &494347338
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6601,6 +6613,85 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 845497385}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &849083266
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2621100770767433, guid: 57c2e413e92e2634aae9e69583ecad77, type: 3}
+      propertyPath: _debugGameObjects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2621100770767433, guid: 57c2e413e92e2634aae9e69583ecad77, type: 3}
+      propertyPath: _debugGameObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 1175985731}
+    - target: {fileID: 2621100770767434, guid: 57c2e413e92e2634aae9e69583ecad77, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2621100770767434, guid: 57c2e413e92e2634aae9e69583ecad77, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.69182754
+      objectReference: {fileID: 0}
+    - target: {fileID: 2621100770767434, guid: 57c2e413e92e2634aae9e69583ecad77, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.7738113
+      objectReference: {fileID: 0}
+    - target: {fileID: 2621100770767434, guid: 57c2e413e92e2634aae9e69583ecad77, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 8.272007
+      objectReference: {fileID: 0}
+    - target: {fileID: 2621100770767434, guid: 57c2e413e92e2634aae9e69583ecad77, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2621100770767434, guid: 57c2e413e92e2634aae9e69583ecad77, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2621100770767434, guid: 57c2e413e92e2634aae9e69583ecad77, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2621100770767434, guid: 57c2e413e92e2634aae9e69583ecad77, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2621100770767434, guid: 57c2e413e92e2634aae9e69583ecad77, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2621100770767434, guid: 57c2e413e92e2634aae9e69583ecad77, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2621100770767434, guid: 57c2e413e92e2634aae9e69583ecad77, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2621100770767436, guid: 57c2e413e92e2634aae9e69583ecad77, type: 3}
+      propertyPath: m_Actions
+      value: 
+      objectReference: {fileID: -944628639613478452, guid: 30273cd2b0aee894ebe5313eacb80238,
+        type: 3}
+    - target: {fileID: 2621100770767436, guid: 57c2e413e92e2634aae9e69583ecad77, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2621100770767436, guid: 57c2e413e92e2634aae9e69583ecad77, type: 3}
+      propertyPath: m_DefaultActionMap
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2621100770767437, guid: 57c2e413e92e2634aae9e69583ecad77, type: 3}
+      propertyPath: m_Name
+      value: DebuggingTools
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 2621100770767436, guid: 57c2e413e92e2634aae9e69583ecad77, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 57c2e413e92e2634aae9e69583ecad77, type: 3}
 --- !u!1 &856425110
 GameObject:
   m_ObjectHideFlags: 0
@@ -8517,6 +8608,7 @@ GameObject:
   - component: {fileID: 1175985733}
   - component: {fileID: 1175985732}
   - component: {fileID: 1175985738}
+  - component: {fileID: 1175985739}
   - component: {fileID: 1175985737}
   - component: {fileID: 1175985736}
   m_Layer: 0
@@ -8709,6 +8801,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 5acbbe70-0e41-4ba8-93f5-a66e61d89b48
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 489069761}
+        m_TargetAssemblyTypeName: DebuggingTools.DebugToggle, Assembly-CSharp
+        m_MethodName: OnShowDebuggingTools
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+    m_ActionId: dd99a428-42fd-4038-8808-9439d8a80ec6
+    m_ActionName: Player/ShowDebuggingTools[/Keyboard/tab]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
@@ -8748,6 +8856,22 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1175985739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1175985731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0594b19f0985d1247beeb5467f8de33d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _debugPosition: 1
+  _debugRotation: 0
+  _debugScale: 0
+  _autoActivate: 0
 --- !u!1 &1176287611
 GameObject:
   m_ObjectHideFlags: 0
