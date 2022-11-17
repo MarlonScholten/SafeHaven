@@ -3,13 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.NetworkInformation;
+using System.Numerics;
 using NPC;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
 using Object = System.Object;
+using Quaternion = UnityEngine.Quaternion;
 using Random = UnityEngine.Random;
+using Vector3 = UnityEngine.Vector3;
 
 
 /// <summary>
@@ -252,8 +255,10 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     {
         if (CheckIfEnemyIsAtWaypoint())
         {
+            Debug.Log("ENEMY AT WAYPOINT");
             if (_waitingAtWaypoint && !_investigateCoroutineIsRunning)
             {
+                Debug.Log("Waiting waypoint");
                 _investigateCoroutineIsRunning = true;
                 _investigateCoroutine =
                     CallFunctionAfterSeconds(investigateTime, () =>
@@ -265,6 +270,7 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
             }
             if (!_waitingAtWaypoint)
             {
+                Debug.Log("Not Waiting waypoint");
                 _waitingAtWaypoint = true;
                 _waitingAtWaypointDuringInvestigationCoroutineIsRunning = true;
                 _waitingAtWaypointDuringInvestigationCoroutine =
@@ -322,8 +328,10 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
         } 
         else if (!CheckVision() && (_timePlayerLastSpotted + 2) > Time.time)
         {
-            
-            _spottedPlayerLastPosition = _spottedPlayer.transform.position;;
+            if (CheckPlayerPositionReachable(_spottedPlayer.transform.position))
+            {
+                _spottedPlayerLastPosition = _spottedPlayer.transform.position;
+            }
             CalculateInvestigateLocation();
         }
         else 
@@ -426,7 +434,10 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
         
         var hitPlayer = hit.collider.gameObject;
         _spottedPlayer = hitPlayer;
-        _spottedPlayerLastPosition = hitPlayer.transform.position;
+        if (CheckPlayerPositionReachable(hitPlayer.transform.position))
+        {
+            _spottedPlayerLastPosition = hitPlayer.transform.position;
+        }
         _alertedByVision = true;
         _alertedBySound = false;
         _timePlayerLastSpotted = Time.time;
@@ -478,6 +489,18 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     private bool CheckIfEnemyIsAtWaypoint()
     {
         return Vector3.Distance(transform.position, _targetWpLocation) <= 2f;
+    }
+
+    private bool CheckPlayerPositionReachable(Vector3 playerPosition)
+    {
+        var path = new NavMeshPath();
+        _navMeshAgent.CalculatePath(playerPosition, path);
+        if (path.status != NavMeshPathStatus.PathPartial)
+        {
+            return true;
+        }
+
+        return false;
     }
     
 }
