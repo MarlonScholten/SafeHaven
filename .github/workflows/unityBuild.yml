@@ -4,6 +4,7 @@ on:
   pull_request:
     branches:
       ['main', 'develop']
+  workflow_dispatch: {}
 
 jobs:
   build:
@@ -48,6 +49,7 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           targetPlatform: StandaloneWindows64
+          versioning: Semantic
 
       # Output
       - uses: actions/upload-artifact@v3
