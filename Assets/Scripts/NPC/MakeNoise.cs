@@ -4,7 +4,8 @@ namespace NPC
 {
     public class MakeNoise : MonoBehaviour
     {
-        public float noiseLevel = 10f;
+        [SerializeField] 
+        private float noiseLevel = 10f;
 
         // Update is called once per frame
         void Update()
