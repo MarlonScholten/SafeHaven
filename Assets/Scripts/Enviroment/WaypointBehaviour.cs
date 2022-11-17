@@ -13,9 +13,9 @@ public class WaypointBehaviour : MonoBehaviour
     public bool OneWay { get => _oneWay;  }
 
     // Delegate.
-    public delegate void WaypointEventHandler();
-    public event WaypointEventHandler OnWaypointEnter;
-    public event WaypointEventHandler OnWaypointExit;
+    public delegate void WaypointEvent();
+    public event WaypointEvent OnWaypointEnter;
+    public event WaypointEvent OnWaypointExit;
 
     // Private.
     [Header("References")]
@@ -23,6 +23,15 @@ public class WaypointBehaviour : MonoBehaviour
     private GameObject _linkedWaypoint;
     [SerializeField]
     private bool _oneWay;
+
+    /// <summary>
+    /// Standard start, handles the editor waypoint color.
+    /// </summary>
+    private void Start()
+    {
+        if (Waypoint2.GetComponent<WaypointBehaviour>().OneWay)
+            Waypoint2.GetComponent<MeshRenderer>().material.color = Color.red;
+    }
 
     /// <summary>
     /// Invokes the <see cref="OnWaypointEnter"/> event once triggered.

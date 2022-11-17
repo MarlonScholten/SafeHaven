@@ -11,7 +11,7 @@ using UnityEngine.InputSystem;
 /// Custom interactable event, passes <see cref="WaypointBehaviour"/> as an additional parameter.
 /// </summary>
 [Serializable]
-public class InteractableEventHandler : UnityEvent<WaypointBehaviour>
+public class InteractableEvent : UnityEvent<WaypointBehaviour>
 {
 }
 
@@ -22,7 +22,8 @@ public class InteractableBehaviour : MonoBehaviour
 {
     // Public.
     [Header("Events")]
-    public InteractableEventHandler OnTraversal;
+    public InteractableEvent OnTraversalRestricted;
+    public InteractableEvent OnTraversalUnrestricted;
 
     // Private.
     [Header("References")]
@@ -31,7 +32,6 @@ public class InteractableBehaviour : MonoBehaviour
 
     private PlayerInput _input;
     private GameObject _player;
-    [SerializeField]
     private List<WaypointBehaviour> _waypointsInRange;
 
     /// <summary>
@@ -101,6 +101,10 @@ public class InteractableBehaviour : MonoBehaviour
     /// Input function, gets called whenever the player presses the corresponding input key.
     /// Fetches the closest waypoint, and invokes the corresponding traversal event to be handled.
     /// </summary>
+    /// <remarks>
+    /// <para><see cref="OnTraversalRestricted"/> invoked when <see cref="WaypointBehaviour.OneWay"/> is enabled.</para>
+    /// <para><see cref="OnTraversalUnrestricted"/> invoked when <see cref="WaypointBehaviour.OneWay"/> is not enabled.</para>
+    /// </remarks>
     /// <param name="context"></param>
     public void OnInteractInput(InputAction.CallbackContext context)
     {
@@ -109,9 +113,10 @@ public class InteractableBehaviour : MonoBehaviour
 
         Vector3 originPos = _player.transform.position;
         GameObject closest = _waypointsInRange.Select(x => x.gameObject).GetClosestGameObject(originPos);
+        WaypointBehaviour converted = closest.GetComponent<WaypointBehaviour>();
 
-        // TODO : Discuss where the responsibility for the OneWay lies.
-
-        OnTraversal?.Invoke(closest.GetComponent<WaypointBehaviour>());
+        if (converted.OneWay || converted.Waypoint1.GetComponent<WaypointBehaviour>().OneWay)
+            OnTraversalRestricted?.Invoke(converted);
+        else OnTraversalUnrestricted?.Invoke(converted);
     }
 }
