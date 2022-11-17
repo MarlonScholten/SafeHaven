@@ -7,9 +7,22 @@ using NPC;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 using Object = System.Object;
 using Random = UnityEngine.Random;
 
+
+/// <summary>
+/// Unity event for when the player sound is detected
+/// </summary>
+[System.Serializable]
+public class HeardASoundEvent : UnityEvent<SoundSource>
+{
+}
+
+/// <summary>
+/// Enemy AI that uses a state machine to control its behavior.
+/// </summary>
 public class Enemy_Finite_State_Machine : MonoBehaviour
 {
     private NavMeshAgent _navMeshAgent;
@@ -54,7 +67,7 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     private GameObject _spottedPlayer;
     private bool _waitingAtWaypoint;
 
-    private DateTime _inVision;
+    private float _timePlayerLastSpotted;
     
     private IEnumerator _patrolCoroutine;
     private IEnumerator _investigateCoroutine;
@@ -65,14 +78,24 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     private bool _waitingAtWaypointDuringInvestigationCoroutineIsRunning;
     private bool _investigateCoroutineIsRunning;
     private bool _alertedCoroutineIsRunning;
-    
 
-    void Awake()
+    public HeardASoundEvent HeardASoundEvent;
+
+
+    /// <summary>
+    /// Awake is called when the script instance is being loaded.
+    /// </summary>
+    private void Awake()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
+        HeardASoundEvent ??= new HeardASoundEvent();
+        HeardASoundEvent.AddListener(HeardASoundFromPlayer);
     }
     
     /// PATROLLING ///
+    /// <summary>
+    /// Enter patrol state
+    /// </summary>
     public void Enter_Patrol()
     { 
         _alertedBySound = false;
@@ -81,10 +104,14 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
         DetermineNextWaypoint();
        // TODO: Play walk animation
     }
+    
+    /// <summary>
+    /// Update patrol state
+    /// </summary>
     public void Update_Patrol()
     {
-        NavMeshPath path = new NavMeshPath();
-        if (checkVision())
+        var path = new NavMeshPath();
+        if (CheckVision())
         {
             _navMeshAgent.CalculatePath(_spottedPlayerLastPosition, path);
             if (path.status != NavMeshPathStatus.PathPartial)
@@ -109,6 +136,10 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
             }));
         }
     }
+    
+    /// <summary>
+    /// Fixed update patrol state
+    /// </summary>
     public void FixedUpdate_Patrol()
     {
         if (CheckIfEnemyIsAtWaypoint())
@@ -126,13 +157,20 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
             }
         }
     }
+    
+    /// <summary>
+    /// Exit patrol state
+    /// </summary>
     public void Exit_Patrol()
     {
         if(_waitingAtWaypointCoroutineIsRunning)StopCoroutine(_patrolCoroutine);
         _waitingAtWaypointCoroutineIsRunning = false;
     }
     /// ALERTED ///
-    // generate documentation
+    
+    /// <summary>
+    /// Enter alerted state
+    /// </summary>
     public void Enter_Alerted()
     {
         if (_alertedBySound)
@@ -147,29 +185,38 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
             StartCoroutine(_alertedCoroutine);
         }
     }
+    
+    /// <summary>
+    /// Update alerted state
+    /// </summary>
     public void Update_Alerted()
     {
-        if (_alertedCoroutineIsRunning == false)
+        if (_alertedCoroutineIsRunning) return;
+        if (_alertedBySound)
         {
-            if (_alertedBySound)
-            {
-                CustomEvent.Trigger(gameObject, "Investigate");
-            }
-            else if (_alertedByVision)
-            {
-                CustomEvent.Trigger(gameObject, "Chasing");
-            }
-            else
-            {
-                CustomEvent.Trigger(gameObject, "Patrol");
-            }
+            CustomEvent.Trigger(gameObject, "Investigate");
+        }
+        else if (_alertedByVision)
+        {
+            CustomEvent.Trigger(gameObject, "Chasing");
+        }
+        else
+        {
+            CustomEvent.Trigger(gameObject, "Patrol");
         }
     }
+    
+    /// <summary>
+    /// Fixed update alerted state
+    /// </summary>
     public void FixedUpdate_Alerted()
     {
         LookAround();
     }
     
+    /// <summary>
+    /// Exit alerted state
+    /// </summary>
     public void Exit_Alerted()
     {
         if(_alertedCoroutineIsRunning)StopCoroutine(_alertedCoroutine);
@@ -177,18 +224,30 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     }
     
     /// INVESTIGATE ///
+    
+    /// <summary>
+    /// Enter investigate state
+    /// </summary>
     public void Enter_Investigate()
     {
         CalculateInvestigateLocation();
     }
+    
+    /// <summary>
+    /// Update investigate state
+    /// </summary>
     public void Update_Investigate()
     {
-        if (checkVision())
+        if (CheckVision())
         {
             CustomEvent.Trigger(gameObject, "Chasing");
         }
 
     }
+    
+    /// <summary>
+    /// FIxed update investigate state
+    /// </summary>
     public void FixedUpdate_Investigate()
     {
         if (CheckIfEnemyIsAtWaypoint())
@@ -221,6 +280,9 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
         }
     }
     
+    /// <summary>
+    /// Exit investigate state
+    /// </summary>
     public void Exit_Investigate()
     {
         if(_investigateCoroutineIsRunning)StopCoroutine(_investigateCoroutine);
@@ -230,23 +292,35 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     }
     
     /// CHASING ///
+    
+    /// <summary>
+    /// Enter chasing state
+    /// </summary>
     public void Enter_Chasing()
     {
     }
+    
+    /// <summary>
+    /// Update chasing state
+    /// </summary>
     public void Update_Chasing()
     {
-        if(!checkVision() && _inVision.AddSeconds(2) < DateTime.Now && Vector3.Distance(transform.position, _spottedPlayerLastPosition) <= 2f)
+        if(!CheckVision() && (_timePlayerLastSpotted + 2) < Time.time || Vector3.Distance(transform.position, _spottedPlayerLastPosition) <= 2f)
         {
             CustomEvent.Trigger(gameObject, "Investigate");
         }
     }
+    
+    /// <summary>
+    /// Fixed update chasing state
+    /// </summary>
     public void FixedUpdate_Chasing()
     {
-        if (checkVision())
+        if (CheckVision())
         {
             _navMeshAgent.SetDestination(_spottedPlayer.transform.position);
         } 
-        else if (!checkVision() && _inVision.AddSeconds(2) > DateTime.Now)
+        else if (!CheckVision() && (_timePlayerLastSpotted + 2) > Time.time)
         {
             
             _spottedPlayerLastPosition = _spottedPlayer.transform.position;;
@@ -259,6 +333,9 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
         
     }
     
+    /// <summary>
+    /// Exit chasing state
+    /// </summary>
     public void Exit_Chasing()
     {
     }
@@ -270,16 +347,14 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     /// </summary>
     private int GetClosestWaypoint()
     {
-        float closestDistance = Mathf.Infinity;
-        int closestIndex = 0;
+        var closestDistance = Mathf.Infinity;
+        var closestIndex = 0;
         for (var i = 0; i < wayPoints.Count; i++)
         {
-            float distance = Vector3.Distance(transform.position, wayPoints[i].position);
-            if (distance < closestDistance)
-            {
-                closestDistance = distance;
-                closestIndex = i;
-            }
+            var distance = Vector3.Distance(transform.position, wayPoints[i].position);
+            if (!(distance < closestDistance)) continue;
+            closestDistance = distance;
+            closestIndex = i;
         }
         return closestIndex;
     }
@@ -290,19 +365,31 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     {
         var x = Random.rotation;
         var z = Random.rotation;
-        var randomRotation = new Vector3(x.x, Random.Range(transform.position.y - 50, transform.position.y + 50), z.z);
-        Quaternion lookRotation = Quaternion.LookRotation((randomRotation- transform.position).normalized);
+        var position = transform.position;
+        var randomRotation = new Vector3(x.x, Random.Range(position.y - 50, position.y + 50), z.z);
+        var lookRotation = Quaternion.LookRotation((randomRotation- position).normalized);
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, 2f * Time.deltaTime);
 
         // TODO: Play look around animation
+    }
+
+    private void HeardASoundFromPlayer(SoundSource source)
+    {
+        if (source.GetVolume() <= thresholdLoudSounds && source.GetVolume() >= thresholdSmallSounds)_numberOfSmallSoundsHeard++;
+        if (_numberOfSmallSoundsHeard >= numberOfSmallSoundsToInvestigate || source.GetVolume() > thresholdLoudSounds)
+        {
+            _numberOfSmallSoundsHeard = 0;
+            _locationOfNoise = source.GetSource().transform.position;
+            _alertedBySound= true; 
+        }
     }
 
     /// <summary>
     /// This method calls a method after a certain amount of seconds.
     /// <param name="seconds">Amount of seconds that takes to call the method.</param>
     /// <param name="method">The method that need to be called after the amount of seconds.</param>
-    /// </summary>
-    private IEnumerator CallFunctionAfterSeconds(int seconds, Action method)
+    /// </summary>   
+    private static IEnumerator CallFunctionAfterSeconds(int seconds, Action method)
     {
         yield return new WaitForSeconds(seconds);
         method();
@@ -322,32 +409,28 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     /// <summary>
     /// This method checks if the player is in the vision of the enemy.
     /// </summary>
-    private bool checkVision()
+    private bool CheckVision()
     {
-        Collider[] foundObjects = Physics.OverlapSphere(transform.position, visionRange);
-        Collider player = GetPlayer(foundObjects);
-        if (player != null)
-        {
-            Vector3 directionToPlayer = player.transform.position - transform.position;
-            float angleToPlayer = Vector3.Angle(transform.forward, directionToPlayer);
-            if (angleToPlayer < visionAngle)
-            {
-                if (Physics.Raycast(transform.position, directionToPlayer, out RaycastHit hit, visionRange))
-                {
-                    if (hit.collider.gameObject.CompareTag("Player"))
-                    {
-                        var hitPlayer = hit.collider.gameObject;
-                        _spottedPlayer = hitPlayer;
-                        _spottedPlayerLastPosition = hitPlayer.transform.position;
-                        _alertedByVision = true;
-                        _alertedBySound = false;
-                        _inVision = DateTime.Now;
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
+        var foundObjects = Physics.OverlapSphere(transform.position, visionRange);
+        var player = GetPlayer(foundObjects);
+        if (player == null) return false;
+        
+        var transform1 = transform;
+        var directionToPlayer = player.transform.position - transform1.position;
+        var angleToPlayer = Vector3.Angle(transform1.forward, directionToPlayer);
+        
+        if (!(angleToPlayer < visionAngle)) return false;
+        if (!Physics.Raycast(transform.position, directionToPlayer, out var hit, visionRange)) return false;
+        
+        if (!hit.collider.gameObject.CompareTag("Player")) return false;
+        
+        var hitPlayer = hit.collider.gameObject;
+        _spottedPlayer = hitPlayer;
+        _spottedPlayerLastPosition = hitPlayer.transform.position;
+        _alertedByVision = true;
+        _alertedBySound = false;
+        _timePlayerLastSpotted = Time.time;
+        return true;
     }
     
     /// <summary>
@@ -355,7 +438,7 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     /// <param name="objects">Collided objects.</param>
     /// <returns>The player collider if exists.</returns>
     /// </summary>
-    private Collider GetPlayer(Collider[] objects)
+    private static Collider GetPlayer(IEnumerable<Collider> objects)
     {
         return objects.FirstOrDefault(obj => obj.gameObject.CompareTag("Player"));
     }
@@ -366,14 +449,14 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     /// When the sound is a louder than thresholdLoudSounds, the enemy will investigate.
     /// <param name="source">The SoundSource object of the played sound.</param>
     /// </summary>
-    void NoiseReceived(SoundSource source)
+    private void NoiseReceived(SoundSource source)
     {
-        if (source.getVolume() <= thresholdLoudSounds && source.getVolume() >= thresholdSmallSounds)_numberOfSmallSoundsHeard++;
-        if (_numberOfSmallSoundsHeard >= numberOfSmallSoundsToInvestigate || source.getVolume() > thresholdLoudSounds)
+        if (source.GetVolume() <= thresholdLoudSounds && source.GetVolume() >= thresholdSmallSounds)_numberOfSmallSoundsHeard++;
+        if (_numberOfSmallSoundsHeard >= numberOfSmallSoundsToInvestigate || source.GetVolume() > thresholdLoudSounds)
         {
             _numberOfSmallSoundsHeard = 0;
-            _locationOfNoise = source.source.transform.position;
-            _alertedBySound = true; 
+            _locationOfNoise = source.GetSource().transform.position;
+            _alertedBySound= true; 
         }
     }
     /// <summary>
@@ -381,7 +464,7 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     /// The NavMeshSamplePosition method is used to find a closest point on the NavMesh to the location of the noise.
     /// </summary>
     private void CalculateInvestigateLocation() {
-        Vector3 randDirection = Random.insideUnitSphere * investigateDistance;
+        var randDirection = Random.insideUnitSphere * investigateDistance;
         if (_alertedBySound) randDirection += _locationOfNoise;
         else if(_alertedByVision) randDirection += _spottedPlayerLastPosition;
         NavMesh.SamplePosition (randDirection, out NavMeshHit navHit, investigateDistance, 1);

@@ -4,23 +4,23 @@ namespace NPC
 {
     public class SoundSource
     {
-        public GameObject source;
-        public float volume;
+        private readonly GameObject _source;
+        private readonly float _volume;
         
         public SoundSource(GameObject source, float volume)
         {
-            this.source = source;
-            this.volume = volume;
+            _source = source;
+            _volume = volume;
         }
         
-        public GameObject getSource()
+        public GameObject GetSource()
         {
-            return source;
+            return _source;
         }
         
-        public float getVolume()
+        public float GetVolume()
         {
-            return volume;
+            return _volume;
         }
     }
 }

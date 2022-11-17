@@ -1,32 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
-using NPC;
 using UnityEngine;
 
-public class MakeNoise : MonoBehaviour
+namespace NPC
 {
-    public float noiseLevel = 10f;
-
-    // Update is called once per frame
-    void Update()
+    public class MakeNoise : MonoBehaviour
     {
-        //when space bar pressed, make noise
-        if (Input.GetKeyDown(KeyCode.Space))
+        public float noiseLevel = 10f;
+
+        // Update is called once per frame
+        void Update()
         {
-            makeNoise();
-        }
-    }
-    
-    void makeNoise(){
-        Collider[] foundObjects = Physics.OverlapSphere(transform.position, noiseLevel/2);
-        foreach(var currentObject in foundObjects)
-        {
-            if (currentObject.CompareTag("Enemy"))
+            //when space bar pressed, make noise
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                float distance = Vector3.Distance(transform.position, currentObject.transform.position);
-                SoundSource source = new SoundSource(gameObject, noiseLevel / distance);
-                currentObject.transform.gameObject.SendMessage("NoiseReceived", source,
-                    SendMessageOptions.DontRequireReceiver);
+                makeNoise();
+            }
+        }
+
+        private void makeNoise(){
+            var foundObjects = Physics.OverlapSphere(transform.position, noiseLevel/2);
+            foreach(var currentObject in foundObjects)
+            {
+                if (!currentObject.CompareTag("Enemy")) continue;
+                var distance = Vector3.Distance(transform.position, currentObject.transform.position);
+                var source = new SoundSource(gameObject, noiseLevel / distance);
+                currentObject.GetComponent<Enemy_Finite_State_Machine>().HeardASoundEvent.Invoke(source);
             }
         }
     }
