@@ -164,8 +164,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4553237808281766942}
-  - {fileID: 4553237809814338499}
+  - {fileID: 4553237809128049424}
+  - {fileID: 4553237808088142858}
   - {fileID: 7090147268579273110}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -182,11 +182,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92827b96c2b8de54b88be186ee05dc81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnTraversal:
+  OnTraversalRestricted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTraversalUnrestricted:
     m_PersistentCalls:
       m_Calls: []
   _instructions: {fileID: 5322834486942361498}
-  _waypointsInRange: []
 --- !u!1 &4553237808088142859
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,7 +203,7 @@ GameObject:
   - component: {fileID: 4553237808088142857}
   - component: {fileID: 5658937318544671737}
   m_Layer: 0
-  m_Name: Reference 2
+  m_Name: Waypoint 2
   m_TagString: EditorOnly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -219,8 +221,8 @@ Transform:
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 4553237809814338499}
-  m_RootOrder: 0
+  m_Father: {fileID: 4553237807860537174}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4553237808088142855
 MeshFilter:
@@ -299,38 +301,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _linkedWaypoint: {fileID: 4553237809128049425}
   _oneWay: 0
---- !u!1 &4553237808281766943
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4553237808281766942}
-  m_Layer: 0
-  m_Name: Waypoint 1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4553237808281766942
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4553237808281766943}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 4553237809128049424}
-  m_Father: {fileID: 4553237807860537174}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4553237809128049425
 GameObject:
   m_ObjectHideFlags: 0
@@ -345,7 +315,7 @@ GameObject:
   - component: {fileID: 4553237809128049423}
   - component: {fileID: 166421727886932372}
   m_Layer: 0
-  m_Name: Reference 1
+  m_Name: Waypoint 1
   m_TagString: EditorOnly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -358,12 +328,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4553237809128049425}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 4553237808281766942}
+  m_Father: {fileID: 4553237807860537174}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4553237809128049421
@@ -443,38 +413,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _linkedWaypoint: {fileID: 4553237808088142859}
   _oneWay: 0
---- !u!1 &4553237809814338500
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4553237809814338499}
-  m_Layer: 0
-  m_Name: Waypoint 2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4553237809814338499
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4553237809814338500}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 4553237808088142858}
-  m_Father: {fileID: 4553237807860537174}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5295107782871104816
 GameObject:
   m_ObjectHideFlags: 0

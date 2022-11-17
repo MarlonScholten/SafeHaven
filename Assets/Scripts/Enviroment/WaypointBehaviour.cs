@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -29,7 +27,7 @@ public class WaypointBehaviour : MonoBehaviour
     /// </summary>
     private void Start()
     {
-        if (Waypoint2.GetComponent<WaypointBehaviour>().OneWay)
+        if (OneWay)
             Waypoint2.GetComponent<MeshRenderer>().material.color = Color.red;
     }
 

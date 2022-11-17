@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -46,11 +45,6 @@ public class InteractableBehaviour : MonoBehaviour
         _player = GameObject.FindGameObjectWithTag("Player");
 
         HandleWaypointEvents();
-    }
-
-    private void Start()
-    {
-        // TODO : Create a custom text iput for the active control input.
     }
 
     /// <summary>
@@ -111,6 +105,7 @@ public class InteractableBehaviour : MonoBehaviour
         if (_waypointsInRange.Count == 0)
             return;
 
+        // Fetch position, gets the closest and converts it.
         Vector3 originPos = _player.transform.position;
         GameObject closest = _waypointsInRange.Select(x => x.gameObject).GetClosestGameObject(originPos);
         WaypointBehaviour converted = closest.GetComponent<WaypointBehaviour>();
