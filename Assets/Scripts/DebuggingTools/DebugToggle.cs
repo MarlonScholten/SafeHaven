@@ -36,7 +36,7 @@ namespace DebuggingTools
             ToggleDebuggingToolsEvent.Invoke(_debuggerEnabled);
         }
 
-        private void OnShowDebuggingTools()
+        public void OnShowDebuggingTools()
         {
             _debuggerEnabled = !_debuggerEnabled;
             ToggleDebuggingToolsEvent.Invoke(_debuggerEnabled);

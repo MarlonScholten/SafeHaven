@@ -11,12 +11,15 @@ GameObject:
   - component: {fileID: 712817845467393419}
   - component: {fileID: 4488870125120496174}
   - component: {fileID: 1850800026347591396}
+  - component: {fileID: 6438403078562967166}
+  - component: {fileID: 5592356804600426757}
+  - component: {fileID: 6323093122747037559}
   m_Layer: 0
   m_Name: cementbarricade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &712817845467393419
 Transform:
@@ -83,3 +86,46 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6438403078562967166
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193549923928831793}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5495902117074765545, guid: 4fd37016a34c2d14c82c94c6ef8a71c2, type: 3}
+--- !u!114 &5592356804600426757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193549923928831793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2765cfd9cb72c0446b4827a11eff5d36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _highlightMaterial: {fileID: 2100000, guid: 58fff43e0ca2ec34184355d0fee10cce, type: 2}
+--- !u!114 &6323093122747037559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193549923928831793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0594b19f0985d1247beeb5467f8de33d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _debugPosition: 1
+  _debugRotation: 0
+  _debugScale: 0
+  _autoActivate: 1
