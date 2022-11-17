@@ -1,5 +1,4 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -28,6 +27,8 @@ public class LongPingController : MonoBehaviour
 
     private Vector3 _pingPosition;
     private PingType _pingAction;
+    private const string NotCancelled = "Not cancelled";
+    private string _cancelled;
 
     private const int Zero = 0;
     private const int One = 1;
@@ -53,6 +54,8 @@ public class LongPingController : MonoBehaviour
     private void Start()
     {
         _radialMenu.SetActive(false);
+        _cancelled = NotCancelled;
+
         //TODO: Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -93,7 +96,7 @@ public class LongPingController : MonoBehaviour
 
     private void ControlSegmentOptions(float angle)
     {
-        if (_inputMouse.x is < SizeCircle and > -SizeCircle && _inputMouse.y is < SizeCircle and > -SizeCircle)
+        if (CheckInMiddleSegment())
         {
             ControlSegmentHoveredOverMiddle();
         }
@@ -115,6 +118,11 @@ public class LongPingController : MonoBehaviour
         }
     }
 
+    private bool CheckInMiddleSegment()
+    {
+        return _inputMouse.x is < SizeCircle and > -SizeCircle && _inputMouse.y is < SizeCircle and > -SizeCircle;
+    }
+
     private void ControlSegmentHoveredOverMiddle()
     {
         cancel.color = radialMenuCancel;
@@ -132,7 +140,6 @@ public class LongPingController : MonoBehaviour
         if (Enum.TryParse(options[i].text, out PingType pingType))
         {
             _chosenAction = pingType;
-           // Debug.Log(_chosenAction);
         }
     }
 
@@ -145,24 +152,45 @@ public class LongPingController : MonoBehaviour
 
     private void OnLeftMouseButton(InputAction.CallbackContext callbackContext)
     {
-        if (_radialMenu.activeSelf)
+        if (!_radialMenu.activeSelf) return;
+
+        DetermineValueCancelled();
+        if (!_cancelled.Equals(NotCancelled))
+        {
+            GetCancel();
+        }
+        else
         {
             SelectAction();
-            _radialMenuIsSetActive = false;
-            _radialMenu.SetActive(false);
-            Time.timeScale = StandardTimeFactor;
         }
+
+        CloseRadialMenu();
+    }
+
+    private void CloseRadialMenu()
+    {
+        _radialMenuIsSetActive = false;
+        _radialMenu.SetActive(_radialMenuIsSetActive);
+        Time.timeScale = StandardTimeFactor;
+    }
+
+    private void DetermineValueCancelled()
+    {
+        _cancelled = CheckInMiddleSegment()
+            ? "Cancelled"
+            : NotCancelled;
     }
 
     private void SelectAction()
     {
         _pingAction = _chosenAction;
-        
+
+        //TODO Integrate
+        //_brotherAI.PingBrother(_pingAction, _pingPosition)
     }
 
     private void OnLongPing(InputAction.CallbackContext callbackContext)
     {
-        // TODO Disable outside when in middle.?
         _holdSucceeded = true;
         // TODO: Cursor.lockState = CursorLockMode.None;
         Debug.Log("performed");
@@ -199,5 +227,15 @@ public class LongPingController : MonoBehaviour
     public PingType GetPingAction()
     {
         return _pingAction;
+    }
+
+    public string GetCancel()
+    {
+        return _cancelled;
+    }
+
+    public Tuple<PingType, Vector3> GetPingActionAndLocation()
+    {
+        return Tuple.Create(GetPingAction(), GetPingLocation());
     }
 }
