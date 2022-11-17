@@ -60,7 +60,7 @@ public partial class @PingSystem : IInputActionCollection2, IDisposable
                     ""id"": ""e042f412-510a-4c9d-9263-3ffd468b04e6"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press(behavior=2)"",
+                    ""interactions"": ""Tap"",
                     ""initialStateCheck"": false
                 },
                 {
