@@ -185,7 +185,6 @@ public class LongPingController : MonoBehaviour
             if (!Physics.Raycast(ray.origin, ray.direction * Correction, out var hit)) return;
             _pingPosition = hit.point;
             ShowMarker(_pingPosition);
-            _pingPosition = hit.point;
 
             _holdSucceeded = false;
             _radialMenuIsSetActive = true;
