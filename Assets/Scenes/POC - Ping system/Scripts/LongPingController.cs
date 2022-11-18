@@ -207,10 +207,8 @@ public class LongPingController : MonoBehaviour
 
     private void OnLongPingRelease(InputAction.CallbackContext callbackContext)
     {
-        Debug.Log("release");
         if (!_radialMenuIsSetActive && _holdSucceeded)
         {
-            Debug.Log("if longping");
             var ray = _camera.ScreenPointToRay(Mouse.current.position.ReadValue());
             Debug.DrawRay(ray.origin, ray.direction * Correction, Color.red, 3);
 

@@ -22,6 +22,7 @@ public class QuickPingController : MonoBehaviour
         _pingSystem = new PingSystem();
         _pingSystem.Player.QuickPing.performed += OnQuickPing;
         _pingSystem.Player.LongPing.performed += OnLongPingPerformed;
+        _pingSystem.Player.Fire.started += OnLeftMouseButton;
     }
 
     public void OnEnable()
@@ -39,9 +40,16 @@ public class QuickPingController : MonoBehaviour
         _holdSucceeded = true;
     }
 
+    private void OnLeftMouseButton(InputAction.CallbackContext callbackContext)
+    {
+        if (!_radialMenu.activeSelf) return;
+        _holdSucceeded = false;
+    }
+
     private void OnQuickPing(InputAction.CallbackContext callbackContext)
     {
         Debug.Log("onquickping");
+        Debug.Log("radialactive " + _radialMenu.activeSelf + "holdscucceed " + _holdSucceeded);
         if (!_radialMenu.activeSelf && !_holdSucceeded)
         {
             if (_radialMenu.activeSelf.Equals(true)) return;
@@ -51,7 +59,7 @@ public class QuickPingController : MonoBehaviour
             if (!Physics.Raycast(ray.origin, ray.direction * Correction, out var hit)) return;
             _pingPosition = hit.point;
             ShowMarker(_pingPosition);
-
+            
             //TODO Integrate
             //_brotherAI.PingBrother(PingType.Run, _pingPosition)
         }
