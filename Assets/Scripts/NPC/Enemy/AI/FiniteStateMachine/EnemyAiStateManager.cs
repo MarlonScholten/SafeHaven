@@ -26,10 +26,10 @@ public class HeardASoundEvent : UnityEvent<SoundSource>
 /// <summary>
 /// Enemy AI that uses a state machine to control its behavior.
 /// </summary>
-public class Enemy_Finite_State_Machine : MonoBehaviour
+public class EnemyAiStateManager : MonoBehaviour
 {
-    private FSM_Scriptable_Object _fsmScriptableObject;
-    
+    public List<Transform> wayPoints;
+    public FSM_Scriptable_Object enemyAiScriptableObject;
     [NonSerialized] public NavMeshAgent navMeshAgent;
     [NonSerialized] public Vector3 targetWpLocation;
     [NonSerialized] public int currentWpIndex;
@@ -42,14 +42,12 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     [NonSerialized] public Vector3 locationOfNoise;
     [NonSerialized] public float timePlayerLastSpotted;
 
-
     /// <summary>
     /// Awake is called when the script instance is being loaded.
     /// </summary>
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
-    
     }
 
     /// <summary>
@@ -85,7 +83,7 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     /// </summary>
     public bool CheckVision()
     {
-        var foundObjects = Physics.OverlapSphere(transform.position, _fsmScriptableObject.visionRange);
+        var foundObjects = Physics.OverlapSphere(transform.position, enemyAiScriptableObject.visionRange);
         var player = GetPlayer(foundObjects);
         if (player == null) return false;
         
@@ -93,8 +91,8 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
         var directionToPlayer = player.transform.position - transform1.position;
         var angleToPlayer = Vector3.Angle(transform1.forward, directionToPlayer);
         
-        if (!(angleToPlayer < _fsmScriptableObject.visionAngle)) return false;
-        if (!Physics.Raycast(transform.position, directionToPlayer, out var hit, _fsmScriptableObject.visionRange)) return false;
+        if (!(angleToPlayer < enemyAiScriptableObject.visionAngle)) return false;
+        if (!Physics.Raycast(transform.position, directionToPlayer, out var hit, enemyAiScriptableObject.visionRange)) return false;
         var path = new NavMeshPath();
         navMeshAgent.CalculatePath(hit.transform.position, path);
         if (path.status == NavMeshPathStatus.PathPartial) return false;
@@ -124,10 +122,10 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     /// The NavMeshSamplePosition method is used to find a closest point on the NavMesh to the location of the noise.
     /// </summary>
     public void CalculateInvestigateLocation() {
-        var randDirection = Random.insideUnitSphere * _fsmScriptableObject.investigateDistance;
+        var randDirection = Random.insideUnitSphere * enemyAiScriptableObject.investigateDistance;
         if (alertedBySound) randDirection += locationOfNoise;
         else if(alertedByVision) randDirection += spottedPlayerLastPosition;
-        NavMesh.SamplePosition (randDirection, out NavMeshHit navHit, _fsmScriptableObject.investigateDistance, 1);
+        NavMesh.SamplePosition (randDirection, out NavMeshHit navHit, enemyAiScriptableObject.investigateDistance, 1);
         targetWpLocation = navHit.position;
         CheckPlayerPositionReachable(targetWpLocation);
         waitingAtWaypoint = false;
@@ -140,6 +138,9 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
         return Vector3.Distance(transform.position, targetWpLocation) <= 2f;
     }
 
+    /// <summary>
+    /// This method checks if the player can reach the player position.
+    /// </summary>
     public void CheckPlayerPositionReachable(Vector3 playerPosition)
     {
         var path = new NavMeshPath();
@@ -154,5 +155,4 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
             navMeshAgent.SetDestination(playerPosition);
         }
     }
-    
 }

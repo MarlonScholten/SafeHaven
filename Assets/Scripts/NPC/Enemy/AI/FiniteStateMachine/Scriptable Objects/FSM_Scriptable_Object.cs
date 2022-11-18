@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/SpawnManagerScriptableObject", order = 1)]
+/// <summary>
+/// Scriptable object for the Enemy AI
+/// </summary>
+[CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/EnemyAIScriptableObject", order = 1)]
 public class FSM_Scriptable_Object : ScriptableObject
 {
-    public List<Transform> wayPoints; 
     public float visionRange = 10f;
     public float visionAngle = 45f;
     
