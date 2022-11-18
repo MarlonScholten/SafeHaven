@@ -38,12 +38,22 @@ public class BrotherAI : MonoBehaviour
         _player = GameObject.FindGameObjectWithTag("Player");
     }
 
+    void FixedUpdate(){
+        if(Input.GetKey(KeyCode.Z)){
+            CustomEvent.Trigger(this.gameObject, "CallBack");
+        }
+    }
+
     private bool PathCompleted(){
         return _navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance + _pathEndThreshold;
     }
 
     private void MoveToLocation(Transform walkLocation, float speed){
         _navMeshAgent.SetDestination(walkLocation.position);
+    }
+
+    private Transform GetPlayerLocation(){
+        return _player.transform;
     }
 
     public void Comfort(){
@@ -56,10 +66,11 @@ public class BrotherAI : MonoBehaviour
     }
 
     public void FollowEnter(){
-        // MoveToLocation(FindHidingSpot.FindBestHidingSpot(), _walkSpeed);
+        
     }
 
     public void FollowUpdate(){
+        MoveToLocation(GetPlayerLocation(), _walkSpeed);
         if(Input.GetKey(KeyCode.W)){
             CustomEvent.Trigger(this.gameObject, "panicHide");
         }

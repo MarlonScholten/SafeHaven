@@ -164,6 +164,7 @@ GameObject:
   - component: {fileID: -6007438852365005137}
   - component: {fileID: 3286405281515219051}
   - component: {fileID: 4130807608511132513}
+  - component: {fileID: -3102675096557784668}
   m_Layer: 0
   m_Name: brotherTest
   m_TagString: Untagged
@@ -245,3 +246,18 @@ MonoBehaviour:
   _EnemyMask:
     serializedVersion: 2
     m_Bits: 0
+--- !u!114 &-3102675096557784668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7979130868257695881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36038a2b900a70d4f87dea5e8489f759, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _HidingSpotInEnemyViewWeight: 0.01
+  _HidingSpotDistanceWeight: 0.05
+  _playerCamera: {fileID: 0}

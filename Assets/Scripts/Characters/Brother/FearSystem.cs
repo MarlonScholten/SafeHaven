@@ -16,6 +16,10 @@ public class FearSystem : MonoBehaviour
 
     void Update(){
         checkEnemyEncounter();
+
+        if(Input.GetKeyDown(KeyCode.C)){
+            Comfort();
+        }
     }
 
     public void checkEnemyEncounter(){
@@ -41,6 +45,9 @@ public class FearSystem : MonoBehaviour
     public void Comfort(){
         if(_fear > 0){
             _fear -= _comfortIncrement;
+        }
+        if(_fear < _comfortIncrement){
+            _fear = 0;
         }
     }
 }
