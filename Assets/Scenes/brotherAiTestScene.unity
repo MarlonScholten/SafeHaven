@@ -220,6 +220,11 @@ PrefabInstance:
       propertyPath: m_StoppingDistance
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3102675096557784668, guid: 1b34acfabd3e45f4980478da261441e0,
+        type: 3}
+      propertyPath: _playerCamera
+      value: 
+      objectReference: {fileID: 1760011414}
     - target: {fileID: 815375424505866083, guid: 1b34acfabd3e45f4980478da261441e0,
         type: 3}
       propertyPath: m_RootOrder
@@ -309,6 +314,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _walkLocation
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4130807608511132513, guid: 1b34acfabd3e45f4980478da261441e0,
+        type: 3}
+      propertyPath: _viewAngle
+      value: 140
       objectReference: {fileID: 0}
     - target: {fileID: 4130807608511132513, guid: 1b34acfabd3e45f4980478da261441e0,
         type: 3}
@@ -437,20 +447,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 253515228}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &341478335
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 341478331}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36038a2b900a70d4f87dea5e8489f759, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _HidingSpotInEnemyViewWeight: 0.01
-  _HidingSpotDistanceWeight: 0.05
 --- !u!114 &341478336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1035,7 +1031,7 @@ GameObject:
   - component: {fileID: 1698849349}
   - component: {fileID: 1698849348}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: Sister
   m_TagString: Player
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1197,14 +1193,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1760011412}
-  m_LocalRotation: {x: 0.30569333, y: -0, z: -0, w: 0.95213}
-  m_LocalPosition: {x: 0, y: 8.82, z: -11.43}
+  m_LocalRotation: {x: 0.25855795, y: -0.043382607, z: -0.011624338, w: 0.96495116}
+  m_LocalPosition: {x: 0, y: 8.91, z: -18.49}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 35.6, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 29.867, y: -5.94, z: -2.966}
 --- !u!114 &1760011416
 MonoBehaviour:
   m_ObjectHideFlags: 0
