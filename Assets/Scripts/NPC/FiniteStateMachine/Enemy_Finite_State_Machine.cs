@@ -255,10 +255,8 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     {
         if (CheckIfEnemyIsAtWaypoint())
         {
-            Debug.Log("ENEMY AT WAYPOINT");
             if (_waitingAtWaypoint && !_investigateCoroutineIsRunning)
             {
-                Debug.Log("Waiting waypoint");
                 _investigateCoroutineIsRunning = true;
                 _investigateCoroutine =
                     CallFunctionAfterSeconds(investigateTime, () =>
@@ -270,7 +268,6 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
             }
             if (!_waitingAtWaypoint)
             {
-                Debug.Log("Not Waiting waypoint");
                 _waitingAtWaypoint = true;
                 _waitingAtWaypointDuringInvestigationCoroutineIsRunning = true;
                 _waitingAtWaypointDuringInvestigationCoroutine =
@@ -311,7 +308,7 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     /// </summary>
     public void Update_Chasing()
     {
-        if(!CheckVision() && (_timePlayerLastSpotted + 2) < Time.time || Vector3.Distance(transform.position, _spottedPlayerLastPosition) <= 2f)
+        if(!CheckVision() && (_timePlayerLastSpotted + 2) < Time.time)
         {
             CustomEvent.Trigger(gameObject, "Investigate");
         }
@@ -325,20 +322,12 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
         if (CheckVision())
         {
             _navMeshAgent.SetDestination(_spottedPlayer.transform.position);
-        } 
-        else if (!CheckVision() && (_timePlayerLastSpotted + 2) > Time.time)
-        {
-            if (CheckPlayerPositionReachable(_spottedPlayer.transform.position))
-            {
-                _spottedPlayerLastPosition = _spottedPlayer.transform.position;
-            }
-            CalculateInvestigateLocation();
         }
-        else 
+
+        if (!CheckVision() && (_timePlayerLastSpotted + 2) > Time.time)
         {
-            _navMeshAgent.SetDestination(_spottedPlayerLastPosition);
+            _navMeshAgent.SetDestination(_spottedPlayer.transform.position);
         }
-        
     }
     
     /// <summary>
@@ -346,6 +335,8 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     /// </summary>
     public void Exit_Chasing()
     {
+        CheckPlayerPositionReachable(_spottedPlayer.transform.position);
+        _spottedPlayer = null;
     }
     
     
@@ -429,15 +420,14 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
         
         if (!(angleToPlayer < visionAngle)) return false;
         if (!Physics.Raycast(transform.position, directionToPlayer, out var hit, visionRange)) return false;
-        
+        var path = new NavMeshPath();
+        _navMeshAgent.CalculatePath(hit.transform.position, path);
+        if (path.status == NavMeshPathStatus.PathPartial) return false;
         if (!hit.collider.gameObject.CompareTag("Player")) return false;
         
         var hitPlayer = hit.collider.gameObject;
         _spottedPlayer = hitPlayer;
-        if (CheckPlayerPositionReachable(hitPlayer.transform.position))
-        {
-            _spottedPlayerLastPosition = hitPlayer.transform.position;
-        }
+        _spottedPlayerLastPosition = hitPlayer.transform.position;
         _alertedByVision = true;
         _alertedBySound = false;
         _timePlayerLastSpotted = Time.time;
@@ -480,7 +470,7 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
         else if(_alertedByVision) randDirection += _spottedPlayerLastPosition;
         NavMesh.SamplePosition (randDirection, out NavMeshHit navHit, investigateDistance, 1);
         _targetWpLocation = navHit.position;
-        _navMeshAgent.SetDestination(_targetWpLocation);
+        CheckPlayerPositionReachable(_targetWpLocation);
         _waitingAtWaypoint = false;
     }
     /// <summary>
@@ -491,16 +481,19 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
         return Vector3.Distance(transform.position, _targetWpLocation) <= 2f;
     }
 
-    private bool CheckPlayerPositionReachable(Vector3 playerPosition)
+    private void CheckPlayerPositionReachable(Vector3 playerPosition)
     {
         var path = new NavMeshPath();
         _navMeshAgent.CalculatePath(playerPosition, path);
-        if (path.status != NavMeshPathStatus.PathPartial)
+        if (path.status == NavMeshPathStatus.PathPartial)
         {
-            return true;
+            _navMeshAgent.SetDestination(path.corners.Last());
+            _spottedPlayerLastPosition = path.corners.Last();
         }
-
-        return false;
+        else
+        {
+            _navMeshAgent.SetDestination(playerPosition);
+        }
     }
     
 }
