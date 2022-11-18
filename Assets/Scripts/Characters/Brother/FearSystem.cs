@@ -46,24 +46,6 @@ public class FearSystem : MonoBehaviour
         return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad),0,Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
     }
 
-            // foreach(Collider spot in hidingSpots){
-            // Transform hidingSpot = spot.transform;
-            // Vector3 dirToObject = (hidingSpot.position - transform.position).normalized;
-            //     //Check if the spot is in the brothers view
-            // if(Vector3.Angle(transform.forward, dirToObject) < _viewAngle / 2){
-            //     float distanceToSpot = Vector3.Distance(transform.position,hidingSpot.position);
-
-            //     if(!Physics.Raycast(transform.position, dirToObject, distanceToSpot, _obstacleMask)){
-            //             //If there is not a current closest spot, then set one
-            //         if(closestHidingSpot == null){
-            //             closestHidingSpot = hidingSpot;
-            //         }
-            //             //Check if other location is closer than current closest location
-            //         else if(distanceToSpot < Vector3.Distance(closestHidingSpot.transform.position, transform.position)){
-            //                 closestHidingSpot = hidingSpot;
-            //         }
-            //     }
-
     public void UpdateFearLevel(float distance){
         if(distance < _maxFearDistance && _fear < _maxFearLevel){
             _fear += (_fearIncement - (distance / 1000f)) * Time.deltaTime;
