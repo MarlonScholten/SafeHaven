@@ -82,6 +82,7 @@ public class Enemy_Finite_State_Machine : MonoBehaviour
     private bool _investigateCoroutineIsRunning;
     private bool _alertedCoroutineIsRunning;
 
+    [NonSerialized]
     public HeardASoundEvent HeardASoundEvent;
 
 
