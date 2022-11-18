@@ -56,7 +56,7 @@ public class LongPingController : MonoBehaviour
         _radialMenu.SetActive(false);
         _cancelled = NotCancelled;
 
-        //TODO: Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Update()
@@ -163,7 +163,6 @@ public class LongPingController : MonoBehaviour
         {
             SelectAction();
         }
-
         CloseRadialMenu();
     }
 
@@ -171,6 +170,7 @@ public class LongPingController : MonoBehaviour
     {
         _radialMenuIsSetActive = false;
         _radialMenu.SetActive(_radialMenuIsSetActive);
+        Cursor.lockState = CursorLockMode.Locked;
         Time.timeScale = StandardTimeFactor;
     }
 
@@ -192,12 +192,11 @@ public class LongPingController : MonoBehaviour
     private void OnLongPing(InputAction.CallbackContext callbackContext)
     {
         _holdSucceeded = true;
-        // TODO: Cursor.lockState = CursorLockMode.None;
-        if (!_radialMenu.activeSelf)
-        {
-            Debug.Log("performed");
-            Time.timeScale /= _slowmotionFactor;
-        }
+        Cursor.lockState = CursorLockMode.None;
+        
+        if (_radialMenu.activeSelf) return;
+        Debug.Log("performed");
+        Time.timeScale /= _slowmotionFactor;
     }
 
     private void ShowMarker(Vector3 position)
@@ -207,18 +206,17 @@ public class LongPingController : MonoBehaviour
 
     private void OnLongPingRelease(InputAction.CallbackContext callbackContext)
     {
-        if (!_radialMenuIsSetActive && _holdSucceeded)
-        {
-            var ray = _camera.ScreenPointToRay(Mouse.current.position.ReadValue());
-            Debug.DrawRay(ray.origin, ray.direction * Correction, Color.red, 3);
+        if (_radialMenuIsSetActive || !_holdSucceeded) return;
+        Debug.Log(Mouse.current.position.ReadValue());
+        var ray = _camera.ScreenPointToRay(Mouse.current.position.ReadValue());
+        Debug.DrawRay(ray.origin, ray.direction * Correction, Color.red, 3);
 
-            if (!Physics.Raycast(ray.origin, ray.direction * Correction, out var hit)) return;
-            _pingPosition = hit.point;
-            ShowMarker(_pingPosition);
+        if (!Physics.Raycast(ray.origin, ray.direction * Correction, out var hit)) return;
+        _pingPosition = hit.point;
+        ShowMarker(_pingPosition);
 
-            _holdSucceeded = false;
-            _radialMenuIsSetActive = true;
-        }
+        _holdSucceeded = false;
+        _radialMenuIsSetActive = true;
     }
 
     public Vector3 GetPingLocation()

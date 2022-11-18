@@ -25,6 +25,11 @@ public class QuickPingController : MonoBehaviour
         _pingSystem.Player.Fire.started += OnLeftMouseButton;
     }
 
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
     public void OnEnable()
     {
         _pingSystem.Enable();
@@ -46,23 +51,25 @@ public class QuickPingController : MonoBehaviour
         _holdSucceeded = false;
     }
 
+    public float aanpassss;
     private void OnQuickPing(InputAction.CallbackContext callbackContext)
     {
         Debug.Log("onquickping");
         Debug.Log("radialactive " + _radialMenu.activeSelf + "holdscucceed " + _holdSucceeded);
-        if (!_radialMenu.activeSelf && !_holdSucceeded)
-        {
-            if (_radialMenu.activeSelf.Equals(true)) return;
-            var ray = _camera.ScreenPointToRay(Mouse.current.position.ReadValue());
-            Debug.DrawRay(ray.origin, ray.direction * Correction, Color.red, 3);
+        if (_radialMenu.activeSelf || _holdSucceeded) return;
+        if (_radialMenu.activeSelf.Equals(true)) return;
 
-            if (!Physics.Raycast(ray.origin, ray.direction * Correction, out var hit)) return;
-            _pingPosition = hit.point;
-            ShowMarker(_pingPosition);
+        var mousePostion = Mouse.current.position.ReadValue();
+        var newMousePosition = mousePostion;
+        var ray = _camera.ScreenPointToRay( newMousePosition);
+        Debug.DrawRay(ray.origin, ray.direction * Correction, Color.red, 3);
+
+        if (!Physics.Raycast(ray.origin, ray.direction * Correction, out var hit)) return;
+        _pingPosition = hit.point;
+        ShowMarker(_pingPosition);
             
-            //TODO Integrate
-            //_brotherAI.PingBrother(PingType.Run, _pingPosition)
-        }
+        //TODO Integrate
+        //_brotherAI.PingBrother(PingType.Run, _pingPosition)
     }
 
     private void ShowMarker(Vector3 position)
