@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// A very cool description of what to do with this script and what it needs, what other components, tags, layers and/or scripts are needed for this script to work.
+/// A very cool description of what this script does. Bear in mind that this documentation is mainly for the design team so they can install and play with the scripts that you made :)
 /// </summary>
 /// <list type="table">
 ///	    <listheader>
@@ -24,29 +24,7 @@ using UnityEngine;
 ///         <term>CharacterController</term>
 ///		    <term>Script uses the move() function of the character controller to move the player</term>
 ///	    </item>
-///     <item>
-///		    <term>The debugging GameObject</term>
-///	     	<term>Script</term>
-///	       	<term>DebugPosition.cs</term>
-///	       	<term>Usefull for the debugger to know the position of the player</term>
-///	    </item>
-///	    <item>
-///		    <term>Child GameObject of this GameObject</term>
-///		    <term>Tag</term>
-///		    <term>Friendly</term>
-///		    <term>Used because this script looks for these tags to see if it applies to them</term>
-///	    </item>
-///	    <item>
-///		    <term>Parent GameObject of this GameObject</term>
-///		    <term>Layer</term>
-///		    <term>non_interacteble</term>
-///		    <term>Used so the pinging system doens't ping the player itself</term>
-///		</item>
 /// </list>
-/// 
-
-
-
 
 public class DoxyTest : MonoBehaviour
 {
@@ -71,22 +49,5 @@ public class DoxyTest : MonoBehaviour
     public int AddNumbers(int a, int b)
     {
         return a + b;
-    }
-
-    /// <summary>
-    /// Checks if a number is less than 1
-    /// </summary>
-    /// <example>
-    /// 
-    /// </example>
-    /// <param name="number">The number to be checked</param>
-    /// <returns>returns 0 if OK, -1 if Error</returns>
-    private int CheckIfTiny(double number)
-    {
-        if(number < 1)
-        {
-            return 0;
-        }
-        return -1;
     }
 }
