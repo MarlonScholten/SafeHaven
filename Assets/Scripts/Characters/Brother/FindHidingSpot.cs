@@ -17,11 +17,7 @@ public class FindHidingSpot : MonoBehaviour
             if(CheckHidingSpotInView(spot)){
                 HidingSpot hidingSpot = spot.GetComponent<HidingSpot>();
                 CalculateObscurityValue(spot);           
-                if(bestSpotValue == -1){
-                    bestSpot = spot;
-                    bestSpotValue = hidingSpot._obscurityValue;
-                }
-                else if(bestSpotValue < hidingSpot._obscurityValue){
+                if(bestSpotValue == -1 || bestSpotValue < hidingSpot._obscurityValue){
                     bestSpot = spot;
                     bestSpotValue = hidingSpot._obscurityValue;
                 }
