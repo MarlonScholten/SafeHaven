@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+/// <summary>
+/// ChasingState functions
+/// </summary>
 public class ChasingState : MonoBehaviour
 {
-    private Enemy_Finite_State_Machine _stateManager;
-    void Start()
+    private EnemyAiStateManager _stateManager;
+    void Awake()
     {
-        _stateManager = FindObjectOfType<Enemy_Finite_State_Machine>();
+        _stateManager = GetComponent<EnemyAiStateManager>();
     }
-    
-    /// CHASING ///
-    
     /// <summary>
     /// Enter chasing state
     /// </summary>
@@ -54,8 +54,7 @@ public class ChasingState : MonoBehaviour
     {
         _stateManager.CheckPlayerPositionReachable(_stateManager.spottedPlayer.transform.position);
         _stateManager.spottedPlayer = null;
-    }
-
-
-    
+    }/// <summary>
+/// AlertedState functions
+/// </summary>
 }

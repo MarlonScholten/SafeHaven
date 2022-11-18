@@ -3,22 +3,21 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+/// <summary>
+/// AlertedState functions
+/// </summary>
 public class AlertedState : MonoBehaviour
 {
-    private Enemy_Finite_State_Machine _stateManager;
+    private EnemyAiStateManager _stateManager;
     private IEnumerator _alertedCoroutine;
     private bool _alertedCoroutineIsRunning;
     private FSM_Scriptable_Object _fsmScriptableObject;
 
-    void Start()
+    void Awake()
     {
-        _stateManager = FindObjectOfType<Enemy_Finite_State_Machine>();
-        
+        _stateManager = GetComponent<EnemyAiStateManager>();
+        _fsmScriptableObject = _stateManager.enemyAiScriptableObject;
     }
-    
-    
-    /// ALERTED ///
-    
     /// <summary>
     /// Enter alerted state
     /// </summary>
