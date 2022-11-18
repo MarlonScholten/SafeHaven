@@ -26,7 +26,6 @@ public class FindHidingSpot : MonoBehaviour
                 }
             }
         }
-        Debug.Log("Spot: " + bestSpot.transform);
         return bestSpot.transform;    
     }
 
