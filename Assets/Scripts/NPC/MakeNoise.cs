@@ -24,7 +24,7 @@ namespace NPC
                 if (!currentObject.CompareTag("Enemy")) continue;
                 var distance = Vector3.Distance(transform.position, currentObject.transform.position);
                 var source = new SoundSource(gameObject, noiseLevel / distance);
-                currentObject.GetComponent<Enemy_Finite_State_Machine>().HeardASoundEvent.Invoke(source);
+                currentObject.GetComponent<PatrolState>().HeardASoundEvent.Invoke(source);
             }
         }
     }
