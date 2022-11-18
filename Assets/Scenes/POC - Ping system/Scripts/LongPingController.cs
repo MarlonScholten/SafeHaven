@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class LongPingController : MonoBehaviour
 {
+    //TODO Integrate
+    //private BrotherAI _brotherAI;
+    
     [SerializeField] private GameObject _radialMenu;
     [SerializeField] private GameObject _highlightedOption;
     [SerializeField] private GameObject _markerPrefab;
@@ -90,8 +93,6 @@ public class LongPingController : MonoBehaviour
 
         angle = SetDegreesFull(angle);
         ControlSegmentOptions(angle);
-
-        //radialMenu.SetActive(false);
     }
 
     private void ControlSegmentOptions(float angle)
@@ -195,7 +196,6 @@ public class LongPingController : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         
         if (_radialMenu.activeSelf) return;
-        Debug.Log("performed");
         Time.timeScale /= _slowmotionFactor;
     }
 
@@ -207,7 +207,6 @@ public class LongPingController : MonoBehaviour
     private void OnLongPingRelease(InputAction.CallbackContext callbackContext)
     {
         if (_radialMenuIsSetActive || !_holdSucceeded) return;
-        Debug.Log(Mouse.current.position.ReadValue());
         var ray = _camera.ScreenPointToRay(Mouse.current.position.ReadValue());
         Debug.DrawRay(ray.origin, ray.direction * Correction, Color.red, 3);
 

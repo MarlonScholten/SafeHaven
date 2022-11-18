@@ -16,6 +16,8 @@ public class QuickPingController : MonoBehaviour
 
     private Vector3 _pingPosition;
     private const float Correction = 10000f;
+    
+    [SerializeField] private float _playerHeightCorrection = 1.5f;
 
     private void Awake()
     {
@@ -51,16 +53,15 @@ public class QuickPingController : MonoBehaviour
         _holdSucceeded = false;
     }
 
-    public float aanpassss;
+   
     private void OnQuickPing(InputAction.CallbackContext callbackContext)
     {
-        Debug.Log("onquickping");
-        Debug.Log("radialactive " + _radialMenu.activeSelf + "holdscucceed " + _holdSucceeded);
         if (_radialMenu.activeSelf || _holdSucceeded) return;
         if (_radialMenu.activeSelf.Equals(true)) return;
-
-        var mousePostion = Mouse.current.position.ReadValue();
-        var newMousePosition = mousePostion;
+        
+        var mouseX = Mouse.current.position.ReadValue().x;
+        var mouseY = Mouse.current.position.ReadValue().y;
+        var newMousePosition = new Vector2(mouseX,mouseY * _playerHeightCorrection);
         var ray = _camera.ScreenPointToRay( newMousePosition);
         Debug.DrawRay(ray.origin, ray.direction * Correction, Color.red, 3);
 
