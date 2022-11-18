@@ -23,6 +23,7 @@ public class FindHidingSpot : MonoBehaviour
                 }
                 else if(bestSpotValue < hidingSpot._obscurityValue){
                     bestSpot = spot;
+                    bestSpotValue = hidingSpot._obscurityValue;
                 }
             }
         }
