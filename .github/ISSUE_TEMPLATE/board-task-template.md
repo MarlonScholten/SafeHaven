@@ -15,22 +15,18 @@ This story is about..
 
 This story is needed for..
 
-# Tasks for this user story 
-
-- [ ] Task 1 
-- [ ] Task 2
-- [ ] Task 3
-
 # Definition of done
 The following things need to be checked before merging to the `dev-` branches.
 ## General acceptance
+Things that are always relevant.
 - [ ] Code follows the [guidelines](https://github.com/AIM-GAME-PROJECT-group-b/SafeHaven/wiki/Coding-Guidelines).
-- [ ] Instructions are written above scripts for designers. [How to write instructions & template](#).
+- [ ] Instructions are written above scripts for designers. [How to write instructions & template](https://github.com/AIM-GAME-PROJECT-group-b/SafeHaven/wiki/Writing-instuctions-for-Designers-and-Template).
 - [ ] Prefabs are made out of reusable and important objects.
-- [ ] Folder structure is applied correctly. [Folder structure diagram](#)
+- [ ] Folder structure is applied correctly. [Folder structure diagram](https://github.com/AIM-GAME-PROJECT-group-b/SafeHaven/wiki/Folder-structure)
 - [ ] Make a gif showing it in action. [ScreenToGif](https://www.screentogif.com/) / [Gifcap](https://gifcap.dev/) (So Design can approve or iterate and we can add it to the devlog)
 
 ## Task specific acceptance criteria
+Describe the tasks and any edge cases you can think of.
 - [ ] Use case 1
 - [ ] Use case 2
 - [ ] Edge case 1
