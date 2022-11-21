@@ -11,73 +11,71 @@ public class QuickPingController : MonoBehaviour
     [SerializeField] private GameObject _radialMenu;
 
     private PingSystem _pingSystem;
-
-    private bool test;
-
     private Vector3 _pingPosition;
     private const float Correction = 10000f;
-    
-    [SerializeField] private float _playerHeightCorrection = 1.5f;
+
+    private bool _quickCancelled;
 
     private void Awake()
     {
         _pingSystem = new PingSystem();
+
         _pingSystem.Player.QuickPing.performed += OnQuickPing;
-        _pingSystem.Player.QuickPing.canceled += cancelquick;
-        _pingSystem.Player.MenuPing.started += onMenuStart;
-        
-    }
-    
-    void cancelquick(InputAction.CallbackContext callbackContext)
-    {
-        Debug.Log("quick canceled");
-        test = false;
-    }
-
-    private void Start()
-    {
-    }
-
-    public void OnEnable()
-    {
-        _pingSystem.Enable();
-    }
-
-    public void OnDisable()
-    {
-        _pingSystem.Disable();
-    }
-
-    private void onMenuStart(InputAction.CallbackContext callbackContext)
-    {
-        test = true;
+        _pingSystem.Player.QuickPing.canceled += CancelQuickPing;
+        _pingSystem.Player.MenuPing.started += StartOnMenuPing;
     }
 
     private void OnQuickPing(InputAction.CallbackContext callbackContext)
     {
-        Debug.Log("quickping performed");
-        Debug.Log("test " + test);
-        Debug.Log("radialmenustatus " + _radialMenu.activeSelf);
-        if (_radialMenu.activeSelf || test) return;
-        test = false;
-        Debug.Log("onquickping beyond if");
-        var mouseX = Mouse.current.position.ReadValue().x;
-        var mouseY = Mouse.current.position.ReadValue().y;
-        var newMousePosition = new Vector2(mouseX,mouseY);
-        var ray = _camera.ScreenPointToRay( newMousePosition);
+        if (_radialMenu.activeSelf || _quickCancelled) return;
+        _quickCancelled = false;
+
+        var ray = GetRayFromCameraToMousePosition();
+        SetPingPosition(ray);
+
+        //TODO Integrate
+        //_brotherAI.PingBrother(PingType.Run, _pingPosition)
+    }
+
+    private Ray GetRayFromCameraToMousePosition()
+    {
+        var mousePosition = new Vector2(Mouse.current.position.ReadValue().x, Mouse.current.position.ReadValue().y);
+        var ray = _camera.ScreenPointToRay(mousePosition);
+        return ray;
+    }
+
+    private void SetPingPosition(Ray ray)
+    {
         Debug.DrawRay(ray.origin, ray.direction * Correction, Color.red, 3);
 
         if (!Physics.Raycast(ray.origin, ray.direction * Correction, out var hit)) return;
         _pingPosition = hit.point;
         ShowMarker(_pingPosition);
-            
-        //TODO Integrate
-        //_brotherAI.PingBrother(PingType.Run, _pingPosition)
     }
 
     private void ShowMarker(Vector3 position)
     {
         Instantiate(_markerPrefab, position, Quaternion.identity);
+    }
+
+    private void CancelQuickPing(InputAction.CallbackContext callbackContext)
+    {
+        _quickCancelled = false;
+    }
+
+    private void StartOnMenuPing(InputAction.CallbackContext callbackContext)
+    {
+        _quickCancelled = true;
+    }
+
+    private void OnEnable()
+    {
+        _pingSystem.Enable();
+    }
+
+    private void OnDisable()
+    {
+        _pingSystem.Disable();
     }
 
     public Vector3 GetPingLocation()
