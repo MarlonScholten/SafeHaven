@@ -8,7 +8,7 @@ public class MainMenu : MonoBehaviour
     [Header("Start scene")]
     
     [SerializeField]
-    private string _startSceneName;
+    private int _startSceneId;
 
     [Header("Loading screen")] 
     
@@ -56,7 +56,7 @@ public class MainMenu : MonoBehaviour
     {
         Instantiate(_loadingScreenPrefab);
         
-        SceneManager.LoadSceneAsync(_startSceneName, LoadSceneMode.Single);
+        SceneManager.LoadSceneAsync(_startSceneId, LoadSceneMode.Single);
     }
 
     public void OnLoad()

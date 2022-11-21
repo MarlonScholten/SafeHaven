@@ -342,7 +342,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1745492416}
+      - m_Target: {fileID: 405306472}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: OnStart
         m_Mode: 1
@@ -392,6 +392,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 266526423}
   m_CullTransparentMesh: 1
+--- !u!1 &405306470
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 405306471}
+  - component: {fileID: 405306472}
+  m_Layer: 5
+  m_Name: Container
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &405306471
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 405306470}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2008897457}
+  m_Father: {fileID: 1577026391}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &405306472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 405306470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0db71afd01b842e4ba14a762e5b5e29c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startSceneName: 
+  _loadingScreenPrefab: {fileID: 5102930339703117343, guid: 5f5b70e973bc54d4fb5f5ac113a0f0a7,
+    type: 3}
+  _startButtonEnabled: 1
+  _loadButtonEnabled: 0
+  _settingsButtonEnabled: 1
+  _exitButtonEnabled: 1
+  _startButton: {fileID: 266526425}
+  _loadButton: {fileID: 1252559913}
+  _settingsButton: {fileID: 1979396363}
+  _exitButton: {fileID: 1914357417}
 --- !u!1 &456408937
 GameObject:
   m_ObjectHideFlags: 0
@@ -914,7 +975,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1745492416}
+      - m_Target: {fileID: 405306472}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: OnLoad
         m_Mode: 1
@@ -1129,7 +1190,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2008897457}
+  - {fileID: 405306471}
   m_Father: {fileID: 1745492415}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1455,9 +1516,8 @@ GameObject:
   - component: {fileID: 1745492414}
   - component: {fileID: 1745492413}
   - component: {fileID: 1745492412}
-  - component: {fileID: 1745492416}
   m_Layer: 5
-  m_Name: MainMenu
+  m_Name: MainMenuContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1545,29 +1605,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1745492416
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1745492411}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0db71afd01b842e4ba14a762e5b5e29c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _startSceneName: AlleyBlockout
-  _loadingScreenPrefab: {fileID: 5102930339703117343, guid: 5f5b70e973bc54d4fb5f5ac113a0f0a7,
-    type: 3}
-  _startButtonEnabled: 1
-  _loadButtonEnabled: 0
-  _settingsButtonEnabled: 1
-  _exitButtonEnabled: 1
-  _startButton: {fileID: 266526425}
-  _loadButton: {fileID: 1252559913}
-  _settingsButton: {fileID: 1979396363}
-  _exitButton: {fileID: 1914357417}
 --- !u!1 &1914357415
 GameObject:
   m_ObjectHideFlags: 0
@@ -1652,7 +1689,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1745492416}
+      - m_Target: {fileID: 405306472}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: OnExit
         m_Mode: 1
@@ -1786,7 +1823,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1745492416}
+      - m_Target: {fileID: 405306472}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: OnSettings
         m_Mode: 1
@@ -1848,7 +1885,7 @@ GameObject:
   - component: {fileID: 2008897458}
   - component: {fileID: 2008897459}
   m_Layer: 5
-  m_Name: GameObject
+  m_Name: MainMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1861,7 +1898,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2008897456}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1871,7 +1908,7 @@ RectTransform:
   - {fileID: 1252559912}
   - {fileID: 1979396362}
   - {fileID: 1914357416}
-  m_Father: {fileID: 1577026391}
+  m_Father: {fileID: 405306471}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
