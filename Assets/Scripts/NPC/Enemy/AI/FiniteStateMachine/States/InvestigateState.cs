@@ -53,6 +53,7 @@ public class InvestigateState : MonoBehaviour
                     _stateManager.CallFunctionAfterSeconds(_stateManager.enemyAiScriptableObject.investigateTime, () =>
                     {
                         CustomEvent.Trigger(gameObject, "Patrol");
+                        
                         _investigateCoroutineIsRunning = false;
                     });
                 StartCoroutine(_investigateCoroutine);
