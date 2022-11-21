@@ -35,16 +35,27 @@ public class BrotherAI : MonoBehaviour
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _findHidingSpot = gameObject.GetComponent<FindHidingSpot>();
         _fearSystem = GetComponent<FearSystem>();
-        _player = GameObject.FindGameObjectWithTag("Player");
+        _player = GameObject.FindGameObjectWithTag("Player");                
     }
 
     void FixedUpdate(){
+        var run = GameObject.FindGameObjectWithTag("RunLocation");
+        var walk = GameObject.FindGameObjectWithTag("WalkLocation");
+
         if(Input.GetKey(KeyCode.Z)){
             CustomEvent.Trigger(this.gameObject, "CallBack");
         }
 
         if(Input.GetKey(KeyCode.W)){
             CustomEvent.Trigger(this.gameObject, "panicHide");
+        }
+        if(Input.GetKey(KeyCode.O)){
+            Debug.Log("ping run: " + run);
+            PingBrother(PingType.Run, run.transform);
+        }
+        if(Input.GetKey(KeyCode.P)){
+            Debug.Log("ping walk: " + walk);
+            PingBrother(PingType.Walk, walk.transform);
         }
     }
 
@@ -53,6 +64,7 @@ public class BrotherAI : MonoBehaviour
     }
 
     private void MoveToLocation(Transform walkLocation, float speed){
+        _navMeshAgent.speed = speed;
         _navMeshAgent.SetDestination(walkLocation.position);
     }
 
@@ -65,8 +77,9 @@ public class BrotherAI : MonoBehaviour
     }
 
     public void PingBrother(PingType ping, Transform location){
-        CustomEvent.Trigger(this.gameObject, ping.ToString());
+        Debug.Log("brother ping: " + ping);
         _pingLocation = location;
+        CustomEvent.Trigger(this.gameObject, ping.ToString());     
     }
 
     public void FollowEnter(){
@@ -157,6 +170,7 @@ public class BrotherAI : MonoBehaviour
 
     public void WalkEnter(){
         MoveToLocation(_pingLocation, _walkSpeed);
+        Debug.Log("Walking to: " + _pingLocation);
     }
 
     public void WalkUpdate(){
@@ -173,6 +187,7 @@ public class BrotherAI : MonoBehaviour
 
     public void RunEnter(){
         MoveToLocation(_pingLocation, _runSpeed);
+        Debug.Log("Running to: " + _pingLocation);
     }
 
     public void RunUpdate(){
