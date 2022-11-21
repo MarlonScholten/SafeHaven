@@ -75,6 +75,7 @@ public class AlertedState : MonoBehaviour
     /// </summary>
     public void Exit_Alerted()
     {
+        //Stop the coroutine if it is running.
         if(_alertedCoroutineIsRunning)StopCoroutine(_alertedCoroutine);
         _alertedCoroutineIsRunning = false;
     }
