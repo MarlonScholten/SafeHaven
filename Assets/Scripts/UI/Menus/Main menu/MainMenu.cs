@@ -42,6 +42,14 @@ public class MainMenu : MonoBehaviour
     
     [SerializeField] 
     private Button _exitButton;
+    
+    [Header("Menu types")]
+
+    [SerializeField] 
+    private GameObject _mainMenu;
+    
+    [SerializeField] 
+    private GameObject _settingsMenu;
 
     private void Start()
     {
@@ -50,6 +58,8 @@ public class MainMenu : MonoBehaviour
         _loadButton.interactable = _loadButtonEnabled;
         _settingsButton.interactable = _settingsButtonEnabled;
         _exitButton.interactable = _exitButtonEnabled;
+        
+        _settingsMenu.SetActive(false);
     }
 
     public void OnStart()
@@ -66,7 +76,8 @@ public class MainMenu : MonoBehaviour
 
     public void OnSettings()
     {
-        
+        _mainMenu.SetActive(false);
+        _settingsMenu.SetActive(true);
     }
 
     public void OnExit()
