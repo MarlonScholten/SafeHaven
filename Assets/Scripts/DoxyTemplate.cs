@@ -31,8 +31,8 @@ public class DoxyTest : MonoBehaviour
 {
     /// <summary>
     /// A cool descripion of what this value does and how it effects the script and/or game world
-    /// The tooltip attribute is very importent here so it's easier for design to know what the value does,
-    /// THe tooltip won't show in doxygen so everything that's described in the tooltip should also be described in the \<summary\> block here.
+    /// The tooltip attribute is very important here so it's easier for design to know what the value does,
+    /// The tooltip won't show in doxygen so everything that's described in the tooltip should also be described in the \<summary\> block here.
     /// </summary>
     [Range(0.0f, 100.0f), Tooltip("A cool descripion of what this value does and how it effects the script and/or game world")]
     public float sensitivity = 20.0f;
