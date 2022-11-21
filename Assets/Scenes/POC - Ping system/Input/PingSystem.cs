@@ -64,7 +64,7 @@ public partial class @PingSystem : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Long Ping"",
+                    ""name"": ""Menu Ping"",
                     ""type"": ""Button"",
                     ""id"": ""a9420d1b-7302-4da6-b9ad-1876d7e1ab64"",
                     ""expectedControlType"": ""Button"",
@@ -297,7 +297,7 @@ public partial class @PingSystem : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""5c01fd3b-4321-4a4f-9ba0-bb0cc3e288c5"",
-                    ""path"": ""<Mouse>/rightButton"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
@@ -312,7 +312,7 @@ public partial class @PingSystem : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Long Ping"",
+                    ""action"": ""Menu Ping"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -904,7 +904,7 @@ public partial class @PingSystem : IInputActionCollection2, IDisposable
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
         m_Player_QuickPing = m_Player.FindAction("Quick Ping", throwIfNotFound: true);
-        m_Player_LongPing = m_Player.FindAction("Long Ping", throwIfNotFound: true);
+        m_Player_MenuPing = m_Player.FindAction("Menu Ping", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -980,7 +980,7 @@ public partial class @PingSystem : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Fire;
     private readonly InputAction m_Player_QuickPing;
-    private readonly InputAction m_Player_LongPing;
+    private readonly InputAction m_Player_MenuPing;
     public struct PlayerActions
     {
         private @PingSystem m_Wrapper;
@@ -989,7 +989,7 @@ public partial class @PingSystem : IInputActionCollection2, IDisposable
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
         public InputAction @QuickPing => m_Wrapper.m_Player_QuickPing;
-        public InputAction @LongPing => m_Wrapper.m_Player_LongPing;
+        public InputAction @MenuPing => m_Wrapper.m_Player_MenuPing;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1011,9 +1011,9 @@ public partial class @PingSystem : IInputActionCollection2, IDisposable
                 @QuickPing.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuickPing;
                 @QuickPing.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuickPing;
                 @QuickPing.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnQuickPing;
-                @LongPing.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLongPing;
-                @LongPing.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLongPing;
-                @LongPing.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLongPing;
+                @MenuPing.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenuPing;
+                @MenuPing.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenuPing;
+                @MenuPing.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenuPing;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1030,9 +1030,9 @@ public partial class @PingSystem : IInputActionCollection2, IDisposable
                 @QuickPing.started += instance.OnQuickPing;
                 @QuickPing.performed += instance.OnQuickPing;
                 @QuickPing.canceled += instance.OnQuickPing;
-                @LongPing.started += instance.OnLongPing;
-                @LongPing.performed += instance.OnLongPing;
-                @LongPing.canceled += instance.OnLongPing;
+                @MenuPing.started += instance.OnMenuPing;
+                @MenuPing.performed += instance.OnMenuPing;
+                @MenuPing.canceled += instance.OnMenuPing;
             }
         }
     }
@@ -1193,7 +1193,7 @@ public partial class @PingSystem : IInputActionCollection2, IDisposable
         void OnLook(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
         void OnQuickPing(InputAction.CallbackContext context);
-        void OnLongPing(InputAction.CallbackContext context);
+        void OnMenuPing(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
