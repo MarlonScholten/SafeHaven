@@ -92,7 +92,7 @@ public class EnemyAiStateManager : MonoBehaviour
         var directionToPlayer = player.transform.position - transform1.position;
         var angleToPlayer = Vector3.Angle(transform1.forward, directionToPlayer);
         
-        if (!(angleToPlayer < enemyAiScriptableObject.visionAngle)) return false;
+        if (angleToPlayer >= enemyAiScriptableObject.visionAngle) return false;
         if (!Physics.Raycast(transform.position, directionToPlayer, out var hit, enemyAiScriptableObject.visionRange)) return false;
         var path = new NavMeshPath();
         navMeshAgent.CalculatePath(hit.transform.position, path);
@@ -126,9 +126,10 @@ public class EnemyAiStateManager : MonoBehaviour
         var randDirection = Random.insideUnitSphere * enemyAiScriptableObject.investigateDistance;
         if (alertedBySound) randDirection += locationOfNoise;
         else if(alertedByVision) randDirection += spottedPlayerLastPosition;
-        NavMesh.SamplePosition (randDirection, out NavMeshHit navHit, enemyAiScriptableObject.investigateDistance, 1);
+        NavMesh.SamplePosition (randDirection, out NavMeshHit navHit, enemyAiScriptableObject.investigateDistance, -1);
         targetWpLocation = navHit.position;
         CheckPlayerPositionReachable(targetWpLocation);
+        Debug.Log("calculated investigate location");
         waitingAtWaypoint = false;
     }
     /// <summary>

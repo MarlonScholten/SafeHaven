@@ -27,7 +27,7 @@ public class ChasingState : MonoBehaviour
     /// </summary>
     public void Update_Chasing()
     {
-        if(!_stateManager.CheckVision() && (_stateManager.timePlayerLastSpotted + 3) < Time.time)
+        if(!_stateManager.CheckVision() && (_stateManager.timePlayerLastSpotted + _stateManager.enemyAiScriptableObject.chaseTimeWhenNotSeen) < Time.time)
         {
             CustomEvent.Trigger(gameObject, "Investigate");
         }
@@ -49,7 +49,7 @@ public class ChasingState : MonoBehaviour
             _stateManager.navMeshAgent.SetDestination(_stateManager.spottedPlayer.transform.position);
         }
 
-        if (!_stateManager.CheckVision() && (_stateManager.timePlayerLastSpotted + 3) > Time.time)
+        if (!_stateManager.CheckVision() && (_stateManager.timePlayerLastSpotted + _stateManager.enemyAiScriptableObject.chaseTimeWhenNotSeen) > Time.time)
         {
             _stateManager.navMeshAgent.SetDestination(_stateManager.spottedPlayer.transform.position);
         }
