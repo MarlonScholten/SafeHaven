@@ -14,6 +14,7 @@ public class MenuPingController : MonoBehaviour
     [SerializeField] private Camera _camera;
 
     private bool _radialMenuIsSetActive = false;
+    private bool extrabool = false;
 
     private PingType _chosenAction;
 
@@ -189,6 +190,8 @@ public class MenuPingController : MonoBehaviour
     private void OnMenuPing(InputAction.CallbackContext callbackContext)
     {
         if (_radialMenuIsSetActive) return;
+        
+        _radialMenuIsSetActive = true;
         var ray = _camera.ScreenPointToRay(Mouse.current.position.ReadValue());
         Debug.DrawRay(ray.origin, ray.direction * Correction, Color.red, 3);
 
@@ -198,17 +201,12 @@ public class MenuPingController : MonoBehaviour
 
         Time.timeScale /= _slowmotionFactor;
         
-        _radialMenuIsSetActive = true;
+        
     }
 
     private void ShowMarker(Vector3 position)
     {
         Instantiate(_markerPrefab, position, Quaternion.identity);
-    }
-
-    private void OnMenuPingRelease(InputAction.CallbackContext callbackContext)
-    {
-        
     }
 
     public Vector3 GetPingLocation()

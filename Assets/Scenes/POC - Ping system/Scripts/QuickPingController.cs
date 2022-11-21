@@ -39,8 +39,9 @@ public class QuickPingController : MonoBehaviour
 
     private void OnQuickPing(InputAction.CallbackContext callbackContext)
     {
+        Debug.Log(_radialMenu.activeSelf);
         if (_radialMenu.activeSelf) return;
-        
+        Debug.Log("onquickping beyond if");
         var mouseX = Mouse.current.position.ReadValue().x;
         var mouseY = Mouse.current.position.ReadValue().y;
         var newMousePosition = new Vector2(mouseX,mouseY);
