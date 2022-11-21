@@ -36,12 +36,13 @@ public class DoxyTest : MonoBehaviour
     [Range(0.0f, 100.0f), Tooltip("A cool descripion of what this value does and how it effects the script and/or game world")]
     public float sensitivity = 20.0f;
 
-    /// <summary>
-    /// Some more examples of how to document stuff
-    /// Set to true to see if you are happy
-    /// </summary>
     [Tooltip("Set to true to see if you are happy")]
     private bool _happy = false;
+
+    /// <summary>
+    /// A very cool description of what the Happy varible does
+    /// </summary>
+    public bool Happy => _happy;
     
     /// <summary>
     /// Adds two numbers togheter
@@ -55,7 +56,7 @@ public class DoxyTest : MonoBehaviour
     }
 
     /// <summary>
-    /// Subtract two numbers
+    /// Subtract two numbers, this will not show in the doxygen generated html. Therefore is optionol to document private members.
     /// </summary>
     /// <param name="a">the first number</param>
     /// <param name="b">the second number</param>
