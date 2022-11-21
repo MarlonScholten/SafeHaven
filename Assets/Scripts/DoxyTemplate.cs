@@ -47,9 +47,9 @@ public class DoxyTest : MonoBehaviour
     /// A very cool description of what the Happy property does
     /// </summary>
     public bool Happy => _happy;
-    
+
     /// <summary>
-    /// Adds two numbers togheter
+    /// Adds two numbers together
     /// </summary>
     /// <param name="a">The first number to be added</param>
     /// <param name="b">The second number to be added</param>
@@ -60,7 +60,7 @@ public class DoxyTest : MonoBehaviour
     }
 
     /// <summary>
-    /// Subtract two numbers, this will not show in the doxygen generated html. Therefore is optional to document private members.
+    /// Subtract two numbers, this will not show in the doxygen generated html. Therefore it is optional to document private members.
     /// </summary>
     /// <param name="a">the first number</param>
     /// <param name="b">the second number</param>
