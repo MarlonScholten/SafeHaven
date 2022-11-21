@@ -62,6 +62,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ShowDebuggingTools"",
+                    ""type"": ""Button"",
+                    ""id"": ""dd99a428-42fd-4038-8808-9439d8a80ec6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -293,6 +302,17 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""TraverseInitiate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""35fc353c-d9bf-4823-930c-061ec1f13fa9"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""ShowDebuggingTools"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -884,6 +904,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
         m_Player_TraverseInitiate = m_Player.FindAction("TraverseInitiate", throwIfNotFound: true);
+        m_Player_ShowDebuggingTools = m_Player.FindAction("ShowDebuggingTools", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -959,6 +980,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Fire;
     private readonly InputAction m_Player_TraverseInitiate;
+    private readonly InputAction m_Player_ShowDebuggingTools;
     public struct PlayerActions
     {
         private @PlayerInput m_Wrapper;
@@ -967,6 +989,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
         public InputAction @TraverseInitiate => m_Wrapper.m_Player_TraverseInitiate;
+        public InputAction @ShowDebuggingTools => m_Wrapper.m_Player_ShowDebuggingTools;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -988,6 +1011,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @TraverseInitiate.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTraverseInitiate;
                 @TraverseInitiate.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTraverseInitiate;
                 @TraverseInitiate.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTraverseInitiate;
+                @ShowDebuggingTools.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShowDebuggingTools;
+                @ShowDebuggingTools.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShowDebuggingTools;
+                @ShowDebuggingTools.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShowDebuggingTools;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1004,6 +1030,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @TraverseInitiate.started += instance.OnTraverseInitiate;
                 @TraverseInitiate.performed += instance.OnTraverseInitiate;
                 @TraverseInitiate.canceled += instance.OnTraverseInitiate;
+                @ShowDebuggingTools.started += instance.OnShowDebuggingTools;
+                @ShowDebuggingTools.performed += instance.OnShowDebuggingTools;
+                @ShowDebuggingTools.canceled += instance.OnShowDebuggingTools;
             }
         }
     }
@@ -1164,6 +1193,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnLook(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
         void OnTraverseInitiate(InputAction.CallbackContext context);
+        void OnShowDebuggingTools(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
