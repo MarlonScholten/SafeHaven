@@ -18,14 +18,12 @@ public class PatrolState : MonoBehaviour
     private bool _waitingAtWaypointCoroutineIsRunning;
     private IEnumerator _patrolCoroutine;
     private bool _patrolCoroutineIsRunning;
-    private FSM_Scriptable_Object _fsmScriptableObject;
     [NonSerialized] public HeardASoundEvent HeardASoundEvent;
 
     
     private void Awake()
     {
         _stateManager = GetComponent<EnemyAiStateManager>();
-        _fsmScriptableObject = _stateManager.enemyAiScriptableObject;
         HeardASoundEvent ??= new HeardASoundEvent();
         HeardASoundEvent.AddListener(HeardASoundFromPlayer);
     }
@@ -65,7 +63,7 @@ public class PatrolState : MonoBehaviour
         if (_numberOfSmallSoundsHeard > 0 && !_smallSoundReducer)
         {
             _smallSoundReducer = true; 
-            StartCoroutine(_stateManager.CallFunctionAfterSeconds(_fsmScriptableObject.reduceSmallSoundsTime, () => { 
+            StartCoroutine(_stateManager.CallFunctionAfterSeconds(_stateManager.enemyAiScriptableObject.reduceSmallSoundsTime, () => { 
                 _numberOfSmallSoundsHeard--;
                 _smallSoundReducer = false;
             }));
@@ -83,7 +81,7 @@ public class PatrolState : MonoBehaviour
             {
                 _waitingAtWaypointCoroutineIsRunning = true;
                 _stateManager.LookAround();
-                _patrolCoroutine = _stateManager.CallFunctionAfterSeconds(_fsmScriptableObject.waitAtWaypointTime, () =>
+                _patrolCoroutine = _stateManager.CallFunctionAfterSeconds(_stateManager.enemyAiScriptableObject.waitAtWaypointTime, () =>
                 {
                     DetermineNextWaypoint();
                     _waitingAtWaypointCoroutineIsRunning = false;
@@ -128,9 +126,9 @@ public class PatrolState : MonoBehaviour
     
     private void HeardASoundFromPlayer(SoundSource source)
     {
-        if(source.GetVolume() <_fsmScriptableObject.thresholdSmallSounds) return;
-        if (source.GetVolume() <= _fsmScriptableObject.thresholdLoudSounds && source.GetVolume() >= _fsmScriptableObject.thresholdSmallSounds) _numberOfSmallSoundsHeard++;
-        if (_numberOfSmallSoundsHeard >= _fsmScriptableObject.numberOfSmallSoundsToInvestigate || source.GetVolume() > _fsmScriptableObject.thresholdLoudSounds)
+        if(source.GetVolume() <_stateManager.enemyAiScriptableObject.thresholdSmallSounds) return;
+        if (source.GetVolume() <= _stateManager.enemyAiScriptableObject.thresholdLoudSounds && source.GetVolume() >= _stateManager.enemyAiScriptableObject.thresholdSmallSounds) _numberOfSmallSoundsHeard++;
+        if (_numberOfSmallSoundsHeard >= _stateManager.enemyAiScriptableObject.numberOfSmallSoundsToInvestigate || source.GetVolume() > _stateManager.enemyAiScriptableObject.thresholdLoudSounds)
         {
             _numberOfSmallSoundsHeard = 0;
             _stateManager.locationOfNoise = source.GetSource().transform.position;

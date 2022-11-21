@@ -22,5 +22,7 @@ public class FSM_Scriptable_Object : ScriptableObject
     public int numberOfSmallSoundsToInvestigate = 3;
     public int reduceSmallSoundsTime = 3;
     public int stopWhenAlertedTime = 3;
+
+    public float catchDistance = 0.05f;
 }
 

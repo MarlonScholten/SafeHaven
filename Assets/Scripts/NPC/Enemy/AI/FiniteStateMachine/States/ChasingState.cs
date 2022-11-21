@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// ChasingState functions
@@ -9,6 +10,7 @@ using UnityEngine;
 public class ChasingState : MonoBehaviour
 {
     private EnemyAiStateManager _stateManager;
+
     void Awake()
     {
         _stateManager = GetComponent<EnemyAiStateManager>();
@@ -25,9 +27,15 @@ public class ChasingState : MonoBehaviour
     /// </summary>
     public void Update_Chasing()
     {
-        if(!_stateManager.CheckVision() && (_stateManager.timePlayerLastSpotted + 2) < Time.time)
+        if(!_stateManager.CheckVision() && (_stateManager.timePlayerLastSpotted + 3) < Time.time)
         {
             CustomEvent.Trigger(gameObject, "Investigate");
+        }
+        //get distance between player and enemy
+        float distance = Vector3.Distance(_stateManager.spottedPlayer.transform.position, transform.position);
+        if (distance < _stateManager.enemyAiScriptableObject.catchDistance)
+        {
+            _stateManager.catchChild();
         }
     }
     
@@ -41,7 +49,7 @@ public class ChasingState : MonoBehaviour
             _stateManager.navMeshAgent.SetDestination(_stateManager.spottedPlayer.transform.position);
         }
 
-        if (!_stateManager.CheckVision() && (_stateManager.timePlayerLastSpotted + 2) > Time.time)
+        if (!_stateManager.CheckVision() && (_stateManager.timePlayerLastSpotted + 3) > Time.time)
         {
             _stateManager.navMeshAgent.SetDestination(_stateManager.spottedPlayer.transform.position);
         }
@@ -54,7 +62,5 @@ public class ChasingState : MonoBehaviour
     {
         _stateManager.CheckPlayerPositionReachable(_stateManager.spottedPlayer.transform.position);
         _stateManager.spottedPlayer = null;
-    }/// <summary>
-/// AlertedState functions
-/// </summary>
+    }
 }

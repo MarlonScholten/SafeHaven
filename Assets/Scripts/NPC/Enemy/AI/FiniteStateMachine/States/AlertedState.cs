@@ -11,24 +11,25 @@ public class AlertedState : MonoBehaviour
     private EnemyAiStateManager _stateManager;
     private IEnumerator _alertedCoroutine;
     private bool _alertedCoroutineIsRunning;
-    private FSM_Scriptable_Object _fsmScriptableObject;
 
     void Awake()
     {
         _stateManager = GetComponent<EnemyAiStateManager>();
-        _fsmScriptableObject = _stateManager.enemyAiScriptableObject;
     }
     /// <summary>
     /// Enter alerted state
     /// </summary>
     public void Enter_Alerted()
     {
+        //If the enemy is alerted by sound, it will look around for a few seconds
         if (_stateManager.alertedBySound)
         {
+            //Stops the enemy from moving
             _stateManager.navMeshAgent.isStopped = true;
             _alertedCoroutineIsRunning = true;
-            _alertedCoroutine = _stateManager.CallFunctionAfterSeconds(_fsmScriptableObject.stopWhenAlertedTime, () =>
+            _alertedCoroutine = _stateManager.CallFunctionAfterSeconds(_stateManager.enemyAiScriptableObject.stopWhenAlertedTime, () =>
             {
+                //If the enemy stood still for the set time, it will continue
                 _stateManager.navMeshAgent.isStopped = false; 
                 _alertedCoroutineIsRunning = false;
             });
@@ -41,15 +42,19 @@ public class AlertedState : MonoBehaviour
     /// </summary>
     public void Update_Alerted()
     {
+        //stop if the coroutine is already running.
         if (_alertedCoroutineIsRunning) return;
+        //If the enemy is alerted by sound it will investigate the sound.
         if (_stateManager.alertedBySound)
         {
             CustomEvent.Trigger(gameObject, "Investigate");
         }
+        //If the enemy is alerted by vision it will start chasing.
         else if (_stateManager.alertedByVision)
         {
             CustomEvent.Trigger(gameObject, "Chasing");
         }
+        //If the enemy is not alerted at all anymore it will go back to patrolling.
         else
         {
             CustomEvent.Trigger(gameObject, "Patrol");
@@ -61,6 +66,7 @@ public class AlertedState : MonoBehaviour
     /// </summary>
     public void FixedUpdate_Alerted()
     {
+        //The player looks around while it is alerted.
         _stateManager.LookAround();
     }
     
