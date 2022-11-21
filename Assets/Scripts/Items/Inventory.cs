@@ -14,12 +14,12 @@ namespace Items
         [SerializeField] private Image _inventoryUI;
         [SerializeField] private GameObject _itemHolder;
         
-        private GameObject _itemInInventory;
-        private Item _itemI;
+        private GameObject _itemInInventoryOBJ;
+        public Item _itemInInventory;
         private ItemController _itemController;
 
         private bool _itemIsClose;
-        private bool _hasItemInInventory;
+        public bool _hasItemInInventory;
         private bool _isChangingItem;
         private bool _itemHasChanged;
 
@@ -64,16 +64,16 @@ namespace Items
         public void PickUpitem()
         {
             int randomItem = Random.Range(0, _itemsClose.Count - 1);
-            _itemInInventory = _itemsClose[randomItem];
+            _itemInInventoryOBJ = _itemsClose[randomItem];
                 
             _hasItemInInventory = true;
 
-            _itemController = _itemInInventory.GetComponent<ItemController>();
-            _itemI = _itemController._item;
+            _itemController = _itemInInventoryOBJ.GetComponent<ItemController>();
+            _itemInInventory = _itemController._item;
             _itemController.PickUpItem();
 
-            _itemInInventory.transform.SetParent(_itemHolder.transform);
-            _itemInInventory.transform.SetPositionAndRotation(_itemHolder.transform.position,
+            _itemInInventoryOBJ.transform.SetParent(_itemHolder.transform);
+            _itemInInventoryOBJ.transform.SetPositionAndRotation(_itemHolder.transform.position,
                 _itemHolder.transform.rotation);
                 
             _itemsClose.RemoveAt(randomItem);
@@ -84,12 +84,12 @@ namespace Items
         {
             if (_hasItemInInventory)
             {
-                _itemInInventory.transform.SetParent(null);
+                _itemInInventoryOBJ.transform.SetParent(null);
                 
                 _itemController.DropItem();
                 
+                _itemInInventoryOBJ = null;
                 _itemInInventory = null;
-                _itemI = null;
 
                 _hasItemInInventory = false;
                 _itemHasChanged = true;
@@ -100,7 +100,7 @@ namespace Items
         {
             if (_hasItemInInventory)
             {
-                _inventoryUI.sprite = _itemI._icon;
+                _inventoryUI.sprite = _itemInInventory._icon;
                 _inventoryUI.enabled = true;
             }
             else
