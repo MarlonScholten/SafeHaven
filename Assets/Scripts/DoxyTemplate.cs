@@ -27,7 +27,7 @@ using UnityEngine;
 ///	    </item>
 /// </list>
 
-public class DoxyTest : MonoBehaviour
+public class DoxyTemplate : MonoBehaviour
 {
     /// <summary>
     /// A cool descripion of what this value does and how it effects the script and/or game world
