@@ -174,7 +174,9 @@ public class BrotherAI : MonoBehaviour
     }
 
     public void WalkUpdate(){
-        
+        if(PathCompleted()){
+            CustomEvent.Trigger(this.gameObject, "Idle");
+        }
     }
 
     public void WalkFixedUpdate(){
@@ -191,7 +193,9 @@ public class BrotherAI : MonoBehaviour
     }
 
     public void RunUpdate(){
-        
+        if(PathCompleted()){
+            CustomEvent.Trigger(this.gameObject, "Idle");
+        }
     }
 
     public void RunFixedUpdate(){
