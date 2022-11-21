@@ -4,6 +4,7 @@ using UnityEngine;
 
 /// <summary>
 /// A very cool description of what this script does. Bear in mind that this documentation is mainly for the design team so they can install and play with the scripts that you made :)
+/// Copy and paste this into your script and change the \<item\> objects
 /// </summary>
 /// <list type="table">
 ///	    <listheader>
@@ -29,12 +30,14 @@ using UnityEngine;
 public class DoxyTest : MonoBehaviour
 {
     /// <summary>
-    /// A public float used for the sensitivity of the mouse, ranges form 0 to 100
+    /// A cool descripion of what this value does and how it effects the script and/or game world
+    /// The tooltip attribute is very importent here so its easier for design to know what the value does
     /// </summary>
-    [Range(0.0f, 100.0f), Tooltip("The sensitivity of the mouse.")]
+    [Range(0.0f, 100.0f), Tooltip("A cool descripion of what this value does and how it effects the script and/or game world")]
     public float sensitivity = 20.0f;
 
     /// <summary>
+    /// Some more examples of how to document stuff
     /// Set to true to see if you are happy
     /// </summary>
     [Tooltip("Set to true to see if you are happy")]
