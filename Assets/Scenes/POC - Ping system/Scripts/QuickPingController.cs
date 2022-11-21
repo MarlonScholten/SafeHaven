@@ -12,8 +12,6 @@ public class QuickPingController : MonoBehaviour
 
     private PingSystem _pingSystem;
 
-    private bool _holdSucceeded = false;
-
     private Vector3 _pingPosition;
     private const float Correction = 10000f;
     
@@ -23,13 +21,10 @@ public class QuickPingController : MonoBehaviour
     {
         _pingSystem = new PingSystem();
         _pingSystem.Player.QuickPing.performed += OnQuickPing;
-        _pingSystem.Player.MenuPing.performed += OnMenuPingPerformed;
-        _pingSystem.Player.Fire.started += OnLeftMouseButton;
     }
 
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void OnEnable()
@@ -42,25 +37,13 @@ public class QuickPingController : MonoBehaviour
         _pingSystem.Disable();
     }
 
-    private void OnMenuPingPerformed(InputAction.CallbackContext callbackContext)
-    {
-        _holdSucceeded = true;
-    }
-
-    private void OnLeftMouseButton(InputAction.CallbackContext callbackContext)
-    {
-        if (!_radialMenu.activeSelf) return;
-        _holdSucceeded = false;
-    }
-
     private void OnQuickPing(InputAction.CallbackContext callbackContext)
     {
-        if (_radialMenu.activeSelf || _holdSucceeded) return;
-        if (_radialMenu.activeSelf.Equals(true)) return;
+        if (_radialMenu.activeSelf) return;
         
         var mouseX = Mouse.current.position.ReadValue().x;
         var mouseY = Mouse.current.position.ReadValue().y;
-        var newMousePosition = new Vector2(mouseX,mouseY * _playerHeightCorrection);
+        var newMousePosition = new Vector2(mouseX,mouseY);
         var ray = _camera.ScreenPointToRay( newMousePosition);
         Debug.DrawRay(ray.origin, ray.direction * Correction, Color.red, 3);
 

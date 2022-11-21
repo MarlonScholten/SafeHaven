@@ -14,7 +14,6 @@ public class MenuPingController : MonoBehaviour
     [SerializeField] private Camera _camera;
 
     private bool _radialMenuIsSetActive = false;
-    private bool _holdSucceeded = false;
 
     private PingType _chosenAction;
 
@@ -49,9 +48,8 @@ public class MenuPingController : MonoBehaviour
     private void Awake()
     {
         _pingSystem = new();
-        _pingSystem.Player.MenuPing.performed += OnLongPing;
-        _pingSystem.Player.MenuPing.canceled += OnMenuPingRelease;
-        _pingSystem.Player.Fire.started += OnLeftMouseButton;
+        _pingSystem.Player.MenuPing.performed += OnMenuPing;
+        _pingSystem.Player.Fire.performed += OnLeftMouseButton;
     }
 
     private void Start()
@@ -59,7 +57,6 @@ public class MenuPingController : MonoBehaviour
         _radialMenu.SetActive(false);
         _cancelled = NotCancelled;
 
-        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Update()
@@ -171,7 +168,6 @@ public class MenuPingController : MonoBehaviour
     {
         _radialMenuIsSetActive = false;
         _radialMenu.SetActive(_radialMenuIsSetActive);
-        Cursor.lockState = CursorLockMode.Locked;
         Time.timeScale = StandardTimeFactor;
     }
 
@@ -190,13 +186,19 @@ public class MenuPingController : MonoBehaviour
         //_brotherAI.PingBrother(_pingAction, _pingPosition)
     }
 
-    private void OnLongPing(InputAction.CallbackContext callbackContext)
+    private void OnMenuPing(InputAction.CallbackContext callbackContext)
     {
-        _holdSucceeded = true;
-        Cursor.lockState = CursorLockMode.None;
-        
-        if (_radialMenu.activeSelf) return;
+        if (_radialMenuIsSetActive) return;
+        var ray = _camera.ScreenPointToRay(Mouse.current.position.ReadValue());
+        Debug.DrawRay(ray.origin, ray.direction * Correction, Color.red, 3);
+
+        if (!Physics.Raycast(ray.origin, ray.direction * Correction, out var hit)) return;
+        _pingPosition = hit.point;
+        ShowMarker(_pingPosition);
+
         Time.timeScale /= _slowmotionFactor;
+        
+        _radialMenuIsSetActive = true;
     }
 
     private void ShowMarker(Vector3 position)
@@ -206,16 +208,7 @@ public class MenuPingController : MonoBehaviour
 
     private void OnMenuPingRelease(InputAction.CallbackContext callbackContext)
     {
-        if (_radialMenuIsSetActive || !_holdSucceeded) return;
-        var ray = _camera.ScreenPointToRay(Mouse.current.position.ReadValue());
-        Debug.DrawRay(ray.origin, ray.direction * Correction, Color.red, 3);
-
-        if (!Physics.Raycast(ray.origin, ray.direction * Correction, out var hit)) return;
-        _pingPosition = hit.point;
-        ShowMarker(_pingPosition);
-
-        _holdSucceeded = false;
-        _radialMenuIsSetActive = true;
+        
     }
 
     public Vector3 GetPingLocation()
