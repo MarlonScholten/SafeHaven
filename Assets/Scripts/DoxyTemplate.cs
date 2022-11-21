@@ -36,6 +36,9 @@ public class DoxyTest : MonoBehaviour
     [Range(0.0f, 100.0f), Tooltip("A cool descripion of what this value does and how it effects the script and/or game world")]
     public float sensitivity = 20.0f;
 
+    /// <summary>
+    /// Private members of a class are optional to document. It won't show up in the doxygen html but it might be usefull to document it for your fellow programmers.
+    /// </summary>
     [Tooltip("Set to true to see if you are happy")]
     private bool _happy = false;
 
