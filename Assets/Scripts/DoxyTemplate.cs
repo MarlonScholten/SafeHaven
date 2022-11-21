@@ -60,7 +60,7 @@ public class DoxyTest : MonoBehaviour
     }
 
     /// <summary>
-    /// Subtract two numbers, this will not show in the doxygen generated html. Therefore is optionol to document private members.
+    /// Subtract two numbers, this will not show in the doxygen generated html. Therefore is optional to document private members.
     /// </summary>
     /// <param name="a">the first number</param>
     /// <param name="b">the second number</param>
