@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Characters
+namespace PlayerMovement
 {
     /// <summary>
     /// Controller for everything related to the player character's state, movement and actions.

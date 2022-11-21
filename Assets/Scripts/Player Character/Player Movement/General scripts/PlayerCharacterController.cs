@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Characters
+namespace PlayerMovement
 {
     /// <summary>
     /// A simple character controller that moves the player.
