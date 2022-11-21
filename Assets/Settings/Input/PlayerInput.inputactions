@@ -33,6 +33,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "TraverseInitiate",
+                    "type": "Button",
+                    "id": "c6bc6dad-ab5b-4dd6-8a44-07a3ee455db3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                 },
+                 {
                     "name": "ShowDebuggingTools",
                     "type": "Button",
                     "id": "dd99a428-42fd-4038-8808-9439d8a80ec6",
@@ -265,6 +274,17 @@
                 },
                 {
                     "name": "",
+                    "id": "c063c546-12e0-4ba1-8f25-895cd7e2dc8c",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "TraverseInitiate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                 },
+                 {
+                    "name":"",
                     "id": "35fc353c-d9bf-4823-930c-061ec1f13fa9",
                     "path": "<Keyboard>/tab",
                     "interactions": "",
