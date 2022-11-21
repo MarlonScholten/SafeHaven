@@ -29,16 +29,16 @@ using UnityEngine;
 public class DoxyTest : MonoBehaviour
 {
     /// <summary>
-    /// Set to true to see if you are happy
+    /// A public float used for the sensitivity of the mouse, ranges form 0 to 100
     /// </summary>
-    [SerializeField]
-    public bool happy = false;
+    [Range(0.0f, 100.0f), Tooltip("The sensitivity of the mouse.")]
+    public float sensitivity = 20.0f;
 
     /// <summary>
-    /// Used for the sensitivity of the mouse, ranges form 0 to 100
+    /// Set to true to see if you are happy
     /// </summary>
-    [Range(0.0f, 100.0f)]
-    public float sensitivity = 20.0f;
+    [Tooltip("Set to true to see if you are happy")]
+    private bool _happy = false;
     
     /// <summary>
     /// Adds two numbers togheter
@@ -49,5 +49,16 @@ public class DoxyTest : MonoBehaviour
     public int AddNumbers(int a, int b)
     {
         return a + b;
+    }
+
+    /// <summary>
+    /// Subtract two numbers
+    /// </summary>
+    /// <param name="a">the first number</param>
+    /// <param name="b">the second number</param>
+    /// <returns>a minus b</returns>
+    private int SubtractNumbers(int a, int b)
+    {
+        return a - b;
     }
 }
