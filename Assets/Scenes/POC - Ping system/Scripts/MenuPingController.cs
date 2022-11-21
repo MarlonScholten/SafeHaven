@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class LongPingController : MonoBehaviour
+public class MenuPingController : MonoBehaviour
 {
     //TODO Integrate
     //private BrotherAI _brotherAI;
@@ -49,8 +49,8 @@ public class LongPingController : MonoBehaviour
     private void Awake()
     {
         _pingSystem = new();
-        _pingSystem.Player.LongPing.performed += OnLongPing;
-        _pingSystem.Player.LongPing.canceled += OnLongPingRelease;
+        _pingSystem.Player.MenuPing.performed += OnLongPing;
+        _pingSystem.Player.MenuPing.canceled += OnMenuPingRelease;
         _pingSystem.Player.Fire.started += OnLeftMouseButton;
     }
 
@@ -204,7 +204,7 @@ public class LongPingController : MonoBehaviour
         Instantiate(_markerPrefab, position, Quaternion.identity);
     }
 
-    private void OnLongPingRelease(InputAction.CallbackContext callbackContext)
+    private void OnMenuPingRelease(InputAction.CallbackContext callbackContext)
     {
         if (_radialMenuIsSetActive || !_holdSucceeded) return;
         var ray = _camera.ScreenPointToRay(Mouse.current.position.ReadValue());

@@ -23,7 +23,7 @@ public class QuickPingController : MonoBehaviour
     {
         _pingSystem = new PingSystem();
         _pingSystem.Player.QuickPing.performed += OnQuickPing;
-        _pingSystem.Player.LongPing.performed += OnLongPingPerformed;
+        _pingSystem.Player.MenuPing.performed += OnMenuPingPerformed;
         _pingSystem.Player.Fire.started += OnLeftMouseButton;
     }
 
@@ -42,7 +42,7 @@ public class QuickPingController : MonoBehaviour
         _pingSystem.Disable();
     }
 
-    private void OnLongPingPerformed(InputAction.CallbackContext callbackContext)
+    private void OnMenuPingPerformed(InputAction.CallbackContext callbackContext)
     {
         _holdSucceeded = true;
     }
@@ -53,7 +53,6 @@ public class QuickPingController : MonoBehaviour
         _holdSucceeded = false;
     }
 
-   
     private void OnQuickPing(InputAction.CallbackContext callbackContext)
     {
         if (_radialMenu.activeSelf || _holdSucceeded) return;
