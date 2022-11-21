@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Characters
+namespace PlayerMovement
 {
     /// <summary>
     /// This class initializes all the necessary player-related states so they can easily be called by other code.

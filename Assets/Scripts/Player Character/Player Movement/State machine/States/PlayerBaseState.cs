@@ -1,4 +1,4 @@
-namespace Characters
+namespace PlayerMovement
 {
     /// <summary>
     /// The main abstraction of all player-related states.

@@ -1,4 +1,4 @@
-namespace Characters
+namespace PlayerMovement
 {
     /// <summary>
     /// The Idle state for when no input is currently being received.

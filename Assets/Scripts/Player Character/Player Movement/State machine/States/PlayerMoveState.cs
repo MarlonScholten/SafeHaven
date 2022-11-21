@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Characters
+namespace PlayerMovement
 {
     /// <summary>
     /// The Move state is active when movement-related input is received.
