@@ -40,6 +40,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                 },
+                 {
+                    "name": "ShowDebuggingTools",
+                    "type": "Button",
+                    "id": "dd99a428-42fd-4038-8808-9439d8a80ec6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -271,6 +280,17 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "TraverseInitiate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                 },
+                 {
+                    "name":"",
+                    "id": "35fc353c-d9bf-4823-930c-061ec1f13fa9",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "ShowDebuggingTools",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

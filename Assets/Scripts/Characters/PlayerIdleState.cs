@@ -1,5 +1,8 @@
 namespace Characters
 {
+    /// <summary>
+    /// The Idle state for when no input is currently being received.
+    /// </summary>
     public class PlayerIdleState : PlayerBaseState
     {
         public PlayerIdleState(PlayerController context, PlayerStateFactory factory)
@@ -23,10 +26,15 @@ namespace Characters
         /// <summary>
         /// If the player is inputting movement, we should switch to the movement state.
         /// </summary>
-        public override void CheckSwitchStates()
+        public override bool CheckSwitchStates()
         {
-            if(Context.IsMoving())
+            if (Context.IsMoving() && (Context.IsGrounded() || Context.CanMoveInAir))
+            {
                 SwitchState(Factory.Move());
+                return true;
+            }
+
+            return false;
         }
     }
 }

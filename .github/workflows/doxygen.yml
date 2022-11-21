@@ -5,6 +5,9 @@ name: Doxygen generation
 # Controls when the workflow will run
 on:
   workflow_dispatch:
+  pull_request:
+    branches:
+      ['main']
 jobs:
   doxygen:
     runs-on: ubuntu-latest
@@ -22,6 +25,13 @@ jobs:
           working-directory: .
         # Generate latex documentation
           enable-latex: false
-        # Extra alpine packages for the build environment
-          additional-packages: false
-        
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: doxygenBuild
+          path: Doxygen/html # or path/to/artifact
+      - name: Deploy Doxygen site
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./Doxygen/html

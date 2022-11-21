@@ -3,20 +3,26 @@ using UnityEngine.InputSystem;
 
 namespace Characters
 {
+    /// <summary>
+    /// Controller for everything related to the player character's state, movement and actions.
+    /// </summary>
+    /// <remarks>Listens for player input and changes state accordingly</remarks>
     public class PlayerController : MonoBehaviour
     {
-        [SerializeField] [Range(1f, 20f)] private float movementSpeed = 5f;
-        [SerializeField] [Range(1f, 20f)] private float lookSensitivity = 5f;
-        public float MovementSpeed => movementSpeed;
-        public CharacterController CharacterController { get; private set; }
+        [SerializeField] [Range(1f, 20f)] private float _movementSpeed = 5f;
+        [SerializeField] [Range(1f, 20f)] private float _lookSensitivity = 5f;
+        [SerializeField] private bool _canMoveInAir = true;
+
+        public bool CanMoveInAir { get => _canMoveInAir;}
+        public float MovementSpeed => _movementSpeed;
+        private CharacterController CharacterController { get; set; }
         public PlayerBaseState CurrentState { get; set; }
         public Vector2 MovementInput { get; private set; }
         private Vector3 _movement;
         public Vector3 Movement { set => _movement = value; }
         private Vector2 LookInput { get; set; }
-
-        private readonly float _gravity = 9.8f;
-        [SerializeField] private float gravityMultiplier = 1f;
+        private const float _gravity = 9.8f;
+        [SerializeField] private float _gravityMultiplier = 1f;
         private PlayerStateFactory _states;
         private float _verticalSpeed;
 
@@ -40,7 +46,7 @@ namespace Characters
             Look();
             CharacterController.Move(_movement * Time.deltaTime);
         }
-        
+
         /// <summary>
         /// Update the movement values whenever the player inputs movement keys
         /// </summary>
@@ -68,11 +74,21 @@ namespace Characters
         }
 
         /// <summary>
+        /// Expose the Character Controller's isGrounded property.
+        /// </summary>
+        /// <remarks>This method avoids exposing the whole character controller.</remarks>
+        /// <returns>true if the controller is grounded</returns>
+        public bool IsGrounded()
+        {
+            return CharacterController.isGrounded;
+        }
+
+        /// <summary>
         /// Rotate the player based on look input
         /// </summary>
         private void Look()
         {
-            transform.Rotate(new Vector3(0f, LookInput.x * lookSensitivity * Time.deltaTime, 0f));
+            transform.Rotate(new Vector3(0f, LookInput.x * _lookSensitivity * Time.deltaTime, 0f));
             _movement = transform.rotation * _movement;
         }
 
@@ -86,7 +102,7 @@ namespace Characters
 
             if (!CharacterController.isGrounded)
             {
-                _verticalSpeed -= (_gravity * gravityMultiplier) * Time.deltaTime;
+                _verticalSpeed -= (_gravity * _gravityMultiplier) * Time.deltaTime;
                 _movement.y = _verticalSpeed;
             }
         }

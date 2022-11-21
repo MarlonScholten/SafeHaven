@@ -1,5 +1,9 @@
 namespace Characters
 {
+    /// <summary>
+    /// The main abstraction of all player-related states.
+    /// </summary>
+    /// <remarks>When making a new player state, inherit from this class.</remarks>
     public abstract class PlayerBaseState
     {
         protected PlayerController Context;
@@ -31,7 +35,8 @@ namespace Characters
         /// Check to see if this state should swap to another state.
         /// </summary>
         /// <remarks>Usually runs within the <see cref="UpdateState"/> function</remarks>
-        public abstract void CheckSwitchStates();
+        /// <returns>true if we are switching states</returns>
+        public abstract bool CheckSwitchStates();
 
         /// <summary>
         /// Switch to another state. Calls <see cref="Exit"/> on the old state, <see cref="Enter"/> on the new state.

@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace Characters
 {
+    /// <summary>
+    /// The Move state is active when movement-related input is received.
+    /// </summary>
     public class PlayerMoveState : PlayerBaseState
     {
         public PlayerMoveState(PlayerController context, PlayerStateFactory factory) 
@@ -17,23 +20,31 @@ namespace Characters
         /// </summary>
         public override void UpdateState()
         {
-            CheckSwitchStates();
+            if(CheckSwitchStates())
+                return;
+
             var movement = CalculateMovement(Context.MovementInput);
             SetContextMovement(movement);
         }
 
         public override void ExitState()
         {
-            // No logic needed here yet.
+            SetContextMovement(Vector3.zero);
         }
         
         /// <summary>
         /// If the player is not providing input, we should switch to the idle state.
         /// </summary>
-        public override void CheckSwitchStates()
+        /// <returns>true if we are switching states</returns>
+        public override bool CheckSwitchStates()
         {
-            if(!Context.IsMoving())
+            if (!Context.IsMoving() || (!Context.IsGrounded() && !Context.CanMoveInAir))
+            {
                 SwitchState(Factory.Idle());
+                return true;
+            }
+
+            return false;
         }
 
         /// <summary>
