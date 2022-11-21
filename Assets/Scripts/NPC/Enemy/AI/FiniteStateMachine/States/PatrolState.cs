@@ -44,6 +44,7 @@ public class PatrolState : MonoBehaviour
     public void Update_Patrol()
     {
         var path = new NavMeshPath();
+        // If the player is in vision but the path is partial, the enemy will go back to the alerted state.
         if (_stateManager.CheckVision())
         {
             _stateManager.navMeshAgent.CalculatePath(_stateManager.spottedPlayerLastPosition, path);
@@ -52,6 +53,7 @@ public class PatrolState : MonoBehaviour
                 CustomEvent.Trigger(gameObject, "Alerted");
             }
         }
+        //if the player is alerted by sound but the path is partial, the enemy will go back to the alerted state.
         if (_stateManager.alertedBySound)
         {
             _stateManager.navMeshAgent.CalculatePath(_stateManager.locationOfNoise, path);
@@ -60,6 +62,7 @@ public class PatrolState : MonoBehaviour
                 CustomEvent.Trigger(gameObject, "Alerted");
             }
         }
+        // If the enemy heard more than 0 and a certain amount of time has passed, the number of small sounds heard will be decreased by one.
         if (_numberOfSmallSoundsHeard > 0 && !_smallSoundReducer)
         {
             _smallSoundReducer = true; 
@@ -75,6 +78,7 @@ public class PatrolState : MonoBehaviour
     /// </summary>
     public void FixedUpdate_Patrol()
     {
+        // If the enemy is waiting at the waypoint, lookAround and determine the next waypoint after investigating the current one.
         if (_stateManager.CheckIfEnemyIsAtWaypoint())
         {
             if (!_waitingAtWaypointCoroutineIsRunning)
@@ -95,6 +99,7 @@ public class PatrolState : MonoBehaviour
     /// </summary>
     public void Exit_Patrol()
     {
+        // Stop the patrol coroutine if it is running.
         if(_waitingAtWaypointCoroutineIsRunning)StopCoroutine(_patrolCoroutine);
         _waitingAtWaypointCoroutineIsRunning = false;
     }
@@ -103,8 +108,11 @@ public class PatrolState : MonoBehaviour
     /// </summary>
     private void DetermineNextWaypoint()
     {
+        // If there is a next waypoint, go to that one, otherwise return to the first waypoint.
         _stateManager.currentWpIndex = _stateManager.currentWpIndex == _stateManager.wayPoints.Count - 1 ? 0 : _stateManager.currentWpIndex + 1;
+        // Set the next waypoint by using the index.
         _stateManager.targetWpLocation = _stateManager.wayPoints[_stateManager.currentWpIndex].position;
+        // Set the destination of the navmesh agent to the next waypoint.
         _stateManager.navMeshAgent.SetDestination(_stateManager.targetWpLocation);
     }
     /// /// <summary>
@@ -114,6 +122,7 @@ public class PatrolState : MonoBehaviour
     {
         var closestDistance = Mathf.Infinity;
         var closestIndex = 0;
+        // Loop through all the waypoints and check which one is closest to the enemy.
         for (var i = 0; i < _stateManager.wayPoints.Count; i++)
         {
             var distance = Vector3.Distance(transform.position, _stateManager.wayPoints[i].position);
@@ -121,13 +130,17 @@ public class PatrolState : MonoBehaviour
             closestDistance = distance;
             closestIndex = i;
         }
+        //return the index of the closest waypoint.
         return closestIndex;
     }
     
     private void HeardASoundFromPlayer(SoundSource source)
     {
+        // If the sound is too small, return.
         if(source.GetVolume() <_stateManager.enemyAiScriptableObject.thresholdSmallSounds) return;
+        // If the sound is loud enough, increase the number of small sounds heard.
         if (source.GetVolume() <= _stateManager.enemyAiScriptableObject.thresholdLoudSounds && source.GetVolume() >= _stateManager.enemyAiScriptableObject.thresholdSmallSounds) _numberOfSmallSoundsHeard++;
+        // If the sound is loud enough, set the location of the noise and set the alertedBySound to true.
         if (_numberOfSmallSoundsHeard >= _stateManager.enemyAiScriptableObject.numberOfSmallSoundsToInvestigate || source.GetVolume() > _stateManager.enemyAiScriptableObject.thresholdLoudSounds)
         {
             _numberOfSmallSoundsHeard = 0;
