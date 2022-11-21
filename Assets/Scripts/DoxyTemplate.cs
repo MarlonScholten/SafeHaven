@@ -17,7 +17,7 @@ using UnityEngine;
 ///         <term>The GameObject this thing need to be on for this script to work</term>
 ///		    <term>What type of this is. Component, Script, Tag or Layer?</term>
 ///         <term>The name of thing</term>
-///		    <term>A discription of why this thing is need</term>
+///		    <term>A discription of why this thing is needed</term>
 ///	    </item>
 ///	    <item>
 ///         <term>The same GameObject as this script is on</term>
