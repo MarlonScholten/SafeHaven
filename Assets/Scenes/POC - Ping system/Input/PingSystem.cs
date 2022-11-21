@@ -60,7 +60,7 @@ public partial class @PingSystem : IInputActionCollection2, IDisposable
                     ""id"": ""e042f412-510a-4c9d-9263-3ffd468b04e6"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Tap"",
+                    ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
@@ -69,7 +69,7 @@ public partial class @PingSystem : IInputActionCollection2, IDisposable
                     ""id"": ""a9420d1b-7302-4da6-b9ad-1876d7e1ab64"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Hold"",
+                    ""interactions"": """",
                     ""initialStateCheck"": false
                 }
             ],
@@ -298,7 +298,7 @@ public partial class @PingSystem : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""5c01fd3b-4321-4a4f-9ba0-bb0cc3e288c5"",
                     ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": ""Tap"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Quick Ping"",
@@ -309,7 +309,7 @@ public partial class @PingSystem : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""8a7bf7e6-05ed-430f-9f4e-15f033b60cd1"",
                     ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": ""Tap"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Menu Ping"",

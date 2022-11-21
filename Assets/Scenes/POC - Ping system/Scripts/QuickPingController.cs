@@ -12,6 +12,8 @@ public class QuickPingController : MonoBehaviour
 
     private PingSystem _pingSystem;
 
+    private bool test;
+
     private Vector3 _pingPosition;
     private const float Correction = 10000f;
     
@@ -21,6 +23,15 @@ public class QuickPingController : MonoBehaviour
     {
         _pingSystem = new PingSystem();
         _pingSystem.Player.QuickPing.performed += OnQuickPing;
+        _pingSystem.Player.QuickPing.canceled += cancelquick;
+        _pingSystem.Player.MenuPing.started += onMenuStart;
+        
+    }
+    
+    void cancelquick(InputAction.CallbackContext callbackContext)
+    {
+        Debug.Log("quick canceled");
+        test = false;
     }
 
     private void Start()
@@ -37,10 +48,18 @@ public class QuickPingController : MonoBehaviour
         _pingSystem.Disable();
     }
 
+    private void onMenuStart(InputAction.CallbackContext callbackContext)
+    {
+        test = true;
+    }
+
     private void OnQuickPing(InputAction.CallbackContext callbackContext)
     {
-        Debug.Log(_radialMenu.activeSelf);
-        if (_radialMenu.activeSelf) return;
+        Debug.Log("quickping performed");
+        Debug.Log("test " + test);
+        Debug.Log("radialmenustatus " + _radialMenu.activeSelf);
+        if (_radialMenu.activeSelf || test) return;
+        test = false;
         Debug.Log("onquickping beyond if");
         var mouseX = Mouse.current.position.ReadValue().x;
         var mouseY = Mouse.current.position.ReadValue().y;

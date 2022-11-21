@@ -50,9 +50,37 @@ public class MenuPingController : MonoBehaviour
     {
         _pingSystem = new();
         _pingSystem.Player.MenuPing.performed += OnMenuPing;
-        _pingSystem.Player.Fire.performed += OnLeftMouseButton;
+        _pingSystem.Player.MenuPing.started += menuping2;
+        _pingSystem.Player.MenuPing.canceled += menuping3;
+        
+        
+        _pingSystem.Player.QuickPing.performed += OnLeftMouseButton;
+        _pingSystem.Player.QuickPing.started += fire2;
+        _pingSystem.Player.QuickPing.canceled += fire3;
+        
     }
 
+    void fire2(InputAction.CallbackContext callbackContext)
+    {
+        Debug.Log("quick started");
+    }
+    void fire3(InputAction.CallbackContext callbackContext)
+    {
+        Debug.Log("quick canceled");
+    }
+
+    void menuping2(InputAction.CallbackContext callbackContext)
+    {
+        Debug.Log("menu started");
+    }
+    void menuping3(InputAction.CallbackContext callbackContext)
+    {
+        Debug.Log("menu canceled");
+    }
+
+
+    
+    
     private void Start()
     {
         _radialMenu.SetActive(false);
@@ -168,7 +196,9 @@ public class MenuPingController : MonoBehaviour
     private void CloseRadialMenu()
     {
         _radialMenuIsSetActive = false;
+        Debug.Log("radials set active false");
         _radialMenu.SetActive(_radialMenuIsSetActive);
+
         Time.timeScale = StandardTimeFactor;
     }
 
