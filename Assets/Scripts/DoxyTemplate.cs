@@ -40,7 +40,7 @@ public class DoxyTest : MonoBehaviour
     private bool _happy = false;
 
     /// <summary>
-    /// A very cool description of what the Happy varible does
+    /// A very cool description of what the Happy property does
     /// </summary>
     public bool Happy => _happy;
     
