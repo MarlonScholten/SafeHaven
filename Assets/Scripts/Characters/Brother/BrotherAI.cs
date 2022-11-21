@@ -18,7 +18,7 @@ public class BrotherAI : MonoBehaviour
     [SerializeField] private float _walkSpeed = 3.5f;
     [SerializeField] private float _runSpeed = 5f;
 
-    [SerializeField] private float _pathEndThreshold = 0.1f;
+    private float _pathEndThreshold = 0.1f;
 
     private NavMeshAgent _navMeshAgent;
 
@@ -41,6 +41,10 @@ public class BrotherAI : MonoBehaviour
     void FixedUpdate(){
         if(Input.GetKey(KeyCode.Z)){
             CustomEvent.Trigger(this.gameObject, "CallBack");
+        }
+
+        if(Input.GetKey(KeyCode.W)){
+            CustomEvent.Trigger(this.gameObject, "panicHide");
         }
     }
 
@@ -71,9 +75,6 @@ public class BrotherAI : MonoBehaviour
 
     public void FollowUpdate(){
         MoveToLocation(GetPlayerLocation(), _walkSpeed);
-        if(Input.GetKey(KeyCode.W)){
-            CustomEvent.Trigger(this.gameObject, "panicHide");
-        }
         Debug.Log("Follow");
     }
 
@@ -85,6 +86,22 @@ public class BrotherAI : MonoBehaviour
 
     }
 
+    public void HoldingHandsEnter(){
+        
+    }
+
+    public void HoldingHandsUpdate(){
+        MoveToLocation(GetPlayerLocation(), _walkSpeed);
+    }
+
+    public void HoldingHandsFixedUpdate(){
+
+    }
+
+    public void HoldingHandsExit(){
+
+    }
+
     public void PanicHideEnter(){
         MoveToLocation(_findHidingSpot.FindBestHidingSpot(), _walkSpeed);
     }
@@ -92,7 +109,7 @@ public class BrotherAI : MonoBehaviour
     public void PanicHideUpdate(){
         if(PathCompleted()){
             Debug.Log("Brother Hidden");
-            //Hide();
+            CustomEvent.Trigger(this.gameObject, "Hidden");
         }
     }
 
@@ -110,7 +127,7 @@ public class BrotherAI : MonoBehaviour
 
     public void HideUpdate(){
         if(PathCompleted()){
-            //Hide();
+            CustomEvent.Trigger(this.gameObject, "Hidden");
         }    
     }
 
@@ -119,6 +136,22 @@ public class BrotherAI : MonoBehaviour
     }
 
     public void HideExit(){
+        
+    }
+
+    public void HiddenEnter(){
+
+    }
+
+    public void HiddenUpdate(){
+        
+    }
+
+    public void HiddenFixedUpdate(){
+
+    }
+
+    public void HiddenExit(){
         
     }
 
@@ -151,6 +184,22 @@ public class BrotherAI : MonoBehaviour
     }
 
     public void RunExit(){
+        
+    }
+
+    public void IdleEnter(){
+        _navMeshAgent.ResetPath();
+    }
+
+    public void IdleUpdate(){
+        
+    }
+
+    public void IdleFixedUpdate(){
+
+    }
+
+    public void IdleExit(){
         
     }
 }

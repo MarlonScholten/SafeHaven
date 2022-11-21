@@ -243,6 +243,7 @@ MonoBehaviour:
   _fearIncement: 0.02
   _maxFearDistance: 20
   _viewRadius: 30
+  _viewAngle: 60
   _EnemyMask:
     serializedVersion: 2
     m_Bits: 0
@@ -258,6 +259,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36038a2b900a70d4f87dea5e8489f759, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _HidingSpotInEnemyViewWeight: 0.01
-  _HidingSpotDistanceWeight: 0.05
+  _hidingSpotInEnemyViewWeight: 0.01
+  _hidingSpotDistanceWeight: 0.05
   _playerCamera: {fileID: 0}
