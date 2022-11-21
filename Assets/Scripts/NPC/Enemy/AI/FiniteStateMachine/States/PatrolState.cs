@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using NPC;
 using Unity.VisualScripting;
-using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -67,7 +66,7 @@ public class PatrolState : MonoBehaviour
         {
             _smallSoundReducer = true; 
             StartCoroutine(_stateManager.CallFunctionAfterSeconds(_stateManager.enemyAiScriptableObject.reduceSmallSoundsTime, () => { 
-                _numberOfSmallSoundsHeard--;
+                if(_numberOfSmallSoundsHeard > 0) _numberOfSmallSoundsHeard--;
                 _smallSoundReducer = false;
             }));
         }
@@ -102,6 +101,7 @@ public class PatrolState : MonoBehaviour
         // Stop the patrol coroutine if it is running.
         if(_waitingAtWaypointCoroutineIsRunning)StopCoroutine(_patrolCoroutine);
         _waitingAtWaypointCoroutineIsRunning = false;
+        _numberOfSmallSoundsHeard = 0;
     }
     /// <summary>
     /// This method determines the next waypoint based on the index of the current waypoint.
@@ -136,6 +136,7 @@ public class PatrolState : MonoBehaviour
     
     private void HeardASoundFromPlayer(SoundSource source)
     {
+        Debug.Log("HeardASoundFromPlayer" +  _stateManager.enemyAiScriptableObject.thresholdSmallSounds + source.GetVolume() + _stateManager.enemyAiScriptableObject.thresholdLoudSounds +" "+ _numberOfSmallSoundsHeard);
         // If the sound is too small, return.
         if(source.GetVolume() <_stateManager.enemyAiScriptableObject.thresholdSmallSounds) return;
         // If the sound is loud enough, increase the number of small sounds heard.
@@ -145,7 +146,8 @@ public class PatrolState : MonoBehaviour
         {
             _numberOfSmallSoundsHeard = 0;
             _stateManager.locationOfNoise = source.GetSource().transform.position;
-            _stateManager.alertedBySound= true; 
+            _stateManager.alertedBySound = true; 
+            Debug.Log("ALERTEDDD");
         }
     }
     

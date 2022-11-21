@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -24,7 +23,8 @@ public class InvestigateState : MonoBehaviour
     /// </summary>
     public void Enter_Investigate()
     {
-        _stateManager.CalculateInvestigateLocation();
+        if (_stateManager.alertedBySound) _stateManager.CalculateInvestigateLocation(_stateManager.locationOfNoise);
+        else if(_stateManager.alertedByVision) _stateManager.CalculateInvestigateLocation(_stateManager.spottedPlayerLastPosition);
     }
     
     /// <summary>
@@ -45,7 +45,13 @@ public class InvestigateState : MonoBehaviour
     /// </summary>
     public void FixedUpdate_Investigate()
     {
+        //Check if location is reachable
+        if (!_stateManager.waitingAtWaypoint && _stateManager.navMeshAgent.velocity.magnitude < 0.1f)
+        {
+            _stateManager.CalculateInvestigateLocation(transform.position);
+        }
         //Check if the enemy is at the location.
+        
         if (_stateManager.CheckIfEnemyIsAtWaypoint())
         {
             //If the enemy is at the location, start the waiting coroutine
@@ -69,7 +75,8 @@ public class InvestigateState : MonoBehaviour
                 _waitingAtWaypointDuringInvestigationCoroutine =
                     _stateManager.CallFunctionAfterSeconds(_stateManager.enemyAiScriptableObject.waitAtInvestigatingWaypointTime, () =>
                     {
-                        _stateManager.CalculateInvestigateLocation();
+                        if (_stateManager.alertedBySound) _stateManager.CalculateInvestigateLocation(_stateManager.locationOfNoise);
+                        else if(_stateManager.alertedByVision) _stateManager.CalculateInvestigateLocation(_stateManager.spottedPlayerLastPosition);
                         _waitingAtWaypointDuringInvestigationCoroutineIsRunning = false;
                         
                     });
