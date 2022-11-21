@@ -2,15 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.NetworkInformation;
-using System.Numerics;
 using NPC;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
-using Object = System.Object;
 using Quaternion = UnityEngine.Quaternion;
 using Random = UnityEngine.Random;
 using Vector3 = UnityEngine.Vector3;
@@ -34,7 +30,6 @@ public class EnemyAiStateManager : MonoBehaviour
     [NonSerialized] public NavMeshAgent navMeshAgent;
     [NonSerialized] public Vector3 targetWpLocation;
     [NonSerialized] public int currentWpIndex;
-    [NonSerialized] public bool investigationTimeIsStarted;
     [NonSerialized] public bool alertedBySound;
     [NonSerialized] public bool alertedByVision;
     [NonSerialized] public Vector3 spottedPlayerLastPosition;
@@ -97,7 +92,7 @@ public class EnemyAiStateManager : MonoBehaviour
         var path = new NavMeshPath();
         navMeshAgent.CalculatePath(hit.transform.position, path);
         if (path.status == NavMeshPathStatus.PathPartial) return false;
-        if (!hit.collider.gameObject.CompareTag("Player")) return false;
+        if (!hit.collider.gameObject.CompareTag("Sibling")) return false;
         
         var hitPlayer = hit.collider.gameObject;
         spottedPlayer = hitPlayer;
@@ -115,21 +110,19 @@ public class EnemyAiStateManager : MonoBehaviour
     /// </summary>
     private static Collider GetPlayer(IEnumerable<Collider> objects)
     {
-        return objects.FirstOrDefault(obj => obj.gameObject.CompareTag("Player"));
+        return objects.FirstOrDefault(obj => obj.gameObject.CompareTag("Sibling"));
     }
     
     /// <summary>
     /// This method calculates the location where the enemy will investigate.
     /// The NavMeshSamplePosition method is used to find a closest point on the NavMesh to the location of the noise.
     /// </summary>
-    public void CalculateInvestigateLocation() {
+    public void CalculateInvestigateLocation(Vector3 position) {
         var randDirection = Random.insideUnitSphere * enemyAiScriptableObject.investigateDistance;
-        if (alertedBySound) randDirection += locationOfNoise;
-        else if(alertedByVision) randDirection += spottedPlayerLastPosition;
-        NavMesh.SamplePosition (randDirection, out NavMeshHit navHit, enemyAiScriptableObject.investigateDistance, -1);
+        randDirection += position;
+        NavMesh.SamplePosition (randDirection, out NavMeshHit navHit, enemyAiScriptableObject.investigateDistance, 1);
         targetWpLocation = navHit.position;
         CheckPlayerPositionReachable(targetWpLocation);
-        Debug.Log("calculated investigate location");
         waitingAtWaypoint = false;
     }
     /// <summary>
@@ -149,6 +142,7 @@ public class EnemyAiStateManager : MonoBehaviour
         navMeshAgent.CalculatePath(playerPosition, path);
         if (path.status == NavMeshPathStatus.PathPartial)
         {
+            targetWpLocation = path.corners.Last();
             navMeshAgent.SetDestination(path.corners.Last());
             spottedPlayerLastPosition = path.corners.Last();
         }
@@ -158,10 +152,10 @@ public class EnemyAiStateManager : MonoBehaviour
         }
     }
 
-    ///</summary>
-    /// This method catches the child (reloads the scene for now.
     ///<summary>
-    public void catchChild()
+    /// This method catches the child (reloads the scene for now.
+    ///</summary>
+    public static void CatchChild()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
