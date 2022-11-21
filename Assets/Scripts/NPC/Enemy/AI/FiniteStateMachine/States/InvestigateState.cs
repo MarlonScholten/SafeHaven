@@ -14,12 +14,9 @@ public class InvestigateState : MonoBehaviour
     private bool _investigateCoroutineIsRunning;
     private IEnumerator _waitingAtWaypointDuringInvestigationCoroutine;
     private bool _waitingAtWaypointDuringInvestigationCoroutineIsRunning;
-    
-    private FSM_Scriptable_Object _fsmScriptableObject;
     void Awake()
     {
         _stateManager = GetComponent<EnemyAiStateManager>();
-        _fsmScriptableObject = _stateManager.enemyAiScriptableObject;
     }
    
     /// <summary>
@@ -39,7 +36,7 @@ public class InvestigateState : MonoBehaviour
         {
             CustomEvent.Trigger(gameObject, "Chasing");
         }
-
+        
     }
     
     /// <summary>
@@ -53,7 +50,7 @@ public class InvestigateState : MonoBehaviour
             {
                 _investigateCoroutineIsRunning = true;
                 _investigateCoroutine =
-                    _stateManager.CallFunctionAfterSeconds(_fsmScriptableObject.investigateTime, () =>
+                    _stateManager.CallFunctionAfterSeconds(_stateManager.enemyAiScriptableObject.investigateTime, () =>
                     {
                         CustomEvent.Trigger(gameObject, "Patrol");
                         _investigateCoroutineIsRunning = false;
@@ -65,7 +62,7 @@ public class InvestigateState : MonoBehaviour
                 _stateManager.waitingAtWaypoint = true;
                 _waitingAtWaypointDuringInvestigationCoroutineIsRunning = true;
                 _waitingAtWaypointDuringInvestigationCoroutine =
-                    _stateManager.CallFunctionAfterSeconds(_fsmScriptableObject.waitAtInvestigatingWaypointTime, () =>
+                    _stateManager.CallFunctionAfterSeconds(_stateManager.enemyAiScriptableObject.waitAtInvestigatingWaypointTime, () =>
                     {
                         _stateManager.CalculateInvestigateLocation();
                         _waitingAtWaypointDuringInvestigationCoroutineIsRunning = false;

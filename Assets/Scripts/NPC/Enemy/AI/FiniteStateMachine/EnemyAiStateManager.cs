@@ -9,6 +9,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using Object = System.Object;
 using Quaternion = UnityEngine.Quaternion;
 using Random = UnityEngine.Random;
@@ -33,7 +34,7 @@ public class EnemyAiStateManager : MonoBehaviour
     [NonSerialized] public NavMeshAgent navMeshAgent;
     [NonSerialized] public Vector3 targetWpLocation;
     [NonSerialized] public int currentWpIndex;
-    [NonSerialized] public bool investigationTimeIsStarted ;
+    [NonSerialized] public bool investigationTimeIsStarted;
     [NonSerialized] public bool alertedBySound;
     [NonSerialized] public bool alertedByVision;
     [NonSerialized] public Vector3 spottedPlayerLastPosition;
@@ -154,5 +155,13 @@ public class EnemyAiStateManager : MonoBehaviour
         {
             navMeshAgent.SetDestination(playerPosition);
         }
+    }
+
+    ///</summary>
+    /// This method catches the child (reloads the scene for now.
+    ///<summary>
+    public void catchChild()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
