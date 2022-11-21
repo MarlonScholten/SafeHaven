@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class MenuPingController : MonoBehaviour
+public class MenuPingController : AbstractPingController
 {
     //TODO Integrate
     //private BrotherAI _brotherAI;
