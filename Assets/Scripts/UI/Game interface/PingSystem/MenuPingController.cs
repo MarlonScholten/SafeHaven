@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -10,9 +12,11 @@ public class MenuPingController : AbstractPingController
     
     [SerializeField] private GameObject _highlightedOption;
     [SerializeField] private int _slowmotionFactor = 4;
+    [SerializeField] private float durationMarkerVisible = 1.0f;
 
     private Vector2 _inputMouse;
     private int _selectedOption;
+    private GameObject _marker;
 
     public Text[] options;
     public Text cancel;
@@ -140,6 +144,7 @@ public class MenuPingController : AbstractPingController
 
         var ray = GetRayFromCameraToMousePosition();
         SetPingPosition(ray);
+        ShowMarker(_pingPosition);
 
         Time.timeScale /= _slowmotionFactor;
     }
@@ -156,8 +161,20 @@ public class MenuPingController : AbstractPingController
     {
         _radialMenuIsSetActive = false;
         _radialMenu.SetActive(_radialMenuIsSetActive);
-
+        
+        StartCoroutine(MarkerDuration(_marker));
         Time.timeScale = StandardTimeFactor;
+    }
+    
+    private void ShowMarker(Vector3 position)
+    {
+        _marker = Instantiate(_markerPrefab, position, Quaternion.identity);
+    }
+    
+    private IEnumerator MarkerDuration(GameObject marker)
+    {
+        yield return new WaitForSeconds(durationMarkerVisible);
+        Destroy(marker);
     }
 
     private static float SetDegreesFull(float angle)

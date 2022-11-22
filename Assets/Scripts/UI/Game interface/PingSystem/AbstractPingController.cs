@@ -11,8 +11,7 @@ public abstract class AbstractPingController : MonoBehaviour
     [SerializeField] protected GameObject _radialMenu;
     
     protected PingSystem _pingSystem;
-    
-    private Vector3 _pingPosition;
+    protected Vector3 _pingPosition;
 
     protected Ray GetRayFromCameraToMousePosition()
     {
@@ -27,7 +26,7 @@ public abstract class AbstractPingController : MonoBehaviour
 
         if (!Physics.Raycast(ray.origin, ray.direction, out var hit)) return;
         _pingPosition = hit.point;
-        ShowMarker(_pingPosition);
+        //ShowMarker(_pingPosition);
     }
 
     protected void OnEnable()
@@ -43,10 +42,5 @@ public abstract class AbstractPingController : MonoBehaviour
     protected Vector3 GetPingLocation()
     {
         return _pingPosition;
-    }
-    
-    private void ShowMarker(Vector3 position)
-    {
-        Instantiate(_markerPrefab, position, Quaternion.identity);
     }
 }

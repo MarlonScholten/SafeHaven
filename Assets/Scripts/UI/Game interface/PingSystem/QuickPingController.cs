@@ -1,9 +1,14 @@
+using System.Collections;
+using Unity.VisualScripting;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class QuickPingController : AbstractPingController
 {
+    [SerializeField] private float durationMarkerVisible = 1.0f;
     private bool _quickCancelled;
-    
+    private GameObject _marker;
+
     private void Awake()
     {
         _pingSystem = new PingSystem();
@@ -20,11 +25,24 @@ public class QuickPingController : AbstractPingController
 
         var ray = GetRayFromCameraToMousePosition();
         SetPingPosition(ray);
+        ShowMarker(_pingPosition);
 
         //TODO Integrate
         //_brotherAI.PingBrother(PingType.Run, _pingPosition)
     }
+
+    private void ShowMarker(Vector3 position)
+    { 
+        _marker = Instantiate(_markerPrefab, position, Quaternion.identity);
+        StartCoroutine(MarkerDuration(_marker));
+    }
     
+    private IEnumerator MarkerDuration(GameObject marker)
+    {
+        yield return new WaitForSeconds(durationMarkerVisible);
+        Destroy(marker);
+    }
+
     private void CancelQuickPing(InputAction.CallbackContext callbackContext)
     {
         _quickCancelled = false;
