@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Birds : MonoBehaviour
+public class Birds : MonoBehaviour, ITrigger
 {
-    // Start is called before the first frame update
-    void Start()
+    private bool _triggered = false;
+
+    public void trigger()
     {
-        
+        Debug.Log("Birds triggered");
+        _triggered = true;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Update()
     {
-        
+        if (_triggered)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y + 1 * Time.deltaTime, transform.position.z);
+        }
     }
 }
