@@ -42,13 +42,6 @@ public class BrotherAI : MonoBehaviour
         var run = GameObject.FindGameObjectWithTag("RunLocation");
         var walk = GameObject.FindGameObjectWithTag("WalkLocation");
 
-        if(Input.GetKey(KeyCode.Z)){
-            CustomEvent.Trigger(this.gameObject, "CallBack");
-        }
-
-        if(Input.GetKey(KeyCode.W)){
-            CustomEvent.Trigger(this.gameObject, "panicHide");
-        }
         if(Input.GetKey(KeyCode.O)){
             Debug.Log("ping run: " + run);
             PingBrother(PingType.Run, run.transform);
@@ -57,6 +50,19 @@ public class BrotherAI : MonoBehaviour
             Debug.Log("ping walk: " + walk);
             PingBrother(PingType.Walk, walk.transform);
         }
+    }
+
+    void OnRecall(){
+        CustomEvent.Trigger(this.gameObject, "CallBack");
+    }
+
+    void OnPanic(){
+        CustomEvent.Trigger(this.gameObject, "panicHide");
+    }
+
+    
+    void OnComfort(){
+        _fearSystem.Comfort();
     }
 
     private bool PathCompleted(){
@@ -70,10 +76,6 @@ public class BrotherAI : MonoBehaviour
 
     private Transform GetPlayerLocation(){
         return _player.transform;
-    }
-
-    public void Comfort(){
-        _fearSystem.Comfort();
     }
 
     public void PingBrother(PingType ping, Transform location){

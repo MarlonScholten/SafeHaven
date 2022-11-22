@@ -1,0 +1,74 @@
+{
+    "name": "Brother input",
+    "maps": [
+        {
+            "name": "Brother",
+            "id": "ac160971-df92-4a9a-9fa0-c043252fb8a0",
+            "actions": [
+                {
+                    "name": "Recall",
+                    "type": "Button",
+                    "id": "1da9ab3b-021c-4c36-8470-f315dab4874d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Panic",
+                    "type": "Button",
+                    "id": "1bfed6db-a7fd-4ab0-86dc-1b5600d43677",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Comfort",
+                    "type": "Button",
+                    "id": "7ceb8a9e-deb9-44f0-9dee-c9ac166e809c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "90a294a2-293c-4463-8a8c-379a5b87c1ae",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Recall",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "eb833859-b8d5-4d92-ae02-29a1c57aef51",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Panic",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1251b0e7-cd0a-4533-8761-c8e2e7c92428",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Comfort",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

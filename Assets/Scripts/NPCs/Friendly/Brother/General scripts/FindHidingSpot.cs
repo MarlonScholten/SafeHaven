@@ -17,7 +17,7 @@ public class FindHidingSpot : MonoBehaviour
             if(CheckHidingSpotInView(spot)){
                 HidingSpot hidingSpot = spot.GetComponent<HidingSpot>();
                 CalculateObscurityValue(spot);           
-                if(bestSpotValue == -1 || bestSpotValue < hidingSpot._obscurityValue){
+                if((bestSpotValue == -1) || (bestSpotValue < hidingSpot._obscurityValue)){
                     bestSpot = spot;
                     bestSpotValue = hidingSpot._obscurityValue;
                 }
@@ -49,7 +49,7 @@ public class FindHidingSpot : MonoBehaviour
     }
 
     private bool IsBetween0And1(float a) {
-         return a > 0 && a < 1;
+         return (a > 0) && (a < 1);
     }
 
     private void CalculateObscurityValue(GameObject spot){
