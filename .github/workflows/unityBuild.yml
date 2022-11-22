@@ -1,12 +1,10 @@
 name: UnityBuild
 
 on:
-  push:
-    branches:
-      ['main', 'develop']
   pull_request:
     branches:
       ['main', 'develop']
+  workflow_dispatch: {}
 
 jobs:
   build:
@@ -15,14 +13,14 @@ jobs:
     steps:
       # Checkout (without LFS)
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       # Git LFS
       - name: Create LFS file list
         run: git lfs ls-files -l | cut -d' ' -f1 | sort > .lfs-assets-id
 
       - name: Restore LFS cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         id: lfs-cache
         with:
           path: .git/lfs
@@ -35,7 +33,7 @@ jobs:
           git reset --hard
 
       # Cache
-      - uses: actions/cache@v2
+      - uses: actions/cache@v3
         with:
           path: Library
           key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
@@ -51,9 +49,10 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           targetPlatform: StandaloneWindows64
+          versioning: Semantic
 
       # Output
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: Build
           path: build
