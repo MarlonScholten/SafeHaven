@@ -15,17 +15,23 @@ using UnityEngine.AI;
 ///         <term>Name of type</term>
 ///         <term>Description</term>
 ///     </listheader>
-///     <item>
-///         <term>The GameObject this thing need to be on for this script to work</term>
-///		    <term>What type of thing this is. Component, Script, Tag or Layer?</term>
-///         <term>The name of the thing</term>
-///		    <term>A description of why this thing is needed</term>
-///	    </item>
 ///	    <item>
 ///         <term>EnemyObject (Assets/Prefabs/NPCs/Enemies/EnemyObject.prefab)</term>
 ///		    <term>Component</term>
 ///         <term>EnemyObject</term>
 ///		    <term>This script contains the ENTER/(FIXED)UPDATE/EXIT Patrol states</term>
+///	    </item>
+///	    <item>
+///         <term>EnemyObject</term>
+///		    <term>Script</term>
+///         <term>EnemyAIStateManager (Assets/Scripts/NPCs/Enemies/Behavior-AI/State machine/stateMachines/EnemyAiStateManager.cs)</term>
+///		    <term>This script contains variables that are used in this script to manage the state</term>
+///	    </item>
+///	    <item>
+///         <term>EnemyObject</term>
+///		    <term>Visual scripting</term>
+///         <term>Enemy_Visual_Scripting (Assets/Scripts/NPCs/Enemies/Behavior-AI/State machine/visualScripting/Enemy_Visual_Scripting.asset)</term>
+///		    <term>This script need to be added to the EnemyObject with the Enemy_Visual_Scripting</term>
 ///	    </item>
 /// </list>
 public class PatrolState : MonoBehaviour

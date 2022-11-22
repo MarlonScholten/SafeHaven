@@ -23,7 +23,7 @@ public class HeardASoundEvent : UnityEvent<SoundSource>
 }
 
 /// <summary>
-/// This script is used as a manager to control the variables en methods that are shared in different states.
+/// This script is used as a manager to control the variables en methods that are shared in different states on the EnemyObject (Assets/Prefabs/NPCs/Enemies/EnemyObject.prefab).
 /// </summary>
 /// <list type="table">
 ///	    <listheader>
@@ -32,17 +32,23 @@ public class HeardASoundEvent : UnityEvent<SoundSource>
 ///         <term>Name of type</term>
 ///         <term>Description</term>
 ///     </listheader>
-///     <item>
-///         <term>The GameObject this thing need to be on for this script to work</term>
-///		    <term>What type of thing this is. Component, Script, Tag or Layer?</term>
-///         <term>The name of the thing</term>
-///		    <term>A description of why this thing is needed</term>
+///	    <item>
+///         <term>EnemyObject</term>
+///		    <term>Component</term>
+///         <term>NavmeshAgent</term>
+///		    <term>This script contains actions for moving the enemy with the navmeshAgent.setDestination() function.</term>
 ///	    </item>
 ///	    <item>
-///         <term>EnemyObject (Assets/Prefabs/NPCs/Enemies/EnemyObject.prefab)</term>
-///		    <term>Component</term>
 ///         <term>EnemyObject</term>
-///		    <term>This script contains variables and methods that are used by the states of the visual scripting state machine</term>
+///		    <term>Tag</term>
+///         <term>Sibling</term>
+///		    <term>This script checks if an object with the "Sibling" tag is in the cone vision.</term>
+///	    </item>
+///	    <item>
+///         <term>EnemyObject</term>
+///		    <term>Prefabs</term>
+///         <term>EnemyWaypoint (Assets/Prefabs/NPCs/Enemies/EnemyWayPoint.prefab)</term>
+///		    <term>This script needs EnemyWaypoints to patrol.</term>
 ///	    </item>
 /// </list>
 public class EnemyAiStateManager : MonoBehaviour

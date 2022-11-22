@@ -12,12 +12,6 @@ namespace NPC
     ///         <term>Name of type</term>
     ///         <term>Description</term>
     ///     </listheader>
-    ///     <item>
-    ///         <term>The GameObject this thing need to be on for this script to work</term>
-    ///		    <term>What type of thing this is. Component, Script, Tag or Layer?</term>
-    ///         <term>The name of the thing</term>
-    ///		    <term>A description of why this thing is needed</term>
-    ///	    </item>
     ///	    <item>
     ///         <term>Any object</term>
     ///		    <term>Component</term>
