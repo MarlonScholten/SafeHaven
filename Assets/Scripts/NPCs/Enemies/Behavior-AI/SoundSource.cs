@@ -2,6 +2,29 @@
 
 namespace NPC
 {
+    /// <summary>
+    /// This script is an simulated sound source.
+    /// </summary>
+    /// <list type="table">
+    ///	    <listheader>
+    ///         <term>On what GameObject</term>
+    ///         <term>Type</term>
+    ///         <term>Name of type</term>
+    ///         <term>Description</term>
+    ///     </listheader>
+    ///     <item>
+    ///         <term>The GameObject this thing need to be on for this script to work</term>
+    ///		    <term>What type of thing this is. Component, Script, Tag or Layer?</term>
+    ///         <term>The name of the thing</term>
+    ///		    <term>A description of why this thing is needed</term>
+    ///	    </item>
+    ///	    <item>
+    ///         <term>MakeNoise</term>
+    ///		    <term>Script</term>
+    ///         <term>MakeNoise</term>
+    ///		    <term>This script contains the ENTER/(FIXED)UPDATE/EXIT Patrol states</term>
+    ///	    </item>
+    /// </list>
     public class SoundSource
     {
         private readonly GameObject _source;

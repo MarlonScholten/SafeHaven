@@ -1,7 +1,7 @@
 using UnityEngine;
 
 /// <summary>
-/// Scriptable object for the Enemy AI
+/// Scriptable object for the EnemyAi
 /// </summary>
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/EnemyAIScriptableObject", order = 1)]
 public class FSM_Scriptable_Object : ScriptableObject

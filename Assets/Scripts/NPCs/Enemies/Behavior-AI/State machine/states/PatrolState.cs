@@ -1,14 +1,33 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using NPC;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
 /// <summary>
-/// PatrolState functions
+/// This script is a the Patrol state of the enemy.
 /// </summary>
+/// <list type="table">
+///	    <listheader>
+///         <term>On what GameObject</term>
+///         <term>Type</term>
+///         <term>Name of type</term>
+///         <term>Description</term>
+///     </listheader>
+///     <item>
+///         <term>The GameObject this thing need to be on for this script to work</term>
+///		    <term>What type of thing this is. Component, Script, Tag or Layer?</term>
+///         <term>The name of the thing</term>
+///		    <term>A description of why this thing is needed</term>
+///	    </item>
+///	    <item>
+///         <term>EnemyObject (Assets/Prefabs/NPCs/Enemies/EnemyObject.prefab)</term>
+///		    <term>Component</term>
+///         <term>EnemyObject</term>
+///		    <term>This script contains the ENTER/(FIXED)UPDATE/EXIT Patrol states</term>
+///	    </item>
+/// </list>
 public class PatrolState : MonoBehaviour
 {
     private EnemyAiStateManager _stateManager;
@@ -116,7 +135,8 @@ public class PatrolState : MonoBehaviour
         _stateManager.navMeshAgent.SetDestination(_stateManager.targetWpLocation);
     }
     /// /// <summary>
-    /// This method check for the closest waypoint to the enemy and returns the index of that waypoint.
+    /// This method check for the closest waypoint to the enemy.
+    /// <returns>The index of that waypoint.</returns>
     /// </summary>
     private int GetClosestWaypoint()
     {
@@ -133,7 +153,9 @@ public class PatrolState : MonoBehaviour
         //return the index of the closest waypoint.
         return closestIndex;
     }
-    
+    /// /// <summary>
+    /// This method can be called by the HeardASoundEvent and checks if the sound is loud enough to react on or add to the small sounds heard.
+    /// </summary>
     private void HeardASoundFromPlayer(SoundSource source)
     {
         Debug.Log("HeardASoundFromPlayer" +  _stateManager.enemyAiScriptableObject.thresholdSmallSounds + source.GetVolume() + _stateManager.enemyAiScriptableObject.thresholdLoudSounds +" "+ _numberOfSmallSoundsHeard);
@@ -146,8 +168,7 @@ public class PatrolState : MonoBehaviour
         {
             _numberOfSmallSoundsHeard = 0;
             _stateManager.locationOfNoise = source.GetSource().transform.position;
-            _stateManager.alertedBySound = true; 
-            Debug.Log("ALERTEDDD");
+            _stateManager.alertedBySound = true;
         }
     }
     

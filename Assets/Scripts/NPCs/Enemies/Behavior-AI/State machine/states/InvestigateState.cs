@@ -3,8 +3,28 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
-/// InvestigateState functions
+/// This script is a the Investigate state of the enemy.
 /// </summary>
+/// <list type="table">
+///	    <listheader>
+///         <term>On what GameObject</term>
+///         <term>Type</term>
+///         <term>Name of type</term>
+///         <term>Description</term>
+///     </listheader>
+///     <item>
+///         <term>The GameObject this thing need to be on for this script to work</term>
+///		    <term>What type of thing this is. Component, Script, Tag or Layer?</term>
+///         <term>The name of the thing</term>
+///		    <term>A description of why this thing is needed</term>
+///	    </item>
+///	    <item>
+///         <term>EnemyObject (Assets/Prefabs/NPCs/Enemies/EnemyObject.prefab)</term>
+///		    <term>Component</term>
+///         <term>EnemyObject</term>
+///		    <term>This script contains the ENTER/(FIXED)UPDATE/EXIT Investigate states</term>
+///	    </item>
+/// </list>
 public class InvestigateState : MonoBehaviour
 {
     private EnemyAiStateManager _stateManager;

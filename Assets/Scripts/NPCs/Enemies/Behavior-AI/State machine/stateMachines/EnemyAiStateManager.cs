@@ -14,15 +14,37 @@ using Vector3 = UnityEngine.Vector3;
 
 /// <summary>
 /// Unity event for when the player sound is detected
+/// This is created so a UnityEvent can pass an argument
 /// </summary>
+///
 [System.Serializable]
 public class HeardASoundEvent : UnityEvent<SoundSource>
 {
 }
 
 /// <summary>
-/// Enemy AI that uses a state machine to control its behavior.
+/// This script is used as a manager to control the variables en methods that are shared in different states.
 /// </summary>
+/// <list type="table">
+///	    <listheader>
+///         <term>On what GameObject</term>
+///         <term>Type</term>
+///         <term>Name of type</term>
+///         <term>Description</term>
+///     </listheader>
+///     <item>
+///         <term>The GameObject this thing need to be on for this script to work</term>
+///		    <term>What type of thing this is. Component, Script, Tag or Layer?</term>
+///         <term>The name of the thing</term>
+///		    <term>A description of why this thing is needed</term>
+///	    </item>
+///	    <item>
+///         <term>EnemyObject (Assets/Prefabs/NPCs/Enemies/EnemyObject.prefab)</term>
+///		    <term>Component</term>
+///         <term>EnemyObject</term>
+///		    <term>This script contains variables and methods that are used by the states of the visual scripting state machine</term>
+///	    </item>
+/// </list>
 public class EnemyAiStateManager : MonoBehaviour
 {
     public List<Transform> wayPoints;
