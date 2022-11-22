@@ -7,15 +7,10 @@ public class MenuPingController : AbstractPingController
 {
     //TODO Integrate
     //private BrotherAI _brotherAI;
-
-    [SerializeField] private Camera _camera;
-    [SerializeField] private GameObject _markerPrefab;
-    [SerializeField] private GameObject _radialMenu;
+    
     [SerializeField] private GameObject _highlightedOption;
     [SerializeField] private int _slowmotionFactor = 4;
 
-    private PingSystem _pingSystem;
-    private Vector3 _pingPosition;
     private Vector2 _inputMouse;
     private int _selectedOption;
 
@@ -29,7 +24,6 @@ public class MenuPingController : AbstractPingController
     private const string NotCancelled = "Not cancelled";
     private string _cancelled;
 
-    private const float Correction = 10000f;
     private const int StandardTimeFactor = 1;
     private const int Two = 2;
 
@@ -143,7 +137,7 @@ public class MenuPingController : AbstractPingController
     {
         if (_radialMenuIsSetActive) return;
         _radialMenuIsSetActive = true;
-        
+
         var ray = GetRayFromCameraToMousePosition();
         SetPingPosition(ray);
 
@@ -183,48 +177,6 @@ public class MenuPingController : AbstractPingController
         _cancelled = CheckInMiddleSegment()
             ? "Cancelled"
             : NotCancelled;
-    }
-    
-    // Double
-    private Ray GetRayFromCameraToMousePosition()
-    {
-        var mousePosition = new Vector2(Mouse.current.position.ReadValue().x, Mouse.current.position.ReadValue().y);
-        var ray = _camera.ScreenPointToRay(mousePosition);
-        return ray;
-    }
-    
-    // Double
-    private void SetPingPosition(Ray ray)
-    {
-        Debug.DrawRay(ray.origin, ray.direction * Correction, Color.red, 3);
-
-        if (!Physics.Raycast(ray.origin, ray.direction * Correction, out var hit)) return;
-        _pingPosition = hit.point;
-        ShowMarker(_pingPosition);
-    }
-
-    // Double
-    private void ShowMarker(Vector3 position)
-    {
-        Instantiate(_markerPrefab, position, Quaternion.identity);
-    }
-
-    // Double
-    private void OnEnable()
-    {
-        _pingSystem.Enable();
-    }
-
-    // Double
-    private void OnDisable()
-    {
-        _pingSystem.Disable();
-    }
-
-    // Double
-    public Vector3 GetPingLocation()
-    {
-        return _pingPosition;
     }
 
     public PingType GetPingAction()
