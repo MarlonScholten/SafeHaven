@@ -33,7 +33,10 @@ namespace NPC
                 makeNoise();
             }
         }
-
+        
+        /// <summary>
+        /// This method creates a noise source on the object that this script is attached to.
+        /// </summary>
         private void makeNoise(){
             var foundObjects = Physics.OverlapSphere(transform.position, noiseLevel/2);
             foreach(var currentObject in foundObjects)
