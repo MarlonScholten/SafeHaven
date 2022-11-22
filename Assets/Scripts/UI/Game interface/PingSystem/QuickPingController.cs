@@ -1,11 +1,8 @@
-using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class QuickPingController : AbstractPingController
 {
-    [SerializeField] private float durationMarkerVisible = 1.0f;
     private bool _quickCancelled;
     private GameObject _marker;
 
@@ -31,16 +28,10 @@ public class QuickPingController : AbstractPingController
         //_brotherAI.PingBrother(PingType.Run, _pingPosition)
     }
 
-    private void ShowMarker(Vector3 position)
+    protected override void ShowMarker(Vector3 position)
     { 
         _marker = Instantiate(_markerPrefab, position, Quaternion.identity);
         StartCoroutine(MarkerDuration(_marker));
-    }
-    
-    private IEnumerator MarkerDuration(GameObject marker)
-    {
-        yield return new WaitForSeconds(durationMarkerVisible);
-        Destroy(marker);
     }
 
     private void CancelQuickPing(InputAction.CallbackContext callbackContext)

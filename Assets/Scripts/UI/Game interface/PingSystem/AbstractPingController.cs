@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,7 +10,8 @@ public abstract class AbstractPingController : MonoBehaviour
     [SerializeField] protected Camera _camera;
     [SerializeField] protected GameObject _markerPrefab;
     [SerializeField] protected GameObject _radialMenu;
-    
+    [SerializeField] private float durationMarkerVisible = 1.0f;
+
     protected PingSystem _pingSystem;
     protected Vector3 _pingPosition;
 
@@ -26,7 +28,12 @@ public abstract class AbstractPingController : MonoBehaviour
 
         if (!Physics.Raycast(ray.origin, ray.direction, out var hit)) return;
         _pingPosition = hit.point;
-        //ShowMarker(_pingPosition);
+    }
+
+    protected IEnumerator MarkerDuration(GameObject marker)
+    {
+        yield return new WaitForSeconds(durationMarkerVisible);
+        Destroy(marker);
     }
 
     protected void OnEnable()
@@ -43,4 +50,6 @@ public abstract class AbstractPingController : MonoBehaviour
     {
         return _pingPosition;
     }
+
+    protected abstract void ShowMarker(Vector3 position);
 }
