@@ -12,7 +12,22 @@ public class TriggerObject : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Trigger");
+        Debug.Log(other.tag);
+        if (other.tag == "NonTrigger") return;
+        foreach (var triggerObject in _triggerObjects)
+        {
+            if (triggerObject.GetComponent<ITrigger>() != null)
+            {
+                //trigger the object
+                triggerObject.GetComponent<ITrigger>().trigger();
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        Debug.Log(other.tag);
+        if (other.tag == "NonTrigger") return;
         foreach (var triggerObject in _triggerObjects)
         {
             if (triggerObject.GetComponent<ITrigger>() != null)
