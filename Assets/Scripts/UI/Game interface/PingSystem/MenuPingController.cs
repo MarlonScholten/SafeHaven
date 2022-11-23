@@ -148,7 +148,7 @@ public class MenuPingController : AbstractPingController
     {
         _pingAction = _chosenAction;
         
-        _brotherAI.PingBrother(_pingAction, _pingPosition)
+        _brotherAI.PingBrother(_pingAction, _pingPosition);
     }
 
     private void CloseRadialMenu()
