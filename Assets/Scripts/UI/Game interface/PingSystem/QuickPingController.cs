@@ -6,8 +6,9 @@ public class QuickPingController : AbstractPingController
     private bool _quickCancelled;
     private GameObject _marker;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         _pingSystem = new PingSystem();
 
         _pingSystem.Player.QuickPing.performed += OnQuickPing;
@@ -17,6 +18,7 @@ public class QuickPingController : AbstractPingController
 
     private void OnQuickPing(InputAction.CallbackContext callbackContext)
     {
+        Debug.Log("debuglog");
         if (_radialMenu.activeSelf || _quickCancelled) return;
         _quickCancelled = false;
 

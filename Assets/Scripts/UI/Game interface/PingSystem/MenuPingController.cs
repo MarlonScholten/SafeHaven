@@ -33,8 +33,9 @@ public class MenuPingController : AbstractPingController
 
     private const float SizeCircle = 45f;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         _pingSystem = new PingSystem();
 
         _pingSystem.Player.MenuPing.performed += OnMenuPing;
@@ -49,7 +50,9 @@ public class MenuPingController : AbstractPingController
 
     private void Update()
     {
+        Debug.Log("radial active? " + _radialMenuIsSetActive);
         if (!_radialMenuIsSetActive) return;
+        Debug.Log("update");
         ActivateRadialMenu();
     }
 

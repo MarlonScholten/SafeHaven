@@ -67,7 +67,7 @@ public class BrotherAI : MonoBehaviour
 
     public void FollowUpdate(){
         MoveToLocation(GetPlayerLocation(), _walkSpeed);
-        Debug.Log("Follow");
+        //Debug.Log("Follow");
     }
 
     public void FollowFixedUpdate(){
