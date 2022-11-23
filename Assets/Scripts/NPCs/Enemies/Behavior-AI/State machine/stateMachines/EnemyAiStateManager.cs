@@ -116,17 +116,16 @@ public class EnemyAiStateManager : MonoBehaviour
         var foundObjects = Physics.OverlapSphere(transform.position, enemyAiScriptableObject.visionRange);
         var player = GetPlayer(foundObjects);
         if (player == null) return false;
-        
         var transform1 = transform;
         var directionToPlayer = player.transform.position - transform1.position;
         var angleToPlayer = Vector3.Angle(transform1.forward, directionToPlayer);
         
-        if (angleToPlayer >= enemyAiScriptableObject.visionAngle) return false;
-        if (!Physics.Raycast(transform.position, directionToPlayer, out var hit, enemyAiScriptableObject.visionRange)) return false;
+        if (angleToPlayer >= enemyAiScriptableObject.visionAngle) return false; // Check if the player is in set vision angle
+        if (!Physics.Raycast(transform.position, directionToPlayer, out var hit, enemyAiScriptableObject.visionRange)) return false; // Check if the player is in set vision range
         var path = new NavMeshPath();
         navMeshAgent.CalculatePath(hit.transform.position, path);
-        if (path.status == NavMeshPathStatus.PathPartial) return false;
-        if (!hit.collider.gameObject.CompareTag("Player") || !hit.collider.gameObject.CompareTag("Brother")) return false;
+        if (path.status == NavMeshPathStatus.PathPartial) return false; // Check if the player is reachable
+        if (!hit.collider.gameObject.CompareTag("Player") || !hit.collider.gameObject.CompareTag("Brother")) return false; // Check if the object is the player/brother
         
         var hitPlayer = hit.collider.gameObject;
         spottedPlayer = hitPlayer;
