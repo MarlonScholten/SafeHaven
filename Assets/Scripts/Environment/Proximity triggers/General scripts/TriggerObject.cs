@@ -17,7 +17,7 @@ public class TriggerObject : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.tag);
+        //if the object that enters the triggerbox is not tagged as "NonTrigger" and implements the ITrigger interface, trigger the object
         if (other.tag == "NonTrigger") return;
         foreach (var triggerObject in _triggerObjects)
         {
@@ -31,7 +31,7 @@ public class TriggerObject : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log(other.tag);
+        //if the object that enters the triggerbox is not tagged as "NonTrigger" and implements the ITrigger interface, trigger the object
         if (other.tag == "NonTrigger") return;
         foreach (var triggerObject in _triggerObjects)
         {

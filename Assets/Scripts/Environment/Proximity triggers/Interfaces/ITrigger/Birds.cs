@@ -20,6 +20,7 @@ public class Birds : MonoBehaviour, ITrigger
 {
     private bool _triggered = false;
 
+    //trigger the object
     public void trigger()
     {
         // The object is triggered

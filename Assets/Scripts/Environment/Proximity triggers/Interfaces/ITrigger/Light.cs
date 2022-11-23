@@ -11,7 +11,7 @@ using UnityEngine;
 /// </summary>
 public class Light : MonoBehaviour, ITrigger
 {
-
+    //trigger the object
     public void trigger()
     {
         //set object active
