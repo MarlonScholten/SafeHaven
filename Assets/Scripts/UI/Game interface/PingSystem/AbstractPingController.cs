@@ -4,8 +4,7 @@ using UnityEngine.InputSystem;
 
 public abstract class AbstractPingController : MonoBehaviour
 {
-    //TODO Integrate
-    //private BrotherAI _brotherAI;
+    protected BrotherAI _brotherAI;
 
     [SerializeField] protected Camera _camera;
     [SerializeField] protected GameObject _markerPrefab;

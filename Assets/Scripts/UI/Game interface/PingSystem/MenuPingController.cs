@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class MenuPingController : AbstractPingController
 {
-    //TODO Integrate
-    //private BrotherAI _brotherAI;
 
     [SerializeField] private GameObject _highlightedOption;
     [SerializeField] private int _slowmotionFactor = 4;
@@ -149,9 +147,8 @@ public class MenuPingController : AbstractPingController
     private void SelectAction()
     {
         _pingAction = _chosenAction;
-
-        //TODO Integrate
-        //_brotherAI.PingBrother(_pingAction, _pingPosition)
+        
+        _brotherAI.PingBrother(_pingAction, _pingPosition)
     }
 
     private void CloseRadialMenu()

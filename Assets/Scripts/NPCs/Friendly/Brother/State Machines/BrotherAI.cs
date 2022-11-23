@@ -4,14 +4,6 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public enum PingType {
-    Run,
-    Walk,
-    Hide,
-    Interact,
-    PickupOrUse,
-    PanicHide,
-}
 public class BrotherAI : MonoBehaviour
 {
 
@@ -24,7 +16,7 @@ public class BrotherAI : MonoBehaviour
 
     private FindHidingSpot _findHidingSpot;
 
-    private Transform _pingLocation;
+    private Vector3 _pingLocation;
 
     private FearSystem _fearSystem;
 
@@ -78,7 +70,7 @@ public class BrotherAI : MonoBehaviour
         return _player.transform;
     }
 
-    public void PingBrother(PingType ping, Transform location){
+    public void PingBrother(PingType ping, Vector3 location){
         Debug.Log("brother ping: " + ping);
         _pingLocation = location;
         CustomEvent.Trigger(this.gameObject, ping.ToString());     

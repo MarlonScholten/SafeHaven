@@ -24,8 +24,7 @@ public class QuickPingController : AbstractPingController
         SetPingPosition(ray);
         ShowMarker(_pingPosition);
 
-        //TODO Integrate
-        //_brotherAI.PingBrother(PingType.Run, _pingPosition)
+        _brotherAI.PingBrother(PingType.Run, _pingPosition);
     }
 
     protected override void ShowMarker(Vector3 position)

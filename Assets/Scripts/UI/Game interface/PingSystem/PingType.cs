@@ -1,8 +1,9 @@
-public enum PingType
-{
+public enum PingType {
     Run,
+    Walk,
     Hide,
     Interact,
     Pickup,
-    Use
+    Use,
+    PanicHide,
 }
