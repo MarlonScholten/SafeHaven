@@ -2,8 +2,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 /// <summary>
-/// Author: Hugo Verweij </para>
-/// Modified by: - </para>
+/// Author: Hugo Verweij <br/>
+/// Modified by: - <br/>
 /// <para>Input behaviour script. It catches every single native input in one script, and allows other scripts to pull from the data it makes available.</para>
 /// <para>For input actions that only use a value or pass through, readonly variables are used. (See <see cref="OnMoveVector"/>)</para>
 /// <para>For input actions that are single use, or rely on more complex behaviour, events are used. (See <see cref="OnToggleDebugginTools"/>)</para>
