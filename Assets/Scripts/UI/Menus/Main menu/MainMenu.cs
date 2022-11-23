@@ -58,8 +58,6 @@ public class MainMenu : MonoBehaviour
         _loadButton.interactable = _loadButtonEnabled;
         _settingsButton.interactable = _settingsButtonEnabled;
         _exitButton.interactable = _exitButtonEnabled;
-        
-        _settingsMenu.SetActive(false);
     }
 
     public void OnStart()
@@ -76,8 +74,9 @@ public class MainMenu : MonoBehaviour
 
     public void OnSettings()
     {
+        Instantiate(_settingsMenu, transform).GetComponent<SettingsMenu>().SetPreviousMenu(_mainMenu);
+        
         _mainMenu.SetActive(false);
-        _settingsMenu.SetActive(true);
     }
 
     public void OnExit()
