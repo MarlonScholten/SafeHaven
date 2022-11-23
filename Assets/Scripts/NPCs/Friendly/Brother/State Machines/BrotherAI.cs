@@ -29,21 +29,6 @@ public class BrotherAI : MonoBehaviour
         _fearSystem = GetComponent<FearSystem>();
         _player = GameObject.FindGameObjectWithTag("Player");                
     }
-
-    void FixedUpdate(){
-        var run = GameObject.FindGameObjectWithTag("RunLocation");
-        var walk = GameObject.FindGameObjectWithTag("WalkLocation");
-
-        if(Input.GetKey(KeyCode.O)){
-            Debug.Log("ping run: " + run);
-            PingBrother(PingType.Run, run.transform);
-        }
-        if(Input.GetKey(KeyCode.P)){
-            Debug.Log("ping walk: " + walk);
-            PingBrother(PingType.Walk, walk.transform);
-        }
-    }
-
     void OnRecall(){
         CustomEvent.Trigger(this.gameObject, "CallBack");
     }
@@ -61,13 +46,13 @@ public class BrotherAI : MonoBehaviour
         return _navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance + _pathEndThreshold;
     }
 
-    private void MoveToLocation(Transform walkLocation, float speed){
+    private void MoveToLocation(Vector3 walkLocation, float speed){
         _navMeshAgent.speed = speed;
-        _navMeshAgent.SetDestination(walkLocation.position);
+        _navMeshAgent.SetDestination(walkLocation);
     }
 
-    private Transform GetPlayerLocation(){
-        return _player.transform;
+    private Vector3 GetPlayerLocation(){
+        return _player.transform.position;
     }
 
     public void PingBrother(PingType ping, Vector3 location){

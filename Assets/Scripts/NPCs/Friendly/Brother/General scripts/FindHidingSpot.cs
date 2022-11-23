@@ -9,7 +9,7 @@ public class FindHidingSpot : MonoBehaviour
     [SerializeField] private float _hidingSpotDistanceWeight = 0.05f;
 
     [SerializeField] private Camera _playerCamera; 
-    public Transform FindBestHidingSpot(){
+    public Vector3 FindBestHidingSpot(){
         GameObject[] _hidingSpots = GameObject.FindGameObjectsWithTag("hideable");
         GameObject bestSpot = null;
         float bestSpotValue = -1;
@@ -23,7 +23,7 @@ public class FindHidingSpot : MonoBehaviour
                 }
             }
         }
-        return bestSpot.transform;    
+        return bestSpot.transform.position;    
     }
 
     private bool CheckHidingSpotInView(GameObject hidingSpot){
