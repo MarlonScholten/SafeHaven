@@ -170,7 +170,7 @@ public class BrotherAI : MonoBehaviour
 
     public void RunUpdate(){
         if(PathCompleted()){
-            CustomEvent.Trigger(this.gameObject, "Idle");
+            Debug.Log("Hallo");
         }
     }
 
