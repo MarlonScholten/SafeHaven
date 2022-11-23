@@ -944,7 +944,7 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""a9c8856e-9562-4cb3-ac54-dcdaadcc8307"",
-                    ""path"": ""<Keyboard>/tab"",
+                    ""path"": ""<Keyboard>/f12"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
