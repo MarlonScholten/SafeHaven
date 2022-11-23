@@ -9,7 +9,7 @@ using UnityEngine;
 /// When the trigger() method is called, the light will be activated.
 /// An object with this script can be added to the list of the triggerboxes.
 /// </summary>
-public class Light : MonoBehaviour, ITrigger
+public class LightTrigger : MonoBehaviour, ITrigger
 {
     //trigger the object
     public void trigger()

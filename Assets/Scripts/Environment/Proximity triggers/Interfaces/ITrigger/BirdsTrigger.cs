@@ -16,7 +16,7 @@ using UnityEngine;
 /// This script can be attached to any gameobject, it will move upwards when triggered.
 /// </summary>
 
-public class Birds : MonoBehaviour, ITrigger
+public class BirdsTrigger : MonoBehaviour, ITrigger
 {
     private bool _triggered = false;
 
