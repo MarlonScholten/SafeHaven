@@ -55,15 +55,28 @@ public class FindHidingSpot : MonoBehaviour
     private void CalculateObscurityValue(GameObject spot){
         HidingSpot hidingSpot = spot.GetComponent<HidingSpot>();
         hidingSpot._obscurityValue = hidingSpot._grade - (Vector3.Distance(hidingSpot.transform.position, transform.position) * _hidingSpotDistanceWeight);
-        if(CheckIfSpotInEnemyFov()){
+        if(CheckIfSpotInEnemyFov(spot)){
             hidingSpot._obscurityValue *= _hidingSpotInEnemyViewWeight;
         }
     }
 
 
 
-    private bool CheckIfSpotInEnemyFov(){
-        //Will need to implement method in Enemy AI to do a raycast to the position and check if there are any objects in between.
-        return false;
+    private bool CheckIfSpotInEnemyFov(GameObject spot){
+        bool isVisible = false;
+        // Will need to implement method in Enemy AI to do a raycast to the position and check if there are any objects in between.
+        // Maybe could implement it with enemy FOV in mind but for now this is an temporary solution, beceause enemy needs to implement this.
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach(GameObject enemy in enemies){
+            Transform enemyPos = enemy.transform;
+            Vector3 dirToEnemy = (enemyPos.position - spot.transform.position).normalized;
+            float distance = Vector3.Distance(transform.position, enemyPos.position);
+            if(Physics.Raycast(transform.position, dirToEnemy, out RaycastHit hit, distance)){
+                if(hit.collider.tag == "Enemy"){
+                        isVisible = true;
+                }                                      
+            }
+        }
+        return isVisible;
     }
 }

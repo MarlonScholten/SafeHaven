@@ -123,7 +123,6 @@ public class BrotherAI : MonoBehaviour
 
     public void PanicHideUpdate(){
         if(PathCompleted()){
-            Debug.Log("Brother Hidden");
             CustomEvent.Trigger(this.gameObject, "Hidden");
         }
     }
@@ -159,7 +158,7 @@ public class BrotherAI : MonoBehaviour
     }
 
     public void HiddenUpdate(){
-        
+        Debug.Log("Brother Hidden");
     }
 
     public void HiddenFixedUpdate(){
@@ -172,7 +171,6 @@ public class BrotherAI : MonoBehaviour
 
     public void WalkEnter(){
         MoveToLocation(_pingLocation, _walkSpeed);
-        Debug.Log("Walking to: " + _pingLocation);
     }
 
     public void WalkUpdate(){
@@ -191,7 +189,6 @@ public class BrotherAI : MonoBehaviour
 
     public void RunEnter(){
         MoveToLocation(_pingLocation, _runSpeed);
-        Debug.Log("Running to: " + _pingLocation);
     }
 
     public void RunUpdate(){
@@ -213,7 +210,7 @@ public class BrotherAI : MonoBehaviour
     }
 
     public void IdleUpdate(){
-        
+        Debug.Log("Brother idle");
     }
 
     public void IdleFixedUpdate(){
