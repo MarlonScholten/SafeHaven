@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 namespace DebuggingTools
 {
@@ -25,10 +26,15 @@ namespace DebuggingTools
         private void Awake()
         {
             ToggleDebuggingToolsEvent = new ToggleEvent();
-            
+
             StartCoroutine(LateStart());
         }
-        
+
+        private void Start()
+        {
+            InputBehaviour.Instance.OnToggleDebugginTools += OnToggleDebugginTools;
+        }
+
         private IEnumerator LateStart()
         {
             yield return new WaitForFixedUpdate();
@@ -36,7 +42,7 @@ namespace DebuggingTools
             ToggleDebuggingToolsEvent.Invoke(_debuggerEnabled);
         }
 
-        public void OnShowDebuggingTools()
+        public void OnToggleDebugginTools(InputAction.CallbackContext ctx)
         {
             _debuggerEnabled = !_debuggerEnabled;
             ToggleDebuggingToolsEvent.Invoke(_debuggerEnabled);
