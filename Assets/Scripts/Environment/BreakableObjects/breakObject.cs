@@ -4,9 +4,11 @@ using UnityEngine.Events;
 namespace Environment.BreakableObjects
 {
     /// <summary>
-    /// This script can be used to destroy an object when it is above a certain force threshold.
-    /// It also has an event that can be used to trigger other actions like an sound effect and animation.
+    /// Author: Marlon Kerstens </para>
+    /// Modified by: none </para>
+    /// Description: This script can be used to destroy an object when it is above a certain force threshold. It also has an event that can be used to trigger other actions like an sound effect and animation.
     /// </summary>
+    /// 
     /// <list type="table">
     ///	    <listheader>
     ///         <term>On what GameObject</term>
@@ -23,8 +25,8 @@ namespace Environment.BreakableObjects
     /// </list>
     public class breakObject : MonoBehaviour
     {
-        [SerializeField] private float thresholdToBreak = 20f; // How much force is needed to break the object
-        [SerializeField] private UnityEvent objectIsBroken; // Event to listen to so that other scripts can be triggered when the object is broken
+        [Tooltip("How much force is needed to break the object")] [SerializeField] private float thresholdToBreak = 20f; 
+        [Tooltip("Event to listen to so that other scripts can be triggered when the object is broken")] [SerializeField] private UnityEvent objectIsBroken;
 
         /// <summary>
         /// This method is called when the object collides with another object.
