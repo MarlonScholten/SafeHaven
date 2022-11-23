@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Author: Hugo Ulfman </para>
-/// Modified by:  </para>
+/// Author: Hugo Ulfman </br>
+/// Modified by:  </br>
 /// This script must be put on a triggerbox object.
 /// The IsTrigger property must be set to true.
 /// The list can be filled with objects that implement the ITrigger interface
@@ -28,7 +28,7 @@ public class TriggerObject : MonoBehaviour
             }
         }
     }
-
+    
     private void OnTriggerExit(Collider other)
     {
         //if the object that enters the triggerbox is not tagged as "NonTrigger" and implements the ITrigger interface, trigger the object
