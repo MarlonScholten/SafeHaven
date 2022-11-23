@@ -6,8 +6,8 @@ using UnityEngine;
 using UnityEngine.AI;
 
 /// <summary>
-/// Author: Hugo Ulfman </para>
-/// Modified by: </para>
+/// <para>Author: Hugo Ulfman</para>
+/// <para>Modified by: </para>
 /// Description: Unity event for when the player/brother sound is detected. This is created so a UnityEvent can pass an argument
 /// </summary>
 /// <list type="table">

@@ -3,8 +3,8 @@ using UnityEngine;
 namespace NPC
 {
     /// <summary>
-    /// Author: Marlon Kerstens </para>
-    /// Modified by: Hugo Ulfman </para>
+    /// <para>Author: Marlon Kerstens</para>
+    /// <para>Modified by: Hugo Ulfman</para>
     /// Description: This script is that is for test purposes only. It is used to simulate a sound source.
     /// </summary>
     /// <list type="table">

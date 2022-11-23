@@ -12,8 +12,8 @@ using Random = UnityEngine.Random;
 using Vector3 = UnityEngine.Vector3;
 
 /// <summary>
-/// Author: Hugo Ulfman </para>
-/// Modified by: none </para>
+/// <para>Author: Hugo Ulfman</para>
+/// <para>Modified by: </para>
 /// Description: Unity event for when the player/brother sound is detected. This is created so a UnityEvent can pass an argument
 /// </summary>
 [System.Serializable]
@@ -22,8 +22,8 @@ public class HeardASoundEvent : UnityEvent<SoundSource>
 }
 
 /// <summary>
-/// Author: Marlon Kerstens</para>
-/// Modified by: Hugo Ulfman </para>
+/// <para>Author: Marlon Kerstens</para>
+/// <para>Modified by: Hugo Ulfman</para>
 /// Description: This script is used as a manager to control the variables en methods that are shared in different states on the EnemyObject (Assets/Prefabs/NPCs/Enemies/EnemyObject.prefab).
 /// </summary>
 /// <list type="table">
