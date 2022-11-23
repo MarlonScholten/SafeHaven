@@ -4,8 +4,8 @@ using UnityEngine.Events;
 namespace Environment.BreakableObjects
 {
     /// <summary>
-    /// Author: Marlon Kerstens </para>
-    /// Modified by: none </para>
+    /// <para> Author: Marlon Kerstens </para>
+    /// <para> Modified by: none </para>
     /// Description: This script can be used to destroy an object when it is above a certain force threshold. It also has an event that can be used to trigger other actions like an sound effect and animation.
     /// </summary>
     /// 
