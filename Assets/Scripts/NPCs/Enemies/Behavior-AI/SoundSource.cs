@@ -21,8 +21,8 @@ namespace NPC
     /// </list>
     public class SoundSource
     {
-        private readonly GameObject _source;
-        private readonly float _volume;
+        private readonly GameObject _source; // The GameObject that is the source of the sound
+        private readonly float _volume; // The volume of the sound
         
         public SoundSource(GameObject source, float volume)
         {

@@ -36,15 +36,16 @@ using UnityEngine.AI;
 /// </list>
 public class PatrolState : MonoBehaviour
 {
-    private EnemyAiStateManager _stateManager;
-    private bool _smallSoundReducer;
-    private int _numberOfSmallSoundsHeard;
-    private bool _waitingAtWaypointCoroutineIsRunning;
-    private IEnumerator _patrolCoroutine;
-    private bool _patrolCoroutineIsRunning;
-    [NonSerialized] public HeardASoundEvent HeardASoundEvent;
+    private EnemyAiStateManager _stateManager; // Reference to the state manager
+    private bool _smallSoundReducer; // a bool that checks if the small sound couroutine is running
+    private int _numberOfSmallSoundsHeard; // the number of small sounds heard
+    private bool _waitingAtWaypointCoroutineIsRunning; // a bool that checks if the waiting at waypoint coroutine is running
+    private IEnumerator _waitingAtWaypointCoroutine; // a coroutine that waits at a waypoint
+    [NonSerialized] public HeardASoundEvent HeardASoundEvent; // a event that other can call to make the enemy hear a sound
 
-    
+    /// <summary>
+    /// Awake is called when the script instance is being loaded.
+    /// </summary>
     private void Awake()
     {
         _stateManager = GetComponent<EnemyAiStateManager>();
@@ -109,12 +110,12 @@ public class PatrolState : MonoBehaviour
             {
                 _waitingAtWaypointCoroutineIsRunning = true;
                 _stateManager.LookAround();
-                _patrolCoroutine = _stateManager.CallFunctionAfterSeconds(_stateManager.enemyAiScriptableObject.waitAtWaypointTime, () =>
+                _waitingAtWaypointCoroutine = _stateManager.CallFunctionAfterSeconds(_stateManager.enemyAiScriptableObject.waitAtWaypointTime, () =>
                 {
                     DetermineNextWaypoint();
                     _waitingAtWaypointCoroutineIsRunning = false;
                 });
-                StartCoroutine(_patrolCoroutine);
+                StartCoroutine(_waitingAtWaypointCoroutine);
             }
         }
     }
@@ -124,7 +125,7 @@ public class PatrolState : MonoBehaviour
     public void Exit_Patrol()
     {
         // Stop the patrol coroutine if it is running.
-        if(_waitingAtWaypointCoroutineIsRunning)StopCoroutine(_patrolCoroutine);
+        if(_waitingAtWaypointCoroutineIsRunning)StopCoroutine(_waitingAtWaypointCoroutine);
         _waitingAtWaypointCoroutineIsRunning = false;
         _numberOfSmallSoundsHeard = 0;
     }

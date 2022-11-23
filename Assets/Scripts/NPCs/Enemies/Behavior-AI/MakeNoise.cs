@@ -22,9 +22,11 @@ namespace NPC
     public class MakeNoise : MonoBehaviour
     {
         [SerializeField] 
-        private float noiseLevel = 10f;
+        private float noiseLevel = 10f; // The noise level of the object.
 
-        // Update is called once per frame
+        /// <summary>
+        /// Update is called once per frame.
+        /// </summary>
         void Update()
         {
             //when space bar pressed, make noise

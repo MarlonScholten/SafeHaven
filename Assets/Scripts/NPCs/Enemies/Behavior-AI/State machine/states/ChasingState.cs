@@ -33,8 +33,11 @@ using UnityEngine;
 /// </list>
 public class ChasingState : MonoBehaviour
 {
-    private EnemyAiStateManager _stateManager;
-
+    private EnemyAiStateManager _stateManager; // Reference to the state manager
+    
+    /// <summary>
+    /// Awake is called when the script instance is being loaded.
+    /// </summary>
     void Awake()
     {
         _stateManager = GetComponent<EnemyAiStateManager>();

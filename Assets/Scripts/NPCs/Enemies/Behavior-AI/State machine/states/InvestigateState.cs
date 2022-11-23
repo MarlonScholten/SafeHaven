@@ -33,12 +33,15 @@ using UnityEngine;
 /// </list>
 public class InvestigateState : MonoBehaviour
 {
-    private EnemyAiStateManager _stateManager;
-    
-    private IEnumerator _investigateCoroutine;
-    private bool _investigateCoroutineIsRunning;
-    private IEnumerator _waitingAtWaypointDuringInvestigationCoroutine;
-    private bool _waitingAtWaypointDuringInvestigationCoroutineIsRunning;
+    private EnemyAiStateManager _stateManager; // Reference to the state manager
+    private IEnumerator _investigateCoroutine; // a coroutine that is used to wait for a certain amount of time before going back to the patrol state
+    private bool _investigateCoroutineIsRunning; // a bool that is used to check if the coroutine is running
+    private IEnumerator _waitingAtWaypointDuringInvestigationCoroutine; // a coroutine that is used to wait for a certain amount of time before going to the next investigate waypoint
+    private bool _waitingAtWaypointDuringInvestigationCoroutineIsRunning; // a bool that is used to check if the coroutine is running
+   
+    /// <summary>
+    /// Awake is called when the script instance is being loaded.
+    /// </summary>
     void Awake()
     {
         _stateManager = GetComponent<EnemyAiStateManager>();

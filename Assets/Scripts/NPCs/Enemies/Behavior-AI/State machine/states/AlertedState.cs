@@ -33,10 +33,13 @@ using UnityEngine;
 /// </list>
 public class AlertedState : MonoBehaviour
 {
-    private EnemyAiStateManager _stateManager;
-    private IEnumerator _alertedCoroutine;
-    private bool _alertedCoroutineIsRunning;
+    private EnemyAiStateManager _stateManager; // Reference to the state manager
+    private IEnumerator _alertedCoroutine; // a coroutine that is used to wait for a certain amount of time
+    private bool _alertedCoroutineIsRunning; // a bool that is used to check if the coroutine is running
 
+    /// <summary>
+    /// Awake is called when the script instance is being loaded.
+    /// </summary>
     void Awake()
     {
         _stateManager = GetComponent<EnemyAiStateManager>();

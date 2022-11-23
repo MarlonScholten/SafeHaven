@@ -53,18 +53,18 @@ public class HeardASoundEvent : UnityEvent<SoundSource>
 /// </list>
 public class EnemyAiStateManager : MonoBehaviour
 {
-    public List<Transform> wayPoints;
-    public FSM_Scriptable_Object enemyAiScriptableObject;
-    [NonSerialized] public NavMeshAgent navMeshAgent;
-    [NonSerialized] public Vector3 targetWpLocation;
-    [NonSerialized] public int currentWpIndex;
-    [NonSerialized] public bool alertedBySound;
-    [NonSerialized] public bool alertedByVision;
-    [NonSerialized] public Vector3 spottedPlayerLastPosition;
-    [NonSerialized] public GameObject spottedPlayer;
-    [NonSerialized] public bool waitingAtWaypoint;
-    [NonSerialized] public Vector3 locationOfNoise;
-    [NonSerialized] public float timePlayerLastSpotted;
+    public List<Transform> wayPoints; // List of waypoints to patrol
+    public FSM_Scriptable_Object enemyAiScriptableObject; // Scriptable object that contains the adjustable variables for the enemy
+    [NonSerialized] public NavMeshAgent navMeshAgent; // Navmesh agent component
+    [NonSerialized] public Vector3 targetWpLocation; // Location of the current target waypoint
+    [NonSerialized] public int currentWpIndex; // Index of the current target waypoint
+    [NonSerialized] public bool alertedBySound; // Boolean to check if the enemy is alerted by a sound
+    [NonSerialized] public bool alertedByVision; // Boolean to check if the enemy is alerted by vision
+    [NonSerialized] public Vector3 spottedPlayerLastPosition; // Last position of the Sibling when the enemy spotted him
+    [NonSerialized] public GameObject spottedPlayer; // The Sibling that the enemy spotted
+    [NonSerialized] public bool waitingAtWaypoint; // Boolean to check if the enemy is waiting at a waypoint
+    [NonSerialized] public Vector3 locationOfNoise; // Location of the noise that the enemy heard
+    [NonSerialized] public float timePlayerLastSpotted; // Time when the enemy last spotted the Sibling
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
