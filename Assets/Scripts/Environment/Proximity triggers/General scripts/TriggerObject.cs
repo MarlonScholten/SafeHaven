@@ -3,7 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// This class is used to activate a light in the scene when the player enters a trigger object
+/// Author: Hugo Ulfman </para>
+/// Modified by:  </para>
+/// This script must be put on a triggerbox object.
+/// The IsTrigger property must be set to true.
+/// The list can be filled with objects that implement the ITrigger interface
+/// When an object  (not with tag "NonTrigger") enters the triggerbox, the trigger() method of the ITrigger interface is called.
 /// </summary>
 public class TriggerObject : MonoBehaviour
 {
