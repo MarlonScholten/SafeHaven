@@ -69,7 +69,7 @@ public class PatrolState : MonoBehaviour
     public void Update_Patrol()
     {
         var path = new NavMeshPath();
-        // If the player is in vision but the path is partial, the enemy will go back to the alerted state.
+        // If the player/brother is in vision but the path is partial, the enemy will go back to the alerted state.
         if (_stateManager.CheckVision())
         {
             _stateManager.navMeshAgent.CalculatePath(_stateManager.spottedPlayerLastPosition, path);
@@ -78,7 +78,7 @@ public class PatrolState : MonoBehaviour
                 CustomEvent.Trigger(gameObject, "Alerted");
             }
         }
-        //if the player is alerted by sound but the path is partial, the enemy will go back to the alerted state.
+        //if the player/brother is alerted by sound but the path is partial, the enemy will go back to the alerted state.
         if (_stateManager.alertedBySound)
         {
             _stateManager.navMeshAgent.CalculatePath(_stateManager.locationOfNoise, path);

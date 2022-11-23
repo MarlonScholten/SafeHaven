@@ -61,7 +61,7 @@ public class InvestigateState : MonoBehaviour
     /// </summary>
     public void Update_Investigate()
     {
-        //If the player is in vision, chase the player
+        //If the player/brother is in vision, chase the player/brother
         if (_stateManager.CheckVision())
         {
             CustomEvent.Trigger(gameObject, "Chasing");

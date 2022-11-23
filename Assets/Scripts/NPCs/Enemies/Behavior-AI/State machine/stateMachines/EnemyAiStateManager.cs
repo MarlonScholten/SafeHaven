@@ -13,7 +13,7 @@ using Vector3 = UnityEngine.Vector3;
 
 
 /// <summary>
-/// Unity event for when the player sound is detected
+/// Unity event for when the player/brother sound is detected
 /// This is created so a UnityEvent can pass an argument
 /// </summary>
 ///
@@ -41,8 +41,14 @@ public class HeardASoundEvent : UnityEvent<SoundSource>
 ///	    <item>
 ///         <term>EnemyObject</term>
 ///		    <term>Tag</term>
-///         <term>Sibling</term>
-///		    <term>This script checks if an object with the "Sibling" tag is in the cone vision.</term>
+///         <term>Player</term>
+///		    <term>This script checks if an object with the "Player" tag is in the cone vision.</term>
+///	    </item>
+///	    <item>
+///         <term>EnemyObject</term>
+///		    <term>Tag</term>
+///         <term>Brother</term>
+///		    <term>This script checks if an object with the "Brother" tag is in the cone vision.</term>
 ///	    </item>
 ///	    <item>
 ///         <term>EnemyObject</term>
@@ -60,11 +66,11 @@ public class EnemyAiStateManager : MonoBehaviour
     [NonSerialized] public int currentWpIndex; // Index of the current target waypoint
     [NonSerialized] public bool alertedBySound; // Boolean to check if the enemy is alerted by a sound
     [NonSerialized] public bool alertedByVision; // Boolean to check if the enemy is alerted by vision
-    [NonSerialized] public Vector3 spottedPlayerLastPosition; // Last position of the Sibling when the enemy spotted him
-    [NonSerialized] public GameObject spottedPlayer; // The Sibling that the enemy spotted
+    [NonSerialized] public Vector3 spottedPlayerLastPosition; // Last position of the player/brother when the enemy spotted him
+    [NonSerialized] public GameObject spottedPlayer; // The player/brother that the enemy spotted
     [NonSerialized] public bool waitingAtWaypoint; // Boolean to check if the enemy is waiting at a waypoint
     [NonSerialized] public Vector3 locationOfNoise; // Location of the noise that the enemy heard
-    [NonSerialized] public float timePlayerLastSpotted; // Time when the enemy last spotted the Sibling
+    [NonSerialized] public float timePlayerLastSpotted; // Time when the enemy last spotted the player/brother
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -103,7 +109,7 @@ public class EnemyAiStateManager : MonoBehaviour
     
     
     /// <summary>
-    /// This method checks if the player is in the vision of the enemy.
+    /// This method checks if the player/brother is in the vision of the enemy.
     /// </summary>
     public bool CheckVision()
     {
@@ -120,7 +126,7 @@ public class EnemyAiStateManager : MonoBehaviour
         var path = new NavMeshPath();
         navMeshAgent.CalculatePath(hit.transform.position, path);
         if (path.status == NavMeshPathStatus.PathPartial) return false;
-        if (!hit.collider.gameObject.CompareTag("Sibling")) return false;
+        if (!hit.collider.gameObject.CompareTag("Player") || !hit.collider.gameObject.CompareTag("Brother")) return false;
         
         var hitPlayer = hit.collider.gameObject;
         spottedPlayer = hitPlayer;
@@ -132,13 +138,13 @@ public class EnemyAiStateManager : MonoBehaviour
     }
     
     /// <summary>
-    /// This method check if the player is in the list of colliders.
+    /// This method check if the player/brother is in the list of colliders.
     /// <param name="objects">Collided objects.</param>
-    /// <returns>The player collider if exists.</returns>
+    /// <returns>The player/brother collider if exists.</returns>
     /// </summary>
     private static Collider GetPlayer(IEnumerable<Collider> objects)
     {
-        return objects.FirstOrDefault(obj => obj.gameObject.CompareTag("Sibling"));
+        return objects.FirstOrDefault(obj => obj.gameObject.CompareTag("Player") || obj.gameObject.CompareTag("Brother"));
     }
     
     /// <summary>
@@ -162,7 +168,7 @@ public class EnemyAiStateManager : MonoBehaviour
     }
 
     /// <summary>
-    /// This method checks if the player can reach the player position.
+    /// This method checks if the enemy can reach the player/brother position.
     /// </summary>
     public void CheckPlayerPositionReachable(Vector3 playerPosition)
     {
@@ -181,10 +187,11 @@ public class EnemyAiStateManager : MonoBehaviour
     }
 
     ///<summary>
-    /// This method catches the child (reloads the scene for now.
+    /// This method catches the child (reloads the scene for now).
     ///</summary>
     public static void CatchChild()
     {
+        Debug.Log("Child caught");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

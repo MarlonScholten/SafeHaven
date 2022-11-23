@@ -54,15 +54,16 @@ public class ChasingState : MonoBehaviour
     /// </summary>
     public void Update_Chasing()
     {
-        //If the player is not in vision and has not been for 3 seconds, the enemy goes back to investigate.
+        //If the player/brother is not in vision and has not been for 3 seconds, the enemy goes back to investigate.
         if(!_stateManager.CheckVision() && (_stateManager.timePlayerLastSpotted + _stateManager.enemyAiScriptableObject.chaseTimeWhenNotSeen) < Time.time)
         {
             _stateManager.spottedPlayerLastPosition = _stateManager.spottedPlayer.transform.position;
             CustomEvent.Trigger(gameObject, "Investigate");
         }
-        //get distance between player and enemy
+        //get distance between player/brother and enemy
         float distance = Vector3.Distance(_stateManager.spottedPlayer.transform.position, transform.position);
-        //If the distance between the player and enemy is less than the set distance, the enemy catches the player.
+        //If the distance between the player/brother and enemy is less than the set distance, the enemy catches the player/brother.
+        Debug.Log(distance + _stateManager.enemyAiScriptableObject.catchDistance);
         if (distance < _stateManager.enemyAiScriptableObject.catchDistance)
         {
             EnemyAiStateManager.CatchChild();
@@ -74,7 +75,7 @@ public class ChasingState : MonoBehaviour
     /// </summary>
     public void FixedUpdate_Chasing()
     {
-        //If the player is in vision the enemy moves towards the player. If the player is not in vision but has been in vision in the last 3 seconds, the enemy moves towards the player.
+        //If the player/brother is in vision the enemy moves towards the player/brother. If the player/brother is not in vision but has been in vision in the last 3 seconds, the enemy moves towards the player/brother.
         if (_stateManager.CheckVision() || (!_stateManager.CheckVision() && (_stateManager.timePlayerLastSpotted + _stateManager.enemyAiScriptableObject.chaseTimeWhenNotSeen) > Time.time))
         {
             _stateManager.CheckPlayerPositionReachable(_stateManager.spottedPlayer.transform.position);
@@ -86,6 +87,6 @@ public class ChasingState : MonoBehaviour
     /// </summary>
     public void Exit_Chasing()
     {
-        //Reset spotted player.
+        //Reset spotted player/brother.
     }
 }

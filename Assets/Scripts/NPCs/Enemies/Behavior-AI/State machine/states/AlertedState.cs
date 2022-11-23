@@ -94,7 +94,7 @@ public class AlertedState : MonoBehaviour
     /// </summary>
     public void FixedUpdate_Alerted()
     {
-        //The player looks around while it is alerted.
+        //The Enemy looks around while it is alerted.
         _stateManager.LookAround();
     }
     
