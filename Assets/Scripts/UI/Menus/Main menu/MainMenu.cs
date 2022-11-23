@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -51,6 +53,8 @@ public class MainMenu : MonoBehaviour
     [SerializeField] 
     private GameObject _settingsMenu;
 
+    private bool _wantsToLeave;
+
     private void Start()
     {
         _startButton.Select();
@@ -81,10 +85,29 @@ public class MainMenu : MonoBehaviour
 
     public void OnExit()
     {
-        #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-        #endif
+        if (_wantsToLeave)
+        {
+            #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+            #endif
         
-        Application.Quit();
+            Application.Quit();
+            return;
+        }
+
+        _exitButton.GetComponentInChildren<TMP_Text>().SetText("Are you sure?");
+        _exitButton.GetComponentInChildren<TMP_Text>().color = Color.red;
+        _wantsToLeave = true;
+
+        StartCoroutine(ExitConfirmationTimeout());
+    }
+
+    private IEnumerator ExitConfirmationTimeout()
+    {
+        yield return new WaitForSeconds(2.0f);
+
+        _exitButton.GetComponentInChildren<TMP_Text>().SetText("Exit");
+        _exitButton.GetComponentInChildren<TMP_Text>().color = Color.white;
+        _wantsToLeave = false;
     }
 }
