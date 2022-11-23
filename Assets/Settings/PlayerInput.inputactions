@@ -40,11 +40,20 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                 },
-                 {
+                },
+                {
                     "name": "ShowDebuggingTools",
                     "type": "Button",
                     "id": "dd99a428-42fd-4038-8808-9439d8a80ec6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "f1a87cba-f7b2-486f-8f9f-1a9f4d8f3c97",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -282,15 +291,37 @@
                     "action": "TraverseInitiate",
                     "isComposite": false,
                     "isPartOfComposite": false
-                 },
-                 {
-                    "name":"",
+                },
+                {
+                    "name": "",
                     "id": "35fc353c-d9bf-4823-930c-061ec1f13fa9",
                     "path": "<Keyboard>/tab",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "ShowDebuggingTools",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2dcbe236-5bde-456f-be2b-6ea82905f644",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "daa2294d-f137-42d0-a834-a3bd03ac5d1e",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
