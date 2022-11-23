@@ -11,19 +11,20 @@ using Quaternion = UnityEngine.Quaternion;
 using Random = UnityEngine.Random;
 using Vector3 = UnityEngine.Vector3;
 
-
 /// <summary>
-/// Unity event for when the player/brother sound is detected
-/// This is created so a UnityEvent can pass an argument
+/// Author: Hugo Ulfman </para>
+/// Modified by: none </para>
+/// Description: Unity event for when the player/brother sound is detected. This is created so a UnityEvent can pass an argument
 /// </summary>
-///
 [System.Serializable]
 public class HeardASoundEvent : UnityEvent<SoundSource>
 {
 }
 
 /// <summary>
-/// This script is used as a manager to control the variables en methods that are shared in different states on the EnemyObject (Assets/Prefabs/NPCs/Enemies/EnemyObject.prefab).
+/// Author: Marlon Kerstens</para>
+/// Modified by: Hugo Ulfman </para>
+/// Description: This script is used as a manager to control the variables en methods that are shared in different states on the EnemyObject (Assets/Prefabs/NPCs/Enemies/EnemyObject.prefab).
 /// </summary>
 /// <list type="table">
 ///	    <listheader>
@@ -59,8 +60,10 @@ public class HeardASoundEvent : UnityEvent<SoundSource>
 /// </list>
 public class EnemyAiStateManager : MonoBehaviour
 {
-    public List<Transform> wayPoints; // List of waypoints to patrol
-    public FSM_Scriptable_Object enemyAiScriptableObject; // Scriptable object that contains the adjustable variables for the enemy
+    [Tooltip("List of waypoints to patrol")]
+    public List<Transform> wayPoints;
+    [Tooltip("Scriptable object that contains the adjustable variables for the enemy")]
+    public FSM_Scriptable_Object enemyAiScriptableObject;
     [NonSerialized] public NavMeshAgent navMeshAgent; // Navmesh agent component
     [NonSerialized] public Vector3 targetWpLocation; // Location of the current target waypoint
     [NonSerialized] public int currentWpIndex; // Index of the current target waypoint

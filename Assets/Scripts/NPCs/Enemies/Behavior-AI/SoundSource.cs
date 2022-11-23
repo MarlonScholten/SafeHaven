@@ -3,7 +3,9 @@
 namespace NPC
 {
     /// <summary>
-    /// This script is an simulated sound source.
+    /// Author: Hugo Ulfman </para>
+    /// Modified by: </para>
+    /// Description:  This script is an simulated sound source.
     /// </summary>
     /// <list type="table">
     ///	    <listheader>

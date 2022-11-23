@@ -6,7 +6,9 @@ using UnityEngine;
 using UnityEngine.AI;
 
 /// <summary>
-/// This script is a the Patrol state of the enemy.
+/// Author: Hugo Ulfman </para>
+/// Modified by: </para>
+/// Description: Unity event for when the player/brother sound is detected. This is created so a UnityEvent can pass an argument
 /// </summary>
 /// <list type="table">
 ///	    <listheader>

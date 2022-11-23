@@ -3,7 +3,9 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
-/// This script is a the Alerted state of the enemy.
+/// Author: Marlon Kerstens</para>
+/// Modified by: Hugo Ulfman </para>
+/// Description: This script is a the Alerted state of the enemy.
 /// </summary>
 /// <list type="table">
 ///	    <listheader>

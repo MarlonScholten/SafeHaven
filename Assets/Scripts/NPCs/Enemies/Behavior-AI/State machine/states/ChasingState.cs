@@ -3,7 +3,9 @@ using UnityEngine;
 
 
 /// <summary>
-/// This script is a the Chasing state of the enemy.
+/// Author: Marlon Kerstens</para>
+/// Modified by: Hugo Ulfman </para>
+/// Description: This script is a the Chasing state of the enemy.
 /// </summary>
 /// <list type="table">
 ///	    <listheader>

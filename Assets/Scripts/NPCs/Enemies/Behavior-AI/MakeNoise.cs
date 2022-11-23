@@ -3,7 +3,9 @@ using UnityEngine;
 namespace NPC
 {
     /// <summary>
-    /// This script is that is for test purposes only. It is used to simulate a sound source.
+    /// Author: Marlon Kerstens </para>
+    /// Modified by: Hugo Ulfman </para>
+    /// Description: This script is that is for test purposes only. It is used to simulate a sound source.
     /// </summary>
     /// <list type="table">
     ///	    <listheader>
@@ -21,8 +23,8 @@ namespace NPC
     /// </list>
     public class MakeNoise : MonoBehaviour
     {
-        [SerializeField] 
-        private float noiseLevel = 10f; // The noise level of the object.
+        [Tooltip("The noise level of the object")]
+        [SerializeField] private float noiseLevel = 10f;
 
         /// <summary>
         /// Update is called once per frame.
