@@ -17,10 +17,10 @@ namespace PlayerMovement
         public float MovementSpeed => _movementSpeed;
         private CharacterController CharacterController { get; set; }
         public PlayerBaseState CurrentState { get; set; }
-        public Vector2 MovementInput { get; private set; }
+        public Vector2 MovementInput { get => InputBehaviour.Instance.OnMoveVector; }
         private Vector3 _movement;
         public Vector3 Movement { set => _movement = value; }
-        private Vector2 LookInput { get; set; }
+        private Vector2 LookInput { get => InputBehaviour.Instance.OnLookVector; }
         private const float _gravity = 9.8f;
         [SerializeField] private float _gravityMultiplier = 1f;
         private PlayerStateFactory _states;
@@ -34,7 +34,7 @@ namespace PlayerMovement
             
             CharacterController = GetComponent<CharacterController>();
         }
-        
+
         /// <summary>
         /// Call the Update function of whatever state we are in on every frame and move the player.
         /// </summary>
@@ -45,23 +45,6 @@ namespace PlayerMovement
             ApplyGravity();
             Look();
             CharacterController.Move(_movement * Time.deltaTime);
-        }
-
-        /// <summary>
-        /// Update the movement values whenever the player inputs movement keys
-        /// </summary>
-        /// <param name="context"></param>
-        public void OnMovementInput(InputAction.CallbackContext context)
-        {
-            MovementInput = context.action.ReadValue<Vector2>();
-        }
-
-        /// <summary>
-        /// Look input to rotate the camera.
-        /// </summary>
-        public void OnLookInput(InputAction.CallbackContext context)
-        {
-            LookInput = context.ReadValue<Vector2>();
         }
 
         /// <summary>
