@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -483,37 +483,6 @@ MonoBehaviour:
   _data:
     _json: '{"declarations":{"Kind":"Object","collection":{"$content":[],"$version":"A"},"$version":"A"}}'
     _objectReferences: []
---- !u!114 &341478338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 341478331}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: ab4a18f083ded274f81fc71d5931940f,
-    type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Brother
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!1 &410915581
 GameObject:
   m_ObjectHideFlags: 0
@@ -1391,6 +1360,7 @@ GameObject:
   - component: {fileID: 1698849352}
   - component: {fileID: 1698849354}
   - component: {fileID: 1698849353}
+  - component: {fileID: 1698849355}
   m_Layer: 0
   m_Name: Sister
   m_TagString: Player
@@ -1505,7 +1475,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 648a154739180634ea5b641fb9b1e33a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _camera: {fileID: 2672865519699567717, guid: 51027b5b3e498874da13157bbfd48bcc, type: 3}
+  _camera: {fileID: 1760011414}
   _markerPrefab: {fileID: 4852335383087449349, guid: 51f106024b02e1c4c98cb73e851ad245,
     type: 3}
   _radialMenu: {fileID: 5349670134834561438, guid: c25b2e8594aa4c44682e5ba43f6d65d9,
@@ -1523,7 +1493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b75838c0c4093164da44f8be19742f20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _camera: {fileID: 2672865519699567717, guid: 51027b5b3e498874da13157bbfd48bcc, type: 3}
+  _camera: {fileID: 1760011414}
   _markerPrefab: {fileID: 4852335383087449349, guid: 51f106024b02e1c4c98cb73e851ad245,
     type: 3}
   _radialMenu: {fileID: 5349670134834561438, guid: c25b2e8594aa4c44682e5ba43f6d65d9,
@@ -1532,11 +1502,47 @@ MonoBehaviour:
   _highlightedOption: {fileID: 5825727684663592497, guid: 3c196c0359ac64148810681913ed85de,
     type: 3}
   _slowmotionFactor: 4
-  options: []
+  options:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   cancel: {fileID: 4628354478537861322, guid: 035f5a085dbf07d43bf2016c2a0b6476, type: 3}
   radialMenuNormal: {r: 1, g: 1, b: 1, a: 0}
   radialMenuOptionHovered: {r: 0.015686275, g: 0.33333334, b: 0.5294118, a: 0}
   radialMenuCancel: {r: 0.59607846, g: 0, b: 0, a: 0}
+--- !u!114 &1698849355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1698849347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: a35202accba6d7148891707d4e5958a3,
+    type: 3}
+  m_NotificationBehavior: 3
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &1760011412
 GameObject:
   m_ObjectHideFlags: 0
