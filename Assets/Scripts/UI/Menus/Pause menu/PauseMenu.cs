@@ -1,34 +1,95 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/// <summary>
+/// Author: Tom Cornelissen <br/>
+/// Modified by:  <br/>
+/// Description: PauseMenu handles all the interactions of the user with the pause menu
+/// </summary>
+/// <list type="table">
+///	    <listheader>
+///         <term>On what GameObject</term>
+///         <term>Type</term>
+///         <term>Name of type</term>
+///         <term>Description</term>
+///     </listheader>
+///     <item>
+///         <term>PauseManager</term>
+///         <term>Prefab</term>
+///         <term>PauseManager.cs</term>
+///         <term>The <c>PauseManager</c> prefab contains everything needed to pause and unpause the game</term>
+///     </item>
+///     <item>
+///         <term>PauseMenu</term>
+///         <term>Prefab</term>
+///         <term>PauseMenu.cs</term>
+///         <term>The <c>PauseMenu</c> prefab contains everything needed to display the pause menu UI</term>
+///     </item>
+/// </list>
 public class PauseMenu : MonoBehaviour
 {
     [Header("Buttons enabled")]
-    [SerializeField] private bool _continueButtonEnabled = true;
-    [SerializeField] private bool _saveButtonEnabled = true;
-    [SerializeField] private bool _settingsButtonEnabled = true;
-    [SerializeField] private bool _mainMenuButtonEnabled = true;
-    [SerializeField] private bool _exitButtonEnabled = true;
+    [SerializeField] 
+    [Tooltip("Determines if the continue button can be interacted with in the menu")]
+    private bool _continueButtonEnabled = true;
+    
+    [SerializeField] 
+    [Tooltip("Determines if the save button can be interacted with in the menu")]
+    private bool _saveButtonEnabled = true;
+    
+    [SerializeField] 
+    [Tooltip("Determines if the settings button can be interacted with in the menu")]
+    private bool _settingsButtonEnabled = true;
+    
+    [SerializeField] 
+    [Tooltip("Determines if the main menu button can be interacted with in the menu")]
+    private bool _mainMenuButtonEnabled = true;
+    
+    [SerializeField] 
+    [Tooltip("Determines if the exit button can be interacted with in the menu")]
+    private bool _exitButtonEnabled = true;
     
     [Header("ButtonReferences")]
-    [SerializeField] private Button _continueButton;
-    [SerializeField] private Button _saveButton;
-    [SerializeField] private Button _settingsButton;
-    [SerializeField] private Button _mainMenuButton;
-    [SerializeField] private Button _exitButton;
+    [SerializeField] 
+    [Tooltip("A reference to the continue button UI element in the hierarchy")]
+    private Button _continueButton;
+    
+    [SerializeField] 
+    [Tooltip("A reference to the save button UI element in the hierarchy")]
+    private Button _saveButton;
+    
+    [SerializeField] 
+    [Tooltip("A reference to the settings button UI element in the hierarchy")]
+    private Button _settingsButton;
+    
+    [SerializeField] 
+    [Tooltip("A reference to the main menu button UI element in the hierarchy")]
+    private Button _mainMenuButton;
+    
+    [SerializeField] 
+    [Tooltip("A reference to the exit button UI element in the hierarchy")]
+    private Button _exitButton;
 
     [Header("Main menu")] 
-    [SerializeField] private int _mainMenuSceneId;
-    [SerializeField] private GameObject _loadingScreen;
+    [SerializeField] 
+    [Tooltip("The id from the scene to load when the main menu button is pressed. The scene needs to be added to the build settings, the id is the place of the scene in that list.")]
+    private int _mainMenuSceneId;
+    
+    [SerializeField] 
+    [Tooltip("The prefab that contains the UI for the loading screen")]
+    private GameObject _loadingScreen;
 
-    [Header("Header types")] 
-    [SerializeField] private GameObject _pauseMenu;
-    [SerializeField] private GameObject _settingsMenu;
+    [Header("Menu types")]
+    [SerializeField] 
+    [Tooltip("A reference to the pause menu UI element in the hierarchy")]
+    private GameObject _pauseMenu;
+    
+    [SerializeField]
+    [Tooltip("A reference to the settings menu UI prefab")]
+    private GameObject _settingsMenu;
 
     private bool _wantsToReturnToMainMenu;
     private bool _wantsToExit;
@@ -75,9 +136,10 @@ public class PauseMenu : MonoBehaviour
             SceneManager.LoadSceneAsync(_mainMenuSceneId, LoadSceneMode.Single);
             return;
         }
-        
-        _mainMenuButton.GetComponentInChildren<TMP_Text>().SetText("Are you sure?");
-        _mainMenuButton.GetComponentInChildren<TMP_Text>().color = Color.red;
+
+        var buttonTextComponent = _mainMenuButton.GetComponentInChildren<TMP_Text>();
+        buttonTextComponent.SetText("Are you sure?");
+        buttonTextComponent.color = Color.red;
         _wantsToReturnToMainMenu = true;
 
         StartCoroutine(MainMenuConfirmationTimeout());
@@ -95,8 +157,9 @@ public class PauseMenu : MonoBehaviour
             return;
         }
         
-        _exitButton.GetComponentInChildren<TMP_Text>().SetText("Are you sure?");
-        _exitButton.GetComponentInChildren<TMP_Text>().color = Color.red;
+        var buttonTextComponent = _exitButton.GetComponentInChildren<TMP_Text>();
+        buttonTextComponent.SetText("Are you sure?");
+        buttonTextComponent.color = Color.red;
         _wantsToExit = true;
 
         StartCoroutine(ExitConfirmationTimeout());
@@ -106,8 +169,9 @@ public class PauseMenu : MonoBehaviour
     {
         yield return new WaitForSeconds(2.0f);
 
-        _mainMenuButton.GetComponentInChildren<TMP_Text>().SetText("Main menu");
-        _mainMenuButton.GetComponentInChildren<TMP_Text>().color = Color.white;
+        var buttonTextComponent = _mainMenuButton.GetComponentInChildren<TMP_Text>();
+        buttonTextComponent.SetText("Main menu");
+        buttonTextComponent.color = Color.white;
         _wantsToReturnToMainMenu = false;
     }
 
@@ -115,8 +179,9 @@ public class PauseMenu : MonoBehaviour
     {
         yield return new WaitForSeconds(2.0f);
 
-        _exitButton.GetComponentInChildren<TMP_Text>().SetText("Exit");
-        _exitButton.GetComponentInChildren<TMP_Text>().color = Color.white;
+        var buttonTextComponent = _exitButton.GetComponentInChildren<TMP_Text>();
+        buttonTextComponent.SetText("Exit");
+        buttonTextComponent.color = Color.white;
         _wantsToExit = false;
     }
 }
