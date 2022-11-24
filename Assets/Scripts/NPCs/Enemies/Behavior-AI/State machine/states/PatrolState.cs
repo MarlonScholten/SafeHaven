@@ -93,7 +93,7 @@ public class PatrolState : MonoBehaviour
         if (_numberOfSmallSoundsHeard > 0 && !_smallSoundReducer)
         {
             _smallSoundReducer = true; 
-            StartCoroutine(_stateManager.CallFunctionAfterSeconds(_stateManager.enemyAiScriptableObject.reduceSmallSoundsTime, () => { 
+            StartCoroutine(_stateManager.CallFunctionAfterSeconds(_stateManager.enemyAiScriptableObject.ReduceSmallSoundsTime, () => { 
                 if(_numberOfSmallSoundsHeard > 0) _numberOfSmallSoundsHeard--;
                 _smallSoundReducer = false;
             }));
@@ -112,7 +112,7 @@ public class PatrolState : MonoBehaviour
             {
                 _waitingAtWaypointCoroutineIsRunning = true;
                 _stateManager.LookAround();
-                _waitingAtWaypointCoroutine = _stateManager.CallFunctionAfterSeconds(_stateManager.enemyAiScriptableObject.waitAtWaypointTime, () =>
+                _waitingAtWaypointCoroutine = _stateManager.CallFunctionAfterSeconds(_stateManager.enemyAiScriptableObject.WaitAtWaypointTime, () =>
                 {
                     DetermineNextWaypoint();
                     _waitingAtWaypointCoroutineIsRunning = false;
@@ -167,13 +167,13 @@ public class PatrolState : MonoBehaviour
     /// </summary>
     private void HeardASoundFromPlayer(SoundSource source)
     {
-        Debug.Log("HeardASoundFromPlayer" +  _stateManager.enemyAiScriptableObject.thresholdSmallSounds + source.GetVolume() + _stateManager.enemyAiScriptableObject.thresholdLoudSounds +" "+ _numberOfSmallSoundsHeard);
+        Debug.Log("HeardASoundFromPlayer" +  _stateManager.enemyAiScriptableObject.ThresholdSmallSounds + source.GetVolume() + _stateManager.enemyAiScriptableObject.ThresholdLoudSounds +" "+ _numberOfSmallSoundsHeard);
         // If the sound is too small, return.
-        if(source.GetVolume() <_stateManager.enemyAiScriptableObject.thresholdSmallSounds) return;
+        if(source.GetVolume() <_stateManager.enemyAiScriptableObject.ThresholdSmallSounds) return;
         // If the sound is loud enough, increase the number of small sounds heard.
-        if (source.GetVolume() <= _stateManager.enemyAiScriptableObject.thresholdLoudSounds && source.GetVolume() >= _stateManager.enemyAiScriptableObject.thresholdSmallSounds) _numberOfSmallSoundsHeard++;
+        if (source.GetVolume() <= _stateManager.enemyAiScriptableObject.ThresholdLoudSounds && source.GetVolume() >= _stateManager.enemyAiScriptableObject.ThresholdSmallSounds) _numberOfSmallSoundsHeard++;
         // If the sound is loud enough, set the location of the noise and set the alertedBySound to true.
-        if (_numberOfSmallSoundsHeard >= _stateManager.enemyAiScriptableObject.numberOfSmallSoundsToInvestigate || source.GetVolume() > _stateManager.enemyAiScriptableObject.thresholdLoudSounds)
+        if (_numberOfSmallSoundsHeard >= _stateManager.enemyAiScriptableObject.NumberOfSmallSoundsToInvestigate || source.GetVolume() > _stateManager.enemyAiScriptableObject.ThresholdLoudSounds)
         {
             _numberOfSmallSoundsHeard = 0;
             _stateManager.locationOfNoise = source.GetSource().transform.position;

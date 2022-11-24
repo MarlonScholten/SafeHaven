@@ -121,19 +121,19 @@ public class EnemyAiStateManager : MonoBehaviour
     /// </summary>
     public bool CheckVision()
     {
-        var foundObjects = Physics.OverlapSphere(transform.position, enemyAiScriptableObject.visionRange);
+        var foundObjects = Physics.OverlapSphere(transform.position, enemyAiScriptableObject.VisionRange);
         var player = GetPlayer(foundObjects);
         if (player == null) return false;
         var transform1 = transform;
         var directionToPlayer = player.transform.position - transform1.position;
         var angleToPlayer = Vector3.Angle(transform1.forward, directionToPlayer);
         
-        if (angleToPlayer >= enemyAiScriptableObject.visionAngle) return false; // Check if the player is in set vision angle
-        if (!Physics.Raycast(transform.position, directionToPlayer, out var hit, enemyAiScriptableObject.visionRange)) return false; // Check if the player is in set vision range
+        if (angleToPlayer >= enemyAiScriptableObject.VisionAngle) return false; // Check if the player is in set vision angle
+        if (!Physics.Raycast(transform.position, directionToPlayer, out var hit, enemyAiScriptableObject.VisionRange)) return false; // Check if the player is in set vision range
         var path = new NavMeshPath();
         navMeshAgent.CalculatePath(hit.transform.position, path);
         if (path.status == NavMeshPathStatus.PathPartial) return false; // Check if the player is reachable
-        if (!hit.collider.gameObject.CompareTag("Player") || !hit.collider.gameObject.CompareTag("Brother")) return false; // Check if the object is the player/brother
+        if (!hit.collider.gameObject.CompareTag("Player") && !hit.collider.gameObject.CompareTag("Brother") ) return false; // Check if the object is the player/brother
         
         var hitPlayer = hit.collider.gameObject;
         spottedPlayer = hitPlayer;
@@ -159,9 +159,9 @@ public class EnemyAiStateManager : MonoBehaviour
     /// The NavMeshSamplePosition method is used to find a closest point on the NavMesh to the location of the noise.
     /// </summary>
     public void CalculateInvestigateLocation(Vector3 position) {
-        var randDirection = Random.insideUnitSphere * enemyAiScriptableObject.investigateDistance;
+        var randDirection = Random.insideUnitSphere * enemyAiScriptableObject.InvestigateDistance;
         randDirection += position;
-        NavMesh.SamplePosition (randDirection, out NavMeshHit navHit, enemyAiScriptableObject.investigateDistance, 1);
+        NavMesh.SamplePosition (randDirection, out NavMeshHit navHit, enemyAiScriptableObject.InvestigateDistance, 1);
         targetWpLocation = navHit.position;
         CheckPlayerPositionReachable(targetWpLocation);
         waitingAtWaypoint = false;

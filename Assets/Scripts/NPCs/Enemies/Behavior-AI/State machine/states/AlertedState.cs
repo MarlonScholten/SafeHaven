@@ -57,7 +57,7 @@ public class AlertedState : MonoBehaviour
             //Stops the enemy from moving
             _stateManager.navMeshAgent.isStopped = true;
             _alertedCoroutineIsRunning = true;
-            _alertedCoroutine = _stateManager.CallFunctionAfterSeconds(_stateManager.enemyAiScriptableObject.stopWhenAlertedTime, () =>
+            _alertedCoroutine = _stateManager.CallFunctionAfterSeconds(_stateManager.enemyAiScriptableObject.StopWhenAlertedTime, () =>
             {
                 //If the enemy stood still for the set time, it will continue
                 _stateManager.navMeshAgent.isStopped = false; 

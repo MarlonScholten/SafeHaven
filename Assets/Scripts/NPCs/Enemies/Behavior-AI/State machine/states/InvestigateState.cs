@@ -90,7 +90,7 @@ public class InvestigateState : MonoBehaviour
             {
                 _investigateCoroutineIsRunning = true;
                 _investigateCoroutine =
-                    _stateManager.CallFunctionAfterSeconds(_stateManager.enemyAiScriptableObject.investigateTime, () =>
+                    _stateManager.CallFunctionAfterSeconds(_stateManager.enemyAiScriptableObject.InvestigateTime, () =>
                     {
                         CustomEvent.Trigger(gameObject, "Patrol");
                         
@@ -104,7 +104,7 @@ public class InvestigateState : MonoBehaviour
                 _stateManager.waitingAtWaypoint = true;
                 _waitingAtWaypointDuringInvestigationCoroutineIsRunning = true;
                 _waitingAtWaypointDuringInvestigationCoroutine =
-                    _stateManager.CallFunctionAfterSeconds(_stateManager.enemyAiScriptableObject.waitAtInvestigatingWaypointTime, () =>
+                    _stateManager.CallFunctionAfterSeconds(_stateManager.enemyAiScriptableObject.WaitAtInvestigatingWaypointTime, () =>
                     {
                         if (_stateManager.alertedBySound) _stateManager.CalculateInvestigateLocation(_stateManager.locationOfNoise);
                         else if(_stateManager.alertedByVision) _stateManager.CalculateInvestigateLocation(_stateManager.spottedPlayerLastPosition);
