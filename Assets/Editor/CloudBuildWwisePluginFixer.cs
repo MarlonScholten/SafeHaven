@@ -7,6 +7,7 @@ using System.Collections.Generic;
 /// <summary>
 /// A fix for Cloud Build while using Wwise. Add to Editor Folder
 /// Based on solution from Blackbox Relaities: https://github.com/BlackBoxSimulations/wwise-unity-cloud-build-fixer
+/// Modified by: Thomas van den Oever
 /// </summary>
 public class WwiseFixEditor : MonoBehaviour
 {
