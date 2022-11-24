@@ -2,6 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Author: Jelco van der Straaten </para>
+/// Modified by:  Jelco</para>
+/// This script controls the fear of the broter.
+/// </summary>
+/// <list type="table">
+///	    <listheader>
+///         <term>On what GameObject</term>
+///         <term>Type</term>
+///         <term>Name of type</term>
+///         <term>Description</term>
+///     </listheader>
+///     <item>
+///         <term>Enemy</term>
+///		    <term>Tag</term>
+///         <term>Enemy</term>
+///		    <term>The tag is needed to determine if a object is an enemy, so that the fear can be affected.</term>
+///	    </item>
+/// </list>
+
 public class FearSystem : MonoBehaviour
 {
     /// <summary>
@@ -36,6 +56,9 @@ public class FearSystem : MonoBehaviour
         checkEnemyEncounter();
     }
 
+    /// <summary>
+    /// This function checks if the brother can see an enemy(encounter).
+    /// </summary>
     public void checkEnemyEncounter(){
         Collider[] enemies = Physics.OverlapSphere(transform.position, _viewRadius, _EnemyMask);
         foreach(Collider enemy in enemies){
@@ -52,13 +75,9 @@ public class FearSystem : MonoBehaviour
         }
     }
 
-    public Vector3 DirFromAngle(float angleInDegrees, bool angleIsGLobal){
-        if(!angleIsGLobal){
-            angleInDegrees += transform.eulerAngles.y;
-        }
-        return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad),0,Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
-    }
-
+    /// <summary>
+    /// This function updates the fear level. The function gets called when the brother encounters an enemy.
+    /// </summary>
     public void UpdateFearLevel(float distance){
         if((distance < _maxFearDistance) && (_fear < _maxFearLevel)){
             //Time.deltatime is needed beceause fear gets updated every frame.
@@ -66,6 +85,10 @@ public class FearSystem : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// This function decreases the fear level. It gets called when the player comforts the brother. </para>
+    /// The brother then gets comforted by the amount set bij the comfortIncrement.
+    /// </summary>
     public void Comfort(){
         if(_fear > 0){
             _fear -= _comfortIncrement;

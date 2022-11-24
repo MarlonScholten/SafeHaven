@@ -18,10 +18,10 @@ using UnityEngine.AI;
 ///         <term>Description</term>
 ///     </listheader>
 ///     <item>
-///         <term>Brother</term>
-///		    <term>Script</term>
-///         <term>BrotherAI</term>
-///		    <term>This script is needed to determine the states of the brother. The states will be triggered by the Pinging system.</term>
+///         <term>-</term>
+///		    <term>-</term>
+///         <term>-</term>
+///		    <term>-</term>
 ///	    </item>
 /// </list>
 
