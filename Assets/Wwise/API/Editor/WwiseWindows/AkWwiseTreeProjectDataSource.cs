@@ -4,17 +4,13 @@
 // Copyright (c) 2020 Audiokinetic Inc. / All Rights Reserved
 //
 //////////////////////////////////////////////////////////////////////
-
 using System.Linq;
 using System.Collections.Generic;
-
 public class AkWwiseTreeProjectDataSource : AkWwiseTreeDataSource
 {
-
 	public AkWwiseTreeProjectDataSource() : base()
 	{
 	}
-
 	public override void FetchData()
 	{
 		Data.Clear();
@@ -22,31 +18,25 @@ public class AkWwiseTreeProjectDataSource : AkWwiseTreeDataSource
 		InitializeMinimal();
 		Changed();
 	}
-
 	protected void InitializeMinimal()
 	{
 		ProjectRoot = CreateProjectRootItem();
-
 		ProjectRoot.AddWwiseItemChild(BuildObjectTypeTree(WwiseObjectType.Event));
 		ProjectRoot.AddWwiseItemChild(BuildObjectTypeTree(WwiseObjectType.Switch));
 		ProjectRoot.AddWwiseItemChild(BuildObjectTypeTree(WwiseObjectType.State));
 		ProjectRoot.AddWwiseItemChild(BuildObjectTypeTree(WwiseObjectType.Soundbank));
 		ProjectRoot.AddWwiseItemChild(BuildObjectTypeTree(WwiseObjectType.AuxBus));
 		ProjectRoot.AddWwiseItemChild(BuildObjectTypeTree(WwiseObjectType.AcousticTexture));
-
 		TreeUtility.TreeToList(ProjectRoot, ref Data);
 	}
-
 	public override AkWwiseTreeViewItem GetComponentDataRoot(WwiseObjectType objectType)
 	{
 		if (!wwiseObjectFolders.ContainsKey(objectType))
 			ProjectRoot.AddWwiseItemChild(BuildObjectTypeTree(objectType));
-
 		var tempProjectRoot = new AkWwiseTreeViewItem(ProjectRoot);
 		tempProjectRoot.AddWwiseItemChild(wwiseObjectFolders[objectType]);
 		return tempProjectRoot;
 	}
-
 	protected AkWwiseTreeViewItem BuildObjectTypeTree(WwiseObjectType objectType)
 	{
 		var rootElement = new AkWwiseTreeViewItem();
@@ -55,32 +45,25 @@ public class AkWwiseTreeProjectDataSource : AkWwiseTreeDataSource
 			case WwiseObjectType.AuxBus:
 				rootElement = BuildTree("Master-Mixer Hierarchy", AkWwiseProjectInfo.GetData().AuxBusWwu);
 				break;
-
 			case WwiseObjectType.Event:
 				rootElement = BuildTree("Events", AkWwiseProjectInfo.GetData().EventWwu);
 				break;
-
 			case WwiseObjectType.Soundbank:
 				rootElement = BuildTree("SoundBanks", AkWwiseProjectInfo.GetData().BankWwu);
 				break;
-
 			case WwiseObjectType.State:
 				rootElement = BuildTree("States", AkWwiseProjectInfo.GetData().StateWwu);
 				break;
-
 			case WwiseObjectType.Switch:
 			case WwiseObjectType.SwitchGroup:
 				rootElement = BuildTree("Switches", AkWwiseProjectInfo.GetData().SwitchWwu);
 				break;
-
 			case WwiseObjectType.GameParameter:
 				rootElement = BuildTree("Game Parameters", AkWwiseProjectInfo.GetData().RtpcWwu);
 				break;
-
 			case WwiseObjectType.Trigger:
 				rootElement = BuildTree("Triggers", AkWwiseProjectInfo.GetData().TriggerWwu);
 				break;
-
 			case WwiseObjectType.AcousticTexture:
 				rootElement = BuildTree("Virtual Acoustics", AkWwiseProjectInfo.GetData().AcousticTextureWwu);
 				break;
@@ -88,7 +71,6 @@ public class AkWwiseTreeProjectDataSource : AkWwiseTreeDataSource
 		wwiseObjectFolders[objectType] = rootElement;
 		return rootElement;
 	}
-
 	public AkWwiseTreeViewItem BuildTree(string name,
 	List<AkWwiseProjectData.EventWorkUnit> Events)
 	{
@@ -104,18 +86,15 @@ public class AkWwiseTreeProjectDataSource : AkWwiseTreeDataSource
 		}
 		return BuildTree(name, akInfoWwu);
 	}
-
 	public AkWwiseTreeViewItem BuildTree(string name, List<AkWwiseProjectData.GroupValWorkUnit> workUnits)
 	{
 		var rootFolder = new AkWwiseTreeViewItem(name, 1, GenerateUniqueID(), System.Guid.NewGuid(), WwiseObjectType.PhysicalFolder);
 		foreach (var wwu in workUnits)
 		{
 			var wwuItem = AddTreeItem(rootFolder, wwu.PathAndIcons);
-
 			foreach (var group in wwu.List)
 			{
 				var groupElement = AddTreeItem(wwuItem, group.PathAndIcons);
-
 				foreach (var child in group.values)
 				{
 					AddTreeItem(groupElement, child.PathAndIcons);
@@ -124,11 +103,9 @@ public class AkWwiseTreeProjectDataSource : AkWwiseTreeDataSource
 		}
 		return rootFolder;
 	}
-
 	private AkWwiseTreeViewItem BuildTree(string name, List<AkWwiseProjectData.AkInfoWorkUnit> workUnits)
 	{
 		var rootFolder = new AkWwiseTreeViewItem(name, 1, GenerateUniqueID(), System.Guid.NewGuid(), WwiseObjectType.PhysicalFolder);
-
 		foreach (var wwu in workUnits)
 		{
 			var wwuElement = AddTreeItem(rootFolder, wwu.PathAndIcons);
@@ -142,7 +119,6 @@ public class AkWwiseTreeProjectDataSource : AkWwiseTreeDataSource
 		}
 		return rootFolder;
 	}
-
 	private AkWwiseTreeViewItem AddTreeItem(AkWwiseTreeViewItem parentWorkUnit, List<AkWwiseProjectData.PathElement> pathAndIcons)
 	{
 		var pathDepth = pathAndIcons.Count;
@@ -150,7 +126,6 @@ public class AkWwiseTreeProjectDataSource : AkWwiseTreeDataSource
 		AkWwiseTreeViewItem newItem;
 		AkWwiseProjectData.PathElement pathElem;
 		var parent = parentWorkUnit;
-
 		if (pathDepth > parentWorkUnit.depth)
 		{
 			var unaccountedDepth = pathDepth - parentWorkUnit.depth;
@@ -167,22 +142,17 @@ public class AkWwiseTreeProjectDataSource : AkWwiseTreeDataSource
 				{
 					newItem = FindByGuid(pathElem.ObjectGuid);
 				}
-
 				if (newItem == null)
 				{
 					newItem = new AkWwiseTreeViewItem(pathElem.ElementName, treeDepth - unaccountedDepth, GenerateUniqueID(), pathElem.ObjectGuid, pathElem.ObjectType);
 					parent.AddWwiseItemChild(newItem);
 					Data.Add(newItem);
-
 				}
 				parent = newItem;
-
 			}
 		}
-
 		pathElem = pathAndIcons.Last();
 		newItem = FindByGuid(pathElem.ObjectGuid);
-
 		if (newItem == null)
 		{
 			newItem = new AkWwiseTreeViewItem(pathElem.ElementName, treeDepth, GenerateUniqueID(), pathElem.ObjectGuid, pathElem.ObjectType);
@@ -191,13 +161,11 @@ public class AkWwiseTreeProjectDataSource : AkWwiseTreeDataSource
 		}
 		return newItem;
 	}
-
 	public AkWwiseTreeViewItem Find(System.Guid guid, string name, string path)
 	{
 		if (guid.Equals(System.Guid.Empty))
 		{
 			var results = Data.ItemDict.Values.ToList().FindAll(element => element.objectGuid == guid && element.name == name);
-
 			foreach (var r in results)
 			{
 				var itemPath = GetProjectPath(r, "");
@@ -211,11 +179,8 @@ public class AkWwiseTreeProjectDataSource : AkWwiseTreeDataSource
 		{
 			return Data.ItemDict[guid];
 		}
-		
-
 		return null;
 	}
-
 	public string GetProjectPath(AkWwiseTreeViewItem item, string currentpath)
 	{
 		currentpath = $"/{item.name}{currentpath}";
@@ -223,16 +188,12 @@ public class AkWwiseTreeProjectDataSource : AkWwiseTreeDataSource
 		{
 			return currentpath;
 		}
-
 		return GetProjectPath(item.parent as AkWwiseTreeViewItem, currentpath);
 	}
-
-
 	public override AkWwiseTreeViewItem GetSearchResults()
 	{
 		return SearchRoot;
 	}
-
 	public override void UpdateSearchResults(string searchString, WwiseObjectType objectType)
 	{
 		SearchRoot = new AkWwiseTreeViewItem(ProjectRoot);
@@ -249,7 +210,6 @@ public class AkWwiseTreeProjectDataSource : AkWwiseTreeDataSource
 		}
 		FilterTree(SearchRoot, searchString);
 	}
-
 	void FilterTree(AkWwiseTreeViewItem treeElement, string searchFilter)
 	{
 		var ItemsToRemove = new List<AkWwiseTreeViewItem>();
@@ -257,19 +217,16 @@ public class AkWwiseTreeProjectDataSource : AkWwiseTreeDataSource
 		{
 			var current = treeElement.children[i] as AkWwiseTreeViewItem;
 			FilterTree(current, searchFilter);
-
 			if (current.name.IndexOf(searchFilter, System.StringComparison.OrdinalIgnoreCase) == -1 && current.children.Count == 0)
 			{
 				ItemsToRemove.Add(current);
 			}
 		}
-
 		for (int i = 0; i < ItemsToRemove.Count(); i++)
 		{
 			treeElement.children.Remove(ItemsToRemove[i]);
 		}
 	}
-
 	public override void SetExpanded(IEnumerable<System.Guid> ids)
 	{
 		if (TreeView != null)
@@ -278,12 +235,10 @@ public class AkWwiseTreeProjectDataSource : AkWwiseTreeDataSource
 		}
 		Changed();
 	}
-
 	public override void SaveExpansionStatus(List<int> expandedItems )
 	{
 		AkWwiseProjectInfo.GetData().ExpandedFileSystemItemIds = expandedItems;
 	}
-
 	public override List<int> LoadExpansionSatus()
 	{
 		return AkWwiseProjectInfo.GetData().ExpandedFileSystemItemIds;

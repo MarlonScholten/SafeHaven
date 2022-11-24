@@ -1,4 +1,4 @@
-﻿#if (UNITY_STANDALONE_OSX && !UNITY_EDITOR) || UNITY_EDITOR_OSX
+#if (UNITY_STANDALONE_OSX && !UNITY_EDITOR) || (UNITY_EDITOR_OSX && !UNITY_STANDALONE_WIN)
 public partial class AkCommonUserSettings
 {
 	partial void SetSampleRate(AkPlatformInitSettings settings)
@@ -7,7 +7,6 @@ public partial class AkCommonUserSettings
 	}
 }
 #endif
-
 public class AkMacSettings : AkWwiseInitializationSettings.CommonPlatformSettings
 {
 #if UNITY_EDITOR

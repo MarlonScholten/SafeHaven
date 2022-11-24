@@ -4,7 +4,6 @@
 // Copyright (c) 2012 Audiokinetic Inc. / All Rights Reserved
 //
 //////////////////////////////////////////////////////////////////////
-
 [UnityEngine.DisallowMultipleComponent]
 public class AkTerminator : UnityEngine.MonoBehaviour
 {

@@ -4,24 +4,19 @@
 // Copyright (c) 2017 Audiokinetic Inc. / All Rights Reserved
 //
 //////////////////////////////////////////////////////////////////////
-
 [System.Serializable]
 public class AkGameObjListenerList : AkAudioListener.BaseListenerList
 {
 	[System.NonSerialized] private AkGameObj akGameObj;
-
 	[UnityEngine.SerializeField]
 	public System.Collections.Generic.List<AkAudioListener> initialListenerList =
 		new System.Collections.Generic.List<AkAudioListener>();
-
 	[UnityEngine.SerializeField] public bool useDefaultListeners = true;
-
 	public void SetUseDefaultListeners(bool useDefault)
 	{
 		if (useDefaultListeners != useDefault)
 		{
 			useDefaultListeners = useDefault;
-
 			if (useDefault)
 			{
 				AkSoundEngine.ResetListenersToDefault(akGameObj.gameObject);
@@ -35,18 +30,14 @@ public class AkGameObjListenerList : AkAudioListener.BaseListenerList
 			}
 		}
 	}
-
 	public void Init(AkGameObj akGameObj)
 	{
 		this.akGameObj = akGameObj;
-
 		if (!useDefaultListeners)
 			AkSoundEngine.SetListeners(akGameObj.gameObject, null, 0);
-
 		for (var ii = 0; ii < initialListenerList.Count; ++ii)
 			initialListenerList[ii].StartListeningToEmitter(akGameObj);
 	}
-
 	public override bool Add(AkAudioListener listener)
 	{
 		var ret = base.Add(listener);
@@ -54,7 +45,6 @@ public class AkGameObjListenerList : AkAudioListener.BaseListenerList
 			AkSoundEngine.AddListener(akGameObj.gameObject, listener.gameObject);
 		return ret;
 	}
-
 	public override bool Remove(AkAudioListener listener)
 	{
 		var ret = base.Remove(listener);
@@ -62,19 +52,16 @@ public class AkGameObjListenerList : AkAudioListener.BaseListenerList
 			AkSoundEngine.RemoveListener(akGameObj.gameObject, listener.gameObject);
 		return ret;
 	}
-
 #if UNITY_EDITOR
 	public void AddToInitialListenerList(AkAudioListener listener)
 	{
 		if (!initialListenerList.Contains(listener))
 			initialListenerList.Add(listener);
 	}
-
 	public void RemoveFromInitialListenerList(AkAudioListener listener)
 	{
 		initialListenerList.Remove(listener);
 	}
 #endif
 }
-
 #endif // #if ! (UNITY_DASHBOARD_WIDGET || UNITY_WEBPLAYER || UNITY_WII || UNITY_WIIU || UNITY_NACL || UNITY_FLASH || UNITY_BLACKBERRY) // Disable under unsupported platforms.

@@ -4,7 +4,6 @@
 // Copyright (c) 2014 Audiokinetic Inc. / All Rights Reserved
 //
 //////////////////////////////////////////////////////////////////////
-
 [UnityEngine.AddComponentMenu("Wwise/AkSwitch")]
 [UnityEngine.DefaultExecutionOrder(-10)]
 /// @brief This will call <a href="https://www.audiokinetic.com/library/edge/?source=SDK&id=namespace_a_k_1_1_sound_engine_a9364c865ed62f4666f357822ae409855.html" target="_blank">AkSoundEngine.SetSwitch()</a> whenever the selected Unity event is triggered. For example, this component could be set on a Unity collider to trigger when an object enters it. 
@@ -17,19 +16,15 @@ public class AkSwitch : AkDragDropTriggerHandler
 {
 	public AK.Wwise.Switch data = new AK.Wwise.Switch();
 	protected override AK.Wwise.BaseType WwiseType { get { return data; } }
-
 	public override void HandleEvent(UnityEngine.GameObject in_gameObject)
 	{
 		data.SetValue(useOtherObject && in_gameObject != null ? in_gameObject : gameObject);
 	}
-
 	#region Obsolete
 	[System.Obsolete(AkSoundEngine.Deprecation_2018_1_6)]
 	public int valueID { get { return (int)(data == null ? AkSoundEngine.AK_INVALID_UNIQUE_ID : data.Id); } }
-
 	[System.Obsolete(AkSoundEngine.Deprecation_2018_1_6)]
 	public int groupID { get { return (int)(data == null ? AkSoundEngine.AK_INVALID_UNIQUE_ID : data.GroupId); } }
-
 	[System.Obsolete(AkSoundEngine.Deprecation_2018_1_6)]
 	public byte[] valueGuid
 	{
@@ -37,12 +32,10 @@ public class AkSwitch : AkDragDropTriggerHandler
 		{
 			if (data == null)
 				return null;
-
 			var objRef = data.ObjectReference;
 			return !objRef ? null : objRef.Guid.ToByteArray();
 		}
 	}
-
 	[System.Obsolete(AkSoundEngine.Deprecation_2018_1_6)]
 	public byte[] groupGuid
 	{
@@ -50,13 +43,11 @@ public class AkSwitch : AkDragDropTriggerHandler
 		{
 			if (data == null)
 				return null;
-
 			var objRef = data.GroupWwiseObjectReference;
 			return !objRef ? null : objRef.Guid.ToByteArray();
 		}
 	}
 	#endregion
-
 	#region WwiseMigration
 #pragma warning disable 0414 // private field assigned but not used.
 	[UnityEngine.HideInInspector]
@@ -76,19 +67,16 @@ public class AkSwitch : AkDragDropTriggerHandler
 	[UnityEngine.Serialization.FormerlySerializedAs("groupGuid")]
 	private byte[] groupGuidInternal;
 #pragma warning restore 0414 // private field assigned but not used.
-
 #if UNITY_EDITOR
 	bool AK.Wwise.IMigratable.Migrate(UnityEditor.SerializedObject obj)
 	{
 		if (!AkUtilities.IsMigrationRequired(AkUtilities.MigrationStep.WwiseTypes_v2018_1_6))
 			return false;
-
 		return AK.Wwise.TypeMigration.ProcessDoubleGuidType(obj.FindProperty("data.WwiseObjectReference"), WwiseObjectType.Switch,
 			obj.FindProperty("valueGuidInternal"), obj.FindProperty("valueIdInternal"),
 			obj.FindProperty("groupGuidInternal"), obj.FindProperty("groupIdInternal"));
 	}
 #endif
-
 	#endregion
 }
 #endif // #if ! (UNITY_DASHBOARD_WIDGET || UNITY_WEBPLAYER || UNITY_WII || UNITY_WIIU || UNITY_NACL || UNITY_FLASH || UNITY_BLACKBERRY) // Disable under unsupported platforms.

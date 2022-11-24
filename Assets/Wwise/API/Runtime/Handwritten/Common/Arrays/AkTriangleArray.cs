@@ -4,28 +4,23 @@
 // Copyright (c) 2012 Audiokinetic Inc. / All Rights Reserved
 //
 //////////////////////////////////////////////////////////////////////
-
 public class AkTriangleArray : AkBaseArray<AkTriangle>
 {
 	public AkTriangleArray(int count) : base(count)
 	{
 	}
-
 	protected override int StructureSize
 	{
 		get { return AkSoundEnginePINVOKE.CSharp_AkTriangle_GetSizeOf(); }
 	}
-
 	protected override void DefaultConstructAtIntPtr(System.IntPtr address)
 	{
 		AkSoundEnginePINVOKE.CSharp_AkTriangle_Clear(address);
 	}
-
 	protected override AkTriangle CreateNewReferenceFromIntPtr(System.IntPtr address)
 	{
 		return new AkTriangle(address, false);
 	}
-
 	protected override void CloneIntoReferenceFromIntPtr(System.IntPtr address, AkTriangle other)
 	{
 		AkSoundEnginePINVOKE.CSharp_AkTriangle_Clone(address, AkTriangle.getCPtr(other));

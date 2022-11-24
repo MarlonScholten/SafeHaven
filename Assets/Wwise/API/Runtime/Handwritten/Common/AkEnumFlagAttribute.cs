@@ -2,12 +2,10 @@
 public class AkEnumFlagAttribute : UnityEngine.PropertyAttribute
 {
 	public System.Type Type;
-
 	public AkEnumFlagAttribute(System.Type type)
 	{
 		Type = type;
 	}
-
 #if UNITY_EDITOR
 	[UnityEditor.CustomPropertyDrawer(typeof(AkEnumFlagAttribute))]
 	public class PropertyDrawer : UnityEditor.PropertyDrawer

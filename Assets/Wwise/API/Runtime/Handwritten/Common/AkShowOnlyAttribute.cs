@@ -1,4 +1,4 @@
-﻿public class AkShowOnlyAttribute : UnityEngine.PropertyAttribute
+public class AkShowOnlyAttribute : UnityEngine.PropertyAttribute
 {
 #if UNITY_EDITOR
 	[UnityEditor.CustomPropertyDrawer(typeof(AkShowOnlyAttribute))]
@@ -8,7 +8,6 @@
 		{
 			return UnityEditor.EditorGUI.GetPropertyHeight(property, label, true);
 		}
-
 		public override void OnGUI(UnityEngine.Rect position, UnityEditor.SerializedProperty property, UnityEngine.GUIContent label)
 		{
 			var saveEnabled = UnityEngine.GUI.enabled;

@@ -1,5 +1,4 @@
 #if ! (UNITY_DASHBOARD_WIDGET || UNITY_WEBPLAYER || UNITY_WII || UNITY_WIIU || UNITY_NACL || UNITY_FLASH || UNITY_BLACKBERRY) // Disable under unsupported platforms.
-
 namespace AK.Wwise
 {
 	[System.Serializable]
@@ -14,26 +13,21 @@ namespace AK.Wwise
 				return reference ? reference.GroupObjectReference : null;
 			}
 		}
-
 		public abstract WwiseObjectType WwiseObjectGroupType { get; }
-
 		public uint GroupId
 		{
 			get { return GroupWwiseObjectReference ? GroupWwiseObjectReference.Id : AkSoundEngine.AK_INVALID_UNIQUE_ID; }
 		}
-
 		public override bool IsValid()
 		{
 			return base.IsValid() && GroupWwiseObjectReference != null;
 		}
-
 		#region Obsolete
 		[System.Obsolete(AkSoundEngine.Deprecation_2018_1_2)]
 		public int groupID
 		{
 			get { return (int)GroupId; }
 		}
-
 		[System.Obsolete(AkSoundEngine.Deprecation_2018_1_6)]
 		public byte[] groupGuid
 		{
@@ -44,7 +38,6 @@ namespace AK.Wwise
 			}
 		}
 		#endregion
-
 		#region WwiseMigration
 #pragma warning disable 0414 // private field assigned but not used.
 		[UnityEngine.HideInInspector]

@@ -4,7 +4,6 @@
 // Copyright (c) 2012 Audiokinetic Inc. / All Rights Reserved
 //
 //////////////////////////////////////////////////////////////////////
-
 /// <summary>
 ///     This class manages the callback queue.  All callbacks from the native Wwise SDK go through this queue.
 ///     The queue needs to be driven by regular calls to PostCallbacks().  This is currently done in AkInitializer.cs, in
@@ -16,53 +15,38 @@ public static class AkCallbackManager
 	/// Event callback used when posting events.
 	/// </summary>
 	public delegate void EventCallback(object in_cookie, AkCallbackType in_type, AkCallbackInfo in_info);
-
 	/// <summary>
 	/// Monitoring callback called when Wwise reports errors.
 	/// </summary>
 	public delegate void MonitoringCallback(AkMonitorErrorCode in_errorCode, AkMonitorErrorLevel in_errorLevel,
 		uint in_playingID, ulong in_gameObjID, string in_msg);
-
 	/// <summary>
 	/// Bank callback called upon bank load and unload and when errors occur.
 	/// </summary>
 	public delegate void BankCallback(uint in_bankID, System.IntPtr in_InMemoryBankPtr, AKRESULT in_eLoadResult, object in_Cookie);
-
 	private static bool IsLoggingEnabled { get; set; }
-
 	private static readonly AkEventCallbackInfo AkEventCallbackInfo = new AkEventCallbackInfo(System.IntPtr.Zero, false);
-
 	private static readonly AkDynamicSequenceItemCallbackInfo AkDynamicSequenceItemCallbackInfo =
 		new AkDynamicSequenceItemCallbackInfo(System.IntPtr.Zero, false);
-
 	private static readonly AkMIDIEventCallbackInfo AkMIDIEventCallbackInfo =
 		new AkMIDIEventCallbackInfo(System.IntPtr.Zero, false);
-
 	private static readonly AkMarkerCallbackInfo
 		AkMarkerCallbackInfo = new AkMarkerCallbackInfo(System.IntPtr.Zero, false);
-
 	private static readonly AkDurationCallbackInfo AkDurationCallbackInfo =
 		new AkDurationCallbackInfo(System.IntPtr.Zero, false);
-
 	private static readonly AkMusicSyncCallbackInfo AkMusicSyncCallbackInfo =
 		new AkMusicSyncCallbackInfo(System.IntPtr.Zero, false);
-
 	private static readonly AkMusicPlaylistCallbackInfo AkMusicPlaylistCallbackInfo =
 		new AkMusicPlaylistCallbackInfo(System.IntPtr.Zero, false);
-
 #if UNITY_IOS && !UNITY_EDITOR
 	private static AkAudioInterruptionCallbackInfo AkAudioInterruptionCallbackInfo =
 		new AkAudioInterruptionCallbackInfo(System.IntPtr.Zero, false);
 #endif // #if UNITY_IOS && ! UNITY_EDITOR
-
 	private static readonly AkAudioSourceChangeCallbackInfo AkAudioSourceChangeCallbackInfo =
 		new AkAudioSourceChangeCallbackInfo(System.IntPtr.Zero, false);
-
 	private static readonly AkMonitoringCallbackInfo AkMonitoringCallbackInfo =
 		new AkMonitoringCallbackInfo(System.IntPtr.Zero, false);
-
 	private static readonly AkBankCallbackInfo AkBankCallbackInfo = new AkBankCallbackInfo(System.IntPtr.Zero, false);
-
 	/// <summary>
 	/// This class holds the data associated with an event callback.
 	/// </summary>
@@ -70,10 +54,8 @@ public static class AkCallbackManager
 	{
 		public bool m_bNotifyEndOfEvent;
 		public EventCallback m_Callback;
-
 		public object m_Cookie;
 		public uint m_playingID;
-
 		public static EventCallbackPackage Create(EventCallback in_cb, object in_cookie, ref uint io_Flags)
 		{
 			if (io_Flags == 0 || in_cb == null)
@@ -81,21 +63,16 @@ public static class AkCallbackManager
 				io_Flags = 0;
 				return null;
 			}
-
 			var evt = new EventCallbackPackage();
-
 			evt.m_Callback = in_cb;
 			evt.m_Cookie = in_cookie;
 			evt.m_bNotifyEndOfEvent = (io_Flags & (uint) AkCallbackType.AK_EndOfEvent) != 0;
 			io_Flags = io_Flags | (uint) AkCallbackType.AK_EndOfEvent;
-
 			m_mapEventCallbacks[evt.GetHashCode()] = evt;
 			m_LastAddedEventPackage = evt;
-
 			return evt;
 		}
 	}
-
 	/// <summary>
 	/// This class holds the data associated with a bank load or unload callback.
 	/// </summary>
@@ -103,24 +80,18 @@ public static class AkCallbackManager
 	{
 		public BankCallback m_Callback;
 		public object m_Cookie;
-
 		public BankCallbackPackage(BankCallback in_cb, object in_cookie)
 		{
 			m_Callback = in_cb;
 			m_Cookie = in_cookie;
-
 			m_mapBankCallbacks[GetHashCode()] = this;
 		}
 	}
-
 	private static readonly System.Collections.Generic.Dictionary<int, EventCallbackPackage> m_mapEventCallbacks =
 		new System.Collections.Generic.Dictionary<int, EventCallbackPackage>();
-
 	private static readonly System.Collections.Generic.Dictionary<int, BankCallbackPackage> m_mapBankCallbacks =
 		new System.Collections.Generic.Dictionary<int, BankCallbackPackage>();
-
 	private static EventCallbackPackage m_LastAddedEventPackage;
-
 	public static void RemoveEventCallback(uint in_playingID)
 	{
 		var cookiesToRemove = new System.Collections.Generic.List<int>();
@@ -132,14 +103,11 @@ public static class AkCallbackManager
 				break;
 			}
 		}
-
 		var Count = cookiesToRemove.Count;
 		for (var ii = 0; ii < Count; ++ii)
 			m_mapEventCallbacks.Remove(cookiesToRemove[ii]);
-
 		AkSoundEnginePINVOKE.CSharp_CancelEventCallback(in_playingID);
 	}
-
 	public static void RemoveEventCallbackCookie(object in_cookie)
 	{
 		var cookiesToRemove = new System.Collections.Generic.List<int>();
@@ -148,7 +116,6 @@ public static class AkCallbackManager
 			if (pair.Value.m_Cookie == in_cookie)
 				cookiesToRemove.Add(pair.Key);
 		}
-
 		var Count = cookiesToRemove.Count;
 		for (var ii = 0; ii < Count; ++ii)
 		{
@@ -157,7 +124,6 @@ public static class AkCallbackManager
 			AkSoundEnginePINVOKE.CSharp_CancelEventCallbackCookie((System.IntPtr) toRemove);
 		}
 	}
-
 	public static void RemoveBankCallback(object in_cookie)
 	{
 		var cookiesToRemove = new System.Collections.Generic.List<int>();
@@ -166,7 +132,6 @@ public static class AkCallbackManager
 			if (pair.Value.m_Cookie == in_cookie)
 				cookiesToRemove.Add(pair.Key);
 		}
-
 		var Count = cookiesToRemove.Count;
 		for (var ii = 0; ii < Count; ++ii)
 		{
@@ -175,67 +140,53 @@ public static class AkCallbackManager
 			AkSoundEnginePINVOKE.CSharp_CancelBankCallbackCookie((System.IntPtr) toRemove);
 		}
 	}
-
 	public static void SetLastAddedPlayingID(uint in_playingID)
 	{
 		if (m_LastAddedEventPackage != null && m_LastAddedEventPackage.m_playingID == 0)
 			m_LastAddedEventPackage.m_playingID = in_playingID;
 	}
-
 	private static MonitoringCallback m_MonitoringCB;
-
 #if UNITY_IOS && !UNITY_EDITOR
 	public delegate AKRESULT AudioInterruptionCallback(bool in_bEnterInterruption, object in_Cookie);
 	// App implements its own callback.
 	private static AudioInterruptionCallbackPackage ms_interruptCallbackPkg = null;
-
 	public class AudioInterruptionCallbackPackage
 	{
 		public object m_Cookie;
 		public AudioInterruptionCallback m_Callback;
 	}
 #endif // #if UNITY_IOS && ! UNITY_EDITOR
-
 	public delegate AKRESULT BGMCallback(bool in_bOtherAudioPlaying, object in_Cookie);
-
 	// App implements its own callback.
 	private static BGMCallbackPackage ms_sourceChangeCallbackPkg;
-
 	public class BGMCallbackPackage
 	{
 		public BGMCallback m_Callback;
 		public object m_Cookie;
 	}
-
 	public class InitializationSettings
 	{
 		public const bool DefaultIsLoggingEnabled = true;
 		public bool IsLoggingEnabled = DefaultIsLoggingEnabled;
 	}
-
 	public static void Init(InitializationSettings settings)
 	{
 		IsLoggingEnabled = settings.IsLoggingEnabled;
-
 #if UNITY_EDITOR
 		AkCallbackSerializer.SetLocalOutput((uint)AkMonitorErrorLevel.ErrorLevel_All);
 #endif
-
 		AkCallbackSerializer.Init();
 	}
-
 	public static void Term()
 	{
 		AkCallbackSerializer.Term();
 	}
-
 	/// Call this to set a function to call whenever Wwise prints a message (warnings or errors).
 	public static void SetMonitoringCallback(AkMonitorErrorLevel in_Level, MonitoringCallback in_CB)
 	{
 		AkCallbackSerializer.SetLocalOutput(in_CB != null ? (uint) in_Level : 0);
 		m_MonitoringCB = in_CB;
 	}
-
 #if UNITY_IOS && !UNITY_EDITOR
 	/// Call this function to set a iOS callback interruption function. By default this callback is not defined.
 	public static void SetInterruptionCallback(AudioInterruptionCallback in_CB, object in_cookie)
@@ -243,13 +194,11 @@ public static class AkCallbackManager
 		ms_interruptCallbackPkg = new AudioInterruptionCallbackPackage { m_Callback = in_CB, m_Cookie = in_cookie };
 	}
 #endif // #if UNITY_IOS && ! UNITY_EDITOR
-
 	/// Call this to set a background music callback function. By default this callback is not defined.
 	public static void SetBGMCallback(BGMCallback in_CB, object in_cookie)
 	{
 		ms_sourceChangeCallbackPkg = new BGMCallbackPackage { m_Callback = in_CB, m_Cookie = in_cookie };
 	}
-
 	/// This function dispatches all the accumulated callbacks from the native sound engine. 
 	/// It must be called regularly.  By default this is called in AkInitializer.cs.
 	public static int PostCallbacks()
@@ -257,7 +206,6 @@ public static class AkCallbackManager
 		try
 		{
 			var numCallbacks = 0;
-
 			for (var pNext = AkCallbackSerializer.Lock();
 				pNext != System.IntPtr.Zero;
 				pNext = AkSoundEnginePINVOKE.CSharp_AkSerializedCallbackHeader_pNext_get(pNext), ++numCallbacks)
@@ -265,7 +213,6 @@ public static class AkCallbackManager
 				var pPackage = AkSoundEnginePINVOKE.CSharp_AkSerializedCallbackHeader_pPackage_get(pNext);
 				var eType = (AkCallbackType) AkSoundEnginePINVOKE.CSharp_AkSerializedCallbackHeader_eType_get(pNext);
 				var pData = AkSoundEnginePINVOKE.CSharp_AkSerializedCallbackHeader_GetData(pNext);
-
 				switch (eType)
 				{
 					case AkCallbackType.AK_AudioInterruption:
@@ -277,7 +224,6 @@ public static class AkCallbackManager
 						}
 #endif // #if UNITY_IOS && ! UNITY_EDITOR
 						break;
-
 					case AkCallbackType.AK_AudioSourceChange:
 						if (ms_sourceChangeCallbackPkg != null && ms_sourceChangeCallbackPkg.m_Callback != null)
 						{
@@ -286,7 +232,6 @@ public static class AkCallbackManager
 								ms_sourceChangeCallbackPkg.m_Cookie);
 						}
 						break;
-
 					case AkCallbackType.AK_Monitoring:
 						if (m_MonitoringCB != null)
 						{
@@ -298,7 +243,6 @@ public static class AkCallbackManager
 						else if (IsLoggingEnabled)
 						{
 							AkMonitoringCallbackInfo.setCPtr(pData);
-
 							var msg = "Wwise: " + AkMonitoringCallbackInfo.message;
 							if (AkMonitoringCallbackInfo.gameObjID != AkSoundEngine.AK_INVALID_GAME_OBJECT)
 							{
@@ -307,10 +251,8 @@ public static class AkCallbackManager
 										UnityEngine.GameObject;
 								if (obj != null)
 									msg += " (GameObject: " + obj + ")";
-
 								msg += " (Instance ID: " + AkMonitoringCallbackInfo.gameObjID + ")";
 							}
-
 							if (AkMonitoringCallbackInfo.errorLevel == AkMonitorErrorLevel.ErrorLevel_Error)
 								UnityEngine.Debug.LogError(msg);
 							else
@@ -318,7 +260,6 @@ public static class AkCallbackManager
 						}
 #endif
 						break;
-
 					case AkCallbackType.AK_Bank:
 						BankCallbackPackage bankPkg = null;
 						if (!m_mapBankCallbacks.TryGetValue((int) pPackage, out bankPkg))
@@ -326,16 +267,13 @@ public static class AkCallbackManager
 							UnityEngine.Debug.LogError("WwiseUnity: BankCallbackPackage not found for <" + pPackage + ">.");
 							break;
 						}
-
 						m_mapBankCallbacks.Remove((int) pPackage);
-
 						if (bankPkg != null && bankPkg.m_Callback != null)
 						{
 							AkBankCallbackInfo.setCPtr(pData);
 							bankPkg.m_Callback(AkBankCallbackInfo.bankID, AkBankCallbackInfo.inMemoryBankPtr, AkBankCallbackInfo.loadResult, bankPkg.m_Cookie);
 						}
 						break;
-
 					default:
 						EventCallbackPackage eventPkg = null;
 						if (!m_mapEventCallbacks.TryGetValue((int) pPackage, out eventPkg))
@@ -343,9 +281,7 @@ public static class AkCallbackManager
 							UnityEngine.Debug.LogError("WwiseUnity: EventCallbackPackage not found for <" + pPackage + ">.");
 							break;
 						}
-
 						AkCallbackInfo info = null;
-
 						switch (eType)
 						{
 							case AkCallbackType.AK_EndOfEvent:
@@ -356,32 +292,26 @@ public static class AkCallbackManager
 									info = AkEventCallbackInfo;
 								}
 								break;
-
 							case AkCallbackType.AK_MusicPlayStarted:
 								AkEventCallbackInfo.setCPtr(pData);
 								info = AkEventCallbackInfo;
 								break;
-
 							case AkCallbackType.AK_EndOfDynamicSequenceItem:
 								AkDynamicSequenceItemCallbackInfo.setCPtr(pData);
 								info = AkDynamicSequenceItemCallbackInfo;
 								break;
-
 							case AkCallbackType.AK_MIDIEvent:
 								AkMIDIEventCallbackInfo.setCPtr(pData);
 								info = AkMIDIEventCallbackInfo;
 								break;
-
 							case AkCallbackType.AK_Marker:
 								AkMarkerCallbackInfo.setCPtr(pData);
 								info = AkMarkerCallbackInfo;
 								break;
-
 							case AkCallbackType.AK_Duration:
 								AkDurationCallbackInfo.setCPtr(pData);
 								info = AkDurationCallbackInfo;
 								break;
-
 							case AkCallbackType.AK_MusicSyncUserCue:
 							case AkCallbackType.AK_MusicSyncBar:
 							case AkCallbackType.AK_MusicSyncBeat:
@@ -392,23 +322,19 @@ public static class AkCallbackManager
 								AkMusicSyncCallbackInfo.setCPtr(pData);
 								info = AkMusicSyncCallbackInfo;
 								break;
-
 							case AkCallbackType.AK_MusicPlaylistSelect:
 								AkMusicPlaylistCallbackInfo.setCPtr(pData);
 								info = AkMusicPlaylistCallbackInfo;
 								break;
-
 							default:
 								UnityEngine.Debug.LogError("WwiseUnity: Undefined callback type <" + eType + "> received. Callback object possibly corrupted.");
 								break;
 						}
-
 						if (info != null)
 							eventPkg.m_Callback(eventPkg.m_Cookie, eType, info);
 						break;
 				}
 			}
-
 			return numCallbacks;
 		}
 		finally

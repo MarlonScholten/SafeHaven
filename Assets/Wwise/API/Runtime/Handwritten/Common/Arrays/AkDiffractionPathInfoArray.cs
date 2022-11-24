@@ -4,23 +4,19 @@
 // Copyright (c) 2012 Audiokinetic Inc. / All Rights Reserved
 //
 //////////////////////////////////////////////////////////////////////
-
 public class AkDiffractionPathInfoArray : AkBaseArray<AkDiffractionPathInfo>
 {
 	public AkDiffractionPathInfoArray(int count) : base(count)
 	{
 	}
-
 	protected override int StructureSize
 	{
 		get { return AkSoundEnginePINVOKE.CSharp_AkDiffractionPathInfo_GetSizeOf(); }
 	}
-
 	protected override AkDiffractionPathInfo CreateNewReferenceFromIntPtr(System.IntPtr address)
 	{
 		return new AkDiffractionPathInfo(address, false);
 	}
-
 	protected override void CloneIntoReferenceFromIntPtr(System.IntPtr address, AkDiffractionPathInfo other)
 	{
 		AkSoundEnginePINVOKE.CSharp_AkDiffractionPathInfo_Clone(address, AkDiffractionPathInfo.getCPtr(other));

@@ -1,4 +1,4 @@
-﻿public partial class AkSoundEngine
+public partial class AkSoundEngine
 {
 #if UNITY_EDITOR_OSX || (UNITY_STANDALONE_OSX && !UNITY_EDITOR)
 	/// <summary>

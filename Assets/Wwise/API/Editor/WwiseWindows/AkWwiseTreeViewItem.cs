@@ -1,22 +1,19 @@
-﻿#if UNITY_EDITOR
+#if UNITY_EDITOR
 //////////////////////////////////////////////////////////////////////
 //
 // Copyright (c) 2020 Audiokinetic Inc. / All Rights Reserved
 //
 //////////////////////////////////////////////////////////////////////
-
 using System.Linq;
 using System.Collections.Generic;
 using UnityEditor.IMGUI.Controls;
 using UnityEngine;
-
 public class AkWwiseTreeViewItem : TreeViewItem, System.IEquatable<AkWwiseTreeViewItem>
 {
 	public System.Guid objectGuid;
 	public WwiseObjectType objectType;
 	public int numChildren;
 	public bool isSorted;
-
 	public string name
 	{
 		get { return displayName; }
@@ -28,7 +25,6 @@ public class AkWwiseTreeViewItem : TreeViewItem, System.IEquatable<AkWwiseTreeVi
 			}
 		}
 	}
-
 	private int m_depth;
 	public override int depth 
 	{
@@ -45,39 +41,31 @@ public class AkWwiseTreeViewItem : TreeViewItem, System.IEquatable<AkWwiseTreeVi
 			}
 		}
 	}
-
 	public AkWwiseTreeViewItem(WwiseObjectInfo info, int id, int depth) : base(id, depth, info.name)
 	{
 		objectGuid = info.objectGUID;
 		objectType = info.type;
 		numChildren = info.childrenCount;
-
 		if (objectType == WwiseObjectType.Event)
 		{
 			numChildren = 0;
 		}
-
 		children = new List<TreeViewItem>();
 		this.depth = depth;
-
 	}
-
 	public AkWwiseTreeViewItem(string displayName, int depth, int id, System.Guid objGuid, WwiseObjectType objType) : base(id, depth, displayName)
 	{
 		objectGuid = objGuid;
 		objectType = objType;
-
 		children = new List<TreeViewItem>();
 		this.depth = depth;
 	}
-
 	public AkWwiseTreeViewItem()
 	{
 		objectGuid = System.Guid.Empty;
 		objectType = WwiseObjectType.None;
 		children = new List<TreeViewItem>();
 	}
-
 	public AkWwiseTreeViewItem(AkWwiseTreeViewItem other) : base(other.id, other.depth, other.displayName)
 	{
 		objectGuid = other.objectGuid;
@@ -85,12 +73,10 @@ public class AkWwiseTreeViewItem : TreeViewItem, System.IEquatable<AkWwiseTreeVi
 		children = new List<TreeViewItem>();
 		this.depth = other.depth;
 	}
-
 	public bool Equals(AkWwiseTreeViewItem other)
 	{
 		return objectGuid == other.objectGuid && displayName == other.displayName && objectType == other.objectType;
 	}
-
 	public void AddWwiseItemChild(AkWwiseTreeViewItem child)
 	{
 		child.depth = this.depth + 1;
@@ -103,7 +89,6 @@ public class AkWwiseTreeViewItem : TreeViewItem, System.IEquatable<AkWwiseTreeVi
 		children.Sort();
 		isSorted = true;
 	}
-
 	public override int CompareTo(TreeViewItem B)
 	{
 		return CompareTo(this, B as AkWwiseTreeViewItem);
@@ -163,11 +148,9 @@ public class AkWwiseTreeViewItem : TreeViewItem, System.IEquatable<AkWwiseTreeVi
 			return 1;
 		}
 	}
-
 	public bool WwiseTypeInChildren(WwiseObjectType t)
 	{
 		if (this.objectType == t) return true;
-
 		foreach (var child in children)
 		{
 			if ((child as AkWwiseTreeViewItem).WwiseTypeInChildren(t)) return true;

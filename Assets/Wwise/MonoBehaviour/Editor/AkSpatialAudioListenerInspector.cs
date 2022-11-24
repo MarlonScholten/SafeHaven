@@ -1,10 +1,9 @@
-﻿#if UNITY_EDITOR
+#if UNITY_EDITOR
 //////////////////////////////////////////////////////////////////////
 //
 // Copyright (c) 2017 Audiokinetic Inc. / All Rights Reserved
 //
 //////////////////////////////////////////////////////////////////////
-
 [UnityEditor.CustomEditor(typeof(AkSpatialAudioListener))]
 public class AkSpatialAudioListenerInspector : UnityEditor.Editor
 {
