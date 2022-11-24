@@ -22,9 +22,14 @@ public class HeardASoundEvent : UnityEvent<SoundSource>
 }
 
 /// <summary>
-/// <para>Author: Marlon Kerstens</para>
-/// <para>Modified by: Hugo Ulfman</para>
+/// <br>Author: Marlon Kerstens</br>
+/// <br>Modified by: Hugo Ulfman</br>
 /// Description: This script is used as a manager to control the variables en methods that are shared in different states on the EnemyObject (Assets/Prefabs/NPCs/Enemies/EnemyObject.prefab).
+/// How to use ENEMY AI:
+/// 1. Add a NavmeshSurface to the scene,
+/// 2. Add the EnemyWaypoint prefabs to the scene (Assets/Prefabs/NPCs/Enemies/EnemyWayPoint.prefab),
+/// 3. Add the EnemyObject prefabs to the scene (Assets/Prefabs/NPCs/Enemies/EenmyObject.prefab),
+/// 4. Determine the route of the enemy with adding the waypoints to the waypoint list of the EnemyObject.
 /// </summary>
 /// <list type="table">
 ///	    <listheader>

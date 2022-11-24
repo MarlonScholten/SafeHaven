@@ -3,8 +3,8 @@
 namespace NPC
 {
     /// <summary>
-    /// <para>Author: Hugo Ulfman</para>
-    /// <para>Modified by: </para>
+    /// <br>Author: Hugo Ulfman</br>
+    /// <br>Modified by: </br>
     /// Description:  This script is an simulated sound source.
     /// </summary>
     /// <list type="table">

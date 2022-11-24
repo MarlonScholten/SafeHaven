@@ -3,8 +3,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
-/// <para>Author: Marlon Kerstens</para>
-/// <para>Modified by: Hugo Ulfman</para>
+/// <br>Author: Marlon Kerstens</br>
+/// <br>Modified by: Hugo Ulfman</br>
 /// Description: This script is a the Investigate state of the enemy.
 /// </summary>
 /// <list type="table">

@@ -1,8 +1,8 @@
 using UnityEngine;
 
 /// <summary>
-/// <para>Author: Hugo Ulfma </para>
-/// <para>Modified by:  Marlon Kerstens</para>
+/// <br>Author: Hugo Ulfma </br>
+/// <br>Modified by:  Marlon Kerstens</br>
 /// Description: Scriptable object for the EnemyAi.
 /// </summary>
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/EnemyAIScriptableObject", order = 1)]
