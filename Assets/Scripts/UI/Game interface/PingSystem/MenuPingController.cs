@@ -50,9 +50,7 @@ public class MenuPingController : AbstractPingController
 
     private void Update()
     {
-        Debug.Log("radial active? " + _radialMenuIsSetActive);
         if (!_radialMenuIsSetActive) return;
-        Debug.Log("update");
         ActivateRadialMenu();
     }
 
@@ -86,8 +84,8 @@ public class MenuPingController : AbstractPingController
     private void ControlSegmentHoveredOverMiddle()
     {
         cancel.color = radialMenuCancel;
+
         _highlightedOption.SetActive(false);
-        options[_selectedOption].color = Color.white;
     }
 
     private void ControlSegmentHoveredOutside(float angle)
@@ -177,6 +175,7 @@ public class MenuPingController : AbstractPingController
 
     private bool CheckInMiddleSegment()
     {
+        
         return _inputMouse.x is < SizeCircle and > -SizeCircle && _inputMouse.y is < SizeCircle and > -SizeCircle;
     }
 
