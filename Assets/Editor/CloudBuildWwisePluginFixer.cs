@@ -82,13 +82,13 @@ public class WwiseFixEditor : MonoBehaviour
       new WwiseReplacement("#if (UNITY_SWITCH || UNITY_ANDROID || UNITY_STANDALONE_LINUX || UNITY_STADIA) && !UNITY_EDITOR", "#if (UNITY_SWITCH || UNITY_ANDROID || UNITY_STANDALONE_LINUX || UNITY_STADIA) && (!UNITY_EDITOR || UNITY_EDITOR_LINUX)")
     };
 
-    [MenuItem("Tools/Apply Wise Script Fix")]
+    [MenuItem("Tools/Wwise cloud fix/Apply Wwise Script Fix")]
     public static void ApplyWwiseScriptsFix()
     {
         ModifyWwiseScriptsTempFix(false);
     }
 
-    [MenuItem("Tools/Remove Wise Script Fix")]
+    [MenuItem("Tools/Wwise cloud fix/Remove Wwise Script Fix")]
     public static void RemoveWwiseScriptsFix()
     {
         ModifyWwiseScriptsTempFix(true);
