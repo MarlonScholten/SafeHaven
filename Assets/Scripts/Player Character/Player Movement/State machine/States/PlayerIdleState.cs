@@ -4,8 +4,24 @@ using Player_Character.Player_Movement.State_machine.State_machines;
 namespace Player_Character.Player_Movement.State_machine.States
 {
     /// <summary>
-    /// The Idle state for when no input is currently being received.
+    /// Author: Marlon Scholten <br/>
+    /// Modified by: --- <br/>
+    /// Description: The Idle state for when no input is currently being received.
     /// </summary>
+    /// <list type="table">
+    ///	    <listheader>
+    ///         <term>On what GameObject</term>
+    ///         <term>Type</term>
+    ///         <term>Name of type</term>
+    ///         <term>Description</term>
+    ///     </listheader>
+    ///     <item>
+    ///         <term>None</term>
+    ///		    <term>None</term>
+    ///         <term>None</term>
+    ///		    <term>This is an independent state script</term>
+    ///	    </item>
+    /// </list>
     public class PlayerIdleState : PlayerBaseState
     {
         public PlayerIdleState(PlayerController context, PlayerStateFactory factory)

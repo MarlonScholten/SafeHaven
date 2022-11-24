@@ -5,8 +5,24 @@ using UnityEngine;
 namespace Player_Character.Player_Movement.State_machine.States
 {
     /// <summary>
-    /// The Move state is active when movement-related input is received.
+    /// Author: Marlon Scholten <br/>
+    /// Modified by: --- <br/>
+    /// Description: The move state for the player character that calculates movement and rotation
     /// </summary>
+    /// <list type="table">
+    ///	    <listheader>
+    ///         <term>On what GameObject</term>
+    ///         <term>Type</term>
+    ///         <term>Name of type</term>
+    ///         <term>Description</term>
+    ///     </listheader>
+    ///     <item>
+    ///         <term>None</term>
+    ///		    <term>None</term>
+    ///         <term>None</term>
+    ///		    <term>This is an independent state script</term>
+    ///	    </item>
+    /// </list>
     public class PlayerMoveState : PlayerBaseState
     {
         private float _turnSmoothVelocity;
@@ -63,6 +79,12 @@ namespace Player_Character.Player_Movement.State_machine.States
             return movement;
         }
 
+        /// <summary>
+        /// Calculate the rotation of the player character based on camera orientation.
+        /// </summary>
+        /// <param name="movementInput">The input related to movement</param>
+        /// <param name="calculatedAngle">The undamped/smoothed angle determining our direction</param>
+        /// <returns>A smoothed angle determining our rotation</returns>
         private Quaternion CalculateRotation(Vector2 movementInput, out float calculatedAngle)
         {
             var direction = new Vector3(movementInput.x, 0f, movementInput.y);
