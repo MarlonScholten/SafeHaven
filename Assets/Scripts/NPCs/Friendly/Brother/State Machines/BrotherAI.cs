@@ -4,9 +4,34 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
+
+/// <summary>
+/// Author: Jelco van der Straaten </para>
+/// Modified by:  Jelco</para>
+/// This script controls the state of the brotherAI. In this script al the calculation for the states are made.
+/// </summary>
+/// <list type="table">
+///	    <listheader>
+///         <term>On what GameObject</term>
+///         <term>Type</term>
+///         <term>Name of type</term>
+///         <term>Description</term>
+///     </listheader>
+///     <item>
+///         <term>Brother</term>
+///		    <term>Script</term>
+///         <term>BrotherAI</term>
+///		    <term>This script is needed to determine the states of the brother. The states will be triggered by the Pinging system.</term>
+///	    </item>
+/// </list>
+
+
 public class BrotherAI : MonoBehaviour
 {
-
+    /// <summary>
+    /// This value determines the maximum walkspeed of the brother.
+    /// </summary>
+    [Range(2.0f, 4.0f), Tooltip("This value determines the maximum walkspeed of the brother.")]
     [SerializeField] private float _walkSpeed = 3.5f;
     [SerializeField] private float _runSpeed = 5f;
 

@@ -4,16 +4,33 @@ using UnityEngine;
 
 public class FearSystem : MonoBehaviour
 {
-    [SerializeField]private float _fear = 0f;
-    private readonly float _maxFearLevel = 1;
-    [SerializeField]private float _comfortIncrement = 0.1f;
-    [SerializeField]private float _fearIncement = 0.08f;
+    /// <summary>
+    /// This value determines the current fear value of the brother. When its 0 the brother is comfortable. And when its 1 he is fully feared. 
+    /// </summary>
+    [SerializeField, Range(0.0f, 100.0f), Tooltip("This value determines the current fear value of the brother.")]
+    private float _fear = 0f;
 
-    [SerializeField]private float _maxFearDistance = 20f;
+    private readonly float _maxFearLevel = 100;
 
-    [SerializeField]private float _viewRadius = 30f;
-    [SerializeField]private float _viewAngle = 140f;
-    [SerializeField] LayerMask _EnemyMask;
+
+    [SerializeField, Range(5.0f, 15.0f), Tooltip("This value determines how much the brothers fear lowers when comforted by the sister.")]
+    private float _comfortIncrement = 10f;
+
+
+    [SerializeField, Range(0.0f, 15.0f), Tooltip("This value determines how fast the brother gets scared.")]
+    private float _fearIncement = 8f;
+
+    [SerializeField, Range(10.0f, 50.0f), Tooltip("This value determines the maximum distance that an enemy interaction will affect the brothers fear.")]
+    private float _maxFearDistance = 20f;
+
+    [SerializeField, Range(10.0f, 50.0f), Tooltip("This value determines how far the brother can see.")]
+    private float _viewRadius = 30f;
+
+    [SerializeField, Range(60.0f, 180.0f), Tooltip("This value determines the angle of view of the brother.")]
+    private float _viewAngle = 140f;
+
+    [SerializeField, Tooltip("This value determines the layer the brother is in.")]
+    private LayerMask _EnemyMask;
 
     void FixedUpdate(){
         checkEnemyEncounter();
@@ -45,7 +62,7 @@ public class FearSystem : MonoBehaviour
     public void UpdateFearLevel(float distance){
         if((distance < _maxFearDistance) && (_fear < _maxFearLevel)){
             //Time.deltatime is needed beceause fear gets updated every frame.
-            _fear += (_fearIncement - (distance /1000f)) * Time.deltaTime;
+            _fear += (_fearIncement - (distance /10f)) * Time.deltaTime;
         }
     }
 

@@ -5,8 +5,11 @@ using UnityEngine;
 
 public class FindHidingSpot : MonoBehaviour
 {
-    [SerializeField] private float _hidingSpotInEnemyViewWeight = 0.01f;
-    [SerializeField] private float _hidingSpotDistanceWeight = 0.05f;
+    [SerializeField, Range(0.0f, 0.1f), Tooltip("This value determines by how much the hiding spot gets multiplied if it is in an enemy view")] 
+    private float _hidingSpotInEnemyViewWeight = 0.01f;
+
+    [SerializeField, Range(0.0f, 0.2f), Tooltip("This value determines the weight of the distance of the hiding spot.")] 
+    private float _hidingSpotDistanceWeight = 0.05f;
 
     [SerializeField] private Camera _playerCamera; 
     public Vector3 FindBestHidingSpot(){
