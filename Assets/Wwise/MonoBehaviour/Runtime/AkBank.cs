@@ -4,7 +4,6 @@
 // Copyright (c) 2014 Audiokinetic Inc. / All Rights Reserved
 //
 //////////////////////////////////////////////////////////////////////
-
 [UnityEngine.AddComponentMenu("Wwise/AkBank")]
 [UnityEngine.ExecuteInEditMode]
 [UnityEngine.DefaultExecutionOrder(-75)]
@@ -15,26 +14,20 @@ public class AkBank : AkTriggerHandler
 #endif
 {
 	public AK.Wwise.Bank data = new AK.Wwise.Bank();
-
 	/// Decode this SoundBank upon load
 	public bool decodeBank = false;
-
 	/// Check this to load the SoundBank in the background. Be careful, if Events are triggered and the SoundBank hasn't finished loading, you'll have "Event not found" errors.
 	public bool loadAsynchronous = false;
-
 	/// Save the decoded SoundBank to disk for faster loads in the future
 	public bool saveDecodedBank = false;
-
 	/// Reserved.
 	public System.Collections.Generic.List<int> unloadTriggerList =
 		new System.Collections.Generic.List<int> { DESTROY_TRIGGER_ID };
-
 	protected override void Awake()
 	{
 #if UNITY_EDITOR
 		if (UnityEditor.BuildPipeline.isBuildingPlayer || AkUtilities.IsMigrating)
 			return;
-
 		var reference = AkWwiseTypes.DragAndDropObjectReference;
 		if (reference)
 		{
@@ -42,26 +35,20 @@ public class AkBank : AkTriggerHandler
 			data.ObjectReference = reference;
 		}
 #endif
-
 		base.Awake();
-
 		RegisterTriggers(unloadTriggerList, UnloadBank);
 	}
-
 	protected override void Start()
 	{
 #if UNITY_EDITOR
 		if (UnityEditor.BuildPipeline.isBuildingPlayer || AkUtilities.IsMigrating)
 			return;
 #endif
-
 		base.Start();
-
 		//Call the UnloadBank function if registered to the Start Trigger
 		if (unloadTriggerList.Contains(START_TRIGGER_ID))
 			UnloadBank(null);
 	}
-
 	/// Loads the SoundBank
 	public override void HandleEvent(UnityEngine.GameObject in_gameObject)
 	{
@@ -70,29 +57,23 @@ public class AkBank : AkTriggerHandler
 		else
 			data.LoadAsync();
 	}
-
 	/// Unloads a SoundBank
 	public void UnloadBank(UnityEngine.GameObject in_gameObject)
 	{
 		data.Unload();
 	}
-
 	protected override void OnDestroy()
 	{
 #if UNITY_EDITOR
 		if (UnityEditor.BuildPipeline.isBuildingPlayer || AkUtilities.IsMigrating)
 			return;
 #endif
-
 		base.OnDestroy();
-
 		UnregisterTriggers(unloadTriggerList, UnloadBank);
 	}
-
 	#region Obsolete
 	[System.Obsolete(AkSoundEngine.Deprecation_2018_1_6)]
 	public string bankName { get { return data == null ? string.Empty : data.Name; } }
-
 	[System.Obsolete(AkSoundEngine.Deprecation_2018_1_6)]
 	public byte[] valueGuid
 	{
@@ -100,13 +81,11 @@ public class AkBank : AkTriggerHandler
 		{
 			if (data == null)
 				return null;
-
 			var objRef = data.ObjectReference;
 			return !objRef ? null : objRef.Guid.ToByteArray();
 		}
 	}
 	#endregion
-
 	#region WwiseMigration
 #pragma warning disable 0414 // private field assigned but not used.
 	[UnityEngine.HideInInspector]
@@ -118,13 +97,11 @@ public class AkBank : AkTriggerHandler
 	[UnityEngine.Serialization.FormerlySerializedAs("valueGuid")]
 	private byte[] valueGuidInternal;
 #pragma warning restore 0414 // private field assigned but not used.
-
 #if UNITY_EDITOR
 	bool AK.Wwise.IMigratable.Migrate(UnityEditor.SerializedObject obj)
 	{
 		if (!AkUtilities.IsMigrationRequired(AkUtilities.MigrationStep.WwiseTypes_v2018_1_6))
 			return false;
-
 		return AK.Wwise.TypeMigration.ProcessSingleGuidType(obj.FindProperty("data.WwiseObjectReference"), WwiseObjectType.Soundbank, 
 			obj.FindProperty("valueGuidInternal"), obj.FindProperty("bankNameInternal"));
 	}

@@ -1,16 +1,14 @@
-﻿#if UNITY_EDITOR
+#if UNITY_EDITOR
 //////////////////////////////////////////////////////////////////////
 //
 // Copyright (c) 2020 Audiokinetic Inc. / All Rights Reserved
 //
 //////////////////////////////////////////////////////////////////////
-
 using System;
 using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-
 /// <summary>
 /// This class wraps the client that communicates with the Wwise Authoring application via WAAPI.
 /// Given that only one request can be pending on the websocket, a queue is used to consume all calls sequentially.
@@ -29,36 +27,29 @@ public class AkWaapiUtilities
 	/// Fired when the connection is closing or closed, the bool parameter represents whether the socket connection is still open (for cleaning up subscriptions).
 	/// </summary>
 	public static System.Action<bool> Disconnecting;
-
 	/// <summary>
 	/// Fired when the connection is established, should be used by external classes to subscribe to topics they are interested in.
 	/// </summary>
 	public static System.Action Connected;
-
 	/// <summary>
 	/// Fired when all commands in the queue have been executed.
 	/// </summary>
 	public static System.Action QueueConsumed;
 	private static ConcurrentQueue<WaapiCommand> waapiCommandQueue = new ConcurrentQueue<WaapiCommand>();
-
-
 	/// <summary>
 	/// Generic delegate function for callbacks that expect to receive a list of objects in response to a WAAPI request.
 	/// </summary>
 	/// <param name="result"></param>
 	public delegate void GetResultListDelegate<T>(List<T> result);
-
 	/// <summary>
 	/// Generic delegate function for callbacks that expect to receive a single object in response to a WAAPI request.
 	/// </summary>
 	/// <param name="result"></param>
 	public delegate void GetResultDelegate<T>(T result);
-
 	/// <summary>
 	/// Used to store store UnityEngine.Application.dataPath because we can't access it outside of the main loop
 	/// </summary>
 	private static string dataPath;
-
 	/// <summary>
 	/// Bind disconnection method to compilation started delegate and start the async Waapi loop.
 	/// </summary>
@@ -78,7 +69,6 @@ public class AkWaapiUtilities
 		dataPath = UnityEngine.Application.dataPath;
 		Loop();
 	}
-
 	/// <summary>
 	/// A simple structure containing an async payload function that will be executed when it is consumed by the command queue.
 	/// </summary>
@@ -94,7 +84,6 @@ public class AkWaapiUtilities
 			await payload.Invoke();
 		}
 	}
-
 	/// <summary>
 	/// Class used to store information about a specific subscription.
 	/// </summary>
@@ -103,7 +92,6 @@ public class AkWaapiUtilities
 		public string Uri;
 		public Wamp.PublishHandler Callback;
 		public uint SubscriptionId;
-
 		public SubscriptionInfo(string uri, Wamp.PublishHandler cb)
 		{
 			Uri = uri;
@@ -111,7 +99,6 @@ public class AkWaapiUtilities
 			SubscriptionId = 0;
 		}
 	};
-
 	/// <summary>
 	/// Holds information about a playing transport.
 	/// </summary>
@@ -119,14 +106,12 @@ public class AkWaapiUtilities
 	{
 		public int TransportID;
 		public uint SubscriptionID;
-
 		public TransportInfo(int transID, uint subsID)
 		{
 			TransportID = transID;
 			SubscriptionID = subsID;
 		}
 	};
-
 	/// <summary>
 	/// Stores TransportInfo of playing Events.
 	/// </summary>
@@ -139,7 +124,6 @@ public class AkWaapiUtilities
 			return m_ItemTransports;
 		}
 	}
-
 	/// <summary>
 	/// WAAPI client wrapping WAMP calls. Lazy instantiated.
 	/// </summary>
@@ -155,7 +139,6 @@ public class AkWaapiUtilities
 			return m_WaapiClient;
 		}
 	}
-
 	/// <summary>
 	/// Check whether the client is currently connected.
 	/// </summary>
@@ -165,11 +148,9 @@ public class AkWaapiUtilities
 		if (m_WaapiClient == null) return false;
 		return WaapiClient.IsConnected();
 	}
-
 	private static bool kill;
 	private static int loopSleep = 0;
 	private static bool projectConnected = false;
-
 	/// <summary>
 	/// Main loop for the WAAPI API. Checks if the client is connected and consumes all commands.
 	/// </summary>
@@ -178,12 +159,10 @@ public class AkWaapiUtilities
 		try
 		{
 			ErrorMessage = "";
-
 			if (await CheckConnection())
 			{
 				await ConsumeCommandQueue();
 			}
-
 			if (!kill)
 			{
 				if (loopSleep > 0)
@@ -192,7 +171,6 @@ public class AkWaapiUtilities
 				}
 			}
 		}
-
 		//Handle socket issues caused by closing Wwise Authoring.
 		catch (System.Net.WebSockets.WebSocketException)
 		{
@@ -218,7 +196,6 @@ public class AkWaapiUtilities
 			UnityEditor.EditorApplication.delayCall += () => Loop();
 		}
 	}
-
 	/// <summary>
 	/// Consumes all WAAPICommands in the queue and then fires QueueConsumed.
 	/// </summary>
@@ -244,7 +221,6 @@ public class AkWaapiUtilities
 						if (msg.message != null)
 							ErrorMessage = msg.message;
 					}
-
 					switch (e.Uri)
 					{
 						case ak.wwise.error.unavailable:
@@ -279,7 +255,6 @@ public class AkWaapiUtilities
 			QueueConsumed?.Invoke();
 		}
 	}
-
 	/// <summary>
 	/// Checks the global WAAPI settings and disconnects if WAAPI is disabled or connection settings have changed.
 	/// If disconnected, try to connect with current settings.
@@ -295,7 +270,6 @@ public class AkWaapiUtilities
 				FireDisconnect(false);
 				return true;
 			}
-
 			if (!WaapiClient.IsConnected())
 			{
 				try
@@ -307,7 +281,6 @@ public class AkWaapiUtilities
 					ConnectionFailed("Connection refused");
 				}
 			}
-
 			if (WaapiClient.IsConnected())
 			{
 				var projectOpen = await CheckProjectLoaded();
@@ -324,7 +297,6 @@ public class AkWaapiUtilities
 				}
 			}
 		}
-
 		else
 		{
 			if (WaapiClient.IsConnected() && !isDisconnecting)
@@ -333,10 +305,8 @@ public class AkWaapiUtilities
 				return true;
 			}
 		}
-
 		return WaapiClient.IsConnected() && projectConnected;
 	}
-
 	/// <summary>
 	/// Tries to communicate with Wwise and compares the current open project with the project path specified in the Unity Wwise Editor settings.
 	/// </summary>
@@ -365,7 +335,6 @@ public class AkWaapiUtilities
 				return false;
 			}
 		}
-
 		catch (Wamp.ErrorException e)
 		{
 			if (e.Json != null)
@@ -381,21 +350,16 @@ public class AkWaapiUtilities
 			{
 				return true;
 			}
-
-
 			ConnectionFailed($"No project is open in Wwise yet");
 			return false;
 		}
-
 		return true;
 	}
-
 	private static void ConnectionFailed(string message)
 	{
 		loopSleep = Math.Min(Math.Max(loopSleep * 2, 1), 32);
 		ErrorMessage = $"{message} - Retrying in {loopSleep}s";
 	}
-
 	/// <summary>
 	/// Starts the diconnection process. 
 	/// Invokes Disconnecting() so that other classes using WAAPI can clean up and add commands to unsubscribe from topics.
@@ -409,7 +373,6 @@ public class AkWaapiUtilities
 		waapiCommandQueue.Enqueue(new WaapiCommand(
 			async () => await CloseClient(killLoop)));
 	}
-
 	private static async Task CloseClient(bool killLoop)
 	{
 		await WaapiClient.Close();
@@ -419,7 +382,6 @@ public class AkWaapiUtilities
 			kill = true;
 		}
 	}
-
 	/// <summary>
 	/// Invoked after the client has disconnected from Wwise authoring.
 	/// </summary>
@@ -427,12 +389,10 @@ public class AkWaapiUtilities
 	{
 		Disconnecting?.Invoke(false);
 	}
-
 	private static string GetUri()
 	{
 		return $"ws://{AkWwiseEditorSettings.Instance.WaapiIP}:{AkWwiseEditorSettings.Instance.WaapiPort}/waapi";
 	}
-
 	static string ip;
 	static string port;
 	static string projectPath;
@@ -444,7 +404,6 @@ public class AkWaapiUtilities
 			ip = AkWwiseEditorSettings.Instance.WaapiIP;
 			changed = true;
 		}
-
 		if (port != AkWwiseEditorSettings.Instance.WaapiPort)
 		{
 			port = AkWwiseEditorSettings.Instance.WaapiPort;
@@ -457,7 +416,6 @@ public class AkWaapiUtilities
 		}
 		return changed;
 	}
-
 	/// <summary>
 	/// Returns a rich text string representing the current WAAPI connection status.
 	/// </summary>
@@ -496,18 +454,14 @@ public class AkWaapiUtilities
 			returnString += $" <color=red>{ErrorMessage}</color>";
 		return returnString;
 	}
-
 	private static async Task<List<WwiseObjectInfo>> GetProjectInfo()
 	{
 		var args = new WaqlArgs($"from type {WaapiKeywords.PROJECT}");
 		var options = new ReturnOptions(new string[] { "filePath" });
-
 		var result = await WaapiClient.Call(ak.wwise.core.@object.get, args, options);
 		var ret = UnityEngine.JsonUtility.FromJson<ReturnWwiseObjects>(result).@return;
-
 		return ParseObjectInfo(ret);
 	}
-
 	/// <summary>
 	/// Use this function to enqueue a command with no expected return object.
 	/// </summary>
@@ -519,7 +473,6 @@ public class AkWaapiUtilities
 		waapiCommandQueue.Enqueue(new WaapiCommand(
 			async () => await WaapiClient.Call(uri, args, options)));
 	}
-
 	/// <summary>
 	/// Use this function to enqueue a command with an expected return object of type T.
 	/// The command will deserialize the respone as type T and pass it to the callback.
@@ -538,7 +491,6 @@ public class AkWaapiUtilities
 				callback(UnityEngine.JsonUtility.FromJson<T>(result));
 			}));
 	}
-
 	/// <summary>
 	/// Enqueues a command with a payload that desirializes the list of wwise objects from the response.
 	/// </summary>
@@ -555,7 +507,6 @@ public class AkWaapiUtilities
 				callback.Invoke(ret.@return);
 			}));
 	}
-
 	/// <summary>
 	/// Generic function for fetching a Wwise object with custom return options.
 	/// </summary>
@@ -567,7 +518,6 @@ public class AkWaapiUtilities
 	{
 		GetWwiseObjects(new List<System.Guid>() { guid }, options, callback);
 	}
-
 	/// <summary>
 	/// Generic function for fetching a list of Wwise objects with custom return options.
 	/// </summary>
@@ -582,11 +532,9 @@ public class AkWaapiUtilities
 		{
 			guidString += $"{guid:B} ,";
 		}
-
 		var args = new WaqlArgs($"from object \"{guidString}\" ");
 		QueueCommandWithReturnWwiseObjects(args, options, callback);
 	}
-
 	/// <summary>
 	/// Enqueues a waapi command to fetch the specified object and all of its ancestors in the hierarchy.
 	/// Passes the list of WwiseObjectInfo containing the specified object and ancestors to the callback. 
@@ -597,10 +545,8 @@ public class AkWaapiUtilities
 	public static void GetWwiseObjectAndAncestors<T>(System.Guid guid, ReturnOptions options, GetResultListDelegate<T> callback)
 	{
 		var args = new WaqlArgs($"from object \"{guid:B}\"  select this, ancestors orderby path");
-
 		QueueCommandWithReturnWwiseObjects(args, options, callback);
 	}
-
 	/// <summary>
 	/// Enqueues a waapi comand to fetch the specified object and all of its descendants in the hierarchy to a specified depth.
 	/// Passes the list of WwiseObjectInfo containing the specified object and descendants to the callback. 
@@ -613,7 +559,6 @@ public class AkWaapiUtilities
 	{
 		GetWwiseObjectAndDescendants(guid.ToString("B"), options, depth, callback);
 	}
-
 	/// <summary>
 	/// Composes a WAQL "from object" request based on the parameters and enqueues a WAAPI command.
 	/// Passes the list of WwiseObjectInfo containing the results to the callback
@@ -634,10 +579,8 @@ public class AkWaapiUtilities
 		{
 			args = new WaqlArgs($"from object \"{identifier}\" select descendants orderby path");
 		}
-
 		QueueCommandWithReturnWwiseObjects(args, options, callback);
 	}
-
 	/// <summary>
 	/// Composes a WAQL "search" request based on the parameters and enqueues a WAAPI command.
 	/// Passes the list of WwiseObjectInfo containing the search results to the callback
@@ -657,10 +600,8 @@ public class AkWaapiUtilities
 		{
 			args = new WaqlArgs($"from search \"{searchString}\" where type=\"{WaapiKeywords.WwiseObjectTypeStrings[objectType]}\" orderby path");
 		}
-
 		QueueCommandWithReturnWwiseObjects(args, options, callback);
 	}
-
 	/// <summary>
 	/// Get the children of a given object.
 	/// </summary>
@@ -671,12 +612,9 @@ public class AkWaapiUtilities
 	{
 		if (guid == System.Guid.Empty)
 			return;
-
 		var args = new WaqlArgs($"from object \"{guid:B}\" select children orderby path");
-
 		QueueCommandWithReturnWwiseObjects(args, options, callback);
 	}
-
 	/// <summary>
 	/// Get the WwiseObjectInfo for the project.
 	/// </summary>
@@ -685,10 +623,8 @@ public class AkWaapiUtilities
 	public static void GetProject<T>(GetResultListDelegate<T> callback, ReturnOptions options)
 	{
 		var args = new WaqlArgs($"from type {WaapiKeywords.PROJECT}");
-
 		QueueCommandWithReturnWwiseObjects(args, options, callback);
 	}
-
 	/// <summary>
 	/// Parse the response WwiseObjectInfoJsonObject of a "from object" request and implicit cast the objects to WwiseObjectInfo.
 	/// </summary>
@@ -703,7 +639,6 @@ public class AkWaapiUtilities
 		}
 		return returnInfo;
 	}
-
 	/// <summary>
 	/// Select the object in Wwise Authoring.
 	/// Creates a WaapiCommand object containing a lambda call to SelectObjectInAuthoringAsync and adds it to the waapiCommandQueue.
@@ -714,7 +649,6 @@ public class AkWaapiUtilities
 		waapiCommandQueue.Enqueue(new WaapiCommand(
 			async () => await SelectObjectInAuthoringAsync(guid)));
 	}
-
 	/// <summary>
 	/// Creates and sends a WAAPI command to select a Wwise object.
 	/// </summary>
@@ -726,7 +660,6 @@ public class AkWaapiUtilities
 		var args = new ArgsCommand(WaapiKeywords.FIND_IN_PROJECT_EXPLORER, new string[] { guid.ToString("B") });
 		await WaapiClient.Call(ak.wwise.ui.commands.execute, args, null);
 	}
-
 	/// <summary>
 	/// Open the OS file browser to the folder containing this object's Work Unit.
 	/// Creates a WaapiCommand object containing a lambda call to OpenWorkUnitInExplorerAsync and adds it to the waapiCommandQueue.
@@ -737,7 +670,6 @@ public class AkWaapiUtilities
 		waapiCommandQueue.Enqueue(new WaapiCommand(
 			async () => await OpenWorkUnitInExplorerAsync(guid)));
 	}
-
 	/// <summary>
 	/// Open the OS file browser to the folder containing the generated SoundBank.
 	/// Creates a WaapiCommand object containing a lambda call to OpenSoundBankInExplorer and adds it to the waapiCommandQueue.
@@ -748,7 +680,6 @@ public class AkWaapiUtilities
 		waapiCommandQueue.Enqueue(new WaapiCommand(
 			async () => await OpenSoundBankInExplorerAsync(guid)));
 	}
-
 	/// <summary>
 	/// Uses a waapi call to get the object's file path, then opens the containing folder in the system's file browser.
 	/// </summary>
@@ -762,13 +693,11 @@ public class AkWaapiUtilities
 		var ret = UnityEngine.JsonUtility.FromJson<ReturnWwiseObjects>(result);
 		var filePath = ret.@return[0].filePath;
 		filePath = filePath.Replace("\\", "/");
-
 #if UNITY_EDITOR_OSX
 		filePath = AkUtilities.ParseOsxPathFromWinePath(filePath);
 #endif
 		UnityEditor.EditorUtility.RevealInFinder(filePath);
 	}
-
 	/// <summary>
 	/// Uses a waapi call to get the SoundBank's generated bank path, then opens the containing folder in the system's file browser.
 	/// </summary>
@@ -781,13 +710,11 @@ public class AkWaapiUtilities
 		var result = await WaapiClient.Call(ak.wwise.core.@object.get, args, options);
 		var ret = UnityEngine.JsonUtility.FromJson<ReturnWwiseObjects>(result);
 		var filePath = ret.@return[0].soundbankBnkFilePath;
-
 #if UNITY_EDITOR_OSX
 		filePath = AkUtilities.ParseOsxPathFromWinePath(filePath);
 #endif
 		UnityEditor.EditorUtility.RevealInFinder(filePath);
 	}
-
 	/// <summary>
 	/// Rename an object in Wwise authoring.
 	/// Creates a WaapiCommand object containing a lambda call to RenameAsync and adds it to the waapiCommandQueue.
@@ -800,7 +727,6 @@ public class AkWaapiUtilities
 			async () => await RenameAsync(guid, newName)
 		));
 	}
-
 	/// <summary>
 	/// Sends a WAAPI command to rename a Wwise object.
 	/// </summary>
@@ -812,8 +738,6 @@ public class AkWaapiUtilities
 		var args = new ArgsRename(guid.ToString("B"), newName);
 		await WaapiClient.Call(ak.wwise.core.@object.setName, args, null);
 	}
-
-
 	/// <summary>
 	/// Delete an object in wwise authoring. Work Units cannot be deleted in this manner.
 	/// Creates a WaapiCommand object containing a lambda call to DeleteAsync and adds it to the waapiCommandQueue.
@@ -825,7 +749,6 @@ public class AkWaapiUtilities
 			async () => await DeleteAsync(guid)
 		));
 	}
-
 	/// <summary>
 	/// Sends three WAAPI commands:
 	/// 1. Begin an undo group.
@@ -840,7 +763,6 @@ public class AkWaapiUtilities
 		await WaapiClient.Call(ak.wwise.core.@object.delete, new ArgsObject(guid.ToString("b")));
 		await WaapiClient.Call(ak.wwise.core.undo.endGroup, new ArgsDisplayName(WaapiKeywords.DELETE_ITEMS));
 	}
-
 	/// <summary>
 	/// Checks if Wwise object is playable.
 	/// </summary>
@@ -850,7 +772,6 @@ public class AkWaapiUtilities
 	{
 		return (type == WwiseObjectType.Event);
 	}
-
 	/// <summary>
 	/// Play or pause an object in Wwise authoring.
 	/// Creates a WaapiCommand object containing a lambda call to TogglePlayEventAsync and adds it to the waapiCommandQueue.
@@ -865,7 +786,6 @@ public class AkWaapiUtilities
 				async () => await TogglePlayEventAsync(guid)));
 		}
 	}
-
 	/// <summary>
 	/// Play or pause an object in Wwise authoring. Opens a new transport in wwise to play the sound if it does not exist yet.
 	/// </summary>
@@ -877,7 +797,6 @@ public class AkWaapiUtilities
 		var args = new ArgsPlay(WaapiKeywords.PLAYSTOP, transportID);
 		var result = await WaapiClient.Call(ak.wwise.core.transport.executeAction, args, null);
 	}
-
 	/// <summary>
 	/// Find the open transport in ItemTransports or create a new one.
 	/// </summary>
@@ -892,7 +811,6 @@ public class AkWaapiUtilities
 		}
 		return transportInfo.TransportID;
 	}
-
 	/// <summary>
 	/// Send a WAAPI call to create a transport in Wwise.
 	/// Subscribe to the ak.wwise.core.transport.stateChanged topic of the new transport.
@@ -907,12 +825,10 @@ public class AkWaapiUtilities
 		int transportID = UnityEngine.JsonUtility.FromJson<ReturnTransport>(result).transport;
 		var options = new TransportOptions(transportID);
 		uint subscriptionID = await WaapiClient.Subscribe(ak.wwise.core.transport.stateChanged, options, HandleTransportStateChanged);
-
 		var transport = new TransportInfo(transportID, subscriptionID);
 		ItemTransports.Add(guid, transport);
 		return transport;
 	}
-
 	/// <summary>
 	/// Handle the messages published by a transport when its state is changed.
 	/// If stopped, enqueue a command with DestroyTransport as its payload.
@@ -923,19 +839,16 @@ public class AkWaapiUtilities
 		TransportState transport = UnityEngine.JsonUtility.FromJson<TransportState>(message);
 		System.Guid itemID = new System.Guid(transport.@object);
 		int transportID = transport.transport;
-
 		if (transport.state == WaapiKeywords.STOPPED)
 		{
 			waapiCommandQueue.Enqueue(new WaapiCommand(
 				async () => await DestroyTransport(itemID)));
 		}
-
 		else if (transport.state == WaapiKeywords.PLAYING && !ItemTransports.ContainsKey(itemID))
 		{
 			ItemTransports.Add(itemID, new TransportInfo(transportID, 0));
 		}
 	}
-
 	/// <summary>
 	/// Send a WAAPI command to stop the specific transport.
 	/// </summary>
@@ -946,7 +859,6 @@ public class AkWaapiUtilities
 		var args = new ArgsPlay(WaapiKeywords.STOP, in_transportID);
 		var result = await WaapiClient.Call(ak.wwise.core.transport.executeAction, args, null);
 	}
-
 	/// <summary>
 	/// Unsubscribe from the transport topic and send a WAAPI command to destroy the transport in Wwise.
 	/// </summary>
@@ -956,16 +868,13 @@ public class AkWaapiUtilities
 	{
 		if (!ItemTransports.ContainsKey(in_itemID))
 			return null;
-
 		if (ItemTransports[in_itemID].SubscriptionID != 0)
 			await WaapiClient.Unsubscribe(ItemTransports[in_itemID].SubscriptionID);
-
 		var args = new ArgsTransport(ItemTransports[in_itemID].TransportID);
 		var result = await WaapiClient.Call(ak.wwise.core.transport.destroy, args, null);
 		ItemTransports.Remove(in_itemID);
 		return result;
 	}
-
 	/// <summary>
 	/// Stops all playing transports.
 	/// Creates a WaapiCommand object containing a lambda call to StopAllTransportsAsync and adds it to the waapiCommandQueue.
@@ -975,7 +884,6 @@ public class AkWaapiUtilities
 		waapiCommandQueue.Enqueue(new WaapiCommand(
 			async () => await StopAllTransportsAsync()));
 	}
-
 	/// <summary>
 	/// Stops all playing transports.
 	/// </summary>
@@ -987,7 +895,6 @@ public class AkWaapiUtilities
 			await StopTransport(item.Value.TransportID);
 		}
 	}
-
 	/// <summary>
 	/// Subscribe to WAAPI topic. Refer to WAAPI reference documentation for a list of topics and their options.
 	/// Creates a WaapiCommand object containing a lambda call to SubscribeAsync and adds it to the waapiCommandQueue.
@@ -1001,7 +908,6 @@ public class AkWaapiUtilities
 		waapiCommandQueue.Enqueue(new WaapiCommand(
 		   async () => handshakeCallback(await SubscribeAsync(new SubscriptionInfo(topic, subscriptionCallback)))));
 	}
-
 	/// <summary>
 	/// Subscribe to WAAPI topic. Refer to WAAPI reference documentation for a list of topics and their options.
 	/// Creates and sends a WAAPI command to subscribe to the topic.
@@ -1015,8 +921,6 @@ public class AkWaapiUtilities
 		subscription.SubscriptionId = id;
 		return subscription;
 	}
-
-
 	/// <summary>
 	/// Unsubscribe from an existing subscription.
 	/// Creates a WaapiCommand object containing a lambda call to UnsubscribeAsync and adds it to the waapiCommandQueue.
@@ -1027,7 +931,6 @@ public class AkWaapiUtilities
 		waapiCommandQueue.Enqueue(new WaapiCommand(
 		 async () => await UnsubscribeAsync(id)));
 	}
-
 	/// <summary>
 	/// Unsubscribe from a subscription.
 	/// </summary>
@@ -1037,7 +940,6 @@ public class AkWaapiUtilities
 	{
 		await WaapiClient.Unsubscribe(id);
 	}
-
 	/// <summary>
 	/// Deserializes the objects published by the ak.wwise.ui.selectionChanged topic.
 	/// </summary>
@@ -1053,7 +955,6 @@ public class AkWaapiUtilities
 		}
 		return ret;
 	}
-
 	/// <summary>
 	/// Deserializes the object published by the ak.wwise.core.object.nameChanged topic.
 	/// </summary>
@@ -1065,7 +966,6 @@ public class AkWaapiUtilities
 		info.ParseInfo();
 		return info;
 	}
-
 	/// <summary>
 	/// Deserializes the object published by the ak.wwise.core.object.childAdded or ak.wwise.core.object.childRemoved topic.
 	/// </summary>

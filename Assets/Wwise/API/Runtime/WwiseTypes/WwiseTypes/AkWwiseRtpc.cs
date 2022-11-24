@@ -1,5 +1,4 @@
 #if ! (UNITY_DASHBOARD_WIDGET || UNITY_WEBPLAYER || UNITY_WII || UNITY_WIIU || UNITY_NACL || UNITY_FLASH || UNITY_BLACKBERRY) // Disable under unsupported platforms.
-
 namespace AK.Wwise
 {
 	[System.Serializable]
@@ -7,15 +6,12 @@ namespace AK.Wwise
 	public class RTPC : BaseType
 	{
 		public WwiseRtpcReference WwiseObjectReference;
-
 		public override WwiseObjectReference ObjectReference
 		{
 			get { return WwiseObjectReference; }
 			set { WwiseObjectReference = value as WwiseRtpcReference; }
 		}
-
 		public override WwiseObjectType WwiseObjectType { get { return WwiseObjectType.GameParameter; } }
-
 		public void SetValue(UnityEngine.GameObject gameObject, float value)
 		{
 			if (IsValid())
@@ -24,7 +20,6 @@ namespace AK.Wwise
 				Verify(result);
 			}
 		}
-
 		public float GetValue(UnityEngine.GameObject gameObject)
 		{
 			float value = 0;
@@ -35,10 +30,8 @@ namespace AK.Wwise
 				var result = AkSoundEngine.GetRTPCValue(Id, gameObject, AkSoundEngine.AK_INVALID_PLAYING_ID, out value, ref queryValue);
 				Verify(result);
 			}
-
 			return value;
 		}
-
 		public void SetGlobalValue(float value)
 		{
 			if (IsValid())
@@ -47,7 +40,6 @@ namespace AK.Wwise
 				Verify(result);
 			}
 		}
-
 		public float GetGlobalValue()
 		{
 			return GetValue(null);

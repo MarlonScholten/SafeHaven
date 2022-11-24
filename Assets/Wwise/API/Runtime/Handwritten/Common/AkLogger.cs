@@ -4,8 +4,6 @@
 // Copyright (c) 2017 Audiokinetic Inc. / All Rights Reserved
 //
 //////////////////////////////////////////////////////////////////////
-
-
 public class AkLogger
 {
 	// @todo sjl: Have SWIG specify the delegate's signature (possibly in AkSoundEngine) so that we can automatically determine the appropriate string marshaling.
@@ -13,10 +11,8 @@ public class AkLogger
 	public delegate void ErrorLoggerInteropDelegate(
 		[System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.LPStr)]
 		string message);
-
 	private static AkLogger ms_Instance = new AkLogger();
 	private ErrorLoggerInteropDelegate errorLoggerDelegate = WwiseInternalLogError;
-
 	private AkLogger()
 	{
 		if (ms_Instance == null)
@@ -25,9 +21,7 @@ public class AkLogger
 			AkSoundEngine.SetErrorLogger(errorLoggerDelegate);
 		}
 	}
-
 	public static AkLogger Instance { get { return ms_Instance; } }
-
 	~AkLogger()
 	{
 		if (ms_Instance == this)
@@ -37,28 +31,23 @@ public class AkLogger
 			AkSoundEngine.SetErrorLogger();
 		}
 	}
-
 	public void Init()
 	{
 		// used to force instantiation of this singleton
 	}
-
 	[AOT.MonoPInvokeCallback(typeof(ErrorLoggerInteropDelegate))]
 	public static void WwiseInternalLogError(string message)
 	{
 		UnityEngine.Debug.LogErrorFormat("Wwise: {0}", message);
 	}
-
 	public static void Message(string message)
 	{
 		UnityEngine.Debug.LogFormat("WwiseUnity: {0}", message);
 	}
-
 	public static void Warning(string message)
 	{
 		UnityEngine.Debug.LogWarningFormat("WwiseUnity: {0}", message);
 	}
-
 	public static void Error(string message)
 	{
 		UnityEngine.Debug.LogErrorFormat("WwiseUnity: {0}", message);

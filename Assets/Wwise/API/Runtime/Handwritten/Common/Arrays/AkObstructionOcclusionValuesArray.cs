@@ -4,28 +4,23 @@
 // Copyright (c) 2019 Audiokinetic Inc. / All Rights Reserved
 //
 //////////////////////////////////////////////////////////////////////
-
 public class AkObstructionOcclusionValuesArray : AkBaseArray<AkObstructionOcclusionValues>
 {
 	public AkObstructionOcclusionValuesArray(int count) : base(count)
 	{
 	}
-
 	protected override int StructureSize
 	{
 		get { return AkSoundEnginePINVOKE.CSharp_AkObstructionOcclusionValues_GetSizeOf(); }
 	}
-
 	protected override void DefaultConstructAtIntPtr(System.IntPtr address)
 	{
 		AkSoundEnginePINVOKE.CSharp_AkObstructionOcclusionValues_Clear(address);
 	}
-
 	protected override AkObstructionOcclusionValues CreateNewReferenceFromIntPtr(System.IntPtr address)
 	{
 		return new AkObstructionOcclusionValues(address, false);
 	}
-
 	protected override void CloneIntoReferenceFromIntPtr(System.IntPtr address, AkObstructionOcclusionValues other)
 	{
 		AkSoundEnginePINVOKE.CSharp_AkObstructionOcclusionValues_Clone(address, AkObstructionOcclusionValues.getCPtr(other));

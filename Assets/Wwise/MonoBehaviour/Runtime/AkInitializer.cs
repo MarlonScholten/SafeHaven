@@ -4,11 +4,9 @@
 // Copyright (c) 2012 Audiokinetic Inc. / All Rights Reserved
 //
 //////////////////////////////////////////////////////////////////////
-
 #if AK_WWISE_ADDRESSABLES && UNITY_ADDRESSABLES
 using AK.Wwise.Unity.WwiseAddressables;
 #endif
-
 [UnityEngine.AddComponentMenu("Wwise/AkInitializer")]
 [UnityEngine.DisallowMultipleComponent]
 [UnityEngine.ExecuteInEditMode]
@@ -30,7 +28,6 @@ public class AkInitializer : UnityEngine.MonoBehaviour
 #else
 	public AkWwiseInitializationSettings InitializationSettings;
 #endif
-
 	private void Awake()
 	{
 		if (ms_Instance)
@@ -38,23 +35,17 @@ public class AkInitializer : UnityEngine.MonoBehaviour
 			DestroyImmediate(this);
 			return;
 		}
-
 		ms_Instance = this;
-
 #if UNITY_EDITOR
 		UnityEditor.EditorApplication.quitting += OnApplicationQuit;
-
 		if (!UnityEditor.EditorApplication.isPlaying)
 			return;
-
 		#if !(AK_WWISE_ADDRESSABLES && UNITY_ADDRESSABLES)
 				AkWwiseFileWatcher.Instance.XMLUpdated += AkBankManager.ReloadAllBanks;
 		#endif
 #endif
-
 		DontDestroyOnLoad(this);
 	}
-
 	private void OnEnable()
 	{
 #if AK_WWISE_ADDRESSABLES && UNITY_ADDRESSABLES
@@ -62,17 +53,14 @@ public class AkInitializer : UnityEngine.MonoBehaviour
 #else
 		InitializationSettings = AkWwiseInitializationSettings.Instance;
 #endif
-
 		if (ms_Instance == this)
 			AkSoundEngineController.Instance.Init(this);
 	}
-
 	private void OnDisable()
 	{
 		if (ms_Instance == this)
 			AkSoundEngineController.Instance.OnDisable();
 	}
-
 	private void OnDestroy()
 	{
 		if (ms_Instance == this)
@@ -83,36 +71,30 @@ public class AkInitializer : UnityEngine.MonoBehaviour
 			ms_Instance = null;
 		}
 	}
-
 	private void OnApplicationPause(bool pauseStatus)
 	{
 		if (ms_Instance == this)
 			AkSoundEngineController.Instance.OnApplicationPause(pauseStatus);
 	}
-
 	private void OnApplicationFocus(bool focus)
 	{
 		if (ms_Instance == this)
 			AkSoundEngineController.Instance.OnApplicationFocus(focus);
 	}
-
 	private void OnApplicationQuit()
 	{
 		if (ms_Instance == this)
 			AkSoundEngineController.Instance.Terminate();
 	}
-
 	//Use LateUpdate instead of Update() to ensure all gameobjects positions, listener positions, environements, RTPC, etc are set before finishing the audio frame.
 	private void LateUpdate()
 	{
 		if (ms_Instance == this)
 			AkSoundEngineController.Instance.LateUpdate();
 	}
-
 #region WwiseMigration
 #if UNITY_EDITOR
 #pragma warning disable 0414 // private field assigned but not used.
-
 	// previously serialized data that will be consumed by migration
 	[UnityEngine.HideInInspector][UnityEngine.SerializeField] private string basePath = string.Empty;
 	[UnityEngine.HideInInspector][UnityEngine.SerializeField] private string language = string.Empty;
@@ -126,18 +108,14 @@ public class AkInitializer : UnityEngine.MonoBehaviour
 	[UnityEngine.HideInInspector][UnityEngine.SerializeField] private int spatialAudioPoolSize = 0;
 	[UnityEngine.HideInInspector][UnityEngine.SerializeField] private uint maxSoundPropagationDepth = 0;
 	[UnityEngine.HideInInspector][UnityEngine.SerializeField] private bool engineLogging = false;
-
 #pragma warning restore 0414 // private field assigned but not used.
-
 	private class Migration15Data
 	{
 		bool hasMigrated = false;
-
 		public void Migrate(AkInitializer akInitializer)
 		{
 			if (hasMigrated)
 				return;
-
 			var initializationSettings = akInitializer.InitializationSettings;
 			if (!initializationSettings)
 			{
@@ -149,39 +127,28 @@ public class AkInitializer : UnityEngine.MonoBehaviour
 				if (!initializationSettings)
 					return;
 			}
-
 			initializationSettings.UserSettings.m_BasePath = akInitializer.basePath;
 			initializationSettings.UserSettings.m_StartupLanguage = akInitializer.language;
-
 			initializationSettings.AdvancedSettings.m_MonitorQueuePoolSize = (uint)akInitializer.monitorQueuePoolSize * 1024;
-
 			initializationSettings.UserSettings.m_SpatialAudioSettings.m_MaxSoundPropagationDepth = akInitializer.maxSoundPropagationDepth;
-
 			initializationSettings.CallbackManagerInitializationSettings.IsLoggingEnabled = akInitializer.engineLogging;
-
 			UnityEditor.EditorUtility.SetDirty(initializationSettings);
 			UnityEditor.AssetDatabase.SaveAssets();
-
 			UnityEngine.Debug.Log("WwiseUnity: Converted from AkInitializer to AkWwiseInitializationSettings.");
 			hasMigrated = true;
 		}
 	}
-
 	private static Migration15Data migration15data;
-
 	public static void PreMigration15()
 	{
 		migration15data = new Migration15Data();
 	}
-
 	public void Migrate15()
 	{
 		UnityEngine.Debug.Log("WwiseUnity: AkInitializer.Migrate15 for " + gameObject.name);
-
 		if (migration15data != null)
 			migration15data.Migrate(this);
 	}
-
 	public static void PostMigration15()
 	{
 		migration15data = null;

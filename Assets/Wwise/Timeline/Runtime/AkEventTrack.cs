@@ -3,13 +3,11 @@
 #define AK_ENABLE_TIMELINE
 #endif
 #if AK_ENABLE_TIMELINE
-
 //////////////////////////////////////////////////////////////////////
 //
 // Copyright (c) 2017 Audiokinetic Inc. / All Rights Reserved
 //
 //////////////////////////////////////////////////////////////////////
-
 [UnityEngine.Timeline.TrackColor(0.855f, 0.8623f, 0.870f)]
 [UnityEngine.Timeline.TrackClipType(typeof(AkEventPlayable))]
 [UnityEngine.Timeline.TrackBindingType(typeof(UnityEngine.GameObject))]
@@ -28,14 +26,12 @@ public class AkEventTrack : UnityEngine.Timeline.TrackAsset
 	{
 		var playable = UnityEngine.Playables.ScriptPlayable<AkEventPlayableBehavior>.Create(graph);
 		UnityEngine.Playables.PlayableExtensions.SetInputCount(playable, inputCount);
-
 		var clips = GetClips();
 		foreach (var clip in clips)
 		{
 			var akEventPlayable = clip.asset as AkEventPlayable;
 			akEventPlayable.owningClip = clip;
 		}
-
 		return playable;
 	}
 }

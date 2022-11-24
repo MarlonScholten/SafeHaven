@@ -8,8 +8,6 @@
 // Do not make changes to this file unless you know what you are doing--modify
 // the SWIG interface file instead.
 //------------------------------------------------------------------------------
-
-
 public enum AkMIDIEventTypes {
   NOTE_OFF = 0x80,
   NOTE_ON = 0x90,

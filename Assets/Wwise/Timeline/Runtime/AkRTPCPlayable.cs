@@ -6,26 +6,20 @@
 //--------------------------------------------------------------------------------------------
 // The representation of the Timeline Clip
 //--------------------------------------------------------------------------------------------
-
 [System.Serializable]
 [System.Obsolete(AkSoundEngine.Deprecation_2019_2_0)]
 public class AkRTPCPlayable : UnityEngine.Playables.PlayableAsset, UnityEngine.Timeline.ITimelineClipAsset
 {
 	public bool overrideTrackObject = false;
 	public UnityEngine.ExposedReference<UnityEngine.GameObject> RTPCObject;
-
 	public bool setRTPCGlobally = false;
 	public AkRTPCPlayableBehaviour template = new AkRTPCPlayableBehaviour();
-
 	public AK.Wwise.RTPC Parameter { get; set; }
-
 	public UnityEngine.Timeline.TimelineClip OwningClip { get; set; }
-
 	UnityEngine.Timeline.ClipCaps UnityEngine.Timeline.ITimelineClipAsset.clipCaps
 	{
 		get { return UnityEngine.Timeline.ClipCaps.Looping & UnityEngine.Timeline.ClipCaps.Extrapolation & UnityEngine.Timeline.ClipCaps.Blending; }
 	}
-
 	public override UnityEngine.Playables.Playable CreatePlayable(UnityEngine.Playables.PlayableGraph graph, UnityEngine.GameObject go)
 	{
 		var playable = UnityEngine.Playables.ScriptPlayable<AkRTPCPlayableBehaviour>.Create(graph, template);
@@ -37,27 +31,19 @@ public class AkRTPCPlayable : UnityEngine.Playables.PlayableAsset, UnityEngine.T
 		return playable;
 	}
 }
-
-
 //--------------------------------------------------------------------------------------------
 // The behaviour template.
 //--------------------------------------------------------------------------------------------
-
 [System.Serializable]
 [System.Obsolete(AkSoundEngine.Deprecation_2019_2_0)]
 public class AkRTPCPlayableBehaviour : UnityEngine.Playables.PlayableBehaviour
 {
 	[UnityEngine.SerializeField]
 	private float RTPCValue = 0.0f;
-
 	public bool setRTPCGlobally { set; private get; }
-
 	public bool overrideTrackObject { set; private get; }
-
 	public UnityEngine.GameObject rtpcObject { set; private get; }
-
 	public AK.Wwise.RTPC parameter { set; private get; }
-
 	public override void ProcessFrame(UnityEngine.Playables.Playable playable, UnityEngine.Playables.FrameData info,
 		object playerData)
 	{
@@ -72,13 +58,11 @@ public class AkRTPCPlayableBehaviour : UnityEngine.Playables.PlayableBehaviour
 				if (obj != null)
 					rtpcObject = obj;
 			}
-
 			if (setRTPCGlobally || rtpcObject == null)
 				parameter.SetGlobalValue(RTPCValue);
 			else
 				parameter.SetValue(rtpcObject, RTPCValue);
 		}
-
 		base.ProcessFrame(playable, info, playerData);
 	}
 }

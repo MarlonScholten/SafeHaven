@@ -1,6 +1,5 @@
 #if UNITY_EDITOR
 using System.Collections.Generic;
-
 [UnityEditor.InitializeOnLoad]
 public class AkPluginActivator
 {
@@ -8,23 +7,16 @@ public class AkPluginActivator
 	public const string CONFIG_DEBUG = "Debug";
 	public const string CONFIG_PROFILE = "Profile";
 	public const string CONFIG_RELEASE = "Release";
-
 	private const string EditorConfiguration = CONFIG_PROFILE;
-
 	private const string MENU_PATH = "Assets/Wwise/Activate Plugins/";
 	private const UnityEditor.BuildTarget INVALID_BUILD_TARGET = (UnityEditor.BuildTarget)(-1);
-
 	private const string WwisePluginFolder = "Runtime/Plugins";
-
 	// The following check is required until "BuildTarget.Switch" is available on all versions of Unity that we support.
 	private static readonly UnityEditor.BuildTarget SwitchBuildTarget = GetPlatformBuildTarget("Switch");
-
 	private static readonly System.Collections.Generic.Dictionary<string, System.DateTime> s_LastParsed =
 		new System.Collections.Generic.Dictionary<string, System.DateTime>();
-
 	private static readonly System.Collections.Generic.Dictionary<string, System.Collections.Generic.HashSet<AkPluginInfo>>
 		s_PerPlatformPlugins = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.HashSet<AkPluginInfo>>();
-
 	private static readonly System.Collections.Generic.HashSet<PluginID> builtInPluginIDs =
 		new System.Collections.Generic.HashSet<PluginID>
 		{
@@ -45,7 +37,6 @@ public class AkPluginActivator
 			PluginID.VitaEQ,
 #endif
 		};
-
 	private static readonly System.Collections.Generic.HashSet<PluginID> alwaysSkipPluginsIDs =
 		new System.Collections.Generic.HashSet<PluginID>
 		{
@@ -61,7 +52,6 @@ public class AkPluginActivator
 			PluginID.WwiseSilence,
 			PluginID.AkAudioInput,
 		};
-
 	private static readonly System.Collections.Generic.Dictionary<PluginID, string> PluginIDToStaticLibName =
 		new System.Collections.Generic.Dictionary<PluginID, string>
 		{
@@ -112,42 +102,34 @@ public class AkPluginActivator
 			{ PluginID.IgniterLive, "IgniterLiveSource" },
 			{ PluginID.IgniterLiveSynth, "IgniterLiveSource" }
 		};
-	
 	// Support libraries are DLLs that do not have an associated Wwise plug-in ID; they are meant to be loaded manually by the application
 	private static readonly System.Collections.Generic.List<string> SupportLibraries = 
 		new System.Collections.Generic.List<string>
 		{
 			"AkVorbisHwAccelerator"
 		};
-
 	public delegate void FilterOutPlatformDelegate(UnityEditor.BuildTarget target, UnityEditor.PluginImporter pluginImporter, string pluginPlatform);
 	public static FilterOutPlatformDelegate FilterOutPlatformIfNeeded = FilterOutPlatformIfNeeded_Default;
-
 	static AkPluginActivator()
 	{
 		ActivatePluginsForEditor();
 	}
-
 	// Use reflection because projects that were created in Unity 4 won't have the CurrentPluginConfig field
 	public static string GetCurrentConfig()
 	{
 		var CurrentPluginConfigField = typeof(AkWwiseProjectData).GetField("CurrentPluginConfig");
 		var CurrentConfig = string.Empty;
 		var data = AkWwiseProjectInfo.GetData();
-
 		if (CurrentPluginConfigField != null && data != null)
 		{
 			CurrentConfig = (string)CurrentPluginConfigField.GetValue(data);
 		}
-
 		if (string.IsNullOrEmpty(CurrentConfig))
 		{
 			CurrentConfig = CONFIG_PROFILE;
 		}
-
 		return CurrentConfig;
 	}
-
 	private static void SetCurrentConfig(string config)
 	{
 		var CurrentPluginConfigField = typeof(AkWwiseProjectData).GetField("CurrentPluginConfig");
@@ -157,50 +139,40 @@ public class AkPluginActivator
 			CurrentPluginConfigField.SetValue(data, config);
 			UnityEngine.Debug.LogFormat("WwiseUnity: Changed plugin configuration for game runtime to {0}", config);
 		}
-
 		UnityEditor.EditorUtility.SetDirty(AkWwiseProjectInfo.GetData());
 	}
-
 	private static void ActivateConfig(string config)
 	{
 		SetCurrentConfig(config);
 		CheckMenuItems(config);
 	}
-
 	[UnityEditor.MenuItem(MENU_PATH + CONFIG_DEBUG)]
 	public static void ActivateDebug()
 	{
 		ActivateConfig(CONFIG_DEBUG);
 	}
-
 	[UnityEditor.MenuItem(MENU_PATH + CONFIG_PROFILE)]
 	public static void ActivateProfile()
 	{
 		ActivateConfig(CONFIG_PROFILE);
 	}
-
 	[UnityEditor.MenuItem(MENU_PATH + CONFIG_RELEASE)]
 	public static void ActivateRelease()
 	{
 		ActivateConfig(CONFIG_RELEASE);
 	}
-
 	private static UnityEditor.BuildTarget GetPlatformBuildTarget(string platform)
 	{
 		var targets = System.Enum.GetNames(typeof(UnityEditor.BuildTarget));
 		var values = System.Enum.GetValues(typeof(UnityEditor.BuildTarget));
-
 		for (var ii = 0; ii < targets.Length; ++ii)
 		{
 			if (platform.Equals(targets[ii]))
 				return (UnityEditor.BuildTarget)values.GetValue(ii);
 		}
-
 		return INVALID_BUILD_TARGET;
 	}
-
 	public static Dictionary<UnityEditor.BuildTarget, string> BuildTargetToPlatformName = new Dictionary<UnityEditor.BuildTarget, string>();
-
 	// returns the name of the folder that contains plugins for a specific target
 	private static string GetPluginDeploymentPlatformName(UnityEditor.BuildTarget target)
 	{
@@ -210,7 +182,6 @@ public class AkPluginActivator
 		}
 		return target.ToString();
 	}
-
 	private static string[] GetPluginInfoFromPath(string path)
 	{
 		var indexOfPluginFolder = path.IndexOf(WwisePluginFolder, System.StringComparison.OrdinalIgnoreCase);
@@ -218,10 +189,8 @@ public class AkPluginActivator
 		{
 			return null;
 		}
-
 		return path.Substring(indexOfPluginFolder + WwisePluginFolder.Length + 1).Split('/');
 	}
-
 	private static List<UnityEditor.PluginImporter> GetWwisePluginImporters()
 	{
 		UnityEditor.PluginImporter[] pluginImporters = UnityEditor.PluginImporter.GetAllImporters();
@@ -235,14 +204,11 @@ public class AkPluginActivator
 		}
 		return wwisePlugins;
 	}
-
 	private static void SetupStaticPluginRegistration(UnityEditor.BuildTarget target)
 	{
 		if (!RequiresStaticPluginRegistration(target))
 			return;
-
 		string deploymentTargetName = GetPluginDeploymentPlatformName(target);
-
 		var staticPluginRegistration = new StaticPluginRegistration(target);
 		var importers = GetWwisePluginImporters();
 		foreach (var pluginImporter in importers)
@@ -252,26 +218,20 @@ public class AkPluginActivator
 			{
 				continue;
 			}
-
 			var pluginPlatform = splitPath[0];
 			if (pluginPlatform != deploymentTargetName)
 				continue;
-
 			var pluginConfig = string.Empty;
-
 			switch (pluginPlatform)
 			{
 				case "iOS":
 				case "tvOS":
 					pluginConfig = splitPath[1];
 					break;
-
 				case "Switch":
 					if (SwitchBuildTarget == INVALID_BUILD_TARGET)
 						continue;
-
 					pluginConfig = splitPath[2];
-
 					var pluginArch = splitPath[1];
 					if (pluginArch != "NX32" && pluginArch != "NX64")
 					{
@@ -279,21 +239,16 @@ public class AkPluginActivator
 						continue;
 					}
 					break;
-
 				default:
 					UnityEngine.Debug.Log("WwiseUnity: Unknown platform: " + pluginPlatform);
 					continue;
 			}
-
 			if (pluginConfig != "DSP")
 				continue;
-
 			if (!IsPluginUsed(pluginPlatform, System.IO.Path.GetFileNameWithoutExtension(pluginImporter.assetPath)))
 				continue;
-
 			staticPluginRegistration.TryAddLibrary(pluginImporter.assetPath);
 		}
-
 		System.Collections.Generic.HashSet<AkPluginInfo> plugins;
 		s_PerPlatformPlugins.TryGetValue(deploymentTargetName, out plugins);
 		var missingPlugins = staticPluginRegistration.GetMissingPlugins(plugins);
@@ -301,7 +256,6 @@ public class AkPluginActivator
 		{
 			if (plugins == null)
 				UnityEngine.Debug.LogWarningFormat("WwiseUnity: The activated Wwise plug-ins may not be correct. Could not read PluginInfo.xml for platform: {0}", deploymentTargetName);
-
 			staticPluginRegistration.TryWriteToFile();
 		}
 		else
@@ -311,7 +265,6 @@ public class AkPluginActivator
 				string.Join(", ", missingPlugins.ToArray()), deploymentTargetName);
 		}
 	}
-
 	private static void SetStandalonePlatformData(UnityEditor.PluginImporter pluginImporter, string platformName, string architecture)
 	{
 		var isLinux = platformName == "Linux";
@@ -319,7 +272,6 @@ public class AkPluginActivator
 		var isMac = platformName == "Mac";
 		var isX86 = architecture == "x86";
 		var isX64 = architecture == "x86_64";
-
 #if !UNITY_2019_2_OR_NEWER
 		pluginImporter.SetPlatformData(UnityEditor.BuildTarget.StandaloneLinux, "CPU", isLinux && isX86 ? "x86" : "None");
 		pluginImporter.SetPlatformData(UnityEditor.BuildTarget.StandaloneLinuxUniversal, "CPU", !isLinux ? "None" : isX86 ? "x86" : isX64 ? "x86_64" : "None");
@@ -329,14 +281,12 @@ public class AkPluginActivator
 		pluginImporter.SetPlatformData(UnityEditor.BuildTarget.StandaloneWindows64, "CPU", isWindows && isX64 ? "AnyCPU" : "None");
 		pluginImporter.SetPlatformData(UnityEditor.BuildTarget.StandaloneOSX, "CPU", isMac ? "AnyCPU" : "None");
 	}
-
 	public static void ActivatePluginsForDeployment(UnityEditor.BuildTarget target, bool Activate)
 	{
 		if (Activate)
 		{
 			SetupStaticPluginRegistration(target);
 		}
-
 		var importers = GetWwisePluginImporters();
 		foreach (var pluginImporter in importers)
 		{
@@ -345,7 +295,6 @@ public class AkPluginActivator
 			{
 				continue;
 			}
-
 			var pluginPlatform = splitPath[0];
 			if (pluginPlatform != GetPluginDeploymentPlatformName(target))
 			{
@@ -353,15 +302,12 @@ public class AkPluginActivator
 				{
 					FilterOutPlatformIfNeeded(target, pluginImporter, pluginPlatform);
 				}
-
 				continue;
 			}
-
 			var pluginName = splitPath[splitPath.Length - 1].Split('.')[0];
 			var pluginArch = string.Empty;
 			var pluginConfig = string.Empty;
 			var bIsSupportLibrary = SupportLibraries.Contains(pluginName);
-
 			switch (pluginPlatform)
 			{
 				case "iOS":
@@ -374,11 +320,9 @@ public class AkPluginActivator
 				case "XboxOneGC":
 					pluginConfig = splitPath[1];
 					break;
-
 				case "Android":
 					pluginArch = splitPath[1];
 					pluginConfig = splitPath[2];
-
 					if (pluginArch == "armeabi-v7a")
 					{
 						pluginImporter.SetPlatformData(UnityEditor.BuildTarget.Android, "CPU", "ARMv7");
@@ -396,11 +340,9 @@ public class AkPluginActivator
 						UnityEngine.Debug.Log("WwiseUnity: Architecture not found: " + pluginArch);
 					}
 					break;
-
 				case "Linux":
 					pluginArch = splitPath[1];
 					pluginConfig = splitPath[2];
-
 					if (pluginArch != "x86" && pluginArch != "x86_64")
 					{
 						UnityEngine.Debug.Log("WwiseUnity: Architecture not found: " + pluginArch);
@@ -408,18 +350,14 @@ public class AkPluginActivator
 					}
 					SetStandalonePlatformData(pluginImporter, pluginPlatform, pluginArch);
 					break;
-
 				case "Mac":
 					pluginConfig = splitPath[1];
 					SetStandalonePlatformData(pluginImporter, pluginPlatform, pluginArch);
 					break;
-
 				case "WSA":
 					pluginArch = splitPath[1];
 					pluginConfig = splitPath[2];
-
 					pluginImporter.SetPlatformData(UnityEditor.BuildTarget.WSAPlayer, "SDK", "AnySDK");
-
 					if (pluginArch == "WSA_UWP_Win32")
 					{
 						pluginImporter.SetPlatformData(UnityEditor.BuildTarget.WSAPlayer, "CPU", "X86");
@@ -437,11 +375,9 @@ public class AkPluginActivator
 						pluginImporter.SetPlatformData(UnityEditor.BuildTarget.WSAPlayer, "CPU", "ARM64");
 					}
 					break;
-
 				case "Windows":
 					pluginArch = splitPath[1];
 					pluginConfig = splitPath[2];
-
 					if (pluginArch != "x86" && pluginArch != "x86_64")
 					{
 						UnityEngine.Debug.Log("WwiseUnity: Architecture not found: " + pluginArch);
@@ -449,35 +385,29 @@ public class AkPluginActivator
 					}
 					SetStandalonePlatformData(pluginImporter, pluginPlatform, pluginArch);
 					break;
-
 				case "Switch":
 					pluginArch = splitPath[1];
 					pluginConfig = splitPath[2];
-
 					if (SwitchBuildTarget == INVALID_BUILD_TARGET)
 					{
 						continue;
 					}
-
 					if (pluginArch != "NX32" && pluginArch != "NX64")
 					{
 						UnityEngine.Debug.Log("WwiseUnity: Architecture not found: " + pluginArch);
 						continue;
 					}
 					break;
-
 				default:
 					UnityEngine.Debug.Log("WwiseUnity: Unknown platform: " + pluginPlatform);
 					continue;
 			}
-
 			var AssetChanged = false;
 			if (pluginImporter.GetCompatibleWithAnyPlatform())
 			{
 				pluginImporter.SetCompatibleWithAnyPlatform(false);
 				AssetChanged = true;
 			}
-
 			var bActivate = true;
 			if (pluginConfig == "DSP")
 			{
@@ -490,7 +420,6 @@ public class AkPluginActivator
 			{
 				bActivate = false;
 			}
-
 			bool isCompatibleWithPlatform = bActivate && Activate;
 			if (!bActivate && target == UnityEditor.BuildTarget.WSAPlayer)
 			{
@@ -500,25 +429,20 @@ public class AkPluginActivator
 			{
 				AssetChanged |= pluginImporter.GetCompatibleWithPlatform(target) != isCompatibleWithPlatform;
 			}
-
 			pluginImporter.SetCompatibleWithPlatform(target, isCompatibleWithPlatform);
-
 			if (AssetChanged)
 			{
 				pluginImporter.SaveAndReimport();
 			}
 		}
 	}
-
 	private static void FilterOutPlatformIfNeeded_Default(UnityEditor.BuildTarget target, UnityEditor.PluginImporter pluginImporter, string pluginPlatform)
 	{
 	}
-
 	public static void ActivatePluginsForEditor()
 	{
 		var importers = GetWwisePluginImporters();
 		var ChangedSomeAssets = false;
-
 		foreach (var pluginImporter in importers)
 		{
 			var splitPath = GetPluginInfoFromPath(pluginImporter.assetPath);
@@ -526,12 +450,10 @@ public class AkPluginActivator
 			{
 				continue;
 			}
-
 			var pluginPlatform = splitPath[0];
 			var pluginConfig = string.Empty;
 			var editorCPU = string.Empty;
 			var editorOS = string.Empty;
-
 			switch (pluginPlatform)
 			{
 				case "Mac":
@@ -539,21 +461,18 @@ public class AkPluginActivator
 					editorCPU = "AnyCPU";
 					editorOS = "OSX";
 					break;
-
 				case "Windows":
 					editorCPU = splitPath[1];
 					pluginConfig = splitPath[2];
 					editorOS = "Windows";
 					break;
 			}
-
 			var AssetChanged = false;
 			if (pluginImporter.GetCompatibleWithAnyPlatform())
 			{
 				pluginImporter.SetCompatibleWithAnyPlatform(false);
 				AssetChanged = true;
 			}
-
 			var bActivate = false;
 			if (!string.IsNullOrEmpty(editorOS))
 			{
@@ -563,44 +482,37 @@ public class AkPluginActivator
 					{
 						continue;
 					}
-
 					bActivate = IsPluginUsed(pluginPlatform, System.IO.Path.GetFileNameWithoutExtension(pluginImporter.assetPath));
 				}
 				else
 				{
 					bActivate = pluginConfig == EditorConfiguration;
 				}
-
 				if (bActivate)
 				{
 					pluginImporter.SetEditorData("CPU", editorCPU);
 					pluginImporter.SetEditorData("OS", editorOS);
 				}
 			}
-
 			AssetChanged |= pluginImporter.GetCompatibleWithEditor() != bActivate;
 			pluginImporter.SetCompatibleWithEditor(bActivate);
-
 			if (AssetChanged)
 			{
 				ChangedSomeAssets = true;
 				UnityEditor.AssetDatabase.ImportAsset(pluginImporter.assetPath);
 			}
 		}
-
 		if (ChangedSomeAssets)
 		{
 			UnityEngine.Debug.Log("WwiseUnity: Plugins successfully activated for " + EditorConfiguration + " in Editor.");
 		}
 	}
-
 	private static void CheckMenuItems(string config)
 	{
 		UnityEditor.Menu.SetChecked(MENU_PATH + CONFIG_DEBUG, config == CONFIG_DEBUG);
 		UnityEditor.Menu.SetChecked(MENU_PATH + CONFIG_PROFILE, config == CONFIG_PROFILE);
 		UnityEditor.Menu.SetChecked(MENU_PATH + CONFIG_RELEASE, config == CONFIG_RELEASE);
 	}
-
 	public static void DeactivateAllPlugins()
 	{
 		var importers = GetWwisePluginImporters();
@@ -610,12 +522,10 @@ public class AkPluginActivator
 			{
 				continue;
 			}
-
 			pluginImporter.SetCompatibleWithAnyPlatform(false);
 			UnityEditor.AssetDatabase.ImportAsset(pluginImporter.assetPath);
 		}
 	}
-
 	public static bool IsPluginUsed(string in_UnityPlatform, string in_PluginName)
 	{
 		// For WSA, we use the plugin info for Windows, since they share banks. Same for tvOS vs iOS.
@@ -631,31 +541,25 @@ public class AkPluginActivator
 			case "XboxOneGC":
 				pluginDSPPlatform = "XboxOne";
 				break;
-
 		}
-
 		if (!s_PerPlatformPlugins.ContainsKey(pluginDSPPlatform))
 		{
 			return false; //XML not parsed, don't touch anything.
 		}
-
 		if (in_PluginName.Contains("AkSoundEngine"))
 		{
 			return true;
 		}
-
 		var pluginName = in_PluginName;
 		if (in_PluginName.StartsWith("lib"))
 		{
 			pluginName = in_PluginName.Substring(3);
 		}
-
 		int indexOfFactory = in_PluginName.IndexOf("Factory");
 		if (indexOfFactory != -1)
 		{
 			pluginName = in_PluginName.Substring(0, indexOfFactory);
 		}
-
 		System.Collections.Generic.HashSet<AkPluginInfo> plugins;
 		if (s_PerPlatformPlugins.TryGetValue(pluginDSPPlatform, out plugins))
 		{
@@ -669,23 +573,19 @@ public class AkPluginActivator
 					}
 				}
 			}
-
 			//Exceptions
 			if (in_UnityPlatform == "iOS" && pluginName.Contains("AkiOSPlugins"))
 			{
 				return true;
 			}
-
 			if (in_UnityPlatform == "tvOS" && pluginName.Contains("AktvOSPlugins"))
 			{
 				return true;
 			}
-
 			if (in_UnityPlatform == "Switch" && pluginName.Contains("AkSwitchPlugins"))
 			{
 				return true;
 			}
-
 			//iOS, tvOS, and Switch deal with the static libs directly, unlike all other platforms.
 			//Luckily the DLL name is always a subset of the lib name.
 			foreach (var pluginInfo in plugins)
@@ -696,10 +596,8 @@ public class AkPluginActivator
 				}
 			}
 		}
-
 		return false;
 	}
-
 	public static void Update(bool forceUpdate = false)
 	{
 		//Gather all GeneratedSoundBanks folder from the project
@@ -707,9 +605,7 @@ public class AkPluginActivator
 		var bNeedRefresh = false;
 		var projectDir = AkBasePathGetter.GetWwiseProjectDirectory();
 		var baseSoundBankPath = AkBasePathGetter.GetFullSoundBankPathEditor();
-
 		AkWwiseInitializationSettings.UpdatePlatforms();
-
 		//make a copy of the platform map and handle "special" custom platforms
 		var platformMap = new Dictionary<string, List<string>>();
 		foreach (var key in AkUtilities.PlatformMapping.Keys)
@@ -728,8 +624,6 @@ public class AkPluginActivator
 				platformMap.Remove(key);
 			}
 		}
-
-
 		//Go through all BasePlatforms 
 		foreach (var pairPF in platformMap)
 		{
@@ -741,7 +635,6 @@ public class AkPluginActivator
 				string bankPath;
 				if (!allPaths.TryGetValue(customPF, out bankPath))
 					continue;
-
 				var pluginFile = "";
 				try
 				{
@@ -754,9 +647,7 @@ public class AkPluginActivator
 						if (!System.IO.File.Exists(pluginFile))
 							continue;
 					}
-
 					fullPaths.Add(pluginFile);
-
 					var t = System.IO.File.GetLastWriteTime(pluginFile);
 					var lastTime = System.DateTime.MinValue;
 					s_LastParsed.TryGetValue(customPF, out lastTime);
@@ -771,14 +662,11 @@ public class AkPluginActivator
 					UnityEngine.Debug.LogError("WwiseUnity: " + pluginFile + " could not be parsed. " + ex.Message);
 				}
 			}
-
 			if (bParse)
 			{
 				var platform = pairPF.Key;
-
 				var newDlls = ParsePluginsXML(platform, fullPaths);
 				System.Collections.Generic.HashSet<AkPluginInfo> oldDlls = null;
-
 				//Remap base Wwise platforms to Unity platform folders names
 #if !UNITY_2018_3_OR_NEWER
 				if (platform.Contains("Vita"))
@@ -787,10 +675,8 @@ public class AkPluginActivator
 				}
 #endif
 				//else other platforms already have the right name
-
 				s_PerPlatformPlugins.TryGetValue(platform, out oldDlls);
 				s_PerPlatformPlugins[platform] = newDlls;
-
 				//Check if there was any change.
 				if (!bNeedRefresh && oldDlls != null)
 				{
@@ -798,7 +684,6 @@ public class AkPluginActivator
 					{
 						oldDlls.IntersectWith(newDlls);
 					}
-
 					bNeedRefresh |= oldDlls.Count != newDlls.Count;
 				}
 				else
@@ -807,28 +692,23 @@ public class AkPluginActivator
 				}
 			}
 		}
-
 		if (bNeedRefresh)
 		{
 			ActivatePluginsForEditor();
 		}
-
 		var currentConfig = GetCurrentConfig();
 		CheckMenuItems(currentConfig);
 	}
-
 	private static System.Collections.Generic.HashSet<AkPluginInfo> ParsePluginsXML(string platform,
 		System.Collections.Generic.List<string> in_pluginFiles)
 	{
 		var newPlugins = new System.Collections.Generic.HashSet<AkPluginInfo>();
-
 		foreach (var pluginFile in in_pluginFiles)
 		{
 			if (!System.IO.File.Exists(pluginFile))
 			{
 				continue;
 			}
-
 			try
 			{
 				var doc = new System.Xml.XmlDocument();
@@ -836,16 +716,13 @@ public class AkPluginActivator
 				var Navigator = doc.CreateNavigator();
 				var pluginInfoNode = Navigator.SelectSingleNode("//PluginInfo");
 				var boolMotion = pluginInfoNode.GetAttribute("Motion", "");
-
 				var it = Navigator.Select("//Plugin");
-
 				if (boolMotion == "true")
 				{
 					AkPluginInfo motionPluginInfo = new AkPluginInfo();
 					motionPluginInfo.DllName = "AkMotion";
 					newPlugins.Add(motionPluginInfo);
 				}
-
 				foreach (System.Xml.XPath.XPathNavigator node in it)
 				{
 					var rawPluginID = uint.Parse(node.GetAttribute("ID", ""));
@@ -853,16 +730,12 @@ public class AkPluginActivator
 					{
 						continue;
 					}
-
 					PluginID pluginID = (PluginID)rawPluginID;
-
 					if (alwaysSkipPluginsIDs.Contains(pluginID))
 					{
 						continue;
 					}
-
 					var dll = string.Empty;
-
 					if (platform == "Switch")
 					{
 						if (pluginID == PluginID.AkMeter)
@@ -874,21 +747,17 @@ public class AkPluginActivator
 					{
 						continue;
 					}
-
 					if (string.IsNullOrEmpty(dll))
 					{
 						dll = node.GetAttribute("DLL", "");
 					}
-
 					AkPluginInfo newPluginInfo = new AkPluginInfo();
 					newPluginInfo.PluginID = rawPluginID;
 					newPluginInfo.DllName = dll;
-
 					if (!PluginIDToStaticLibName.TryGetValue(pluginID, out newPluginInfo.StaticLibName))
 					{
 						newPluginInfo.StaticLibName = dll;
 					}
-
 					newPlugins.Add(newPluginInfo);
 				}
 			}
@@ -897,28 +766,22 @@ public class AkPluginActivator
 				UnityEngine.Debug.LogError("WwiseUnity: " + pluginFile + " could not be parsed. " + ex.Message);
 			}
 		}
-
 		return newPlugins;
 	}
-
 	private static bool RequiresStaticPluginRegistration(UnityEditor.BuildTarget target)
 	{
 		return target == UnityEditor.BuildTarget.iOS || target == UnityEditor.BuildTarget.tvOS || target == SwitchBuildTarget;
 	}
-
 	private class StaticPluginRegistration
 	{
 		private readonly System.Collections.Generic.HashSet<string> FactoriesHeaderFilenames =
 			new System.Collections.Generic.HashSet<string>();
-
 		private readonly UnityEditor.BuildTarget Target;
 		private bool Active;
-
 		public StaticPluginRegistration(UnityEditor.BuildTarget target)
 		{
 			Target = target;
 		}
-
 		public void TryAddLibrary(string AssetPath)
 		{
 			Active = true;
@@ -928,13 +791,10 @@ public class AkPluginActivator
 				var begin = AssetPath.LastIndexOf('/') + 4;
 				var end = AssetPath.LastIndexOf('.') - begin;
 				var LibName = AssetPath.Substring(begin, end); //Remove the lib prefix and the .a extension
-
 				if (!LibName.Contains("AkSoundEngine"))
 				{
 					string headerFilename = LibName + "Factory.h";
-
 					string fullPath = System.IO.Path.GetFullPath(AkUtilities.GetPathInPackage(WwisePluginFolder + GetWwisePluginRelativeDSPFolder() + headerFilename));
-
 					if (System.IO.File.Exists(fullPath))
 					{
 						FactoriesHeaderFilenames.Add(headerFilename);
@@ -950,15 +810,12 @@ public class AkPluginActivator
 				FactoriesHeaderFilenames.Add(System.IO.Path.GetFileName(AssetPath));
 			}
 		}
-
 		public void TryWriteToFile()
 		{
 			if (!Active)
 				return;
-
 			string RelativePath;
 			string CppText;
-
 			if (Target == UnityEditor.BuildTarget.iOS)
 			{
 				RelativePath = GetWwisePluginRelativeDSPFolder() + "AkiOSPlugins.cpp";
@@ -976,20 +833,16 @@ public class AkPluginActivator
 			}
 			else
 				return;
-
 			CppText += @"
 namespace AK { class PluginRegistration; };
 #define AK_STATIC_LINK_PLUGIN(_pluginName_) \
 extern AK::PluginRegistration _pluginName_##Registration; \
 void *_pluginName_##_fp = (void*)&_pluginName_##Registration;
-
 ";
-
 			foreach (var filename in FactoriesHeaderFilenames)
 			{
 				CppText += "#include \"" + filename + "\"\n";
 			}
-
 			try
 			{
 				var FullPath = System.IO.Path.GetFullPath(AkUtilities.GetPathInPackage(WwisePluginFolder + RelativePath));
@@ -1000,33 +853,27 @@ void *_pluginName_##_fp = (void*)&_pluginName_##Registration;
 				UnityEngine.Debug.LogError("WwiseUnity: Could not write <" + RelativePath + ">. Exception: " + e.Message);
 				return;
 			}
-
 			UnityEditor.AssetDatabase.Refresh();
 		}
-
 		public System.Collections.Generic.List<string> GetMissingPlugins(System.Collections.Generic.HashSet<AkPluginInfo> usedPlugins)
 		{
 			var pluginList = new System.Collections.Generic.List<string>();
 			if (usedPlugins == null)
 				return pluginList;
-
 			foreach (var plugin in usedPlugins)
 			{
 				if (string.IsNullOrEmpty(plugin.StaticLibName))
 				{
 					continue;
 				}
-
 				string includeFilename = plugin.StaticLibName + "Factory.h";
 				if (!FactoriesHeaderFilenames.Contains(includeFilename))
 				{
 					pluginList.Add(plugin.StaticLibName);
 				}
 			}
-
 			return pluginList;
 		}
-
 		private string GetWwisePluginRelativeDSPFolder()
 		{
 			if (Target == UnityEditor.BuildTarget.iOS)
@@ -1041,11 +888,9 @@ void *_pluginName_##_fp = (void*)&_pluginName_##Registration;
 			{
 				return "/Switch/NX64/DSP/";
 			}
-
 			return string.Empty;
 		}
 	}
-
 	private enum PluginID
 	{
 		// Built-in plugins
@@ -1076,7 +921,6 @@ void *_pluginName_##_fp = (void*)&_pluginName_##Registration;
 		VitaDistortion = 0x008F0003, //Vita Distortion
 		VitaEQ = 0x00900003, //Vita EQ
 #endif
-
 		// Static or DLL plugins
 		AkAudioInput = 0xC80002,
 		AkConvolutionReverb = 0x7F0003,
@@ -1115,18 +959,15 @@ void *_pluginName_##_fp = (void*)&_pluginName_##Registration;
 		IgniterLive = 0x5110D2,
 		IgniterLiveSynth = 0x5210D2
 	}
-
 	private class AkPluginInfo
 	{
 		public uint PluginID;
 		public string DllName;
 		public string StaticLibName;
-
 		public override int GetHashCode()
 		{
 			return PluginID.GetHashCode();
 		}
-
 		public override bool Equals(object obj)
 		{
 			return PluginID.Equals(obj);

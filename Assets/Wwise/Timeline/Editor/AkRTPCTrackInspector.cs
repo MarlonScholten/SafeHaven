@@ -1,4 +1,4 @@
-﻿#if !UNITY_2019_1_OR_NEWER
+#if !UNITY_2019_1_OR_NEWER
 #define AK_ENABLE_TIMELINE
 #endif
 #if AK_ENABLE_TIMELINE
@@ -7,23 +7,18 @@
 public class AkRTPCTrackInspector : UnityEditor.Editor
 {
 	private UnityEditor.SerializedProperty Parameter;
-
 	public void OnEnable()
 	{
 		Parameter = serializedObject.FindProperty("Parameter");
 	}
-
 	public override void OnInspectorGUI()
 	{
 		serializedObject.Update();
-
 		UnityEngine.GUILayout.Space(UnityEditor.EditorGUIUtility.standardVerticalSpacing);
-
 		using (new UnityEditor.EditorGUILayout.VerticalScope("box"))
 		{
 			UnityEditor.EditorGUILayout.PropertyField(Parameter, new UnityEngine.GUIContent("Parameter: "));
 		}
-
 		serializedObject.ApplyModifiedProperties();
 	}
 }

@@ -12,13 +12,11 @@ public static class AkAudioInputManager
 	/// <param name="playingID">The playingID of a sound that uses the audio input plug-in.</param>
 	/// <param name="format">The C# analog of the C++ AkAudioFormat class.</param>
 	public delegate void AudioFormatDelegate(uint playingID, AkAudioFormat format);
-
 	/// <summary>
 	///     Audio format delegate that is sent to C++.
 	/// </summary>
 	[System.Runtime.InteropServices.UnmanagedFunctionPointer(System.Runtime.InteropServices.CallingConvention.StdCall)]
 	public delegate void AudioFormatInteropDelegate(uint playingID, System.IntPtr format);
-
 	/// <summary>
 	///     Sanitized audio sample delegate to be used by classes that implement audio input plug-ins. For every event posted,
 	///     this delegate is called once per audio frame for each channel until the delegates for all the channels associated
@@ -29,7 +27,6 @@ public static class AkAudioInputManager
 	/// <param name="samples">The sample array that MUST be filled even when returning false.</param>
 	/// <returns>Return true when more sample frames are require and false when complete.</returns>
 	public delegate bool AudioSamplesDelegate(uint playingID, uint channelIndex, float[] samples);
-
 	/// <summary>
 	///     Audio sample delegate that is sent to C++.
 	/// </summary>
@@ -39,19 +36,14 @@ public static class AkAudioInputManager
 		[System.Runtime.InteropServices.Out]
 		[System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.LPArray, SizeParamIndex = 3)]
 		float[] samples, uint channelIndex, uint frames);
-
 	private static bool initialized;
-
 	private static readonly System.Collections.Generic.Dictionary<uint, AudioSamplesDelegate> audioSamplesDelegates =
 		new System.Collections.Generic.Dictionary<uint, AudioSamplesDelegate>();
-
 	private static readonly System.Collections.Generic.Dictionary<uint, AudioFormatDelegate> audioFormatDelegates =
 		new System.Collections.Generic.Dictionary<uint, AudioFormatDelegate>();
-
 	private static readonly AkAudioFormat audioFormat = new AkAudioFormat();
 	private static readonly AudioSamplesInteropDelegate audioSamplesDelegate = InternalAudioSamplesDelegate;
 	private static readonly AudioFormatInteropDelegate audioFormatDelegate = InternalAudioFormatDelegate;
-
 	/// <summary>
 	///     This method is used to post events that use the Wwise Audio Input plug-in.
 	/// </summary>
@@ -72,7 +64,6 @@ public static class AkAudioInputManager
 		AddPlayingID(playingID, sampleDelegate, formatDelegate);
 		return playingID;
 	}
-
 	/// <summary>
 	///     This method is used to post events that use the Wwise Audio Input plug-in.
 	/// </summary>
@@ -93,14 +84,12 @@ public static class AkAudioInputManager
 		AddPlayingID(playingID, sampleDelegate, formatDelegate);
 		return playingID;
 	}
-
 	[AOT.MonoPInvokeCallback(typeof(AudioSamplesInteropDelegate))]
 	private static bool InternalAudioSamplesDelegate(uint playingID, float[] samples, uint channelIndex, uint frames)
 	{
 		return audioSamplesDelegates.ContainsKey(playingID) &&
 		       audioSamplesDelegates[playingID](playingID, channelIndex, samples);
 	}
-
 	[AOT.MonoPInvokeCallback(typeof(AudioFormatInteropDelegate))]
 	private static void InternalAudioFormatDelegate(uint playingID, System.IntPtr format)
 	{
@@ -110,7 +99,6 @@ public static class AkAudioInputManager
 			audioFormatDelegates[playingID](playingID, audioFormat);
 		}
 	}
-
 	private static void TryInitialize()
 	{
 		if (!initialized)
@@ -119,18 +107,15 @@ public static class AkAudioInputManager
 			AkSoundEngine.SetAudioInputCallbacks(audioSamplesDelegate, audioFormatDelegate);
 		}
 	}
-
 	private static void AddPlayingID(uint playingID, AudioSamplesDelegate sampleDelegate,
 		AudioFormatDelegate formatDelegate)
 	{
 		if (playingID == AkSoundEngine.AK_INVALID_PLAYING_ID || sampleDelegate == null)
 			return;
-
 		audioSamplesDelegates.Add(playingID, sampleDelegate);
 		if (formatDelegate != null)
 			audioFormatDelegates.Add(playingID, formatDelegate);
 	}
-
 	private static void EventCallback(object cookie, AkCallbackType type, AkCallbackInfo callbackInfo)
 	{
 		if (type == AkCallbackType.AK_EndOfEvent)

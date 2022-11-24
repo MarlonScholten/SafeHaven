@@ -3,14 +3,11 @@
 // Copyright (c) 2018 Audiokinetic Inc. / All Rights Reserved
 //
 //////////////////////////////////////////////////////////////////////
-
 using System.IO;
 using UnityEditor;
-
 #if AK_WWISE_ADDRESSABLES && UNITY_ADDRESSABLES
 using AK.Wwise.Unity.WwiseAddressables;
 #endif
-
 /// @brief Represents Wwise banks as Unity assets.
 /// 
 public class WwiseBankReference : WwiseObjectReference
@@ -18,27 +15,20 @@ public class WwiseBankReference : WwiseObjectReference
 #if AK_WWISE_ADDRESSABLES && UNITY_ADDRESSABLES
 	[UnityEngine.SerializeField, AkShowOnly]
 	private WwiseAddressableSoundBank bank;
-	
 	public WwiseAddressableSoundBank AddressableBank => bank;
-
-
 #if UNITY_EDITOR
-
 	public void OnEnable()
 	{
 		AkAssetUtilities.AddressableBankUpdated += UpdateAddressableBankReference;
 	}
-
 	public override void CompleteData()
 	{
 		SetAddressableBank(AkAssetUtilities.GetAddressableBankAsset(DisplayName));
 	}
-
 	public override bool IsComplete()
 	{
 		return bank != null;
 	}
-
 	public void SetAddressableBank(WwiseAddressableSoundBank asset)
 	{
 		bank = asset;
@@ -46,7 +36,6 @@ public class WwiseBankReference : WwiseObjectReference
 		AssetDatabase.SaveAssets();
 		AssetDatabase.Refresh();
 	}
-
 	public bool UpdateAddressableBankReference(WwiseAddressableSoundBank asset, string name)
 	{
 		if (name == ObjectName)
@@ -56,7 +45,6 @@ public class WwiseBankReference : WwiseObjectReference
 		}
 		return false;
 	}
-
 	public static bool FindBankReferenceAndSetAddressableBank(WwiseAddressableSoundBank addressableAsset, string name)
 	{
 		var guids = UnityEditor.AssetDatabase.FindAssets("t:" + typeof(WwiseBankReference).Name);
@@ -73,14 +61,11 @@ public class WwiseBankReference : WwiseObjectReference
 		}
 		return false;
 	}
-
 	public void OnDestroy()
 	{
 		AkAssetUtilities.AddressableBankUpdated -= UpdateAddressableBankReference;
 	}
-
 #endif
 #endif
-
 	public override WwiseObjectType WwiseObjectType { get { return WwiseObjectType.Soundbank; } }
 }

@@ -1,4 +1,4 @@
-﻿namespace AK.Wwise.Editor
+namespace AK.Wwise.Editor
 {
 	[UnityEditor.CustomPropertyDrawer(typeof(Switch))]
 	public class SwitchDrawer : BaseTypeDrawer
