@@ -1,9 +1,8 @@
-using Player_Character.Player_Movement.State_machine.State_machines;
 using Player_Character.Player_Movement.State_machine.States;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Player_Character.Player_Movement.General_scripts
+namespace Player_Character.Player_Movement.State_machine.State_machines
 {
     /// <summary>
     /// Author: Marlon Scholten <br/>
