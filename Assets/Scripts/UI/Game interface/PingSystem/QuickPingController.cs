@@ -18,7 +18,6 @@ public class QuickPingController : AbstractPingController
 
     private void OnQuickPing(InputAction.CallbackContext callbackContext)
     {
-        Debug.Log("debuglog");
         if (_radialMenu.activeSelf || _quickCancelled) return;
         _quickCancelled = false;
 

@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class MenuPingController : AbstractPingController
 {
-
     [SerializeField] private GameObject _highlightedOption;
     [SerializeField] private int _slowmotionFactor = 4;
 
@@ -84,7 +83,6 @@ public class MenuPingController : AbstractPingController
     private void ControlSegmentHoveredOverMiddle()
     {
         cancel.color = radialMenuCancel;
-
         _highlightedOption.SetActive(false);
     }
 
@@ -129,7 +127,6 @@ public class MenuPingController : AbstractPingController
         {
             SelectAction();
         }
-
         CloseRadialMenu();
     }
 
@@ -148,7 +145,6 @@ public class MenuPingController : AbstractPingController
     private void SelectAction()
     {
         _pingAction = _chosenAction;
-        
         _brotherAI.PingBrother(_pingAction, _pingPosition);
     }
 
@@ -175,7 +171,6 @@ public class MenuPingController : AbstractPingController
 
     private bool CheckInMiddleSegment()
     {
-        
         return _inputMouse.x is < SizeCircle and > -SizeCircle && _inputMouse.y is < SizeCircle and > -SizeCircle;
     }
 

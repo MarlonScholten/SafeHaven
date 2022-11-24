@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -6,14 +5,8 @@ using UnityEngine.InputSystem;
 public abstract class AbstractPingController : MonoBehaviour
 {
     protected BrotherAI _brotherAI;
+    
     [SerializeField] private GameObject _brother;
-
-    protected virtual void Awake()
-    {
-        _brotherAI = _brother.GetComponent<BrotherAI>();
-    }
-
-
     [SerializeField] protected Camera _camera;
     [SerializeField] protected GameObject _markerPrefab;
     [SerializeField] protected GameObject _radialMenu;
@@ -22,6 +15,11 @@ public abstract class AbstractPingController : MonoBehaviour
     protected PingSystem _pingSystem;
     protected Vector3 _pingPosition;
 
+    protected virtual void Awake()
+    {
+        _brotherAI = _brother.GetComponent<BrotherAI>();
+    }
+    
     protected Ray GetRayFromCameraToMousePosition()
     {
         var mousePosition = new Vector2(Mouse.current.position.ReadValue().x, Mouse.current.position.ReadValue().y);
