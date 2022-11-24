@@ -6,7 +6,7 @@ public abstract class AbstractPingController : MonoBehaviour
 {
     protected BrotherAI _brotherAI;
     
-    [SerializeField] private GameObject _brother;
+    [SerializeField] protected GameObject _brother;
     [SerializeField] protected Camera _camera;
     [SerializeField] protected GameObject _markerPrefab;
     [SerializeField] protected GameObject _radialMenu;

@@ -7,29 +7,25 @@ public class MenuPingController : AbstractPingController
 {
     [SerializeField] private GameObject _highlightedOption;
     [SerializeField] private int _slowmotionFactor = 4;
+    [SerializeField] private Color radialMenuNormal, radialMenuOptionHovered, radialMenuCancel;
+    [SerializeField] private Text[] options;
+    [SerializeField] private Text cancel;
 
     private Vector2 _inputMouse;
     private int _selectedOption;
     private GameObject _marker;
-
-    public Text[] options;
-    public Text cancel;
-    public Color radialMenuNormal, radialMenuOptionHovered, radialMenuCancel;
     private bool _radialMenuIsSetActive = false;
-
     private PingType _pingAction;
     private PingType _chosenAction;
-    private const string NotCancelled = "Not cancelled";
+    private float _degreesPerSegment;
     private string _cancelled;
 
     private const int StandardTimeFactor = 1;
     private const int Two = 2;
-
     private const float StartingPointCorrection = 90f;
     private const float DegreesHalf = 180f;
     private const float DegreesFull = 360f;
-    private float _degreesPerSegment;
-
+    private const string NotCancelled = "Not cancelled";
     private const float SizeCircle = 45f;
 
     protected override void Awake()
@@ -181,18 +177,8 @@ public class MenuPingController : AbstractPingController
             : NotCancelled;
     }
 
-    public PingType GetPingAction()
-    {
-        return _pingAction;
-    }
-
-    public string GetCancel()
+    private string GetCancel()
     {
         return _cancelled;
-    }
-
-    public Tuple<PingType, Vector3> GetPingActionAndLocation()
-    {
-        return Tuple.Create(GetPingAction(), GetPingLocation());
     }
 }
