@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using Player_Character.Player_Movement.General_scripts;
+using Player_Character.Player_Movement.State_machine.States;
 
-namespace PlayerMovement
+namespace Player_Character.Player_Movement.State_machine.State_machines
 {
     /// <summary>
     /// This class initializes all the necessary player-related states so they can easily be called by other code.

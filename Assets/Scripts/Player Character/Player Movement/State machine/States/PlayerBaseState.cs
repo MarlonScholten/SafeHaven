@@ -1,4 +1,7 @@
-namespace PlayerMovement
+using Player_Character.Player_Movement.General_scripts;
+using Player_Character.Player_Movement.State_machine.State_machines;
+
+namespace Player_Character.Player_Movement.State_machine.States
 {
     /// <summary>
     /// The main abstraction of all player-related states.

@@ -1,7 +1,9 @@
+using Player_Character.Player_Movement.State_machine.State_machines;
+using Player_Character.Player_Movement.State_machine.States;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace PlayerMovement
+namespace Player_Character.Player_Movement.General_scripts
 {
     /// <summary>
     /// Author: Marlon Scholten <br/>
@@ -26,19 +28,24 @@ namespace PlayerMovement
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] [Range(1f, 20f)] private float _movementSpeed = 5f;
-        [SerializeField] [Range(1f, 20f)] private float _lookSensitivity = 5f;
+        [SerializeField] [Range(0.01f, 0.5f)] private float _smoothTurnTime = 0.1f;
         [SerializeField] private bool _canMoveInAir = true;
-
-        public bool CanMoveInAir { get => _canMoveInAir;}
-        public float MovementSpeed => _movementSpeed;
-        private CharacterController CharacterController { get; set; }
-        public PlayerBaseState CurrentState { get; set; }
-        public Vector2 MovementInput { get => InputBehaviour.Instance.OnMoveVector; }
-        private Vector3 _movement;
-        public Vector3 Movement { set => _movement = value; }
-        private Vector2 LookInput { get => InputBehaviour.Instance.OnLookVector; }
-        private const float _gravity = 9.8f;
         [SerializeField] private float _gravityMultiplier = 1f;
+        [SerializeField] private Transform _playerCamera;
+
+        public bool CanMoveInAir => _canMoveInAir;
+        public PlayerBaseState CurrentState { get; set; }
+        public Vector3 Movement { set => _movement = value; }
+        public Vector2 MovementInput { get; private set; }
+        public float MovementSpeed => _movementSpeed;
+        public Transform PlayerCamera => _playerCamera;
+        public Quaternion Rotation {get => _rotation; set => _rotation = value; }
+        public float SmoothTurnTime { get => _smoothTurnTime; set => _smoothTurnTime = value; }
+
+        private CharacterController CharacterController { get; set; }
+        private Vector3 _movement;
+        private const float _gravity = 9.8f;
+        private Quaternion _rotation;
         private PlayerStateFactory _states;
         private float _verticalSpeed;
 
@@ -59,7 +66,7 @@ namespace PlayerMovement
         {
             CurrentState.UpdateState();
             ApplyGravity();
-            Look();
+            transform.rotation = _rotation;
             CharacterController.Move(_movement * Time.deltaTime);
         }
 
@@ -83,15 +90,6 @@ namespace PlayerMovement
         }
 
         /// <summary>
-        /// Rotate the player based on look input
-        /// </summary>
-        private void Look()
-        {
-            transform.Rotate(new Vector3(0f, LookInput.x * _lookSensitivity * Time.deltaTime, 0f));
-            _movement = transform.rotation * _movement;
-        }
-
-        /// <summary>
         /// Apply gravity to the calculated movement when not grounded.
         /// </summary>
         private void ApplyGravity()
@@ -101,7 +99,7 @@ namespace PlayerMovement
 
             if (!CharacterController.isGrounded)
             {
-                _verticalSpeed -= (_gravity * _gravityMultiplier) * Time.deltaTime;
+                _verticalSpeed -= _gravity * _gravityMultiplier;
                 _movement.y = _verticalSpeed;
             }
         }
