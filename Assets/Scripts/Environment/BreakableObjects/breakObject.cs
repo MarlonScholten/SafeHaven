@@ -20,7 +20,7 @@ namespace Environment.BreakableObjects
     ///	    <item>
     ///         <term>Any (eg. Bottle, Window)</term>
     ///		    <term>Script</term>
-    ///         <term>Script that uses the objectIsBroken UnityEvent to play an animation or sound effect.</term>
+    ///         <term>BreakObject</term>
     ///		    <term>The UnityEvent can be used by adding the function of another into the objectIsBroken field in the inspector. To destroy the game object after the animation or sound effect the function DestroyObject can be used.</term>
     ///	    </item>
     /// </list>
