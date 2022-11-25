@@ -96,7 +96,6 @@ public class BrotherAI : MonoBehaviour
     /// The method gets called when a ping is made. This method changes the state of the brother depending on the ping.
     /// </summary>
     public void PingBrother(PingType ping, Vector3 location){
-        Debug.Log("brother ping: " + ping);
         _pingLocation = location;
         CustomEvent.Trigger(this.gameObject, ping.ToString());     
     }
@@ -167,7 +166,7 @@ public class BrotherAI : MonoBehaviour
     /// </summary>
     public void HideUpdate(){
         if(PathCompleted()){
-            Debug.Log("Hidden");
+
         }    
     }
 
@@ -226,7 +225,7 @@ public class BrotherAI : MonoBehaviour
     /// The update method for the idle state
     /// </summary>
     public void IdleUpdate(){
-        Debug.Log("Brother idle");
+
     }
 
     /// <summary>
@@ -254,7 +253,7 @@ public class BrotherAI : MonoBehaviour
     /// The update method for the interact state
     /// </summary>
     public void InteractUpdate(){
-        Debug.Log("Interacting");
+
     }
 
     /// <summary>
@@ -282,7 +281,7 @@ public class BrotherAI : MonoBehaviour
     /// The update method for the use state
     /// </summary>
     public void UseUpdate(){
-        Debug.Log("Use");
+
     }
 
     /// <summary>
@@ -310,7 +309,7 @@ public class BrotherAI : MonoBehaviour
     /// The update method for the pickup
     /// </summary>
     public void PickupUpdate(){
-        Debug.Log("Picking up");
+
     }
 
     /// <summary>
