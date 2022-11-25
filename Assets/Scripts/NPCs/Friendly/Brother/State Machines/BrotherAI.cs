@@ -141,7 +141,7 @@ public class BrotherAI : MonoBehaviour
 
     public void RunUpdate(){
         if(PathCompleted()){
-            Debug.Log("Hallo");
+            
         }
     }
 

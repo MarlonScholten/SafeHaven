@@ -37,14 +37,14 @@ public class FearSystem : MonoBehaviour
     private float _comfortIncrement = 10f;
 
 
-    [SerializeField, Range(0.0f, 15.0f), Tooltip("This value determines how fast the brother gets scared.")]
-    private float _fearIncement = 8f;
+    [SerializeField, Range(10f, 20.0f), Tooltip("This value determines how fast the brother gets scared.")]
+    private float _fearIncement = 10f;
 
     [SerializeField, Range(10.0f, 50.0f), Tooltip("This value determines the maximum distance that an enemy interaction will affect the brothers fear.")]
     private float _maxFearDistance = 20f;
 
-    [SerializeField, Range(10.0f, 50.0f), Tooltip("This value determines how far the brother can see.")]
-    private float _viewRadius = 30f;
+    // [SerializeField, Range(10.0f, 50.0f), Tooltip("This value determines how far the brother can see.")]
+    // private float _viewRadius = 30f;
 
     [SerializeField, Range(60.0f, 180.0f), Tooltip("This value determines the angle of view of the brother.")]
     private float _viewAngle = 140f;
@@ -54,19 +54,11 @@ public class FearSystem : MonoBehaviour
 
     private GameObject[] enemies;
 
-    void awak(){
-        enemies = GameObject.FindGameObjectsWithTag("Enemy");
-    }
-
-    void FixedUpdate(){
-        checkEnemyEncounter();
-    }
-
     /// <summary>
     /// This function checks if the brother can see an enemy(encounter).
     /// </summary>
-    public void checkEnemyEncounter(){
-        foreach(GameObject enemy in enemies){
+    public void checkEnemyEncounter(GameObject enemy){
+        // foreach(GameObject enemy in enemies){
             Transform enemyPos = enemy.transform;
             Vector3 dirToEnemy = (enemyPos.position - transform.position).normalized;
             float distance = Vector3.Distance(transform.position, enemyPos.position);
@@ -77,7 +69,7 @@ public class FearSystem : MonoBehaviour
                     }
                 }                    
             }
-        }
+        // }
     }
 
     /// <summary>
@@ -86,7 +78,7 @@ public class FearSystem : MonoBehaviour
     public void UpdateFearLevel(float distance){
         if((distance < _maxFearDistance) && (_fear < _maxFearLevel)){
             //Time.deltatime is needed beceause fear gets updated every frame.
-            _fear += (_fearIncement - (distance /10f)) * Time.deltaTime;
+            _fear += (_fearIncement - (distance /100f)) * Time.deltaTime;
         }
     }
 

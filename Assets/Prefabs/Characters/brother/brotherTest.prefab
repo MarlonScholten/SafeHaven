@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 1308442854981799472}
   - component: {fileID: 2905684269210536749}
   - component: {fileID: 8173008887434394452}
-  - component: {fileID: 7585029972723624948}
-  - component: {fileID: 4816641824884512850}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -85,43 +83,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &7585029972723624948
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1482824112976246459}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!195 &4816641824884512850
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1482824112976246459}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 1
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
---- !u!1 &6081732004712412722
+--- !u!1 &7370462046082646074
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -129,29 +91,43 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7643525385402998036}
-  m_Layer: 0
-  m_Name: hand
+  - component: {fileID: 5752771719400719497}
+  - component: {fileID: 7878297396381487738}
+  m_Layer: 2
+  m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7643525385402998036
+--- !u!4 &5752771719400719497
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6081732004712412722}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.339, y: 0, z: 1.089}
+  m_GameObject: {fileID: 7370462046082646074}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 815375424505866083}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &7878297396381487738
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7370462046082646074}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 20
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7979130868257695881
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,6 +141,7 @@ GameObject:
   - component: {fileID: 3286405281515219051}
   - component: {fileID: 4130807608511132513}
   - component: {fileID: -3102675096557784668}
+  - component: {fileID: 4636886200913047671}
   m_Layer: 0
   m_Name: brotherTest
   m_TagString: Untagged
@@ -185,7 +162,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1308442854981799472}
-  - {fileID: 7643525385402998036}
+  - {fileID: 5752771719400719497}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -207,7 +184,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2
+  m_Height: 1
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
@@ -224,8 +201,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _walkSpeed: 5
-  _runSpeed: 10
-  _pathEndThreshold: 0.1
 --- !u!114 &4130807608511132513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,7 +217,6 @@ MonoBehaviour:
   _comfortIncrement: 0.1
   _fearIncement: 0.02
   _maxFearDistance: 20
-  _viewRadius: 30
   _viewAngle: 60
   _EnemyMask:
     serializedVersion: 2
@@ -262,3 +236,17 @@ MonoBehaviour:
   _hidingSpotInEnemyViewWeight: 0.01
   _hidingSpotDistanceWeight: 0.05
   _playerCamera: {fileID: 0}
+--- !u!136 &4636886200913047671
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7979130868257695881}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
