@@ -52,6 +52,12 @@ public class FearSystem : MonoBehaviour
     [SerializeField, Tooltip("This value determines the layer the brother is in.")]
     private LayerMask _EnemyMask;
 
+    private GameObject[] enemies;
+
+    void awak(){
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
+    }
+
     void FixedUpdate(){
         checkEnemyEncounter();
     }
@@ -60,8 +66,7 @@ public class FearSystem : MonoBehaviour
     /// This function checks if the brother can see an enemy(encounter).
     /// </summary>
     public void checkEnemyEncounter(){
-        Collider[] enemies = Physics.OverlapSphere(transform.position, _viewRadius, _EnemyMask);
-        foreach(Collider enemy in enemies){
+        foreach(GameObject enemy in enemies){
             Transform enemyPos = enemy.transform;
             Vector3 dirToEnemy = (enemyPos.position - transform.position).normalized;
             float distance = Vector3.Distance(transform.position, enemyPos.position);
