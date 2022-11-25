@@ -130,7 +130,7 @@ public class PauseMenu : MonoBehaviour
     private void OnMainMenu()
     {
         if (_wantsToReturnToMainMenu)
-        {
+        { 
             Instantiate(_loadingScreen);
         
             SceneManager.LoadSceneAsync(_mainMenuSceneId, LoadSceneMode.Single);

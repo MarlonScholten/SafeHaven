@@ -125,11 +125,10 @@ public class InputBehaviour : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            
+            _inputs = new();
+            HandleInputActions();
         };
-
-        _inputs = new();
-
-        HandleInputActions();
     }
 
     /// <summary>
@@ -166,7 +165,7 @@ public class InputBehaviour : MonoBehaviour
     /// </summary>
     private void OnEnable()
     {
-        _inputs.Enable();
+        _inputs?.Enable();
     }
 
     /// <summary>
@@ -174,6 +173,6 @@ public class InputBehaviour : MonoBehaviour
     /// </summary>
     private void OnDisable()
     {
-        _inputs.Disable();
+        _inputs?.Disable();
     }
 }

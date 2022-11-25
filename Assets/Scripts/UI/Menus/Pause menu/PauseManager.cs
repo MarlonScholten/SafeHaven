@@ -38,6 +38,8 @@ public class PauseManager : MonoBehaviour
     private void Start()
     {
         InputBehaviour.Instance.OnPause += OnPause;
+        
+        UnpauseGame();
     }
 
     /// <summary>
