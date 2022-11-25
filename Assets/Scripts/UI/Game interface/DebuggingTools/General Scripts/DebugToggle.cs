@@ -13,6 +13,25 @@ namespace DebuggingTools
     {
     }
 
+    /// /// <summary>
+    /// Author: Tom Cornelissen <br/>
+    /// Modified by: Hugo Verweij <br/>
+    /// DebugToggle behaviour. Handles what should happen when the debug menu is toggled. <br />
+    /// </summary>
+    /// <list type="table">
+    ///	    <listheader>
+    ///         <term>On what GameObject</term>
+    ///         <term>Type</term>
+    ///         <term>Name of type</term>
+    ///         <term>Description</term>
+    ///     </listheader>
+    ///	    <item>
+    ///         <term>DebuggingTools Prefab</term>
+    ///		    <term>Script</term>
+    ///         <term>DebugToggle</term>
+    ///		    <term>DebugToggle behaviour. Handles what should happen when the debug menu is toggled.</term>
+    ///	    </item>
+    /// </list>
     public class DebugToggle : MonoBehaviour
     {        
         /// <summary>
