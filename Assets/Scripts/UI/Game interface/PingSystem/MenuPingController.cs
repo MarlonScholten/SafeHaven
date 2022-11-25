@@ -7,9 +7,9 @@ using UnityEngine.UI;
 /// Author: Thijs Orsel and Iris Giezen </para>
 /// Modified by: N/A </para>
 /// This script controls the radial menu for the pinging system.
-/// In order to let it work the 'Radial Menu' prefab should be added in the hierarchy.
+/// In order to let it work, the 'Radial Menu' prefab should be added in the hierarchy.
 /// It places a marker on the pinged location.
-/// Also it opens and closes the radial menu and makes it possible to interact with it by the player.
+/// It also opens and closes the radial menu and makes it possible to interact with it by the player.
 /// </summary>
 /// <list type="table">
 ///	    <listheader>
@@ -35,7 +35,7 @@ public class MenuPingController : AbstractPingController
     [SerializeField] private GameObject _highlightedOption;
 
     /// <summary>
-    /// When the radial menu is open time slows down in game.
+    /// When the radial menu is open time slows down in game, this factor provides the ability to tweak how much time slows down.
     /// </summary>
     [SerializeField] private int _slowmotionFactor = 4;
 
@@ -49,7 +49,7 @@ public class MenuPingController : AbstractPingController
 
     /// <summary>
     /// In the radial menu are different sections.
-    /// This are the different Text objects that are present in the radial menu.
+    /// These are the different Text objects that are present in the radial menu.
     /// </summary>
     [SerializeField] private Text[] options;
 
