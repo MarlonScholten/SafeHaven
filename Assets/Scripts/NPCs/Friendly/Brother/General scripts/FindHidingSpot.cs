@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Unity.VisualScripting;
 
 public class FindHidingSpot : MonoBehaviour
 {
@@ -26,7 +26,13 @@ public class FindHidingSpot : MonoBehaviour
                 }
             }
         }
-        return bestSpot.transform.position;    
+        if(bestSpot != null){
+        return bestSpot.transform.position;
+        }
+        else {
+            CustomEvent.Trigger(this.gameObject, "Follow");
+            return new Vector3();
+        }    
     }
 
     private bool CheckHidingSpotInView(GameObject hidingSpot){
