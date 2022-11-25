@@ -66,6 +66,12 @@ public class InputBehaviour : MonoBehaviour
     /// Uses LMB as the action key.
     /// </summary>
     public event InputBehaviourEvent OnPingQuick;
+    
+    /// <summary>
+    /// 'Hides brother at "cursor to world" location. If that location is not an a hiding spot, he will choose the nearest one to him.'
+    /// Uses LMB as the action key.
+    /// </summary>
+    public event InputBehaviourEvent OnPingQuickCancelled;
 
     /// <summary>
     /// 'Calls brother to return to the player character.'
@@ -138,6 +144,7 @@ public class InputBehaviour : MonoBehaviour
         // Player.
         _inputs.Player.Throw.performed += (ctx) => OnThrow?.Invoke(ctx);
         _inputs.Player.PingMenu.performed += (ctx) => OnPingMenu?.Invoke(ctx);
+        _inputs.Player.PingQuick.canceled += (ctx) => OnPingQuick?.Invoke(ctx);
         _inputs.Player.PingQuick.performed += (ctx) => OnPingQuick?.Invoke(ctx);
         _inputs.Player.CallBrother.performed += (ctx) => OnCallBrother?.Invoke(ctx);
         _inputs.Player.ItemInteract.performed += (ctx) => OnItemInteract?.Invoke(ctx);

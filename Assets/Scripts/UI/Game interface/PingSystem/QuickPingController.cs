@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -25,14 +26,11 @@ public class QuickPingController : AbstractPingController
     private bool _quickCancelled;
     private GameObject _marker;
 
-    protected override void Awake()
+    private void Start()
     {
-        base.Awake();
-        _pingSystem = new PingSystem();
-
-        _pingSystem.Player.QuickPing.performed += OnQuickPing;
-        _pingSystem.Player.QuickPing.canceled += CancelQuickPing;
-        _pingSystem.Player.MenuPing.started += StartOnMenuPing;
+        InputBehaviour.Instance.OnPingQuick += OnQuickPing;
+        InputBehaviour.Instance.OnPingQuickCancelled += CancelQuickPing;
+        InputBehaviour.Instance.OnPingMenu += StartOnMenuPing;
     }
 
     /// <summary>

@@ -76,22 +76,12 @@ public class MenuPingController : AbstractPingController
     private const string NotCancelled = "Not cancelled";
     private const float SizeCircle = 45f;
 
-    /// <summary>
-    /// In order to let the input actions work Awake needs to be protected.
-    /// </summary>
-    protected override void Awake()
-    {
-        base.Awake();
-        _pingSystem = new PingSystem();
-
-        _pingSystem.Player.MenuPing.performed += OnMenuPing;
-        _pingSystem.Player.QuickPing.performed += OnLeftMouseButton;
-    }
-
     private void Start()
     {
         _radialMenu.SetActive(false);
         _cancelled = NotCancelled;
+        InputBehaviour.Instance.OnPingMenu += OnMenuPing; 
+        InputBehaviour.Instance.OnPingQuick += OnLeftMouseButton;
     }
 
     private void Update()
