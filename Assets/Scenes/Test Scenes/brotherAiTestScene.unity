@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -133,7 +133,7 @@ PrefabInstance:
     - target: {fileID: -3637912206737584392, guid: 1077b21849f872944b560a63bc311196,
         type: 3}
       propertyPath: _grade
-      value: 6.5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2537431874602627412, guid: 1077b21849f872944b560a63bc311196,
         type: 3}
@@ -225,6 +225,11 @@ PrefabInstance:
       propertyPath: _playerCamera
       value: 
       objectReference: {fileID: 1760011414}
+    - target: {fileID: -3102675096557784668, guid: 1b34acfabd3e45f4980478da261441e0,
+        type: 3}
+      propertyPath: _hidingSpotDistanceWeight
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 815375424505866083, guid: 1b34acfabd3e45f4980478da261441e0,
         type: 3}
       propertyPath: m_RootOrder
@@ -361,7 +366,7 @@ GameObject:
   - component: {fileID: 290335575}
   - component: {fileID: 290335574}
   - component: {fileID: 290335573}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -507,7 +512,7 @@ GameObject:
   - component: {fileID: 410915584}
   - component: {fileID: 410915583}
   - component: {fileID: 410915582}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Cube (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -604,7 +609,7 @@ GameObject:
   - component: {fileID: 420894226}
   - component: {fileID: 420894225}
   - component: {fileID: 420894224}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -732,7 +737,7 @@ GameObject:
   - component: {fileID: 470497128}
   - component: {fileID: 470497127}
   - component: {fileID: 470497126}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Cube (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -829,7 +834,7 @@ GameObject:
   - component: {fileID: 653489310}
   - component: {fileID: 653489309}
   - component: {fileID: 653489308}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1020,7 +1025,7 @@ PrefabInstance:
     - target: {fileID: -3637912206737584392, guid: 1077b21849f872944b560a63bc311196,
         type: 3}
       propertyPath: _grade
-      value: 6.1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2537431874602627412, guid: 1077b21849f872944b560a63bc311196,
         type: 3}
@@ -1728,6 +1733,9 @@ MonoBehaviour:
   durationMarkerVisible: 1
   _highlightedOption: {fileID: 1751769419}
   _slowmotionFactor: 4
+  radialMenuNormal: {r: 1, g: 1, b: 1, a: 1}
+  radialMenuOptionHovered: {r: 0.015686275, g: 0.33333334, b: 0.5294118, a: 1}
+  radialMenuCancel: {r: 0.59607846, g: 0, b: 0, a: 1}
   options:
   - {fileID: 1203481084}
   - {fileID: 1203481083}
@@ -1735,9 +1743,6 @@ MonoBehaviour:
   - {fileID: 1203481081}
   - {fileID: 1203481080}
   cancel: {fileID: 405527728}
-  radialMenuNormal: {r: 1, g: 1, b: 1, a: 1}
-  radialMenuOptionHovered: {r: 0.015686275, g: 0.33333334, b: 0.5294118, a: 1}
-  radialMenuCancel: {r: 0.59607846, g: 0, b: 0, a: 1}
 --- !u!114 &1698849355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1936,7 +1941,7 @@ GameObject:
   - component: {fileID: 2127507374}
   - component: {fileID: 2127507373}
   - component: {fileID: 2127507372}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Cube (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

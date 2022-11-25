@@ -33,7 +33,6 @@ public class BrotherAI : MonoBehaviour
     /// </summary>
     [Range(2.0f, 4.0f), Tooltip("This value determines the maximum walkspeed of the brother.")]
     [SerializeField] private float _walkSpeed = 3.5f;
-    [SerializeField] private float _runSpeed = 5f;
 
     private float _pathEndThreshold = 0.1f;
 
@@ -92,7 +91,6 @@ public class BrotherAI : MonoBehaviour
 
     public void FollowUpdate(){
         MoveToLocation(GetPlayerLocation(), _walkSpeed);
-        //Debug.Log("Follow");
     }
 
     public void FollowFixedUpdate(){
@@ -119,31 +117,13 @@ public class BrotherAI : MonoBehaviour
 
     }
 
-    public void PanicHideEnter(){
-        MoveToLocation(_findHidingSpot.FindBestHidingSpot(), _walkSpeed);
-    }
-
-    public void PanicHideUpdate(){
-        if(PathCompleted()){
-            CustomEvent.Trigger(this.gameObject, "Hidden");
-        }
-    }
-
-    public void PanicHideFixedUpdate(){
-
-    }
-
-    public void PanicHideExit(){
-        
-    }
-
     public void HideEnter(){
-        MoveToLocation(_pingLocation, _walkSpeed);
+        MoveToLocation(_findHidingSpot.FindBestHidingSpot(), _walkSpeed);
     }
 
     public void HideUpdate(){
         if(PathCompleted()){
-            CustomEvent.Trigger(this.gameObject, "Hidden");
+            Debug.Log("Hidden");
         }    
     }
 
@@ -155,42 +135,8 @@ public class BrotherAI : MonoBehaviour
         
     }
 
-    public void HiddenEnter(){
-
-    }
-
-    public void HiddenUpdate(){
-        Debug.Log("Brother Hidden");
-    }
-
-    public void HiddenFixedUpdate(){
-
-    }
-
-    public void HiddenExit(){
-        
-    }
-
-    public void WalkEnter(){
-        MoveToLocation(_pingLocation, _walkSpeed);
-    }
-
-    public void WalkUpdate(){
-        if(PathCompleted()){
-            CustomEvent.Trigger(this.gameObject, "Idle");
-        }
-    }
-
-    public void WalkFixedUpdate(){
-
-    }
-
-    public void WalkExit(){
-        
-    }
-
     public void RunEnter(){
-        MoveToLocation(_pingLocation, _runSpeed);
+        MoveToLocation(_pingLocation, _walkSpeed);
     }
 
     public void RunUpdate(){
@@ -220,6 +166,54 @@ public class BrotherAI : MonoBehaviour
     }
 
     public void IdleExit(){
+        
+    }
+
+    public void InteractEnter(){
+        MoveToLocation(_pingLocation, _walkSpeed);
+    }
+
+    public void InteractUpdate(){
+        Debug.Log("Interacting");
+    }
+
+    public void InteractFixedUpdate(){
+
+    }
+
+    public void InteractExit(){
+        
+    }
+
+    public void UseEnter(){
+        MoveToLocation(_pingLocation, _walkSpeed);
+    }
+
+    public void UseUpdate(){
+        Debug.Log("Use");
+    }
+
+    public void UseFixedUpdate(){
+
+    }
+
+    public void UseExit(){
+        
+    }
+
+    public void PickupEnter(){
+        MoveToLocation(_pingLocation, _walkSpeed);
+    }
+
+    public void PickupUpdate(){
+        Debug.Log("Picking up");
+    }
+
+    public void PickupFixedUpdate(){
+
+    }
+
+    public void PickupExit(){
         
     }
 }
