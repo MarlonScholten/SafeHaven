@@ -6,9 +6,26 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-/// <summary>
-/// Custom interactable event, passes <see cref="WaypointBehaviour"/> as an additional parameter.
+/// /// <summary>
+/// Author: Hugo Verweij <br/>
+/// Modified by: - <br/>
+/// Interactable behaviour. Handles the top most logic for <see cref="WaypointBehaviour"/>. <br />
+/// Saves which waypoint is in range, and fires custom events for other classes to handle actual movement. <br />
 /// </summary>
+/// <list type="table">
+///	    <listheader>
+///         <term>On what GameObject</term>
+///         <term>Type</term>
+///         <term>Name of type</term>
+///         <term>Description</term>
+///     </listheader>
+///	    <item>
+///         <term>Interactable Prefab</term>
+///		    <term>Script</term>
+///         <term>InteractableEvent</term>
+///		    <term>Interactable behaviour. Handles the top most logic for <see cref="WaypointBehaviour"/>.</term>
+///	    </item>
+/// </list>
 [Serializable]
 public class InteractableEvent : UnityEvent<WaypointBehaviour>
 {
@@ -31,7 +48,6 @@ public class InteractableBehaviour : MonoBehaviour
     [SerializeField]
     private TMP_Text _instructions;
 
-    private PlayerInput _input;
     private GameObject _player;
     private List<WaypointBehaviour> _waypointsInRange;
 
@@ -40,10 +56,9 @@ public class InteractableBehaviour : MonoBehaviour
     /// </summary>
     private void Awake()
     {
-        _input = new();
         _waypointsInRange = new();
 
-        _input.Player.TraverseInitiate.performed += OnTraverseInitiate;
+        InputBehaviour.Instance.OnObstacleInteract += OnObstacleInteract;
         _player = GameObject.FindGameObjectWithTag("Player");
 
         HandleWaypointEvents();
@@ -78,22 +93,6 @@ public class InteractableBehaviour : MonoBehaviour
     }
 
     /// <summary>
-    /// Enables the <see cref="PlayerInput"/> whenever <see cref="InteractableBehaviour"/> is active.
-    /// </summary>
-    public void OnEnable()
-    {
-        _input.Enable();
-    }
-
-    /// <summary>
-    /// Enables the <see cref="PlayerInput"/> whenever <see cref="InteractableBehaviour"/> is inactive.
-    /// </summary>
-    public void OnDisable()
-    {
-        _input.Disable();
-    }
-
-    /// <summary>
     /// Input function, gets called whenever the player presses the corresponding input key.
     /// Fetches the closest waypoint, and invokes the corresponding traversal event to be handled.
     /// </summary>
@@ -102,7 +101,7 @@ public class InteractableBehaviour : MonoBehaviour
     /// <para><see cref="OnTraversalUnrestricted"/> invoked regarldess of <see cref="WaypointBehaviour.OneWay"/>.</para>
     /// </remarks>
     /// <param name="context"></param>
-    public void OnTraverseInitiate(InputAction.CallbackContext context)
+    public void OnObstacleInteract(InputAction.CallbackContext context)
     {
         if (_waypointsInRange.Count == 0)
             return;

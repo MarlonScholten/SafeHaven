@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// A very cool description of what this script does. Bear in mind that this documentation is mainly for the design team so they can install and play with the scripts that you made :)
+/// Author: Thomas van den Oever <br/>
+/// Modified by: John Doe, Max Mustermann, etc... <br/>
+/// Description: A very cool description of what this script does. Bear in mind that this documentation is mainly for the design team so they can install and play with the scripts that you made :)
 /// Copy and paste this into your script and change the \<item\> objects
 /// </summary>
 /// <list type="table">
