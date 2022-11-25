@@ -18,10 +18,22 @@ using UnityEngine.AI;
 ///         <term>Description</term>
 ///     </listheader>
 ///     <item>
-///         <term>-</term>
-///		    <term>-</term>
-///         <term>-</term>
-///		    <term>-</term>
+///         <term>Brother</term>
+///		    <term>Navmesh Agent</term>
+///         <term>NavmeshAgent</term>
+///		    <term>The navmeshAgent controls the movement of the brother</term>
+///	    </item>
+///     <item>
+///         <term>Brother</term>
+///		    <term>Script</term>
+///         <term>FearSystem</term>
+///		    <term>The fearsystem controls the fear of the brother.</term>
+///	    </item>
+///     <item>
+///         <term>Brother</term>
+///		    <term>Script</term>
+///         <term>FindHidingSpot</term>
+///		    <term>The find hiding spot script is needed to get the calculate wich hiding spot is the best when the brother needs to hide.</term>
 ///	    </item>
 /// </list>
 
@@ -53,16 +65,16 @@ public class BrotherAI : MonoBehaviour
         _fearSystem = GetComponent<FearSystem>();
         _player = GameObject.FindGameObjectWithTag("Player");                
     }
-    void OnRecall(){
+    private void OnRecall(){
         CustomEvent.Trigger(this.gameObject, "CallBack");
     }
 
-    void OnPanic(){
+    private void OnPanic(){
         CustomEvent.Trigger(this.gameObject, "panicHide");
     }
 
     
-    void OnComfort(){
+    private void OnComfort(){
         _fearSystem.Comfort();
     }
 
@@ -79,140 +91,238 @@ public class BrotherAI : MonoBehaviour
         return _player.transform.position;
     }
 
+    /// <summary>
+    /// This method is used by the pinging system.</para>
+    /// The method gets called when a ping is made. This method changes the state of the brother depending on the ping.
+    /// </summary>
     public void PingBrother(PingType ping, Vector3 location){
         Debug.Log("brother ping: " + ping);
         _pingLocation = location;
         CustomEvent.Trigger(this.gameObject, ping.ToString());     
     }
-
+    /// <summary>
+    /// The enter method for the follow state
+    /// </summary>
     public void FollowEnter(){
         
     }
-
+    /// <summary>
+    /// The update method for the follow state
+    /// </summary>
     public void FollowUpdate(){
         MoveToLocation(GetPlayerLocation(), _walkSpeed);
     }
 
+    /// <summary>
+    /// The Fixed update method for the follow state
+    /// </summary>
     public void FollowFixedUpdate(){
 
     }
 
+    /// <summary>
+    /// The exit method for the follow state
+    /// </summary>
     public void FollowExit(){
 
     }
 
+    /// <summary>
+    /// The enter method for the holding hands state
+    /// </summary>
     public void HoldingHandsEnter(){
         
     }
 
+    /// <summary>
+    /// The update method for the holding hands state
+    /// </summary>
     public void HoldingHandsUpdate(){
         MoveToLocation(GetPlayerLocation(), _walkSpeed);
     }
 
+    /// <summary>
+    /// The fixed update method for the holding hands state
+    /// </summary>
     public void HoldingHandsFixedUpdate(){
 
     }
 
+    /// <summary>
+    /// The exit method for the holding hands state
+    /// </summary>
     public void HoldingHandsExit(){
 
     }
 
+    /// <summary>
+    /// The enter method for the hide state
+    /// </summary>
     public void HideEnter(){
         MoveToLocation(_findHidingSpot.FindBestHidingSpot(), _walkSpeed);
     }
 
+    /// <summary>
+    /// The update method for the hide state
+    /// </summary>
     public void HideUpdate(){
         if(PathCompleted()){
             Debug.Log("Hidden");
         }    
     }
 
+    /// <summary>
+    /// The fixed update method for the hide state
+    /// </summary>
     public void HideFixedUpdate(){
 
     }
 
+    /// <summary>
+    /// The exit method for the hide state
+    /// </summary>
     public void HideExit(){
         
     }
 
+    /// <summary>
+    /// The enter method for the run state
+    /// </summary>
     public void RunEnter(){
         MoveToLocation(_pingLocation, _walkSpeed);
     }
 
+    /// <summary>
+    /// The update method for the run state
+    /// </summary>
     public void RunUpdate(){
         if(PathCompleted()){
             
         }
     }
 
+    /// <summary>
+    /// The fixed update method for the run state
+    /// </summary>
     public void RunFixedUpdate(){
 
     }
 
+    /// <summary>
+    /// The exit method for the run state
+    /// </summary>
     public void RunExit(){
         
     }
 
+    /// <summary>
+    /// The enter method for the idle state
+    /// </summary>
     public void IdleEnter(){
         _navMeshAgent.ResetPath();
     }
 
+    /// <summary>
+    /// The update method for the idle state
+    /// </summary>
     public void IdleUpdate(){
         Debug.Log("Brother idle");
     }
 
+    /// <summary>
+    /// The fixed update method for the idle state
+    /// </summary>
     public void IdleFixedUpdate(){
 
     }
 
+    /// <summary>
+    /// The exit method for the idle state
+    /// </summary>
     public void IdleExit(){
         
     }
 
+    /// <summary>
+    /// The enter method for the interact state
+    /// </summary>
     public void InteractEnter(){
         MoveToLocation(_pingLocation, _walkSpeed);
     }
 
+    /// <summary>
+    /// The update method for the interact state
+    /// </summary>
     public void InteractUpdate(){
         Debug.Log("Interacting");
     }
 
+    /// <summary>
+    /// The fixed update method for the interact state
+    /// </summary>
     public void InteractFixedUpdate(){
 
     }
 
+    /// <summary>
+    /// The exit method for the interact state
+    /// </summary>
     public void InteractExit(){
         
     }
 
+    /// <summary>
+    /// The enter method for the use state
+    /// </summary>
     public void UseEnter(){
         MoveToLocation(_pingLocation, _walkSpeed);
     }
 
+    /// <summary>
+    /// The update method for the use state
+    /// </summary>
     public void UseUpdate(){
         Debug.Log("Use");
     }
 
+    /// <summary>
+    /// The fixed update method for the use state
+    /// </summary>
     public void UseFixedUpdate(){
 
     }
 
+    /// <summary>
+    /// The exit method for the use state
+    /// </summary>
     public void UseExit(){
         
     }
 
+    /// <summary>
+    /// The enter method for the pickup
+    /// </summary>
     public void PickupEnter(){
         MoveToLocation(_pingLocation, _walkSpeed);
     }
 
+    /// <summary>
+    /// The update method for the pickup
+    /// </summary>
     public void PickupUpdate(){
         Debug.Log("Picking up");
     }
 
+    /// <summary>
+    /// The fixed update method for the pickup
+    /// </summary>
     public void PickupFixedUpdate(){
 
     }
 
+    /// <summary>
+    /// The exit method for the pickup
+    /// </summary>
     public void PickupExit(){
         
     }

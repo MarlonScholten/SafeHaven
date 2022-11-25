@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BrotherEncounter : MonoBehaviour
 {
-    // Start is called before the first frame update
     private void OnTriggerStay(Collider other){
         Debug.Log(other.gameObject.tag);
         if(other.gameObject.tag == "Brother"){

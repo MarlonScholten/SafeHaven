@@ -20,6 +20,30 @@ using UnityEngine;
 ///         <term>Enemy</term>
 ///		    <term>The tag is needed to determine if a object is an enemy, so that the fear can be affected.</term>
 ///	    </item>
+///     <item>
+///         <term>Brother</term>
+///		    <term>Component</term>
+///         <term>RigidBody</term>
+///		    <term>The rigidbody is needed for the trigger collider for the detection of nearby enemies.</term>
+///	    </item>
+///     <item>
+///         <term>Brother</term>
+///		    <term>Empty game object</term>
+///         <term>ViewRadius</term>
+///		    <term>This empty gameobject holds the trigger collider for encounters with enemies.</term>
+///	    </item>
+///     <item>
+///         <term>ViewRadium</term>
+///		    <term>Component</term>
+///         <term>Trigger Collider</term>
+///		    <term>The trigger collider controls the detection of enemy encounters for the fearsystem</term>
+///	    </item>
+///     <item>
+///         <term>Brother</term>
+///		    <term>Layer</term>
+///         <term>IgnoreRaycast</term>
+///		    <term>The ignoreRaycast is needed so the ping from the pinging system does not get placed on the trigger collider but on the actual floor.</term>
+///	    </item>
 /// </list>
 
 public class FearSystem : MonoBehaviour
