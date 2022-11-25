@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// Author: Jelco van der Straaten </para>
@@ -78,6 +79,10 @@ public class FearSystem : MonoBehaviour
 
     private GameObject[] enemies;
 
+    void Start(){
+        InputBehaviour.Instance.OnComfort += Comfort;
+    }
+
     /// <summary>
     /// This function checks if the brother can see an enemy(encounter).
     /// </summary>
@@ -110,7 +115,7 @@ public class FearSystem : MonoBehaviour
     /// This function decreases the fear level. It gets called when the player comforts the brother. </para>
     /// The brother then gets comforted by the amount set bij the comfortIncrement.
     /// </summary>
-    public void Comfort(){
+    public void Comfort(InputAction.CallbackContext ctx){
         if(_fear > 0){
             _fear -= _comfortIncrement;
         }

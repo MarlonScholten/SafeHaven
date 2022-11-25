@@ -101,6 +101,12 @@ public class InputBehaviour : MonoBehaviour
     /// </summary>
     public event InputBehaviourEvent OnToggleDebugginTools;
 
+    /// <summary>
+    /// Comfort the brother.
+    /// Uses C key as the action key.
+    /// </summary>
+    public event InputBehaviourEvent OnComfort;
+
     // Private.
     private InputManager _inputs;
 
@@ -143,7 +149,8 @@ public class InputBehaviour : MonoBehaviour
         _inputs.Player.ItemInteract.performed += (ctx) => OnItemInteract?.Invoke(ctx);
         _inputs.Player.ToggleStealth.performed += (ctx) => OnToggleStealth?.Invoke(ctx);
         _inputs.Player.ObstacleInteract.performed += (ctx) => OnObstacleInteract?.Invoke(ctx);
-
+        _inputs.Player.Comfort.performed += (ctx) => OnComfort.Invoke(ctx);
+        
         // UI.
         _inputs.UI.ToggleDebugginTools.performed += (ctx) => OnToggleDebugginTools?.Invoke(ctx);
 

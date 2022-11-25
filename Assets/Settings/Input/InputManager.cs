@@ -116,6 +116,15 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Comfort"",
+                    ""type"": ""Button"",
+                    ""id"": ""4366eb7b-a9e5-40b7-a499-ce89d239fc75"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -413,6 +422,17 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""PingMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""31488eb8-5209-40c5-9ada-e91db0aef450"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Comfort"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1030,6 +1050,7 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
         m_Player_CallBrother = m_Player.FindAction("CallBrother", throwIfNotFound: true);
         m_Player_PingQuick = m_Player.FindAction("PingQuick", throwIfNotFound: true);
         m_Player_PingMenu = m_Player.FindAction("PingMenu", throwIfNotFound: true);
+        m_Player_Comfort = m_Player.FindAction("Comfort", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1112,6 +1133,7 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_CallBrother;
     private readonly InputAction m_Player_PingQuick;
     private readonly InputAction m_Player_PingMenu;
+    private readonly InputAction m_Player_Comfort;
     public struct PlayerActions
     {
         private @InputManager m_Wrapper;
@@ -1126,6 +1148,7 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
         public InputAction @CallBrother => m_Wrapper.m_Player_CallBrother;
         public InputAction @PingQuick => m_Wrapper.m_Player_PingQuick;
         public InputAction @PingMenu => m_Wrapper.m_Player_PingMenu;
+        public InputAction @Comfort => m_Wrapper.m_Player_Comfort;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1165,6 +1188,9 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                 @PingMenu.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPingMenu;
                 @PingMenu.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPingMenu;
                 @PingMenu.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPingMenu;
+                @Comfort.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnComfort;
+                @Comfort.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnComfort;
+                @Comfort.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnComfort;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1199,6 +1225,9 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                 @PingMenu.started += instance.OnPingMenu;
                 @PingMenu.performed += instance.OnPingMenu;
                 @PingMenu.canceled += instance.OnPingMenu;
+                @Comfort.started += instance.OnComfort;
+                @Comfort.performed += instance.OnComfort;
+                @Comfort.canceled += instance.OnComfort;
             }
         }
     }
@@ -1373,6 +1402,7 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
         void OnCallBrother(InputAction.CallbackContext context);
         void OnPingQuick(InputAction.CallbackContext context);
         void OnPingMenu(InputAction.CallbackContext context);
+        void OnComfort(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

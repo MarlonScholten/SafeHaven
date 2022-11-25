@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.InputSystem;
 
 
 /// <summary>
@@ -70,6 +71,10 @@ public class BrotherAI : MonoBehaviour
 
     private GameObject _player;
 
+    void Start(){
+        InputBehaviour.Instance.OnCallBrother += CallBrother;
+    }
+
     void Awake()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
@@ -77,17 +82,8 @@ public class BrotherAI : MonoBehaviour
         _fearSystem = GetComponent<FearSystem>();
         _player = GameObject.FindGameObjectWithTag("Player");                
     }
-    private void OnRecall(){
+    private void CallBrother(InputAction.CallbackContext ctx){
         CustomEvent.Trigger(this.gameObject, "CallBack");
-    }
-
-    private void OnPanic(){
-        CustomEvent.Trigger(this.gameObject, "panicHide");
-    }
-
-    
-    private void OnComfort(){
-        _fearSystem.Comfort();
     }
 
     private bool PathCompleted(){
