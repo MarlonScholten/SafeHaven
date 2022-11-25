@@ -1,8 +1,25 @@
 using UnityEngine;
 
-/// <summary>
-/// Handles how the waypoints behave, and is the bottom most class in the interactable hierarchy.
+/// /// <summary>
+/// Author: Hugo Verweij <br/>
+/// Modified by: - <br/>
+/// Waypoint behaviour. Handles the bottom most behaviour for the waypoints. <br />
+/// Sends custom events when the player enters and exists a certain waypoint. <br />
 /// </summary>
+/// <list type="table">
+///	    <listheader>
+///         <term>On what GameObject</term>
+///         <term>Type</term>
+///         <term>Name of type</term>
+///         <term>Description</term>
+///     </listheader>
+///	    <item>
+///         <term>Interactable Prefab, waypoints.</term>
+///		    <term>Script</term>
+///         <term>WaypointBehaviour</term>
+///		    <term>Waypoint behaviour. Handles the bottom most behaviour for the waypoints.</term>
+///	    </item>
+/// </list>
 public class WaypointBehaviour : MonoBehaviour
 {
     // Public.

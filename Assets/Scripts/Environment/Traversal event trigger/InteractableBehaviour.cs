@@ -6,9 +6,26 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-/// <summary>
-/// Custom interactable event, passes <see cref="WaypointBehaviour"/> as an additional parameter.
+/// /// <summary>
+/// Author: Hugo Verweij <br/>
+/// Modified by: - <br/>
+/// Interactable behaviour. Handles the top most logic for <see cref="WaypointBehaviour"/>. <br />
+/// Saves which waypoint is in range, and fires custom events for other classes to handle actual movement. <br />
 /// </summary>
+/// <list type="table">
+///	    <listheader>
+///         <term>On what GameObject</term>
+///         <term>Type</term>
+///         <term>Name of type</term>
+///         <term>Description</term>
+///     </listheader>
+///	    <item>
+///         <term>Interactable Prefab</term>
+///		    <term>Script</term>
+///         <term>InteractableEvent</term>
+///		    <term>Interactable behaviour. Handles the top most logic for <see cref="WaypointBehaviour"/>.</term>
+///	    </item>
+/// </list>
 [Serializable]
 public class InteractableEvent : UnityEvent<WaypointBehaviour>
 {
