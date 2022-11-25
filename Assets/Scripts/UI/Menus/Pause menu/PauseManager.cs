@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// Author: Tom Cornelissen <br/>
@@ -33,10 +35,15 @@ public class PauseManager : MonoBehaviour
 
     private GameObject _pauseMenuInstance;
 
+    private void Start()
+    {
+        InputBehaviour.Instance.OnPause += OnPause;
+    }
+
     /// <summary>
     /// Method <c>OnPause</c> gets called when the user presses the pause button and toggles the pause state
     /// </summary>
-    public void OnPause()
+    public void OnPause(InputAction.CallbackContext ctx)
     {
         if (_pauseMenuInstance)
         {
@@ -55,7 +62,7 @@ public class PauseManager : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
 
-        FindObjectOfType<UnityEngine.InputSystem.PlayerInput>().DeactivateInput();
+        InputBehaviour.Instance.gameObject.SetActive(false);
         
         if (!_pauseMenuInstance) _pauseMenuInstance = Instantiate(_pauseMenu);
     }
@@ -65,7 +72,7 @@ public class PauseManager : MonoBehaviour
     /// </summary>
     public void UnpauseGame()
     {
-        FindObjectOfType<UnityEngine.InputSystem.PlayerInput>().ActivateInput();
+        InputBehaviour.Instance.gameObject.SetActive(true);
         
         Cursor.visible = false;
 

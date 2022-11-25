@@ -76,6 +76,7 @@ public class KeybindingSettings : MonoBehaviour
 
     private void LoadControlOverrides()
     {
+        
         if (!File.Exists(Application.persistentDataPath + "/controlsOverrides.dat"))
         {
             return;
@@ -91,7 +92,7 @@ public class KeybindingSettings : MonoBehaviour
             string[] split = item.Key.Split(new string[] { " : " }, StringSplitOptions.None);
             Guid id = Guid.Parse(split[0]);
             int index = int.Parse(split[1]);
-            Controls.FindAction(id).ApplyBindingOverride(index, item.Value);
+            Controls.FindAction(id)?.ApplyBindingOverride(index, item.Value);
         }
     }
 }

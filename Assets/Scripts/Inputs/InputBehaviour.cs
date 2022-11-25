@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 /// <summary>
 /// Author: Hugo Verweij <br/>
-/// Modified by: - <br/>
+/// Modified by: Tom Cornelissen <br/>
 /// Input behaviour script. It catches every single native input in one script, and allows other scripts to pull from the data it makes available. <br />
 /// For input actions that only use a value or pass through, readonly variables are used. (See <see cref="OnMoveVector"/>) <br />
 /// For input actions that are single use, or rely on more complex behaviour, events are used. (See <see cref="OnToggleDebugginTools"/>) <br />
@@ -101,6 +101,12 @@ public class InputBehaviour : MonoBehaviour
     /// </summary>
     public event InputBehaviourEvent OnToggleDebugginTools;
 
+    /// <summary>
+    /// 'Pause the game'
+    /// Uses ESC or P as the action key
+    /// </summary>
+    public event InputBehaviourEvent OnPause;
+
     // Private.
     private InputManager _inputs;
 
@@ -146,6 +152,7 @@ public class InputBehaviour : MonoBehaviour
 
         // UI.
         _inputs.UI.ToggleDebugginTools.performed += (ctx) => OnToggleDebugginTools?.Invoke(ctx);
+        _inputs.UI.Pause.performed += (ctx) => OnPause?.Invoke(ctx);
 
         // Custom logic.
         _inputs.Player.Move.performed += (ctx) => _onMoveVector = ctx.ReadValue<Vector2>();
