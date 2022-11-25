@@ -39,7 +39,7 @@ using UnityEngine;
 ///		    <term>The trigger collider controls the detection of enemy encounters for the fearsystem</term>
 ///	    </item>
 ///     <item>
-///         <term>Brother</term>
+///         <term>ViewRadius</term>
 ///		    <term>Layer</term>
 ///         <term>IgnoreRaycast</term>
 ///		    <term>The ignoreRaycast is needed so the ping from the pinging system does not get placed on the trigger collider but on the actual floor.</term>
