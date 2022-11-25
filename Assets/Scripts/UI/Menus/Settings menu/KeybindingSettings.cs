@@ -5,12 +5,49 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// Author: Tom Cornelissen <br/>
+/// Modified by:  <br/>
+/// Description: This class handles the logic of rebinding keys
+/// </summary>
+/// <list type="table">
+///	    <listheader>
+///         <term>On what GameObject</term>
+///         <term>Type</term>
+///         <term>Name of type</term>
+///         <term>Description</term>
+///     </listheader>
+///     <item>
+///         <term>GameSettingManager</term>
+///         <term>Prefab</term>
+///         <term>GameSettingManager</term>
+///         <term>This prefab contains the scripts that handle applying game settings</term>
+///     </item>
+///     <item>
+///         <term>InputManager</term>
+///         <term>Prefab</term>
+///         <term>InputManager</term>
+///         <term>This prefab contains the components that handle player input</term>
+///     </item>
+///     <item>
+///         <term>SettingsMenu</term>
+///         <term>Prefab</term>
+///         <term>KeybindingUI.cs</term>
+///         <term>This script handles the UI components to change keybindings</term>
+///     </item>
+/// </list>
 public class KeybindingSettings : MonoBehaviour
 {
-    public InputActionAsset Controls;
+    /// <summary>
+    /// Event that is called when a rebinding has been applied or has been canceled by the user.
+    /// </summary>
     public Action<InputAction> SuccessfulRebinding;
-
-    public Dictionary<string, string> OverridesDictionary = new Dictionary<string, string>();
+    
+    [SerializeField]
+    [Tooltip("The input actions asset that should be overriden")]
+    private InputActionAsset _controls;
+    
+    private Dictionary<string, string> _overridesDictionary = new();
 
     private void Awake()
     {
@@ -20,6 +57,12 @@ public class KeybindingSettings : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Method <c>RemapKeyboardAction</c> listens to the next keypress from the user and overrides the specified action keybinding
+    /// This is then also saved to a file. This method is canceled by pressing escape.
+    /// </summary>
+    /// <param name="actionToRebind">The action to be rebound</param>
+    /// <param name="targetBinding">The index of the keybinding in the action</param>
     public void RemapKeyboardAction(InputAction actionToRebind, int targetBinding)
     {
         var rebindOperation = actionToRebind.PerformInteractiveRebinding(targetBinding)
@@ -36,6 +79,12 @@ public class KeybindingSettings : MonoBehaviour
             .Start();
     }
 
+    /// <summary>
+    /// Method <c>RemapGamepadAction</c> listens to the next gamepad press from the user and overrides the specified action keybinding
+    /// This is then also saved to a file. This method is canceled by pressing escape.
+    /// </summary>
+    /// <param name="actionToRebind">The action to be rebound</param>
+    /// <param name="targetBinding">The index of the keybinding in the action</param>
     public void RemapGamepadAction(InputAction actionToRebind, int targetBinding)
     {
         var rebindOperation = actionToRebind.PerformInteractiveRebinding(targetBinding)
@@ -56,13 +105,13 @@ public class KeybindingSettings : MonoBehaviour
     {
         string key = string.Format("{0} : {1}", actionId.ToString(), bindingIndex);
 
-        if (OverridesDictionary.ContainsKey(key))
+        if (_overridesDictionary.ContainsKey(key))
         {
-            OverridesDictionary[key] = path;
+            _overridesDictionary[key] = path;
         }
         else
         {
-            OverridesDictionary.Add(key, path);
+            _overridesDictionary.Add(key, path);
         }
     }
 
@@ -70,7 +119,7 @@ public class KeybindingSettings : MonoBehaviour
     {
         FileStream file = new FileStream(Application.persistentDataPath + "/controlsOverrides.dat", FileMode.OpenOrCreate);
         BinaryFormatter bf = new BinaryFormatter();
-        bf.Serialize(file, OverridesDictionary);
+        bf.Serialize(file, _overridesDictionary);
         file.Close();
     }
 
@@ -84,15 +133,15 @@ public class KeybindingSettings : MonoBehaviour
 
         FileStream file = new FileStream(Application.persistentDataPath + "/controlsOverrides.dat", FileMode.OpenOrCreate);
         BinaryFormatter bf = new BinaryFormatter();
-        OverridesDictionary = bf.Deserialize(file) as Dictionary<string, string>;
+        _overridesDictionary = bf.Deserialize(file) as Dictionary<string, string>;
         file.Close();
 
-        foreach (var item in OverridesDictionary)
+        foreach (var item in _overridesDictionary)
         {
             string[] split = item.Key.Split(new string[] { " : " }, StringSplitOptions.None);
             Guid id = Guid.Parse(split[0]);
             int index = int.Parse(split[1]);
-            Controls.FindAction(id)?.ApplyBindingOverride(index, item.Value);
+            _controls.FindAction(id)?.ApplyBindingOverride(index, item.Value);
         }
     }
 }

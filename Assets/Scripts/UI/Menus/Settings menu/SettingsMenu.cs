@@ -1,6 +1,37 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Author: Tom Cornelissen <br/>
+/// Modified by:  <br/>
+/// Description: This class is a container that holds different items that change user settings.
+/// </summary>
+/// <list type="table">
+///	    <listheader>
+///         <term>On what GameObject</term>
+///         <term>Type</term>
+///         <term>Name of type</term>
+///         <term>Description</term>
+///     </listheader>
+///     <item>
+///         <term>GameSettingManager</term>
+///         <term>Prefab</term>
+///         <term>GameSettingManager</term>
+///         <term>This prefab contains the scripts that handle applying game settings</term>
+///     </item>
+///     <item>
+///         <term>InputManager</term>
+///         <term>Prefab</term>
+///         <term>InputManager</term>
+///         <term>This prefab contains the components that handle player input</term>
+///     </item>
+///     <item>
+///         <term>SettingsMenu</term>
+///         <term>Prefab</term>
+///         <term>KeybindingUI.cs</term>
+///         <term>This script handles the UI components to change keybindings</term>
+///     </item>
+/// </list>
 public class SettingsMenu : MonoBehaviour
 {
     private GameObject _previousMenu;
