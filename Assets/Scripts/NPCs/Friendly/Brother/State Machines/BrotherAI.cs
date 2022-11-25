@@ -35,6 +35,18 @@ using UnityEngine.AI;
 ///         <term>FindHidingSpot</term>
 ///		    <term>The find hiding spot script is needed to get the calculate wich hiding spot is the best when the brother needs to hide.</term>
 ///	    </item>
+///     <item>
+///         <term>Sister</term>
+///		    <term>Tag</term>
+///         <term>Player</term>
+///		    <term>The tag is needed to identify the player, so that the brother can follow the player.</term>
+///	    </item>
+///     <item>
+///         <term>Brother</term>
+///		    <term>Visual scripting state machine</term>
+///         <term>brotherState</term>
+///		    <term>The state machine is needed for the management of the states.</term>
+///	    </item>
 /// </list>
 
 
