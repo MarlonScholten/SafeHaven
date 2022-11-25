@@ -4,9 +4,25 @@ using UnityEngine.InputSystem;
 namespace PlayerMovement
 {
     /// <summary>
-    /// Controller for everything related to the player character's state, movement and actions.
+    /// Author: Marlon Scholten <br/>
+    /// Modified by: Hugo Verweij <br/>
+    /// PlayerController behaviour. Controller for everything related to the player character's state, movement and actions. <br />
+    /// Controls the states, and updates the correct parameters when the player inputs movement buttons. <br />
     /// </summary>
-    /// <remarks>Listens for player input and changes state accordingly</remarks>
+    /// <list type="table">
+    ///	    <listheader>
+    ///         <term>On what GameObject</term>
+    ///         <term>Type</term>
+    ///         <term>Name of type</term>
+    ///         <term>Description</term>
+    ///     </listheader>
+    ///	    <item>
+    ///         <term>The player (No prefab yet.)</term>
+    ///		    <term>Script</term>
+    ///         <term>PlayerController</term>
+    ///		    <term>PlayerController behaviour. Controller for everything related to the player character's state, movement and actions.</term>
+    ///	    </item>
+    /// </list>
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] [Range(1f, 20f)] private float _movementSpeed = 5f;
