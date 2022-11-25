@@ -54,11 +54,6 @@ public abstract class AbstractPingController : MonoBehaviour
     [SerializeField] private float durationMarkerVisible = 1.0f;
 
     /// <summary>
-    /// Contains a reference to the input actions and is needed for the input system to function.
-    /// </summary>
-    protected PingSystem _pingSystem;
-
-    /// <summary>
     /// Contains the position of the last ping.
     /// </summary>
     protected Vector3 _pingPosition;
@@ -103,22 +98,6 @@ public abstract class AbstractPingController : MonoBehaviour
     {
         yield return new WaitForSeconds(durationMarkerVisible);
         Destroy(marker);
-    }
-
-    /// <summary>
-    /// Enables input actions.
-    /// </summary>
-    protected void OnEnable()
-    {
-        _pingSystem.Enable();
-    }
-
-    /// <summary>
-    /// Disables input actions.
-    /// </summary>
-    protected void OnDisable()
-    {
-        _pingSystem.Disable();
     }
 
     /// <summary>
