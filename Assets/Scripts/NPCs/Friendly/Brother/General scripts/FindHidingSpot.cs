@@ -2,7 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.VisualScripting;
-
+/// <summary>
+/// Author: Jelco van der Straaten </para>
+/// Modified by:  Jelco</para>
+/// This script calculates the best hidingspots
+/// </summary>
+/// <list type="table">
+///	    <listheader>
+///         <term>On what GameObject</term>
+///         <term>Type</term>
+///         <term>Name of type</term>
+///         <term>Description</term>
+///     </listheader>
+///     <item>
+///         <term>EmptyGameObject</term>
+///		    <term>Tag</term>
+///         <term>hideable</term>
+///		    <term>The tag is needed to specify this empty gameObject references a hiding spot.</term>
+///	    </item>
+///     <item>
+///         <term>Enemy</term>
+///		    <term>Tag</term>
+///         <term>Enemy</term>
+///		    <term>The tag is needed to lower the value of the hidingspot if the hidingspot is visible to the enemy.</term>
+///	    </item>
+/// </list>
 public class FindHidingSpot : MonoBehaviour
 {
     [SerializeField, Range(0.0f, 0.1f), Tooltip("This value determines by how much the hiding spot gets multiplied if it is in an enemy view")] 
@@ -11,7 +35,11 @@ public class FindHidingSpot : MonoBehaviour
     [SerializeField, Range(0.0f, 0.2f), Tooltip("This value determines the weight of the distance of the hiding spot.")] 
     private float _hidingSpotDistanceWeight = 0.05f;
 
-    [SerializeField] private Camera _playerCamera; 
+    [SerializeField , Tooltip("Please put the playerCamera in this field.")] private Camera _playerCamera;
+
+    /// <summary>
+    /// This script gahters all hiding spots and then calculates depending on the grade, distance and visibility to the enemy the best hiding spot for the brother.
+    /// </summary> 
     public Vector3 FindBestHidingSpot(){
         GameObject[] _hidingSpots = GameObject.FindGameObjectsWithTag("hideable");
         GameObject bestSpot = null;
