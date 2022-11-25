@@ -83,7 +83,7 @@ public class BrotherAI : MonoBehaviour
         _player = GameObject.FindGameObjectWithTag("Player");                
     }
     private void CallBrother(InputAction.CallbackContext ctx){
-        CustomEvent.Trigger(this.gameObject, "CallBack");
+        CustomEvent.Trigger(this.gameObject, "Follow");
     }
 
     private bool PathCompleted(){
