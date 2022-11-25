@@ -107,8 +107,8 @@ public class FindHidingSpot : MonoBehaviour
         foreach(GameObject enemy in enemies){
             Transform enemyPos = enemy.transform;
             Vector3 dirToEnemy = (enemyPos.position - spot.transform.position).normalized;
-            float distance = Vector3.Distance(transform.position, enemyPos.position);
-            if(Physics.Raycast(spot.transform.position, dirToEnemy, out RaycastHit hit, distance)){
+            float distance = Vector3.Distance(spot.transform.position, enemyPos.position);
+            if(Physics.Raycast(spot.transform.position, dirToEnemy, out RaycastHit hit, distance + 0.1f)){
                 if(hit.collider.tag == "Enemy"){
                         isVisible = true;
                 }                                      
