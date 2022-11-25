@@ -37,7 +37,7 @@ public class PauseManager : MonoBehaviour
 
     private void Start()
     {
-        InputBehaviour.Instance.OnPause += OnPause;
+        InputBehaviour.Instance.OnPauseEvent += OnPause;
         
         UnpauseGame();
     }
@@ -45,7 +45,7 @@ public class PauseManager : MonoBehaviour
     /// <summary>
     /// Method <c>OnPause</c> gets called when the user presses the pause button and toggles the pause state
     /// </summary>
-    public void OnPause(InputAction.CallbackContext ctx)
+    public void OnPause()
     {
         if (_pauseMenuInstance)
         {
