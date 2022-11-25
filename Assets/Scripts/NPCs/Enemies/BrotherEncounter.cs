@@ -21,10 +21,16 @@ using UnityEngine;
 ///		    <term>The tag is needed so that the script can use the correct script on the correct object.</term>
 ///	    </item>
 ///     <item>
+///         <term>Enemy</term>
+///		    <term>Component</term>
+///         <term>Collider</term>
+///		    <term>The collider is needed for the trigger collider of the brother to work correclty. This way the trigger collider can detect the enemy.</term>
+///	    </item>
+///     <item>
 ///         <term>Brother</term>
-///		    <term>Tag</term>
-///         <term>Brother</term>
-///		    <term>The tag is needed so that the script can use the correct script on the correct object.</term>
+///		    <term>Script</term>
+///         <term>Fearsystem</term>
+///		    <term>The brother needs to have the fearsystem script. This script references this object to the fearsystem.</term>
 ///	    </item>
 /// </list>
 public class BrotherEncounter : MonoBehaviour
