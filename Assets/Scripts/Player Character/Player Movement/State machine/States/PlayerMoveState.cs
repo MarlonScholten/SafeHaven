@@ -88,7 +88,7 @@ namespace Player_Character.Player_Movement.State_machine.States
         private Quaternion CalculateRotation(Vector2 movementInput, out float calculatedAngle)
         {
             var direction = new Vector3(movementInput.x, 0f, movementInput.y);
-            var targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + Context.PlayerCamera.eulerAngles.y;
+            var targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + Context.PlayerCamera.transform.eulerAngles.y;
             var angle = Mathf.SmoothDampAngle(Context.transform.eulerAngles.y, targetAngle, ref _turnSmoothVelocity, Context.SmoothTurnTime);
             calculatedAngle = targetAngle;
             return Quaternion.Euler(0f, angle, 0f);

@@ -1,3 +1,4 @@
+using System.Collections;
 using Player_Character.Player_Movement.State_machine.States;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -62,14 +63,28 @@ namespace Player_Character.Player_Movement.State_machine.State_machines
         private float _gravityMultiplier = 1f;
         [SerializeField]
         [Tooltip("The camera that is responsible for keeping the player in view")]
-        private Transform _playerCamera;
+        private Camera _playerCamera;
+        [SerializeField]
+        [Tooltip("The layers that the camera raycast should hit")]
+        private LayerMask _camRayCastLayers;
+        [SerializeField] [Range(1f, 200f)]
+        [Tooltip("The length of the camera raycast")]
+        private float _camRayCastLength = 40f;
+        [SerializeField]
+        [Tooltip("Show the raycast as a red line or not, make sure gizmos are acivated to see it!")]
+        private bool DrawRayDebug = false;
 
         public bool CanMoveInAir => _canMoveInAir;
+        /// <summary>
+        /// Access this raycast to get the info of what the player cam is looking at.
+        /// Change the layermask (in the inspector) to include any layers your environment or interactable items live on.
+        /// </summary>
+        public RaycastHit CamRayCastHit => _camRayCastHit;
         public PlayerBaseState CurrentState { get; set; }
         public Vector3 Movement { set => _movement = value; }
         public Vector2 MovementInput { get; private set; }
         public float MovementSpeed => _movementSpeed;
-        public Transform PlayerCamera => _playerCamera;
+        public Camera PlayerCamera => _playerCamera;
         public Quaternion Rotation {set => _rotation = value; }
         public float SmoothTurnTime => _smoothTurnTime;
 
@@ -79,6 +94,8 @@ namespace Player_Character.Player_Movement.State_machine.State_machines
         private Quaternion _rotation;
         private PlayerStateFactory _states;
         private float _verticalSpeed;
+        private Ray _playerCamRay;
+        private RaycastHit _camRayCastHit;
 
         private void Awake()
         {
@@ -87,6 +104,17 @@ namespace Player_Character.Player_Movement.State_machine.State_machines
             CurrentState.EnterState();
             
             CharacterController = GetComponent<CharacterController>();
+            _playerCamRay = PlayerCamera.ScreenPointToRay(Input.mousePosition);
+        }
+
+        private void Start()
+        {
+            StartCoroutine(CastLookingRay());
+        }
+
+        private void OnDestroy()
+        {
+            StopAllCoroutines();
         }
 
         /// <summary>
@@ -133,6 +161,26 @@ namespace Player_Character.Player_Movement.State_machine.State_machines
             {
                 _verticalSpeed -= _gravity * _gravityMultiplier;
                 _movement.y = _verticalSpeed;
+            }
+        }
+
+        /// <summary>
+        /// Constanly casts a ray from the center of the screen into the gameworld, hitting anyhting in the mask.
+        /// </summary>
+        private IEnumerator CastLookingRay()
+        {
+            while (true)
+            {
+                RaycastHit hit;
+                _playerCamRay = PlayerCamera.ScreenPointToRay(Input.mousePosition);
+                if (Physics.Raycast(_playerCamRay, out hit, _camRayCastLength, _camRayCastLayers))
+                {
+                    _camRayCastHit = hit;
+                    if(DrawRayDebug)
+                        Debug.DrawLine(_playerCamRay.origin, _camRayCastHit.point, Color.red);
+                }
+
+                yield return new WaitForSeconds(0.2f);
             }
         }
     }
