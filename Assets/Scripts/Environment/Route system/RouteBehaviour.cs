@@ -1,45 +1,58 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class RouteBehaviour : MonoBehaviour
 {
-    [SerializeField] private GameObject _target;
+    public enum ExecuteType
+    {
+        OnStart,
+        OnTrigger
+    }
+
+    [Header("References")]
+    [SerializeField] private NavMeshAgent _target;
     [SerializeField] private List<RouteWaypoint> _waypoints;
+
+    [Header("Settings")]
+    [SerializeField] private ExecuteType _executeType;
+    [SerializeField] private bool _destroyOnFinish;
+
+    private float _speed;
 
     private void Awake()
     {
-        //_waypoints = new();
+        _speed = _target.speed;
     }
 
     private void Start()
     {
-        Debug.Log("STARTING!");
-        StartCoroutine(RouteCoroutine());
+        StartCoroutine(RouteCoroutine(ExecuteType.OnStart));
     }
 
-    private void Update() 
+    public IEnumerator RouteCoroutine(ExecuteType type)
     {
-        
-    }
+        // Return if not executed from the correct location.
+        if (type != _executeType)
+            yield break;
 
-    private IEnumerator RouteCoroutine()
-    {
-        Debug.Log("Started the coroutine");
+        // Loop through the gameobjects.
         foreach (RouteWaypoint waypoint in _waypoints)
         {
-            Debug.Log("In waypoint 1");
-            while (_target.transform.position != waypoint.transform.position)
-            {
-                Debug.Log("Moving to waypoint 1");
-                Vector3 translation = waypoint.transform.position * waypoint.Velocity * Time.deltaTime;
-                _target.transform.Translate(translation);
-            }
+            _target.SetDestination(waypoint.transform.position);
 
-            Debug.Log("Reached, waiting.");
+            // Wait until the destination has been reached.
+            while (!_target.DestinationReached())
+                yield return new WaitForSeconds(0.01f);
+
+            // Set the speed if needed.
+            _target.speed = waypoint.Speed == 0 ? _speed : waypoint.Speed;
+
             yield return new WaitForSeconds(waypoint.WaitTime);
         }
 
-        yield return null;
+        if (_destroyOnFinish)
+            Destroy(_target.gameObject);
     }
 }
