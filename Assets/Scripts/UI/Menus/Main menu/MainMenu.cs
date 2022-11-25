@@ -92,6 +92,8 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
+        InputBehaviour.Instance.gameObject.SetActive(false);
+        
         _startButton.Select();
         
         _startButton.onClick.AddListener(OnStart);
