@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -328,7 +328,7 @@ PrefabInstance:
     - target: {fileID: 4130807608511132513, guid: 1b34acfabd3e45f4980478da261441e0,
         type: 3}
       propertyPath: _fearIncement
-      value: 0.08
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4130807608511132513, guid: 1b34acfabd3e45f4980478da261441e0,
         type: 3}
@@ -340,6 +340,21 @@ PrefabInstance:
       propertyPath: m_CameraType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7370462046082646074, guid: 1b34acfabd3e45f4980478da261441e0,
+        type: 3}
+      propertyPath: m_Name
+      value: ViewRadius
+      objectReference: {fileID: 0}
+    - target: {fileID: 7370462046082646074, guid: 1b34acfabd3e45f4980478da261441e0,
+        type: 3}
+      propertyPath: m_TagString
+      value: Brother
+      objectReference: {fileID: 0}
+    - target: {fileID: 7878297396381487738, guid: 1b34acfabd3e45f4980478da261441e0,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7979130868257695881, guid: 1b34acfabd3e45f4980478da261441e0,
         type: 3}
       propertyPath: m_Icon
@@ -350,6 +365,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: brotherTest
+      objectReference: {fileID: 0}
+    - target: {fileID: 7979130868257695881, guid: 1b34acfabd3e45f4980478da261441e0,
+        type: 3}
+      propertyPath: m_TagString
+      value: Brother
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4816641824884512850, guid: 1b34acfabd3e45f4980478da261441e0, type: 3}
@@ -452,64 +472,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &325020160
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 325020161}
-  - component: {fileID: 325020162}
-  - component: {fileID: 325020163}
-  m_Layer: 2
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &325020161
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 325020160}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 651607905}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &325020162
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 325020160}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 20
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &325020163
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 325020160}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53afec5cfad78c3419a07f63c993df3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &341478331 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7979130868257695881, guid: 1b34acfabd3e45f4980478da261441e0,
@@ -897,12 +859,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 75.036, z: 0}
---- !u!4 &651607905 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6747059394360383055, guid: 71dc68d6f4b82b2438751fd9bfdc09ef,
-    type: 3}
-  m_PrefabInstance: {fileID: 867198780}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &653489307
 GameObject:
   m_ObjectHideFlags: 0
@@ -1010,7 +966,7 @@ PrefabInstance:
     - target: {fileID: -4846273816436944142, guid: 71dc68d6f4b82b2438751fd9bfdc09ef,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 763191889350347625, guid: 71dc68d6f4b82b2438751fd9bfdc09ef,
         type: 3}
