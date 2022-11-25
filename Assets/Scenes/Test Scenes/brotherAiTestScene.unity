@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -392,6 +392,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _EnemyMask.m_Bits
       value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 4130807608511132513, guid: 1b34acfabd3e45f4980478da261441e0,
+        type: 3}
+      propertyPath: _comfortIncrement
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7229994813540892845, guid: 1b34acfabd3e45f4980478da261441e0,
         type: 3}
