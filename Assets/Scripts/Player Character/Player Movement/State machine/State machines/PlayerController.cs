@@ -82,7 +82,7 @@ namespace Player_Character.Player_Movement.State_machine.State_machines
         public RaycastHit CamRayCastHit => _camRayCastHit;
         public PlayerBaseState CurrentState { get; set; }
         public Vector3 Movement { set => _movement = value; }
-        public Vector2 MovementInput { get; private set; }
+        public Vector2 MovementInput { get => InputBehaviour.Instance.OnMoveVector; }
         public float MovementSpeed => _movementSpeed;
         public Camera PlayerCamera => _playerCamera;
         public Quaternion Rotation {set => _rotation = value; }
