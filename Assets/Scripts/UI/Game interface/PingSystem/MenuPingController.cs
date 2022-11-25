@@ -201,7 +201,7 @@ public class MenuPingController : AbstractPingController
     /// <summary>
     /// The chosen action from the player gets set to the ping action.
     /// The ping action together with the ping position will be passed on to the Brother AI.
-    /// This is the place where the integration with the brother AI takes place.
+    /// This is the place where the integration with the Brother AI takes place.
     /// </summary>
     private void SelectAction()
     {

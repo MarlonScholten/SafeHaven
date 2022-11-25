@@ -1,9 +1,10 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+
 /// <summary>
-/// Author: Iris Giezen, Thijs Orsel </para>
-/// Modified by: n/a </para>
+/// Author: Iris Giezen and Thijs Orsel </para>
+/// Modified by: N/A </para>
 /// Abstract class to prevent duplicate functionality in both of the ping controllers (QuickPingController and MenuPingController).
 /// </summary>
 /// <list type="table">
@@ -20,36 +21,35 @@ using UnityEngine.InputSystem;
 ///		    <term>Abstract class to prevent duplicate functionality in the actual ping controllers.</term>
 ///	    </item>
 /// </list>
-
 public abstract class AbstractPingController : MonoBehaviour
 {
     /// <summary>
     /// Contains a reference to the brotherAI script of the brother in the current scene.
     /// </summary>
     protected BrotherAI _brotherAI;
-    
+
     /// <summary>
-    /// Contains a reference to the brother in the current scene, can be set manually.
+    /// Contains a reference to the brother in the current scene, which can be set manually.
     /// </summary>
     [SerializeField] protected GameObject _brother;
-    
+
     /// <summary>
-    /// Contains a reference to the camera in the current scene, can be set manually.
+    /// Contains a reference to the camera in the current scene, which can be set manually.
     /// </summary>
     [SerializeField] protected Camera _camera;
-    
+
     /// <summary>
     /// Contains a reference to the prefab of the marker that is shown when a ping is performed.
     /// </summary>
     [SerializeField] protected GameObject _markerPrefab;
-    
+
     /// <summary>
-    /// Contains a reference to the radial menu in the current scene, can be set manually.
+    /// Contains a reference to the radial menu in the current scene, which can be set manually.
     /// </summary>
     [SerializeField] protected GameObject _radialMenu;
-    
+
     /// <summary>
-    /// Contains a value that represents the duration in seconds a marker will be visible after a ping, can be set manually.
+    /// Contains a value that represents the duration in seconds a marker will be visible after a ping, which can be set manually.
     /// </summary>
     [SerializeField] private float durationMarkerVisible = 1.0f;
 
@@ -57,9 +57,9 @@ public abstract class AbstractPingController : MonoBehaviour
     /// Contains a reference to the input actions and is needed for the input system to function.
     /// </summary>
     protected PingSystem _pingSystem;
-    
+
     /// <summary>
-    /// Contains the position of the last ping
+    /// Contains the position of the last ping.
     /// </summary>
     protected Vector3 _pingPosition;
 
@@ -70,11 +70,11 @@ public abstract class AbstractPingController : MonoBehaviour
     {
         _brotherAI = _brother.GetComponent<BrotherAI>();
     }
-    
+
     /// <summary>
     /// Calculates a ray from the camera towards the direction of the mouse.
     /// </summary>
-    /// <returns>The ray in the direction of the mouse</returns>
+    /// <returns>The ray in the direction of the mouse.</returns>
     protected Ray GetRayFromCameraToMousePosition()
     {
         var mousePosition = new Vector2(Mouse.current.position.ReadValue().x, Mouse.current.position.ReadValue().y);
@@ -95,10 +95,10 @@ public abstract class AbstractPingController : MonoBehaviour
     }
 
     /// <summary>
-    /// Timer to destroy a ping marker after a set amount of settings.
+    /// Timer to destroy a ping marker after a set amount of time.
     /// </summary>
     /// <param name="marker">Reference to the marker that appeared after a ping.</param>
-    /// <returns>Returns a WaitForSeconds</returns>
+    /// <returns>Returns a WaitForSeconds.</returns>
     protected IEnumerator MarkerDuration(GameObject marker)
     {
         yield return new WaitForSeconds(durationMarkerVisible);
@@ -131,7 +131,7 @@ public abstract class AbstractPingController : MonoBehaviour
     }
 
     /// <summary>
-    /// Method that should makes a marker appear.
+    /// Method that should make a marker appear.
     /// </summary>
     protected abstract void ShowMarker(Vector3 position);
 }
