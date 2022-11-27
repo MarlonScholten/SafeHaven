@@ -1,62 +1,46 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Items
 {
-    public class PlayerItemInteraction : MonoBehaviour
+    public class BrotherItemInteraction : MonoBehaviour
     {
         private Inventory _inventory;
         
         [SerializeField] private GameObject _itemHolder;
-        [SerializeField] private float _maxPickupRange;
-
-        private Transform _playerTransform;
+        
         private ItemController _itemController;
 
-        private float _distanceToItem;
-        
         private bool _itemIsClose;
         private bool _isChangingItem;
-        private bool _canPickUpItem;
-        
-        private RaycastHit _itemHit;
+
+        private List<GameObject> _itemsCloseToBrother = new List<GameObject>();
+
         private void Start()
         {
             _inventory = GetComponent<Inventory>();
-            _playerTransform = GetComponentInParent<Transform>();
         }
 
         private void Update()
         {
-            CheckDistanceToItem();
-        }
-
-        private void CheckDistanceToItem()
-        {
-            _distanceToItem = Vector3.Distance(_playerTransform.position, _itemHit.transform.position);
-
-            if (_distanceToItem <= _maxPickupRange && !_canPickUpItem)
+            if (_itemsCloseToBrother.Count <= 0 && _itemIsClose)
             {
-                _canPickUpItem = true;
-                _itemHit.transform.GetComponent<ItemController>().HighlightItem(_canPickUpItem);
-            }
-            else if(_distanceToItem > _maxPickupRange && _canPickUpItem)
-            {
-                _canPickUpItem = false;
-                _itemHit.transform.GetComponent<ItemController>().HighlightItem(_canPickUpItem);
+                _itemIsClose = false;
             }
         }
-
+        
         private void OnInteractionWithItem()
         {
-            if (_itemHit.transform.GetComponent<ItemController>() == null || _isChangingItem) return;
-
-            if (!_inventory._hasItemInInventory && _distanceToItem < _maxPickupRange) PickUpItem();
-            else if (_inventory._hasItemInInventory && _distanceToItem < _maxPickupRange) StartCoroutine(SwitchItem());
-            else if (!_inventory._hasItemInInventory && _distanceToItem > _maxPickupRange) DropItem();
+            if(_isChangingItem) return;
+            
+            if (!_inventory._hasItemInInventory && _itemIsClose) PickUpItem();
+            else if (_inventory._hasItemInInventory && _itemIsClose) StartCoroutine(SwitchItem());
+            else if (!_inventory._hasItemInInventory && !_itemIsClose) DropItem();
         }
-
+        
         private IEnumerator SwitchItem()
         {
             _isChangingItem = true;
@@ -68,8 +52,9 @@ namespace Items
         
         private void PickUpItem()
         {
-            _inventory._itemInInventoryObj = _itemHit.transform.gameObject;
-            
+            int randomItem = Random.Range(0, _itemsCloseToBrother.Count - 1);
+            _inventory._itemInInventoryObj = _itemsCloseToBrother[randomItem];
+                
             _inventory._hasItemInInventory = true;
 
             _itemController = _inventory._itemInInventoryObj.GetComponent<ItemController>();
@@ -79,11 +64,12 @@ namespace Items
             _inventory._itemInInventoryObj.transform.SetParent(_itemHolder.transform);
             _inventory._itemInInventoryObj.transform.SetPositionAndRotation(_itemHolder.transform.position,
                 _itemHolder.transform.rotation);
-            
+                
+            _itemsCloseToBrother.RemoveAt(randomItem);
             _inventory._itemHasChanged = true;
         }
 
-        private void DropItem()
+        void DropItem()
         {
             if (!_inventory._hasItemInInventory) return;
             
@@ -96,6 +82,23 @@ namespace Items
 
             _inventory._hasItemInInventory = false;
             _inventory._itemHasChanged = true;
+        }
+        
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.GetComponent<ItemController>() != null)
+            {
+                _itemsCloseToBrother.Add(other.gameObject);
+                _itemIsClose = true;
+            }
+        }
+        
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.GetComponent<ItemController>() != null)
+            {
+                _itemsCloseToBrother.Remove(other.gameObject);
+            }
         }
     }
 }
