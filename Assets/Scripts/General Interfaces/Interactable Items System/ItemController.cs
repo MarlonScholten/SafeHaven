@@ -1,12 +1,10 @@
-using System;
-using UnityEditor;
 using UnityEngine;
 
-namespace Items
+namespace InteractableItemsSystem
 {
     public class ItemController : MonoBehaviour
     {
-        public Item _item;
+        public ItemSO Item;
 
         private Rigidbody _rb;
         private Collider _col;
@@ -42,3 +40,4 @@ namespace Items
         }
     }
 }
+

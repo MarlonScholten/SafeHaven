@@ -1,8 +1,6 @@
-using System;
-using Player_Character.Interactable_Items_System;
 using UnityEngine;
 
-namespace Items
+namespace InteractableItemsSystem
 {
     public class ThrowableItemController : MonoBehaviour
     {
@@ -17,13 +15,14 @@ namespace Items
         {
             _inventory = GetComponent<Inventory>();
             _playerItemInteraction = GetComponent<PlayerItemInteraction>();
+            InputBehaviour.Instance.OnThrowEvent += OnThrowItem;
         }
 
         private void OnThrowItem()
         {
-            if (!_inventory._hasItemInInventory) return;
+            if (!_inventory.HasItemInInventory) return;
 
-            if (!_inventory._itemInInventory._isThrowable)
+            if (!_inventory.ItemInInventory.IsThrowable)
             {
                 Debug.Log("Can't Throw Item");
             }
@@ -32,7 +31,7 @@ namespace Items
 
         private void ThrowItem()
         {
-            var itemInInventory = _inventory._itemInInventoryObj;
+            var itemInInventory = _inventory.ItemInInventoryObj;
             var itemInInventoryRigidbody = itemInInventory.GetComponent<Rigidbody>();
            
             _playerItemInteraction.DropItem();
@@ -42,3 +41,4 @@ namespace Items
         }
     }
 }
+

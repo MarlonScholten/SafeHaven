@@ -1,10 +1,8 @@
 using System.Collections;
-using Items;
-using Items.Interactable_Objects;
 using Player_Character.Player_Movement.State_machine.State_machines;
 using UnityEngine;
 
-namespace Player_Character.Interactable_Items_System
+namespace InteractableItemsSystem
 {
     public class PlayerItemInteraction : MonoBehaviour
     {
@@ -72,13 +70,13 @@ namespace Player_Character.Interactable_Items_System
             }
             else if (_itemHit.transform.GetComponent<ItemController>() != null)
             {
-                if (!_inventory._hasItemInInventory && _distanceToItem < _maxPickupRange) PickUpItem();
-                else if (_inventory._hasItemInInventory && _distanceToItem < _maxPickupRange) StartCoroutine(SwitchItem());
-                else if (!_inventory._hasItemInInventory && _distanceToItem > _maxPickupRange) DropItem();
+                if (!_inventory.HasItemInInventory && _distanceToItem < _maxPickupRange) PickUpItem();
+                else if (_inventory.HasItemInInventory && _distanceToItem < _maxPickupRange) StartCoroutine(SwitchItem());
+                else if (!_inventory.HasItemInInventory && _distanceToItem > _maxPickupRange) DropItem();
             }
             else
             {
-                if (_inventory._hasItemInInventory) DropItem();
+                if (_inventory.HasItemInInventory) DropItem();
             }
         }
 
@@ -93,48 +91,48 @@ namespace Player_Character.Interactable_Items_System
         
         private void PickUpItem()
         {
-            _inventory._itemInInventoryObj = _itemHit.transform.gameObject;
+            _inventory.ItemInInventoryObj = _itemHit.transform.gameObject;
             
-            _inventory._hasItemInInventory = true;
+            _inventory.HasItemInInventory = true;
 
-            _itemController = _inventory._itemInInventoryObj.GetComponent<ItemController>();
-            _inventory._itemInInventory = _itemController._item;
+            _itemController = _inventory.ItemInInventoryObj.GetComponent<ItemController>();
+            _inventory.ItemInInventory = _itemController.Item;
             _itemController.PickUpItem();
 
-            _inventory._itemInInventoryObj.transform.SetParent(_itemHolder.transform);
-            _inventory._itemInInventoryObj.transform.SetPositionAndRotation(_itemHolder.transform.position,
+            _inventory.ItemInInventoryObj.transform.SetParent(_itemHolder.transform);
+            _inventory.ItemInInventoryObj.transform.SetPositionAndRotation(_itemHolder.transform.position,
                 _itemHolder.transform.rotation);
             
-            _inventory._itemHasChanged = true;
+            _inventory.ItemHasChanged = true;
         }
 
         public void DropItem()
         {
-            if (!_inventory._hasItemInInventory) return;
+            if (!_inventory.HasItemInInventory) return;
             
-            _inventory._itemInInventoryObj.transform.SetParent(null);
+            _inventory.ItemInInventoryObj.transform.SetParent(null);
                 
             _itemController.DropItem();
                 
-            _inventory._itemInInventoryObj = null;
-            _inventory._itemInInventory = null;
+            _inventory.ItemInInventoryObj = null;
+            _inventory.ItemInInventory = null;
 
-            _inventory._hasItemInInventory = false;
-            _inventory._itemHasChanged = true;
+            _inventory.HasItemInInventory = false;
+            _inventory.ItemHasChanged = true;
         }
         
         private void TryInteraction()
         {
-            if (!_inventory._hasItemInInventory)
+            if (!_inventory.HasItemInInventory)
             {
                 CanNotInteractWithObject("WrongItem");
                 return;
             }
-            if (_interactableObject._itemNeededToInteract._sort == _inventory._itemInInventory._sort)
+            if (_interactableObject.ItemNeededToInteract.Sort == _inventory.ItemInInventory.Sort)
             {
-                if (_interactableObject._nameImportant)
+                if (_interactableObject.NameImportant)
                 {
-                    if (_interactableObject._itemNeededToInteract._name == _inventory._itemInInventory._name) InteractWithObject();
+                    if (_interactableObject.ItemNeededToInteract.Name == _inventory.ItemInInventory.Name) InteractWithObject();
                     else CanNotInteractWithObject("WrongName");
                 }
                 else InteractWithObject();
