@@ -22,9 +22,11 @@ jobs:
           gource_time_scale: .5
           gource_resolution: '1080p'
           gource_fps: 60
-          gource_seconds_per_day: 15
-          gource_dir_depth: 1
+          gource_seconds_per_day: 10
+          gource_dir_depth: 2
           gource_filename_time: 5
+          gource_bloom_multiplier: 0.3
+          gource_bloom_intensity: 0.3
 
       - name: 'Upload gource video'
         uses: actions/upload-artifact@v3
