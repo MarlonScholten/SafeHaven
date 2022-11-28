@@ -9,5 +9,6 @@ namespace Items
         [Tooltip("The name of the item.")]public string _name;
         [Tooltip("What kind of item is it. For example a key.")]public string _sort;
         [Tooltip("The icon of the item. Will be used in UI inventory.")]public Sprite _icon;
+        public bool _isThrowable;
     }
 }
