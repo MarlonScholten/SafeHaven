@@ -58,7 +58,7 @@ public class InteractableBehaviour : MonoBehaviour
     {
         _waypointsInRange = new();
 
-        InputBehaviour.Instance.OnObstacleInteract += OnObstacleInteract;
+        InputBehaviour.Instance.OnObstacleInteractEvent += OnObstacleInteract;
         _player = GameObject.FindGameObjectWithTag("Player");
 
         HandleWaypointEvents();
@@ -101,7 +101,7 @@ public class InteractableBehaviour : MonoBehaviour
     /// <para><see cref="OnTraversalUnrestricted"/> invoked regarldess of <see cref="WaypointBehaviour.OneWay"/>.</para>
     /// </remarks>
     /// <param name="context"></param>
-    public void OnObstacleInteract(InputAction.CallbackContext context)
+    public void OnObstacleInteract()
     {
         if (_waypointsInRange.Count == 0)
             return;
