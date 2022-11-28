@@ -32,7 +32,7 @@ namespace Items
             }
         }
         
-        private void OnInteractionWithItem()
+        public void OnInteractionWithItem()
         {
             if(_isChangingItem) return;
             
