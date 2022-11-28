@@ -1,9 +1,10 @@
-using System;
 using System.Collections;
+using Items;
 using Items.Interactable_Objects;
+using Player_Character.Player_Movement.State_machine.State_machines;
 using UnityEngine;
 
-namespace Items
+namespace Player_Character.Interactable_Items_System
 {
     public class PlayerItemInteraction : MonoBehaviour
     {
@@ -11,11 +12,12 @@ namespace Items
         
         [SerializeField] private GameObject _itemHolder;
         [SerializeField] private float _maxPickupRange;
-        [SerializeField] private float _maxInteractRange;
-
+        [SerializeField] private float _maxInteractRange; 
+        
         private Transform _playerTransform;
         private ItemController _itemController;
         private InteractableObject _interactableObject;
+        private PlayerController _playerController;
 
         private float _distanceToItem;
 
@@ -27,7 +29,10 @@ namespace Items
         private void Start()
         {
             _inventory = GetComponent<Inventory>();
-            _playerTransform = GetComponentInParent<Transform>();
+            _playerTransform = transform.parent;
+            _playerController = _playerTransform.GetComponent<PlayerController>();
+            InputBehaviour.Instance.OnItemInteractEvent += OnInteractionWithItem;
+            _itemHit = _playerController.CamRayCastHit;
         }
 
         private void Update()
@@ -37,18 +42,23 @@ namespace Items
 
         private void CheckDistanceToItem()
         {
-            _distanceToItem = Vector3.Distance(_playerTransform.position, _itemHit.transform.position);
-
-            /*if (_distanceToItem <= _maxPickupRange && !_canPickUpItem)
+            _itemHit = _playerController.CamRayCastHit;
+            
+            if(_itemHit.transform.GetComponent<ItemController>() == null) return;
+            _distanceToItem = Vector3.Distance(_playerTransform.position, _itemHit.point);
+            
+            if (_distanceToItem <= _maxPickupRange)
             {
                 _canPickUpItem = true;
-                /*_itemHit.transform.GetComponent<ItemController>().HighlightItem(_canPickUpItem);#1#
+                Debug.Log(_canPickUpItem);
+                /*_itemHit.transform.GetComponent<ItemController>().HighlightItem(_canPickUpItem);*/
             }
-            else if(_distanceToItem > _maxPickupRange && _canPickUpItem)
+            else if(_distanceToItem > _maxPickupRange)
             {
                 _canPickUpItem = false;
-                /*_itemHit.transform.GetComponent<ItemController>().HighlightItem(_canPickUpItem);#1#
-            }*/
+                Debug.Log(_canPickUpItem);
+                /*_itemHit.transform.GetComponent<ItemController>().HighlightItem(_canPickUpItem);*/
+            }
         }
 
         private void OnInteractionWithItem()
