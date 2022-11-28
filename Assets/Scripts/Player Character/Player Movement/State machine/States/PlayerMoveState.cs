@@ -1,4 +1,4 @@
-using Player_Character.Player_Movement.General_scripts;
+using Player_Character.Player_Movement.State_machine.General_Scripts;
 using Player_Character.Player_Movement.State_machine.State_machines;
 using UnityEngine;
 
