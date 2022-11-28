@@ -150,7 +150,7 @@ public class InputBehaviour : MonoBehaviour
         // Player.
         _inputs.Player.Throw.performed += (ctx) => OnThrow?.Invoke(ctx);
         _inputs.Player.PingMenu.performed += (ctx) => OnPingMenu?.Invoke(ctx);
-        _inputs.Player.PingQuick.canceled += (ctx) => OnPingQuick?.Invoke(ctx);
+        _inputs.Player.PingQuick.canceled += (ctx) => OnPingQuickCancelled?.Invoke(ctx);
         _inputs.Player.PingQuick.performed += (ctx) => OnPingQuick?.Invoke(ctx);
         _inputs.Player.CallBrother.performed += (ctx) => OnCallBrother?.Invoke(ctx);
         _inputs.Player.ItemInteract.performed += (ctx) => OnItemInteract?.Invoke(ctx);
