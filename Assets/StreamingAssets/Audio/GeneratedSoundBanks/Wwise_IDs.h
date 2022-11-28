@@ -18,6 +18,7 @@ namespace AK
         static const AkUniqueID PLAY_PROXLAMP_DRAFT1_BUZZ2 = 2922544410U;
         static const AkUniqueID PLAY_PROXLAMP_DRAFT1_EXITCLICK = 118004385U;
         static const AkUniqueID PLAY_PROXLAMP_DRAFT1_HUM = 752515743U;
+        static const AkUniqueID PLAY_PROXLAMP_DRAFT1_HUM2 = 988743807U;
         static const AkUniqueID PLAY_TESTSOUND_LOOP = 2024687188U;
         static const AkUniqueID PLAY_TESTSOUND_SINGLE = 4206196186U;
         static const AkUniqueID PLAY_WIND_PLACEHOLDER = 3498798050U;
@@ -25,7 +26,9 @@ namespace AK
         static const AkUniqueID STOP_PROXLAMP_DRAFT1_BUZZ = 408457746U;
         static const AkUniqueID STOP_PROXLAMP_DRAFT1_BUZZ2 = 1701704292U;
         static const AkUniqueID STOP_PROXLAMP_DRAFT1_HUM = 4294825585U;
+        static const AkUniqueID STOP_PROXLAMP_DRAFT1_HUM2 = 1838715857U;
         static const AkUniqueID STOP_TESTSOUND_LOOP = 3467245854U;
+        static const AkUniqueID STOP_TESTSOUND_SINGLE = 25015968U;
     } // namespace EVENTS
 
     namespace BANKS
