@@ -64,13 +64,44 @@ public class MenuPingController : AbstractPingController
     [Tooltip("The Text object for the cancel option.")]
     [SerializeField] private Text _cancel;
 
+    /// <summary>
+    /// Vector2 variable that stores the input values of the mouse.
+    /// </summary>
     private Vector2 _inputMouse;
+    
+    /// <summary>
+    /// Stores the reference number of the current selected option in the radial menu.
+    /// </summary>
     private int _selectedOption;
+    
+    /// <summary>
+    /// Stores the reference to the instance of the marker of a ping.
+    /// </summary>
     private GameObject _marker;
+    
+    /// <summary>
+    /// Stores whether the radial menu is active.
+    /// </summary>
     private bool _radialMenuIsSetActive = false;
+    
+    /// <summary>
+    /// Stores the currently selected action.
+    /// </summary>
     private PingType _pingAction;
+    
+    /// <summary>
+    /// Stores the final selected action.
+    /// </summary>
     private PingType _chosenAction;
+    
+    /// <summary>
+    /// Stores the size of the radial menu segments.
+    /// </summary>
     private float _degreesPerSegment;
+    
+    /// <summary>
+    /// Contains if the menu has been cancelled.
+    /// </summary>
     private string _cancelled;
 
     private const int StandardTimeFactor = 1;
@@ -78,9 +109,20 @@ public class MenuPingController : AbstractPingController
     private const float StartingPointCorrection = 90f;
     private const float DegreesHalf = 180f;
     private const float DegreesFull = 360f;
+    
+    /// <summary>
+    /// Contains that the menu has been cancelled.
+    /// </summary>
     private const string NotCancelled = "Not cancelled";
+    
+    /// <summary>
+    /// Stores the size of the cancel button.
+    /// </summary>
     private const float SizeCircle = 45f;
 
+    /// <summary>
+    /// De-Activates the radial menu and initializes the input events.
+    /// </summary>
     private void Start()
     {
         _radialMenu.SetActive(false);
@@ -89,12 +131,18 @@ public class MenuPingController : AbstractPingController
         InputBehaviour.Instance.OnPingQuick += OnLeftMouseButton;
     }
 
+    /// <summary>
+    /// Shows the radial menu when activated.
+    /// </summary>
     private void Update()
     {
         if (!_radialMenuIsSetActive) return;
         ActivateRadialMenu();
     }
 
+    /// <summary>
+    /// Used to activate the radial menu.
+    /// </summary>
     private void ActivateRadialMenu()
     {
         _radialMenu.SetActive(true);
@@ -110,6 +158,10 @@ public class MenuPingController : AbstractPingController
         ControlSegmentOptions(angle);
     }
 
+    /// <summary>
+    /// Decides what segment is hovered.
+    /// </summary>
+    /// <param name="angle">The angle of the radial menu the mouse is at.</param>
     private void ControlSegmentOptions(float angle)
     {
         if (CheckInMiddleSegment())
@@ -122,12 +174,18 @@ public class MenuPingController : AbstractPingController
         }
     }
 
+    /// <summary>
+    /// Highlights the middle of the radial menu.
+    /// </summary>
     private void ControlSegmentHoveredOverMiddle()
     {
         _cancel.color = _radialMenuCancel;
         _highlightedOption.SetActive(false);
     }
 
+    /// <summary>
+    /// Highlights the selected segment of the radial menu.
+    /// </summary>
     private void ControlSegmentHoveredOutside(float angle)
     {
         _cancel.color = Color.white;
@@ -145,6 +203,10 @@ public class MenuPingController : AbstractPingController
         }
     }
 
+    /// <summary>
+    /// Highlights the selected segment of the radial menu.
+    /// </summary>
+    /// <param name="i">The segment that should be affected.</param>
     private void ControlActionHovered(int i)
     {
         _options[i].color = _radialMenuOptionHovered;
@@ -204,6 +266,9 @@ public class MenuPingController : AbstractPingController
         _brotherAI.PingBrother(_pingAction, _pingPosition);
     }
 
+    /// <summary>
+    /// Closes the radial radial menu and makes the marker disappear after a set amount of seconds.
+    /// </summary>
     private void CloseRadialMenu()
     {
         _radialMenuIsSetActive = false;
@@ -225,6 +290,11 @@ public class MenuPingController : AbstractPingController
         _marker = Instantiate(_markerPrefab, position, Quaternion.identity);
     }
 
+    /// <summary>
+    /// Calculates the size of segments.
+    /// </summary>
+    /// <param name="angle">The amount of degrees of the radial menu.</param>
+    /// <returns></returns>
     private static float SetDegreesFull(float angle)
     {
         if (!(angle < 0)) return angle;
@@ -232,11 +302,18 @@ public class MenuPingController : AbstractPingController
         return angle;
     }
 
+    /// <summary>
+    /// Checks if the mouse is hovering over the middle segment.
+    /// </summary>
+    /// <returns>Returns if hovered on middle segment.</returns>
     private bool CheckInMiddleSegment()
     {
         return _inputMouse.x is < SizeCircle and > -SizeCircle && _inputMouse.y is < SizeCircle and > -SizeCircle;
     }
 
+    /// <summary>
+    /// Determines if the middle segment was selected.
+    /// </summary>
     private void DetermineValueCancelled()
     {
         _cancelled = CheckInMiddleSegment()
@@ -244,6 +321,10 @@ public class MenuPingController : AbstractPingController
             : NotCancelled;
     }
 
+    /// <summary>
+    /// Getter for the _canceled variable.
+    /// </summary>
+    /// <returns>If the middle segment was selected.</returns>
     private string GetCancel()
     {
         return _cancelled;

@@ -23,7 +23,14 @@ using UnityEngine.InputSystem;
 /// </list>
 public class QuickPingController : AbstractPingController
 {
+    /// <summary>
+    /// Stores if the QuickPing is cancelled
+    /// </summary>
     private bool _quickCancelled;
+    
+    /// <summary>
+    /// Stores the reference to the instance of the marker of a ping.
+    /// </summary>
     private GameObject _marker;
 
     private void Start()
@@ -50,6 +57,10 @@ public class QuickPingController : AbstractPingController
         _brotherAI.PingBrother(PingType.Run, _pingPosition);
     }
 
+    /// <summary>
+    /// Shows a marker on the location of a ping, this lasts a given amount of seconds.
+    /// </summary>
+    /// <param name="position">The position the marker should be shown at.</param>
     protected override void ShowMarker(Vector3 position)
     {
         _marker = Instantiate(_markerPrefab, position, Quaternion.identity);
