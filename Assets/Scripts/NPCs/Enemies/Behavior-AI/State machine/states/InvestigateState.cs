@@ -3,8 +3,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
-/// <br>Author: Marlon Kerstens</br>
-/// <br>Modified by: Hugo Ulfman</br>
+/// Author: Marlon Kerstens<br/>
+/// Modified by: Hugo Ulfman<br/>
 /// Description: This script is a the Investigate state of the enemy.
 /// </summary>
 /// <list type="table">
@@ -56,6 +56,7 @@ public class InvestigateState : MonoBehaviour
     {
         if (_stateManager.alertedBySound) _stateManager.CalculateInvestigateLocation(_stateManager.locationOfNoise);
         else if(_stateManager.alertedByVision) _stateManager.CalculateInvestigateLocation(_stateManager.spottedPlayerLastPosition);
+        else if(_stateManager.alertedByGuard) _stateManager.CalculateInvestigateLocation(_stateManager.recievedLocationFromGuard);
     }
     
     /// <summary>
@@ -93,13 +94,13 @@ public class InvestigateState : MonoBehaviour
                     _stateManager.CallFunctionAfterSeconds(_stateManager.enemyAiScriptableObject.InvestigateTime, () =>
                     {
                         CustomEvent.Trigger(gameObject, "Patrol");
-                        
                         _investigateCoroutineIsRunning = false;
                     });
                 StartCoroutine(_investigateCoroutine);
             }
+            
             //If the enemy is not waiting at the location, calculate the next location.
-            if (!_stateManager.waitingAtWaypoint)
+            if (!_stateManager.waitingAtWaypoint && !_waitingAtWaypointDuringInvestigationCoroutineIsRunning)
             {
                 _stateManager.waitingAtWaypoint = true;
                 _waitingAtWaypointDuringInvestigationCoroutineIsRunning = true;
@@ -108,6 +109,7 @@ public class InvestigateState : MonoBehaviour
                     {
                         if (_stateManager.alertedBySound) _stateManager.CalculateInvestigateLocation(_stateManager.locationOfNoise);
                         else if(_stateManager.alertedByVision) _stateManager.CalculateInvestigateLocation(_stateManager.spottedPlayerLastPosition);
+                        else if(_stateManager.alertedByGuard) _stateManager.CalculateInvestigateLocation(_stateManager.recievedLocationFromGuard);
                         _waitingAtWaypointDuringInvestigationCoroutineIsRunning = false;
                         
                     });

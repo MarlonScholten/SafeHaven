@@ -12,8 +12,8 @@ using Random = UnityEngine.Random;
 using Vector3 = UnityEngine.Vector3;
 
 /// <summary>
-/// <para>Author: Hugo Ulfman</para>
-/// <para>Modified by: </para>
+/// Author: Hugo Ulfman<br/>
+/// Modified by: <br/>
 /// Description: Unity event for when the player/brother sound is detected. This is created so a UnityEvent can pass an argument
 /// </summary>
 [System.Serializable]
@@ -69,12 +69,16 @@ public class EnemyAiStateManager : MonoBehaviour
     public List<Transform> wayPoints;
     [Tooltip("Scriptable object that contains the adjustable variables for the enemy")]
     public FSM_Scriptable_Object enemyAiScriptableObject;
+    [Tooltip("Boolean to set if the enemy is an guard or not")]
+    public bool isGuard;
     [NonSerialized] public NavMeshAgent navMeshAgent; // Navmesh agent component
     [NonSerialized] public Vector3 targetWpLocation; // Location of the current target waypoint
     [NonSerialized] public int currentWpIndex; // Index of the current target waypoint
     [NonSerialized] public bool alertedBySound; // Boolean to check if the enemy is alerted by a sound
     [NonSerialized] public bool alertedByVision; // Boolean to check if the enemy is alerted by vision
+    [NonSerialized] public bool alertedByGuard; // Boolean to check if the enemy is alerted by a guard
     [NonSerialized] public Vector3 spottedPlayerLastPosition; // Last position of the player/brother when the enemy spotted him
+    [NonSerialized] public Vector3 recievedLocationFromGuard; // Last position of the player/brother when the enemy spotted him
     [NonSerialized] public GameObject spottedPlayer; // The player/brother that the enemy spotted
     [NonSerialized] public bool waitingAtWaypoint; // Boolean to check if the enemy is waiting at a waypoint
     [NonSerialized] public Vector3 locationOfNoise; // Location of the noise that the enemy heard
@@ -140,6 +144,7 @@ public class EnemyAiStateManager : MonoBehaviour
         spottedPlayerLastPosition = hitPlayer.transform.position;
         alertedByVision = true;
         alertedBySound = false;
+        alertedByGuard = false;
         timePlayerLastSpotted = Time.time;
         return true;
     }
@@ -162,7 +167,14 @@ public class EnemyAiStateManager : MonoBehaviour
         var randDirection = Random.insideUnitSphere * enemyAiScriptableObject.InvestigateDistance;
         randDirection += position;
         NavMesh.SamplePosition (randDirection, out NavMeshHit navHit, enemyAiScriptableObject.InvestigateDistance, 1);
-        targetWpLocation = navHit.position;
+        if (!navHit.hit)
+        {
+            targetWpLocation = position;
+        }
+        else
+        {
+            targetWpLocation = navHit.position;
+        }
         CheckPlayerPositionReachable(targetWpLocation);
         waitingAtWaypoint = false;
     }
@@ -174,14 +186,27 @@ public class EnemyAiStateManager : MonoBehaviour
         return Vector3.Distance(transform.position, targetWpLocation) <= 2f;
     }
 
+    Vector3 getRandomPoint(Vector3 position)
+    {
+        var randDirection = Random.insideUnitSphere * enemyAiScriptableObject.InvestigateDistance;
+        randDirection += position;
+        NavMesh.SamplePosition (randDirection, out NavMeshHit navHit, enemyAiScriptableObject.InvestigateDistance, 1);
+        
+        if (!navHit.hit)
+        {
+            return getRandomPoint(position);
+        }
+        return Vector3.zero;
+    }
+
     /// <summary>
     /// This method checks if the enemy can reach the player/brother position.
     /// </summary>
     public void CheckPlayerPositionReachable(Vector3 playerPosition)
     {
-        var path = new NavMeshPath();
+        var path = new NavMeshPath(); 
         navMeshAgent.CalculatePath(playerPosition, path);
-        if (path.status == NavMeshPathStatus.PathPartial)
+        if (path.status is NavMeshPathStatus.PathPartial)
         {
             targetWpLocation = path.corners.Last();
             navMeshAgent.SetDestination(path.corners.Last());
@@ -198,7 +223,6 @@ public class EnemyAiStateManager : MonoBehaviour
     ///</summary>
     public static void CatchChild()
     {
-        Debug.Log("Child caught");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

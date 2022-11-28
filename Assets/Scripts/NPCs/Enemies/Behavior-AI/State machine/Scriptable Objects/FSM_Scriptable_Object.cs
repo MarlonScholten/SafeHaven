@@ -1,8 +1,8 @@
 using UnityEngine;
 
 /// <summary>
-/// <br>Author: Hugo Ulfma </br>
-/// <br>Modified by:  Marlon Kerstens</br>
+/// Author: Hugo Ulfman<br/>
+/// Modified by:  Marlon Kerstens<br/>
 /// Description: Scriptable object for the EnemyAi.
 /// </summary>
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/EnemyAIScriptableObject", order = 1)]
@@ -57,7 +57,11 @@ public class FSM_Scriptable_Object : ScriptableObject
     public int StopWhenAlertedTime => stopWhenAlertedTime;
     
     [Tooltip("The distance in which the enemy can catch the player/brother")]
-    [SerializeField] private  float catchDistance = 0.5f;
+    [SerializeField] private float catchDistance = 0.5f;
     public float CatchDistance => catchDistance;
+    
+    [Tooltip("The distance that a guard can notify other enemies")]
+    [SerializeField] private int guardAlertRadius = 5;
+    public float GuardAlertRadius => guardAlertRadius;
 }
 

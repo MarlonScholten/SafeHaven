@@ -1,13 +1,15 @@
 using System;
 using System.Collections;
+using System.Numerics;
 using NPC;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using Vector3 = UnityEngine.Vector3;
 
 /// <summary>
-/// <br>Author: Hugo Ulfman</br>
-/// <br>Modified by: </br>
+/// Author: Hugo Ulfman<br/>
+/// Modified by: <br/>
 /// Description: Unity event for when the player/brother sound is detected. This is created so a UnityEvent can pass an argument
 /// </summary>
 /// <list type="table">
@@ -44,6 +46,7 @@ public class PatrolState : MonoBehaviour
     private bool _waitingAtWaypointCoroutineIsRunning; // a bool that checks if the waiting at waypoint coroutine is running
     private IEnumerator _waitingAtWaypointCoroutine; // a coroutine that waits at a waypoint
     [NonSerialized] public HeardASoundEvent HeardASoundEvent; // a event that other can call to make the enemy hear a sound
+    [NonSerialized] public AlertEnemyEvent AlertEnemyEvent; // a event that other can call to make the enemy alert
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -53,12 +56,17 @@ public class PatrolState : MonoBehaviour
         _stateManager = GetComponent<EnemyAiStateManager>();
         HeardASoundEvent ??= new HeardASoundEvent();
         HeardASoundEvent.AddListener(HeardASoundFromPlayer);
+        
+        AlertEnemyEvent ??= new AlertEnemyEvent();
+        AlertEnemyEvent.AddListener(AlertedByGuard);
     }
     /// <summary>
     /// Enter patrol state
     /// </summary>
     public void Enter_Patrol()
     { 
+        _stateManager.alertedBySound = false;
+        _stateManager.alertedByGuard = false;
         _stateManager.alertedBySound = false;
         _stateManager.currentWpIndex = GetClosestWaypoint();
         DetermineNextWaypoint();
@@ -84,6 +92,15 @@ public class PatrolState : MonoBehaviour
         if (_stateManager.alertedBySound)
         {
             _stateManager.navMeshAgent.CalculatePath(_stateManager.locationOfNoise, path);
+            if (path.status != NavMeshPathStatus.PathPartial)
+            {
+                CustomEvent.Trigger(gameObject, "Alerted");
+            }
+        }
+        //if the player/brother is alerted by sound but the path is partial, the enemy will go back to the alerted state.
+        if (_stateManager.alertedByGuard)
+        {
+            _stateManager.navMeshAgent.CalculatePath(_stateManager.recievedLocationFromGuard, path);
             if (path.status != NavMeshPathStatus.PathPartial)
             {
                 CustomEvent.Trigger(gameObject, "Alerted");
@@ -130,6 +147,7 @@ public class PatrolState : MonoBehaviour
         if(_waitingAtWaypointCoroutineIsRunning)StopCoroutine(_waitingAtWaypointCoroutine);
         _waitingAtWaypointCoroutineIsRunning = false;
         _numberOfSmallSoundsHeard = 0;
+    
     }
     /// <summary>
     /// This method determines the next waypoint based on the index of the current waypoint.
@@ -167,7 +185,6 @@ public class PatrolState : MonoBehaviour
     /// </summary>
     private void HeardASoundFromPlayer(SoundSource source)
     {
-        Debug.Log("HeardASoundFromPlayer" +  _stateManager.enemyAiScriptableObject.ThresholdSmallSounds + source.GetVolume() + _stateManager.enemyAiScriptableObject.ThresholdLoudSounds +" "+ _numberOfSmallSoundsHeard);
         // If the sound is too small, return.
         if(source.GetVolume() <_stateManager.enemyAiScriptableObject.ThresholdSmallSounds) return;
         // If the sound is loud enough, increase the number of small sounds heard.
@@ -179,6 +196,16 @@ public class PatrolState : MonoBehaviour
             _stateManager.locationOfNoise = source.GetSource().transform.position;
             _stateManager.alertedBySound = true;
         }
+    }
+    
+    /// <summary>
+    /// This method is called when the enemy is alerted by the guard.
+    /// <param name="location">The location of the player/brother or a sound.</param>
+    /// </summary>
+    private void AlertedByGuard(Vector3 location)
+    {
+        _stateManager.alertedByGuard = true;
+        _stateManager.recievedLocationFromGuard = location;
     }
     
 }

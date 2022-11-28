@@ -3,8 +3,8 @@ using UnityEngine;
 
 
 /// <summary>
-/// <br>Author: Marlon Kerstens</br>
-/// <br>Modified by: Hugo Ulfman</br>
+/// Author: Marlon Kerstens<br/>
+/// Modified by: Hugo Ulfman<br/>
 /// Description: This script is a the Chasing state of the enemy.
 /// </summary>
 /// <list type="table">
@@ -65,7 +65,6 @@ public class ChasingState : MonoBehaviour
         //get distance between player/brother and enemy
         float distance = Vector3.Distance(_stateManager.spottedPlayer.transform.position, transform.position);
         //If the distance between the player/brother and enemy is less than the set distance, the enemy catches the player/brother.
-        Debug.Log(distance + _stateManager.enemyAiScriptableObject.CatchDistance);
         if (distance < _stateManager.enemyAiScriptableObject.CatchDistance)
         {
             EnemyAiStateManager.CatchChild();
