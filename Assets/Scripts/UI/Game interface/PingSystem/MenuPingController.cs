@@ -32,11 +32,13 @@ public class MenuPingController : AbstractPingController
     /// The segment, on which the player hovers, changes color.
     /// In here should be the Segment Outside, which contains all the segments that are available in the radial menu. 
     /// </summary>
+    [Tooltip("The option on which the player hovers.")]
     [SerializeField] private GameObject _highlightedOption;
 
     /// <summary>
     /// When the radial menu is open time slows down in game, this factor provides the ability to tweak how much time slows down.
     /// </summary>
+    [Tooltip("The factor on how slow the time goes when the radial menu is active.")]
     [SerializeField] private int _slowmotionFactor = 4;
 
     /// <summary>
@@ -45,19 +47,22 @@ public class MenuPingController : AbstractPingController
     /// The radialMenuOptionHovered controls the color of the text in the outside segment of the radial menu when the mouse hovers over it.
     /// The radialMenuCancel controls the color of the text in the middle segment of the radial menu when the mouse hovers over it.
     /// </summary>
-    [SerializeField] private Color radialMenuNormal, radialMenuOptionHovered, radialMenuCancel;
+    [Tooltip("The colors of the UI Text elements.")]
+    [SerializeField] private Color _radialMenuNormal, _radialMenuOptionHovered, _radialMenuCancel;
 
     /// <summary>
     /// In the radial menu are different sections.
     /// These are the different Text objects that are present in the radial menu.
     /// </summary>
-    [SerializeField] private Text[] options;
+    [Tooltip("The options in the different segments.")]
+    [SerializeField] private Text[] _options;
 
     /// <summary>
     /// In the middle of the radial menu is a cancel functionality.
     /// In here is the Text object from the cancel option.
     /// </summary>
-    [SerializeField] private Text cancel;
+    [Tooltip("The Text object for the cancel option.")]
+    [SerializeField] private Text _cancel;
 
     private Vector2 _inputMouse;
     private int _selectedOption;
@@ -119,35 +124,35 @@ public class MenuPingController : AbstractPingController
 
     private void ControlSegmentHoveredOverMiddle()
     {
-        cancel.color = radialMenuCancel;
+        _cancel.color = _radialMenuCancel;
         _highlightedOption.SetActive(false);
     }
 
     private void ControlSegmentHoveredOutside(float angle)
     {
-        cancel.color = Color.white;
-        for (var i = 0; i < options.Length; i++)
+        _cancel.color = Color.white;
+        for (var i = 0; i < _options.Length; i++)
         {
-            _degreesPerSegment = DegreesFull / options.Length;
+            _degreesPerSegment = DegreesFull / _options.Length;
             if (angle > i * _degreesPerSegment && angle < (i + 1) * _degreesPerSegment)
             {
                 ControlActionHovered(i);
             }
             else
             {
-                options[i].color = radialMenuNormal;
+                _options[i].color = _radialMenuNormal;
             }
         }
     }
 
     private void ControlActionHovered(int i)
     {
-        options[i].color = radialMenuOptionHovered;
+        _options[i].color = _radialMenuOptionHovered;
         _selectedOption = i;
         _highlightedOption.SetActive(true);
         _highlightedOption.transform.rotation = Quaternion.Euler(0, 0, i * -_degreesPerSegment);
 
-        if (!Enum.TryParse(options[i].text, out PingType pingType)) return;
+        if (!Enum.TryParse(_options[i].text, out PingType pingType)) return;
         _chosenAction = pingType;
     }
 

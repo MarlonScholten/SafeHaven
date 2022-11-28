@@ -31,26 +31,31 @@ public abstract class AbstractPingController : MonoBehaviour
     /// <summary>
     /// Contains a reference to the brother in the current scene, which can be set manually.
     /// </summary>
+    [Tooltip("The reference to the brother.")]
     [SerializeField] protected GameObject _brother;
 
     /// <summary>
     /// Contains a reference to the camera in the current scene, which can be set manually.
     /// </summary>
+    [Tooltip("The reference to the camera.")]
     [SerializeField] protected Camera _camera;
 
     /// <summary>
     /// Contains a reference to the prefab of the marker that is shown when a ping is performed.
     /// </summary>
+    [Tooltip("The reference to the prefab of the marker.")]
     [SerializeField] protected GameObject _markerPrefab;
 
     /// <summary>
     /// Contains a reference to the radial menu in the current scene, which can be set manually.
     /// </summary>
+    [Tooltip("The reference to the radial menu.")]
     [SerializeField] protected GameObject _radialMenu;
 
     /// <summary>
     /// Contains a value that represents the duration in seconds a marker will be visible after a ping, which can be set manually.
     /// </summary>
+    [Tooltip("The duration of the visibility from the marker.")]
     [SerializeField] private float durationMarkerVisible = 1.0f;
 
     /// <summary>
