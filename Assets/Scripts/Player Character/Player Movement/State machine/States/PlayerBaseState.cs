@@ -1,9 +1,28 @@
-namespace PlayerMovement
+using Player_Character.Player_Movement.State_machine.General_Scripts;
+using Player_Character.Player_Movement.State_machine.State_machines;
+
+namespace Player_Character.Player_Movement.State_machine.States
 {
     /// <summary>
-    /// The main abstraction of all player-related states.
+    /// Author: Marlon Scholten <br/>
+    /// Modified by: --- <br/>
+    /// Description: The main abstraction of all player-related states.
     /// </summary>
     /// <remarks>When making a new player state, inherit from this class.</remarks>
+    /// <list type="table">
+    ///	    <listheader>
+    ///         <term>On what GameObject</term>
+    ///         <term>Type</term>
+    ///         <term>Name of type</term>
+    ///         <term>Description</term>
+    ///     </listheader>
+    ///     <item>
+    ///         <term>None</term>
+    ///		    <term>None</term>
+    ///         <term>None</term>
+    ///		    <term>This is an independent state script</term>
+    ///	    </item>
+    /// </list>
     public abstract class PlayerBaseState
     {
         protected PlayerController Context;
@@ -39,7 +58,7 @@ namespace PlayerMovement
         public abstract bool CheckSwitchStates();
 
         /// <summary>
-        /// Switch to another state. Calls <see cref="Exit"/> on the old state, <see cref="Enter"/> on the new state.
+        /// Switch to another state. Calls <see cref="ExitState"/> on the old state, <see cref="EnterState"/> on the new state.
         /// </summary>
         /// <param name="newState">The state you want to switch to</param>
         protected void SwitchState(PlayerBaseState newState)
