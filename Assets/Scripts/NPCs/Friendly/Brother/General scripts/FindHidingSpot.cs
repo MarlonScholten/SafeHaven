@@ -58,9 +58,11 @@ public class FindHidingSpot : MonoBehaviour
             }
         }
         if(bestSpot != null){
+            // If a spot was found return the position of the hiding spot.
             return bestSpot.transform.position;
         }
         else {
+            // If there wasn't a hiding spot near, go back to the follow state.
             CustomEvent.Trigger(this.gameObject, "Follow");
             return new Vector3();
         }    
@@ -74,17 +76,17 @@ public class FindHidingSpot : MonoBehaviour
     private bool CheckHidingSpotInView(GameObject hidingSpot){
         var hidingSpotPosition = hidingSpot.transform.position;
         Vector3 viewport = _playerCamera.WorldToViewportPoint(hidingSpotPosition);
-         bool inCameraFrustum = IsBetween0And1(viewport.x) && IsBetween0And1(viewport.y);
-         bool inFrontOfCamera = viewport.z > 0;
+         var inCameraFrustum = IsBetween0And1(viewport.x) && IsBetween0And1(viewport.y);
+         var inFrontOfCamera = viewport.z > 0;
  
          RaycastHit depthCheck;
-         bool objectBlockingPoint = false;
+         var objectBlockingPoint = false;
 
-         var cameraTransform = _playerCamera.transform;
-         Vector3 directionBetween = hidingSpotPosition - cameraTransform.position;
+         var cameraPosition = _playerCamera.transform.position;
+         Vector3 directionBetween = hidingSpotPosition - cameraPosition;
          directionBetween = directionBetween.normalized;
  
-         float distance = Vector3.Distance(cameraTransform.position, hidingSpotPosition);
+         var distance = Vector3.Distance(cameraPosition, hidingSpotPosition);
  
          if(Physics.Raycast(_playerCamera.transform.position, directionBetween, out depthCheck, distance + 0.05f)) {
              if(depthCheck.point != hidingSpot.transform.position) {
@@ -131,11 +133,12 @@ public class FindHidingSpot : MonoBehaviour
         // Maybe could implement it with enemy FOV in mind but for now this is an temporary solution, beceause enemy needs to implement this.
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach(GameObject enemy in enemies){
-            Transform enemyPos = enemy.transform;
+            
             var hidingSpotPosition = spot.transform.position;
-            var enemyPosition = enemyPos.position;
+            var enemyPosition = enemy.transform.position;
             Vector3 dirToEnemy = (enemyPosition - hidingSpotPosition).normalized;
             float distance = Vector3.Distance(hidingSpotPosition, enemyPosition);
+            
             if(Physics.Raycast(spot.transform.position, dirToEnemy, out RaycastHit hit, distance + 0.1f)){
                 if(hit.collider.CompareTag("Enemy")){
                         isVisible = true;

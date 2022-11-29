@@ -59,39 +59,73 @@ public class BrotherAI : MonoBehaviour
     [Range(2.0f, 4.0f), Tooltip("This value determines the maximum walkspeed of the brother.")]
     [SerializeField] private float _walkSpeed = 3.5f;
 
+    /// <summary>
+    /// This value determines the range in wich a path considers to be completed to get to the next state.
+    /// </summary>
     private const float _pathEndThreshold = 0.1f;
 
+    /// <summary>
+    /// The navmeshAgent component used for the movement of the brother.
+    /// </summary>
     private NavMeshAgent _navMeshAgent;
 
+    /// <summary>
+    /// This is the script used for finding hidingSpots.
+    /// </summary>
     private FindHidingSpot _findHidingSpot;
 
+    /// <summary>
+    /// The pingLocation gets assigned when a ping is made. The last ping location will be saved here.
+    /// </summary>
     private Vector3 _pingLocation;
 
+    /// <summary>
+    /// This is the sister (the player)
+    /// </summary>
     private GameObject _player;
 
+    /// <summary>
+    /// In the start method the declaration for the input is made.
+    /// </summary>
     void Start(){
         InputBehaviour.Instance.OnCallBrother += CallBrother;
     }
 
+    /// <summary>
+    /// In awake used components get instatiated.
+    /// </summary>
     void Awake()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _findHidingSpot = gameObject.GetComponent<FindHidingSpot>();
         _player = GameObject.FindGameObjectWithTag("Player");                
     }
+    
+    /// <summary>
+    /// When the brother is called back this method makes sure the brother gets back to the follow state.
+    /// </summary>
     private void CallBrother(InputAction.CallbackContext ctx){
         CustomEvent.Trigger(this.gameObject, "Follow");
     }
 
+    /// <summary>
+    /// This method checks if the path is completed.
+    /// </summary>
     private bool PathCompleted(){
         return _navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance + _pathEndThreshold;
     }
 
+    /// <summary>
+    /// This method makes the brother move to a certain location
+    /// </summary>
     private void MoveToLocation(Vector3 walkLocation, float speed){
         _navMeshAgent.speed = speed;
         _navMeshAgent.SetDestination(walkLocation);
     }
 
+    /// <summary>
+    /// This method gets the current location of the player (sister)
+    /// </summary>
     private Vector3 GetPlayerLocation(){
         return _player.transform.position;
     }

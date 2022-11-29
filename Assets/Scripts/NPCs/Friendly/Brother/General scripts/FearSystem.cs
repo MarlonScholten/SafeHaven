@@ -56,7 +56,10 @@ public class FearSystem : MonoBehaviour
     [SerializeField, Range(0.0f, 100.0f), Tooltip("This value determines the current fear value of the brother.")]
     private float _fear = 0f;
 
-    private readonly float _maxFearLevel = 100;
+    /// <summary>
+    /// This value determines the maximum fear level;
+    /// </summary>
+    private const float _maxFearLevel = 100;
 
 
     [SerializeField, Range(5.0f, 15.0f), Tooltip("This value determines how much the brothers fear lowers when comforted by the sister.")]
