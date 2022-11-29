@@ -5,6 +5,7 @@ using NPC;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 using Vector3 = UnityEngine.Vector3;
 
 /// <summary>
@@ -154,13 +155,35 @@ public class PatrolState : MonoBehaviour
     /// </summary>
     private void DetermineNextWaypoint()
     {
-        // If there is a next waypoint, go to that one, otherwise return to the first waypoint.
-        _stateManager.currentWpIndex = _stateManager.currentWpIndex == _stateManager.wayPoints.Count - 1 ? 0 : _stateManager.currentWpIndex + 1;
-        // Set the next waypoint by using the index.
-        _stateManager.targetWpLocation = _stateManager.wayPoints[_stateManager.currentWpIndex].position;
-        // Set the destination of the navmesh agent to the next waypoint.
-        _stateManager.navMeshAgent.SetDestination(_stateManager.targetWpLocation);
+        if (_stateManager.isGuard)
+        {
+            var randDirection = Random.insideUnitSphere * 2;
+            randDirection += _stateManager.guardWaypoint.position;
+            Vector3 targetWpLocation;
+            NavMesh.SamplePosition (randDirection, out NavMeshHit navHit, 2, 1);
+            if (!navHit.hit)
+            {
+                targetWpLocation = _stateManager.guardWaypoint.position;
+            }
+            else
+            {
+                targetWpLocation = navHit.position;
+            }
+            _stateManager.CheckPlayerPositionReachable(targetWpLocation);
+            _stateManager.waitingAtWaypoint = false;
+        }
+        else
+        {
+            // If there is a next waypoint, go to that one, otherwise return to the first waypoint.
+            _stateManager.currentWpIndex = _stateManager.currentWpIndex == _stateManager.wayPoints.Count - 1 ? 0 : _stateManager.currentWpIndex + 1;
+            // Set the next waypoint by using the index.
+            _stateManager.targetWpLocation = _stateManager.wayPoints[_stateManager.currentWpIndex].position;
+            // Set the destination of the navmesh agent to the next waypoint.
+            _stateManager.navMeshAgent.SetDestination(_stateManager.targetWpLocation);   
+        }
+
     }
+    
     /// /// <summary>
     /// This method check for the closest waypoint to the enemy.
     /// <returns>The index of that waypoint.</returns>

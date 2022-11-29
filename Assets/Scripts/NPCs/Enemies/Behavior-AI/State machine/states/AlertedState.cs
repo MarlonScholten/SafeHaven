@@ -74,7 +74,6 @@ public class AlertedState : MonoBehaviour
                 //If the enemy stood still for the set time, it will continue
                 _stateManager.navMeshAgent.isStopped = false; 
                 _alertedCoroutineIsRunning = false;
-                Debug.Log("Coroutine done");
             });
             StartCoroutine(_alertedCoroutine);
         }
@@ -116,7 +115,10 @@ public class AlertedState : MonoBehaviour
     public void FixedUpdate_Alerted()
     {
         //The Enemy looks around while it is alerted.
-        _stateManager.LookAround();
+        if(!_stateManager.isGuard)_stateManager.LookAround();
+        if (_stateManager.isGuard)_stateManager.transform.rotation = Quaternion.Slerp(_stateManager.transform.rotation,
+                Quaternion.LookRotation(_stateManager.spottedPlayer.transform.position - _stateManager.transform.position),
+                5 * Time.deltaTime);
     }
     
     /// <summary>
@@ -141,6 +143,5 @@ public class AlertedState : MonoBehaviour
         if (_stateManager.alertedBySound) givenPosition = _stateManager.locationOfNoise;
         else if (_stateManager.alertedByVision) givenPosition = _stateManager.spottedPlayerLastPosition;
         foreach (var enemy in enemiesInRadius) { enemy.GetComponent<PatrolState>().AlertEnemyEvent.Invoke(givenPosition);}
-        Debug.Log("Alerted other enemy");
     }
 }

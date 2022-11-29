@@ -3,6 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using NPC;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
@@ -65,12 +70,12 @@ public class HeardASoundEvent : UnityEvent<SoundSource>
 /// </list>
 public class EnemyAiStateManager : MonoBehaviour
 {
-    [Tooltip("List of waypoints to patrol")]
-    public List<Transform> wayPoints;
     [Tooltip("Scriptable object that contains the adjustable variables for the enemy")]
     public FSM_Scriptable_Object enemyAiScriptableObject;
     [Tooltip("Boolean to set if the enemy is an guard or not")]
-    public bool isGuard;
+    public bool isGuard; // if the enemy is a guard or not
+    [NonSerialized] public List<Transform> wayPoints = new (); // List of waypoints if not a guard
+    [NonSerialized] public Transform guardWaypoint; // Waypoint if guard
     [NonSerialized] public NavMeshAgent navMeshAgent; // Navmesh agent component
     [NonSerialized] public Vector3 targetWpLocation; // Location of the current target waypoint
     [NonSerialized] public int currentWpIndex; // Index of the current target waypoint
