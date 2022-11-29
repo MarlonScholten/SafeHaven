@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 /// <summary>
 /// Author: Jelco van der Straaten </para>
@@ -74,10 +75,7 @@ public class FearSystem : MonoBehaviour
     [SerializeField, Range(60.0f, 180.0f), Tooltip("This value determines the angle of view of the brother.")]
     private float _viewAngle = 140f;
 
-    [SerializeField, Tooltip("This value determines the layer the brother is in.")]
-    private LayerMask _EnemyMask;
-
-    private GameObject[] enemies;
+    private GameObject[] _enemies;
 
     void Start(){
         InputBehaviour.Instance.OnComfort += Comfort;
@@ -86,19 +84,17 @@ public class FearSystem : MonoBehaviour
     /// <summary>
     /// This function checks if the brother can see an enemy(encounter).
     /// </summary>
-    public void checkEnemyEncounter(GameObject enemy){
-        // foreach(GameObject enemy in enemies){
-            Transform enemyPos = enemy.transform;
-            Vector3 dirToEnemy = (enemyPos.position - transform.position).normalized;
-            float distance = Vector3.Distance(transform.position, enemyPos.position);
-            if((Vector3.Angle(transform.forward, dirToEnemy)) < (_viewAngle / 2)){
-                if(Physics.Raycast(transform.position, dirToEnemy, out RaycastHit hit, distance)){
-                    if(hit.collider.tag == "Enemy"){
-                            UpdateFearLevel(distance);
-                    }
-                }                    
-            }
-        // }
+    public void CheckEnemyEncounter(GameObject enemy){
+        Vector3 enemyPos = enemy.transform.position;
+        Vector3 dirToEnemy = (enemyPos - transform.position).normalized;
+        float distance = Vector3.Distance(transform.position, enemyPos);
+        if((Vector3.Angle(transform.forward, dirToEnemy)) < (_viewAngle / 2)){
+            if(Physics.Raycast(transform.position, dirToEnemy, out RaycastHit hit, distance)){
+                if(hit.collider.CompareTag("Enemy")){
+                    UpdateFearLevel(distance);
+                }
+            }                    
+        }
     }
 
     /// <summary>

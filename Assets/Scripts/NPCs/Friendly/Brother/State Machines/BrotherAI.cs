@@ -59,15 +59,13 @@ public class BrotherAI : MonoBehaviour
     [Range(2.0f, 4.0f), Tooltip("This value determines the maximum walkspeed of the brother.")]
     [SerializeField] private float _walkSpeed = 3.5f;
 
-    private float _pathEndThreshold = 0.1f;
+    private const float _pathEndThreshold = 0.1f;
 
     private NavMeshAgent _navMeshAgent;
 
     private FindHidingSpot _findHidingSpot;
 
     private Vector3 _pingLocation;
-
-    private FearSystem _fearSystem;
 
     private GameObject _player;
 
@@ -79,7 +77,6 @@ public class BrotherAI : MonoBehaviour
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _findHidingSpot = gameObject.GetComponent<FindHidingSpot>();
-        _fearSystem = GetComponent<FearSystem>();
         _player = GameObject.FindGameObjectWithTag("Player");                
     }
     private void CallBrother(InputAction.CallbackContext ctx){
@@ -100,7 +97,7 @@ public class BrotherAI : MonoBehaviour
     }
 
     /// <summary>
-    /// This method is used by the pinging system.</para>
+    /// <para>This method is used by the pinging system.</para>
     /// The method gets called when a ping is made. This method changes the state of the brother depending on the ping.
     /// </summary>
     public void PingBrother(PingType ping, Vector3 location){

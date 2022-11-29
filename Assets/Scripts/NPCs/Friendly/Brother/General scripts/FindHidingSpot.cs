@@ -41,21 +41,24 @@ public class FindHidingSpot : MonoBehaviour
     /// This script gahters all hiding spots and then calculates depending on the grade, distance and visibility to the enemy the best hiding spot for the brother.
     /// </summary> 
     public Vector3 FindBestHidingSpot(){
-        GameObject[] _hidingSpots = GameObject.FindGameObjectsWithTag("hideable");
+        GameObject[] hidingSpots = GameObject.FindGameObjectsWithTag("hideable");
         GameObject bestSpot = null;
         float bestSpotValue = -1;
-        foreach(GameObject spot in _hidingSpots){
-            if(CheckHidingSpotInView(spot)){
-                HidingSpot hidingSpot = spot.GetComponent<HidingSpot>();
-                CalculateObscurityValue(spot);           
-                if((bestSpotValue == -1) || (bestSpotValue < hidingSpot._obscurityValue)){
-                    bestSpot = spot;
-                    bestSpotValue = hidingSpot._obscurityValue;
-                }
+        foreach(var spot in hidingSpots)
+        {
+            if (!CheckHidingSpotInView(spot)) continue;
+            // Now we calculate the obscurity value for the current hiding spot to be checked.
+            HidingSpot hidingSpot = spot.GetComponent<HidingSpot>();
+            CalculateObscurityValue(spot);
+            // If there isn't currently not an bestpot this spot is automaticly the new best spot.
+            // If there is an best spot it checks if the value is higher than the current best spot value.           
+            if((bestSpotValue.Equals(-1)) || (bestSpotValue < hidingSpot._obscurityValue)){
+                bestSpot = spot;
+                bestSpotValue = hidingSpot._obscurityValue;
             }
         }
         if(bestSpot != null){
-        return bestSpot.transform.position;
+            return bestSpot.transform.position;
         }
         else {
             CustomEvent.Trigger(this.gameObject, "Follow");
@@ -63,18 +66,25 @@ public class FindHidingSpot : MonoBehaviour
         }    
     }
 
+    /// <summary>
+    /// This function checks if the hidingspot is in the view of the camera. If so it returns true else it returns false.
+    /// </summary>
+    /// <param name="hidingSpot">The hiding spot to be checked if it is in the view.</param>
+    /// <returns>True for hidingspots in camera view, false if not in camera view</returns>
     private bool CheckHidingSpotInView(GameObject hidingSpot){
-        Vector3 viewport = _playerCamera.WorldToViewportPoint(hidingSpot.transform.position);
+        var hidingSpotPosition = hidingSpot.transform.position;
+        Vector3 viewport = _playerCamera.WorldToViewportPoint(hidingSpotPosition);
          bool inCameraFrustum = IsBetween0And1(viewport.x) && IsBetween0And1(viewport.y);
          bool inFrontOfCamera = viewport.z > 0;
  
          RaycastHit depthCheck;
          bool objectBlockingPoint = false;
- 
-         Vector3 directionBetween = hidingSpot.transform.position - _playerCamera.transform.position;
+
+         var cameraTransform = _playerCamera.transform;
+         Vector3 directionBetween = hidingSpotPosition - cameraTransform.position;
          directionBetween = directionBetween.normalized;
  
-         float distance = Vector3.Distance(_playerCamera.transform.position, hidingSpot.transform.position);
+         float distance = Vector3.Distance(cameraTransform.position, hidingSpotPosition);
  
          if(Physics.Raycast(_playerCamera.transform.position, directionBetween, out depthCheck, distance + 0.05f)) {
              if(depthCheck.point != hidingSpot.transform.position) {
@@ -85,10 +95,21 @@ public class FindHidingSpot : MonoBehaviour
          return inCameraFrustum && inFrontOfCamera && !objectBlockingPoint;
     }
 
+    /// <summary>
+    /// This function simply checks if an value is between 0 and 1.
+    /// </summary>
+    /// <param name="a">Value to be checked if it is between 0 and 1</param>
+    /// <returns>True for values between 0 and 1</returns>
     private bool IsBetween0And1(float a) {
          return (a > 0) && (a < 1);
     }
 
+    /// <summary>
+    /// This function calculates the ObscurityValue for the hiding spot.
+    /// First it gets the grade and than subtracts the distance to the spot of the grade.
+    /// Then checks if the spot is in the enemy view, if so the grade gets lowered, else nothing happens.
+    /// </summary>
+    /// <param name="spot">Hiding spot where the value needs to be calculated for.</param>
     private void CalculateObscurityValue(GameObject spot){
         HidingSpot hidingSpot = spot.GetComponent<HidingSpot>();
         hidingSpot._obscurityValue = hidingSpot._grade - (Vector3.Distance(hidingSpot.transform.position, transform.position) * _hidingSpotDistanceWeight);
@@ -99,17 +120,24 @@ public class FindHidingSpot : MonoBehaviour
 
 
 
+    /// <summary>
+    /// This function checks if the hiding spot is in the enemy fov.
+    /// </summary>
+    /// <param name="spot">Hiding spot which will be checked if can be seen by enemy.</param>
+    /// <returns>True for values if enemy is in sight of hiding Spot</returns>
     private bool CheckIfSpotInEnemyFov(GameObject spot){
         bool isVisible = false;
-        // Will need to implement method in Enemy AI to do a raycast to the position and check if there are any objects in between.
+        // TODO: Will need to implement method in Enemy AI to do a raycast to the position and check if there are any objects in between.
         // Maybe could implement it with enemy FOV in mind but for now this is an temporary solution, beceause enemy needs to implement this.
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach(GameObject enemy in enemies){
             Transform enemyPos = enemy.transform;
-            Vector3 dirToEnemy = (enemyPos.position - spot.transform.position).normalized;
-            float distance = Vector3.Distance(spot.transform.position, enemyPos.position);
+            var hidingSpotPosition = spot.transform.position;
+            var enemyPosition = enemyPos.position;
+            Vector3 dirToEnemy = (enemyPosition - hidingSpotPosition).normalized;
+            float distance = Vector3.Distance(hidingSpotPosition, enemyPosition);
             if(Physics.Raycast(spot.transform.position, dirToEnemy, out RaycastHit hit, distance + 0.1f)){
-                if(hit.collider.tag == "Enemy"){
+                if(hit.collider.CompareTag("Enemy")){
                         isVisible = true;
                 }                                      
             }
