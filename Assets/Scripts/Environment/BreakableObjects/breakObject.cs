@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Environment.BreakableObjects
+namespace BreakableObjects
 {
     /// <summary>
     /// Author: Marlon Kerstens <br/>
