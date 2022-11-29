@@ -142,9 +142,17 @@ public class InputBehaviour : MonoBehaviour
     private void OnMove(InputValue inputValue) => _onMoveVector = inputValue.Get<Vector2>();
     private void OnLook(InputValue inputValue) => _onLookVector = inputValue.Get<Vector2>();
     private void OnThrow() => OnThrowEvent?.Invoke();
-    private void OnPingMenu() => OnPingMenuEvent?.Invoke();
-    private void OnPingQuick() => OnPingQuickEvent?.Invoke();
-    private void OnPingQuickCanceled() => OnPingQuickCancelledEvent?.Invoke();
+    public void OnPingMenu(InputAction.CallbackContext context) => OnPingMenuEvent?.Invoke();
+    public void OnPingQuick(InputAction.CallbackContext context)
+    {
+        if (context.canceled)
+        {
+            OnPingQuickCancelledEvent?.Invoke();
+        }else if (context.performed)
+        {
+            OnPingQuickEvent?.Invoke();
+        }
+    }
     private void OnComfort() => OnComfortEvent?.Invoke();
     private void OnCallBrother() => OnCallBrotherEvent?.Invoke();
     private void OnItemInteract() => OnItemInteractEvent?.Invoke();
