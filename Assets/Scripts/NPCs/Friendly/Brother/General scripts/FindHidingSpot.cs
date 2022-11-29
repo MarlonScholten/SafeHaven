@@ -52,10 +52,9 @@ public class FindHidingSpot : MonoBehaviour
             CalculateObscurityValue(spot);
             // If there isn't currently not an bestpot this spot is automaticly the new best spot.
             // If there is an best spot it checks if the value is higher than the current best spot value.           
-            if((bestSpotValue.Equals(-1)) || (bestSpotValue < hidingSpot._obscurityValue)){
-                bestSpot = spot;
-                bestSpotValue = hidingSpot._obscurityValue;
-            }
+            if ((!bestSpotValue.Equals(-1)) && (!(bestSpotValue < hidingSpot._obscurityValue))) continue;
+            bestSpot = spot;
+            bestSpotValue = hidingSpot._obscurityValue;
         }
         if(bestSpot != null){
             // If a spot was found return the position of the hiding spot.
