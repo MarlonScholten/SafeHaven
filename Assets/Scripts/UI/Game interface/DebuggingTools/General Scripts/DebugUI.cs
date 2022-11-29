@@ -22,7 +22,7 @@ namespace DebuggingTools
 
         private void ClearWidgets()
         {
-            for (int i = _debugContainer.transform.childCount - 1; i >= 0; i--)
+            for (int i = _debugContainer.transform.childCount - 1; i >= 1; i--)
             {
                 Destroy(_debugContainer.transform.GetChild(i).gameObject);
             }

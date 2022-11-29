@@ -16,12 +16,12 @@
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="3161908922" Language="SFX" Hash="2089059295">
+		<SoundBank Id="3161908922" Language="SFX" Hash="2749724593">
 			<ObjectPath>\SoundBanks\Default Work Unit\Main</ObjectPath>
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<IncludedEvents>
-				<Event Id="1027248228" Name="Play_Proxlamp_Draft1" ObjectPath="\Events\Default Work Unit\ProximityLamp\Play_Proxlamp_Draft1" MaxAttenuation="5." DurationType="Infinite">
+				<Event Id="1027248228" Name="Play_Proxlamp_Draft1" ObjectPath="\Events\Default Work Unit\ProximityLamp\Play_Proxlamp_Draft1" MaxAttenuation="10." DurationType="Infinite">
 					<IncludedMemoryFiles>
 						<File Id="471118391" Language="SFX">
 							<ShortName>Proxlamp_Draft1.wav</ShortName>
@@ -29,7 +29,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="1848665912" Name="Play_Proxlamp_Draft1_Buzz" ObjectPath="\Events\Default Work Unit\ProximityLamp\Play_Proxlamp_Draft1_Buzz" MaxAttenuation="5." DurationType="Infinite">
+				<Event Id="1848665912" Name="Play_Proxlamp_Draft1_Buzz" ObjectPath="\Events\Default Work Unit\ProximityLamp\Play_Proxlamp_Draft1_Buzz" MaxAttenuation="10." DurationType="Infinite">
 					<IncludedMemoryFiles>
 						<File Id="956986432" Language="SFX">
 							<ShortName>Proxlamp_Draft1_Buzz.wav</ShortName>
@@ -37,7 +37,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="2922544410" Name="Play_Proxlamp_Draft1_Buzz2" ObjectPath="\Events\Default Work Unit\ProximityLamp\Play_Proxlamp_Draft1_Buzz2" MaxAttenuation="5." DurationType="Infinite">
+				<Event Id="2922544410" Name="Play_Proxlamp_Draft1_Buzz2" ObjectPath="\Events\Default Work Unit\ProximityLamp\Play_Proxlamp_Draft1_Buzz2" MaxAttenuation="10." DurationType="Infinite">
 					<IncludedMemoryFiles>
 						<File Id="660339623" Language="SFX">
 							<ShortName>Proxlamp_Draft1_Buzz2.wav</ShortName>
@@ -53,7 +53,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="752515743" Name="Play_Proxlamp_Draft1_Hum" ObjectPath="\Events\Default Work Unit\ProximityLamp\Play_Proxlamp_Draft1_Hum" MaxAttenuation="5." DurationType="Infinite">
+				<Event Id="752515743" Name="Play_Proxlamp_Draft1_Hum" ObjectPath="\Events\Default Work Unit\ProximityLamp\Play_Proxlamp_Draft1_Hum" MaxAttenuation="10." DurationType="Infinite">
 					<IncludedMemoryFiles>
 						<File Id="267255239" Language="SFX">
 							<ShortName>Proxlamp_Draft1_Hum.wav</ShortName>
@@ -61,19 +61,27 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
+				<Event Id="988743807" Name="Play_Proxlamp_Draft1_Hum2" ObjectPath="\Events\Default Work Unit\ProximityLamp\Play_Proxlamp_Draft1_Hum2" MaxAttenuation="10." DurationType="Infinite">
+					<IncludedMemoryFiles>
+						<File Id="956986432" Language="SFX">
+							<ShortName>Proxlamp_Draft1_Buzz.wav</ShortName>
+							<Path>SFX\Proxlamp_Draft1_Buzz_B2C7E24E.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 				<Event Id="2024687188" Name="Play_TestSound_Loop" ObjectPath="\Events\Default Work Unit\TestSounds\Play_TestSound_Loop" DurationType="Infinite">
 					<IncludedMemoryFiles>
 						<File Id="9335138" Language="SFX">
 							<ShortName>TestSounds\TestSound_Loop.wav</ShortName>
-							<Path>SFX\TestSounds\TestSound_Loop_D79FB2B7.wem</Path>
+							<Path>SFX\TestSounds\TestSound_Loop_96065C5B.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="4206196186" Name="Play_TestSound_Single" ObjectPath="\Events\Default Work Unit\TestSounds\Play_TestSound_Single" DurationType="OneShot" DurationMin="2.252336" DurationMax="2.252336">
+				<Event Id="4206196186" Name="Play_TestSound_Single" ObjectPath="\Events\Default Work Unit\TestSounds\Play_TestSound_Single" DurationType="OneShot" DurationMin="2.125398" DurationMax="2.125398">
 					<IncludedMemoryFiles>
 						<File Id="10365183" Language="SFX">
 							<ShortName>TestSounds\TestSound_Single.wav</ShortName>
-							<Path>SFX\TestSounds\TestSound_Single_10C4C929.wem</Path>
+							<Path>SFX\TestSounds\TestSound_Single_C4BD416F.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
@@ -89,7 +97,9 @@
 				<Event Id="408457746" Name="Stop_Proxlamp_Draft1_Buzz" ObjectPath="\Events\Default Work Unit\ProximityLamp\Stop_Proxlamp_Draft1_Buzz" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 				<Event Id="1701704292" Name="Stop_Proxlamp_Draft1_Buzz2" ObjectPath="\Events\Default Work Unit\ProximityLamp\Stop_Proxlamp_Draft1_Buzz2" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 				<Event Id="4294825585" Name="Stop_Proxlamp_Draft1_Hum" ObjectPath="\Events\Default Work Unit\ProximityLamp\Stop_Proxlamp_Draft1_Hum" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
+				<Event Id="1838715857" Name="Stop_Proxlamp_Draft1_Hum2" ObjectPath="\Events\Default Work Unit\ProximityLamp\Stop_Proxlamp_Draft1_Hum2" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 				<Event Id="3467245854" Name="Stop_TestSound_Loop" ObjectPath="\Events\Default Work Unit\TestSounds\Stop_TestSound_Loop" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
+				<Event Id="25015968" Name="Stop_TestSound_Single" ObjectPath="\Events\Default Work Unit\TestSounds\Stop_TestSound_Single" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 			</IncludedEvents>
 		</SoundBank>
 	</SoundBanks>

@@ -51,7 +51,7 @@ namespace DebuggingTools
 
         private void Start()
         {
-            InputBehaviour.Instance.OnToggleDebugginTools += OnToggleDebugginTools;
+            InputBehaviour.Instance.OnToggleDebugginToolsEvent += OnToggleDebugginTools;
         }
 
         private IEnumerator LateStart()
@@ -61,7 +61,7 @@ namespace DebuggingTools
             ToggleDebuggingToolsEvent.Invoke(_debuggerEnabled);
         }
 
-        public void OnToggleDebugginTools(InputAction.CallbackContext ctx)
+        public void OnToggleDebugginTools()
         {
             _debuggerEnabled = !_debuggerEnabled;
             ToggleDebuggingToolsEvent.Invoke(_debuggerEnabled);
