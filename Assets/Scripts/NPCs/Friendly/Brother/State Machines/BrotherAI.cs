@@ -1,14 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.InputSystem;
-
 
 /// <summary>
 /// Author: Jelco van der Straaten </para>
-/// Modified by:  Jelco</para>
+/// Modified by: Thijs Orsel and Iris Giezen</para>
 /// This script controls the state of the brotherAI. In this script al the calculation for the states are made.
 /// </summary>
 /// <list type="table">
@@ -88,7 +84,7 @@ public class BrotherAI : MonoBehaviour
     /// In the start method the declaration for the input is made.
     /// </summary>
     void Start(){
-        InputBehaviour.Instance.OnCallBrother += CallBrother;
+        InputBehaviour.Instance.OnCallBrotherEvent += CallBrother;
     }
 
     /// <summary>
@@ -104,7 +100,7 @@ public class BrotherAI : MonoBehaviour
     /// <summary>
     /// When the brother is called back this method makes sure the brother gets back to the follow state.
     /// </summary>
-    private void CallBrother(InputAction.CallbackContext ctx){
+    private void CallBrother(){
         CustomEvent.Trigger(this.gameObject, "Follow");
     }
 

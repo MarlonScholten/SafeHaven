@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 /// <summary>
 /// Author: Iris Giezen and Thijs Orsel </para>
@@ -35,17 +33,16 @@ public class QuickPingController : AbstractPingController
 
     private void Start()
     {
-        InputBehaviour.Instance.OnPingQuick += OnQuickPing;
-        InputBehaviour.Instance.OnPingQuickCancelled += CancelQuickPing;
-        InputBehaviour.Instance.OnPingMenu += StartOnMenuPing;
+        InputBehaviour.Instance.OnPingQuickEvent += OnQuickPing;
+        InputBehaviour.Instance.OnPingQuickCancelledEvent += CancelQuickPing;
+        InputBehaviour.Instance.OnPingMenuEvent += StartOnMenuPing;
     }
 
     /// <summary>
     /// Gets called when left clicking.
     /// Handles the finding and passing the location of the ping.
     /// </summary>
-    /// <param name="callbackContext">Information provided to action callbacks about what triggered an action. Needed to make the function react on actions.</param>
-    private void OnQuickPing(InputAction.CallbackContext callbackContext)
+    private void OnQuickPing()
     {
         if (_radialMenu.activeSelf || _quickCancelled) return;
         _quickCancelled = false;
@@ -71,8 +68,7 @@ public class QuickPingController : AbstractPingController
     /// Gets called when a left click is cancelled (done). 
     /// Is used for making sure you can't use QuickPing in the radial menu.
     /// </summary>
-    /// <param name="callbackContext">Information provided to action callbacks about what triggered an action. Needed to make the function react on actions.</param>
-    private void CancelQuickPing(InputAction.CallbackContext callbackContext)
+    private void CancelQuickPing()
     {
         _quickCancelled = false;
     }
@@ -81,8 +77,7 @@ public class QuickPingController : AbstractPingController
     /// Gets called when a right click is performed.
     /// Is used for making sure you can't use QuickPing in the radial menu.
     /// </summary>
-    /// <param name="callbackContext">Information provided to action callbacks about what triggered an action. Needed to make the function react on actions.</param>
-    private void StartOnMenuPing(InputAction.CallbackContext callbackContext)
+    private void StartOnMenuPing()
     {
         _quickCancelled = true;
     }

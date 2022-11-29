@@ -70,7 +70,7 @@ public class InputBehaviour : MonoBehaviour
     /// 'Hides brother at "cursor to world" location. If that location is not an a hiding spot, he will choose the nearest one to him.'
     /// Uses LMB as the action key.
     /// </summary>
-    public event InputBehaviourEvent OnPingQuickCancelled;
+    public event InputBehaviourEvent OnPingQuickCancelledEvent;
 
     /// <summary>
     /// 'Calls brother to return to the player character.'
@@ -116,7 +116,7 @@ public class InputBehaviour : MonoBehaviour
     /// Comfort the brother.
     /// Uses C key as the action key.
     /// </summary>
-    public event InputBehaviourEvent OnComfort;
+    public event InputBehaviourEvent OnComfortEvent;
 
     // Private.
     //private InputManager _inputs;
@@ -144,6 +144,8 @@ public class InputBehaviour : MonoBehaviour
     private void OnThrow() => OnThrowEvent?.Invoke();
     private void OnPingMenu() => OnPingMenuEvent?.Invoke();
     private void OnPingQuick() => OnPingQuickEvent?.Invoke();
+    private void OnPingQuickCanceled() => OnPingQuickCancelledEvent?.Invoke();
+    private void OnComfort() => OnComfortEvent?.Invoke();
     private void OnCallBrother() => OnCallBrotherEvent?.Invoke();
     private void OnItemInteract() => OnItemInteractEvent?.Invoke();
     private void OnToggleStealth() => OnToggleStealthEvent?.Invoke();

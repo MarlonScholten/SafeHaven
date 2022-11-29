@@ -1,12 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
 
 /// <summary>
 /// Author: Jelco van der Straaten </para>
-/// Modified by:  Jelco</para>
+/// Modified by: Thijs Orsel and Iris Giezen</para>
 /// This script controls the fear of the broter.
 /// </summary>
 /// <list type="table">
@@ -81,7 +77,7 @@ public class FearSystem : MonoBehaviour
     private GameObject[] _enemies;
 
     void Start(){
-        InputBehaviour.Instance.OnComfort += Comfort;
+        InputBehaviour.Instance.OnComfortEvent += Comfort;
     }
 
     /// <summary>
@@ -112,7 +108,7 @@ public class FearSystem : MonoBehaviour
     /// This function decreases the fear level. It gets called when the player comforts the brother. </para>
     /// The brother then gets comforted by the amount set bij the comfortIncrement.
     /// </summary>
-    public void Comfort(InputAction.CallbackContext ctx){
+    public void Comfort(){
         if(_fear > 0){
             _fear -= _comfortIncrement;
         }

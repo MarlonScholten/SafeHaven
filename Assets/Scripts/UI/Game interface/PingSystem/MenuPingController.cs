@@ -127,8 +127,8 @@ public class MenuPingController : AbstractPingController
     {
         _radialMenu.SetActive(false);
         _cancelled = NotCancelled;
-        InputBehaviour.Instance.OnPingMenu += OnMenuPing; 
-        InputBehaviour.Instance.OnPingQuick += OnLeftMouseButton;
+        InputBehaviour.Instance.OnPingMenuEvent += OnMenuPing; 
+        InputBehaviour.Instance.OnPingQuickEvent += OnLeftMouseButton;
     }
 
     /// <summary>
@@ -221,8 +221,7 @@ public class MenuPingController : AbstractPingController
     /// <summary>
     /// When the player presses the left mouse button an action can be selected or the radial menu can be cancelled.
     /// </summary>
-    /// <param name="callbackContext">Information provided to action callbacks about what triggered an action. Needed to make the function react on actions.></param>
-    private void OnLeftMouseButton(InputAction.CallbackContext callbackContext)
+    private void OnLeftMouseButton()
     {
         if (!_radialMenu.activeSelf) return;
 
@@ -242,8 +241,7 @@ public class MenuPingController : AbstractPingController
     /// <summary>
     /// When the player presses the right mouse button a ping gets placed, time slows down and the radial menu gets activated.
     /// </summary>
-    /// <param name="callbackContext">Information provided to action callbacks about what triggered an action. Needed to make the function react on actions.></param>
-    private void OnMenuPing(InputAction.CallbackContext callbackContext)
+    private void OnMenuPing()
     {
         if (_radialMenuIsSetActive) return;
         _radialMenuIsSetActive = true;
