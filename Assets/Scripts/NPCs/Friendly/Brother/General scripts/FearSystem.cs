@@ -91,12 +91,10 @@ public class FearSystem : MonoBehaviour
         Vector3 enemyPos = enemy.transform.position;
         Vector3 dirToEnemy = (enemyPos - transform.position).normalized;
         float distance = Vector3.Distance(transform.position, enemyPos);
-        if((Vector3.Angle(transform.forward, dirToEnemy)) < (_viewAngle / 2)){
-            if(Physics.Raycast(transform.position, dirToEnemy, out RaycastHit hit, distance)){
-                if(hit.collider.CompareTag("Enemy")){
-                    UpdateFearLevel(distance);
-                }
-            }                    
+        if (!((Vector3.Angle(transform.forward, dirToEnemy)) < (_viewAngle / 2))) return;
+        if (!Physics.Raycast(transform.position, dirToEnemy, out RaycastHit hit, distance)) return;
+        if(hit.collider.CompareTag("Enemy")){
+            UpdateFearLevel(distance);
         }
     }
 

@@ -132,17 +132,16 @@ public class FindHidingSpot : MonoBehaviour
         // TODO: Will need to implement method in Enemy AI to do a raycast to the position and check if there are any objects in between.
         // Maybe could implement it with enemy FOV in mind but for now this is an temporary solution, beceause enemy needs to implement this.
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach(GameObject enemy in enemies){
+        foreach(var enemy in enemies){
             
             var hidingSpotPosition = spot.transform.position;
             var enemyPosition = enemy.transform.position;
             Vector3 dirToEnemy = (enemyPosition - hidingSpotPosition).normalized;
             float distance = Vector3.Distance(hidingSpotPosition, enemyPosition);
-            
-            if(Physics.Raycast(spot.transform.position, dirToEnemy, out RaycastHit hit, distance + 0.1f)){
-                if(hit.collider.CompareTag("Enemy")){
-                        isVisible = true;
-                }                                      
+
+            if (!Physics.Raycast(spot.transform.position, dirToEnemy, out RaycastHit hit, distance + 0.1f)) continue;
+            if(hit.collider.CompareTag("Enemy")){
+                isVisible = true;
             }
         }
         return isVisible;
