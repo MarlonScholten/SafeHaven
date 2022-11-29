@@ -39,10 +39,10 @@ public class BrotherEncounter : MonoBehaviour
     /// <para>This method is used by the pinging system.</para>
     /// The method gets called when a ping is made. This method changes the state of the brother depending on the ping.
     /// </summary>
-    private void OnTriggerStay(Collider other){
-        if(other.gameObject.tag == "Brother"){
-            var fearSystem = other.GetComponentInParent<FearSystem>();
-            fearSystem.CheckEnemyEncounter(this.gameObject);
-        }
+    private void OnTriggerStay(Collider other)
+    {
+        if (!other.gameObject.CompareTag("Brother")) return;
+        var fearSystem = other.GetComponentInParent<FearSystem>();
+        fearSystem.CheckEnemyEncounter(this.gameObject);
     }
 }
