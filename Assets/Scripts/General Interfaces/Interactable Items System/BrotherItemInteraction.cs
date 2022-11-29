@@ -6,6 +6,10 @@ using Random = UnityEngine.Random;
 
     namespace InteractableItemsSystem
     {
+        /// <summary>
+        /// Don't use still work in progress by Jasper Driessen.
+        /// Will be for the brotherAI.
+        /// </summary>
         public class BrotherItemInteraction : MonoBehaviour
         {
             private Inventory _inventory;

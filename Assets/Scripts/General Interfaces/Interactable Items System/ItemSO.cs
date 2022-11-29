@@ -34,13 +34,25 @@ namespace InteractableItemsSystem
     public class ItemSO : ScriptableObject
     {
         [Tooltip("Name of the item.")][SerializeField] private string _name;
-        [Tooltip("Sort of item. Like a key for example")][SerializeField] private string _sort;
-        [Tooltip("Icon that is used in the inventory UI for showing which item you're holding")][SerializeField] private Sprite _icon;
-        [Tooltip("Determines if item is throwable.")][SerializeField] private bool _isThrowable;
+        [Tooltip("Sort of item. For example a key.")][SerializeField] private string _sort;
+        [Tooltip("Icon that is used in the inventory UI for showing which item you're holding.")][SerializeField] private Sprite _icon;
+        [Tooltip("Determines if item is throwable or not.")][SerializeField] private bool _isThrowable;
         
+        /// <summary>
+        /// Name of the item.
+        /// </summary>
         public string Name => _name;
+        /// <summary>
+        /// Sort of the item, for example a key.
+        /// </summary>
         public string Sort => _sort;
+        /// <summary>
+        /// Icon of the item, used in the inventoryUI.
+        /// </summary>
         public Sprite Icon => _icon;
+        /// <summary>
+        /// Determines if item is throwable or not.
+        /// </summary>
         public bool IsThrowable => _isThrowable;
     }
 }
