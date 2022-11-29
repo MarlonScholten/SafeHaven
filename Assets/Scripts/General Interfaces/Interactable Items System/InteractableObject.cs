@@ -25,8 +25,8 @@ namespace InteractableItemsSystem
     ///     </item>
     ///     <item>
     ///         <term>The GameObject of your interactable object</term>
+    ///         <term>Component</term>
     ///         <term>Collider</term>
-    ///         <term>Box Collider</term>
     ///         <term>This is needed so the ray of the player can interact with the object.</term>
     ///     </item>
     ///   <item>

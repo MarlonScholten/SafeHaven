@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8910ebe38370c04ebb83af11ed6f11d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inventoryUI: {fileID: 0}
+  _inventoryItemUI: {fileID: 0}
   ItemInInventoryObj: {fileID: 0}
   ItemInInventory: {fileID: 0}
   HasItemInInventory: 0
@@ -65,8 +65,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _itemHolder: {fileID: 7552954520759366822}
-  _maxPickupRange: 10
-  _maxInteractRange: 5
+  _maxPickupRange: 3
+  _maxInteractRange: 2
+  _showSpamDebug: 0
 --- !u!114 &4417037690750349137
 MonoBehaviour:
   m_ObjectHideFlags: 0

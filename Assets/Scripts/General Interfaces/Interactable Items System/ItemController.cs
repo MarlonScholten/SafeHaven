@@ -27,6 +27,31 @@ namespace InteractableItemsSystem
     ///         <term>ItemController - Item</term>
     ///         <term>Add the corresponding scriptable object (Item). Stores the data of an item.</term>
     ///     </item>
+    ///     <item>
+    ///         <term>Item GameObject</term>
+    ///         <term>Component</term>
+    ///         <term>Collider</term>
+    ///         <term>This is needed so the ray of the player can interact with the Item.</term>
+    ///     </item>
+    ///   <item>
+    ///         <term>Item GameObject</term>
+    ///         <term>Layer</term>
+    ///         <term>InteractableItem</term>
+    ///         <term>Ray uses this layer to detect the Item.</term>
+    ///     </item>
+    ///     <item>
+    ///         <term>Item GameObject</term>
+    ///         <term>Component</term>
+    ///         <term>Rigidbody</term>
+    ///         <term>So the item uses the physics system.</term>
+    ///     </item>
+    ///      <item>
+    ///         <term>Player GameObject</term>
+    ///         <term>Script</term>
+    ///         <term>Player Controller - Cam Raycast layer</term>
+    ///         <term>Add InteractableItems layer to the Cam Raycast layer in Player Controller.
+    ///         So the raycast is also casted on that layer.</term>
+    ///     </item>
     /// </list>
     public class ItemController : MonoBehaviour
     {
