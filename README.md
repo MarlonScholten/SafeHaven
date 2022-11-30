@@ -42,6 +42,8 @@ The changelog for what was changed and added for every sprint.
 - Interaction with static obstacles with UI prompt
 - Version number in debugging tools
 - Enemy AI
+- Brother AI
+- Pinging Command System
 - Interaction with items (picking up and using)
 - Throwing mechanic
 - Proximity triggers improvement
