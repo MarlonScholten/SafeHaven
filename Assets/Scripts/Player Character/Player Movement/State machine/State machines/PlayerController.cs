@@ -7,7 +7,7 @@ namespace Player_Character.Player_Movement.State_machine.State_machines
 {
     /// <summary>
     /// Author: Marlon Scholten <br/>
-    /// Modified by: Hugo Verweij <br/>
+    /// Modified by: Hugo Verweij, Hugo Ulfman <br/>
     /// Description: PlayerController behaviour. Controller for everything related to the player character's state, movement and actions. <br />
     /// Controls the states, and updates the correct parameters when the player inputs movement buttons. <br />
     /// Installation steps: <br />
@@ -97,6 +97,8 @@ namespace Player_Character.Player_Movement.State_machine.State_machines
         private Ray _playerCamRay;
         private RaycastHit _camRayCastHit;
 
+        private bool _crouching;
+
         private void Awake()
         {
             _states = new PlayerStateFactory(this);
@@ -143,7 +145,8 @@ namespace Player_Character.Player_Movement.State_machine.State_machines
         /// adjusts the movement speed of the player if the OnToggleStealthEvent is invoked.
         /// </summary>
         private void Crouch() {
-            if (_movementSpeed == 5f) {
+            _crouching = !_crouching;
+            if (_crouching) {
                 _movementSpeed = 2f;
             } else {
                 _movementSpeed = 5f;
