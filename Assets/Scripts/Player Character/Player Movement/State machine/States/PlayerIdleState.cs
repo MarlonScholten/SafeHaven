@@ -1,7 +1,6 @@
-using Player_Character.Player_Movement.State_machine.General_Scripts;
-using Player_Character.Player_Movement.State_machine.State_machines;
+using PlayerCharacter.Movement;
 
-namespace Player_Character.Player_Movement.State_machine.States
+namespace PlayerCharacter.States
 {
     /// <summary>
     /// Author: Marlon Scholten <br/>

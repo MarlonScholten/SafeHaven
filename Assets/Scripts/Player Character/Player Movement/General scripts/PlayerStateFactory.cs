@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
-using Player_Character.Player_Movement.State_machine.State_machines;
-using Player_Character.Player_Movement.State_machine.States;
+using PlayerCharacter.Movement;
 
-namespace Player_Character.Player_Movement.State_machine.General_Scripts
+namespace PlayerCharacter.States
 { 
     /// <summary>
     /// Author: Marlon Scholten <br/>

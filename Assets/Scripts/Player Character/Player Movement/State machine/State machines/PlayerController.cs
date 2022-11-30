@@ -1,9 +1,8 @@
 using System.Collections;
-using Player_Character.Player_Movement.State_machine.General_Scripts;
-using Player_Character.Player_Movement.State_machine.States;
+using PlayerCharacter.States;
 using UnityEngine;
 
-namespace Player_Character.Player_Movement.State_machine.State_machines
+namespace PlayerCharacter.Movement
 {
     /// <summary>
     /// Author: Marlon Scholten <br/>
