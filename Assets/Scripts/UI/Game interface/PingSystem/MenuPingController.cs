@@ -245,6 +245,7 @@ public class MenuPingController : AbstractPingController
     {
         if (_radialMenuIsSetActive) return;
         _radialMenuIsSetActive = true;
+        Cursor.lockState = CursorLockMode.None;
 
         var ray = GetRayFromCameraToMousePosition();
         SetPingPosition(ray);
@@ -269,6 +270,7 @@ public class MenuPingController : AbstractPingController
     /// </summary>
     private void CloseRadialMenu()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         _radialMenuIsSetActive = false;
         _radialMenu.SetActive(_radialMenuIsSetActive);
 
