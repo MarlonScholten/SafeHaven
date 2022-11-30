@@ -109,6 +109,7 @@ namespace Player_Character.Player_Movement.State_machine.State_machines
 
         private void Start()
         {
+            InputBehaviour.Instance.OnToggleStealthEvent += Crouch;
             StartCoroutine(CastLookingRay());
         }
 
@@ -136,6 +137,17 @@ namespace Player_Character.Player_Movement.State_machine.State_machines
         public bool IsMoving()
         {
             return MovementInput.x != 0 || MovementInput.y != 0;
+        }
+
+        /// <summary>
+        /// adjusts the movement speed of the player if the OnToggleStealthEvent is invoked.
+        /// </summary>
+        private void Crouch() {
+            if (_movementSpeed == 5f) {
+                _movementSpeed = 2f;
+            } else {
+                _movementSpeed = 5f;
+            }
         }
 
         /// <summary>
