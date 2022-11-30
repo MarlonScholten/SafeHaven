@@ -61,7 +61,7 @@ public class FSM_Scriptable_Object : ScriptableObject
     public float CatchDistance => catchDistance;
     
     [Tooltip("The distance that a guard can notify other enemies")]
-    [SerializeField] private float guardAlertRadius = 5;
+    [SerializeField] private float guardAlertRadius = 10;
     public float GuardAlertRadius => guardAlertRadius;
     
     [Tooltip("The distance that a guard can patrol around its waypoint")]
