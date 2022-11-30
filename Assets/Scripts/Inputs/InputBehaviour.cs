@@ -65,6 +65,12 @@ public class InputBehaviour : MonoBehaviour
     /// Uses LMB as the action key.
     /// </summary>
     public event InputBehaviourEvent OnPingQuickEvent;
+    
+    /// <summary>
+    /// 'Hides brother at "cursor to world" location. If that location is not an a hiding spot, he will choose the nearest one to him.'
+    /// Uses LMB as the action key.
+    /// </summary>
+    public event InputBehaviourEvent OnPingQuickCancelledEvent;
 
     /// <summary>
     /// 'Calls brother to return to the player character.'
@@ -106,6 +112,12 @@ public class InputBehaviour : MonoBehaviour
     /// </summary>
     public event InputBehaviourEvent OnPauseEvent;
 
+    /// <summary>
+    /// Comfort the brother.
+    /// Uses C key as the action key.
+    /// </summary>
+    public event InputBehaviourEvent OnComfortEvent;
+
     // Private.
     //private InputManager _inputs;
 
@@ -131,7 +143,17 @@ public class InputBehaviour : MonoBehaviour
     public void OnLook(InputAction.CallbackContext context) => _onLookVector = context.ReadValue<Vector2>();
     public void OnThrow(InputAction.CallbackContext context) => OnThrowEvent?.Invoke();
     public void OnPingMenu(InputAction.CallbackContext context) => OnPingMenuEvent?.Invoke();
-    public void OnPingQuick(InputAction.CallbackContext context) => OnPingQuickEvent?.Invoke();
+    public void OnComfort(InputAction.CallbackContext context) => OnComfortEvent?.Invoke();
+    public void OnPingQuick(InputAction.CallbackContext context)
+    {
+        if (context.canceled)
+        {
+            OnPingQuickCancelledEvent?.Invoke();
+        }else if (context.performed)
+        {
+            OnPingQuickEvent?.Invoke();
+        }
+    }
     public void OnCallBrother(InputAction.CallbackContext context) => OnCallBrotherEvent?.Invoke();
     public void OnItemInteract(InputAction.CallbackContext context) => OnItemInteractEvent?.Invoke();
     public void OnToggleStealth(InputAction.CallbackContext context) => OnToggleStealthEvent?.Invoke();
