@@ -10,11 +10,10 @@ namespace PlayerCharacter.Movement
     /// Description: PlayerController behaviour. Controller for everything related to the player character's state, movement and actions. <br />
     /// Controls the states, and updates the correct parameters when the player inputs movement buttons. <br />
     /// Installation steps: <br />
-    /// 1. Drag in the Player prefab in the scene.
-    /// 2. Drag the PlayerThirdPersonCamera prefab into the scene.
+    /// 1. Drag the Player prefab into the scene/hierarchy.
+    /// 2. Drag the PlayerThirdPersonCamera prefab into the scene/hierarchy.
     /// 3. Select PlayerThirdPersonCamera and drag the Player into the Follow and LookAt properties in the inspector.
-    /// 4. Select Player and drag the Main Camera (with the CinemachineBrain on it) into the Player Camera property.
-    /// 5. Check the table below to configure necessary tags, layers and other needed components.
+    /// 4. Check the table below to configure necessary tags, layers and other needed components.
     /// </summary>
     /// <list type="table">
     ///	    <listheader>
@@ -75,9 +74,6 @@ namespace PlayerCharacter.Movement
         [Tooltip("Gravity strength multiplier for faster or slower falling speed")]
         private float _gravityMultiplier = 1f;
         [SerializeField]
-        [Tooltip("The camera that is responsible for keeping the player in view")]
-        private Camera _playerCamera;
-        [SerializeField]
         [Tooltip("The layers that the camera raycast should hit")]
         private LayerMask _camRayCastLayers;
         [SerializeField] [Range(1f, 200f)]
@@ -103,6 +99,7 @@ namespace PlayerCharacter.Movement
 
         private CharacterController CharacterController { get; set; }
         private Vector3 _movement;
+        private Camera _playerCamera;
         private const float _gravity = 9.8f;
         private Quaternion _rotation;
         private PlayerStateFactory _states;
@@ -118,6 +115,7 @@ namespace PlayerCharacter.Movement
             
             CharacterController = GetComponent<CharacterController>();
             _playerCamRay = PlayerCamera.ScreenPointToRay(Input.mousePosition);
+            _playerCamera = Camera.main;
         }
 
         private void Start()
