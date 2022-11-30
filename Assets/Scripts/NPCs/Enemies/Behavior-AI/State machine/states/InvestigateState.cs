@@ -54,9 +54,9 @@ public class InvestigateState : MonoBehaviour
     /// </summary>
     public void Enter_Investigate()
     {
-        if (_stateManager.alertedBySound) _stateManager.CalculateInvestigateLocation(_stateManager.locationOfNoise);
-        else if(_stateManager.alertedByVision) _stateManager.CalculateInvestigateLocation(_stateManager.spottedPlayerLastPosition);
-        else if(_stateManager.alertedByGuard) _stateManager.CalculateInvestigateLocation(_stateManager.recievedLocationFromGuard);
+        if (_stateManager.alertedBySound) _stateManager.CheckPositionReachable(_stateManager.locationOfNoise);
+        else if(_stateManager.alertedByVision) _stateManager.CheckPositionReachable(_stateManager.spottedPlayerLastPosition);
+        else if(_stateManager.alertedByGuard) _stateManager.CheckPositionReachable(_stateManager.recievedLocationFromGuard);
     }
     
     /// <summary>
@@ -77,7 +77,7 @@ public class InvestigateState : MonoBehaviour
     /// </summary>
     public void FixedUpdate_Investigate()
     {
-        //Check if location is reachable
+        //Check if navmesh agent is still moving
         if (!_stateManager.waitingAtWaypoint && _stateManager.navMeshAgent.velocity.magnitude < 0.1f)
         {
             _stateManager.CalculateInvestigateLocation(transform.position);
@@ -132,6 +132,4 @@ public class InvestigateState : MonoBehaviour
         if(_waitingAtWaypointDuringInvestigationCoroutineIsRunning)StopCoroutine(_waitingAtWaypointDuringInvestigationCoroutine);
         _waitingAtWaypointDuringInvestigationCoroutineIsRunning = false;
     }
-    
-    
 }

@@ -79,7 +79,7 @@ public class ChasingState : MonoBehaviour
         //If the player/brother is in vision the enemy moves towards the player/brother. If the player/brother is not in vision but has been in vision in the last 3 seconds, the enemy moves towards the player/brother.
         if (_stateManager.CheckVision() || (!_stateManager.CheckVision() && (_stateManager.timePlayerLastSpotted + _stateManager.enemyAiScriptableObject.ChaseTimeWhenNotSeen) > Time.time))
         {
-            _stateManager.CheckPlayerPositionReachable(_stateManager.spottedPlayer.transform.position);
+            _stateManager.CheckPositionReachable(_stateManager.spottedPlayer.transform.position);
         }
     }
     

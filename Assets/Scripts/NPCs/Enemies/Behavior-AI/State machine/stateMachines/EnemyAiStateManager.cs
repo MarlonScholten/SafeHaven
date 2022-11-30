@@ -74,8 +74,8 @@ public class EnemyAiStateManager : MonoBehaviour
     public FSM_Scriptable_Object enemyAiScriptableObject;
     [Tooltip("Boolean to set if the enemy is an guard or not")]
     public bool isGuard; // if the enemy is a guard or not
-    [NonSerialized] public List<Transform> wayPoints = new (); // List of waypoints if not a guard
-    [NonSerialized] public Transform guardWaypoint; // Waypoint if guard
+    [HideInInspector] public List<Transform> wayPoints; // List of waypoints if not a guard
+    [HideInInspector] public Transform guardWaypoint; // Waypoint if guard
     [NonSerialized] public NavMeshAgent navMeshAgent; // Navmesh agent component
     [NonSerialized] public Vector3 targetWpLocation; // Location of the current target waypoint
     [NonSerialized] public int currentWpIndex; // Index of the current target waypoint
@@ -138,7 +138,7 @@ public class EnemyAiStateManager : MonoBehaviour
         var angleToPlayer = Vector3.Angle(transform1.forward, directionToPlayer);
         
         if (angleToPlayer >= enemyAiScriptableObject.VisionAngle) return false; // Check if the player is in set vision angle
-        if (!Physics.Raycast(transform.position, directionToPlayer, out var hit, enemyAiScriptableObject.VisionRange)) return false; // Check if the player is in set vision range
+        if (!Physics.Raycast(transform.position + new Vector3(0f, transform.lossyScale.y / 2, 0f), directionToPlayer, out var hit, enemyAiScriptableObject.VisionRange)) return false; // Check if the player is in set vision range
         var path = new NavMeshPath();
         navMeshAgent.CalculatePath(hit.transform.position, path);
         if (path.status == NavMeshPathStatus.PathPartial) return false; // Check if the player is reachable
@@ -172,15 +172,8 @@ public class EnemyAiStateManager : MonoBehaviour
         var randDirection = Random.insideUnitSphere * enemyAiScriptableObject.InvestigateDistance;
         randDirection += position;
         NavMesh.SamplePosition (randDirection, out NavMeshHit navHit, enemyAiScriptableObject.InvestigateDistance, 1);
-        if (!navHit.hit)
-        {
-            targetWpLocation = position;
-        }
-        else
-        {
-            targetWpLocation = navHit.position;
-        }
-        CheckPlayerPositionReachable(targetWpLocation);
+        targetWpLocation = !navHit.hit ? position : navHit.position;
+        CheckPositionReachable(targetWpLocation);
         waitingAtWaypoint = false;
     }
     /// <summary>
@@ -190,24 +183,11 @@ public class EnemyAiStateManager : MonoBehaviour
     {
         return Vector3.Distance(transform.position, targetWpLocation) <= 2f;
     }
-
-    Vector3 getRandomPoint(Vector3 position)
-    {
-        var randDirection = Random.insideUnitSphere * enemyAiScriptableObject.InvestigateDistance;
-        randDirection += position;
-        NavMesh.SamplePosition (randDirection, out NavMeshHit navHit, enemyAiScriptableObject.InvestigateDistance, 1);
-        
-        if (!navHit.hit)
-        {
-            return getRandomPoint(position);
-        }
-        return Vector3.zero;
-    }
-
+    
     /// <summary>
     /// This method checks if the enemy can reach the player/brother position.
     /// </summary>
-    public void CheckPlayerPositionReachable(Vector3 playerPosition)
+    public void CheckPositionReachable(Vector3 playerPosition)
     {
         var path = new NavMeshPath(); 
         navMeshAgent.CalculatePath(playerPosition, path);
@@ -215,10 +195,12 @@ public class EnemyAiStateManager : MonoBehaviour
         {
             targetWpLocation = path.corners.Last();
             navMeshAgent.SetDestination(path.corners.Last());
-            spottedPlayerLastPosition = path.corners.Last();
+            if(alertedByVision)spottedPlayerLastPosition = path.corners.Last();
+            if(alertedByGuard)recievedLocationFromGuard = path.corners.Last();
         }
         else
         {
+            targetWpLocation = playerPosition;
             navMeshAgent.SetDestination(playerPosition);
         }
     }
@@ -229,5 +211,16 @@ public class EnemyAiStateManager : MonoBehaviour
     public static void CatchChild()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    /// <summary>
+    /// This method rotates the enemy towards a target.
+    /// </summary>
+    /// <param name="target">Target to rotate towards</param>
+    public void RotateTowards(Vector3 target)
+    {
+        transform.rotation = Quaternion.Slerp(transform.rotation,
+            Quaternion.LookRotation(target  - transform.position),
+            2 * Time.deltaTime);
     }
 }

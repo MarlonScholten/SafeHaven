@@ -92,12 +92,12 @@ public class AlertedState : MonoBehaviour
             CustomEvent.Trigger(gameObject, "Patrol");
         }
         //If the enemy is alerted by sound it will investigate the sound.
-        else if (_stateManager.alertedBySound || _stateManager.alertedByGuard)
+        else if (_stateManager.alertedBySound || _stateManager.alertedByGuard &&  !_stateManager.isGuard)
         {
             CustomEvent.Trigger(gameObject, "Investigate");
         }
             //If the enemy is alerted by vision it will start chasing.
-        else if (_stateManager.alertedByVision)
+        else if (_stateManager.alertedByVision && !_stateManager.isGuard)
         {
             CustomEvent.Trigger(gameObject, "Chasing");
         }
@@ -116,9 +116,15 @@ public class AlertedState : MonoBehaviour
     {
         //The Enemy looks around while it is alerted.
         if(!_stateManager.isGuard)_stateManager.LookAround();
-        if (_stateManager.isGuard)_stateManager.transform.rotation = Quaternion.Slerp(_stateManager.transform.rotation,
-                Quaternion.LookRotation(_stateManager.spottedPlayer.transform.position - _stateManager.transform.position),
-                5 * Time.deltaTime);
+        if (_stateManager.isGuard) LookTowardsPlayer();
+   
+    }
+
+    private void LookTowardsPlayer()
+    {
+        // check if spottedPlayer is in vision with a raycast
+        if(_stateManager.alertedBySound) _stateManager.RotateTowards(_stateManager.locationOfNoise);
+        else if (_stateManager.alertedByVision) _stateManager.RotateTowards(_stateManager.spottedPlayer.transform.position);
     }
     
     /// <summary>
@@ -142,6 +148,9 @@ public class AlertedState : MonoBehaviour
         var givenPosition = ownPosition;
         if (_stateManager.alertedBySound) givenPosition = _stateManager.locationOfNoise;
         else if (_stateManager.alertedByVision) givenPosition = _stateManager.spottedPlayerLastPosition;
-        foreach (var enemy in enemiesInRadius) { enemy.GetComponent<PatrolState>().AlertEnemyEvent.Invoke(givenPosition);}
+        foreach (var enemy in enemiesInRadius)
+        {
+            enemy.GetComponent<PatrolState>().AlertEnemyEvent.Invoke(givenPosition);
+        }
     }
 }
