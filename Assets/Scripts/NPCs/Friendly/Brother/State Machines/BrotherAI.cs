@@ -1,3 +1,4 @@
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -80,11 +81,16 @@ public class BrotherAI : MonoBehaviour
     /// </summary>
     private GameObject _player;
 
+    private Animator _animator;
+
+    private int _velocityHash;
+
     /// <summary>
     /// In the start method the declaration for the input is made.
     /// </summary>
     void Start(){
         InputBehaviour.Instance.OnCallBrotherEvent += CallBrother;
+        _velocityHash = Animator.StringToHash("forwardVelocity");
     }
 
     /// <summary>
@@ -94,9 +100,15 @@ public class BrotherAI : MonoBehaviour
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _findHidingSpot = gameObject.GetComponent<FindHidingSpot>();
-        _player = GameObject.FindGameObjectWithTag("Player");                
+        _player = GameObject.FindGameObjectWithTag("Player");
+        _animator = GetComponentInChildren<Animator>();
     }
-    
+
+    private void FixedUpdate()
+    {
+        _animator.SetFloat(_velocityHash, _navMeshAgent.velocity.magnitude);
+    }
+
     /// <summary>
     /// When the brother is called back this method makes sure the brother gets back to the follow state.
     /// </summary>

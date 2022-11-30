@@ -96,6 +96,9 @@ namespace Player_Character.Player_Movement.State_machine.State_machines
         private float _verticalSpeed;
         private Ray _playerCamRay;
         private RaycastHit _camRayCastHit;
+        
+        private Animator _animator;
+        private int _velocityHash;
 
         private void Awake()
         {
@@ -105,11 +108,13 @@ namespace Player_Character.Player_Movement.State_machine.State_machines
             
             CharacterController = GetComponent<CharacterController>();
             _playerCamRay = PlayerCamera.ScreenPointToRay(Input.mousePosition);
+            _animator = GetComponentInChildren<Animator>();
         }
 
         private void Start()
         {
             StartCoroutine(CastLookingRay());
+            _velocityHash = Animator.StringToHash("forwardVelocity");
         }
 
         private void OnDestroy()
@@ -127,6 +132,7 @@ namespace Player_Character.Player_Movement.State_machine.State_machines
             ApplyGravity();
             transform.rotation = _rotation;
             CharacterController.Move(_movement * Time.deltaTime);
+            _animator.SetFloat(_velocityHash, CharacterController.velocity.magnitude);
         }
 
         /// <summary>
