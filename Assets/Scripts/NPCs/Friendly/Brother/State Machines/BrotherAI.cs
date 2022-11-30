@@ -141,7 +141,7 @@ public class BrotherAI : MonoBehaviour
         CustomEvent.Trigger(this.gameObject, ping.ToString());     
     }
     /// <summary>
-    /// The enter method for the follow state
+    /// The enter method for the follow state, it sets the following distance for the brother.
     /// </summary>
     public void FollowEnter(){
         _navMeshAgent.stoppingDistance = _followDistance;  
@@ -161,7 +161,7 @@ public class BrotherAI : MonoBehaviour
     }
 
     /// <summary>
-    /// The exit method for the follow state
+    /// The exit method for the follow state, it resets the follow distance.
     /// </summary>
     public void FollowExit(){
         _navMeshAgent.stoppingDistance = 0;
