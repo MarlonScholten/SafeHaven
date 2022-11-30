@@ -34,3 +34,33 @@ The changelog for what was changed and added for every sprint.
 - Street level basic layout.
 - A test environment scene with mesurements for models.
 - Proof of concept animation controller.
+
+## Changelog sprint 2
+
+### Programming
+- Third person camera with collisions
+- Interaction with static obstacles with UI prompt
+- Version number in debugging tools
+- Enemy AI
+- Interaction with items (picking up and using)
+- Throwing mechanic
+- Proximity triggers improvement
+- Breakable object logic
+- Refactored centralized input system
+- Route system for cutscenes
+- Main, Pause and Settings menu
+- Custom keybinds
+
+### Art
+- Buildify buildings
+- Lamppost asset
+- Radiotower weenie
+
+### Design
+- Terrain tools
+- Second iteration of the level blockout
+
+### Sound
+- Added Wwise plugin
+- Menu music
+- Ambient game music
