@@ -139,7 +139,7 @@ public class MenuPingController : AbstractPingController
         if (!_radialMenuIsSetActive) return;
         ActivateRadialMenu();
     }
-
+    
     /// <summary>
     /// Used to activate the radial menu.
     /// </summary>
@@ -148,6 +148,7 @@ public class MenuPingController : AbstractPingController
         _radialMenu.SetActive(true);
 
         if (!_radialMenu.activeSelf) return;
+        Input.mousePosition.Set(Screen.width / 2, Screen.height / 2, 0);
         _inputMouse.x = Mouse.current.position.ReadValue().x - Screen.width / Two;
         _inputMouse.y = Mouse.current.position.ReadValue().y - Screen.height / Two;
 
@@ -247,7 +248,7 @@ public class MenuPingController : AbstractPingController
         _radialMenuIsSetActive = true;
         Cursor.lockState = CursorLockMode.None;
 
-        var ray = GetRayFromCameraToMousePosition();
+        var ray = GetRayFromCameraCenter();
         SetPingPosition(ray);
         ShowMarker(_pingPosition);
 
