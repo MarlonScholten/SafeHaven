@@ -1,13 +1,29 @@
 using System;
 using System.Collections;
+using System.Linq;
+using System.Numerics;
 using NPC;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
+using Quaternion = UnityEngine.Quaternion;
+using Random = UnityEngine.Random;
+using Vector3 = UnityEngine.Vector3;
 
 /// <summary>
-/// <br>Author: Hugo Ulfman</br>
-/// <br>Modified by: </br>
+/// Author: Marlon Kerstens<br/>
+/// Modified by: <br/>
+/// Description: Unity event for when an enemy is want's to communicate with the other enemy.
+/// </summary>
+[System.Serializable]
+public class StartCommuncicationAlert : UnityEvent<GameObject>
+{
+}
+
+/// <summary>
+/// Author: Hugo Ulfman<br/>
+/// Modified by: <br/>
 /// Description: Unity event for when the player/brother sound is detected. This is created so a UnityEvent can pass an argument
 /// </summary>
 /// <list type="table">
@@ -39,11 +55,19 @@ using UnityEngine.AI;
 public class PatrolState : MonoBehaviour
 {
     private EnemyAiStateManager _stateManager; // Reference to the state manager
-    private bool _smallSoundReducer; // a bool that checks if the small sound couroutine is running
+    private bool _smallSoundReducer; // a bool that checks if the small sound coroutine is running
     private int _numberOfSmallSoundsHeard; // the number of small sounds heard
-    private bool _waitingAtWaypointCoroutineIsRunning; // a bool that checks if the waiting at waypoint coroutine is running
     private IEnumerator _waitingAtWaypointCoroutine; // a coroutine that waits at a waypoint
+    private bool _waitingAtWaypointCoroutineIsRunning; // a bool that checks if the waiting at waypoint coroutine is running
+    private IEnumerator _communicateWithOtherEnemyCoroutine; // a coroutine that is used during the communicate with other enemy
+    private bool _communicateWithOtherEnemyCoroutineIsRunning; // a bool that checks if the communicate with other enemy coroutine is running
+    private IEnumerator _timeToForgetCommunicationWithEnemyCoroutine; // a coroutine that deletes the enemy object reference.
+    private bool _timeToForgetCommunicationWithEnemyCoroutineIsRunning; // a bool that checks if the waiting at waypoint coroutine is running
     [NonSerialized] public HeardASoundEvent HeardASoundEvent; // a event that other can call to make the enemy hear a sound
+    [NonSerialized] public AlertEnemyEvent AlertEnemyEvent; // a event that other can call to make the enemy alert
+    [NonSerialized] public StartCommuncicationAlert StartCommuncicationAlert; // a event that other can call to start the communication
+    private bool _communicateWithOtherEnemy;
+    private GameObject _communicateTowards;
 
     private bool firstStart = true;
 
@@ -56,6 +80,7 @@ public class PatrolState : MonoBehaviour
         HeardASoundEvent ??= new HeardASoundEvent();
         HeardASoundEvent.AddListener(HeardASoundFromPlayer);*/
     }
+
     /// <summary>
     /// Enter patrol state
     /// </summary>
@@ -70,7 +95,9 @@ public class PatrolState : MonoBehaviour
             firstStart = false;
         }
         _stateManager.alertedBySound = false;
-        _stateManager.currentWpIndex = GetClosestWaypoint();
+        _stateManager.alertedByGuard = false;
+        _stateManager.alertedBySound = false;
+        if(!_stateManager.isGuard)_stateManager.currentWpIndex = GetClosestWaypoint();
         DetermineNextWaypoint();
        // TODO: Play walk animation
     }
@@ -99,6 +126,15 @@ public class PatrolState : MonoBehaviour
                 CustomEvent.Trigger(gameObject, "Alerted");
             }
         }
+        //if the player/brother is alerted by sound but the path is partial, the enemy will go back to the alerted state.
+        if (_stateManager.alertedByGuard)
+        {
+            _stateManager.navMeshAgent.CalculatePath(_stateManager.recievedLocationFromGuard, path);
+            if (path.status != NavMeshPathStatus.PathPartial)
+            {
+                CustomEvent.Trigger(gameObject, "Alerted");
+            }
+        }
         // If the enemy heard more than 0 and a certain amount of time has passed, the number of small sounds heard will be decreased by one.
         if (_numberOfSmallSoundsHeard > 0 && !_smallSoundReducer)
         {
@@ -115,7 +151,11 @@ public class PatrolState : MonoBehaviour
     /// </summary>
     public void FixedUpdate_Patrol()
     {
-        // If the enemy is waiting at the waypoint, lookAround and determine the next waypoint after investigating the current one.
+        // if the enemy encounters another enemy, face the enemy, wait a certain amount of time and then continue patrol.
+
+        if (!_communicateWithOtherEnemy && _communicateTowards == null) CheckIfOtherEnemyIsInVision();
+        if(_communicateWithOtherEnemy && _communicateTowards != null) Communicate(_communicateTowards.transform.position);
+       // If the enemy is waiting at the waypoint, lookAround and determine the next waypoint after investigating the current one.
         if (_stateManager.CheckIfEnemyIsAtWaypoint())
         {
             if (!_waitingAtWaypointCoroutineIsRunning)
@@ -139,20 +179,49 @@ public class PatrolState : MonoBehaviour
         // Stop the patrol coroutine if it is running.
         if(_waitingAtWaypointCoroutineIsRunning)StopCoroutine(_waitingAtWaypointCoroutine);
         _waitingAtWaypointCoroutineIsRunning = false;
+        
+        // Stop the communicate with other enemy coroutine if it is running.
+        if(_communicateWithOtherEnemyCoroutineIsRunning)StopCoroutine(_communicateWithOtherEnemyCoroutine);
+        _communicateWithOtherEnemyCoroutineIsRunning = false;
+        
+        // Stop the time to forget communication with enemy coroutine if it is running.
+        if(_timeToForgetCommunicationWithEnemyCoroutineIsRunning)StopCoroutine(_timeToForgetCommunicationWithEnemyCoroutine);
+        _timeToForgetCommunicationWithEnemyCoroutineIsRunning = false;
+        
+        // reset state variables
+        _communicateWithOtherEnemyCoroutineIsRunning = false;
+        _communicateWithOtherEnemy = false;
+        _stateManager.navMeshAgent.isStopped = false;
+        _communicateTowards = null;
         _numberOfSmallSoundsHeard = 0;
     }
+    
     /// <summary>
     /// This method determines the next waypoint based on the index of the current waypoint.
     /// </summary>
     private void DetermineNextWaypoint()
     {
-        // If there is a next waypoint, go to that one, otherwise return to the first waypoint.
-        _stateManager.currentWpIndex = _stateManager.currentWpIndex == _stateManager.wayPoints.Count - 1 ? 0 : _stateManager.currentWpIndex + 1;
-        // Set the next waypoint by using the index.
-        _stateManager.targetWpLocation = _stateManager.wayPoints[_stateManager.currentWpIndex].position;
-        // Set the destination of the navmesh agent to the next waypoint.
-        _stateManager.navMeshAgent.SetDestination(_stateManager.targetWpLocation);
+        if (_stateManager.isGuard)
+        {
+            var radius = _stateManager.enemyAiScriptableObject.GuardPatrolRadius;
+            var randDirection = Random.insideUnitSphere * radius;
+            randDirection += _stateManager.guardWaypoint.position;
+            NavMesh.SamplePosition (randDirection, out NavMeshHit navHit, radius, 1);
+            var targetWpLocation = !navHit.hit ? _stateManager.guardWaypoint.position : navHit.position;
+            _stateManager.CheckPositionReachable(targetWpLocation);
+            _stateManager.waitingAtWaypoint = false;
+        }
+        else
+        {
+            // If there is a next waypoint, go to that one, otherwise return to the first waypoint.
+            _stateManager.currentWpIndex = _stateManager.currentWpIndex == _stateManager.wayPoints.Count - 1 ? 0 : _stateManager.currentWpIndex + 1;
+            // Set the next waypoint by using the index.
+            _stateManager.targetWpLocation = _stateManager.wayPoints[_stateManager.currentWpIndex].position;
+            // Set the destination of the navmesh agent to the next waypoint.
+            _stateManager.navMeshAgent.SetDestination(_stateManager.targetWpLocation);   
+        }
     }
+    
     /// /// <summary>
     /// This method check for the closest waypoint to the enemy.
     /// <returns>The index of that waypoint.</returns>
@@ -177,7 +246,6 @@ public class PatrolState : MonoBehaviour
     /// </summary>
     private void HeardASoundFromPlayer(SoundSource source)
     {
-        Debug.Log("HeardASoundFromPlayer" +  _stateManager.enemyAiScriptableObject.ThresholdSmallSounds + source.GetVolume() + _stateManager.enemyAiScriptableObject.ThresholdLoudSounds +" "+ _numberOfSmallSoundsHeard);
         // If the sound is too small, return.
         if(source.GetVolume() <_stateManager.enemyAiScriptableObject.ThresholdSmallSounds) return;
         // If the sound is loud enough, increase the number of small sounds heard.
@@ -191,4 +259,68 @@ public class PatrolState : MonoBehaviour
         }
     }
     
+    /// <summary>
+    /// This method is called when the enemy is alerted by the guard.
+    /// <param name="location">The location of the player/brother or a sound.</param>
+    /// </summary>
+    private void AlertedByGuard(Vector3 location)
+    {
+        _stateManager.alertedByGuard = true;
+        _stateManager.recievedLocationFromGuard = location;
+    }
+
+    /// <summary>
+    /// This method checks if the player/brother is in the vision of the enemy.
+    /// </summary>
+    private void CheckIfOtherEnemyIsInVision()
+    {
+        // check if there is an object with the tag enemy in vision of the enemy
+        var colliders = Physics.OverlapSphere(transform.position, _stateManager.enemyAiScriptableObject.CommunicationRadius);
+        var enemy = colliders.FirstOrDefault(obj => obj.gameObject.CompareTag("Enemy"));
+        if (enemy == null) return;
+        var direction = enemy.transform.position - transform.position;
+        var angle = Vector3.Angle(direction, transform.forward);
+        if (angle >= _stateManager.enemyAiScriptableObject.VisionAngle *2) return; // Check if the player is in set vision angle
+        if (!Physics.Raycast(transform.position + new Vector3(0f, transform.lossyScale.y / 2, 0f), direction.normalized, out var hit, _stateManager.enemyAiScriptableObject.CommunicationRadius)) return;
+        if (hit.collider.gameObject != enemy.gameObject) return;
+        if (enemy.gameObject == _communicateTowards) return; // Check if the enemy is already communicating with the collided enemy
+        StartCommunicating(enemy.gameObject);
+        enemy.GetComponent<PatrolState>().StartCommuncicationAlert.Invoke(gameObject);
+    }
+    
+    /// <summary>
+    /// Start communicating with another enemy.
+    /// </summary>
+    /// <param name="enemyGameObject">Enemy Game object to communicate with</param>
+    private void StartCommunicating(GameObject enemyGameObject)
+    {
+        _communicateTowards = enemyGameObject;
+        _communicateWithOtherEnemy = true;
+        _stateManager.navMeshAgent.isStopped = true;
+        _communicateWithOtherEnemyCoroutineIsRunning = true;
+        _communicateWithOtherEnemyCoroutine = _stateManager.CallFunctionAfterSeconds(_stateManager.enemyAiScriptableObject.CommunicationTime, () =>
+        {
+            _communicateWithOtherEnemyCoroutineIsRunning = false;
+            _communicateWithOtherEnemy = false;
+            _stateManager.navMeshAgent.isStopped = false;
+            _timeToForgetCommunicationWithEnemyCoroutineIsRunning = true;
+            _timeToForgetCommunicationWithEnemyCoroutine = _stateManager.CallFunctionAfterSeconds(_stateManager.enemyAiScriptableObject.TimeToForgetCommunicationWithEnemy, () =>
+            { 
+                _timeToForgetCommunicationWithEnemyCoroutineIsRunning = false;
+                _communicateTowards = null;
+            });
+            StartCoroutine(_timeToForgetCommunicationWithEnemyCoroutine);
+        });
+        StartCoroutine(_communicateWithOtherEnemyCoroutine);
+    }
+
+    /// <summary>
+    /// rotate the enemy towards the other enemy
+    /// </summary>
+    /// <param name="enemyTransform">Position of the enemy</param>
+    private void Communicate(Vector3 enemyTransform)
+    {
+        _stateManager.RotateTowards(enemyTransform);
+        // TODO: Play some communication animation or something else.
+    }
 }

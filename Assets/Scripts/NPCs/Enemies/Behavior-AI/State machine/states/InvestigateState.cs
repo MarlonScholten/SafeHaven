@@ -3,8 +3,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
-/// <br>Author: Marlon Kerstens</br>
-/// <br>Modified by: Hugo Ulfman</br>
+/// Author: Marlon Kerstens<br/>
+/// Modified by: Hugo Ulfman<br/>
 /// Description: This script is a the Investigate state of the enemy.
 /// </summary>
 /// <list type="table">
@@ -54,8 +54,9 @@ public class InvestigateState : MonoBehaviour
     /// </summary>
     public void Enter_Investigate()
     {
-        if (_stateManager.alertedBySound) _stateManager.CalculateInvestigateLocation(_stateManager.locationOfNoise);
-        else if(_stateManager.alertedByVision) _stateManager.CalculateInvestigateLocation(_stateManager.spottedPlayerLastPosition);
+        if (_stateManager.alertedBySound) _stateManager.CheckPositionReachable(_stateManager.locationOfNoise);
+        else if(_stateManager.alertedByVision) _stateManager.CheckPositionReachable(_stateManager.spottedPlayerLastPosition);
+        else if(_stateManager.alertedByGuard) _stateManager.CheckPositionReachable(_stateManager.recievedLocationFromGuard);
     }
     
     /// <summary>
@@ -76,7 +77,13 @@ public class InvestigateState : MonoBehaviour
     /// </summary>
     public void FixedUpdate_Investigate()
     {
-        //Check if location is reachable
+        //Prevent the enemy from getting stuck in the investigate state
+        if (Vector3.Distance(transform.position , _stateManager.navMeshAgent.destination) > 0.5f && !_waitingAtWaypointDuringInvestigationCoroutineIsRunning)
+        {
+            _stateManager.waitingAtWaypoint = false;
+        }
+            
+        //Check if navmesh agent is still moving
         if (!_stateManager.waitingAtWaypoint && _stateManager.navMeshAgent.velocity.magnitude < 0.1f)
         {
             _stateManager.CalculateInvestigateLocation(transform.position);
@@ -93,13 +100,13 @@ public class InvestigateState : MonoBehaviour
                     _stateManager.CallFunctionAfterSeconds(_stateManager.enemyAiScriptableObject.InvestigateTime, () =>
                     {
                         CustomEvent.Trigger(gameObject, "Patrol");
-                        
                         _investigateCoroutineIsRunning = false;
                     });
                 StartCoroutine(_investigateCoroutine);
             }
+            
             //If the enemy is not waiting at the location, calculate the next location.
-            if (!_stateManager.waitingAtWaypoint)
+            if (!_stateManager.waitingAtWaypoint && !_waitingAtWaypointDuringInvestigationCoroutineIsRunning)
             {
                 _stateManager.waitingAtWaypoint = true;
                 _waitingAtWaypointDuringInvestigationCoroutineIsRunning = true;
@@ -108,6 +115,7 @@ public class InvestigateState : MonoBehaviour
                     {
                         if (_stateManager.alertedBySound) _stateManager.CalculateInvestigateLocation(_stateManager.locationOfNoise);
                         else if(_stateManager.alertedByVision) _stateManager.CalculateInvestigateLocation(_stateManager.spottedPlayerLastPosition);
+                        else if(_stateManager.alertedByGuard) _stateManager.CalculateInvestigateLocation(_stateManager.recievedLocationFromGuard);
                         _waitingAtWaypointDuringInvestigationCoroutineIsRunning = false;
                         
                     });
@@ -130,6 +138,4 @@ public class InvestigateState : MonoBehaviour
         if(_waitingAtWaypointDuringInvestigationCoroutineIsRunning)StopCoroutine(_waitingAtWaypointDuringInvestigationCoroutine);
         _waitingAtWaypointDuringInvestigationCoroutineIsRunning = false;
     }
-    
-    
 }
