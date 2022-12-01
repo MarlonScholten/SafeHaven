@@ -92,6 +92,13 @@ public class PatrolState : MonoBehaviour
             _stateManager.HotfixAwake(); //TODO: look at excecution order
             HeardASoundEvent ??= new HeardASoundEvent();
             HeardASoundEvent.AddListener(HeardASoundFromPlayer);
+
+            AlertEnemyEvent ??= new AlertEnemyEvent();
+            AlertEnemyEvent.AddListener(AlertedByGuard);
+
+            StartCommuncicationAlert ??= new StartCommuncicationAlert();
+            StartCommuncicationAlert.AddListener(StartCommunicating);
+
             firstStart = false;
         }
         _stateManager.alertedBySound = false;
