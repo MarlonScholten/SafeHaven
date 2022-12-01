@@ -83,7 +83,12 @@ public class EnemyAiStateManager : MonoBehaviour
     /// <summary>
     /// Awake is called when the script instance is being loaded.
     /// </summary>
-    private void Awake()
+    /*private void Awake()
+    {
+        navMeshAgent = GetComponent<NavMeshAgent>();
+    }*/
+    //TODO: look at excecution order
+    public void HotfixAwake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
     }

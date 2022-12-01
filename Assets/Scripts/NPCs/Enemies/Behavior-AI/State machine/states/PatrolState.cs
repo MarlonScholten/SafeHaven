@@ -64,6 +64,7 @@ public class PatrolState : MonoBehaviour
         if (firstStart)
         {
             _stateManager = GetComponent<EnemyAiStateManager>();
+            _stateManager.HotfixAwake(); //TODO: look at excecution order
             HeardASoundEvent ??= new HeardASoundEvent();
             HeardASoundEvent.AddListener(HeardASoundFromPlayer);
             firstStart = false;
