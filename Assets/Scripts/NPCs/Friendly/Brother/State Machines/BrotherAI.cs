@@ -82,8 +82,12 @@ public class BrotherAI : MonoBehaviour
     private GameObject _player;
 
     private Animator _animator;
-
     private int _velocityHash;
+    private int _strafeVelocityHash;
+    private int _isGroundedHash;
+    private int _holdingHandsHash;
+    private int _itemHeldHash;
+    private int _interactableObjectHash;
     private int _stealthHash;
 
     [Tooltip("This value determines if the brother is stealth.")]
@@ -95,6 +99,11 @@ public class BrotherAI : MonoBehaviour
     void Start(){
         InputBehaviour.Instance.OnCallBrotherEvent += CallBrother;
         _velocityHash = Animator.StringToHash("forwardVelocity");
+        _strafeVelocityHash = Animator.StringToHash("strafeVelocity");
+        _isGroundedHash = Animator.StringToHash("Grounded");
+        _holdingHandsHash = Animator.StringToHash("Holding Hands");
+        _itemHeldHash = Animator.StringToHash("ItemHeld");
+        _interactableObjectHash = Animator.StringToHash("InteractableObject");
         _stealthHash = Animator.StringToHash("Stealth");
     }
 
@@ -218,8 +227,9 @@ public class BrotherAI : MonoBehaviour
     /// The update method for the hide state
     /// </summary>
     public void HideUpdate(){
-        if(PathCompleted()){
-
+        if(PathCompleted())
+        {
+            _isStealth = true;
         }    
     }
 
@@ -233,8 +243,9 @@ public class BrotherAI : MonoBehaviour
     /// <summary>
     /// The exit method for the hide state
     /// </summary>
-    public void HideExit(){
-        
+    public void HideExit()
+    {
+        _isStealth = false;
     }
 
     /// <summary>
