@@ -45,20 +45,29 @@ public class PatrolState : MonoBehaviour
     private IEnumerator _waitingAtWaypointCoroutine; // a coroutine that waits at a waypoint
     [NonSerialized] public HeardASoundEvent HeardASoundEvent; // a event that other can call to make the enemy hear a sound
 
+    private bool firstStart = true;
+
     /// <summary>
     /// Awake is called when the script instance is being loaded.
     /// </summary>
     private void Awake()
     {
-        _stateManager = GetComponent<EnemyAiStateManager>();
+        /*_stateManager = GetComponent<EnemyAiStateManager>();
         HeardASoundEvent ??= new HeardASoundEvent();
-        HeardASoundEvent.AddListener(HeardASoundFromPlayer);
+        HeardASoundEvent.AddListener(HeardASoundFromPlayer);*/
     }
     /// <summary>
     /// Enter patrol state
     /// </summary>
     public void Enter_Patrol()
-    { 
+    {
+        if (firstStart)
+        {
+            _stateManager = GetComponent<EnemyAiStateManager>();
+            HeardASoundEvent ??= new HeardASoundEvent();
+            HeardASoundEvent.AddListener(HeardASoundFromPlayer);
+            firstStart = false;
+        }
         _stateManager.alertedBySound = false;
         _stateManager.currentWpIndex = GetClosestWaypoint();
         DetermineNextWaypoint();
