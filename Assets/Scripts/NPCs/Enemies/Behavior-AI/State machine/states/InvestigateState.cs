@@ -77,6 +77,12 @@ public class InvestigateState : MonoBehaviour
     /// </summary>
     public void FixedUpdate_Investigate()
     {
+        //Prevent the enemy from getting stuck in the investigate state
+        if (Vector3.Distance(transform.position , _stateManager.navMeshAgent.destination) > 0.5f && !_waitingAtWaypointDuringInvestigationCoroutineIsRunning)
+        {
+            _stateManager.waitingAtWaypoint = false;
+        }
+            
         //Check if navmesh agent is still moving
         if (!_stateManager.waitingAtWaypoint && _stateManager.navMeshAgent.velocity.magnitude < 0.1f)
         {

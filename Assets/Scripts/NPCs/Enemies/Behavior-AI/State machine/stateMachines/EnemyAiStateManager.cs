@@ -181,7 +181,7 @@ public class EnemyAiStateManager : MonoBehaviour
     /// </summary>
     public bool CheckIfEnemyIsAtWaypoint()
     {
-        return Vector3.Distance(transform.position, targetWpLocation) <= 2f;
+        return Vector3.Distance(transform.position, targetWpLocation) <= 0.5f;
     }
     
     /// <summary>

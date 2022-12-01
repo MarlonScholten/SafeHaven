@@ -74,6 +74,14 @@ public class PatrolState : MonoBehaviour
     /// </summary>
     private void Awake()
     {
+    
+    }
+
+    /// <summary>
+    /// Enter patrol state
+    /// </summary>
+    public void Enter_Patrol()
+    {
         _stateManager = GetComponent<EnemyAiStateManager>();
         HeardASoundEvent ??= new HeardASoundEvent();
         HeardASoundEvent.AddListener(HeardASoundFromPlayer);
@@ -83,13 +91,7 @@ public class PatrolState : MonoBehaviour
 
         StartCommuncicationAlert ??= new StartCommuncicationAlert();
         StartCommuncicationAlert.AddListener(StartCommunicating);
-    }
-
-    /// <summary>
-    /// Enter patrol state
-    /// </summary>
-    public void Enter_Patrol()
-    { 
+        
         _stateManager.alertedBySound = false;
         _stateManager.alertedByGuard = false;
         _stateManager.alertedBySound = false;
