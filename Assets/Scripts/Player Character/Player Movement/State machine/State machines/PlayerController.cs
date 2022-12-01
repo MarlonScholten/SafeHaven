@@ -116,8 +116,8 @@ namespace PlayerCharacter.Movement
             CurrentState.EnterState();
             
             CharacterController = GetComponent<CharacterController>();
-            _playerCamRay = PlayerCamera.ScreenPointToRay(Input.mousePosition);
             _playerCamera = Camera.main;
+            _playerCamRay = PlayerCamera.ScreenPointToRay(Input.mousePosition);
         }
 
         private void Start()
