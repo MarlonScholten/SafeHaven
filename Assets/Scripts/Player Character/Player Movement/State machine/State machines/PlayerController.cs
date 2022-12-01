@@ -6,7 +6,7 @@ namespace PlayerCharacter.Movement
 {
     /// <summary>
     /// Author: Marlon Scholten <br/>
-    /// Modified by: Hugo Verweij <br/>
+    /// Modified by: Hugo Verweij, Hugo Ulfman <br/>
     /// Description: PlayerController behaviour. Controller for everything related to the player character's state, movement and actions. <br />
     /// Controls the states, and updates the correct parameters when the player inputs movement buttons. <br />
     /// Installation steps: <br />
@@ -107,6 +107,8 @@ namespace PlayerCharacter.Movement
         private Ray _playerCamRay;
         private RaycastHit _camRayCastHit;
 
+        private bool _crouching;
+
         private void Awake()
         {
             _states = new PlayerStateFactory(this);
@@ -120,6 +122,7 @@ namespace PlayerCharacter.Movement
 
         private void Start()
         {
+            InputBehaviour.Instance.OnToggleStealthEvent += Crouch;
             StartCoroutine(CastLookingRay());
         }
 
@@ -147,6 +150,18 @@ namespace PlayerCharacter.Movement
         public bool IsMoving()
         {
             return MovementInput.x != 0 || MovementInput.y != 0;
+        }
+
+        /// <summary>
+        /// adjusts the movement speed of the player if the OnToggleStealthEvent is invoked.
+        /// </summary>
+        private void Crouch() {
+            _crouching = !_crouching;
+            if (_crouching) {
+                _movementSpeed = 2f;
+            } else {
+                _movementSpeed = 5f;
+            }
         }
 
         /// <summary>
