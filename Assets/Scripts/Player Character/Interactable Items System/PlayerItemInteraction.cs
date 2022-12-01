@@ -35,7 +35,8 @@ namespace InteractableItemsSystem
         [Tooltip("Max range that you can pickup an item.")][SerializeField] 
         private float _maxPickupRange;
         [Tooltip("Max range that you can interact with an other Object.")][SerializeField] 
-        private float _maxInteractRange; 
+        private float _maxInteractRange;
+        [Tooltip("Color of the emission of the highlighted object")][SerializeField] private Color _highlightColor;
         
         //Tempcode only for debugging and to stop spam.
         [Tooltip("Only for debugging, spams debug.log, if you can pickup or interact with an item.")] [SerializeField] 
@@ -52,6 +53,8 @@ namespace InteractableItemsSystem
         private bool _isChangingItem;
 
         private RaycastHit _itemHit;
+
+        private Renderer _rendererItem;
         private void Start()
         {
             _inventory = GetComponent<Inventory>();
@@ -68,6 +71,11 @@ namespace InteractableItemsSystem
 
         private void CheckDistanceToItem()
         {
+            if (_rendererItem != null)
+            {
+                _rendererItem.material.DisableKeyword("_EMISSION");
+                _rendererItem = null;
+            }
             _itemHit = _playerController.CamRayCastHit;
             if (_itemHit.transform == null) return;
             
@@ -75,33 +83,37 @@ namespace InteractableItemsSystem
                 _itemHit.transform.GetComponent<InteractableObject>() == null) return;*/
             
             _distanceToItem = Vector3.Distance(_playerTransform.position, _itemHit.point);
-
-            //Temp code should change to material highlight or UI element.
+            
             if (_itemHit.transform.GetComponent<ItemController>() != null)
             {
                 var itemController = _itemHit.transform.GetComponent<ItemController>();
+                var renderer = itemController.transform.GetComponent<Renderer>();
                 if (_distanceToItem <= _maxPickupRange && _showSpamDebug)
                 {
-                    var renderer = itemController.transform.GetComponent<Renderer>();
                     renderer.material.EnableKeyword("_EMISSION");
+                    renderer.material.SetColor("_EmissionColor", _highlightColor);
+                    _rendererItem = renderer;
                     Debug.Log("Can PickUp the Item!");
                 }
                 else
                 {
-                    itemController.ToggleHighlight(true);
+                    renderer.material.DisableKeyword("_EMISSION");
                 }
             }
             else if (_itemHit.transform.GetComponent<InteractableObject>() != null)
             {
                 var interactableObject = _itemHit.transform.GetComponent<InteractableObject>();
+                var renderer = interactableObject.transform.GetComponent<Renderer>();
                 if (_distanceToItem <= _maxPickupRange && _showSpamDebug)
                 {
-                    interactableObject.ToggleHighlight(true);
+                    renderer.material.EnableKeyword("_EMISSION");
+                    renderer.material.SetColor("_EmissionColor", _highlightColor);
+                    _rendererItem = renderer;
                     Debug.Log("Can Interact with Object!");
                 }
                 else
                 {
-                    interactableObject.ToggleHighlight(false);
+                    renderer.material.DisableKeyword("_EMISSION");
                     Debug.Log("Looks at Interactable Object!");
                 }
             }
