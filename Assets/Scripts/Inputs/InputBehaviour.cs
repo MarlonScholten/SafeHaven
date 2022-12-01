@@ -65,6 +65,12 @@ public class InputBehaviour : MonoBehaviour
     /// Uses LMB as the action key.
     /// </summary>
     public event InputBehaviourEvent OnPingQuickEvent;
+    
+    /// <summary>
+    /// 'Hides brother at "cursor to world" location. If that location is not an a hiding spot, he will choose the nearest one to him.'
+    /// Uses LMB as the action key.
+    /// </summary>
+    public event InputBehaviourEvent OnPingQuickCancelledEvent;
 
     /// <summary>
     /// 'Calls brother to return to the player character.'
@@ -106,6 +112,12 @@ public class InputBehaviour : MonoBehaviour
     /// </summary>
     public event InputBehaviourEvent OnPauseEvent;
 
+    /// <summary>
+    /// Comfort the brother.
+    /// Uses C key as the action key.
+    /// </summary>
+    public event InputBehaviourEvent OnComfortEvent;
+
     // Private.
     //private InputManager _inputs;
 
@@ -127,17 +139,27 @@ public class InputBehaviour : MonoBehaviour
         };
     }
 
-    private void OnMove(InputValue inputValue) => _onMoveVector = inputValue.Get<Vector2>();
-    private void OnLook(InputValue inputValue) => _onLookVector = inputValue.Get<Vector2>();
-    private void OnThrow() => OnThrowEvent?.Invoke();
-    private void OnPingMenu() => OnPingMenuEvent?.Invoke();
-    private void OnPingQuick() => OnPingQuickEvent?.Invoke();
-    private void OnCallBrother() => OnCallBrotherEvent?.Invoke();
-    private void OnItemInteract() => OnItemInteractEvent?.Invoke();
-    private void OnToggleStealth() => OnToggleStealthEvent?.Invoke();
-    private void OnObstacleInteract() => OnObstacleInteractEvent?.Invoke();
-    private void OnToggleDebugginTools() => OnToggleDebugginToolsEvent?.Invoke();
-    private void OnPause() => OnPauseEvent?.Invoke();
+    public void OnMove(InputAction.CallbackContext context) => _onMoveVector = context.ReadValue<Vector2>();
+    public void OnLook(InputAction.CallbackContext context) => _onLookVector = context.ReadValue<Vector2>();
+    public void OnThrow(InputAction.CallbackContext context) => OnThrowEvent?.Invoke();
+    public void OnPingMenu(InputAction.CallbackContext context) => OnPingMenuEvent?.Invoke();
+    public void OnComfort(InputAction.CallbackContext context) => OnComfortEvent?.Invoke();
+    public void OnPingQuick(InputAction.CallbackContext context)
+    {
+        if (context.canceled)
+        {
+            OnPingQuickCancelledEvent?.Invoke();
+        }else if (context.performed)
+        {
+            OnPingQuickEvent?.Invoke();
+        }
+    }
+    public void OnCallBrother(InputAction.CallbackContext context) => OnCallBrotherEvent?.Invoke();
+    public void OnItemInteract(InputAction.CallbackContext context) => OnItemInteractEvent?.Invoke();
+    public void OnToggleStealth(InputAction.CallbackContext context) => OnToggleStealthEvent?.Invoke();
+    public void OnObstacleInteract(InputAction.CallbackContext context) => OnObstacleInteractEvent?.Invoke();
+    public void OnToggleDebugginTools(InputAction.CallbackContext context) => OnToggleDebugginToolsEvent?.Invoke();
+    public void OnPause(InputAction.CallbackContext context) => OnPauseEvent?.Invoke();
 
     /// <summary>
     /// Enables the <see cref="InputManager"/> whenever <see cref="InputBehaviour"/> is inactive.
