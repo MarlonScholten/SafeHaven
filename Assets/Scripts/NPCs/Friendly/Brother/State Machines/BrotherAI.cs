@@ -84,6 +84,10 @@ public class BrotherAI : MonoBehaviour
     private Animator _animator;
 
     private int _velocityHash;
+    private int _stealthHash;
+
+    [Tooltip("This value determines if the brother is stealth.")]
+    [SerializeField] private bool _isStealth = false;
 
     /// <summary>
     /// In the start method the declaration for the input is made.
@@ -91,6 +95,7 @@ public class BrotherAI : MonoBehaviour
     void Start(){
         InputBehaviour.Instance.OnCallBrotherEvent += CallBrother;
         _velocityHash = Animator.StringToHash("forwardVelocity");
+        _stealthHash = Animator.StringToHash("Stealth");
     }
 
     /// <summary>
@@ -107,6 +112,7 @@ public class BrotherAI : MonoBehaviour
     private void FixedUpdate()
     {
         _animator.SetFloat(_velocityHash, _navMeshAgent.velocity.magnitude);
+        _animator.SetBool(_stealthHash, _isStealth);
     }
 
     /// <summary>
