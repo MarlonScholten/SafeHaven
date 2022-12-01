@@ -69,33 +69,39 @@ namespace InteractableItemsSystem
         private void CheckDistanceToItem()
         {
             _itemHit = _playerController.CamRayCastHit;
-
-            //Should be looked further in to, how this can be made better.
-            if (_itemHit.transform.GetComponent<ItemController>() == null &&
-                _itemHit.transform.GetComponent<InteractableObject>() == null) return;
+            if (_itemHit.transform == null) return;
+            
+            /*if (_itemHit.transform.GetComponent<ItemController>() == null &&
+                _itemHit.transform.GetComponent<InteractableObject>() == null) return;*/
             
             _distanceToItem = Vector3.Distance(_playerTransform.position, _itemHit.point);
 
             //Temp code should change to material highlight or UI element.
             if (_itemHit.transform.GetComponent<ItemController>() != null)
             {
+                var itemController = _itemHit.transform.GetComponent<ItemController>();
                 if (_distanceToItem <= _maxPickupRange && _showSpamDebug)
                 {
+                    var renderer = itemController.transform.GetComponent<Renderer>();
+                    renderer.material.EnableKeyword("_EMISSION");
                     Debug.Log("Can PickUp the Item!");
                 }
-                else if(_distanceToItem > _maxPickupRange && _showSpamDebug)
+                else
                 {
-                    Debug.Log("Looks at an Item!");
+                    itemController.ToggleHighlight(true);
                 }
             }
-            else
+            else if (_itemHit.transform.GetComponent<InteractableObject>() != null)
             {
+                var interactableObject = _itemHit.transform.GetComponent<InteractableObject>();
                 if (_distanceToItem <= _maxPickupRange && _showSpamDebug)
                 {
+                    interactableObject.ToggleHighlight(true);
                     Debug.Log("Can Interact with Object!");
                 }
-                else if(_distanceToItem > _maxPickupRange && _showSpamDebug)
+                else
                 {
+                    interactableObject.ToggleHighlight(false);
                     Debug.Log("Looks at Interactable Object!");
                 }
             }

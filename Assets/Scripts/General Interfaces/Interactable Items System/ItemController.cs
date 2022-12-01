@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace InteractableItemsSystem
@@ -56,7 +58,8 @@ namespace InteractableItemsSystem
     public class ItemController : MonoBehaviour
     {
         [Tooltip("Add scriptable object Item of the item you want.")][SerializeField]private ItemSO _item;
-        
+        [SerializeField] private List<Renderer> _renderersList;
+        [SerializeField] private Color _highlightColor = Color.white;
         /// <summary>
         /// Stores the data of an item.
         /// </summary>
@@ -65,6 +68,18 @@ namespace InteractableItemsSystem
         private Rigidbody _rb;
         private Collider _col;
 
+        private List<Material> _materialsList;
+        private static readonly int EmissionColor = Shader.PropertyToID("_EmissionColor");
+        
+        private void Awake()
+        {
+            _materialsList = new List<Material>();
+            foreach (var renderer in _renderersList)
+            {
+                _materialsList.AddRange(new List<Material>(renderer.materials));  
+            }
+        }
+        
         private void Start()
         {
             _rb = GetComponent<Rigidbody>();
@@ -91,6 +106,30 @@ namespace InteractableItemsSystem
             _rb.useGravity = true;
             
             _col.enabled = true;
+        }
+
+        private void OnMouseExit()
+        {
+            ToggleHighlight(false);
+        }
+
+        public void ToggleHighlight(bool doHighlight)
+        {
+            if (doHighlight)
+            {
+                foreach (var material in _materialsList)
+                {
+                    material.EnableKeyword("_EMISSION");
+                    material.SetColor(EmissionColor, _highlightColor);
+                }
+            }
+            else
+            {
+                foreach (var material in _materialsList)
+                {
+                    material.DisableKeyword("_EMISSION");
+                }
+            }
         }
     }
 }
