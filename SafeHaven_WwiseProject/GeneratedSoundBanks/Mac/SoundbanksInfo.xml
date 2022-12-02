@@ -16,35 +16,106 @@
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="3161908922" Language="SFX" Hash="2575578168">
+		<SoundBank Id="2607556080" Language="SFX" Hash="3663672488">
+			<ObjectPath>\SoundBanks\Default Work Unit\Menu</ObjectPath>
+			<ShortName>Menu</ShortName>
+			<Path>Menu.bnk</Path>
+			<IncludedEvents>
+				<Event Id="2479442773" Name="Play_Theme" ObjectPath="\Events\Default Work Unit\Menu Music\Play_Theme" DurationType="Infinite">
+					<IncludedMemoryFiles>
+						<File Id="594628767" Language="SFX">
+							<ShortName>Placeholder Menu Music\Sample.wav</ShortName>
+							<Path>SFX\Placeholder Menu Music\Sample_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="4209088253" Name="Play_Theme2" ObjectPath="\Events\Default Work Unit\Menu Music\Play_Theme2" DurationType="Infinite">
+					<IncludedMemoryFiles>
+						<File Id="891448325" Language="SFX">
+							<ShortName>Placeholder Menu Music\Sample2.wav</ShortName>
+							<Path>SFX\Placeholder Menu Music\Sample2_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="4209088252" Name="Play_Theme3" ObjectPath="\Events\Default Work Unit\Menu Music\Play_Theme3" DurationType="Infinite">
+					<IncludedMemoryFiles>
+						<File Id="858599923" Language="SFX">
+							<ShortName>Placeholder Menu Music\Sample3.wav</ShortName>
+							<Path>SFX\Placeholder Menu Music\Sample3_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="4209088251" Name="Play_Theme4" ObjectPath="\Events\Default Work Unit\Menu Music\Play_Theme4" DurationType="Infinite">
+					<IncludedMemoryFiles>
+						<File Id="778554696" Language="SFX">
+							<ShortName>Placeholder Menu Music\Sample4.wav</ShortName>
+							<Path>SFX\Placeholder Menu Music\Sample4_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="560299279" Name="Stop_Theme" ObjectPath="\Events\Default Work Unit\Menu Music\Stop_Theme" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
+				<Event Id="2713968303" Name="Stop_Theme2" ObjectPath="\Events\Default Work Unit\Menu Music\Stop_Theme2" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
+				<Event Id="2713968302" Name="Stop_Theme3" ObjectPath="\Events\Default Work Unit\Menu Music\Stop_Theme3" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
+				<Event Id="2713968297" Name="Stop_Theme4" ObjectPath="\Events\Default Work Unit\Menu Music\Stop_Theme4" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
+			</IncludedEvents>
+		</SoundBank>
+		<SoundBank Id="3161908922" Language="SFX" Hash="1814451935">
 			<ObjectPath>\SoundBanks\Default Work Unit\Main</ObjectPath>
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<IncludedEvents>
-				<Event Id="1784581504" Name="Play_Digital_Horror___AMB___Pulsating_breathe" ObjectPath="\Events\Default Work Unit\Play_Digital_Horror___AMB___Pulsating_breathe" MaxAttenuation="5." DurationType="OneShot" DurationMin="98.648018" DurationMax="98.648018">
+				<Event Id="2579192193" Name="Play_Proxlamp_Draft1_Click" ObjectPath="\Events\Default Work Unit\ProximityLamp\Play_Proxlamp_Draft1_Click" MaxAttenuation="15." DurationType="OneShot" DurationMin="0.279931" DurationMax="0.421121">
 					<IncludedMemoryFiles>
-						<File Id="729111866" Language="SFX">
-							<ShortName>Digital-Horror - AMB - Pulsating breathe.wav</ShortName>
-							<Path>SFX\Digital-Horror - AMB - Pulsating breathe_10C4C929.wem</Path>
+						<File Id="766224591" Language="SFX">
+							<ShortName>Proxlamp_Draft1_Click.wav</ShortName>
+							<Path>SFX\Proxlamp_Draft1_Click_7B210A9F.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="3256576449" Name="Play_Footsteps_Dirt" ObjectPath="\Events\Default Work Unit\Play_Footsteps_Dirt" DurationType="Infinite">
+				<Event Id="1416161311" Name="Play_Proxlamp_Draft1_V2" ObjectPath="\Events\Default Work Unit\ProximityLamp\Play_Proxlamp_Draft1_V2" MaxAttenuation="5." DurationType="Infinite">
 					<IncludedMemoryFiles>
-						<File Id="620630631" Language="SFX">
-							<ShortName>PM_SDGS_14 Footstep Step Dry Grass Shrubs Pine Needles Meadow .wav</ShortName>
-							<Path>SFX\PM_SDGS_14 Footstep Step Dry Grass Shrubs Pine Needles Meadow _10C4C929.wem</Path>
-						</File>
-						<File Id="629561343" Language="SFX">
-							<ShortName>PM_SDGS_113 Footstep Step Dry Grass Shrubs Pine Needles Meadow .wav</ShortName>
-							<Path>SFX\PM_SDGS_113 Footstep Step Dry Grass Shrubs Pine Needles Meadow _10C4C929.wem</Path>
-						</File>
-						<File Id="646272018" Language="SFX">
-							<ShortName>PM_SDGS_186 Footstep Step Dry Grass Shrubs Pine Needles Meadow .wav</ShortName>
-							<Path>SFX\PM_SDGS_186 Footstep Step Dry Grass Shrubs Pine Needles Meadow _10C4C929.wem</Path>
+						<File Id="698105604" Language="SFX">
+							<ShortName>Proxlamp_Draft1.wav</ShortName>
+							<Path>SFX\Proxlamp_Draft1_11CBDFC9.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
+				<Event Id="674798631" Name="Play_Stealth_Music" ObjectPath="\Events\Default Work Unit\Music\Play_Stealth_Music" DurationType="Infinite">
+					<IncludedMemoryFiles>
+						<File Id="91497324" Language="SFX">
+							<ShortName>sneaking music.wav</ShortName>
+							<Path>SFX\sneaking music_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2024687188" Name="Play_TestSound_Loop" ObjectPath="\Events\Default Work Unit\TestSounds\Play_TestSound_Loop" DurationType="Infinite">
+					<IncludedMemoryFiles>
+						<File Id="9335138" Language="SFX">
+							<ShortName>TestSounds\TestSound_Loop.wav</ShortName>
+							<Path>SFX\TestSounds\TestSound_Loop_96065C5B.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="4206196186" Name="Play_TestSound_Single" ObjectPath="\Events\Default Work Unit\TestSounds\Play_TestSound_Single" DurationType="OneShot" DurationMin="2.125398" DurationMax="2.125398">
+					<IncludedMemoryFiles>
+						<File Id="10365183" Language="SFX">
+							<ShortName>TestSounds\TestSound_Single.wav</ShortName>
+							<Path>SFX\TestSounds\TestSound_Single_C4BD416F.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3498798050" Name="Play_Wind_PlaceHolder" ObjectPath="\Events\Default Work Unit\Wind\Play_Wind_PlaceHolder" DurationType="OneShot" DurationMin="124.029396" DurationMax="124.029396">
+					<IncludedMemoryFiles>
+						<File Id="472890637" Language="SFX">
+							<ShortName>Wind_PlaceHolder.wav</ShortName>
+							<Path>SFX\Wind_PlaceHolder_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2594172909" Name="Stop_Proxlamp_Draft1_V2" ObjectPath="\Events\Default Work Unit\ProximityLamp\Stop_Proxlamp_Draft1_V2" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
+				<Event Id="3876103401" Name="Stop_Stealth_Music" ObjectPath="\Events\Default Work Unit\Music\Stop_Stealth_Music" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
+				<Event Id="3467245854" Name="Stop_TestSound_Loop" ObjectPath="\Events\Default Work Unit\TestSounds\Stop_TestSound_Loop" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
+				<Event Id="25015968" Name="Stop_TestSound_Single" ObjectPath="\Events\Default Work Unit\TestSounds\Stop_TestSound_Single" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 			</IncludedEvents>
 		</SoundBank>
 	</SoundBanks>
