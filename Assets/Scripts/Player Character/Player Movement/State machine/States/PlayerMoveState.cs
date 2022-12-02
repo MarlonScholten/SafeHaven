@@ -1,12 +1,31 @@
+using PlayerCharacter.Movement;
 using UnityEngine;
 
-namespace PlayerMovement
+namespace PlayerCharacter.States
 {
     /// <summary>
-    /// The Move state is active when movement-related input is received.
+    /// Author: Marlon Scholten <br/>
+    /// Modified by: --- <br/>
+    /// Description: The move state for the player character that calculates movement and rotation
     /// </summary>
+    /// <list type="table">
+    ///	    <listheader>
+    ///         <term>On what GameObject</term>
+    ///         <term>Type</term>
+    ///         <term>Name of type</term>
+    ///         <term>Description</term>
+    ///     </listheader>
+    ///     <item>
+    ///         <term>None</term>
+    ///		    <term>None</term>
+    ///         <term>None</term>
+    ///		    <term>This is an independent state script</term>
+    ///	    </item>
+    /// </list>
     public class PlayerMoveState : PlayerBaseState
     {
+        private float _turnSmoothVelocity;
+        
         public PlayerMoveState(PlayerController context, PlayerStateFactory factory) 
             : base(context, factory){}
 
@@ -23,7 +42,9 @@ namespace PlayerMovement
             if(CheckSwitchStates())
                 return;
 
-            var movement = CalculateMovement(Context.MovementInput);
+            var rotation = CalculateRotation(Context.MovementInput, out var calculatedAngle);
+            SetContextRotation(rotation);
+            var movement = CalculateMovement(calculatedAngle);
             SetContextMovement(movement);
         }
 
@@ -48,14 +69,28 @@ namespace PlayerMovement
         }
 
         /// <summary>
-        /// Calculate the movement of the player.
+        /// Calculate the movement of the player and apply movement speed.
         /// </summary>
-        /// <param name="movementInput">The movement input regarding the x and z axis</param>
-        private Vector3 CalculateMovement(Vector2 movementInput)
+        private Vector3 CalculateMovement(float rotationAngle)
         {
-            var direction = new Vector3(movementInput.x, 0f, movementInput.y);
+            var direction = Quaternion.Euler(0f, rotationAngle, 0f) * Vector3.forward;
             var movement = direction * Context.MovementSpeed;
             return movement;
+        }
+
+        /// <summary>
+        /// Calculate the rotation of the player character based on camera orientation.
+        /// </summary>
+        /// <param name="movementInput">The input related to movement</param>
+        /// <param name="calculatedAngle">The undamped/smoothed angle determining our direction</param>
+        /// <returns>A smoothed angle determining our rotation</returns>
+        private Quaternion CalculateRotation(Vector2 movementInput, out float calculatedAngle)
+        {
+            var direction = new Vector3(movementInput.x, 0f, movementInput.y);
+            var targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + Context.PlayerCamera.transform.eulerAngles.y;
+            var angle = Mathf.SmoothDampAngle(Context.transform.eulerAngles.y, targetAngle, ref _turnSmoothVelocity, Context.SmoothTurnTime);
+            calculatedAngle = targetAngle;
+            return Quaternion.Euler(0f, angle, 0f);
         }
 
         /// <summary>
@@ -64,6 +99,14 @@ namespace PlayerMovement
         private void SetContextMovement(Vector3 movement)
         {
             Context.Movement = movement;
+        }
+        
+        /// <summary>
+        /// Set the rotation of the context.
+        /// </summary>
+        private void SetContextRotation(Quaternion rotation)
+        {
+            Context.Rotation = rotation;
         }
     }
 }
