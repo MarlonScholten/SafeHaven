@@ -13,7 +13,7 @@ using Vector3 = UnityEngine.Vector3;
 
 /// <summary>
 /// Author: Marlon Kerstens<br/>
-/// Modified by: <br/>
+/// Modified by: Thomas van den Oever<br/>
 /// Description: Unity event for when an enemy is want's to communicate with the other enemy.
 /// </summary>
 [System.Serializable]
@@ -69,12 +69,16 @@ public class PatrolState : MonoBehaviour
     private bool _communicateWithOtherEnemy;
     private GameObject _communicateTowards;
 
+    private bool firstStart = true;
+
     /// <summary>
     /// Awake is called when the script instance is being loaded.
     /// </summary>
     private void Awake()
     {
-    
+        /*_stateManager = GetComponent<EnemyAiStateManager>();
+        HeardASoundEvent ??= new HeardASoundEvent();
+        HeardASoundEvent.AddListener(HeardASoundFromPlayer);*/
     }
 
     /// <summary>
@@ -82,16 +86,21 @@ public class PatrolState : MonoBehaviour
     /// </summary>
     public void Enter_Patrol()
     {
-        _stateManager = GetComponent<EnemyAiStateManager>();
-        HeardASoundEvent ??= new HeardASoundEvent();
-        HeardASoundEvent.AddListener(HeardASoundFromPlayer);
+        if (firstStart)
+        {
+            _stateManager = GetComponent<EnemyAiStateManager>();
+            _stateManager.HotfixAwake(); //TODO: look at excecution order
+            HeardASoundEvent ??= new HeardASoundEvent();
+            HeardASoundEvent.AddListener(HeardASoundFromPlayer);
 
-        AlertEnemyEvent ??= new AlertEnemyEvent();
-        AlertEnemyEvent.AddListener(AlertedByGuard);
+            AlertEnemyEvent ??= new AlertEnemyEvent();
+            AlertEnemyEvent.AddListener(AlertedByGuard);
 
-        StartCommuncicationAlert ??= new StartCommuncicationAlert();
-        StartCommuncicationAlert.AddListener(StartCommunicating);
-        
+            StartCommuncicationAlert ??= new StartCommuncicationAlert();
+            StartCommuncicationAlert.AddListener(StartCommunicating);
+
+            firstStart = false;
+        }
         _stateManager.alertedBySound = false;
         _stateManager.alertedByGuard = false;
         _stateManager.alertedBySound = false;

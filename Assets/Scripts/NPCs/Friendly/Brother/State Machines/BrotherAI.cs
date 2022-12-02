@@ -4,7 +4,7 @@ using UnityEngine.AI;
 
 /// <summary>
 /// Author: Jelco van der Straaten </para>
-/// Modified by: Thijs Orsel and Iris Giezen</para>
+/// Modified by: Thijs Orsel and Iris Giezen, Thomas van den Oever</para>
 /// This script controls the state of the brotherAI. In this script al the calculation for the states are made.
 /// </summary>
 /// <list type="table">
@@ -87,6 +87,11 @@ public class BrotherAI : MonoBehaviour
     private GameObject _player;
 
     /// <summary>
+    /// A bool to check if this is the first time the script has started
+    /// </summary>
+    private bool _firstStart = true;
+
+    /// <summary>
     /// In the start method the declaration for the input is made.
     /// </summary>
     void Start(){
@@ -98,9 +103,10 @@ public class BrotherAI : MonoBehaviour
     /// </summary>
     void Awake()
     {
-        _navMeshAgent = GetComponent<NavMeshAgent>();
+        /*_navMeshAgent = GetComponent<NavMeshAgent>();
         _findHidingSpot = gameObject.GetComponent<FindHidingSpot>();
-        _player = GameObject.FindGameObjectWithTag("Player");                
+        _player = GameObject.FindGameObjectWithTag("Player"); */
+        //TODO: add initializer state for Awake function and remove this form the enter state
     }
     
     /// <summary>
@@ -144,6 +150,14 @@ public class BrotherAI : MonoBehaviour
     /// The enter method for the follow state, it sets the following distance for the brother.
     /// </summary>
     public void FollowEnter(){
+        if (_firstStart)
+        {
+            _navMeshAgent = GetComponent<NavMeshAgent>();
+            _findHidingSpot = gameObject.GetComponent<FindHidingSpot>();
+            _player = GameObject.FindGameObjectWithTag("Player");
+            _firstStart = false;
+        }
+        
         _navMeshAgent.stoppingDistance = _followDistance;  
     }
     /// <summary>
