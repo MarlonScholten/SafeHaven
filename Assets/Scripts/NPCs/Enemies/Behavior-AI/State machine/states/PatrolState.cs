@@ -13,7 +13,7 @@ using Vector3 = UnityEngine.Vector3;
 
 /// <summary>
 /// Author: Marlon Kerstens<br/>
-/// Modified by: <br/>
+/// Modified by: Thomas van den Oever<br/>
 /// Description: Unity event for when an enemy is want's to communicate with the other enemy.
 /// </summary>
 [System.Serializable]
