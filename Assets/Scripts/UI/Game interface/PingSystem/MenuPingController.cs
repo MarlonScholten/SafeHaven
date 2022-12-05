@@ -68,37 +68,37 @@ public class MenuPingController : AbstractPingController
     /// Vector2 variable that stores the input values of the mouse.
     /// </summary>
     private Vector2 _inputMouse;
-    
+
     /// <summary>
     /// Stores the reference number of the current selected option in the radial menu.
     /// </summary>
     private int _selectedOption;
-    
+
     /// <summary>
     /// Stores the reference to the instance of the marker of a ping.
     /// </summary>
     private GameObject _marker;
-    
+
     /// <summary>
     /// Stores whether the radial menu is active.
     /// </summary>
     private bool _radialMenuIsSetActive = false;
-    
+
     /// <summary>
     /// Stores the currently selected action.
     /// </summary>
     private PingType _pingAction;
-    
+
     /// <summary>
     /// Stores the final selected action.
     /// </summary>
     private PingType _chosenAction;
-    
+
     /// <summary>
     /// Stores the size of the radial menu segments.
     /// </summary>
     private float _degreesPerSegment;
-    
+
     /// <summary>
     /// Contains if the menu has been cancelled.
     /// </summary>
@@ -109,12 +109,12 @@ public class MenuPingController : AbstractPingController
     private const float StartingPointCorrection = 90f;
     private const float DegreesHalf = 180f;
     private const float DegreesFull = 360f;
-    
+
     /// <summary>
     /// Contains that the menu has been cancelled.
     /// </summary>
     private const string NotCancelled = "Not cancelled";
-    
+
     /// <summary>
     /// Stores the size of the cancel button.
     /// </summary>
@@ -127,7 +127,7 @@ public class MenuPingController : AbstractPingController
     {
         _radialMenu.SetActive(false);
         _cancelled = NotCancelled;
-        InputBehaviour.Instance.OnPingMenuEvent += OnMenuPing; 
+        InputBehaviour.Instance.OnPingMenuEvent += OnMenuPing;
         InputBehaviour.Instance.OnPingQuickEvent += OnLeftMouseButton;
     }
 
@@ -181,6 +181,11 @@ public class MenuPingController : AbstractPingController
     {
         _cancel.color = _radialMenuCancel;
         _highlightedOption.SetActive(false);
+
+        foreach (var action in _options)
+        {
+            action.color = _radialMenuNormal;
+        }
     }
 
     /// <summary>
