@@ -68,6 +68,8 @@ public class PauseManager : MonoBehaviour
     {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
+        
+        Time.timeScale = 0;
 
         // Disable player input
         InputBehaviour.Instance.gameObject.SetActive(false);
@@ -88,6 +90,8 @@ public class PauseManager : MonoBehaviour
     /// </summary>
     public void UnpauseGame()
     {
+        Time.timeScale = 1;
+    
         // Re-enable player input
         InputBehaviour.Instance.gameObject.SetActive(true);
         
