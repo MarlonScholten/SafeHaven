@@ -1,5 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using TMPro;
 using UnityEngine;
 
 /// <summary>
@@ -14,18 +17,25 @@ public class TriggerObject : MonoBehaviour
 {
     //list of serializable ITrigger objects
     [SerializeField] private List<GameObject> _triggerObjects;
+    [SerializeField,TagSelector] private String[] tags = new string[]{};
+
 
     private void OnTriggerEnter(Collider other)
     {
+        var tagEquals = false;
         //if the object that enters the triggerbox is not tagged as "NonTrigger" and implements the ITrigger interface, trigger the object
-        if (other.tag == "NonTrigger") return;
-        foreach (var triggerObject in _triggerObjects)
+        foreach (var checkTag in tags)
         {
-            if (triggerObject.GetComponent<ITrigger>() != null)
+            if (checkTag.Equals(other.tag))
             {
-                //trigger the object
-                triggerObject.GetComponent<ITrigger>().trigger();
+                tagEquals = true;
             }
+        }
+        if (tagEquals == false) return;
+        foreach (var triggerObject in _triggerObjects.Where(triggerObject => triggerObject.GetComponent<ITrigger>() != null))
+        {
+            //trigger the object
+            triggerObject.GetComponent<ITrigger>().trigger();
         }
     }
     
