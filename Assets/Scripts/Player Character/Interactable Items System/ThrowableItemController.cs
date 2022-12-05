@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace InteractableItemsSystem
@@ -54,11 +56,13 @@ namespace InteractableItemsSystem
             {
                 Debug.Log("Can't Throw Item");
             }
-            else ThrowItem();
+            else StartCoroutine(ThrowItem());
         }
 
-        private void ThrowItem()
+        private IEnumerator ThrowItem()
         {
+            _playerItemInteraction.isThrowingItem = true;
+            
             var itemInInventory = _inventory.ItemInInventoryObj;
             var itemInInventoryRigidbody = itemInInventory.GetComponent<Rigidbody>();
            
@@ -66,6 +70,9 @@ namespace InteractableItemsSystem
             
             itemInInventoryRigidbody.AddForce(_cam.transform.forward * _throwForceForward, ForceMode.Impulse);
             itemInInventoryRigidbody.AddForce(_cam.transform.up * _throwForceUpwards, ForceMode.Impulse);
+
+            yield return new WaitForSeconds(0.5f);
+            _playerItemInteraction.isThrowingItem = false;
         }
     }
 }

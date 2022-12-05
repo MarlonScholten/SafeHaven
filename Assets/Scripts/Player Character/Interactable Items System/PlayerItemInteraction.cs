@@ -1,6 +1,8 @@
 using System.Collections;
 using PlayerCharacter.Movement;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace InteractableItemsSystem
 {
@@ -30,6 +32,7 @@ namespace InteractableItemsSystem
     {
         private Inventory _inventory;
 
+        [Tooltip("Interaction prompt for interacting with items or objects")] [SerializeField] TextMeshProUGUI _actionPromptText;
         [Tooltip("The GameObject where the item in your inventory will be placed under.")][SerializeField] 
         private GameObject _itemHolder;
         [Tooltip("Max range that you can pickup an item.")][SerializeField] 
@@ -37,11 +40,7 @@ namespace InteractableItemsSystem
         [Tooltip("Max range that you can interact with an other Object.")][SerializeField] 
         private float _maxInteractRange;
         [Tooltip("Color of the emission of the highlighted object")][SerializeField] private Color _highlightColor;
-        
-        //Tempcode only for debugging and to stop spam.
-        [Tooltip("Only for debugging, spams debug.log, if you can pickup or interact with an item.")] [SerializeField] 
-        private bool _showSpamDebug;
-        
+
         private Transform _playerTransform;
         private ItemController _itemController;
         private InteractableObject _interactableObject;
@@ -49,12 +48,18 @@ namespace InteractableItemsSystem
 
         private float _distanceToItem;
 
-        private bool _itemIsClose;
         private bool _isChangingItem;
+        
+        //Gets changed in ThrowableItemController script
+        public bool isThrowingItem;
+        
+        private bool _closeToInteractableObject;
+        private bool _closeToItem;
 
         private RaycastHit _itemHit;
 
         private Renderer _rendererItem;
+        
         private void Start()
         {
             _inventory = GetComponent<Inventory>();
@@ -67,6 +72,7 @@ namespace InteractableItemsSystem
         private void Update()
         {
             CheckDistanceToItem();
+            UpdateActionPromptText();
         }
 
         private void CheckDistanceToItem()
@@ -77,10 +83,8 @@ namespace InteractableItemsSystem
                 _rendererItem = null;
             }
             _itemHit = _playerController.CamRayCastHit;
-            if (_itemHit.transform == null) return;
+            if (_itemHit.transform == null || _isChangingItem || isThrowingItem) return;
             
-            /*if (_itemHit.transform.GetComponent<ItemController>() == null &&
-                _itemHit.transform.GetComponent<InteractableObject>() == null) return;*/
             
             _distanceToItem = Vector3.Distance(_playerTransform.position, _itemHit.point);
             
@@ -88,12 +92,15 @@ namespace InteractableItemsSystem
             {
                 var itemController = _itemHit.transform.GetComponent<ItemController>();
                 var renderer = itemController.transform.GetComponent<Renderer>();
-                if (_distanceToItem <= _maxPickupRange && _showSpamDebug)
+
+                if (_distanceToItem <= _maxPickupRange)
                 {
+                    _closeToItem = true;
+                    
+                    _actionPromptText.text = "Press E to pickup";
                     renderer.material.EnableKeyword("_EMISSION");
                     renderer.material.SetColor("_EmissionColor", _highlightColor);
                     _rendererItem = renderer;
-                    Debug.Log("Can PickUp the Item!");
                 }
                 else
                 {
@@ -104,35 +111,65 @@ namespace InteractableItemsSystem
             {
                 var interactableObject = _itemHit.transform.GetComponent<InteractableObject>();
                 var renderer = interactableObject.transform.GetComponent<Renderer>();
-                if (_distanceToItem <= _maxPickupRange && _showSpamDebug)
+
+                if (_distanceToItem <= _maxPickupRange)
                 {
+                    _closeToInteractableObject = true;
+                    
+                    _actionPromptText.enabled = true;
+                    _actionPromptText.text = "Press E to interact";
                     renderer.material.EnableKeyword("_EMISSION");
                     renderer.material.SetColor("_EmissionColor", _highlightColor);
                     _rendererItem = renderer;
-                    Debug.Log("Can Interact with Object!");
                 }
                 else
                 {
                     renderer.material.DisableKeyword("_EMISSION");
-                    Debug.Log("Looks at Interactable Object!");
                 }
+            }
+        }
+
+        void UpdateActionPromptText()
+        {
+            if (_closeToItem)
+            {
+                _actionPromptText.enabled = true;
+                _actionPromptText.text = "Press E to pickup";
+                
+                _closeToItem = false;
+            }
+            else if(_closeToInteractableObject)
+            {
+                _actionPromptText.enabled = true;
+                _actionPromptText.text = "Press E to interact";
+                
+                _closeToInteractableObject = false;
+            }
+            else if (_inventory.HasItemInInventory)
+            {
+                _actionPromptText.enabled = true;
+                _actionPromptText.text = "Press E to drop";
+            }
+            else
+            {
+                _actionPromptText.enabled = false;
             }
         }
 
         private void OnInteractionWithItem()
         {
-            if(_isChangingItem) return;
+            if(_isChangingItem || isThrowingItem) return;
             
-            if (_itemHit.transform.GetComponent<InteractableObject>() != null)
+            if (_itemHit.transform.GetComponent<InteractableObject>() != null && _distanceToItem <= _maxInteractRange)
             {
                 _interactableObject = _itemHit.transform.GetComponent<InteractableObject>();
-                if(_distanceToItem < _maxInteractRange)TryInteraction();
+                TryInteraction();
             }
             else if (_itemHit.transform.GetComponent<ItemController>() != null)
             {
-                if (!_inventory.HasItemInInventory && _distanceToItem < _maxPickupRange) PickUpItem();
-                else if (_inventory.HasItemInInventory && _distanceToItem < _maxPickupRange) StartCoroutine(SwitchItem());
-                else if (!_inventory.HasItemInInventory && _distanceToItem > _maxPickupRange) DropItem();
+                if (!_inventory.HasItemInInventory && _distanceToItem <= _maxPickupRange) PickUpItem(_itemHit.transform.gameObject);
+                else if (_inventory.HasItemInInventory && _distanceToItem <= _maxPickupRange) StartCoroutine(SwitchItem(_itemHit.transform.gameObject));
+                else if (_inventory.HasItemInInventory && _distanceToItem > _maxPickupRange) DropItem();
             }
             else
             {
@@ -140,18 +177,18 @@ namespace InteractableItemsSystem
             }
         }
 
-        private IEnumerator SwitchItem()
+        private IEnumerator SwitchItem(GameObject itemHitGameObject)
         {
             _isChangingItem = true;
             DropItem();
             yield return new WaitForSeconds(0.5f);
-            PickUpItem();
+            PickUpItem(itemHitGameObject);
             _isChangingItem = false;
         }
         
-        private void PickUpItem()
+        private void PickUpItem(GameObject itemHitGameObject)
         {
-            _inventory.ItemInInventoryObj = _itemHit.transform.gameObject;
+            _inventory.ItemInInventoryObj = itemHitGameObject;
             
             _inventory.HasItemInInventory = true;
 

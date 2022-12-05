@@ -51,8 +51,7 @@ namespace InteractableItemsSystem
         [Tooltip("Item ScriptableObject that is needed for interaction with object.")][SerializeField] 
         private ItemSO _itemNeededToInteract;
         [Tooltip("Determines if the name should be important or not.")][SerializeField] private bool _nameImportant;
-        [SerializeField] private List<Renderer> _renderersList;
-        [SerializeField] private Color _highlightColor = Color.white;
+
         /// <summary>
         /// Stores which item is needed for the player to interact with the object.
         /// </summary>
@@ -61,45 +60,7 @@ namespace InteractableItemsSystem
         /// Determines if the name should be important or not.
         /// </summary>
         public bool NameImportant => _nameImportant;
-        
-        private List<Material> _materialsList;
-        private static readonly int EmissionColor = Shader.PropertyToID("_EmissionColor");
 
-
-        private void Awake()
-        {
-            
-            _materialsList = new List<Material>();
-            foreach (var renderer in _renderersList)
-            {
-                _materialsList.AddRange(new List<Material>(renderer.materials));  
-            }
-        }
-
-        private void OnMouseExit()
-        {
-            ToggleHighlight(false);
-            Debug.Log("kaas");
-        }
-        
-        public void ToggleHighlight(bool doHighlight)
-        {
-            if (doHighlight)
-            {
-                foreach (var material in _materialsList)
-                {
-                    material.EnableKeyword("_EMISSION");
-                    material.SetColor(EmissionColor, _highlightColor);
-                }
-            }
-            else
-            {
-                foreach (var material in _materialsList)
-                {
-                    material.DisableKeyword("_EMISSION");
-                }
-            }
-        }
     }
 }
 
