@@ -1,4 +1,5 @@
 using System;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -252,6 +253,9 @@ public class MenuPingController : AbstractPingController
         ShowMarker(_pingPosition);
 
         Time.timeScale /= _slowmotionFactor;
+        
+        CinemachineBrain cinemachineBrain = FindObjectOfType<CinemachineBrain>();
+        if (cinemachineBrain) cinemachineBrain.enabled = false;
     }
 
     /// <summary>
@@ -276,6 +280,9 @@ public class MenuPingController : AbstractPingController
 
         StartCoroutine(MarkerDuration(_marker));
         Time.timeScale = StandardTimeFactor;
+        
+        CinemachineBrain cinemachineBrain = FindObjectOfType<CinemachineBrain>();
+        if (cinemachineBrain) cinemachineBrain.enabled = true;
     }
 
     /// <summary>
