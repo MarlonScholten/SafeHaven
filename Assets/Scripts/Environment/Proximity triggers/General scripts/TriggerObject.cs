@@ -41,8 +41,16 @@ public class TriggerObject : MonoBehaviour
     
     private void OnTriggerExit(Collider other)
     {
+        var tagEquals = false;
         //if the object that enters the triggerbox is not tagged as "NonTrigger" and implements the ITrigger interface, trigger the object
-        if (other.tag == "NonTrigger") return;
+        foreach (var checkTag in tags)
+        {
+            if (checkTag.Equals(other.tag))
+            {
+                tagEquals = true;
+            }
+        }
+        if (tagEquals == false) return;
         foreach (var triggerObject in _triggerObjects)
         {
             if (triggerObject.GetComponent<ITrigger>() != null)
