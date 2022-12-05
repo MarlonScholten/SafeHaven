@@ -1,8 +1,8 @@
 using UnityEngine;
 
 /// <summary>
-/// <br>Author: Hugo Ulfma </br>
-/// <br>Modified by:  Marlon Kerstens</br>
+/// Author: Hugo Ulfman<br/>
+/// Modified by:  Marlon Kerstens<br/>
 /// Description: Scriptable object for the EnemyAi.
 /// </summary>
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/EnemyAIScriptableObject", order = 1)]
@@ -57,7 +57,27 @@ public class FSM_Scriptable_Object : ScriptableObject
     public int StopWhenAlertedTime => stopWhenAlertedTime;
     
     [Tooltip("The distance in which the enemy can catch the player/brother")]
-    [SerializeField] private  float catchDistance = 0.5f;
+    [SerializeField] private float catchDistance = 0.5f;
     public float CatchDistance => catchDistance;
+    
+    [Tooltip("The distance that a guard can notify other enemies")]
+    [SerializeField] private float guardAlertRadius = 10;
+    public float GuardAlertRadius => guardAlertRadius;
+    
+    [Tooltip("The distance that a guard can patrol around its waypoint")]
+    [SerializeField] private float guardPatrolRadius = 3;
+    public float GuardPatrolRadius => guardPatrolRadius;
+    
+    [Tooltip("The time that the enemy will communicate with other enemies")]
+    [SerializeField] private int communicationTime = 4;
+    public int CommunicationTime => communicationTime;
+    
+    [Tooltip("The radius in which the enemy will communicate with other enemies")]
+    [SerializeField] private float communicationRadius = 2;
+    public float CommunicationRadius => communicationRadius;
+    
+    [Tooltip("The time to forget the object that the enemy communicated with. (This is to prevent the enemy from communicating with the same object over and over again)")]
+    [SerializeField] private int timeToForgetCommunicationWithEnemy = 2;
+    public int TimeToForgetCommunicationWithEnemy => timeToForgetCommunicationWithEnemy;
 }
 

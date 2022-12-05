@@ -1,5 +1,5 @@
 using System.Collections;
-using Player_Character.Player_Movement.State_machine.State_machines;
+using PlayerCharacter.Movement;
 using UnityEngine;
 
 namespace InteractableItemsSystem

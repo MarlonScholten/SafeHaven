@@ -4,7 +4,7 @@ using UnityEngine.AI;
 
 /// <summary>
 /// Author: Jelco van der Straaten </para>
-/// Modified by: Thijs Orsel and Iris Giezen</para>
+/// Modified by: Thijs Orsel and Iris Giezen, Thomas van den Oever</para>
 /// This script controls the state of the brotherAI. In this script al the calculation for the states are made.
 /// </summary>
 /// <list type="table">
@@ -56,6 +56,12 @@ public class BrotherAI : MonoBehaviour
     [SerializeField] private float _walkSpeed = 3.5f;
 
     /// <summary>
+    /// This value determines the following distance of the brother.
+    /// </summary>
+    [Range(0.5f, 4.0f), Tooltip("This value determines the following distance of the brother.")]
+    [SerializeField] private float _followDistance = 1.5f;
+
+    /// <summary>
     /// This value determines the range in wich a path considers to be completed to get to the next state.
     /// </summary>
     private const float _pathEndThreshold = 0.1f;
@@ -81,6 +87,11 @@ public class BrotherAI : MonoBehaviour
     private GameObject _player;
 
     /// <summary>
+    /// A bool to check if this is the first time the script has started
+    /// </summary>
+    private bool _firstStart = true;
+
+    /// <summary>
     /// In the start method the declaration for the input is made.
     /// </summary>
     void Start(){
@@ -92,9 +103,10 @@ public class BrotherAI : MonoBehaviour
     /// </summary>
     void Awake()
     {
-        _navMeshAgent = GetComponent<NavMeshAgent>();
+        /*_navMeshAgent = GetComponent<NavMeshAgent>();
         _findHidingSpot = gameObject.GetComponent<FindHidingSpot>();
-        _player = GameObject.FindGameObjectWithTag("Player");                
+        _player = GameObject.FindGameObjectWithTag("Player"); */
+        //TODO: add initializer state for Awake function and remove this form the enter state
     }
     
     /// <summary>
@@ -135,16 +147,24 @@ public class BrotherAI : MonoBehaviour
         CustomEvent.Trigger(this.gameObject, ping.ToString());     
     }
     /// <summary>
-    /// The enter method for the follow state
+    /// The enter method for the follow state, it sets the following distance for the brother.
     /// </summary>
     public void FollowEnter(){
+        if (_firstStart)
+        {
+            _navMeshAgent = GetComponent<NavMeshAgent>();
+            _findHidingSpot = gameObject.GetComponent<FindHidingSpot>();
+            _player = GameObject.FindGameObjectWithTag("Player");
+            _firstStart = false;
+        }
         
+        _navMeshAgent.stoppingDistance = _followDistance;  
     }
     /// <summary>
     /// The update method for the follow state
     /// </summary>
     public void FollowUpdate(){
-        MoveToLocation(GetPlayerLocation(), _walkSpeed);
+        MoveToLocation(GetPlayerLocation(),_walkSpeed);
     }
 
     /// <summary>
@@ -155,10 +175,10 @@ public class BrotherAI : MonoBehaviour
     }
 
     /// <summary>
-    /// The exit method for the follow state
+    /// The exit method for the follow state, it resets the follow distance.
     /// </summary>
     public void FollowExit(){
-
+        _navMeshAgent.stoppingDistance = 0;
     }
 
     /// <summary>
