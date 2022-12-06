@@ -1,4 +1,5 @@
 using System;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -33,6 +34,10 @@ public class PauseManager : MonoBehaviour
     [Tooltip("A reference to the pause menu UI prefab")]
     private GameObject _pauseMenu;
 
+    [SerializeField] 
+    [Tooltip("Disables camera control when the game is paused")]
+    private bool _disableCameraOnPause = true;
+
     private GameObject _pauseMenuInstance;
 
     private void Start()
@@ -63,8 +68,19 @@ public class PauseManager : MonoBehaviour
     {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
+        
+        Time.timeScale = 0;
 
+        // Disable player input
         InputBehaviour.Instance.gameObject.SetActive(false);
+        
+        // Disable camera control
+        if (_disableCameraOnPause)
+        {
+            CinemachineBrain cinemachineBrain = FindObjectOfType<CinemachineBrain>();
+            if (cinemachineBrain) 
+                cinemachineBrain.enabled = false;
+        }
         
         if (!_pauseMenuInstance) _pauseMenuInstance = Instantiate(_pauseMenu);
     }
@@ -74,8 +90,19 @@ public class PauseManager : MonoBehaviour
     /// </summary>
     public void UnpauseGame()
     {
+        Time.timeScale = 1;
+    
+        // Re-enable player input
         InputBehaviour.Instance.gameObject.SetActive(true);
         
+        // Re-enable camera control
+        if (_disableCameraOnPause)
+        {
+            CinemachineBrain cinemachineBrain = FindObjectOfType<CinemachineBrain>();
+            if (cinemachineBrain) 
+                cinemachineBrain.enabled = true;
+        }
+
         Cursor.visible = false;
 
         if (_pauseMenuInstance)

@@ -46,7 +46,7 @@ public class FindHidingSpot : MonoBehaviour
         float bestSpotValue = -1;
         foreach(var spot in hidingSpots)
         {
-            if (!CheckHidingSpotInView(spot)) continue;
+            // if (!CheckHidingSpotInView(spot)) continue;
             // Now we calculate the obscurity value for the current hiding spot to be checked.
             HidingSpot hidingSpot = spot.GetComponent<HidingSpot>();
             CalculateObscurityValue(spot);

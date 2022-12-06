@@ -86,6 +86,14 @@ public class KeybindingUI : MonoBehaviour
         
         _actionBindingUI.text = _actionReference.action.GetBindingDisplayString(_bindingIndex);
     }
+
+    /// <summary>
+    /// Refreshes the button binding UI to a new binding if changed
+    /// </summary>
+    public void RefreshRebindingButton()
+    {
+        _actionBindingUI.text = _actionReference.action.GetBindingDisplayString(_bindingIndex);
+    }
 }
 
 
