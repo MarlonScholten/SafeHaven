@@ -210,15 +210,15 @@ namespace PlayerCharacter.Movement
             while (true)
             {
                 RaycastHit hit;
-                _playerCamRay = PlayerCamera.ScreenPointToRay(Input.mousePosition);
+                _playerCamRay = new Ray(PlayerCamera.transform.position, PlayerCamera.transform.forward);
                 if (Physics.Raycast(_playerCamRay, out hit, _camRayCastLength, _camRayCastLayers))
                 {
                     _camRayCastHit = hit;
                     if(DrawRayDebug)
-                        Debug.DrawLine(_playerCamRay.origin, _camRayCastHit.point, Color.red);
+                        Debug.DrawRay(_playerCamRay.origin, _playerCamera.transform.forward * _camRayCastLength, Color.red);
                 }
 
-                yield return new WaitForSeconds(0.2f);
+                yield return new WaitForSeconds(0.1f);
             }
         }
     }
