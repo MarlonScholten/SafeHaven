@@ -219,7 +219,6 @@ GameObject:
   m_Component:
   - component: {fileID: 219079775}
   - component: {fileID: 219079774}
-  - component: {fileID: 219079776}
   m_Layer: 0
   m_Name: Timeline
   m_TagString: Untagged
@@ -263,20 +262,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &219079776
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 219079773}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be1e4ffd9ae709846bec9f2076937df1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playableDirectors:
-  - {fileID: 219079774}
 --- !u!1 &223757667
 GameObject:
   m_ObjectHideFlags: 0
@@ -1052,6 +1037,7 @@ GameObject:
   - component: {fileID: 357257861}
   - component: {fileID: 357257860}
   - component: {fileID: 357257862}
+  - component: {fileID: 357257863}
   m_Layer: 0
   m_Name: Timeline Trigger
   m_TagString: Untagged
@@ -1100,9 +1086,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _triggerObjects:
-  - {fileID: 219079773}
+  - {fileID: 357257858}
   tags:
   - Brother
+--- !u!114 &357257863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 357257858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be1e4ffd9ae709846bec9f2076937df1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playableDirectors:
+  - {fileID: 219079774}
+  _oneTimeTrigger: 0
+  _coolDownSeconds: 20
 --- !u!114 &405527728 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7617663780213965586, guid: c25b2e8594aa4c44682e5ba43f6d65d9,

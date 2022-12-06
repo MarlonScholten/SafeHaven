@@ -17,7 +17,7 @@ public class TriggerObject : MonoBehaviour
 {
     //list of serializable ITrigger objects
     [SerializeField] private List<GameObject> _triggerObjects;
-    [SerializeField,TagSelector] private String[] tags = new string[]{};
+    [SerializeField,TagSelector, Tooltip("Select the tags of game object you want to trigger this trigger with.")] private String[] tags = new string[]{};
 
 
     private void OnTriggerEnter(Collider other)
@@ -31,7 +31,9 @@ public class TriggerObject : MonoBehaviour
                 tagEquals = true;
             }
         }
+        // If no tags equalled a tag in the list, the method returns.
         if (tagEquals == false) return;
+        
         foreach (var triggerObject in _triggerObjects.Where(triggerObject => triggerObject.GetComponent<ITrigger>() != null))
         {
             //trigger the object
