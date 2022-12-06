@@ -6,25 +6,33 @@ namespace NPCs.Enemies.Birds
 {
     public class PathFollower : MonoBehaviour
     {
-        [SerializeField] private PathCreator pathCreator;
-        [SerializeField] private Transform restPoint;
+        [SerializeField] private PathCreator pathToFollow;
         [SerializeField] private float speed = 5;
+        [SerializeField] private int startPointInPercentage = 0;
         private float _distanceTravelled;
+        
         // Start is called before the first frame update
         void Start()
         {
-        
+           SetStartPoint();
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (Vector3.Distance(transform.position, restPoint.position) > 0.2f)
-                {
-                    _distanceTravelled += speed * Time.deltaTime;
-                    transform.position = pathCreator.path.GetPointAtDistance(_distanceTravelled);
-                    transform.rotation = pathCreator.path.GetRotationAtDistance(_distanceTravelled);
-                }
+            TravelPath();
+        }
+
+        private void SetStartPoint()
+        {
+            var pathLength = pathToFollow.path.length;
+            _distanceTravelled = pathLength * startPointInPercentage / 100;
+        }
+        private void TravelPath()
+        {
+            _distanceTravelled += speed * Time.deltaTime;
+            transform.position = pathToFollow.path.GetPointAtDistance(_distanceTravelled);
+            transform.rotation = pathToFollow.path.GetRotationAtDistance(_distanceTravelled);
         }
     }
 }
