@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4393969637856288563}
   - component: {fileID: 7772940900033291835}
   - component: {fileID: 1711711202}
+  - component: {fileID: 7577174296461621592}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -107,6 +108,36 @@ MonoBehaviour:
     type: 3}
   _radialMenu: {fileID: 0}
   durationMarkerVisible: 1
+--- !u!114 &7577174296461621592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4393969637856288561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b75838c0c4093164da44f8be19742f20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _brother: {fileID: 0}
+  _camera: {fileID: 0}
+  _markerPrefab: {fileID: 4852335383087449349, guid: 51f106024b02e1c4c98cb73e851ad245,
+    type: 3}
+  _radialMenu: {fileID: 0}
+  durationMarkerVisible: 1
+  _highlightedOption: {fileID: 0}
+  _slowmotionFactor: 4
+  _radialMenuNormal: {r: 1, g: 1, b: 1, a: 1}
+  _radialMenuOptionHovered: {r: 0, g: 0.38039216, b: 0.65882355, a: 1}
+  _radialMenuCancel: {r: 0.59607846, g: 0, b: 0, a: 1}
+  _options:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _cancel: {fileID: 0}
 --- !u!1001 &7210077226252904146
 PrefabInstance:
   m_ObjectHideFlags: 0
