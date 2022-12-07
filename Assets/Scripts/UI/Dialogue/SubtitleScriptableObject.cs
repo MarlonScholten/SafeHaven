@@ -9,6 +9,7 @@ public class SubtitleScriptableObject : ScriptableObject
     [System.Serializable]
     public class Subtitle
     {
+        public int voiceLineNr;
         public string character;
         public string text;
         public int time;
