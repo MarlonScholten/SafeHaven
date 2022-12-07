@@ -50,7 +50,7 @@ using UnityEngine.AI;
 /// <summary>
 /// This requireComponent is used for the triggers. The AkComponents needs that the object to trigger the trigger has an rigidbody. But make it kineMatic so it does not affect anything.
 /// </summary>
-[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Rigidbody),typeof(Collider))]
 public class BrotherAI : MonoBehaviour
 {
     /// <summary>
