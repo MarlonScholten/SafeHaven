@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Author: Tom Cornelissen <br/>
+/// Modified by:  <br/>
+/// Description: This class handles loading and unloading of scenes
+/// </summary>
 public class LoadingScreen : MonoBehaviour
 {
     private int _scenesLoaded;
@@ -11,6 +16,11 @@ public class LoadingScreen : MonoBehaviour
     private List<int> _oldScenes;
     private List<int> _newScenes;
     
+    /// <summary>
+    /// Loads and unloads the given scenes
+    /// </summary>
+    /// <param name="oldScenes">A list of ids of scenes to unload</param>
+    /// <param name="newScenes">A list of ids of scenes to load</param>
     public void StartLoading(List<int> oldScenes, List<int> newScenes)
     {
         _oldScenes = oldScenes;
