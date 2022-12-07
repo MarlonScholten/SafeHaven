@@ -75,6 +75,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _walkSpeed: 3
   _followDistance: 1.5
+  _isStealth: 0
 --- !u!114 &2523940014669833875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,6 +239,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Brother Body
+      objectReference: {fileID: 0}
+    - target: {fileID: 4814511677047082166, guid: c4f88dee05d0c984cb44ed732a3b067f,
+        type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4814511677047082166, guid: c4f88dee05d0c984cb44ed732a3b067f,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8c02fd9718ac41848810be693f39627a, type: 2}
+    - target: {fileID: 4814511677047082166, guid: c4f88dee05d0c984cb44ed732a3b067f,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4f88dee05d0c984cb44ed732a3b067f, type: 3}
