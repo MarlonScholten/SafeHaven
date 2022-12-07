@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 /// <summary>
 /// Author: Jelco van der Straaten </para>
-/// Modified by: Thijs Orsel and Iris Giezen</para>
+/// Modified by: Thijs Orsel, Iris Giezen and Thomas van den Oever</para>
 /// This script controls the state of the brotherAI. In this script al the calculation for the states are made.
 /// </summary>
 /// <list type="table">
@@ -46,15 +46,19 @@ using UnityEngine.AI;
 ///		    <term>The state machine is needed for the management of the states.</term>
 ///	    </item>
 /// </list>
-
-
 public class BrotherAI : MonoBehaviour
 {
     /// <summary>
     /// This value determines the maximum walkspeed of the brother.
     /// </summary>
-    [Range(2.0f, 4.0f), Tooltip("This value determines the maximum walkspeed of the brother.")]
-    [SerializeField] private float _walkSpeed = 3.5f;
+    [Range(2.0f, 4.0f), Tooltip("This value determines the maximum walkspeed of the brother.")] [SerializeField]
+    private float _walkSpeed = 3.5f;
+
+    /// <summary>
+    /// This value determines the following distance of the brother.
+    /// </summary>
+    [Range(0.5f, 4.0f), Tooltip("This value determines the following distance of the brother.")] [SerializeField]
+    private float _followDistance = 1.5f;
 
     /// <summary>
     /// This value determines the range in wich a path considers to be completed to get to the next state.
@@ -93,7 +97,8 @@ public class BrotherAI : MonoBehaviour
     /// <summary>
     /// In the start method the declaration for the input is made.
     /// </summary>
-    void Start(){
+    void Start()
+    {
         InputBehaviour.Instance.OnCallBrotherEvent += CallBrother;
         _velocityHash = Animator.StringToHash("forwardVelocity");
         _itemHeldHash = Animator.StringToHash("ItemHeld");
@@ -121,21 +126,24 @@ public class BrotherAI : MonoBehaviour
     /// <summary>
     /// When the brother is called back this method makes sure the brother gets back to the follow state.
     /// </summary>
-    private void CallBrother(){
+    private void CallBrother()
+    {
         CustomEvent.Trigger(this.gameObject, "Follow");
     }
 
     /// <summary>
     /// This method checks if the path is completed.
     /// </summary>
-    private bool PathCompleted(){
+    private bool PathCompleted()
+    {
         return _navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance + _pathEndThreshold;
     }
 
     /// <summary>
     /// This method makes the brother move to a certain location
     /// </summary>
-    private void MoveToLocation(Vector3 walkLocation, float speed){
+    private void MoveToLocation(Vector3 walkLocation, float speed)
+    {
         _navMeshAgent.speed = speed;
         _navMeshAgent.SetDestination(walkLocation);
     }
@@ -143,7 +151,8 @@ public class BrotherAI : MonoBehaviour
     /// <summary>
     /// This method gets the current location of the player (sister)
     /// </summary>
-    private Vector3 GetPlayerLocation(){
+    private Vector3 GetPlayerLocation()
+    {
         return _player.transform.position;
     }
 
@@ -151,69 +160,110 @@ public class BrotherAI : MonoBehaviour
     /// <para>This method is used by the pinging system.</para>
     /// The method gets called when a ping is made. This method changes the state of the brother depending on the ping.
     /// </summary>
-    public void PingBrother(PingType ping, Vector3 location){
+    public void PingBrother(PingType ping, Vector3 location)
+    {
         _pingLocation = location;
-        CustomEvent.Trigger(this.gameObject, ping.ToString());     
+        CustomEvent.Trigger(this.gameObject, ping.ToString());
     }
+
     /// <summary>
-    /// The enter method for the follow state
+    /// The enter method for the initialize state, it instantiates the state machine.
     /// </summary>
-    public void FollowEnter(){
-        
+    public void InitializeEnter()
+    {
+        _navMeshAgent = GetComponent<NavMeshAgent>();
+        _findHidingSpot = gameObject.GetComponent<FindHidingSpot>();
+        _player = GameObject.FindGameObjectWithTag("Player");
+
+        CustomEvent.Trigger(this.gameObject, "Follow");
     }
+
+    /// <summary>
+    /// The update method for the initialize state.
+    /// </summary>
+    public void InitializeUpdate()
+    {
+    }
+
+    /// <summary>
+    /// The Fixed update method for the initialize state.
+    /// </summary>
+    public void InitializeFixedUpdate()
+    {
+    }
+
+    /// <summary>
+    /// The exit method for the initialize state.
+    /// </summary>
+    public void InitializeExit()
+    {
+    }
+
+    /// <summary>
+    /// The enter method for the follow state, it sets the following distance for the brother.
+    /// </summary>
+    public void FollowEnter()
+    {
+        _navMeshAgent.stoppingDistance = _followDistance;
+    }
+
     /// <summary>
     /// The update method for the follow state
     /// </summary>
-    public void FollowUpdate(){
+    public void FollowUpdate()
+    {
         MoveToLocation(GetPlayerLocation(), _walkSpeed);
     }
 
     /// <summary>
     /// The Fixed update method for the follow state
     /// </summary>
-    public void FollowFixedUpdate(){
-
+    public void FollowFixedUpdate()
+    {
     }
 
     /// <summary>
-    /// The exit method for the follow state
+    /// The exit method for the follow state, it resets the follow distance.
     /// </summary>
-    public void FollowExit(){
-
+    public void FollowExit()
+    {
+        _navMeshAgent.stoppingDistance = 0;
     }
 
     /// <summary>
     /// The enter method for the holding hands state
     /// </summary>
-    public void HoldingHandsEnter(){
-        
+    public void HoldingHandsEnter()
+    {
     }
 
     /// <summary>
     /// The update method for the holding hands state
     /// </summary>
-    public void HoldingHandsUpdate(){
+    public void HoldingHandsUpdate()
+    {
         MoveToLocation(GetPlayerLocation(), _walkSpeed);
     }
 
     /// <summary>
     /// The fixed update method for the holding hands state
     /// </summary>
-    public void HoldingHandsFixedUpdate(){
-
+    public void HoldingHandsFixedUpdate()
+    {
     }
 
     /// <summary>
     /// The exit method for the holding hands state
     /// </summary>
-    public void HoldingHandsExit(){
-
+    public void HoldingHandsExit()
+    {
     }
 
     /// <summary>
     /// The enter method for the hide state
     /// </summary>
-    public void HideEnter(){
+    public void HideEnter()
+    {
         MoveToLocation(_findHidingSpot.FindBestHidingSpot(), _walkSpeed);
     }
 
@@ -230,8 +280,8 @@ public class BrotherAI : MonoBehaviour
     /// <summary>
     /// The fixed update method for the hide state
     /// </summary>
-    public void HideFixedUpdate(){
-
+    public void HideFixedUpdate()
+    {
     }
 
     /// <summary>
@@ -245,142 +295,148 @@ public class BrotherAI : MonoBehaviour
     /// <summary>
     /// The enter method for the run state
     /// </summary>
-    public void RunEnter(){
+    public void RunEnter()
+    {
         MoveToLocation(_pingLocation, _walkSpeed);
     }
 
     /// <summary>
     /// The update method for the run state
     /// </summary>
-    public void RunUpdate(){
-        if(PathCompleted()){
-            
+    public void RunUpdate()
+    {
+        if (PathCompleted())
+        {
         }
     }
 
     /// <summary>
     /// The fixed update method for the run state
     /// </summary>
-    public void RunFixedUpdate(){
-
+    public void RunFixedUpdate()
+    {
     }
 
     /// <summary>
     /// The exit method for the run state
     /// </summary>
-    public void RunExit(){
-        
+    public void RunExit()
+    {
     }
 
     /// <summary>
     /// The enter method for the idle state
     /// </summary>
-    public void IdleEnter(){
+    public void IdleEnter()
+    {
         _navMeshAgent.ResetPath();
     }
 
     /// <summary>
     /// The update method for the idle state
     /// </summary>
-    public void IdleUpdate(){
-
+    public void IdleUpdate()
+    {
     }
 
     /// <summary>
     /// The fixed update method for the idle state
     /// </summary>
-    public void IdleFixedUpdate(){
-
+    public void IdleFixedUpdate()
+    {
     }
 
     /// <summary>
     /// The exit method for the idle state
     /// </summary>
-    public void IdleExit(){
-        
+    public void IdleExit()
+    {
     }
 
     /// <summary>
     /// The enter method for the interact state
     /// </summary>
-    public void InteractEnter(){
+    public void InteractEnter()
+    {
         MoveToLocation(_pingLocation, _walkSpeed);
     }
 
     /// <summary>
     /// The update method for the interact state
     /// </summary>
-    public void InteractUpdate(){
-
+    public void InteractUpdate()
+    {
     }
 
     /// <summary>
     /// The fixed update method for the interact state
     /// </summary>
-    public void InteractFixedUpdate(){
-
+    public void InteractFixedUpdate()
+    {
     }
 
     /// <summary>
     /// The exit method for the interact state
     /// </summary>
-    public void InteractExit(){
-        
+    public void InteractExit()
+    {
     }
 
     /// <summary>
     /// The enter method for the use state
     /// </summary>
-    public void UseEnter(){
+    public void UseEnter()
+    {
         MoveToLocation(_pingLocation, _walkSpeed);
     }
 
     /// <summary>
     /// The update method for the use state
     /// </summary>
-    public void UseUpdate(){
-
+    public void UseUpdate()
+    {
     }
 
     /// <summary>
     /// The fixed update method for the use state
     /// </summary>
-    public void UseFixedUpdate(){
-
+    public void UseFixedUpdate()
+    {
     }
 
     /// <summary>
     /// The exit method for the use state
     /// </summary>
-    public void UseExit(){
-        
+    public void UseExit()
+    {
     }
 
     /// <summary>
     /// The enter method for the pickup
     /// </summary>
-    public void PickupEnter(){
+    public void PickupEnter()
+    {
         MoveToLocation(_pingLocation, _walkSpeed);
     }
 
     /// <summary>
     /// The update method for the pickup
     /// </summary>
-    public void PickupUpdate(){
-
+    public void PickupUpdate()
+    {
     }
 
     /// <summary>
     /// The fixed update method for the pickup
     /// </summary>
-    public void PickupFixedUpdate(){
-
+    public void PickupFixedUpdate()
+    {
     }
 
     /// <summary>
     /// The exit method for the pickup
     /// </summary>
-    public void PickupExit(){
-        
+    public void PickupExit()
+    {
     }
 }

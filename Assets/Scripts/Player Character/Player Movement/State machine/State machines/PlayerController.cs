@@ -1,19 +1,19 @@
 using System.Collections;
-using Player_Character.Player_Movement.State_machine.General_Scripts;
-using Player_Character.Player_Movement.State_machine.States;
+using PlayerCharacter.States;
 using UnityEngine;
 
-namespace Player_Character.Player_Movement.State_machine.State_machines
+namespace PlayerCharacter.Movement
 {
     /// <summary>
     /// Author: Marlon Scholten <br/>
-    /// Modified by: Hugo Verweij <br/>
+    /// Modified by: Hugo Verweij, Hugo Ulfman <br/>
     /// Description: PlayerController behaviour. Controller for everything related to the player character's state, movement and actions. <br />
     /// Controls the states, and updates the correct parameters when the player inputs movement buttons. <br />
     /// Installation steps: <br />
-    /// 1. Drag the Player prefab and PlayerThirdPersonCamera prefabs into the scene. <br />
-    /// 2. Select Player prefab in scene and drag the PlayerThirdpersonCamera into PlayerController component > Player Camera <br />
-    /// 3. Select the PlayerThirdpersonCamera prefab in the scene and drag the player(in the scene) into the Follow and Look At
+    /// 1. Drag the Player prefab into the scene/hierarchy.
+    /// 2. Drag the PlayerThirdPersonCamera prefab into the scene/hierarchy.
+    /// 3. Select PlayerThirdPersonCamera and drag the Player into the Follow and LookAt properties in the inspector.
+    /// 4. Check the table below to configure necessary tags, layers and other needed components.
     /// </summary>
     /// <list type="table">
     ///	    <listheader>
@@ -22,6 +22,18 @@ namespace Player_Character.Player_Movement.State_machine.State_machines
     ///         <term>Name of type</term>
     ///         <term>Description</term>
     ///     </listheader>
+    ///     <item>
+    ///         <term>Main Camera</term>
+    ///		    <term>Component</term>
+    ///         <term>CinemachineBrain</term>
+    ///		    <term>So Cinemachine can do it's job</term>
+    ///	    </item>
+    ///	    <item>
+    ///         <term>InputManager object / prefab in the scene</term>
+    ///		    <term>Object</term>
+    ///         <term>InputManager</term>
+    ///		    <term>The PlayerController uses this inputmanager for moving the player around</term>
+    ///	    </item>
     ///     <item>
     ///         <term>Player character GameObject</term>
     ///		    <term>Component</term>
@@ -62,9 +74,6 @@ namespace Player_Character.Player_Movement.State_machine.State_machines
         [Tooltip("Gravity strength multiplier for faster or slower falling speed")]
         private float _gravityMultiplier = 1f;
         [SerializeField]
-        [Tooltip("The camera that is responsible for keeping the player in view")]
-        private Camera _playerCamera;
-        [SerializeField]
         [Tooltip("The layers that the camera raycast should hit")]
         private LayerMask _camRayCastLayers;
         [SerializeField] [Range(1f, 200f)]
@@ -90,6 +99,7 @@ namespace Player_Character.Player_Movement.State_machine.State_machines
 
         private CharacterController CharacterController { get; set; }
         private Vector3 _movement;
+        private Camera _playerCamera;
         private const float _gravity = 9.8f;
         private Quaternion _rotation;
         private PlayerStateFactory _states;
@@ -103,6 +113,8 @@ namespace Player_Character.Player_Movement.State_machine.State_machines
         private int _interactableObjectHash;
         private int _stealthHash;
 
+        private bool _crouching;
+
         private void Awake()
         {
             _states = new PlayerStateFactory(this);
@@ -110,12 +122,14 @@ namespace Player_Character.Player_Movement.State_machine.State_machines
             CurrentState.EnterState();
             
             CharacterController = GetComponent<CharacterController>();
+            _playerCamera = Camera.main;
             _playerCamRay = PlayerCamera.ScreenPointToRay(Input.mousePosition);
             _animator = GetComponentInChildren<Animator>();
         }
 
         private void Start()
         {
+            InputBehaviour.Instance.OnToggleStealthEvent += Crouch;
             StartCoroutine(CastLookingRay());
             _velocityHash = Animator.StringToHash("forwardVelocity");
             _itemHeldHash = Animator.StringToHash("ItemHeld");
@@ -148,6 +162,18 @@ namespace Player_Character.Player_Movement.State_machine.State_machines
         public bool IsMoving()
         {
             return MovementInput.x != 0 || MovementInput.y != 0;
+        }
+
+        /// <summary>
+        /// adjusts the movement speed of the player if the OnToggleStealthEvent is invoked.
+        /// </summary>
+        private void Crouch() {
+            _crouching = !_crouching;
+            if (_crouching) {
+                _movementSpeed = 2f;
+            } else {
+                _movementSpeed = 5f;
+            }
         }
 
         /// <summary>

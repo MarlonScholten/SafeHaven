@@ -47,7 +47,7 @@ public class QuickPingController : AbstractPingController
         if (_radialMenu.activeSelf || _quickCancelled) return;
         _quickCancelled = false;
 
-        var ray = GetRayFromCameraToMousePosition();
+        var ray = GetRayFromCameraCenter();
         SetPingPosition(ray);
         ShowMarker(_pingPosition);
 
