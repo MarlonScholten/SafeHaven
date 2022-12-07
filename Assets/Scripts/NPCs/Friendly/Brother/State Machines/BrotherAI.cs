@@ -1,3 +1,4 @@
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -84,12 +85,42 @@ public class BrotherAI : MonoBehaviour
     /// </summary>
     private GameObject _player;
 
+    private Animator _animator;
+    private int _velocityHash;
+    private int _itemHeldHash;
+    private int _interactableObjectHash;
+    private int _stealthHash;
+
+    [Tooltip("This value determines if the brother is stealth.")]
+    [SerializeField] private bool _isStealth = false;
+
     /// <summary>
     /// In the start method the declaration for the input is made.
     /// </summary>
     void Start()
     {
         InputBehaviour.Instance.OnCallBrotherEvent += CallBrother;
+        _velocityHash = Animator.StringToHash("forwardVelocity");
+        _itemHeldHash = Animator.StringToHash("ItemHeld");
+        _interactableObjectHash = Animator.StringToHash("InteractableObject");
+        _stealthHash = Animator.StringToHash("Stealth");
+    }
+
+    /// <summary>
+    /// In awake used components get instatiated.
+    /// </summary>
+    void Awake()
+    {
+        _navMeshAgent = GetComponent<NavMeshAgent>();
+        _findHidingSpot = gameObject.GetComponent<FindHidingSpot>();
+        _player = GameObject.FindGameObjectWithTag("Player");
+        _animator = GetComponentInChildren<Animator>();
+    }
+
+    private void FixedUpdate()
+    {
+        _animator.SetFloat(_velocityHash, _navMeshAgent.velocity.magnitude);
+        _animator.SetBool(_stealthHash, _isStealth);
     }
 
     /// <summary>
@@ -239,11 +270,11 @@ public class BrotherAI : MonoBehaviour
     /// <summary>
     /// The update method for the hide state
     /// </summary>
-    public void HideUpdate()
-    {
-        if (PathCompleted())
+    public void HideUpdate(){
+        if(PathCompleted())
         {
-        }
+            _isStealth = true;
+        }    
     }
 
     /// <summary>
@@ -258,6 +289,7 @@ public class BrotherAI : MonoBehaviour
     /// </summary>
     public void HideExit()
     {
+        _isStealth = false;
     }
 
     /// <summary>

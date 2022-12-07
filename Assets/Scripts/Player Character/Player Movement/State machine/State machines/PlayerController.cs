@@ -106,6 +106,12 @@ namespace PlayerCharacter.Movement
         private float _verticalSpeed;
         private Ray _playerCamRay;
         private RaycastHit _camRayCastHit;
+        
+        private Animator _animator;
+        private int _velocityHash;
+        private int _itemHeldHash;
+        private int _interactableObjectHash;
+        private int _stealthHash;
 
         private bool _crouching;
 
@@ -118,12 +124,17 @@ namespace PlayerCharacter.Movement
             CharacterController = GetComponent<CharacterController>();
             _playerCamera = Camera.main;
             _playerCamRay = PlayerCamera.ScreenPointToRay(Input.mousePosition);
+            _animator = GetComponentInChildren<Animator>();
         }
 
         private void Start()
         {
             InputBehaviour.Instance.OnToggleStealthEvent += Crouch;
             StartCoroutine(CastLookingRay());
+            _velocityHash = Animator.StringToHash("forwardVelocity");
+            _itemHeldHash = Animator.StringToHash("ItemHeld");
+            _interactableObjectHash = Animator.StringToHash("InteractableObject");
+            _stealthHash = Animator.StringToHash("Stealth");
         }
 
         private void OnDestroy()
@@ -141,6 +152,7 @@ namespace PlayerCharacter.Movement
             ApplyGravity();
             transform.rotation = _rotation;
             CharacterController.Move(_movement * Time.deltaTime);
+            _animator.SetFloat(_velocityHash, CharacterController.velocity.magnitude);
         }
 
         /// <summary>
