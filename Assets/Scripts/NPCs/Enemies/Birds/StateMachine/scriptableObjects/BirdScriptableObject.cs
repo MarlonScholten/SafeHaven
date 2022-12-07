@@ -21,7 +21,7 @@ public class BirdScriptableObject : ScriptableObject
     public float RotateSpeed => rotateSpeed;
     
     [Tooltip("The speed the bird will fly")]
-    [SerializeField] private float flySpeed = 5f;
+    [SerializeField] private float flySpeed = 3f;
     public float FlySpeed => flySpeed;
     
     [Tooltip("The time the bird will stay at rest point")]

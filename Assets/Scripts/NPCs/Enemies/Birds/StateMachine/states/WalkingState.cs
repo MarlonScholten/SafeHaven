@@ -17,17 +17,17 @@ public class WalkingState : MonoBehaviour
     public void Awake()
     {
         _birdStateManager = GetComponent<BirdStateManager>();
-        startPoint = transform.position;
     }
 
     public void ENTER_WALKING_STATE()
     {
+        startPoint = transform.position;
         CalculateNextWalkableWaypoint(startPoint);
     }
     
     public void UPDATE_WALKING_STATE()
     {
-        if (CheckIfAlertingObjectsAreNearby(_birdStateManager.birdScriptableObject.AlertTags)){CustomEvent.Trigger(gameObject, "Flying");}
+        if (_birdStateManager.CheckIfAlertingObjectsAreNearby(_birdStateManager.birdScriptableObject.AlertTags)){CustomEvent.Trigger(gameObject, "FlyingTowardsRestPoint");}
     }
     
     public void FIXED_UPDATE_WALKING_STATE()
@@ -90,11 +90,5 @@ public class WalkingState : MonoBehaviour
     private bool CheckIfIsAtWaypoint()
     {
         return Vector3.Distance(transform.position, targetWpLocation) <= 0.5f;
-    }
-
-    private bool CheckIfAlertingObjectsAreNearby(ICollection<string> alertingObjects)
-    {
-        var colliders = Physics.OverlapSphere(transform.position, _birdStateManager.birdScriptableObject.AlertRadius);
-        return colliders.Any(col => alertingObjects.Contains(col.gameObject.tag));
     }
 }

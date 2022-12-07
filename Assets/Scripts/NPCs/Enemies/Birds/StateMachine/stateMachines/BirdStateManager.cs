@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using PathCreation;
 using UnityEngine;
 using UnityEngine.AI;
@@ -9,10 +10,11 @@ public class BirdStateManager : MonoBehaviour
 {
     public BirdScriptableObject birdScriptableObject;
     [NonSerialized] public NavMeshAgent navMeshAgent;
-    [NonSerialized] public Vector3 restPoint;
+    [NonSerialized] public Transform restPoint;
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        
     }
 
     // Start is called before the first frame update
@@ -53,5 +55,11 @@ public class BirdStateManager : MonoBehaviour
         createdPath.bezierPath.GlobalNormalsAngle = 20;
         createdPath.bezierPath.FlipNormals = true;
         return createdPath;
+    }
+    
+    public bool CheckIfAlertingObjectsAreNearby(ICollection<string> alertingObjects)
+    {
+        var colliders = Physics.OverlapSphere(transform.position, birdScriptableObject.AlertRadius);
+        return colliders.Any(col => alertingObjects.Contains(col.gameObject.tag));
     }
 }

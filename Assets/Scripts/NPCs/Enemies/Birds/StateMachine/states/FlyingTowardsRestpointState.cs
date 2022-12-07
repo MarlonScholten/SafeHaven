@@ -24,13 +24,13 @@ public class FlyingTowardsRestpointState : MonoBehaviour
         
         DetachFromNavmesh();
         _birdStateManager.restPoint = GetClosestRestPoint();
-        _path = _birdStateManager.CreatePathToClosestPointOnGivenPath(_birdStateManager.restPoint);
+        _path = _birdStateManager.CreatePathToClosestPointOnGivenPath(_birdStateManager.restPoint.position);
     }
 
     public void UPDATE_FLYING_TOWARDS_REST_POINT_STATE()
     {
         // if bird is on rest point then change state to resting
-        if (transform.position == _birdStateManager.restPoint)
+        if (transform.position == _birdStateManager.restPoint.position)
         {
             CustomEvent.Trigger(gameObject, "Sitting");
         }
@@ -45,19 +45,19 @@ public class FlyingTowardsRestpointState : MonoBehaviour
         _distanceTravelled = 0;
     }
 
-    private Vector3 GetClosestRestPoint()
+    private Transform GetClosestRestPoint()
     {
         var restPoints = GameObject.FindGameObjectsWithTag("BirdRestPoint");
-        Vector3 closest = Vector3.zero;
+        Transform closest = null;
         var distance = Mathf.Infinity;
         var position = transform.position;
-        if (restPoints == null) return Vector3.zero;
+        if (restPoints == null) return null;
         foreach (var restPointObject in restPoints.Select(rp => rp.transform))
         {
             Vector3 diff = restPointObject.transform.position - position;
             var curDistance = diff.sqrMagnitude;
             if (curDistance >= distance) continue;
-            closest = restPointObject.transform.position;
+            closest = restPointObject.transform;
             distance = curDistance;
         }
         return closest;
