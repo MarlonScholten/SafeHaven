@@ -25,12 +25,10 @@ public class LoadingScreen : MonoBehaviour
 
     private IEnumerator UnloadOldScene(int id)
     {
-        Debug.Log("Started unloading scene " + id);
         var sceneAsync = SceneManager.UnloadSceneAsync(id);
         
         while (!sceneAsync.isDone) yield return null;
-
-        Debug.Log("Finished unloading scene " + id);
+        
         _scenesUnloaded++;
         
         if (_scenesUnloaded >= _oldScenes.Count - 1) LoadNewScenes();
@@ -38,8 +36,6 @@ public class LoadingScreen : MonoBehaviour
 
     private void LoadNewScenes()
     {
-        Destroy(InputBehaviour.Instance.gameObject);
-        
         _scenesLoaded = 0;
         foreach (int id in _newScenes)
         {
@@ -49,12 +45,10 @@ public class LoadingScreen : MonoBehaviour
 
     private IEnumerator LoadScene(int id)
     {
-        Debug.Log("Started loading scene " + id);
         var sceneAsync = SceneManager.LoadSceneAsync(id, LoadSceneMode.Additive);
 
         while (!sceneAsync.isDone) yield return null;
-
-        Debug.Log("Finished loading scene " + id);
+        
         _scenesLoaded++;
 
         if (_scenesLoaded >= _newScenes.Count - 1) SceneManager.UnloadSceneAsync(gameObject.scene);
