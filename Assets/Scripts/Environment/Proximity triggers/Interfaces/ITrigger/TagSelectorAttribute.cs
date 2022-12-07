@@ -5,5 +5,8 @@
 /// </summary>
 public class TagSelectorAttribute : PropertyAttribute
 {
+    /// <summary>
+    /// This bool will be set to true if the tags a default. This bool will be used for the TagSelectorPropertyDrawer.
+    /// </summary>
     public bool UseDefaultTagFieldDrawer = false;
 }

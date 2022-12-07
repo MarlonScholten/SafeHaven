@@ -5,7 +5,7 @@
 /// Author: Jelco van der Straaten </para>
 /// Modified by: </para>
 /// This script creates a list of all tags to use for a script in the editor. Using this in the editor you can select tags that will be used in the script.
-/// I have this code from stack overflow, beceause i was searching on how to implement this kind of thing and this was litteraly the implementation i need.
+/// I have this code from unity answers forum, beceause i was searching on how to implement this kind of thing and this was litteraly the implementation i need.
 /// To use this in your script.
 ///  1. Add a String array or just one variable.
 ///  2. Place [Tagselector] before the initialization.
