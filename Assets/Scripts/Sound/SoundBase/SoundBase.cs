@@ -40,16 +40,19 @@ namespace SoundManager
         [Range(0, 100)]
         protected int _attenuation = 50;
 
-        protected GameObject _gameObject { get; set; }
+        protected GameObject _gameObject;
 
         private AK.Wwise.RTPC volumeRTPC;
 
         private AK.Wwise.RTPC attenuationRTPC;
 
-        protected virtual void playSound(GameObject gameObject = null)
+        protected virtual void playSound(GameObject soundGameObject = null)
         {
-            _gameObject = gameObject;
-            playEvent.Post(gameObject);
+            if(soundGameObject != null)
+            {
+                _gameObject = soundGameObject;
+            }
+            playEvent.Post(_gameObject);
         }
 
         protected virtual void stopSound(int transitionTime = 0)
@@ -87,12 +90,6 @@ namespace SoundManager
         protected virtual void soundCallback()
         {
             ;
-        }
-
-        private void Update()
-        {
-            volumeRTPC.SetGlobalValue(_volume);
-            attenuationRTPC.SetGlobalValue(_attenuation);
         }
     }
 }

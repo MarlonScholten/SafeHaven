@@ -8,6 +8,7 @@ namespace SoundManager
     {
         private void Start()
         {
+            _gameObject = gameObject;
             playSound();
         }
 
