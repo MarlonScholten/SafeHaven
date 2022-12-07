@@ -119,6 +119,56 @@
 										</Action>
 									</ChildrenList>
 								</Event>
+								<Event Name="Play_ParameterTest" ID="{2CED9185-A81A-433D-8BF9-C772371B2DB5}">
+									<ChildrenList>
+										<Action Name="" ID="{A80047D0-270F-4FD0-B4DE-BCD8AFACDB40}" ShortID="900208036">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="ParameterTest" ID="{9D2EA0D0-D820-495B-8E96-3E275E52E575}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Stop_ParameterTest" ID="{4D64308D-53B9-4162-B122-CCC97FF3EEEA}">
+									<ChildrenList>
+										<Action Name="" ID="{10606E72-D538-490A-B0E5-D70F65A1E870}" ShortID="256600934">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="2"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="ParameterTest" ID="{9D2EA0D0-D820-495B-8E96-3E275E52E575}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Stop_StateTest" ID="{A39B0D68-3791-436F-939F-03D038BC400A}">
+									<ChildrenList>
+										<Action Name="" ID="{CAF9E426-689F-45EA-A69A-EDC6F6FD6354}" ShortID="849808114">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="2"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="StateTest" ID="{ABACE2AB-912E-4643-A291-02BF1305B418}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Play_StateTest" ID="{CB938426-F205-4BA3-82AF-D3EBE652584A}">
+									<ChildrenList>
+										<Action Name="" ID="{0A2DF7D6-3BC3-4231-8254-35352FE8E530}" ShortID="248625062">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="StateTest" ID="{ABACE2AB-912E-4643-A291-02BF1305B418}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
 							</ChildrenList>
 						</Folder>
 						<Folder Name="ProximityLamp" ID="{D910724E-58EE-4A45-B151-C51F00DD48A9}" ShortID="234663427">
