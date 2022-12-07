@@ -126,17 +126,7 @@ public class InputBehaviour : MonoBehaviour
     /// </summary>
     private void Awake()
     {
-        // Destroy the gameobject if it already has an instance.
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-        }
-        // Set the instance, and adds it to the pool of dont destroy on load.
-        else
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        };
+        Instance = this;
     }
 
     public void OnMove(InputAction.CallbackContext context) => _onMoveVector = context.ReadValue<Vector2>();
