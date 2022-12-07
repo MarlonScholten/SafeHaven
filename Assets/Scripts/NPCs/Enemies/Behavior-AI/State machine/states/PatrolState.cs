@@ -165,7 +165,7 @@ public class PatrolState : MonoBehaviour
        // If the enemy is waiting at the waypoint, lookAround and determine the next waypoint after investigating the current one.
         if (_stateManager.CheckIfEnemyIsAtWaypoint())
         {
-            if (!_waitingAtWaypointCoroutineIsRunning)
+            if (_stateManager.isGuard && !_waitingAtWaypointCoroutineIsRunning)
             {
                 _waitingAtWaypointCoroutineIsRunning = true;
                 _stateManager.LookAround();
@@ -176,6 +176,27 @@ public class PatrolState : MonoBehaviour
                 });
                 StartCoroutine(_waitingAtWaypointCoroutine);
             }
+
+            if (!_stateManager.isGuard)
+            {
+                if (!_waitingAtWaypointCoroutineIsRunning && HasToWaitAtCurrentWaypoint())
+                {
+                    _waitingAtWaypointCoroutineIsRunning = true;
+                    _stateManager.LookAround();
+                    _waitingAtWaypointCoroutine = _stateManager.CallFunctionAfterSeconds(
+                        _stateManager.enemyAiScriptableObject.WaitAtWaypointTime, () =>
+                        {
+                            DetermineNextWaypoint();
+                            _waitingAtWaypointCoroutineIsRunning = false;
+                        });
+                    StartCoroutine(_waitingAtWaypointCoroutine);
+                }
+            }
+        }
+        // if the enemy should not wait at the waypoint.
+        if (!HasToWaitAtCurrentWaypoint() && Vector3.Distance(transform.position, _stateManager.targetWpLocation) <= 3f)
+        {
+            DetermineNextWaypoint();
         }
     }
     /// <summary>
@@ -212,9 +233,9 @@ public class PatrolState : MonoBehaviour
         {
             var radius = _stateManager.enemyAiScriptableObject.GuardPatrolRadius;
             var randDirection = Random.insideUnitSphere * radius;
-            randDirection += _stateManager.guardWaypoint.position;
+            randDirection += _stateManager.guardWaypoint.gameObject.transform.position;
             NavMesh.SamplePosition (randDirection, out NavMeshHit navHit, radius, 1);
-            var targetWpLocation = !navHit.hit ? _stateManager.guardWaypoint.position : navHit.position;
+            var targetWpLocation = !navHit.hit ? _stateManager.guardWaypoint.gameObject.transform.position : navHit.position;
             _stateManager.CheckPositionReachable(targetWpLocation);
             _stateManager.waitingAtWaypoint = false;
         }
@@ -223,7 +244,7 @@ public class PatrolState : MonoBehaviour
             // If there is a next waypoint, go to that one, otherwise return to the first waypoint.
             _stateManager.currentWpIndex = _stateManager.currentWpIndex == _stateManager.wayPoints.Count - 1 ? 0 : _stateManager.currentWpIndex + 1;
             // Set the next waypoint by using the index.
-            _stateManager.targetWpLocation = _stateManager.wayPoints[_stateManager.currentWpIndex].position;
+            _stateManager.targetWpLocation = _stateManager.wayPoints[_stateManager.currentWpIndex].gameObject.transform.position;
             // Set the destination of the navmesh agent to the next waypoint.
             _stateManager.navMeshAgent.SetDestination(_stateManager.targetWpLocation);   
         }
@@ -240,7 +261,7 @@ public class PatrolState : MonoBehaviour
         // Loop through all the waypoints and check which one is closest to the enemy.
         for (var i = 0; i < _stateManager.wayPoints.Count; i++)
         {
-            var distance = Vector3.Distance(transform.position, _stateManager.wayPoints[i].position);
+            var distance = Vector3.Distance(transform.position, _stateManager.wayPoints[i].gameObject.transform.position);
             if (distance >= closestDistance) continue;
             closestDistance = distance;
             closestIndex = i;
@@ -329,5 +350,14 @@ public class PatrolState : MonoBehaviour
     {
         _stateManager.RotateTowards(enemyTransform);
         // TODO: Play some communication animation or something else.
+    }
+    /// <summary>
+    /// Check on the waypoint object for the isWaitingWayPoint bool.
+    /// </summary>
+    /// <returns>isWaitingWayPoint bool</returns>
+    private bool HasToWaitAtCurrentWaypoint()
+    {
+        return _stateManager.wayPoints[_stateManager.currentWpIndex].GetComponent<EnemyWayPointController>()
+            .isWaitingWayPoint;
     }
 }
