@@ -6,7 +6,6 @@ using UnityEngine;
 public class FlyingTowardsRestpointState : MonoBehaviour
 {
     private BirdStateManager _birdStateManager;
-
     private PathCreator _path;
     private float _distanceTravelled;
     private const EndOfPathInstruction EndOfPathInstruction = PathCreation.EndOfPathInstruction.Stop;
@@ -38,16 +37,17 @@ public class FlyingTowardsRestpointState : MonoBehaviour
     public void EXIT_FLYING_TOWARDS_REST_POINT_STATE()
     {
         _path = null;
+        Destroy(_path);
         _distanceTravelled = 0;
     }
 
     private Transform GetClosestRestPoint()
     {
         var restPoints = GameObject.FindGameObjectsWithTag("BirdRestPoint");
+        Debug.Log(restPoints[0]);
         Transform closest = null;
         var distance = Mathf.Infinity;
         var position = transform.position;
-        if (restPoints == null) return null;
         foreach (var restPointObject in restPoints.Select(rp => rp.transform))
         {
             Vector3 diff = restPointObject.transform.position - position;

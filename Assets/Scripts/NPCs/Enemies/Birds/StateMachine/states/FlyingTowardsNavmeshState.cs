@@ -41,6 +41,7 @@ public class FlyingTowardsNavmeshState : MonoBehaviour
     public void EXIT_FLYING_TOWARDS_NAVMESH_STATE()
     {
         _path = null;
+        Destroy(_path);
         _distanceTravelled = 0;
     }
     
