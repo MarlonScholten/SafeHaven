@@ -7,14 +7,19 @@ public class LoadMusicOnStartup : MonoBehaviour
 {
     private enum SoundScenes
     {
-        Menu = 3,
-        Main = 4
+        MenuSound,
+        MainSound
     };
 
     [SerializeField]
-    private SoundScenes LoadSoundOnStart = SoundScenes.Main;
+    private SoundScenes LoadSoundOnStart = SoundScenes.MainSound;
     void Start()
     {
-        SceneManager.LoadScene((int)LoadSoundOnStart, LoadSceneMode.Additive);
+        SceneManager.LoadSceneAsync(LoadSoundOnStart.ToString(), LoadSceneMode.Additive);
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.UnloadSceneAsync(LoadSoundOnStart.ToString());
     }
 }

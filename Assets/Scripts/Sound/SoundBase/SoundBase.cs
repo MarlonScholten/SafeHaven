@@ -46,23 +46,34 @@ namespace SoundManager
 
         private AK.Wwise.RTPC attenuationRTPC;
 
+        private bool _isPlaying = false;
+
         protected virtual void playSound(GameObject soundGameObject = null)
         {
+            Debug.Log("Start Playing Sound");
             if(soundGameObject != null)
             {
                 _gameObject = soundGameObject;
             }
-            playEvent.Post(_gameObject);
+
+            if (_isPlaying)
+            {
+                return;
+            }
+            playEvent.Post(_gameObject, (uint)AkCallbackType.AK_EndOfEvent, soundCallback);
+            _isPlaying = true;
         }
 
         protected virtual void stopSound(int transitionTime = 0)
         {
             if (stopEvent.IsValid())
             {
+                //Debug.Log("post the stop event");
                 stopEvent.Post(_gameObject);
             }
             else
             {
+                //Debug.Log("stop current event");
                 playEvent.Stop(_gameObject, transitionTime);
             }
         }
@@ -87,9 +98,13 @@ namespace SoundManager
             return _attenuation;
         }
 
-        protected virtual void soundCallback()
+        protected virtual void soundCallback(object in_cookie, AkCallbackType in_type, object in_info)
         {
-            ;
+            //Debug.Log(in_type);
+            if(in_type == AkCallbackType.AK_EndOfEvent)
+            {
+                _isPlaying = false;
+            }
         }
     }
 }
