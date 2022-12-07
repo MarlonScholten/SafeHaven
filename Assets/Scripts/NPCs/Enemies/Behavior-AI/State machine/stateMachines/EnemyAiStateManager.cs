@@ -75,9 +75,9 @@ public class EnemyAiStateManager : MonoBehaviour
 
     [Tooltip("Boolean to set if the enemy is an guard or not")]
     public bool isGuard; // if the enemy is a guard or not
-
-    [HideInInspector] public List<Transform> wayPoints; // List of waypoints if not a guard
-    [HideInInspector] public Transform guardWaypoint; // Waypoint if guard
+    
+    [HideInInspector] public List<GameObject> wayPoints; // List of waypoints if not a guard
+    [HideInInspector] public GameObject guardWaypoint; // Waypoint if guard
     [NonSerialized] public NavMeshAgent navMeshAgent; // Navmesh agent component
     [NonSerialized] public Vector3 targetWpLocation; // Location of the current target waypoint
     [NonSerialized] public int currentWpIndex; // Index of the current target waypoint
