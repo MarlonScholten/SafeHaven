@@ -1,12 +1,30 @@
 ﻿using UnityEngine;
  using UnityEditor;
- using System.Collections.Generic; 
- [CustomPropertyDrawer(typeof(TagSelectorAttribute))]
+ using System.Collections.Generic;
+/// <summary>
+/// Author: Jelco van der Straaten </para>
+/// Modified by: </para>
+/// This script creates a list of all tags to use for a script in the editor. Using this in the editor you can select tags that will be used in the script.
+/// I have this code from stack overflow, beceause i was searching on how to implement this kind of thing and this was litteraly the implementation i need.
+/// To use this in your script.
+///  1. Add a String array or just one variable.
+///  2. Place [Tagselector] before the initialization.
+///  3. Now you can select the tags in the editor which will be saved in this variable.
+/// </summary>
+[CustomPropertyDrawer(typeof(TagSelectorAttribute))]
  
  [CustomPropertyDrawer(typeof(TagSelectorAttribute))]
- public class TagSelectorPropertyDrawer : PropertyDrawer
+public class TagSelectorPropertyDrawer : PropertyDrawer
  {
  
+     /// <summary>
+     /// This script creates a list of all tags to use for a script in the editor. Using this in the editor you can select tags that will be used in the script.
+     /// I have this code from stack overflow, beceause i was searching on how to implement this kind of thing and this was litteraly the implementation i need.
+     /// To use this in your script.
+     ///  1. Add a String array or just one variable.
+     ///  2. Place [Tagselector] before the initialization.
+     ///  3. Now you can select the tags in the editor which will be saved in this variable.
+     /// </summary>
      public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
      {
          if (property.propertyType == SerializedPropertyType.String)

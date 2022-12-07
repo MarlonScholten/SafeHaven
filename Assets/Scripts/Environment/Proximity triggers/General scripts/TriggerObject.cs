@@ -17,6 +17,10 @@ public class TriggerObject : MonoBehaviour
 {
     //list of serializable ITrigger objects
     [SerializeField] private List<GameObject> _triggerObjects;
+    
+    /// <summary>
+    /// This value determines which objects with which tags may trigger this trigger.
+    /// </summary>
     [SerializeField,TagSelector, Tooltip("Select the tags of game object you want to trigger this trigger with.")] private String[] tags = new string[]{};
 
 
