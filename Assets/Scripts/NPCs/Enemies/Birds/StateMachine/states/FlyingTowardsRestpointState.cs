@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using PathCreation;
 using Unity.VisualScripting;
@@ -29,7 +26,6 @@ public class FlyingTowardsRestpointState : MonoBehaviour
 
     public void UPDATE_FLYING_TOWARDS_REST_POINT_STATE()
     {
-        // if bird is on rest point then change state to resting
         if (transform.position == _birdStateManager.restPoint.position)
         {
             CustomEvent.Trigger(gameObject, "Sitting");

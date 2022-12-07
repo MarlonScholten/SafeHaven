@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using PathCreation;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -28,7 +26,7 @@ public class FlyingTowardsNavmeshState : MonoBehaviour
     public void UPDATE_FLYING_TOWARDS_NAVMESH_STATE()
     {
         // if the bird is close enough to the destination, then switch to the next state
-        if (Vector3.Distance(transform.position, _destinationAtNavmesh) < 0.5f)
+        if (_birdStateManager.CheckIfIsAtWaypoint(_destinationAtNavmesh))
         {
             AttachToNavmesh();
             CustomEvent.Trigger(gameObject, "Walking");
@@ -56,7 +54,6 @@ public class FlyingTowardsNavmeshState : MonoBehaviour
     {
         var point = transform.position;
         point.y = 0;
-        // add random value to x and z between 5 and 10 OR -5 and -10
         point.x += Random.Range(2, 3) * (Random.value > 0.5f ? 1 : -1);
         point.z += Random.Range(2, 3) * (Random.value > 0.5f ? 1 : -1);
         NavMesh.SamplePosition(point, out var hit, 10, NavMesh.AllAreas);

@@ -21,7 +21,9 @@ public class WalkingState : MonoBehaviour
 
     public void ENTER_WALKING_STATE()
     {
-        startPoint = transform.position;
+        var position = transform.position;
+        _birdStateManager.groundHeight = position.y;
+        startPoint = position;
         CalculateNextWalkableWaypoint(startPoint);
     }
     
@@ -32,7 +34,7 @@ public class WalkingState : MonoBehaviour
     
     public void FIXED_UPDATE_WALKING_STATE()
     {
-        if (CheckIfIsAtWaypoint() && !_isRotating)
+        if (_birdStateManager.CheckIfIsAtWaypoint(targetWpLocation) && !_isRotating)
         {
             CalculateNextWalkableWaypoint(startPoint);
         }
@@ -42,6 +44,7 @@ public class WalkingState : MonoBehaviour
     {
         targetWpLocation = Vector3.zero;
         startPoint = Vector3.zero;
+        _birdStateManager.groundHeight = transform.position.y;
         if (_rotateCoroutineIsRunning) StopCoroutine(_rotateCoroutine); 
         _rotateCoroutineIsRunning = false;
     }
@@ -82,13 +85,5 @@ public class WalkingState : MonoBehaviour
         _rotateCoroutineIsRunning = false;
         _birdStateManager.navMeshAgent.isStopped = false;
         _isRotating = false;
-    }
-    
-    /// <summary>
-    /// This method checks if the enemy is at the waypoint.
-    /// </summary>
-    private bool CheckIfIsAtWaypoint()
-    {
-        return Vector3.Distance(transform.position, targetWpLocation) <= 0.5f;
     }
 }

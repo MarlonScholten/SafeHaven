@@ -11,24 +11,12 @@ public class BirdStateManager : MonoBehaviour
     public BirdScriptableObject birdScriptableObject;
     [NonSerialized] public NavMeshAgent navMeshAgent;
     [NonSerialized] public Transform restPoint;
+    [NonSerialized] public float groundHeight;
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
-        
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    
     /// <summary>
     /// This method calls a method after a certain amount of seconds.
     /// <param name="seconds">Amount of seconds that takes to call the method.</param>
@@ -38,7 +26,6 @@ public class BirdStateManager : MonoBehaviour
     {
         yield return new WaitForSeconds(seconds);
         method();
-        // TODO: Play walk animation
     }
     
     public PathCreator CreatePathToClosestPointOnGivenPath(Vector3 destination)
@@ -59,7 +46,17 @@ public class BirdStateManager : MonoBehaviour
     
     public bool CheckIfAlertingObjectsAreNearby(ICollection<string> alertingObjects)
     {
-        var colliders = Physics.OverlapSphere(transform.position, birdScriptableObject.AlertRadius);
+        var position = transform.position;
+        position.y = groundHeight;
+        var colliders = Physics.OverlapSphere(position, birdScriptableObject.AlertRadius);
         return colliders.Any(col => alertingObjects.Contains(col.gameObject.tag));
+    }
+    
+    /// <summary>
+    /// This method checks if the bird is at destination.
+    /// </summary>
+    public bool CheckIfIsAtWaypoint(Vector3 destination)
+    {
+        return Vector3.Distance(transform.position, destination) <= 0.5f;
     }
 }
