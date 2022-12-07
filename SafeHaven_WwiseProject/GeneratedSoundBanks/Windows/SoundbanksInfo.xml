@@ -11,25 +11,17 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Language="SFX" Hash="3690994985">
+		<SoundBank Id="1355168291" Language="SFX" Hash="752638603">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="2607556080" Language="SFX" Hash="3663672488">
+		<SoundBank Id="2607556080" Language="SFX" Hash="1442976196">
 			<ObjectPath>\SoundBanks\Default Work Unit\Menu</ObjectPath>
 			<ShortName>Menu</ShortName>
 			<Path>Menu.bnk</Path>
 			<IncludedEvents>
-				<Event Id="2479442773" Name="Play_Theme" ObjectPath="\Events\Default Work Unit\Menu Music\Play_Theme" DurationType="Infinite">
-					<IncludedMemoryFiles>
-						<File Id="594628767" Language="SFX">
-							<ShortName>Placeholder Menu Music\Sample.wav</ShortName>
-							<Path>SFX\Placeholder Menu Music\Sample_D79FB2B7.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="4209088253" Name="Play_Theme2" ObjectPath="\Events\Default Work Unit\Menu Music\Play_Theme2" DurationType="Infinite">
+				<Event Id="4209088253" Name="Play_Theme2" ObjectPath="\Events\Default Work Unit\Menu\Music\Play_Theme2" DurationType="Infinite">
 					<IncludedMemoryFiles>
 						<File Id="891448325" Language="SFX">
 							<ShortName>Placeholder Menu Music\Sample2.wav</ShortName>
@@ -37,50 +29,170 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="4209088252" Name="Play_Theme3" ObjectPath="\Events\Default Work Unit\Menu Music\Play_Theme3" DurationType="Infinite">
-					<IncludedMemoryFiles>
-						<File Id="858599923" Language="SFX">
-							<ShortName>Placeholder Menu Music\Sample3.wav</ShortName>
-							<Path>SFX\Placeholder Menu Music\Sample3_D79FB2B7.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="4209088251" Name="Play_Theme4" ObjectPath="\Events\Default Work Unit\Menu Music\Play_Theme4" DurationType="Infinite">
-					<IncludedMemoryFiles>
-						<File Id="778554696" Language="SFX">
-							<ShortName>Placeholder Menu Music\Sample4.wav</ShortName>
-							<Path>SFX\Placeholder Menu Music\Sample4_D79FB2B7.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="560299279" Name="Stop_Theme" ObjectPath="\Events\Default Work Unit\Menu Music\Stop_Theme" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="2713968303" Name="Stop_Theme2" ObjectPath="\Events\Default Work Unit\Menu Music\Stop_Theme2" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="2713968302" Name="Stop_Theme3" ObjectPath="\Events\Default Work Unit\Menu Music\Stop_Theme3" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="2713968297" Name="Stop_Theme4" ObjectPath="\Events\Default Work Unit\Menu Music\Stop_Theme4" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
+				<Event Id="2713968303" Name="Stop_Theme2" ObjectPath="\Events\Default Work Unit\Menu\Music\Stop_Theme2" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 			</IncludedEvents>
 		</SoundBank>
-		<SoundBank Id="3161908922" Language="SFX" Hash="1814451935">
+		<SoundBank Id="3161908922" Language="SFX" Hash="1490257897">
 			<ObjectPath>\SoundBanks\Default Work Unit\Main</ObjectPath>
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<IncludedEvents>
-				<Event Id="2579192193" Name="Play_Proxlamp_Draft1_Click" ObjectPath="\Events\Default Work Unit\ProximityLamp\Play_Proxlamp_Draft1_Click" MaxAttenuation="15." DurationType="OneShot" DurationMin="0.279931" DurationMax="0.421121">
+				<Event Id="3854155799" Name="Play_Footsteps" ObjectPath="\Events\Default Work Unit\Main\Footsteps\Play_Footsteps" DurationType="OneShot" DurationMin="0.358693" DurationMax="0.813201">
+					<IncludedMemoryFiles>
+						<File Id="92334657" Language="SFX">
+							<ShortName>gravel_footsteps-034.wav</ShortName>
+							<Path>SFX\gravel_footsteps-034_B9F97CDE.wem</Path>
+						</File>
+						<File Id="108525736" Language="SFX">
+							<ShortName>ConcreteFootstps2.1-12.wav</ShortName>
+							<Path>SFX\ConcreteFootstps2.1-12_9212D50D.wem</Path>
+						</File>
+						<File Id="173397512" Language="SFX">
+							<ShortName>ConcreteFootstps2.1-11.wav</ShortName>
+							<Path>SFX\ConcreteFootstps2.1-11_3A2DB79E.wem</Path>
+						</File>
+						<File Id="239243144" Language="SFX">
+							<ShortName>gravel_footsteps-003.wav</ShortName>
+							<Path>SFX\gravel_footsteps-003_06101834.wem</Path>
+						</File>
+						<File Id="294943493" Language="SFX">
+							<ShortName>gravel_footsteps-004.wav</ShortName>
+							<Path>SFX\gravel_footsteps-004_6D722046.wem</Path>
+						</File>
+						<File Id="356938175" Language="SFX">
+							<ShortName>gravel_footsteps-031.wav</ShortName>
+							<Path>SFX\gravel_footsteps-031_43C0CF7C.wem</Path>
+						</File>
+						<File Id="396576064" Language="SFX">
+							<ShortName>gravel_footsteps-012.wav</ShortName>
+							<Path>SFX\gravel_footsteps-012_3852966F.wem</Path>
+						</File>
+						<File Id="454979101" Language="SFX">
+							<ShortName>gravel_footsteps-002.wav</ShortName>
+							<Path>SFX\gravel_footsteps-002_E26C92DF.wem</Path>
+						</File>
+						<File Id="477488235" Language="SFX">
+							<ShortName>Grass_footsteps.wav</ShortName>
+							<Path>SFX\Grass_footsteps_06601686.wem</Path>
+						</File>
+						<File Id="583713647" Language="SFX">
+							<ShortName>gravel_footsteps-006.wav</ShortName>
+							<Path>SFX\gravel_footsteps-006_0DDD1B6F.wem</Path>
+						</File>
+						<File Id="627651887" Language="SFX">
+							<ShortName>gravel_footsteps.wav</ShortName>
+							<Path>SFX\gravel_footsteps_7FEB6888.wem</Path>
+						</File>
+						<File Id="631288090" Language="SFX">
+							<ShortName>ConcreteFootstps2.1-16.wav</ShortName>
+							<Path>SFX\ConcreteFootstps2.1-16_BA142181.wem</Path>
+						</File>
+						<File Id="662287762" Language="SFX">
+							<ShortName>ConcreteFootstps2.1-21.wav</ShortName>
+							<Path>SFX\ConcreteFootstps2.1-21_ACFB3ED0.wem</Path>
+						</File>
+						<File Id="682554231" Language="SFX">
+							<ShortName>gravel_footsteps-011.wav</ShortName>
+							<Path>SFX\gravel_footsteps-011_D38F5FF8.wem</Path>
+						</File>
+						<File Id="725502737" Language="SFX">
+							<ShortName>gravel_footsteps-027.wav</ShortName>
+							<Path>SFX\gravel_footsteps-027_796F8531.wem</Path>
+						</File>
+						<File Id="782665099" Language="SFX">
+							<ShortName>ConcreteFootstps2.1-15.wav</ShortName>
+							<Path>SFX\ConcreteFootstps2.1-15_E16C68BE.wem</Path>
+						</File>
+						<File Id="807243836" Language="SFX">
+							<ShortName>ConcreteFootstps2.1-20.wav</ShortName>
+							<Path>SFX\ConcreteFootstps2.1-20_D362C09E.wem</Path>
+						</File>
+						<File Id="817022413" Language="SFX">
+							<ShortName>Grass_footsteps-003.wav</ShortName>
+							<Path>SFX\Grass_footsteps-003_8EFBFDC9.wem</Path>
+						</File>
+						<File Id="876437545" Language="SFX">
+							<ShortName>ConcreteFootstps2.1-13.wav</ShortName>
+							<Path>SFX\ConcreteFootstps2.1-13_A96BF0D9.wem</Path>
+						</File>
+						<File Id="881666982" Language="SFX">
+							<ShortName>ConcreteFootstps2.1-14.wav</ShortName>
+							<Path>SFX\ConcreteFootstps2.1-14_851E2588.wem</Path>
+						</File>
+						<File Id="1009190396" Language="SFX">
+							<ShortName>gravel_footsteps-010.wav</ShortName>
+							<Path>SFX\gravel_footsteps-010_0D69ECF3.wem</Path>
+						</File>
+						<File Id="1033828981" Language="SFX">
+							<ShortName>gravel_footsteps-040.wav</ShortName>
+							<Path>SFX\gravel_footsteps-040_D241E37B.wem</Path>
+						</File>
+						<File Id="1040209185" Language="SFX">
+							<ShortName>ConcreteFootstps2.1.wav</ShortName>
+							<Path>SFX\ConcreteFootstps2.1_DC6B8AD5.wem</Path>
+						</File>
+						<File Id="1052622922" Language="SFX">
+							<ShortName>Grass_footsteps-004.wav</ShortName>
+							<Path>SFX\Grass_footsteps-004_03B61C7E.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+					<DefaultSwitchValue>{91EA98DC-4AB9-47F8-818D-66098DF694B0}</DefaultSwitchValue>
+					<SwitchContainers>
+						<SwitchContainer SwitchValue="{798C4D7D-FB3F-43F4-82B2-6B4BDF580D8B}">
+							<Media>
+								<File Id="477488235"/>
+								<File Id="817022413"/>
+								<File Id="1052622922"/>
+							</Media>
+						</SwitchContainer>
+						<SwitchContainer SwitchValue="{DA3B087E-FBE5-439A-B01F-748E31E3DA71}">
+							<Media>
+								<File Id="92334657"/>
+								<File Id="239243144"/>
+								<File Id="294943493"/>
+								<File Id="356938175"/>
+								<File Id="396576064"/>
+								<File Id="454979101"/>
+								<File Id="583713647"/>
+								<File Id="627651887"/>
+								<File Id="682554231"/>
+								<File Id="725502737"/>
+								<File Id="1009190396"/>
+								<File Id="1033828981"/>
+							</Media>
+						</SwitchContainer>
+						<SwitchContainer SwitchValue="{91EA98DC-4AB9-47F8-818D-66098DF694B0}">
+							<Media>
+								<File Id="108525736"/>
+								<File Id="173397512"/>
+								<File Id="631288090"/>
+								<File Id="662287762"/>
+								<File Id="782665099"/>
+								<File Id="807243836"/>
+								<File Id="876437545"/>
+								<File Id="881666982"/>
+								<File Id="1040209185"/>
+							</Media>
+						</SwitchContainer>
+					</SwitchContainers>
+				</Event>
+				<Event Id="2579192193" Name="Play_Proxlamp_Draft1_Click" ObjectPath="\Events\Default Work Unit\Main\ProximityLamp\Play_Proxlamp_Draft1_Click" MaxAttenuation="15." DurationType="OneShot" DurationMin="0.279931" DurationMax="0.421121">
 					<IncludedMemoryFiles>
 						<File Id="766224591" Language="SFX">
 							<ShortName>Proxlamp_Draft1_Click.wav</ShortName>
-							<Path>SFX\Proxlamp_Draft1_Click_7B210A9F.wem</Path>
+							<Path>SFX\Proxlamp_Draft1_Click_7F1FD78F.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="1416161311" Name="Play_Proxlamp_Draft1_V2" ObjectPath="\Events\Default Work Unit\ProximityLamp\Play_Proxlamp_Draft1_V2" MaxAttenuation="5." DurationType="Infinite">
+				<Event Id="1416161311" Name="Play_Proxlamp_Draft1_V2" ObjectPath="\Events\Default Work Unit\Main\ProximityLamp\Play_Proxlamp_Draft1_V2" MaxAttenuation="5." DurationType="Infinite">
 					<IncludedMemoryFiles>
 						<File Id="698105604" Language="SFX">
 							<ShortName>Proxlamp_Draft1.wav</ShortName>
-							<Path>SFX\Proxlamp_Draft1_11CBDFC9.wem</Path>
+							<Path>SFX\Proxlamp_Draft1_4E340EAF.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="674798631" Name="Play_Stealth_Music" ObjectPath="\Events\Default Work Unit\Music\Play_Stealth_Music" DurationType="Infinite">
+				<Event Id="674798631" Name="Play_Stealth_Music" ObjectPath="\Events\Default Work Unit\Main\Music\Play_Stealth_Music" DurationType="Infinite">
 					<IncludedMemoryFiles>
 						<File Id="91497324" Language="SFX">
 							<ShortName>sneaking music.wav</ShortName>
@@ -88,7 +200,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="2024687188" Name="Play_TestSound_Loop" ObjectPath="\Events\Default Work Unit\TestSounds\Play_TestSound_Loop" DurationType="Infinite">
+				<Event Id="2024687188" Name="Play_TestSound_Loop" ObjectPath="\Events\Default Work Unit\Main\TestSounds\Play_TestSound_Loop" DurationType="Infinite">
 					<IncludedMemoryFiles>
 						<File Id="9335138" Language="SFX">
 							<ShortName>TestSounds\TestSound_Loop.wav</ShortName>
@@ -96,7 +208,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="4206196186" Name="Play_TestSound_Single" ObjectPath="\Events\Default Work Unit\TestSounds\Play_TestSound_Single" DurationType="OneShot" DurationMin="2.125398" DurationMax="2.125398">
+				<Event Id="4206196186" Name="Play_TestSound_Single" ObjectPath="\Events\Default Work Unit\Main\TestSounds\Play_TestSound_Single" DurationType="OneShot" DurationMin="2.125398" DurationMax="2.125398">
 					<IncludedMemoryFiles>
 						<File Id="10365183" Language="SFX">
 							<ShortName>TestSounds\TestSound_Single.wav</ShortName>
@@ -104,7 +216,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="3498798050" Name="Play_Wind_PlaceHolder" ObjectPath="\Events\Default Work Unit\Wind\Play_Wind_PlaceHolder" DurationType="OneShot" DurationMin="124.029396" DurationMax="124.029396">
+				<Event Id="3498798050" Name="Play_Wind_PlaceHolder" ObjectPath="\Events\Default Work Unit\Main\Wind\Play_Wind_PlaceHolder" DurationType="OneShot" DurationMin="124.029396" DurationMax="124.029396">
 					<IncludedMemoryFiles>
 						<File Id="472890637" Language="SFX">
 							<ShortName>Wind_PlaceHolder.wav</ShortName>
@@ -112,11 +224,20 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="2594172909" Name="Stop_Proxlamp_Draft1_V2" ObjectPath="\Events\Default Work Unit\ProximityLamp\Stop_Proxlamp_Draft1_V2" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="3876103401" Name="Stop_Stealth_Music" ObjectPath="\Events\Default Work Unit\Music\Stop_Stealth_Music" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="3467245854" Name="Stop_TestSound_Loop" ObjectPath="\Events\Default Work Unit\TestSounds\Stop_TestSound_Loop" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="25015968" Name="Stop_TestSound_Single" ObjectPath="\Events\Default Work Unit\TestSounds\Stop_TestSound_Single" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
+				<Event Id="2594172909" Name="Stop_Proxlamp_Draft1_V2" ObjectPath="\Events\Default Work Unit\Main\ProximityLamp\Stop_Proxlamp_Draft1_V2" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
+				<Event Id="3876103401" Name="Stop_Stealth_Music" ObjectPath="\Events\Default Work Unit\Main\Music\Stop_Stealth_Music" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
+				<Event Id="3467245854" Name="Stop_TestSound_Loop" ObjectPath="\Events\Default Work Unit\Main\TestSounds\Stop_TestSound_Loop" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
+				<Event Id="25015968" Name="Stop_TestSound_Single" ObjectPath="\Events\Default Work Unit\Main\TestSounds\Stop_TestSound_Single" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 			</IncludedEvents>
+			<SwitchGroups>
+				<SwitchGroup Id="2385628198" Name="Footsteps" ObjectPath="\Switches\Default Work Unit\Footsteps" GUID="{A6F8BDE0-5FE5-4F3A-84FE-166A57A03A62}">
+					<Switches>
+						<Switch Id="2185786256" Name="Gravel" ObjectPath="\Switches\Default Work Unit\Footsteps\Gravel" GUID="{DA3B087E-FBE5-439A-B01F-748E31E3DA71}"/>
+						<Switch Id="841620460" Name="Concrete" ObjectPath="\Switches\Default Work Unit\Footsteps\Concrete" GUID="{91EA98DC-4AB9-47F8-818D-66098DF694B0}"/>
+						<Switch Id="4248645337" Name="Grass" ObjectPath="\Switches\Default Work Unit\Footsteps\Grass" GUID="{798C4D7D-FB3F-43F4-82B2-6B4BDF580D8B}"/>
+					</Switches>
+				</SwitchGroup>
+			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
 </SoundBanksInfo>
