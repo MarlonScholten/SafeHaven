@@ -1,4 +1,5 @@
 using System;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -68,37 +69,37 @@ public class MenuPingController : AbstractPingController
     /// Vector2 variable that stores the input values of the mouse.
     /// </summary>
     private Vector2 _inputMouse;
-    
+
     /// <summary>
     /// Stores the reference number of the current selected option in the radial menu.
     /// </summary>
     private int _selectedOption;
-    
+
     /// <summary>
     /// Stores the reference to the instance of the marker of a ping.
     /// </summary>
     private GameObject _marker;
-    
+
     /// <summary>
     /// Stores whether the radial menu is active.
     /// </summary>
     private bool _radialMenuIsSetActive = false;
-    
+
     /// <summary>
     /// Stores the currently selected action.
     /// </summary>
     private PingType _pingAction;
-    
+
     /// <summary>
     /// Stores the final selected action.
     /// </summary>
     private PingType _chosenAction;
-    
+
     /// <summary>
     /// Stores the size of the radial menu segments.
     /// </summary>
     private float _degreesPerSegment;
-    
+
     /// <summary>
     /// Contains if the menu has been cancelled.
     /// </summary>
@@ -109,12 +110,12 @@ public class MenuPingController : AbstractPingController
     private const float StartingPointCorrection = 90f;
     private const float DegreesHalf = 180f;
     private const float DegreesFull = 360f;
-    
+
     /// <summary>
     /// Contains that the menu has been cancelled.
     /// </summary>
     private const string NotCancelled = "Not cancelled";
-    
+
     /// <summary>
     /// Stores the size of the cancel button.
     /// </summary>
@@ -127,7 +128,7 @@ public class MenuPingController : AbstractPingController
     {
         _radialMenu.SetActive(false);
         _cancelled = NotCancelled;
-        InputBehaviour.Instance.OnPingMenuEvent += OnMenuPing; 
+        InputBehaviour.Instance.OnPingMenuEvent += OnMenuPing;
         InputBehaviour.Instance.OnPingQuickEvent += OnLeftMouseButton;
     }
 
@@ -139,7 +140,7 @@ public class MenuPingController : AbstractPingController
         if (!_radialMenuIsSetActive) return;
         ActivateRadialMenu();
     }
-
+    
     /// <summary>
     /// Used to activate the radial menu.
     /// </summary>
@@ -148,6 +149,7 @@ public class MenuPingController : AbstractPingController
         _radialMenu.SetActive(true);
 
         if (!_radialMenu.activeSelf) return;
+        Input.mousePosition.Set(Screen.width / 2, Screen.height / 2, 0);
         _inputMouse.x = Mouse.current.position.ReadValue().x - Screen.width / Two;
         _inputMouse.y = Mouse.current.position.ReadValue().y - Screen.height / Two;
 
@@ -181,6 +183,11 @@ public class MenuPingController : AbstractPingController
     {
         _cancel.color = _radialMenuCancel;
         _highlightedOption.SetActive(false);
+
+        foreach (var action in _options)
+        {
+            action.color = _radialMenuNormal;
+        }
     }
 
     /// <summary>
@@ -247,11 +254,14 @@ public class MenuPingController : AbstractPingController
         _radialMenuIsSetActive = true;
         Cursor.lockState = CursorLockMode.None;
 
-        var ray = GetRayFromCameraToMousePosition();
+        var ray = GetRayFromCameraCenter();
         SetPingPosition(ray);
         ShowMarker(_pingPosition);
 
         Time.timeScale /= _slowmotionFactor;
+        
+        CinemachineBrain cinemachineBrain = FindObjectOfType<CinemachineBrain>();
+        if (cinemachineBrain) cinemachineBrain.enabled = false;
     }
 
     /// <summary>
@@ -276,6 +286,9 @@ public class MenuPingController : AbstractPingController
 
         StartCoroutine(MarkerDuration(_marker));
         Time.timeScale = StandardTimeFactor;
+        
+        CinemachineBrain cinemachineBrain = FindObjectOfType<CinemachineBrain>();
+        if (cinemachineBrain) cinemachineBrain.enabled = true;
     }
 
     /// <summary>
