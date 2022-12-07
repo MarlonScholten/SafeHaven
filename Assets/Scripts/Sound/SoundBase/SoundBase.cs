@@ -21,10 +21,15 @@ using UnityEngine;
 ///         <term>DISCRIPTION</term>
 ///     </item>
 /// </list>
+
+[RequireComponent(typeof(AkGameObj))]
 public class SoundBase : MonoBehaviour
 {
     [SerializeField]
-    public AK.Wwise.Event sound;
+    public AK.Wwise.Event playEvent;
+
+    [SerializeField]
+    public AK.Wwise.Event stopEvent = null;
 
     [SerializeField]
     [Range(0, 100)]
@@ -34,17 +39,24 @@ public class SoundBase : MonoBehaviour
     [Range(0,100)]
     protected int attenuation = 50;
 
-    private GameObject _gameObject;
+    protected GameObject _gameObject { get; set; }
 
     public virtual void playSound(GameObject gameObject = null)
     {
         _gameObject = gameObject;
-        sound.Post(gameObject);
+        playEvent.Post(gameObject);
     }
 
     public virtual void stopSound(int transitionTime = 0)
     {
-        sound.Stop(_gameObject, transitionTime);
+        if(stopEvent.IsValid())
+        {
+            stopEvent.Post(_gameObject);
+        }
+        else
+        {
+            playEvent.Stop(_gameObject, transitionTime);
+        }
     }
 
     public virtual void soundCallback()
