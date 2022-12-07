@@ -99,9 +99,6 @@ namespace Player_Character.Player_Movement.State_machine.State_machines
         
         private Animator _animator;
         private int _velocityHash;
-        private int _strafeVelocityHash;
-        private int _isGroundedHash;
-        private int _holdingHandsHash;
         private int _itemHeldHash;
         private int _interactableObjectHash;
         private int _stealthHash;
@@ -121,9 +118,6 @@ namespace Player_Character.Player_Movement.State_machine.State_machines
         {
             StartCoroutine(CastLookingRay());
             _velocityHash = Animator.StringToHash("forwardVelocity");
-            _strafeVelocityHash = Animator.StringToHash("strafeVelocity");
-            _isGroundedHash = Animator.StringToHash("Grounded");
-            _holdingHandsHash = Animator.StringToHash("Holding Hands");
             _itemHeldHash = Animator.StringToHash("ItemHeld");
             _interactableObjectHash = Animator.StringToHash("InteractableObject");
             _stealthHash = Animator.StringToHash("Stealth");
