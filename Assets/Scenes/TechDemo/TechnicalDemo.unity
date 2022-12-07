@@ -97,8 +97,10 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: dfb0cbe5178532140b476e21ad45722f,
+    type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 2ca0fec063f92204d99718fde455514e,
+    type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -763,6 +765,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3959807019877407581, guid: 604a372ad97412943b8b273cd3b716a0,
+        type: 3}
+      propertyPath: m_BaseOffset
+      value: -0.04
+      objectReference: {fileID: 0}
     - target: {fileID: 8425905666704145787, guid: 604a372ad97412943b8b273cd3b716a0,
         type: 3}
       propertyPath: m_Name
@@ -802,7 +809,7 @@ PrefabInstance:
     - target: {fileID: 6293372639401233797, guid: dbb7173ab6cb8409b8a2f16502633b82,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.007913112
+      value: 0.0079101315
       objectReference: {fileID: 0}
     - target: {fileID: 6293372639401233797, guid: dbb7173ab6cb8409b8a2f16502633b82,
         type: 3}
@@ -873,22 +880,22 @@ PrefabInstance:
     - target: {fileID: 148922571331708080, guid: e1607e7955b8f90428569390943eead4,
         type: 3}
       propertyPath: m_FollowOffset.y
-      value: 0.6384276
+      value: 1.235497
       objectReference: {fileID: 0}
     - target: {fileID: 148922571331708080, guid: e1607e7955b8f90428569390943eead4,
         type: 3}
       propertyPath: m_FollowOffset.z
-      value: -2.004485
+      value: -2.099393
       objectReference: {fileID: 0}
     - target: {fileID: 886294890051870261, guid: e1607e7955b8f90428569390943eead4,
         type: 3}
       propertyPath: m_FollowOffset.y
-      value: 0.6384276
+      value: 1.235497
       objectReference: {fileID: 0}
     - target: {fileID: 886294890051870261, guid: e1607e7955b8f90428569390943eead4,
         type: 3}
       propertyPath: m_FollowOffset.z
-      value: -2.004485
+      value: -2.099393
       objectReference: {fileID: 0}
     - target: {fileID: 1682329235663821286, guid: e1607e7955b8f90428569390943eead4,
         type: 3}
@@ -913,12 +920,12 @@ PrefabInstance:
     - target: {fileID: 4016124910185873452, guid: e1607e7955b8f90428569390943eead4,
         type: 3}
       propertyPath: m_FollowOffset.y
-      value: 0.6384276
+      value: 1.235497
       objectReference: {fileID: 0}
     - target: {fileID: 4016124910185873452, guid: e1607e7955b8f90428569390943eead4,
         type: 3}
       propertyPath: m_FollowOffset.z
-      value: -2.004485
+      value: -2.099393
       objectReference: {fileID: 0}
     - target: {fileID: 4471095755082783828, guid: e1607e7955b8f90428569390943eead4,
         type: 3}
