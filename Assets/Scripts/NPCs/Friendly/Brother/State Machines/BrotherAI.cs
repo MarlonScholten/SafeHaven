@@ -53,7 +53,22 @@ public class BrotherAI : MonoBehaviour
     /// This value determines the maximum walkspeed of the brother.
     /// </summary>
     [Range(2.0f, 4.0f), Tooltip("This value determines the maximum walkspeed of the brother.")]
-    [SerializeField] private float _walkSpeed = 3.5f;
+    [SerializeField] private float _walkSpeed = BaseSpeed;
+
+    /// <summary>
+    /// This value represents the speed the brother must move at during stealth.
+    /// </summary>
+    private const float StealthSpeed = 2.0f;
+    
+    /// <summary>
+    /// This value represents the speed the brother must move at when not in stealth.
+    /// </summary>
+    private const float BaseSpeed = 3.5f;
+    
+    /// <summary>
+    /// This value shows if the brother is currently in stealth mode, this should also be used by a sound script to make footsteps less loud during stealth.
+    /// </summary>
+    [SerializeField] private bool _isInStealth = false;
 
     /// <summary>
     /// This value determines the following distance of the brother.
@@ -96,6 +111,7 @@ public class BrotherAI : MonoBehaviour
     /// </summary>
     void Start(){
         InputBehaviour.Instance.OnCallBrotherEvent += CallBrother;
+        InputBehaviour.Instance.OnToggleStealthEvent += OnStealthEvent;
     }
 
     /// <summary>
@@ -107,6 +123,22 @@ public class BrotherAI : MonoBehaviour
         _findHidingSpot = gameObject.GetComponent<FindHidingSpot>();
         _player = GameObject.FindGameObjectWithTag("Player"); */
         //TODO: add initializer state for Awake function and remove this form the enter state
+    }
+
+    /// <summary>
+    /// When the player presses the stealth button, this method gets called to determine if the brother should enter stealth mode.
+    /// </summary>
+    private void OnStealthEvent()
+    {
+        _isInStealth = !_isInStealth;
+
+            if (_isInStealth) {
+                _walkSpeed = StealthSpeed;
+            }
+            else
+            {
+                _walkSpeed = BaseSpeed;
+            }
     }
     
     /// <summary>
