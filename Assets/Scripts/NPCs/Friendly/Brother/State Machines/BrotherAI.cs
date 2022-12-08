@@ -53,21 +53,31 @@ public class BrotherAI : MonoBehaviour
     /// </summary>
     [Range(2.0f, 4.0f), Tooltip("This value determines the maximum walkspeed of the brother.")]
     [SerializeField] private float _walkSpeed = BaseSpeed;
-
     /// <summary>
-    /// This value represents the speed the brother must move at during stealth.
+    /// This value determines the height of the brother collider.
     /// </summary>
-    private const float StealthSpeed = 2.0f;
+    [Range(1.0f, 2.0f), Tooltip("This value determines the height of the brother collider when in stealth.")]
+    [SerializeField] private float _colliderHeightStealth = 1f;
     
-    /// <summary>
-    /// This value represents the speed the brother must move at when not in stealth.
-    /// </summary>
-    private const float BaseSpeed = 3.5f;
+    [Range(1.0f, 2.0f), Tooltip("This value determines the height of the brother collider when not in stealth.")]
+    [SerializeField] private float _colliderHeightBase = 2f;
     
     /// <summary>
     /// This value shows if the brother is currently in stealth mode, this should also be used by a sound script to make footsteps less loud during stealth.
     /// </summary>
     [SerializeField] private bool _isInStealth = false;
+
+    [Range(2.0f, 4.0f), Tooltip("This value determines the maximum walkspeed of the brother during stealth.")]
+    /// <summary>
+    /// This value represents the speed the brother must move at during stealth.
+    /// </summary>
+    [SerializeField] private float StealthSpeed = 2.0f;
+    
+    [Range(2.0f, 4.0f), Tooltip("This value determines the maximum walkspeed of the brother when not in stealth.")]
+    /// <summary>
+    /// This value represents the speed the brother must move at when not in stealth.
+    /// </summary>
+    [SerializeField] private float BaseSpeed = 3.5f;
 
     /// <summary>
     /// This value determines the following distance of the brother.
@@ -79,6 +89,11 @@ public class BrotherAI : MonoBehaviour
     /// This value determines the range in wich a path considers to be completed to get to the next state.
     /// </summary>
     private const float _pathEndThreshold = 0.1f;
+    
+    /// <summary>
+    /// Used to store a reference to the capsule collider of the brother
+    /// </summary>
+    private CapsuleCollider _capsuleCollider;
 
     /// <summary>
     /// The navmeshAgent component used for the movement of the brother.
@@ -135,20 +150,37 @@ public class BrotherAI : MonoBehaviour
 
     /// <summary>
     /// When the player presses the stealth button, this method gets called to determine if the brother should enter stealth mode.
+    /// It slows the player and decreases the collider size when in stealth mode.
     /// </summary>
     private void OnStealthEvent()
     {
         _isInStealth = !_isInStealth;
 
-            if (_isInStealth) {
+            if (_isInStealth)
+            {
+                SetCapsuleCollider(_colliderHeightStealth, 0, -0.5f, 0);
                 _walkSpeed = StealthSpeed;
             }
             else
             {
                 _walkSpeed = BaseSpeed;
+                SetCapsuleCollider(_colliderHeightBase, 0, 0, 0);
             }
     }
-    
+
+    /// <summary>
+    /// Sets the bounds of the capsuleCollider, it is used for adjusting the collider of the brother when entering stealth.
+    /// </summary>
+    /// <param name="height">Determines the Height of the capsuleCollider.</param>
+    /// /// <param name="centerBoundX">Determines the X position of the center of the capsuleCollider.</param>
+    /// /// <param name="centerBoundY">Determines the Y position of the center of the capsuleCollider.</param>
+    /// /// <param name="centerBoundZ">Determines the Z position of the center of the capsuleCollider.</param>
+    private void SetCapsuleCollider(float height, float centerBoundX,float centerBoundY,float centerBoundZ)
+    {
+        _capsuleCollider.center = new Vector3(centerBoundX, centerBoundY, centerBoundZ);
+        _capsuleCollider.height = height;
+    }
+
     private void FixedUpdate()
     {
         _animator.SetFloat(_velocityHash, _navMeshAgent.velocity.magnitude);
@@ -206,6 +238,7 @@ public class BrotherAI : MonoBehaviour
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _findHidingSpot = gameObject.GetComponent<FindHidingSpot>();
         _player = GameObject.FindGameObjectWithTag("Player");
+        _capsuleCollider = gameObject.GetComponent<CapsuleCollider>();
 
         CustomEvent.Trigger(this.gameObject, "Follow");
     }
