@@ -46,6 +46,10 @@ using UnityEngine.AI;
 ///		    <term>The state machine is needed for the management of the states.</term>
 ///	    </item>
 /// </list>
+/// <summary>
+/// This requireComponent is used for the triggers. The AkComponents needs that the object to trigger the trigger has an rigidbody. But make it kineMatic so it does not affect anything.
+/// </summary>
+[RequireComponent(typeof(Rigidbody),typeof(Collider))]
 public class BrotherAI : MonoBehaviour
 {
     /// <summary>
@@ -85,6 +89,10 @@ public class BrotherAI : MonoBehaviour
     /// </summary>
     private GameObject _player;
 
+    /// <summary>
+    /// A bool to check if this is the first time the script has started
+    /// </summary>
+    private bool _firstStart = true;
     private Animator _animator;
     private int _velocityHash;
     private int _itemHeldHash;
@@ -202,9 +210,16 @@ public class BrotherAI : MonoBehaviour
     /// <summary>
     /// The enter method for the follow state, it sets the following distance for the brother.
     /// </summary>
-    public void FollowEnter()
-    {
-        _navMeshAgent.stoppingDistance = _followDistance;
+    public void FollowEnter(){
+        if (_firstStart)
+        {
+            _navMeshAgent = GetComponent<NavMeshAgent>();
+            _findHidingSpot = gameObject.GetComponent<FindHidingSpot>();
+            _player = GameObject.FindGameObjectWithTag("Player");
+            _firstStart = false;
+        }
+        
+        _navMeshAgent.stoppingDistance = _followDistance;  
     }
 
     /// <summary>

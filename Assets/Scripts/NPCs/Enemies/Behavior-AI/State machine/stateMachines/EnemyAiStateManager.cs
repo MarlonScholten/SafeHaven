@@ -68,6 +68,11 @@ public class HeardASoundEvent : UnityEvent<SoundSource>
 ///		    <term>This script needs EnemyWaypoints to patrol.</term>
 ///	    </item>
 /// </list>
+///
+/// <summary>
+/// This requireComponent is used for the triggers. The AkComponents needs that the object to trigger the trigger has an rigidbody. But make it kineMatic so it does not affect anything.
+/// </summary>
+[RequireComponent(typeof(Rigidbody))]
 public class EnemyAiStateManager : MonoBehaviour
 {
     [Tooltip("Scriptable object that contains the adjustable variables for the enemy")]
