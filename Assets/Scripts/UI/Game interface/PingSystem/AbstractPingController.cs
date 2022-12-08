@@ -75,9 +75,9 @@ public abstract class AbstractPingController : MonoBehaviour
     /// Calculates a ray from the camera towards the direction of the mouse.
     /// </summary>
     /// <returns>The ray in the direction of the mouse.</returns>
-    protected Ray GetRayFromCameraToMousePosition()
+    protected Ray GetRayFromCameraCenter()
     {
-        var mousePosition = new Vector2(Mouse.current.position.ReadValue().x, Mouse.current.position.ReadValue().y);
+        var mousePosition = new Vector2(Screen.width / 2, Screen.height / 2);
         var ray = _camera.ScreenPointToRay(mousePosition);
         return ray;
     }
