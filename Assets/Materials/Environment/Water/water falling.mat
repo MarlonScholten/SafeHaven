@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Water
+  m_Name: water falling
   m_Shader: {fileID: -6465566751694194690, guid: 91549ddf29714254abee2f92e099a7be,
     type: 3}
   m_ValidKeywords: []
@@ -103,8 +103,8 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _RefractionScale: 1
-    - _RefractionSpeed: 0.01
+    - _RefractionScale: 0.5
+    - _RefractionSpeed: 0.1
     - _RefractionStrength: 2
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
