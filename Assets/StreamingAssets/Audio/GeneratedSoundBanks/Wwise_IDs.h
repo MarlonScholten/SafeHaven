@@ -46,6 +46,19 @@ namespace AK
             } // namespace STATE
         } // namespace STATETEST
 
+        namespace STEALTHSTATE
+        {
+            static const AkUniqueID GROUP = 2413224833U;
+
+            namespace STATE
+            {
+                static const AkUniqueID ALERTED = 250639526U;
+                static const AkUniqueID CAUTION = 1777167952U;
+                static const AkUniqueID HIDDEN = 3621873013U;
+                static const AkUniqueID NONE = 748895195U;
+            } // namespace STATE
+        } // namespace STEALTHSTATE
+
     } // namespace STATES
 
     namespace SWITCHES
