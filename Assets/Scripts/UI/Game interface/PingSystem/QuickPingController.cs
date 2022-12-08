@@ -1,3 +1,4 @@
+using PlayerCharacter.Movement;
 using UnityEngine;
 
 /// <summary>
@@ -46,9 +47,9 @@ public class QuickPingController : AbstractPingController
     {
         if (_radialMenu.activeSelf || _quickCancelled) return;
         _quickCancelled = false;
-
-        var ray = GetRayFromCameraCenter();
-        SetPingPosition(ray);
+        
+        _playerRayCastHit = GetComponent<PlayerController>().CamRayCastHit;
+        SetPingPosition(_playerRayCastHit.point);
         ShowMarker(_pingPosition);
 
         _brotherAI.PingBrother(PingType.Run, _pingPosition);

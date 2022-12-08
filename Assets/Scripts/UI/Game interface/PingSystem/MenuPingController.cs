@@ -1,5 +1,6 @@
 using System;
 using Cinemachine;
+using PlayerCharacter.Movement;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -253,9 +254,9 @@ public class MenuPingController : AbstractPingController
         if (_radialMenuIsSetActive) return;
         _radialMenuIsSetActive = true;
         Cursor.lockState = CursorLockMode.None;
-
-        var ray = GetRayFromCameraCenter();
-        SetPingPosition(ray);
+        
+        _playerRayCastHit = GetComponent<PlayerController>().CamRayCastHit;
+        SetPingPosition(_playerRayCastHit.point);
         ShowMarker(_pingPosition);
 
         Time.timeScale /= _slowmotionFactor;
