@@ -28,10 +28,12 @@ public class SittingState : MonoBehaviour
     
     public void UPDATE_SITTING_STATE()
     {
-        if (!_sittingCoroutineIsRunning &&
-            !_birdStateManager.CheckIfAlertingObjectsAreNearby(_birdStateManager.birdScriptableObject.AlertTags))
+        if (!_sittingCoroutineIsRunning)
         {
-            CustomEvent.Trigger(gameObject, "FlyingTowardsNavmesh");
+            CustomEvent.Trigger(gameObject,
+                _birdStateManager.CheckIfAlertingObjectsAreNearby(_birdStateManager.birdScriptableObject.AlertTags)
+                    ? "FlyingTowardsRestPoint"
+                    : "FlyingTowardsNavmesh");
         }
     }
     
@@ -44,6 +46,5 @@ public class SittingState : MonoBehaviour
     {
         if(_sittingCoroutineIsRunning) StopCoroutine(_sittingCoroutine);
         _sittingCoroutineIsRunning = false;
-        _birdStateManager.restPoint = null;
     }
 }

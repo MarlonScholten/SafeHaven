@@ -32,25 +32,34 @@ public class FlyingTowardsRestpointState : MonoBehaviour
     }
     public void FIXED_UPDATE_FLYING_TOWARDS_REST_POINT_STATE()
     {
-        TravelPath(_path);
+        if (transform.position != _birdStateManager.restPoint.position)
+        {
+            TravelPath(_path);
+        }
     }
     public void EXIT_FLYING_TOWARDS_REST_POINT_STATE()
     {
         _path = null;
-        Destroy(_path);
+        Destroy(_birdStateManager.pathGameObject);
         _distanceTravelled = 0;
+        _birdStateManager.lastRestPoint = _birdStateManager.restPoint.transform.position;
     }
 
     private Transform GetClosestRestPoint()
     {
         var restPoints = GameObject.FindGameObjectsWithTag("BirdRestPoint");
-        Debug.Log(restPoints[0]);
         Transform closest = null;
         var distance = Mathf.Infinity;
         var position = transform.position;
         foreach (var restPointObject in restPoints.Select(rp => rp.transform))
         {
-            Vector3 diff = restPointObject.transform.position - position;
+            if(restPointObject.transform.position == transform.position) continue;
+            // if (_birdStateManager.lastRestPoint != Vector3.zero)
+            // {
+            //     Debug.Log("Last rest point is not null" + restPointObject.transform.position +"  " + _birdStateManager.lastRestPoint);
+            //     if(Vector3.Distance(restPointObject.transform.position, _birdStateManager.lastRestPoint) >= 1f) continue;
+            // }
+            var diff = restPointObject.transform.position - position;
             var curDistance = diff.sqrMagnitude;
             if (curDistance >= distance) continue;
             closest = restPointObject.transform;

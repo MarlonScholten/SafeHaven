@@ -41,8 +41,10 @@ public class FlyingTowardsNavmeshState : MonoBehaviour
     public void EXIT_FLYING_TOWARDS_NAVMESH_STATE()
     {
         _path = null;
-        Destroy(_path);
+        Destroy(_birdStateManager.pathGameObject);
         _distanceTravelled = 0;
+        _birdStateManager.restPoint = null;
+        _birdStateManager.lastRestPoint = Vector3.zero;
     }
     
     private void TravelPath(PathCreator path){
@@ -55,8 +57,8 @@ public class FlyingTowardsNavmeshState : MonoBehaviour
     {
         var point = transform.position;
         point.y = 0;
-        point.x += Random.Range(2, 3) * (Random.value > 0.5f ? 1 : -1);
-        point.z += Random.Range(2, 3) * (Random.value > 0.5f ? 1 : -1);
+        point.x += Random.Range(4, 6) * (Random.value > 0.5f ? 1 : -1);
+        point.z += Random.Range(4, 6) * (Random.value > 0.5f ? 1 : -1);
         NavMesh.SamplePosition(point, out var hit, 10, NavMesh.AllAreas);
         return hit.position;
     }

@@ -11,7 +11,12 @@ public class BirdStateManager : MonoBehaviour
     public BirdScriptableObject birdScriptableObject;
     [NonSerialized] public NavMeshAgent navMeshAgent;
     [NonSerialized] public Transform restPoint;
+    [NonSerialized] public Vector3 lastRestPoint;
     [NonSerialized] public float groundHeight;
+    /// <summary>
+    /// Save the game object so it can be deleted from the scene
+    /// </summary>
+    [NonSerialized] public GameObject pathGameObject;
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -31,19 +36,29 @@ public class BirdStateManager : MonoBehaviour
     public PathCreator CreatePathToClosestPointOnGivenPath(Vector3 destination)
     {
         var position = transform.position;
-        var createdPath = new GameObject().AddComponent<PathCreator>();
+        pathGameObject = new GameObject();
+        var createdPath = pathGameObject.AddComponent<PathCreator>();
         var startCurve = Vector3.Lerp(position, destination, 0.25f);
         startCurve.y = position.y;
         var endCurve = Vector3.Lerp(position, destination, 0.75f);
         endCurve.y = destination.y;
-        var bezierPath = new BezierPath(new List<Vector3> { position, startCurve, endCurve, destination }, false);
+        
+        // if destination is at the same height or 5 higher than position, start will be 5 higher than position
+        if (destination.y >= position.y && destination.y <= position.y + 5)
+        {
+            startCurve.y = position.y + 5;
+        }
+        var bezierPath = new BezierPath(new List<Vector3> { position, startCurve, endCurve, destination }, false)
+        {
+            FlipNormals = position.x < destination.x,
+        };
+        // set global angle for each point
+        
         createdPath.bezierPath = bezierPath;
         createdPath.bezierPath.ControlPointMode = BezierPath.ControlMode.Automatic;
-        createdPath.bezierPath.GlobalNormalsAngle = 20;
-        createdPath.bezierPath.FlipNormals = true;
         return createdPath;
     }
-    
+
     public bool CheckIfAlertingObjectsAreNearby(ICollection<string> alertingObjects)
     {
         var position = transform.position;
