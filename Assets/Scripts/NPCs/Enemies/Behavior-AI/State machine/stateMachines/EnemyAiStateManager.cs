@@ -28,7 +28,7 @@ public class HeardASoundEvent : UnityEvent<SoundSource>
 
 /// <summary>
 /// <br>Author: Marlon Kerstens</br>
-/// <br>Modified by: Hugo Ulfman</br>
+/// <br>Modified by: Hugo Ulfman and Iris Giezen</br>
 /// Description: This script is used as a manager to control the variables en methods that are shared in different states on the EnemyObject (Assets/Prefabs/NPCs/Enemies/EnemyObject.prefab).
 /// How to use ENEMY AI:
 /// 1. Add a NavmeshSurface to the scene,
@@ -72,35 +72,26 @@ public class EnemyAiStateManager : MonoBehaviour
 {
     [Tooltip("Scriptable object that contains the adjustable variables for the enemy")]
     public FSM_Scriptable_Object enemyAiScriptableObject;
+
     [Tooltip("Boolean to set if the enemy is an guard or not")]
     public bool isGuard; // if the enemy is a guard or not
-    [HideInInspector] public List<Transform> wayPoints; // List of waypoints if not a guard
-    [HideInInspector] public Transform guardWaypoint; // Waypoint if guard
+    
+    [HideInInspector] public List<GameObject> wayPoints; // List of waypoints if not a guard
+    [HideInInspector] public GameObject guardWaypoint; // Waypoint if guard
     [NonSerialized] public NavMeshAgent navMeshAgent; // Navmesh agent component
     [NonSerialized] public Vector3 targetWpLocation; // Location of the current target waypoint
     [NonSerialized] public int currentWpIndex; // Index of the current target waypoint
     [NonSerialized] public bool alertedBySound; // Boolean to check if the enemy is alerted by a sound
     [NonSerialized] public bool alertedByVision; // Boolean to check if the enemy is alerted by vision
     [NonSerialized] public bool alertedByGuard; // Boolean to check if the enemy is alerted by a guard
+
     [NonSerialized] public Vector3 spottedPlayerLastPosition; // Last position of the player/brother when the enemy spotted him
     [NonSerialized] public Vector3 recievedLocationFromGuard; // Last position of the player/brother when the enemy spotted him
+
     [NonSerialized] public GameObject spottedPlayer; // The player/brother that the enemy spotted
     [NonSerialized] public bool waitingAtWaypoint; // Boolean to check if the enemy is waiting at a waypoint
     [NonSerialized] public Vector3 locationOfNoise; // Location of the noise that the enemy heard
     [NonSerialized] public float timePlayerLastSpotted; // Time when the enemy last spotted the player/brother
-
-    /// <summary>
-    /// Awake is called when the script instance is being loaded.
-    /// </summary>
-    /*private void Awake()
-    {
-        navMeshAgent = GetComponent<NavMeshAgent>();
-    }*/
-    //TODO: look at excecution order
-    public void HotfixAwake()
-    {
-        navMeshAgent = GetComponent<NavMeshAgent>();
-    }
 
     /// <summary>
     /// This method rotates the enemy to a random direction.
@@ -111,7 +102,7 @@ public class EnemyAiStateManager : MonoBehaviour
         var z = Random.rotation;
         var position = transform.position;
         var randomRotation = new Vector3(x.x, Random.Range(position.y - 50, position.y + 50), z.z);
-        var lookRotation = Quaternion.LookRotation((randomRotation- position).normalized);
+        var lookRotation = Quaternion.LookRotation((randomRotation - position).normalized);
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, 2f * Time.deltaTime);
 
         // TODO: Play look around animation
@@ -128,8 +119,8 @@ public class EnemyAiStateManager : MonoBehaviour
         method();
         // TODO: Play walk animation
     }
-    
-    
+
+
     /// <summary>
     /// This method checks if the player/brother is in the vision of the enemy.
     /// </summary>
@@ -141,14 +132,18 @@ public class EnemyAiStateManager : MonoBehaviour
         var transform1 = transform;
         var directionToPlayer = player.transform.position - transform1.position;
         var angleToPlayer = Vector3.Angle(transform1.forward, directionToPlayer);
-        
-        if (angleToPlayer >= enemyAiScriptableObject.VisionAngle) return false; // Check if the player is in set vision angle
-        if (!Physics.Raycast(transform.position + new Vector3(0f, transform.lossyScale.y / 2, 0f), directionToPlayer, out var hit, enemyAiScriptableObject.VisionRange)) return false; // Check if the player is in set vision range
+
+        if (angleToPlayer >= enemyAiScriptableObject.VisionAngle)
+            return false; // Check if the player is in set vision angle
+        if (!Physics.Raycast(transform.position + new Vector3(0f, transform.lossyScale.y / 2, 0f), directionToPlayer,
+                out var hit, enemyAiScriptableObject.VisionRange))
+            return false; // Check if the player is in set vision range
         var path = new NavMeshPath();
         navMeshAgent.CalculatePath(hit.transform.position, path);
         if (path.status == NavMeshPathStatus.PathPartial) return false; // Check if the player is reachable
-        if (!hit.collider.gameObject.CompareTag("Player") && !hit.collider.gameObject.CompareTag("Brother") ) return false; // Check if the object is the player/brother
-        
+        if (!hit.collider.gameObject.CompareTag("Player") && !hit.collider.gameObject.CompareTag("Brother"))
+            return false; // Check if the object is the player/brother
+
         var hitPlayer = hit.collider.gameObject;
         spottedPlayer = hitPlayer;
         spottedPlayerLastPosition = hitPlayer.transform.position;
@@ -158,7 +153,7 @@ public class EnemyAiStateManager : MonoBehaviour
         timePlayerLastSpotted = Time.time;
         return true;
     }
-    
+
     /// <summary>
     /// This method check if the player/brother is in the list of colliders.
     /// <param name="objects">Collided objects.</param>
@@ -166,21 +161,24 @@ public class EnemyAiStateManager : MonoBehaviour
     /// </summary>
     private static Collider GetPlayer(IEnumerable<Collider> objects)
     {
-        return objects.FirstOrDefault(obj => obj.gameObject.CompareTag("Player") || obj.gameObject.CompareTag("Brother"));
+        return objects.FirstOrDefault(
+            obj => obj.gameObject.CompareTag("Player") || obj.gameObject.CompareTag("Brother"));
     }
-    
+
     /// <summary>
     /// This method calculates the location where the enemy will investigate.
     /// The NavMeshSamplePosition method is used to find a closest point on the NavMesh to the location of the noise.
     /// </summary>
-    public void CalculateInvestigateLocation(Vector3 position) {
+    public void CalculateInvestigateLocation(Vector3 position)
+    {
         var randDirection = Random.insideUnitSphere * enemyAiScriptableObject.InvestigateDistance;
         randDirection += position;
-        NavMesh.SamplePosition (randDirection, out NavMeshHit navHit, enemyAiScriptableObject.InvestigateDistance, 1);
+        NavMesh.SamplePosition(randDirection, out NavMeshHit navHit, enemyAiScriptableObject.InvestigateDistance, 1);
         targetWpLocation = !navHit.hit ? position : navHit.position;
         CheckPositionReachable(targetWpLocation);
         waitingAtWaypoint = false;
     }
+
     /// <summary>
     /// This method checks if the enemy is at the waypoint.
     /// </summary>
@@ -188,20 +186,20 @@ public class EnemyAiStateManager : MonoBehaviour
     {
         return Vector3.Distance(transform.position, targetWpLocation) <= 0.5f;
     }
-    
+
     /// <summary>
     /// This method checks if the enemy can reach the player/brother position.
     /// </summary>
     public void CheckPositionReachable(Vector3 playerPosition)
     {
-        var path = new NavMeshPath(); 
+        var path = new NavMeshPath();
         navMeshAgent.CalculatePath(playerPosition, path);
         if (path.status is NavMeshPathStatus.PathPartial)
         {
             targetWpLocation = path.corners.Last();
             navMeshAgent.SetDestination(path.corners.Last());
-            if(alertedByVision)spottedPlayerLastPosition = path.corners.Last();
-            if(alertedByGuard)recievedLocationFromGuard = path.corners.Last();
+            if (alertedByVision) spottedPlayerLastPosition = path.corners.Last();
+            if (alertedByGuard) recievedLocationFromGuard = path.corners.Last();
         }
         else
         {
@@ -225,7 +223,7 @@ public class EnemyAiStateManager : MonoBehaviour
     public void RotateTowards(Vector3 target)
     {
         transform.rotation = Quaternion.Slerp(transform.rotation,
-            Quaternion.LookRotation(target  - transform.position),
+            Quaternion.LookRotation(target - transform.position),
             2 * Time.deltaTime);
     }
 }
