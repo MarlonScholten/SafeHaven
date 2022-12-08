@@ -38,6 +38,9 @@ namespace InteractableItemsSystem
         [Tooltip("The force that you throw an item upwards.")][SerializeField] private float _throwForceUpwards;
         [Tooltip("The main camera.")][SerializeField] private Camera _cam;
         
+        [SerializeField]private float _throwForce;
+        [SerializeField]private Transform _throwPoint;
+        
         private Inventory _inventory;
         private PlayerItemInteraction _playerItemInteraction;
 
@@ -67,9 +70,11 @@ namespace InteractableItemsSystem
             var itemInInventoryRigidbody = itemInInventory.GetComponent<Rigidbody>();
            
             _playerItemInteraction.DropItem();
+
+            itemInInventoryRigidbody.velocity = _throwPoint.transform.up * _throwForce;
             
-            itemInInventoryRigidbody.AddForce(_cam.transform.forward * _throwForceForward, ForceMode.Impulse);
-            itemInInventoryRigidbody.AddForce(_cam.transform.up * _throwForceUpwards, ForceMode.Impulse);
+            /*itemInInventoryRigidbody.AddForce(_cam.transform.forward * _throwForceForward, ForceMode.Impulse);
+            itemInInventoryRigidbody.AddForce(_cam.transform.up * _throwForceUpwards, ForceMode.Impulse);*/
 
             yield return new WaitForSeconds(0.5f);
             _playerItemInteraction.isThrowingItem = false;
