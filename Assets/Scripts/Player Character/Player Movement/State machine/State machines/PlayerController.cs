@@ -217,6 +217,11 @@ namespace PlayerCharacter.Movement
                     if(DrawRayDebug)
                         Debug.DrawRay(_playerCamRay.origin, _playerCamera.transform.forward * _camRayCastLength, Color.red);
                 }
+                else
+                {
+                    var nullCastHit = new RaycastHit();
+                    _camRayCastHit = nullCastHit;
+                }
 
                 yield return new WaitForSeconds(0.1f);
             }

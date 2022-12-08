@@ -252,10 +252,11 @@ public class MenuPingController : AbstractPingController
     private void OnMenuPing()
     {
         if (_radialMenuIsSetActive) return;
+        _playerRayCastHit = GetComponent<PlayerController>().CamRayCastHit;
+        if (_playerRayCastHit.point == Vector3.zero) return;
         _radialMenuIsSetActive = true;
         Cursor.lockState = CursorLockMode.None;
         
-        _playerRayCastHit = GetComponent<PlayerController>().CamRayCastHit;
         SetPingPosition(_playerRayCastHit.point);
         ShowMarker(_pingPosition);
 

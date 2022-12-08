@@ -3,7 +3,7 @@ using UnityEngine;
 
 /// <summary>
 /// Author: Iris Giezen and Thijs Orsel </para>
-/// Modified by: N/A </para>
+/// Modified by: Marlon Scholten </para>
 /// Allows for sending the brother companion the location, which he needs to run to, and shows a marker on the location of the ping for a few seconds.
 /// </summary>
 /// <list type="table">
@@ -46,9 +46,10 @@ public class QuickPingController : AbstractPingController
     private void OnQuickPing()
     {
         if (_radialMenu.activeSelf || _quickCancelled) return;
-        _quickCancelled = false;
-        
         _playerRayCastHit = GetComponent<PlayerController>().CamRayCastHit;
+        if (_playerRayCastHit.point == Vector3.zero) return;
+        _quickCancelled = false;
+
         SetPingPosition(_playerRayCastHit.point);
         ShowMarker(_pingPosition);
 
