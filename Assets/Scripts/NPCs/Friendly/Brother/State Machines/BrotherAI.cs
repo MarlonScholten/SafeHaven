@@ -114,6 +114,9 @@ public class BrotherAI : MonoBehaviour
         _stealthHash = Animator.StringToHash("Stealth");
     }
 
+    /// <summary>
+    /// In the fixedUpdate the animations variables are updated.
+    /// </summary>
     private void FixedUpdate()
     {
         _animator.SetFloat(_velocityHash, _navMeshAgent.velocity.magnitude);
