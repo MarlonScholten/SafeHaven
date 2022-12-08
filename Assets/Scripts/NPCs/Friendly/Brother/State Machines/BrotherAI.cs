@@ -88,11 +88,7 @@ public class BrotherAI : MonoBehaviour
     /// This is the sister (the player)
     /// </summary>
     private GameObject _player;
-
-    /// <summary>
-    /// A bool to check if this is the first time the script has started
-    /// </summary>
-    private bool _firstStart = true;
+    
     private Animator _animator;
     private int _velocityHash;
     private int _itemHeldHash;
@@ -115,16 +111,8 @@ public class BrotherAI : MonoBehaviour
     }
 
     /// <summary>
-    /// In awake used components get instatiated.
+    /// In the fixedUpdate the animations variables are updated.
     /// </summary>
-    void Awake()
-    {
-        _navMeshAgent = GetComponent<NavMeshAgent>();
-        _findHidingSpot = gameObject.GetComponent<FindHidingSpot>();
-        _player = GameObject.FindGameObjectWithTag("Player");
-        _animator = GetComponentInChildren<Animator>();
-    }
-
     private void FixedUpdate()
     {
         _animator.SetFloat(_velocityHash, _navMeshAgent.velocity.magnitude);
@@ -180,9 +168,9 @@ public class BrotherAI : MonoBehaviour
     public void InitializeEnter()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
-        _findHidingSpot = gameObject.GetComponent<FindHidingSpot>();
+        _findHidingSpot = GetComponent<FindHidingSpot>();
         _player = GameObject.FindGameObjectWithTag("Player");
-
+        _animator = GetComponentInChildren<Animator>();
         CustomEvent.Trigger(this.gameObject, "Follow");
     }
 
@@ -211,14 +199,6 @@ public class BrotherAI : MonoBehaviour
     /// The enter method for the follow state, it sets the following distance for the brother.
     /// </summary>
     public void FollowEnter(){
-        if (_firstStart)
-        {
-            _navMeshAgent = GetComponent<NavMeshAgent>();
-            _findHidingSpot = gameObject.GetComponent<FindHidingSpot>();
-            _player = GameObject.FindGameObjectWithTag("Player");
-            _firstStart = false;
-        }
-        
         _navMeshAgent.stoppingDistance = _followDistance;  
     }
 
