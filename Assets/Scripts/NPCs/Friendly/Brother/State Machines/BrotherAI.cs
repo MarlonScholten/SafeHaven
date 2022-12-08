@@ -230,20 +230,7 @@ public class BrotherAI : MonoBehaviour
     public void InitializeExit()
     {
     }
-
-    /// <summary>
-    /// The enter method for the follow state, it sets the following distance for the brother.
-    /// </summary>
-    public void FollowEnter(){
-        if (_firstStart)
-        {
-            _navMeshAgent = GetComponent<NavMeshAgent>();
-            _findHidingSpot = gameObject.GetComponent<FindHidingSpot>();
-            _player = GameObject.FindGameObjectWithTag("Player");
-            _firstStart = false;
-        }
-        
-        _navMeshAgent.stoppingDistance = _followDistance;  
+    
     public void FollowEnter()
     {
         _navMeshAgent.stoppingDistance = _followDistance;
