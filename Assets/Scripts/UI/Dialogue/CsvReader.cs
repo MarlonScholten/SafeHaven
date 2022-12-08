@@ -8,6 +8,8 @@ using UnityEngine;
 /// Modified by: N/A </para>
 /// This script reads a given csv file and adds the subtitles to the SubtitleScriptableObject.
 /// There is a CsvReader editor script that makes it possible to read the csv file from the editor.
+/// To read the csv file and add it to the scriptable object you need to call the AddSubtitlesWithCSV function.
+/// This can be done by clicking the read csv button in the CsvReader editor script which can be found on the dialogue controller.
 /// </summary>
 /// <list type="table">
 ///	    <listheader>
@@ -29,13 +31,13 @@ public class CsvReader : MonoBehaviour
     /// The SubtitleScriptableObject that will be filled with the subtitles from the csv file.
     /// </summary>
     [SerializeField]
-    private SubtitleScriptableObject subs;
+    private SubtitleScriptableObject _subs;
 
     /// <summary>
     /// The csv file that will be read.
     /// </summary>
     [SerializeField]
-    private TextAsset csvFile;
+    private TextAsset _csvFile;
 
 
     /// <summary>
@@ -45,7 +47,7 @@ public class CsvReader : MonoBehaviour
     {
         int currentScene = 1;
         //split csv file into lines
-        string[] lines = csvFile.text.Split("\n"[0]);
+        string[] lines = _csvFile.text.Split("\n"[0]);
         //create a list of subtitles
         List<SubtitleScriptableObject.Subtitle> subtitles = new List<SubtitleScriptableObject.Subtitle>();
 
@@ -67,7 +69,7 @@ public class CsvReader : MonoBehaviour
                     replaceScene(currentScene, subtitleList);
                 }
                 else {
-                    subs.subs.Add(subtitleList);
+                    _subs.subs.Add(subtitleList);
                 }
                 currentScene = int.Parse(columns[0]);
                 subtitles = new List<SubtitleScriptableObject.Subtitle>();
@@ -97,7 +99,7 @@ public class CsvReader : MonoBehaviour
             replaceScene(currentScene, subtitleListFinal);
         }
         else {
-            subs.subs.Add(subtitleListFinal);
+            _subs.subs.Add(subtitleListFinal);
         }
         
     }
@@ -108,7 +110,7 @@ public class CsvReader : MonoBehaviour
     /// <param name="sceneNr">The scene number to check.</param>
     /// <returns>True if the scene exists, false if it doesn't.</returns>
     bool checkIfSceneExists(int sceneNr) {
-        foreach (SubtitleScriptableObject.SubtitleList subtitleList in subs.subs) {
+        foreach (SubtitleScriptableObject.SubtitleList subtitleList in _subs.subs) {
             if (subtitleList.sceneNr == sceneNr) {
                 return true;
             }
@@ -122,9 +124,9 @@ public class CsvReader : MonoBehaviour
     /// <param name="sceneNr">The scene number to replace.</param>
     /// <param name="subtitleList">The subtitles to replace with.</param>
     void replaceScene(int sceneNr, SubtitleScriptableObject.SubtitleList subtitleList) {
-        for (int i = 0; i < subs.subs.Count; i++) {
-            if (subs.subs[i].sceneNr == sceneNr) {
-                subs.subs[i] = subtitleList;
+        for (int i = 0; i < _subs.subs.Count; i++) {
+            if (_subs.subs[i].sceneNr == sceneNr) {
+                _subs.subs[i] = subtitleList;
             }
         }
     }

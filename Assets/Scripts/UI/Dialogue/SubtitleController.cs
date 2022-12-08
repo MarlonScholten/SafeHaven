@@ -8,6 +8,8 @@ using UnityEngine;
 /// Modified by: N/A </para>
 /// This script contains the functions to start subtitles from certain scenes.
 /// This script can also empty the subtitles when a voiceline is done.
+/// To show a certain voiceline subtitle from a certain scene you need to call the ShowSubtitle function.
+/// To empty the subtitles you need to call the EmptySubtitles function.
 /// </summary>
 /// <list type="table">
 ///	    <listheader>
@@ -29,13 +31,13 @@ public class SubtitleController : MonoBehaviour
     /// The SubtitleScriptableObject that contains the subtitles.
     /// </summary>
     [SerializeField]
-    private SubtitleScriptableObject subs;
+    private SubtitleScriptableObject _subs;
 
     /// <summary>
-    /// The text that will be changed to show the subtitles.
+    /// The _text that will be changed to show the subtitles.
     /// </summary>
     [SerializeField]
-    private TMP_Text text;
+    private TMP_Text _text;
     
     /// <summary>
     /// The function that will be called when the scene starts.
@@ -52,11 +54,11 @@ public class SubtitleController : MonoBehaviour
     /// <param name="voiceLineNr">The voice line number of the subtitle.</param>
     void showSubtitle(int sceneNr, int voiceLineNr) {
         //loop through subtitles
-        foreach (SubtitleScriptableObject.SubtitleList subtitleList in subs.subs) {
+        foreach (SubtitleScriptableObject.SubtitleList subtitleList in _subs.subs) {
             if (subtitleList.sceneNr == sceneNr) {
                 foreach (SubtitleScriptableObject.Subtitle subtitle in subtitleList.subtitles) {
                     if (subtitle.voiceLineNr == voiceLineNr) {
-                        text.text = subtitle.character + ": " + subtitle.text;
+                        _text._text = subtitle.character + ": " + subtitle._text;
                     }
                 }
             }
@@ -67,6 +69,6 @@ public class SubtitleController : MonoBehaviour
     /// This function can empty the subtitles.
     /// </summary>
     void emptySubtitle() {
-        text.text = "";
+        _text._text = "";
     }
 }
