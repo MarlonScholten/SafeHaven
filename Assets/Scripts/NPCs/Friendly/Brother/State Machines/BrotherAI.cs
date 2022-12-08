@@ -114,17 +114,6 @@ public class BrotherAI : MonoBehaviour
         _stealthHash = Animator.StringToHash("Stealth");
     }
 
-    /// <summary>
-    /// In awake used components get instatiated.
-    /// </summary>
-    void Awake()
-    {
-        _navMeshAgent = GetComponent<NavMeshAgent>();
-        _findHidingSpot = gameObject.GetComponent<FindHidingSpot>();
-        _player = GameObject.FindGameObjectWithTag("Player");
-        _animator = GetComponentInChildren<Animator>();
-    }
-
     private void FixedUpdate()
     {
         _animator.SetFloat(_velocityHash, _navMeshAgent.velocity.magnitude);
@@ -180,9 +169,9 @@ public class BrotherAI : MonoBehaviour
     public void InitializeEnter()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
-        _findHidingSpot = gameObject.GetComponent<FindHidingSpot>();
+        _findHidingSpot = GetComponent<FindHidingSpot>();
         _player = GameObject.FindGameObjectWithTag("Player");
-
+        _animator = GetComponentInChildren<Animator>();
         CustomEvent.Trigger(this.gameObject, "Follow");
     }
 
