@@ -149,7 +149,13 @@ public class InputBehaviour : MonoBehaviour
     public void OnToggleStealth(InputAction.CallbackContext context) => OnToggleStealthEvent?.Invoke();
     public void OnObstacleInteract(InputAction.CallbackContext context) => OnObstacleInteractEvent?.Invoke();
     public void OnToggleDebugginTools(InputAction.CallbackContext context) => OnToggleDebugginToolsEvent?.Invoke();
-    public void OnPause(InputAction.CallbackContext context) => OnPauseEvent?.Invoke();
+    public void OnPause(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            OnPauseEvent?.Invoke();
+        }
+    }
 
     /// <summary>
     /// Enables the <see cref="InputManager"/> whenever <see cref="InputBehaviour"/> is inactive.
