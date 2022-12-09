@@ -40,7 +40,20 @@ namespace SoundManager
         [Range(0, 100)]
         protected int _attenuation = 50;
 
+        [SerializeField]
+        protected StealthTrigger _stealthTrigger;
+
         protected GameObject _gameObject;
+
+        protected enum MusicState
+        {
+            Calm,
+            Hidden,
+            Invest,
+            Chase
+        };
+
+        protected MusicState _musicState = MusicState.Calm;
 
         protected virtual void playSound(GameObject soundGameObject = null)
         {
@@ -49,7 +62,10 @@ namespace SoundManager
                 _gameObject = soundGameObject;
             }
 
-            playEvent.Post(_gameObject);
+            if (playEvent.IsValid())
+            {
+                playEvent.Post(_gameObject);
+            }
         }
 
         protected virtual void stopSound(int transitionTime = 0)
