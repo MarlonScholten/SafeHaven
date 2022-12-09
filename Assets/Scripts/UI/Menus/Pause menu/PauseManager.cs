@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -40,6 +41,10 @@ public class PauseManager : MonoBehaviour
 
     private GameObject _pauseMenuInstance;
 
+    private float _oldTimescale = 1.0f;
+
+    private List<Canvas> _hiddenUIElements = new();
+
     private void Start()
     {
         InputBehaviour.Instance.OnPauseEvent += OnPause;
@@ -69,6 +74,7 @@ public class PauseManager : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.Confined;
         
+        _oldTimescale = Time.timeScale;
         Time.timeScale = 0;
 
         // Disable player input
@@ -81,7 +87,15 @@ public class PauseManager : MonoBehaviour
             if (cinemachineBrain) 
                 cinemachineBrain.enabled = false;
         }
-        
+
+        foreach (Canvas canvas in FindObjectsOfType<Canvas>())
+        {
+            if (!canvas.enabled) continue;
+            
+            canvas.enabled = false;
+            _hiddenUIElements.Add(canvas);
+        }
+
         if (!_pauseMenuInstance) _pauseMenuInstance = Instantiate(_pauseMenu);
     }
 
@@ -90,7 +104,7 @@ public class PauseManager : MonoBehaviour
     /// </summary>
     public void UnpauseGame()
     {
-        Time.timeScale = 1;
+        Time.timeScale = _oldTimescale;
     
         // Re-enable player input
         InputBehaviour.Instance.gameObject.SetActive(true);
@@ -110,5 +124,11 @@ public class PauseManager : MonoBehaviour
             Destroy(_pauseMenuInstance);
             _pauseMenuInstance = null;
         }
+
+        foreach (Canvas hiddenUIElement in _hiddenUIElements)
+        {
+            hiddenUIElement.enabled = true;
+        }
+        _hiddenUIElements.Clear();
     }
 }
