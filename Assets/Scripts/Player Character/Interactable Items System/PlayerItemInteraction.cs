@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using PlayerCharacter.Movement;
 using TMPro;
@@ -36,29 +37,30 @@ namespace InteractableItemsSystem
         [Tooltip("The GameObject where the item in your inventory will be placed under.")][SerializeField] 
         private GameObject _itemHolder;
         [Tooltip("Max range that you can pickup an item.")][SerializeField] 
-        private float _maxPickupRange;
+        private float _maxPickupRange = 3f;
         [Tooltip("Max range that you can interact with an other Object.")][SerializeField] 
-        private float _maxInteractRange;
-        [Tooltip("Color of the emission of the highlighted object")][SerializeField] private Color _highlightColor;
+        private float _maxInteractRange = 2f;
+        [Tooltip("Color of the emission of the highlighted object")][SerializeField] private Color _highlightColor = new Color32(41, 41, 41, 0);
 
-        private Transform _playerTransform;
-        private ItemController _itemController;
-        private InteractableObject _interactableObject;
-        private PlayerController _playerController;
+        
+        //Gets changed in ThrowableItemController script
+        [NonSerialized] public bool IsThrowingItem;
+        public GameObject ItemHolder => _itemHolder;
 
+        
         private float _distanceToItem;
 
         private bool _isChangingItem;
-        
-        //Gets changed in ThrowableItemController script
-        public bool isThrowingItem;
-        
         private bool _closeToInteractableObject;
         private bool _closeToItem;
 
         private RaycastHit _itemHit;
-
+        private Transform _playerTransform;
         private Renderer _rendererItem;
+        
+        private ItemController _itemController;
+        private InteractableObject _interactableObject;
+        private PlayerController _playerController;
         
         private void Start()
         {
@@ -83,7 +85,7 @@ namespace InteractableItemsSystem
                 _rendererItem = null;
             }
             _itemHit = _playerController.CamRayCastHit;
-            if (_itemHit.transform == null || _isChangingItem || isThrowingItem) return;
+            if (_itemHit.transform == null || _isChangingItem || IsThrowingItem) return;
             
             
             _distanceToItem = Vector3.Distance(_playerTransform.position, _itemHit.point);
@@ -97,7 +99,6 @@ namespace InteractableItemsSystem
                 {
                     _closeToItem = true;
                     
-                    _actionPromptText.text = "Press E to pickup";
                     renderer.material.EnableKeyword("_EMISSION");
                     renderer.material.SetColor("_EmissionColor", _highlightColor);
                     _rendererItem = renderer;
@@ -116,8 +117,6 @@ namespace InteractableItemsSystem
                 {
                     _closeToInteractableObject = true;
                     
-                    _actionPromptText.enabled = true;
-                    _actionPromptText.text = "Press E to interact";
                     renderer.material.EnableKeyword("_EMISSION");
                     renderer.material.SetColor("_EmissionColor", _highlightColor);
                     _rendererItem = renderer;
@@ -131,6 +130,11 @@ namespace InteractableItemsSystem
 
         void UpdateActionPromptText()
         {
+            if (_actionPromptText == null)
+            {
+                Debug.LogError("Action Prompt Text in " + this + " has not been assigned!");
+                return;
+            }
             if (_closeToItem)
             {
                 _actionPromptText.enabled = true;
@@ -158,7 +162,7 @@ namespace InteractableItemsSystem
 
         private void OnInteractionWithItem()
         {
-            if(_isChangingItem || isThrowingItem) return;
+            if(_isChangingItem || IsThrowingItem) return;
             
             if (_itemHit.transform.GetComponent<InteractableObject>() != null && _distanceToItem <= _maxInteractRange)
             {
@@ -225,37 +229,19 @@ namespace InteractableItemsSystem
         {
             if (!_inventory.HasItemInInventory)
             {
-                CanNotInteractWithObject("WrongItem");
+                _interactableObject.CanNotInteractWithObjectNoItemEvent?.Invoke();
                 return;
             }
             if (_interactableObject.ItemNeededToInteract.Sort == _inventory.ItemInInventory.Sort)
             {
                 if (_interactableObject.NameImportant)
                 {
-                    if (_interactableObject.ItemNeededToInteract.Name == _inventory.ItemInInventory.Name) InteractWithObject();
-                    else CanNotInteractWithObject("WrongName");
+                    if (_interactableObject.ItemNeededToInteract.Name == _inventory.ItemInInventory.Name) _interactableObject.InteractWithObjectEvent?.Invoke();
+                    else _interactableObject.CanNotInteractWithObjectWrongNameEvent?.Invoke();
                 }
-                else InteractWithObject();
+                else _interactableObject.InteractWithObjectEvent?.Invoke();
             }
-            else CanNotInteractWithObject("WrongItem");
-        }
-        
-        private static void InteractWithObject()
-        {
-            Debug.Log("Interacted");
-        }
-        
-        private static void CanNotInteractWithObject(string why)
-        {
-            switch (why)
-            {
-                case "WrongItem":
-                    Debug.Log("WrongItem");
-                    break;
-                case "WrongName":
-                    Debug.Log("WrongName");
-                    break;
-            }
+            else _interactableObject.CanNotInteractWithObjectWrongItemEvent?.Invoke();
         }
     }
 }

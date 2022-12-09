@@ -34,27 +34,29 @@ namespace InteractableItemsSystem
     /// </list>
     public class ThrowableItemController : MonoBehaviour
     {
-        [Tooltip("The force that you throw an item forward.")][SerializeField] private float _throwForceForward;
-        [Tooltip("The force that you throw an item upwards.")][SerializeField] private float _throwForceUpwards;
-        [Tooltip("The main camera.")][SerializeField] private Camera _cam;
+        [Tooltip("The force that you throw an item with.")][SerializeField] private float _throwForce = 20f;
+        [Tooltip("Main camera that the player uses.")][SerializeField] private Camera _cam;
         
-        [SerializeField]private float _throwForce;
-        [SerializeField]private Transform _throwDirection;
-
         public float ThrowForce => _throwForce;
-        public Transform ThrowDirection => _throwDirection;
-        
-        
+        public Camera Cam => _cam;
+
         private Inventory _inventory;
         private PlayerItemInteraction _playerItemInteraction;
         private LineRenderer _lineRenderer;
+        private DrawProjection _drawProjection;
 
         private void Start()
         {
             _inventory = GetComponent<Inventory>();
             _playerItemInteraction = GetComponent<PlayerItemInteraction>();
             _lineRenderer = GetComponent<LineRenderer>();
+            _drawProjection = GetComponent<DrawProjection>();
             InputBehaviour.Instance.OnThrowCancelledEvent += OnThrowItem;
+
+            if (_cam == null)
+            {
+                Debug.LogError("Cam in " + this + " has not been assigned!");
+            }
         }
 
         private void OnThrowItem()
@@ -71,21 +73,18 @@ namespace InteractableItemsSystem
         private IEnumerator ThrowItem()
         {
             _lineRenderer.enabled = false;
-            _playerItemInteraction.isThrowingItem = true;
-            
+            _playerItemInteraction.IsThrowingItem = true;
+
             var itemInInventory = _inventory.ItemInInventoryObj;
             var itemInInventoryRigidbody = itemInInventory.GetComponent<Rigidbody>();
            
             _playerItemInteraction.DropItem();
 
             itemInInventoryRigidbody.AddForce(_cam.transform.forward * _throwForce, ForceMode.Impulse);
-            /*itemInInventoryRigidbody.velocity = _throwDirection.transform.up * _throwForce;*/
-            
-            /*itemInInventoryRigidbody.AddForce(_cam.transform.forward * _throwForceForward, ForceMode.Impulse);
-            itemInInventoryRigidbody.AddForce(_cam.transform.up * _throwForceUpwards, ForceMode.Impulse);*/
 
+            _drawProjection.DrawLine = false;
             yield return new WaitForSeconds(0.5f);
-            _playerItemInteraction.isThrowingItem = false;
+            _playerItemInteraction.IsThrowingItem = false;
         }
     }
 }

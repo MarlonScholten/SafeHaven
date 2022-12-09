@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Serialization;
 
 
@@ -52,6 +53,24 @@ namespace InteractableItemsSystem
         private ItemSO _itemNeededToInteract;
         [Tooltip("Determines if the name should be important or not.")][SerializeField] private bool _nameImportant;
 
+        [Tooltip("Event to listen to so that other scripts can be triggered when interacted with interactable object.")]
+        [SerializeField]
+        private UnityEvent _interactWithObjectEvent;
+
+        [Tooltip(
+            "Event to listen to so that other scripts can be triggered when interacted with interactable object is not possible. For example wrong item..")]
+        [SerializeField]
+        private UnityEvent _canNotInteractWithObjectNoItemEvent;
+        [SerializeField]
+        private UnityEvent _canNotInteractWithObjectWrongItemEvent;
+        [SerializeField]
+        private UnityEvent _canNotInteractWithObjectWrongNameEvent;
+
+        public UnityEvent InteractWithObjectEvent => _interactWithObjectEvent;
+        public UnityEvent CanNotInteractWithObjectNoItemEvent => _canNotInteractWithObjectNoItemEvent;
+        public UnityEvent CanNotInteractWithObjectWrongItemEvent => _canNotInteractWithObjectWrongItemEvent;
+        public UnityEvent CanNotInteractWithObjectWrongNameEvent => _canNotInteractWithObjectWrongNameEvent;
+        
         /// <summary>
         /// Stores which item is needed for the player to interact with the object.
         /// </summary>
@@ -61,6 +80,33 @@ namespace InteractableItemsSystem
         /// </summary>
         public bool NameImportant => _nameImportant;
 
+        private void Start()
+        {
+            if (_itemNeededToInteract == null)
+            {
+                Debug.LogError("Item Needed To Interact in " + this + " has not been assigned!");
+            }
+        }
+        
+        public static void InteractWithObject()
+        {
+            Debug.Log("Interacted");
+        }
+        
+        public static void CanNotInteractNoItem()
+        {
+            Debug.Log("No Item");
+        }
+        
+        public static void CanNotInteractWrongItem()
+        {
+            Debug.Log("Wrong Item");
+        }
+        
+        public static void CanNotInteractWrongName()
+        {
+            Debug.Log("Wrong Name");
+        }
     }
 }
 

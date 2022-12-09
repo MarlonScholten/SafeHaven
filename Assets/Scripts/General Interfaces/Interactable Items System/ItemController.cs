@@ -71,6 +71,16 @@ namespace InteractableItemsSystem
         {
             _rb = GetComponent<Rigidbody>();
             _col = GetComponent<Collider>();
+
+            if (_item == null)
+            {
+                Debug.LogError("Item in " + this + " has not been assigned!");
+            }
+            else
+            {
+                if(_item.Name == "") Debug.LogError(_item + " doesn't have a name assigned!");
+                if(_item.Sort == "") Debug.LogError(_item + " doesn't have a sort assigned!");
+            }
         }
 
         /// <summary>
