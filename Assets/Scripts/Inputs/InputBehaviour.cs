@@ -126,17 +126,7 @@ public class InputBehaviour : MonoBehaviour
     /// </summary>
     private void Awake()
     {
-        // Destroy the gameobject if it already has an instance.
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-        }
-        // Set the instance, and adds it to the pool of dont destroy on load.
-        else
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        };
+        Instance = this;
     }
 
     public void OnMove(InputAction.CallbackContext context) => _onMoveVector = context.ReadValue<Vector2>();
@@ -155,11 +145,20 @@ public class InputBehaviour : MonoBehaviour
         }
     }
     public void OnCallBrother(InputAction.CallbackContext context) => OnCallBrotherEvent?.Invoke();
-    public void OnItemInteract(InputAction.CallbackContext context) => OnItemInteractEvent?.Invoke();
+    public void OnItemInteract(InputAction.CallbackContext context)
+    {
+        if(context.performed) OnItemInteractEvent?.Invoke();
+    }
     public void OnToggleStealth(InputAction.CallbackContext context) => OnToggleStealthEvent?.Invoke();
     public void OnObstacleInteract(InputAction.CallbackContext context) => OnObstacleInteractEvent?.Invoke();
     public void OnToggleDebugginTools(InputAction.CallbackContext context) => OnToggleDebugginToolsEvent?.Invoke();
-    public void OnPause(InputAction.CallbackContext context) => OnPauseEvent?.Invoke();
+    public void OnPause(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            OnPauseEvent?.Invoke();
+        }
+    }
 
     /// <summary>
     /// Enables the <see cref="InputManager"/> whenever <see cref="InputBehaviour"/> is inactive.

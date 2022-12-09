@@ -56,6 +56,19 @@ public class KeybindingSettings : MonoBehaviour
             LoadControlOverrides();
         }
     }
+    
+    /// <summary>
+    /// Resets all user keybindings to default
+    /// </summary>
+    public void ResetKeybindings()
+    {
+        if (File.Exists(Application.persistentDataPath + "/controlsOverrides.dat"))
+        {
+            File.Delete(Application.persistentDataPath + "/controlsOverrides.dat");
+        }
+        
+        _controls.RemoveAllBindingOverrides();
+    }
 
     /// <summary>
     /// Method <c>RemapKeyboardAction</c> listens to the next keypress from the user and overrides the specified action keybinding
