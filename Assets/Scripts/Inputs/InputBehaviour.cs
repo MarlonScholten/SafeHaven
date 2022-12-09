@@ -145,7 +145,10 @@ public class InputBehaviour : MonoBehaviour
         }
     }
     public void OnCallBrother(InputAction.CallbackContext context) => OnCallBrotherEvent?.Invoke();
-    public void OnItemInteract(InputAction.CallbackContext context) => OnItemInteractEvent?.Invoke();
+    public void OnItemInteract(InputAction.CallbackContext context)
+    {
+        if(context.performed) OnItemInteractEvent?.Invoke();
+    }
     public void OnToggleStealth(InputAction.CallbackContext context) => OnToggleStealthEvent?.Invoke();
     public void OnObstacleInteract(InputAction.CallbackContext context) => OnObstacleInteractEvent?.Invoke();
     public void OnToggleDebugginTools(InputAction.CallbackContext context) => OnToggleDebugginToolsEvent?.Invoke();
