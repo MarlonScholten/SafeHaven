@@ -58,7 +58,7 @@ public class SubtitleController : MonoBehaviour
             if (subtitleList.sceneNr == sceneNr) {
                 foreach (SubtitleScriptableObject.Subtitle subtitle in subtitleList.subtitles) {
                     if (subtitle.voiceLineNr == voiceLineNr) {
-                        _text._text = subtitle.character + ": " + subtitle._text;
+                        _text.text = subtitle.character + ": " + subtitle.text;
                     }
                 }
             }
@@ -69,6 +69,6 @@ public class SubtitleController : MonoBehaviour
     /// This function can empty the subtitles.
     /// </summary>
     void emptySubtitle() {
-        _text._text = "";
+        _text.text = "";
     }
 }
