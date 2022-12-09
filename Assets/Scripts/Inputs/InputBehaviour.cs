@@ -58,7 +58,7 @@ public class InputBehaviour : MonoBehaviour
     /// 'Throw towards pointer when throwable item in hand.'
     /// Uses F as the action key.
     /// </summary>
-    public event InputBehaviourEvent OnThrowEventCancelledEvent;
+    public event InputBehaviourEvent OnThrowCancelledEvent;
 
     /// <summary>
     /// 'Opens radial menu.'
@@ -151,7 +151,7 @@ public class InputBehaviour : MonoBehaviour
     {
         if (context.canceled)
         {
-            OnThrowEventCancelledEvent?.Invoke();
+            OnThrowCancelledEvent?.Invoke();
         }else if (context.performed)
         {
             OnThrowEvent?.Invoke();

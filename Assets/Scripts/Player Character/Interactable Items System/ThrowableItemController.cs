@@ -39,16 +39,22 @@ namespace InteractableItemsSystem
         [Tooltip("The main camera.")][SerializeField] private Camera _cam;
         
         [SerializeField]private float _throwForce;
-        [SerializeField]private Transform _throwPoint;
+        [SerializeField]private Transform _throwDirection;
+
+        public float ThrowForce => _throwForce;
+        public Transform ThrowDirection => _throwDirection;
+        
         
         private Inventory _inventory;
         private PlayerItemInteraction _playerItemInteraction;
+        private LineRenderer _lineRenderer;
 
         private void Start()
         {
             _inventory = GetComponent<Inventory>();
             _playerItemInteraction = GetComponent<PlayerItemInteraction>();
-            InputBehaviour.Instance.OnThrowEvent += OnThrowItem;
+            _lineRenderer = GetComponent<LineRenderer>();
+            InputBehaviour.Instance.OnThrowCancelledEvent += OnThrowItem;
         }
 
         private void OnThrowItem()
@@ -64,6 +70,7 @@ namespace InteractableItemsSystem
 
         private IEnumerator ThrowItem()
         {
+            _lineRenderer.enabled = false;
             _playerItemInteraction.isThrowingItem = true;
             
             var itemInInventory = _inventory.ItemInInventoryObj;
@@ -71,7 +78,8 @@ namespace InteractableItemsSystem
            
             _playerItemInteraction.DropItem();
 
-            itemInInventoryRigidbody.velocity = _throwPoint.transform.up * _throwForce;
+            itemInInventoryRigidbody.AddForce(_cam.transform.forward * _throwForce, ForceMode.Impulse);
+            /*itemInInventoryRigidbody.velocity = _throwDirection.transform.up * _throwForce;*/
             
             /*itemInInventoryRigidbody.AddForce(_cam.transform.forward * _throwForceForward, ForceMode.Impulse);
             itemInInventoryRigidbody.AddForce(_cam.transform.up * _throwForceUpwards, ForceMode.Impulse);*/
