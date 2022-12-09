@@ -46,6 +46,10 @@ using UnityEngine.AI;
 ///		    <term>The state machine is needed for the management of the states.</term>
 ///	    </item>
 /// </list>
+/// <summary>
+/// This requireComponent is used for the triggers. The AkComponents needs that the object to trigger the trigger has an rigidbody. But make it kineMatic so it does not affect anything.
+/// </summary>
+[RequireComponent(typeof(Rigidbody),typeof(Collider))]
 public class BrotherAI : MonoBehaviour
 {
     /// <summary>
@@ -84,7 +88,7 @@ public class BrotherAI : MonoBehaviour
     /// This is the sister (the player)
     /// </summary>
     private GameObject _player;
-
+    
     private Animator _animator;
     private int _velocityHash;
     private int _itemHeldHash;
@@ -107,16 +111,8 @@ public class BrotherAI : MonoBehaviour
     }
 
     /// <summary>
-    /// In awake used components get instatiated.
+    /// In the fixedUpdate the animations variables are updated.
     /// </summary>
-    void Awake()
-    {
-        _navMeshAgent = GetComponent<NavMeshAgent>();
-        _findHidingSpot = gameObject.GetComponent<FindHidingSpot>();
-        _player = GameObject.FindGameObjectWithTag("Player");
-        _animator = GetComponentInChildren<Animator>();
-    }
-
     private void FixedUpdate()
     {
         _animator.SetFloat(_velocityHash, _navMeshAgent.velocity.magnitude);
@@ -172,9 +168,9 @@ public class BrotherAI : MonoBehaviour
     public void InitializeEnter()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
-        _findHidingSpot = gameObject.GetComponent<FindHidingSpot>();
+        _findHidingSpot = GetComponent<FindHidingSpot>();
         _player = GameObject.FindGameObjectWithTag("Player");
-
+        _animator = GetComponentInChildren<Animator>();
         CustomEvent.Trigger(this.gameObject, "Follow");
     }
 
@@ -202,9 +198,8 @@ public class BrotherAI : MonoBehaviour
     /// <summary>
     /// The enter method for the follow state, it sets the following distance for the brother.
     /// </summary>
-    public void FollowEnter()
-    {
-        _navMeshAgent.stoppingDistance = _followDistance;
+    public void FollowEnter(){
+        _navMeshAgent.stoppingDistance = _followDistance;  
     }
 
     /// <summary>
