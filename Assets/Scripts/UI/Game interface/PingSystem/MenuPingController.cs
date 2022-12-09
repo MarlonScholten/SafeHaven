@@ -121,6 +121,8 @@ public class MenuPingController : AbstractPingController
     /// </summary>
     private const float SizeCircle = 45f;
 
+    private CinemachineCore.AxisInputDelegate _cameraInput;
+
     /// <summary>
     /// De-Activates the radial menu and initializes the input events.
     /// </summary>
@@ -259,9 +261,10 @@ public class MenuPingController : AbstractPingController
         ShowMarker(_pingPosition);
 
         Time.timeScale /= _slowmotionFactor;
-        
-        CinemachineBrain cinemachineBrain = FindObjectOfType<CinemachineBrain>();
-        if (cinemachineBrain) cinemachineBrain.enabled = false;
+
+        // Override camera input with 0 and save old behaviour
+        _cameraInput = CinemachineCore.GetInputAxis;
+        CinemachineCore.GetInputAxis = axisName => 0;
     }
 
     /// <summary>
@@ -286,9 +289,9 @@ public class MenuPingController : AbstractPingController
 
         StartCoroutine(MarkerDuration(_marker));
         Time.timeScale = StandardTimeFactor;
-        
-        CinemachineBrain cinemachineBrain = FindObjectOfType<CinemachineBrain>();
-        if (cinemachineBrain) cinemachineBrain.enabled = true;
+
+        // Restore saved camera input
+        CinemachineCore.GetInputAxis = _cameraInput;
     }
 
     /// <summary>
