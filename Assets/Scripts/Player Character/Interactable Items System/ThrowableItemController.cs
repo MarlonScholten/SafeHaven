@@ -37,7 +37,13 @@ namespace InteractableItemsSystem
         [Tooltip("The force that you throw an item with.")][SerializeField] private float _throwForce = 20f;
         [Tooltip("Main camera that the player uses.")][SerializeField] private Camera _cam;
         
+        /// <summary>
+        /// The force an item is thrown with.
+        /// </summary>
         public float ThrowForce => _throwForce;
+        /// <summary>
+        /// The main camera the player uses.
+        /// </summary>
         public Camera Cam => _cam;
 
         private Inventory _inventory;

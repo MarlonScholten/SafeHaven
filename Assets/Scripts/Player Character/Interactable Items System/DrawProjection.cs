@@ -5,69 +5,110 @@ using InteractableItemsSystem;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public class DrawProjection : MonoBehaviour
+namespace InteractableItemsSystem
 {
-    [Tooltip("Number of points on the line.")][SerializeField][Range(10, 100)] private int _numPoints = 50;
-    [Tooltip("Distance between points on the line.")][SerializeField][Range(0.01f, 0.25f)] private float _timeBetweenPoints = 0.1f;
-    [Tooltip("The physics layers that will cause the line to stop being drawn.")][SerializeField] private LayerMask _collidableLayers;
-
     /// <summary>
-    /// Determines if a line should be drawn or not.
+    /// Author: Jasper Driessen <br/>
+    /// Modified by:  <br/>
+    /// Description: Draws a line of how and where the item will be thrown.
     /// </summary>
-    [NonSerialized] public bool DrawLine;
-
-    private LineRenderer _lineRenderer;
-    private Inventory _inventory;
-    private ThrowableItemController _throwableItemController;
-    private PlayerItemInteraction _playerItemInteraction;
-
-    // Start is called before the first frame update
-    void Start()
+    /// <list type="table">
+    ///	    <listheader>
+    ///         <term>On what GameObject</term>
+    ///         <term>Type</term>
+    ///         <term>Name of type</term>
+    ///         <term>Description</term>
+    ///     </listheader>
+    ///     <item>
+    ///         <term>Player GameObject</term>
+    ///         <term>Prefab</term>
+    ///         <term>Player Interact System</term>
+    ///         <term>Used for controlling the interaction with items of the player.</term>
+    ///     </item>
+    ///     <item>
+    ///         <term>Player Interact System</term>
+    ///         <term>Component</term>
+    ///         <term>Line Renderer</term>
+    ///         <term>Used for drawing the line of where you are throwing.</term>
+    ///     </item>
+    ///     <item>
+    ///         <term>Player Interact System</term>
+    ///         <term>SerializedField</term>
+    ///         <term>Collidable layers</term>
+    ///         <term>All the layers the item could hit.</term>
+    ///     </item>
+    /// </list>
+    public class DrawProjection : MonoBehaviour
     {
-        _lineRenderer = GetComponent<LineRenderer>();
-        _inventory = GetComponent<Inventory>();
-        _throwableItemController = GetComponent<ThrowableItemController>();
-        _playerItemInteraction = GetComponent<PlayerItemInteraction>();
-        InputBehaviour.Instance.OnThrowEvent += StartDrawingLine;
-    }
+        [Tooltip("Number of points on the line.")] [SerializeField] [Range(10, 100)]
+        private int _numPoints = 50;
 
-    private void StartDrawingLine()
-    {
-        DrawLine = true;
-    }
+        [Tooltip("Distance between points on the line.")] [SerializeField] [Range(0.01f, 0.25f)]
+        private float _timeBetweenPoints = 0.1f;
 
-    private void Update()
-    {
-        if (DrawLine) DrawProjectionLine();
-    }
+        [Tooltip("The physics layers that will cause the line to stop being drawn.")] [SerializeField]
+        private LayerMask _collidableLayers;
 
-    private void DrawProjectionLine()
-    {
-        if (!_inventory.HasItemInInventory) return;
+        //Changed in other scripts.
+        /// <summary>
+        /// Determines if a line should be drawn or not.
+        /// </summary>
+        [NonSerialized] public bool DrawLine;
 
-        _lineRenderer.enabled = true;
-        _lineRenderer.positionCount = Mathf.CeilToInt(_numPoints / _timeBetweenPoints) + 1;
-        Vector3 startPosition = _playerItemInteraction.ItemHolder.transform.position;
-        Vector3 startVelocity = _throwableItemController.ThrowForce * _throwableItemController.Cam.transform.forward /
-                                _inventory.ItemInInventoryObj.GetComponent<Rigidbody>().mass;
-        int i = 0;
-        _lineRenderer.SetPosition(i, startPosition);
-        for (float time = 0; time < _numPoints; time += _timeBetweenPoints)
+        private LineRenderer _lineRenderer;
+        private Inventory _inventory;
+        private ThrowableItemController _throwableItemController;
+        private PlayerItemInteraction _playerItemInteraction;
+
+        // Start is called before the first frame update
+        void Start()
         {
-            i++;
-            Vector3 point = startPosition + time * startVelocity;
-            point.y = startPosition.y + startVelocity.y * time + (Physics.gravity.y / 2f * time * time);
+            _lineRenderer = GetComponent<LineRenderer>();
+            _inventory = GetComponent<Inventory>();
+            _throwableItemController = GetComponent<ThrowableItemController>();
+            _playerItemInteraction = GetComponent<PlayerItemInteraction>();
+            InputBehaviour.Instance.OnThrowEvent += StartDrawingLine;
+        }
 
-            _lineRenderer.SetPosition(i, point);
+        private void StartDrawingLine()
+        {
+            DrawLine = true;
+        }
 
-            Vector3 lastPosition = _lineRenderer.GetPosition(i - 1);
+        private void Update()
+        {
+            if (DrawLine) DrawProjectionLine();
+        }
 
-            if (Physics.Raycast(lastPosition, (point - lastPosition).normalized, out RaycastHit hit,
-                    (point - lastPosition).magnitude, _collidableLayers))
+        private void DrawProjectionLine()
+        {
+            if (!_inventory.HasItemInInventory) return;
+
+            _lineRenderer.enabled = true;
+            _lineRenderer.positionCount = Mathf.CeilToInt(_numPoints / _timeBetweenPoints) + 1;
+            Vector3 startPosition = _playerItemInteraction.ItemHolder.transform.position;
+            Vector3 startVelocity = _throwableItemController.ThrowForce *
+                                    _throwableItemController.Cam.transform.forward /
+                                    _inventory.ItemInInventoryObj.GetComponent<Rigidbody>().mass;
+            int i = 0;
+            _lineRenderer.SetPosition(i, startPosition);
+            for (float time = 0; time < _numPoints; time += _timeBetweenPoints)
             {
-                _lineRenderer.SetPosition(i, hit.point);
-                _lineRenderer.positionCount = i + 1;
-                return;
+                i++;
+                Vector3 point = startPosition + time * startVelocity;
+                point.y = startPosition.y + startVelocity.y * time + (Physics.gravity.y / 2f * time * time);
+
+                _lineRenderer.SetPosition(i, point);
+
+                Vector3 lastPosition = _lineRenderer.GetPosition(i - 1);
+
+                if (Physics.Raycast(lastPosition, (point - lastPosition).normalized, out RaycastHit hit,
+                        (point - lastPosition).magnitude, _collidableLayers))
+                {
+                    _lineRenderer.SetPosition(i, hit.point);
+                    _lineRenderer.positionCount = i + 1;
+                    return;
+                }
             }
         }
     }

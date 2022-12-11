@@ -58,17 +58,33 @@ namespace InteractableItemsSystem
         private UnityEvent _interactWithObjectEvent;
 
         [Tooltip(
-            "Event to listen to so that other scripts can be triggered when interacted with interactable object is not possible. For example wrong item..")]
+            "Event to listen to so that other scripts can be triggered when interacted with interactable object is not possible, because the player has no items in his inventory.")]
         [SerializeField]
         private UnityEvent _canNotInteractWithObjectNoItemEvent;
+        [Tooltip(
+            "Event to listen to so that other scripts can be triggered when interacted with interactable object is not possible, because the player got the wrong item/wrong item sort in his inventory.")]
         [SerializeField]
         private UnityEvent _canNotInteractWithObjectWrongItemEvent;
+        [Tooltip(
+            "Event to listen to so that other scripts can be triggered when interacted with interactable object is not possible, because the player got an item with the wrong name in his inventory.")]
         [SerializeField]
         private UnityEvent _canNotInteractWithObjectWrongNameEvent;
 
+        /// <summary>
+        /// Trigger this event when the player can interact with the interactable object.
+        /// </summary>
         public UnityEvent InteractWithObjectEvent => _interactWithObjectEvent;
+        /// <summary>
+        /// Trigger this event when the player can't interact, because the player has no items in his inventory.
+        /// </summary>
         public UnityEvent CanNotInteractWithObjectNoItemEvent => _canNotInteractWithObjectNoItemEvent;
+        /// <summary>
+        /// Trigger this event when the player can't interact, because the player got the wrong item/wrong item sort in his inventory.
+        /// </summary>
         public UnityEvent CanNotInteractWithObjectWrongItemEvent => _canNotInteractWithObjectWrongItemEvent;
+        /// <summary>
+        /// Trigger this event when the player can't interact, because the player got an item with the wrong name in his inventory.
+        /// </summary>
         public UnityEvent CanNotInteractWithObjectWrongNameEvent => _canNotInteractWithObjectWrongNameEvent;
         
         /// <summary>
@@ -88,6 +104,8 @@ namespace InteractableItemsSystem
             }
         }
         
+        
+        //These functions are only for testing the unity events, won't be used in finished product.
         public static void InteractWithObject()
         {
             Debug.Log("Interacted");

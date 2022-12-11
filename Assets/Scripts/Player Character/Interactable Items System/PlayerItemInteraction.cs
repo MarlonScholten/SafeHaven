@@ -31,8 +31,6 @@ namespace InteractableItemsSystem
     /// </list>
     public class PlayerItemInteraction : MonoBehaviour
     {
-        private Inventory _inventory;
-
         [Tooltip("Interaction prompt for interacting with items or objects")] [SerializeField] TextMeshProUGUI _actionPromptText;
         [Tooltip("The GameObject where the item in your inventory will be placed under.")][SerializeField] 
         private GameObject _itemHolder;
@@ -44,7 +42,13 @@ namespace InteractableItemsSystem
 
         
         //Gets changed in ThrowableItemController script
+        /// <summary>
+        /// Determines if a player is throwing an item.
+        /// </summary>
         [NonSerialized] public bool IsThrowingItem;
+        /// <summary>
+        /// The item holder of the player. GameObject of where the item GameObject is stored.
+        /// </summary>
         public GameObject ItemHolder => _itemHolder;
 
         
@@ -58,6 +62,7 @@ namespace InteractableItemsSystem
         private Transform _playerTransform;
         private Renderer _rendererItem;
         
+        private Inventory _inventory;
         private ItemController _itemController;
         private InteractableObject _interactableObject;
         private PlayerController _playerController;

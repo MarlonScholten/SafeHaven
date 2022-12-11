@@ -113,3 +113,63 @@ MonoBehaviour:
   _itemNeededToInteract: {fileID: 11400000, guid: 54d28141ab9eff24888a2f005863c1ed,
     type: 2}
   _nameImportant: 1
+  _interactWithObjectEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6505707419707898484}
+        m_TargetAssemblyTypeName: InteractableItemsSystem.InteractableObject, Assembly-CSharp
+        m_MethodName: InteractWithObject
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _canNotInteractWithObjectNoItemEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6505707419707898484}
+        m_TargetAssemblyTypeName: InteractableItemsSystem.InteractableObject, Assembly-CSharp
+        m_MethodName: CanNotInteractNoItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _canNotInteractWithObjectWrongItemEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6505707419707898484}
+        m_TargetAssemblyTypeName: InteractableItemsSystem.InteractableObject, Assembly-CSharp
+        m_MethodName: CanNotInteractWrongItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _canNotInteractWithObjectWrongNameEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6505707419707898484}
+        m_TargetAssemblyTypeName: InteractableItemsSystem.InteractableObject, Assembly-CSharp
+        m_MethodName: CanNotInteractWrongName
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
