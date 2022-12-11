@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using InteractableItemsSystem;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using BreakableObjects;
 
 namespace InteractableItemsSystem
 {
@@ -55,6 +56,8 @@ namespace InteractableItemsSystem
         /// </summary>
         [NonSerialized] public bool DrawLine;
 
+        private Renderer _renderer;
+        
         private LineRenderer _lineRenderer;
         private Inventory _inventory;
         private ThrowableItemController _throwableItemController;
@@ -77,11 +80,13 @@ namespace InteractableItemsSystem
 
         private void Update()
         {
+            if(_renderer != null) _renderer.material.DisableKeyword("_EMISSION");
             if (DrawLine) DrawProjectionLine();
         }
 
         private void DrawProjectionLine()
         {
+            
             if (!_inventory.HasItemInInventory) return;
 
             _lineRenderer.enabled = true;
@@ -105,11 +110,24 @@ namespace InteractableItemsSystem
                 if (Physics.Raycast(lastPosition, (point - lastPosition).normalized, out RaycastHit hit,
                         (point - lastPosition).magnitude, _collidableLayers))
                 {
+                    if (hit.transform.GetComponent<BreakObject>() != null)
+                    {
+                        HighlightMaterial(hit);
+                    }
                     _lineRenderer.SetPosition(i, hit.point);
                     _lineRenderer.positionCount = i + 1;
                     return;
                 }
             }
+        }
+
+        private void HighlightMaterial(RaycastHit hit)
+        {
+            _renderer = hit.transform.GetComponent<Renderer>();
+            if (_renderer == null) return;
+            
+            _renderer.material.EnableKeyword("_EMISSION");
+            _renderer.material.SetColor("_EmissionColor", _playerItemInteraction.HighlightColor);
         }
     }
 }

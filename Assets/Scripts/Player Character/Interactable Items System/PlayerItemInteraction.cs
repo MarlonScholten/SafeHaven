@@ -50,8 +50,11 @@ namespace InteractableItemsSystem
         /// The item holder of the player. GameObject of where the item GameObject is stored.
         /// </summary>
         public GameObject ItemHolder => _itemHolder;
+        /// <summary>
+        /// Color for highlighting an object or item.
+        /// </summary>
+        public Color HighlightColor => _highlightColor;
 
-        
         private float _distanceToItem;
 
         private bool _isChangingItem;
@@ -89,9 +92,10 @@ namespace InteractableItemsSystem
                 _rendererItem.material.DisableKeyword("_EMISSION");
                 _rendererItem = null;
             }
+            
             _itemHit = _playerController.CamRayCastHit;
             if (_itemHit.transform == null || _isChangingItem || IsThrowingItem) return;
-            
+            Debug.Log(_playerController.CamRayCastHit.transform.name);
             
             _distanceToItem = Vector3.Distance(_playerTransform.position, _itemHit.point);
             
