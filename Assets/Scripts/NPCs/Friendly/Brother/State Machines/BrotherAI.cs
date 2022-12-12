@@ -238,7 +238,6 @@ public class BrotherAI : MonoBehaviour
         _pingLocation = location;
         if (ping == PingType.Move && _isInStealth)
         {
-            Debug.Log("PassiveHide");
             CustomEvent.Trigger(this.gameObject, "PassiveHide");
         }
         else
