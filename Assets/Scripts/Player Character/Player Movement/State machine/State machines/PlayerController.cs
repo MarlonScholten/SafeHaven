@@ -6,7 +6,7 @@ namespace PlayerCharacter.Movement
 {
     /// <summary>
     /// Author: Marlon Scholten <br/>
-    /// Modified by: Hugo Verweij, Hugo Ulfman <br/>
+    /// Modified by: Hugo Verweij, Hugo Ulfman<br/>
     /// Description: PlayerController behaviour. Controller for everything related to the player character's state, movement and actions. <br />
     /// Controls the states, and updates the correct parameters when the player inputs movement buttons. <br />
     /// Installation steps: <br />
@@ -210,15 +210,20 @@ namespace PlayerCharacter.Movement
             while (true)
             {
                 RaycastHit hit;
-                _playerCamRay = PlayerCamera.ScreenPointToRay(Input.mousePosition);
+                _playerCamRay = new Ray(PlayerCamera.transform.position, PlayerCamera.transform.forward);
                 if (Physics.Raycast(_playerCamRay, out hit, _camRayCastLength, _camRayCastLayers))
                 {
                     _camRayCastHit = hit;
                     if(DrawRayDebug)
-                        Debug.DrawLine(_playerCamRay.origin, _camRayCastHit.point, Color.red);
+                        Debug.DrawRay(_playerCamRay.origin, _playerCamera.transform.forward * _camRayCastLength, Color.red);
+                }
+                else
+                {
+                    var nullCastHit = new RaycastHit();
+                    _camRayCastHit = nullCastHit;
                 }
 
-                yield return new WaitForSeconds(0.2f);
+                yield return new WaitForSeconds(0.1f);
             }
         }
     }

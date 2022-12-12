@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -49,27 +50,29 @@ namespace InteractableItemsSystem
         /// <summary>
         /// The GameObject of the Item that is in the inventory.
         /// </summary>
-        public GameObject ItemInInventoryObj;
+        [NonSerialized] public GameObject ItemInInventoryObj;
         /// <summary>
         /// The Item (data about the item) that is in the inventory.
         /// </summary>
-        public ItemSO ItemInInventory;
+        [NonSerialized] public ItemSO ItemInInventory;
         /// <summary>
         /// Determines if there is an item in the inventory.
         /// </summary>
-        public bool HasItemInInventory;
+        [NonSerialized] public bool HasItemInInventory;
         /// <summary>
         /// Determines if the state of the inventory has changed. (If there is an item dropped, pickup, thrown or switched).
         /// </summary>
-        public bool ItemHasChanged;
-
-        private PlayerItemInteraction _playerItemInteraction;
+        [NonSerialized] public bool ItemHasChanged;
 
 
         private void Start()
         {
-            _playerItemInteraction = GetComponent<PlayerItemInteraction>();
             ChangeInventoryUI();
+
+            if (_inventoryItemUI == null)
+            {
+                Debug.LogError("Inventory Item UI in "  + this + " has not been assigned!");
+            }
         }
 
         private void Update()
@@ -79,17 +82,26 @@ namespace InteractableItemsSystem
 
         private void ChangeInventoryUI()
         {
-            if (HasItemInInventory)
+            if (_inventoryItemUI != null)
             {
-                _inventoryItemUI.sprite = ItemInInventory.Icon;
-                _inventoryItemUI.enabled = true;
+                if (HasItemInInventory)
+                {
+                    if(ItemInInventory.Icon == null)
+                    {
+                        Debug.LogError(ItemInInventory + " doens't have an icon assigned to it!");
+                    }
+                    else
+                    {
+                        _inventoryItemUI.sprite = ItemInInventory.Icon;
+                        _inventoryItemUI.enabled = true;
+                    }
+                }
+                else
+                {
+                    _inventoryItemUI.enabled = false;
+                    _inventoryItemUI.sprite = null;
+                }
             }
-            else
-            {
-                _inventoryItemUI.enabled = false;
-                _inventoryItemUI.sprite = null;
-            }
-
             ItemHasChanged = false;
         }
     }

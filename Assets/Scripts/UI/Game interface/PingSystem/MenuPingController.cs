@@ -1,5 +1,6 @@
 using System;
 using Cinemachine;
+using PlayerCharacter.Movement;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -120,6 +121,8 @@ public class MenuPingController : AbstractPingController
     /// Stores the size of the cancel button.
     /// </summary>
     private const float SizeCircle = 45f;
+
+    private CinemachineCore.AxisInputDelegate _cameraInput;
 
     /// <summary>
     /// De-Activates the radial menu and initializes the input events.
@@ -251,17 +254,19 @@ public class MenuPingController : AbstractPingController
     private void OnMenuPing()
     {
         if (_radialMenuIsSetActive) return;
+        _playerRayCastHit = GetComponent<PlayerController>().CamRayCastHit;
+        if (_playerRayCastHit.point == Vector3.zero) return;
         _radialMenuIsSetActive = true;
         Cursor.lockState = CursorLockMode.None;
-
-        var ray = GetRayFromCameraCenter();
-        SetPingPosition(ray);
+        
+        SetPingPosition(_playerRayCastHit.point);
         ShowMarker(_pingPosition);
 
         Time.timeScale /= _slowmotionFactor;
-        
-        CinemachineBrain cinemachineBrain = FindObjectOfType<CinemachineBrain>();
-        if (cinemachineBrain) cinemachineBrain.enabled = false;
+
+        // Override camera input with 0 and save old behaviour
+        _cameraInput = CinemachineCore.GetInputAxis;
+        CinemachineCore.GetInputAxis = axisName => 0;
     }
 
     /// <summary>
@@ -286,9 +291,9 @@ public class MenuPingController : AbstractPingController
 
         StartCoroutine(MarkerDuration(_marker));
         Time.timeScale = StandardTimeFactor;
-        
-        CinemachineBrain cinemachineBrain = FindObjectOfType<CinemachineBrain>();
-        if (cinemachineBrain) cinemachineBrain.enabled = true;
+
+        // Restore saved camera input
+        CinemachineCore.GetInputAxis = _cameraInput;
     }
 
     /// <summary>
