@@ -7,26 +7,26 @@
 					<ChildrenList>
 						<Folder Name="Music" ID="{1F8E5A87-62AD-46E4-BD08-CD0378CADE5F}" ShortID="628735083">
 							<ChildrenList>
-								<Event Name="Play_Theme2" ID="{F1CA5AD1-B718-4124-B849-5E20EC14BF19}">
+								<Event Name="Stop_Menu_Music" ID="{994A89D1-52AC-46E4-92FF-2EDF2CF87A23}">
 									<ChildrenList>
-										<Action Name="" ID="{4EBBFE65-4573-4E28-A8E3-E1E7B068B32B}" ShortID="257948174">
-											<ReferenceList>
-												<Reference Name="Target">
-													<ObjectRef Name="Theme2" ID="{9133AF3A-CC43-48B0-BA0C-841C62313709}" WorkUnitID="{42A9CC91-4865-4079-810A-C294ED1644D3}"/>
-												</Reference>
-											</ReferenceList>
-										</Action>
-									</ChildrenList>
-								</Event>
-								<Event Name="Stop_Theme2" ID="{F7EBBB75-1CD6-4781-A035-F01D950B39A6}">
-									<ChildrenList>
-										<Action Name="" ID="{C8717598-E632-4A98-8817-632FAA9C7A55}" ShortID="525342976">
+										<Action Name="" ID="{9C5A45CA-AD06-45B0-A458-48FA8FC8A73F}" ShortID="661189688">
 											<PropertyList>
 												<Property Name="ActionType" Type="int16" Value="2"/>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Target">
-													<ObjectRef Name="Theme2" ID="{9133AF3A-CC43-48B0-BA0C-841C62313709}" WorkUnitID="{42A9CC91-4865-4079-810A-C294ED1644D3}"/>
+													<ObjectRef Name="Menu Music" ID="{ECCEB915-560E-44A3-B3E4-5E6DBC4BE42A}" WorkUnitID="{42A9CC91-4865-4079-810A-C294ED1644D3}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Play_Menu_Music" ID="{14988D3D-3EE9-4B59-BA3E-543A53CDC690}">
+									<ChildrenList>
+										<Action Name="" ID="{1A79B7CC-53E9-403F-8C57-B760E256DE0E}" ShortID="138947955">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Menu Music" ID="{ECCEB915-560E-44A3-B3E4-5E6DBC4BE42A}" WorkUnitID="{42A9CC91-4865-4079-810A-C294ED1644D3}"/>
 												</Reference>
 											</ReferenceList>
 										</Action>
@@ -40,26 +40,26 @@
 					<ChildrenList>
 						<Folder Name="Music" ID="{D79C5109-B614-4113-9484-F26205679109}" ShortID="673547202">
 							<ChildrenList>
-								<Event Name="Stop_Stealth_Music" ID="{6122604A-F3CF-43B0-A958-62E424E8CC59}">
+								<Event Name="Stop_Stealth_Music" ID="{C239B45D-0C00-4A12-B37E-DA05CB0FA716}">
 									<ChildrenList>
-										<Action Name="" ID="{058DBFA0-4038-4854-B65D-C9AF785CF66F}" ShortID="565626150">
+										<Action Name="" ID="{025735A2-23EE-4A0C-A04B-B60C6644B4C1}" ShortID="780994142">
 											<PropertyList>
 												<Property Name="ActionType" Type="int16" Value="2"/>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Target">
-													<ObjectRef Name="Stealth Music" ID="{FD06FA4E-0B58-4D32-8798-7949E59C9CDE}" WorkUnitID="{42A9CC91-4865-4079-810A-C294ED1644D3}"/>
+													<ObjectRef Name="Stealth Music" ID="{DB9480C5-0003-4AF3-B2C0-970F2EBF816F}" WorkUnitID="{42A9CC91-4865-4079-810A-C294ED1644D3}"/>
 												</Reference>
 											</ReferenceList>
 										</Action>
 									</ChildrenList>
 								</Event>
-								<Event Name="Play_Stealth_Music" ID="{E75E44C9-4CCA-4254-BFE3-48D114B756E4}">
+								<Event Name="Play_Stealth_Music" ID="{50FC248B-B570-4861-9203-400A296B2D94}">
 									<ChildrenList>
-										<Action Name="" ID="{B007D0EA-5A4B-4F49-A7C9-14B4039FA9AD}" ShortID="826943036">
+										<Action Name="" ID="{EBBAE886-B7BB-4E03-ACD5-B36005D9366A}" ShortID="1009623203">
 											<ReferenceList>
 												<Reference Name="Target">
-													<ObjectRef Name="Stealth Music" ID="{FD06FA4E-0B58-4D32-8798-7949E59C9CDE}" WorkUnitID="{42A9CC91-4865-4079-810A-C294ED1644D3}"/>
+													<ObjectRef Name="Stealth Music" ID="{DB9480C5-0003-4AF3-B2C0-970F2EBF816F}" WorkUnitID="{42A9CC91-4865-4079-810A-C294ED1644D3}"/>
 												</Reference>
 											</ReferenceList>
 										</Action>
@@ -139,31 +139,6 @@
 											<ReferenceList>
 												<Reference Name="Target">
 													<ObjectRef Name="ParameterTest" ID="{9D2EA0D0-D820-495B-8E96-3E275E52E575}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
-												</Reference>
-											</ReferenceList>
-										</Action>
-									</ChildrenList>
-								</Event>
-								<Event Name="Stop_StateTest" ID="{A39B0D68-3791-436F-939F-03D038BC400A}">
-									<ChildrenList>
-										<Action Name="" ID="{CAF9E426-689F-45EA-A69A-EDC6F6FD6354}" ShortID="849808114">
-											<PropertyList>
-												<Property Name="ActionType" Type="int16" Value="2"/>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Target">
-													<ObjectRef Name="StateTest" ID="{ABACE2AB-912E-4643-A291-02BF1305B418}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
-												</Reference>
-											</ReferenceList>
-										</Action>
-									</ChildrenList>
-								</Event>
-								<Event Name="Play_StateTest" ID="{CB938426-F205-4BA3-82AF-D3EBE652584A}">
-									<ChildrenList>
-										<Action Name="" ID="{0A2DF7D6-3BC3-4231-8254-35352FE8E530}" ShortID="248625062">
-											<ReferenceList>
-												<Reference Name="Target">
-													<ObjectRef Name="StateTest" ID="{ABACE2AB-912E-4643-A291-02BF1305B418}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
 												</Reference>
 											</ReferenceList>
 										</Action>
