@@ -24,9 +24,7 @@
 /// <returns>The chosen action by the player.</returns>
 public enum PingType
 {
-    Run,
+    Move,
     Hide,
     Interact,
-    Pickup,
-    Use
 }
