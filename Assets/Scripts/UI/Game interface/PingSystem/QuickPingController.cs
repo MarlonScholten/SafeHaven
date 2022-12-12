@@ -53,7 +53,7 @@ public class QuickPingController : AbstractPingController
         SetPingPosition(_playerRayCastHit.point);
         ShowMarker(_pingPosition);
 
-        _brotherAI.PingBrother(PingType.Run, _pingPosition);
+        _brotherAI.PingBrother(PingType.Move, _pingPosition);
     }
 
     /// <summary>
