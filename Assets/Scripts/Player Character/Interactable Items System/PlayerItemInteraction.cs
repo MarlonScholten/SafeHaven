@@ -28,6 +28,30 @@ namespace InteractableItemsSystem
     ///         <term>Player Interact System</term>
     ///         <term>Used for controlling the interaction with items of the player.</term>
     ///     </item>
+    ///     <item>
+    ///         <term>Player GameObject</term>
+    ///         <term>Script</term>
+    ///         <term>PlayerController</term>
+    ///         <term>Used for controlling the movement of the player.</term>
+    ///     </item>
+    ///     <item>
+    ///         <term>Player Interact System</term>
+    ///         <term>Script</term>
+    ///         <term>Inventory</term>
+    ///         <term>Inventory for the player where the item the player is holding will be stored.</term>
+    ///     </item>
+    ///       <item>
+    ///         <term>Item GameObject</term>
+    ///         <term>Script</term>
+    ///         <term>Item Controller</term>
+    ///         <term>Used for storing the data of an item and controller the pickup and drop on the item.</term>
+    ///     </item>
+    ///      <item>
+    ///         <term>Interactable Object GameObject</term>
+    ///         <term>Script</term>
+    ///         <term>InteractableObject</term>
+    ///         <term>Used for making interactions between object and items possible.</term>
+    ///     </item>
     /// </list>
     public class PlayerItemInteraction : MonoBehaviour
     {
@@ -95,8 +119,7 @@ namespace InteractableItemsSystem
             
             _itemHit = _playerController.CamRayCastHit;
             if (_itemHit.transform == null || _isChangingItem || IsThrowingItem) return;
-            Debug.Log(_playerController.CamRayCastHit.transform.name);
-            
+
             _distanceToItem = Vector3.Distance(_playerTransform.position, _itemHit.point);
             
             if (_itemHit.transform.GetComponent<ItemController>() != null)

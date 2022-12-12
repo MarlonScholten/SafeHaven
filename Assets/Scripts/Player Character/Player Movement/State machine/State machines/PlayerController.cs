@@ -6,7 +6,7 @@ namespace PlayerCharacter.Movement
 {
     /// <summary>
     /// Author: Marlon Scholten <br/>
-    /// Modified by: Hugo Verweij, Hugo Ulfman, Jasper Driessen<br/>
+    /// Modified by: Hugo Verweij, Hugo Ulfman<br/>
     /// Description: PlayerController behaviour. Controller for everything related to the player character's state, movement and actions. <br />
     /// Controls the states, and updates the correct parameters when the player inputs movement buttons. <br />
     /// Installation steps: <br />
@@ -152,7 +152,7 @@ namespace PlayerCharacter.Movement
             ApplyGravity();
             transform.rotation = _rotation;
             CharacterController.Move(_movement * Time.deltaTime);
-            _animator.SetFloat(_velocityHash, CharacterController.velocity.magnitude);
+            /*_animator.SetFloat(_velocityHash, CharacterController.velocity.magnitude);*/
         }
 
         /// <summary>
@@ -209,9 +209,6 @@ namespace PlayerCharacter.Movement
         {
             while (true)
             {
-                //EDITED BY JASPER DRIESSEN, raycast hit gets reset everytime, so it doesn't remember the hit if you are not looking at the object anymore.
-                _camRayCastHit = new RaycastHit();
-                
                 RaycastHit hit;
                 _playerCamRay = new Ray(PlayerCamera.transform.position, PlayerCamera.transform.forward);
                 if (Physics.Raycast(_playerCamRay, out hit, _camRayCastLength, _camRayCastLayers))

@@ -22,10 +22,28 @@ using Random = UnityEngine.Random;
         ///         <term>Description</term>
         ///     </listheader>
         ///     <item>
-        ///         <term>Player GameObject</term>
+        ///         <term>Brother GameObject</term>
         ///         <term>Prefab</term>
         ///         <term>BrotherAI Interact System</term>
         ///         <term>Used for controlling the interaction with items of the BrotherAI.</term>
+        ///     </item>
+        ///     <item>
+        ///         <term>BrotherAI Interact System</term>
+        ///         <term>Script</term>
+        ///         <term>Inventory</term>
+        ///         <term>Used for storing the item the player is holding.</term>
+        ///     </item>
+        ///      <item>
+        ///         <term>BrotherAI Interact System</term>
+        ///         <term>Component</term>
+        ///         <term>Box Collider - triggered</term>
+        ///         <term>Used for detecting items and adding them to a pickup list.</term>
+        ///     </item>
+        ///      <item>
+        ///         <term>Item GameObject</term>
+        ///         <term>Script</term>
+        ///         <term>Item Controller</term>
+        ///         <term>Used for storing the data of an item and controller the pickup and drop on the item.</term>
         ///     </item>
         /// </list>
         public class BrotherItemInteraction : MonoBehaviour

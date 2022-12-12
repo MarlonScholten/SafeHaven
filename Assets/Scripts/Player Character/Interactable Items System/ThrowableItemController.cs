@@ -26,10 +26,34 @@ namespace InteractableItemsSystem
     ///         <term>Used for controlling the interaction with items of the player.</term>
     ///     </item>
     ///     <item>
-    ///         <term>Player GameObject</term>
-    ///         <term>Script</term>
-    ///         <term>ThrowableItemController - Cam</term>
+    ///         <term>Player Interact System</term>
+    ///         <term>SerializedField</term>
+    ///         <term>Cam</term>
     ///         <term>Add the main camera to the serialize field of Cam.</term>
+    ///     </item>
+    ///     <item>
+    ///         <term>Player Interact System</term>
+    ///         <term>Script</term>
+    ///         <term>Inventory</term>
+    ///         <term>Inventory for the player where the item the player is holding will be stored.</term>
+    ///     </item>
+    ///     <item>
+    ///         <term>Player Interact System</term>
+    ///         <term>Script</term>
+    ///         <term>PlayerItemInteraction</term>
+    ///         <term>Used for interacting with objects and items.</term>
+    ///     </item>
+    ///     <item>
+    ///         <term>Player Interact System</term>
+    ///         <term>Script</term>
+    ///         <term>DrawProjection</term>
+    ///         <term>Used for drawing a line where the item will land when throwing.</term>
+    ///     </item>
+    ///     <item>
+    ///         <term>Player Interact System</term>
+    ///         <term>Component</term>
+    ///         <term>Line Renderer</term>
+    ///         <term>Used for creating the visual of the line where the item will land when throwing.</term>
     ///     </item>
     /// </list>
     public class ThrowableItemController : MonoBehaviour
@@ -58,11 +82,6 @@ namespace InteractableItemsSystem
             _lineRenderer = GetComponent<LineRenderer>();
             _drawProjection = GetComponent<DrawProjection>();
             InputBehaviour.Instance.OnThrowCancelledEvent += OnThrowItem;
-
-            if (_cam == null)
-            {
-                Debug.LogError("Cam in " + this + " has not been assigned!");
-            }
         }
 
         private void OnThrowItem()

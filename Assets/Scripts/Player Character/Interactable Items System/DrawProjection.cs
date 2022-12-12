@@ -38,6 +38,30 @@ namespace InteractableItemsSystem
     ///         <term>Collidable layers</term>
     ///         <term>All the layers the item could hit.</term>
     ///     </item>
+    ///     <item>
+    ///         <term>Player Interact System</term>
+    ///         <term>Script</term>
+    ///         <term>Inventory</term>
+    ///         <term>Inventory for the player where the item the player is holding will be stored.</term>
+    ///     </item>
+    ///     <item>
+    ///         <term>Player Interact System</term>
+    ///         <term>Script</term>
+    ///         <term>PlayerItemInteraction</term>
+    ///         <term>Used for interacting with objects and items.</term>
+    ///     </item>
+    ///     <item>
+    ///         <term>Player Interact System</term>
+    ///         <term>Script</term>
+    ///         <term>ThrowableItemController</term>
+    ///         <term>Used for controlling the throwing of items.</term>
+    ///     </item>
+    ///     <item>
+    ///         <term>Player Interact System</term>
+    ///         <term>Component</term>
+    ///         <term>Line Renderer</term>
+    ///         <term>Used for creating the visual of the line where the item will land when throwing.</term>
+    ///     </item>
     /// </list>
     public class DrawProjection : MonoBehaviour
     {
