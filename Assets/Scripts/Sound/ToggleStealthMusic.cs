@@ -6,11 +6,11 @@ namespace SoundManager
 {
     public class ToggleStealthMusic : SoundBase
     {
-
         void Start()
         {
             _stealthTrigger.OnDangerEnter += StartStealthMusic;
             _stealthTrigger.OnDangerExit += StopStealthMusic;
+
         }
 
         private void StartStealthMusic()
@@ -21,6 +21,15 @@ namespace SoundManager
         private void StopStealthMusic()
         {
             stopSound();
+        }
+        private void StartInvestegating()
+        {
+
+        }
+
+        private void StartChasing()
+        {
+
         }
     }
 }

@@ -12,6 +12,8 @@ namespace SoundManager
         public delegate void DangerZoneEvent();
         public event DangerZoneEvent OnDangerEnter;
         public event DangerZoneEvent OnDangerExit;
+
+
         private GameObject _player;
 
         void Start()

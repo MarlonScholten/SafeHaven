@@ -3,23 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LoadMusicOnStartup : MonoBehaviour
+namespace SoundManager
 {
-    private enum SoundScenes
+    public class LoadMusicOnStartup : MonoBehaviour
     {
-        MenuSound,
-        MainSound
-    };
+        private enum SoundScenes
+        {
+            MenuSound,
+            MainSound
+        };
 
-    [SerializeField]
-    private SoundScenes LoadSoundOnStart = SoundScenes.MainSound;
-    void Start()
-    {
-        SceneManager.LoadSceneAsync(LoadSoundOnStart.ToString(), LoadSceneMode.Additive);
-    }
+        [SerializeField]
+        private SoundScenes LoadSoundOnStart = SoundScenes.MainSound;
+        void Start()
+        {
+            SceneManager.LoadSceneAsync(LoadSoundOnStart.ToString(), LoadSceneMode.Additive);
+        }
 
-    private void OnDestroy()
-    {
-        SceneManager.UnloadSceneAsync(LoadSoundOnStart.ToString());
+        private void OnDestroy()
+        {
+            SceneManager.UnloadSceneAsync(LoadSoundOnStart.ToString());
+        }
     }
 }

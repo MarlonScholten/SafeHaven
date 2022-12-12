@@ -4,7 +4,7 @@ using UnityEngine;
 
 /// <summary>
 /// Author: Marlon Kerstens<br/>
-/// Modified by: Hugo Ulfman<br/>
+/// Modified by: Hugo Ulfman, Thomas van den Oever<br/>
 /// Description: This script is a the Chasing state of the enemy.
 /// </summary>
 /// <list type="table">
@@ -49,6 +49,7 @@ public class ChasingState : MonoBehaviour
     /// </summary>
     public void Enter_Chasing()
     {
+        GameObject.Find("EnemyStateWatcher").GetComponent<SoundManager.EnemyStateWatcher>().isChasing(true);
     }
     
     /// <summary>
@@ -89,5 +90,7 @@ public class ChasingState : MonoBehaviour
     public void Exit_Chasing()
     {
         //Reset spotted player/brother.
+
+        GameObject.Find("EnemyStateWatcher").GetComponent<SoundManager.EnemyStateWatcher>().isChasing(false);
     }
 }
