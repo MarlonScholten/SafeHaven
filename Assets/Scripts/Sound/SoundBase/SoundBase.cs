@@ -32,6 +32,8 @@ namespace SoundManager
         [SerializeField]
         public AK.Wwise.Event stopEvent = null;
 
+        public AK.Wwise.Trigger test;
+
         [SerializeField]
         [Range(0, 100)]
         protected int _volume = 50;
