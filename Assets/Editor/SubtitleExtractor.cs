@@ -1,53 +1,30 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
-
-/// <summary>
-/// Author: Hugo Ulfman </para>
-/// Modified by: N/A </para>
-/// This script reads a given csv file and adds the subtitles to the SubtitleScriptableObject.
-/// There is a CsvReader editor script that makes it possible to read the csv file from the editor.
-/// To read the csv file and add it to the scriptable object you need to call the AddSubtitlesWithCSV function.
-/// This can be done by clicking the read csv button in the CsvReader editor script which can be found on the dialogue controller.
-/// </summary>
-/// <list type="table">
-///	    <listheader>
-///         <term>On what GameObject</term>
-///         <term>Type</term>
-///         <term>Name of type</term>
-///         <term>Description</term>
-///     </listheader>
-///     <item>
-///         <term>Should be placed on the Dialogue controller</term>
-///		    <term>Script</term>
-///         <term>CsvReader</term>
-///		    <term>This script reads a given csv file and adds the subtitles to the SubtitleScriptableObject.</term>
-///	    </item>
-/// </list>
-public class CsvReader : MonoBehaviour
+public class SubtitleExtractor : MonoBehaviour
 {
-    /// <summary>
-    /// The SubtitleScriptableObject that will be filled with the subtitles from the csv file.
-    /// </summary>
-    [SerializeField]
-    private SubtitleScriptableObject _subs;
-
-    /// <summary>
-    /// The csv file that will be read.
-    /// </summary>
-    [SerializeField]
-    private TextAsset _csvFile;
-
+    [MenuItem("Tools/Subtitles/Extract Subtitles")]
+    public static void ShowWindow()
+    {
+        AddSubtitlesWithCSV();
+    }
 
     /// <summary>
     /// Reads the csv file and adds the subtitles to the SubtitleScriptableObject.
     /// </summary>
-    public void AddSubtitlesWithCSV()
+    public static void AddSubtitlesWithCSV()
     {
+        SubtitleScriptableObject subs = (SubtitleScriptableObject)AssetDatabase.LoadAssetAtPath("Assets/Scripts/UI/Dialogue/SubtitleScriptableObject.asset", typeof(SubtitleScriptableObject));
+        var csvFile = File.ReadAllText("Assets/Scripts/UI/Dialogue/subtitles.csv");
+        
         int currentScene = 1;
         //split csv file into lines
-        string[] lines = _csvFile.text.Split("\n"[0]);
+        string[] lines = csvFile.Split("\n"[0]);
         //create a list of subtitles
         List<SubtitleScriptableObject.Subtitle> subtitles = new List<SubtitleScriptableObject.Subtitle>();
 
@@ -65,11 +42,11 @@ public class CsvReader : MonoBehaviour
                 subtitleList.subtitles = subtitles;
 
                 //add subtitle list to scriptable object
-                if (checkIfSceneExists(currentScene)) {
-                    replaceScene(currentScene, subtitleList);
+                if (checkIfSceneExists(currentScene, subs)) {
+                    replaceScene(currentScene, subtitleList, subs);
                 }
                 else {
-                    _subs.subs.Add(subtitleList);
+                    subs.subs.Add(subtitleList);
                 }
                 currentScene = int.Parse(columns[0]);
                 subtitles = new List<SubtitleScriptableObject.Subtitle>();
@@ -95,21 +72,21 @@ public class CsvReader : MonoBehaviour
         subtitleListFinal.subtitles = subtitles;
 
         //add subtitle list to scriptable object
-        if (checkIfSceneExists(currentScene)) {
-            replaceScene(currentScene, subtitleListFinal);
+        if (checkIfSceneExists(currentScene, subs)) {
+            replaceScene(currentScene, subtitleListFinal, subs);
         }
         else {
-            _subs.subs.Add(subtitleListFinal);
+            subs.subs.Add(subtitleListFinal);
         }
         
     }
-
+    
     /// <summary>
     /// Checks if the scene already exists in the SubtitleScriptableObject.
     /// </summary>
     /// <param name="sceneNr">The scene number to check.</param>
     /// <returns>True if the scene exists, false if it doesn't.</returns>
-    bool checkIfSceneExists(int sceneNr) {
+    static bool checkIfSceneExists(int sceneNr, SubtitleScriptableObject _subs) {
         foreach (SubtitleScriptableObject.SubtitleList subtitleList in _subs.subs) {
             if (subtitleList.sceneNr == sceneNr) {
                 return true;
@@ -123,7 +100,7 @@ public class CsvReader : MonoBehaviour
     /// </summary>
     /// <param name="sceneNr">The scene number to replace.</param>
     /// <param name="subtitleList">The subtitles to replace with.</param>
-    void replaceScene(int sceneNr, SubtitleScriptableObject.SubtitleList subtitleList) {
+    static void replaceScene(int sceneNr, SubtitleScriptableObject.SubtitleList subtitleList, SubtitleScriptableObject _subs) {
         for (int i = 0; i < _subs.subs.Count; i++) {
             if (_subs.subs[i].sceneNr == sceneNr) {
                 _subs.subs[i] = subtitleList;
