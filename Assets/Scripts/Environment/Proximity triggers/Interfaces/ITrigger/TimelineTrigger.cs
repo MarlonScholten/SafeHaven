@@ -7,7 +7,7 @@ using UnityEngine.Timeline;
 using UnityEngine.UIElements;
 /// <summary>
 /// Author: Jelco van der Straaten </br>
-/// Modified by:  </br>
+/// Modified by: Hugo Verweij. </br>
 /// This script implements the ITrigger interface.
 /// This object will be triggered when an object enters the triggerbox which has this object in its list.
 /// This script can be attached to any gameobject, it will move upwards when triggered.
@@ -62,7 +62,8 @@ public class TimelineTrigger : MonoBehaviour, ITrigger
     /// In this function it checks if it is on cooldown or if it is already triggered.
     /// If it is not, it will trigger the cutscene.
     /// </summary>
-    public void trigger()
+    /// <inheritdoc />
+    public void TriggerEnter(GameObject instigator = null)
     {
         if (_triggered || _onCoolDown) return;
         //Setting the triggered to true is it is only a one time trigger
