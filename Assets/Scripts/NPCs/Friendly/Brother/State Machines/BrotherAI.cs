@@ -1,10 +1,11 @@
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
 /// <summary>
 /// Author: Jelco van der Straaten </para>
-/// Modified by: Thijs Orsel and Iris Giezen, Thomas van den Oever</para>
+/// Modified by: Thijs Orsel, Iris Giezen and Thomas van den Oever</para>
 /// This script controls the state of the brotherAI. In this script al the calculation for the states are made.
 /// </summary>
 /// <list type="table">
@@ -45,8 +46,10 @@ using UnityEngine.AI;
 ///		    <term>The state machine is needed for the management of the states.</term>
 ///	    </item>
 /// </list>
-
-
+/// <summary>
+/// This requireComponent is used for the triggers. The AkComponents needs that the object to trigger the trigger has an rigidbody. But make it kineMatic so it does not affect anything.
+/// </summary>
+[RequireComponent(typeof(Rigidbody),typeof(Collider))]
 public class BrotherAI : MonoBehaviour
 {
     /// <summary>
@@ -71,27 +74,25 @@ public class BrotherAI : MonoBehaviour
     /// </summary>
     [SerializeField] private bool _isInStealth = false;
 
-    
+    [Range(2.0f, 4.0f), Tooltip("This value determines the maximum walkspeed of the brother during stealth.")]
     /// <summary>
     /// This value represents the speed the brother must move at during stealth.
     /// </summary>
-    [Range(2.0f, 4.0f), Tooltip("This value determines the maximum walkspeed of the brother during stealth.")]
     [SerializeField]
     private float _stealthSpeed = 2.0f;
 
-    
+    [Range(2.0f, 4.0f), Tooltip("This value determines the maximum walkspeed of the brother when not in stealth.")]
     /// <summary>
     /// This value represents the speed the brother must move at when not in stealth.
     /// </summary>
-    [Range(2.0f, 4.0f), Tooltip("This value determines the maximum walkspeed of the brother when not in stealth.")]
     [SerializeField]
     private float _baseSpeed = 3.5f;
 
     /// <summary>
     /// This value determines the following distance of the brother.
     /// </summary>
-    [Range(0.5f, 4.0f), Tooltip("This value determines the following distance of the brother.")]
-    [SerializeField] private float _followDistance = 1.5f;
+    [Range(0.5f, 4.0f), Tooltip("This value determines the following distance of the brother.")] [SerializeField]
+    private float _followDistance = 1.5f;
 
     /// <summary>
     /// This value determines the range in wich a path considers to be completed to get to the next state.
@@ -122,11 +123,7 @@ public class BrotherAI : MonoBehaviour
     /// This is the sister (the player)
     /// </summary>
     private GameObject _player;
-
-    /// <summary>
-    /// A bool to check if this is the first time the script has started
-    /// </summary>
-    private bool _firstStart = true;
+    
     private Animator _animator;
     private int _velocityHash;
     private int _itemHeldHash;
@@ -136,7 +133,8 @@ public class BrotherAI : MonoBehaviour
     /// <summary>
     /// In the start method the declaration for the input is made.
     /// </summary>
-    void Start(){
+    void Start()
+    {
         InputBehaviour.Instance.OnCallBrotherEvent += CallBrother;
         InputBehaviour.Instance.OnToggleStealthEvent += OnStealthEvent;
         _velocityHash = Animator.StringToHash("forwardVelocity");
@@ -148,53 +146,6 @@ public class BrotherAI : MonoBehaviour
     /// <summary>
     /// In the fixedUpdate the animations variables are updated.
     /// </summary>
-    ///
-    void Awake()
-    {
-        /* _navMeshAgent = GetComponent<NavMeshAgent>();
-        _findHidingSpot = gameObject.GetComponent<FindHidingSpot>();
-        _player = GameObject.FindGameObjectWithTag("Player"); */
-        //TODO: add initializer state for Awake function and remove this form the enter state
-    }
-
-    /// <summary>
-    /// When the player presses the stealth button, this method gets called to determine if the brother should enter stealth mode.
-    /// It slows the player and decreases the collider size when in stealth mode.
-    /// </summary>
-    private void OnStealthEvent()
-    {
-        ToggleStealth();
-    }
-
-    private void ToggleStealth()
-    {
-        _isInStealth = !_isInStealth;
-
-        if (_isInStealth)
-        {
-            SetCapsuleCollider(_colliderHeightStealth, 0, -0.5f, 0);
-            _walkSpeed = _stealthSpeed;
-        }
-        else
-        {
-            _walkSpeed = _baseSpeed;
-            SetCapsuleCollider(_colliderHeightBase, 0, 0, 0);
-        }
-    }
-
-    /// <summary>
-    /// Sets the bounds of the capsuleCollider, it is used for adjusting the collider of the brother when entering stealth.
-    /// </summary>
-    /// <param name="height">Determines the Height of the capsuleCollider.</param>
-    /// /// <param name="centerBoundX">Determines the X position of the center of the capsuleCollider.</param>
-    /// /// <param name="centerBoundY">Determines the Y position of the center of the capsuleCollider.</param>
-    /// /// <param name="centerBoundZ">Determines the Z position of the center of the capsuleCollider.</param>
-    private void SetCapsuleCollider(float height, float centerBoundX, float centerBoundY, float centerBoundZ)
-    {
-        _capsuleCollider.center = new Vector3(centerBoundX, centerBoundY, centerBoundZ);
-        _capsuleCollider.height = height;
-    }
-
     private void FixedUpdate()
     {
         _animator.SetFloat(_velocityHash, _navMeshAgent.velocity.magnitude);
@@ -204,21 +155,24 @@ public class BrotherAI : MonoBehaviour
     /// <summary>
     /// When the brother is called back this method makes sure the brother gets back to the follow state.
     /// </summary>
-    private void CallBrother(){
+    private void CallBrother()
+    {
         CustomEvent.Trigger(this.gameObject, "Follow");
     }
 
     /// <summary>
     /// This method checks if the path is completed.
     /// </summary>
-    private bool PathCompleted(){
+    private bool PathCompleted()
+    {
         return _navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance + _pathEndThreshold;
     }
 
     /// <summary>
     /// This method makes the brother move to a certain location
     /// </summary>
-    private void MoveToLocation(Vector3 walkLocation, float speed){
+    private void MoveToLocation(Vector3 walkLocation, float speed)
+    {
         _navMeshAgent.speed = speed;
         _navMeshAgent.SetDestination(walkLocation);
     }
@@ -226,7 +180,8 @@ public class BrotherAI : MonoBehaviour
     /// <summary>
     /// This method gets the current location of the player (sister)
     /// </summary>
-    private Vector3 GetPlayerLocation(){
+    private Vector3 GetPlayerLocation()
+    {
         return _player.transform.position;
     }
 
@@ -234,17 +189,10 @@ public class BrotherAI : MonoBehaviour
     /// <para>This method is used by the pinging system.</para>
     /// The method gets called when a ping is made. This method changes the state of the brother depending on the ping.
     /// </summary>
-    public void PingBrother(PingType ping, Vector3 location){
+    public void PingBrother(PingType ping, Vector3 location)
+    {
         _pingLocation = location;
-        if (ping == PingType.Move && _isInStealth)
-        {
-            Debug.Log("PassiveHide");
-            CustomEvent.Trigger(this.gameObject, "PassiveHide");
-        }
-        else
-        {
-            CustomEvent.Trigger(this.gameObject, ping.ToString());
-        }
+        CustomEvent.Trigger(this.gameObject, ping.ToString());
     }
 
     /// <summary>
@@ -255,8 +203,8 @@ public class BrotherAI : MonoBehaviour
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _findHidingSpot = GetComponent<FindHidingSpot>();
         _player = GameObject.FindGameObjectWithTag("Player");
-        _capsuleCollider = gameObject.GetComponent<CapsuleCollider>();
         _animator = GetComponentInChildren<Animator>();
+        _capsuleCollider = gameObject.GetComponent<CapsuleCollider>();
         _walkSpeed = _baseSpeed;
 
         CustomEvent.Trigger(this.gameObject, "Follow");
@@ -283,35 +231,70 @@ public class BrotherAI : MonoBehaviour
     {
     }
 
-    public void FollowEnter()
-    {
-        _navMeshAgent.stoppingDistance = _followDistance;
+    /// <summary>
+    /// The enter method for the follow state, it sets the following distance for the brother.
+    /// </summary>
+    public void FollowEnter(){
+        _navMeshAgent.stoppingDistance = _followDistance;  
     }
+
     /// <summary>
     /// The update method for the follow state
     /// </summary>
-    public void FollowUpdate(){
-        MoveToLocation(GetPlayerLocation(),_walkSpeed);
+    public void FollowUpdate()
+    {
+        MoveToLocation(GetPlayerLocation(), _walkSpeed);
     }
 
     /// <summary>
     /// The Fixed update method for the follow state
     /// </summary>
-    public void FollowFixedUpdate(){
-
+    public void FollowFixedUpdate()
+    {
     }
 
     /// <summary>
     /// The exit method for the follow state, it resets the follow distance.
     /// </summary>
-    public void FollowExit(){
+    public void FollowExit()
+    {
         _navMeshAgent.stoppingDistance = 0;
+    }
+
+    /// <summary>
+    /// The enter method for the holding hands state
+    /// </summary>
+    public void HoldingHandsEnter()
+    {
+    }
+
+    /// <summary>
+    /// The update method for the holding hands state
+    /// </summary>
+    public void HoldingHandsUpdate()
+    {
+        MoveToLocation(GetPlayerLocation(), _walkSpeed);
+    }
+
+    /// <summary>
+    /// The fixed update method for the holding hands state
+    /// </summary>
+    public void HoldingHandsFixedUpdate()
+    {
+    }
+
+    /// <summary>
+    /// The exit method for the holding hands state
+    /// </summary>
+    public void HoldingHandsExit()
+    {
     }
 
     /// <summary>
     /// The enter method for the hide state
     /// </summary>
-    public void HideEnter(){
+    public void HideEnter()
+    {
         MoveToLocation(_findHidingSpot.FindBestHidingSpot(), _walkSpeed);
         if (!_isInStealth)
         {
@@ -329,8 +312,8 @@ public class BrotherAI : MonoBehaviour
     /// <summary>
     /// The fixed update method for the hide state
     /// </summary>
-    public void HideFixedUpdate(){
-
+    public void HideFixedUpdate()
+    {
     }
 
     /// <summary>
@@ -347,94 +330,148 @@ public class BrotherAI : MonoBehaviour
     /// <summary>
     /// The enter method for the run state
     /// </summary>
-    public void RunEnter(){
+    public void RunEnter()
+    {
         MoveToLocation(_pingLocation, _walkSpeed);
     }
 
     /// <summary>
     /// The update method for the run state
     /// </summary>
-    public void RunUpdate(){
-        if(PathCompleted()){
-            CustomEvent.Trigger(this.gameObject, "Idle");  
+    public void RunUpdate()
+    {
+        if (PathCompleted())
+        {
         }
     }
 
     /// <summary>
     /// The fixed update method for the run state
     /// </summary>
-    public void RunFixedUpdate(){
-
+    public void RunFixedUpdate()
+    {
     }
 
     /// <summary>
     /// The exit method for the run state
     /// </summary>
-    public void RunExit(){
+    public void RunExit()
+    {
+    }
 
+    /// <summary>
+    /// The enter method for the idle state
+    /// </summary>
+    public void IdleEnter()
+    {
+        _navMeshAgent.ResetPath();
+    }
+
+    /// <summary>
+    /// The update method for the idle state
+    /// </summary>
+    public void IdleUpdate()
+    {
+    }
+
+    /// <summary>
+    /// The fixed update method for the idle state
+    /// </summary>
+    public void IdleFixedUpdate()
+    {
+    }
+
+    /// <summary>
+    /// The exit method for the idle state
+    /// </summary>
+    public void IdleExit()
+    {
     }
 
     /// <summary>
     /// The enter method for the interact state
     /// </summary>
-    public void InteractEnter(){
+    public void InteractEnter()
+    {
         MoveToLocation(_pingLocation, _walkSpeed);
     }
 
     /// <summary>
     /// The update method for the interact state
     /// </summary>
-    public void InteractUpdate(){
-
+    public void InteractUpdate()
+    {
     }
 
     /// <summary>
     /// The fixed update method for the interact state
     /// </summary>
-    public void InteractFixedUpdate(){
-
+    public void InteractFixedUpdate()
+    {
     }
 
     /// <summary>
     /// The exit method for the interact state
     /// </summary>
-    public void InteractExit(){
-        
+    public void InteractExit()
+    {
     }
-    
+
     /// <summary>
-    /// The enter method for the passive hide state
+    /// The enter method for the use state
     /// </summary>
-    public void PassiveHideEnter(){
+    public void UseEnter()
+    {
         MoveToLocation(_pingLocation, _walkSpeed);
-        if (!_isInStealth)
-        {
-            ToggleStealth();
-        }
     }
 
     /// <summary>
-    /// The update method for the passive hide state
+    /// The update method for the use state
     /// </summary>
-    public void PassiveHideUpdate(){
-
+    public void UseUpdate()
+    {
     }
 
     /// <summary>
-    /// The fixed update method for the passive hide state
+    /// The fixed update method for the use state
     /// </summary>
-    public void PassiveHideFixedUpdate(){
-
+    public void UseFixedUpdate()
+    {
     }
 
     /// <summary>
-    /// The exit method for the passive hide state
+    /// The exit method for the use state
     /// </summary>
-    public void PassiveHideExit(){
-        if (_isInStealth)
-        {
-            ToggleStealth();
-        }
+    public void UseExit()
+    {
     }
 
+    /// <summary>
+    /// The enter method for the pickup
+    /// </summary>
+    public void PickupEnter()
+    {
+        MoveToLocation(_pingLocation, _walkSpeed);
+    }
+
+    /// <summary>
+    /// The update method for the pickup
+    /// </summary>
+    public void PickupUpdate()
+    {
+    }
+
+    /// <summary>
+    /// The fixed update method for the pickup
+    /// </summary>
+    public void PickupFixedUpdate()
+    {
+    }
+
+    /// <summary>
+    /// The exit method for the pickup
+    /// </summary>
+    public void PickupExit()
+    {
+    }
 }
