@@ -258,9 +258,8 @@ public class MenuPingController : AbstractPingController
         if (_playerRayCastHit.point == Vector3.zero) return;
         _radialMenuIsSetActive = true;
         Cursor.lockState = CursorLockMode.None;
-        
+
         SetPingPosition(_playerRayCastHit.point);
-        ShowMarker(_pingPosition);
 
         Time.timeScale /= _slowmotionFactor;
 
@@ -278,6 +277,8 @@ public class MenuPingController : AbstractPingController
     {
         _pingAction = _chosenAction;
         _brotherAI.PingBrother(_pingAction, _pingPosition);
+        
+        ShowMarker(_pingPosition);
     }
 
     /// <summary>
@@ -305,7 +306,20 @@ public class MenuPingController : AbstractPingController
     /// <param name="position">The position the player pings.</param>
     protected override void ShowMarker(Vector3 position)
     {
-        _marker = Instantiate(_markerPrefab, position, Quaternion.identity);
+        if (_marker) Destroy(_marker);
+        
+        switch (_pingAction)
+        {
+            case PingType.Hide:
+                _marker = Instantiate(_markerPrefabHide, position, Quaternion.identity);
+                break;
+            case PingType.Interact:
+                _marker = Instantiate(_markerPrefabInteract, position, Quaternion.identity);
+                break;
+            case PingType.Run:
+                _marker = Instantiate(_markerPrefab, position, Quaternion.identity);
+                break;
+        }
     }
 
     /// <summary>
