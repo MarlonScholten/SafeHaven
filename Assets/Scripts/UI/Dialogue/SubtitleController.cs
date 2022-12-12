@@ -38,21 +38,13 @@ public class SubtitleController : MonoBehaviour
     /// </summary>
     [SerializeField]
     private TMP_Text _text;
-    
-    /// <summary>
-    /// The function that will be called when the scene starts.
-    /// </summary>
-    void Start()
-    {
-
-    }
 
     /// <summary>
     /// This function can show a certain subtitle from a certain scene.
     /// </summary>
     /// <param name="sceneNr">The scene number of the subtitle.</param>
     /// <param name="voiceLineNr">The voice line number of the subtitle.</param>
-    void showSubtitle(int sceneNr, int voiceLineNr) {
+    void ShowSubtitle(int sceneNr, int voiceLineNr) {
         //loop through subtitles
         foreach (SubtitleScriptableObject.SubtitleList subtitleList in _subs.subs) {
             if (subtitleList.sceneNr == sceneNr) {
@@ -68,7 +60,7 @@ public class SubtitleController : MonoBehaviour
     /// <summary>
     /// This function can empty the subtitles.
     /// </summary>
-    void emptySubtitle() {
+    void EmptySubtitle() {
         _text.text = "";
     }
 }
