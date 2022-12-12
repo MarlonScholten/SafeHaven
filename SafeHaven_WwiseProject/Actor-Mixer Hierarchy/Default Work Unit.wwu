@@ -46,7 +46,7 @@
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
 								</Reference>
 								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+									<ObjectRef Name="SFX" ID="{DC6803C8-E376-4E53-8874-5A4177EC1378}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
@@ -89,11 +89,6 @@
 										</ModifierInfo>
 									</ModifierList>
 								</Property>
-								<Property Name="Volume" Type="Real64">
-									<ValueList>
-										<Value>8</Value>
-									</ValueList>
-								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Attenuation">
@@ -103,7 +98,7 @@
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
 								</Reference>
 								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+									<ObjectRef Name="SFX" ID="{DC6803C8-E376-4E53-8874-5A4177EC1378}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
@@ -133,19 +128,12 @@
 				<Folder Name="Wind" ID="{12D68863-8F3F-470E-8D9B-8623F01A65D1}" ShortID="875187310">
 					<ChildrenList>
 						<Sound Name="Wind_PlaceHolder" ID="{33AE1AEA-54CD-4DF0-821A-0BDDEEB34E6B}" ShortID="687059831">
-							<PropertyList>
-								<Property Name="Volume" Type="Real64">
-									<ValueList>
-										<Value>-24</Value>
-									</ValueList>
-								</Property>
-							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
 								</Reference>
 								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+									<ObjectRef Name="Ambient" ID="{691888D0-FE14-4467-BBE9-5FBD9C2E181F}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
@@ -291,61 +279,6 @@
 								<ActiveSource Name="ParameterTest" ID="{27883ADF-9B19-47A4-8978-D0AD63F8C99D}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
-						<Sound Name="StateTest" ID="{ABACE2AB-912E-4643-A291-02BF1305B418}" ShortID="379990218">
-							<PropertyList>
-								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<AudioFileSource Name="StateTest" ID="{70C6D9CC-744D-4731-B37C-B5F7B4A64F45}">
-									<PropertyList>
-										<Property Name="LoopEnd" Type="Real64" Value="96.525156193446"/>
-										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-									</PropertyList>
-									<Language>SFX</Language>
-									<AudioFile>StateTest.wav</AudioFile>
-									<MediaIDList>
-										<MediaID ID="954726885"/>
-									</MediaIDList>
-								</AudioFileSource>
-							</ChildrenList>
-							<StateInfo>
-								<StateGroupList>
-									<StateGroupInfo>
-										<StateGroupRef Name="StateTest" ID="{CD5EE1ED-A397-4705-9DA3-C8F8200E1883}"/>
-									</StateGroupInfo>
-								</StateGroupList>
-								<CustomStateList>
-									<CustomState>
-										<StateRef Name="Off" ID="{48859808-A9D8-4595-A9E7-1213C6407F8F}"/>
-										<CustomState Name="" ID="{D72A1B1B-C689-4951-9FCC-E60DAFE8D5BF}" ShortID="292931369">
-											<PropertyList>
-												<Property Name="Volume" Type="Real64" Value="-108"/>
-											</PropertyList>
-										</CustomState>
-									</CustomState>
-									<CustomState>
-										<StateRef Name="On" ID="{3066384B-F446-4657-A8A3-01C32A7C06F7}"/>
-										<CustomState Name="" ID="{DACB3F96-5981-4CD8-B7EC-4200AD6CACA9}" ShortID="1022381527">
-											<PropertyList>
-												<Property Name="Volume" Type="Real64" Value="21"/>
-											</PropertyList>
-										</CustomState>
-									</CustomState>
-								</CustomStateList>
-							</StateInfo>
-							<ObjectLists/>
-							<ActiveSourceList>
-								<ActiveSource Name="StateTest" ID="{70C6D9CC-744D-4731-B37C-B5F7B4A64F45}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="Footsteps" ID="{D1541E4B-1D5F-48DF-851B-37DD2E7C7527}" ShortID="661524755">
@@ -359,7 +292,7 @@
 									<ObjectRef Name="Concrete" ID="{91EA98DC-4AB9-47F8-818D-66098DF694B0}" WorkUnitID="{D92973B9-C527-48B7-A400-4F220CF740BF}"/>
 								</Reference>
 								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+									<ObjectRef Name="Footsteps" ID="{643284DC-418C-480B-9A5B-E9CC8E3A6BED}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
 								</Reference>
 								<Reference Name="SwitchGroupOrStateGroup">
 									<ObjectRef Name="Footsteps" ID="{A6F8BDE0-5FE5-4F3A-84FE-166A57A03A62}" WorkUnitID="{D92973B9-C527-48B7-A400-4F220CF740BF}"/>
@@ -381,6 +314,11 @@
 													</Modifier>
 												</ModifierInfo>
 											</ModifierList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>5</Value>
+											</ValueList>
 										</Property>
 									</PropertyList>
 									<ReferenceList>

@@ -11,28 +11,32 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Language="SFX" Hash="2589540356">
+		<SoundBank Id="1355168291" Language="SFX" Hash="207585741">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="2607556080" Language="SFX" Hash="1442976196">
+		<SoundBank Id="2607556080" Language="SFX" Hash="1443411809">
 			<ObjectPath>\SoundBanks\Default Work Unit\Menu</ObjectPath>
 			<ShortName>Menu</ShortName>
 			<Path>Menu.bnk</Path>
 			<IncludedEvents>
-				<Event Id="4209088253" Name="Play_Theme2" ObjectPath="\Events\Default Work Unit\Menu\Music\Play_Theme2" DurationType="Infinite">
+				<Event Id="2228153899" Name="Play_Menu_Music" ObjectPath="\Events\Default Work Unit\Menu\Music\Play_Menu_Music" DurationType="Infinite">
 					<IncludedMemoryFiles>
-						<File Id="891448325" Language="SFX">
-							<ShortName>Placeholder Menu Music\Sample2.wav</ShortName>
-							<Path>SFX\Placeholder Menu Music\Sample2_D79FB2B7.wem</Path>
+						<File Id="111870592" Language="SFX">
+							<ShortName>MenuTheme-Intro.wav</ShortName>
+							<Path>SFX\MenuTheme-Intro_D79FB2B7.wem</Path>
+						</File>
+						<File Id="538199002" Language="SFX">
+							<ShortName>MenuTheme-Loop.wav</ShortName>
+							<Path>SFX\MenuTheme-Loop_D79FB2B7.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="2713968303" Name="Stop_Theme2" ObjectPath="\Events\Default Work Unit\Menu\Music\Stop_Theme2" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
+				<Event Id="3945748993" Name="Stop_Menu_Music" ObjectPath="\Events\Default Work Unit\Menu\Music\Stop_Menu_Music" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 			</IncludedEvents>
 		</SoundBank>
-		<SoundBank Id="3161908922" Language="SFX" Hash="1450502282">
+		<SoundBank Id="3161908922" Language="SFX" Hash="2812002819">
 			<ObjectPath>\SoundBanks\Default Work Unit\Main</ObjectPath>
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
@@ -200,14 +204,6 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="3761884421" Name="Play_StateTest" ObjectPath="\Events\Default Work Unit\Main\TestSounds\Play_StateTest" DurationType="Infinite">
-					<IncludedMemoryFiles>
-						<File Id="954726885" Language="SFX">
-							<ShortName>StateTest.wav</ShortName>
-							<Path>SFX\StateTest_1D136E2D.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
 				<Event Id="674798631" Name="Play_Stealth_Music" ObjectPath="\Events\Default Work Unit\Main\Music\Play_Stealth_Music" DurationType="Infinite">
 					<IncludedMemoryFiles>
 						<File Id="47949605" Language="SFX">
@@ -267,7 +263,6 @@
 				</Event>
 				<Event Id="2756796529" Name="Stop_ParameterTest" ObjectPath="\Events\Default Work Unit\Main\TestSounds\Stop_ParameterTest" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 				<Event Id="2594172909" Name="Stop_Proxlamp_Draft1_V2" ObjectPath="\Events\Default Work Unit\Main\ProximityLamp\Stop_Proxlamp_Draft1_V2" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="2610164223" Name="Stop_StateTest" ObjectPath="\Events\Default Work Unit\Main\TestSounds\Stop_StateTest" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 				<Event Id="3876103401" Name="Stop_Stealth_Music" ObjectPath="\Events\Default Work Unit\Main\Music\Stop_Stealth_Music" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 				<Event Id="3467245854" Name="Stop_TestSound_Loop" ObjectPath="\Events\Default Work Unit\Main\TestSounds\Stop_TestSound_Loop" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 				<Event Id="25015968" Name="Stop_TestSound_Single" ObjectPath="\Events\Default Work Unit\Main\TestSounds\Stop_TestSound_Single" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>

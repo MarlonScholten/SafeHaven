@@ -5,11 +5,9 @@ Event	ID	Name			Wwise Object Path	Notes
 	2024687188	Play_TestSound_Loop			\Default Work Unit\Main\TestSounds\Play_TestSound_Loop	
 	2579192193	Play_Proxlamp_Draft1_Click			\Default Work Unit\Main\ProximityLamp\Play_Proxlamp_Draft1_Click	
 	2594172909	Stop_Proxlamp_Draft1_V2			\Default Work Unit\Main\ProximityLamp\Stop_Proxlamp_Draft1_V2	
-	2610164223	Stop_StateTest			\Default Work Unit\Main\TestSounds\Stop_StateTest	
 	2756796529	Stop_ParameterTest			\Default Work Unit\Main\TestSounds\Stop_ParameterTest	
 	3467245854	Stop_TestSound_Loop			\Default Work Unit\Main\TestSounds\Stop_TestSound_Loop	
 	3498798050	Play_Wind_PlaceHolder			\Default Work Unit\Main\Wind\Play_Wind_PlaceHolder	
-	3761884421	Play_StateTest			\Default Work Unit\Main\TestSounds\Play_StateTest	
 	3854155799	Play_Footsteps			\Default Work Unit\Main\Footsteps\Play_Footsteps	
 	3876103401	Stop_Stealth_Music			\Default Work Unit\Main\Music\Stop_Stealth_Music	
 	4206196186	Play_TestSound_Single			\Default Work Unit\Main\TestSounds\Play_TestSound_Single	
@@ -25,20 +23,12 @@ Switch	ID	Name	Switch Group			Notes
 
 State Group	ID	Name			Wwise Object Path	Notes
 	2413224833	StealthState			\Default Work Unit\StealthState	
-	3275448284	StateTest			\Default Work Unit\StateTest	
 
 State	ID	Name	State Group			Notes
 	250639526	Alerted	StealthState			
 	748895195	None	StealthState			
 	1777167952	Caution	StealthState			
 	3621873013	Hidden	StealthState			
-	748895195	None	StateTest			
-	930712164	Off	StateTest			
-	1651971902	On	StateTest			
-
-Custom State	ID	Name	State Group	Owner		Notes
-	292931369	Off	StateTest	\Actor-Mixer Hierarchy\Default Work Unit\TestSounds\StateTest		
-	1022381527	On	StateTest	\Actor-Mixer Hierarchy\Default Work Unit\TestSounds\StateTest		
 
 Game Parameter	ID	Name			Wwise Object Path	Notes
 	2010788230	TestParameter			\Default Work Unit\TestParameter	
@@ -78,7 +68,6 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	822749122	Music_Stealth_Alerted	C:\Users\samil\Desktop\Project_SafeHaven\SafeHaven\SafeHaven_WwiseProject\.cache\Mac\SFX\Stealth Music\Music_Stealth_Alerted_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\Stealth Music\Music_Stealth_Alerted\Music_Stealth_Alerted\Music_Stealth_Alerted		5959564
 	876437545	Footsteps_Concrete-4	C:\Users\samil\Desktop\Project_SafeHaven\SafeHaven\SafeHaven_WwiseProject\.cache\Mac\SFX\ConcreteFootstps2.1-13_17F3BA8D.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footsteps\Footsteps\Footsteps_Concrete\Footsteps_Concrete-4		86484
 	881666982	Footsteps_Concrete-5	C:\Users\samil\Desktop\Project_SafeHaven\SafeHaven\SafeHaven_WwiseProject\.cache\Mac\SFX\ConcreteFootstps2.1-14_A560D2D9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footsteps\Footsteps\Footsteps_Concrete\Footsteps_Concrete-5		86484
-	954726885	StateTest	C:\Users\samil\Desktop\Project_SafeHaven\SafeHaven\SafeHaven_WwiseProject\.cache\Mac\SFX\StateTest_1D136E2D.wem		\Actor-Mixer Hierarchy\Default Work Unit\TestSounds\StateTest		17443620
 	1009190396	Footsteps_Gravel-6	C:\Users\samil\Desktop\Project_SafeHaven\SafeHaven\SafeHaven_WwiseProject\.cache\Mac\SFX\gravel_footsteps-010_E5380072.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footsteps\Footsteps\Footsteps_Gravel\Footsteps_Gravel-6		91516
 	1033828981	Footsteps_Gravel-12	C:\Users\samil\Desktop\Project_SafeHaven\SafeHaven\SafeHaven_WwiseProject\.cache\Mac\SFX\gravel_footsteps-040_585099E0.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footsteps\Footsteps\Footsteps_Gravel\Footsteps_Gravel-12		102176
 	1040209185	Footsteps_Concrete-1	C:\Users\samil\Desktop\Project_SafeHaven\SafeHaven\SafeHaven_WwiseProject\.cache\Mac\SFX\ConcreteFootstps2.1_66904049.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footsteps\Footsteps\Footsteps_Concrete\Footsteps_Concrete-1		111812
