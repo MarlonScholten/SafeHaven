@@ -56,7 +56,37 @@ public class BrotherAI : MonoBehaviour
     /// This value determines the maximum walkspeed of the brother.
     /// </summary>
     [Range(2.0f, 4.0f), Tooltip("This value determines the maximum walkspeed of the brother.")] [SerializeField]
-    private float _walkSpeed = 3.5f;
+    private float _walkSpeed;
+
+    /// <summary>
+    /// This value determines the height of the brother collider.
+    /// </summary>
+    [Range(1.0f, 2.0f), Tooltip("This value determines the height of the brother collider when in stealth.")]
+    [SerializeField]
+    private float _colliderHeightStealth = 1f;
+
+    [Range(1.0f, 2.0f), Tooltip("This value determines the height of the brother collider when not in stealth.")]
+    [SerializeField]
+    private float _colliderHeightBase = 2f;
+
+    /// <summary>
+    /// This value shows if the brother is currently in stealth mode, this should also be used by a sound script to make footsteps less loud during stealth.
+    /// </summary>
+    [SerializeField] private bool _isInStealth = false;
+
+    [Range(2.0f, 4.0f), Tooltip("This value determines the maximum walkspeed of the brother during stealth.")]
+    /// <summary>
+    /// This value represents the speed the brother must move at during stealth.
+    /// </summary>
+    [SerializeField]
+    private float _stealthSpeed = 2.0f;
+
+    [Range(2.0f, 4.0f), Tooltip("This value determines the maximum walkspeed of the brother when not in stealth.")]
+    /// <summary>
+    /// This value represents the speed the brother must move at when not in stealth.
+    /// </summary>
+    [SerializeField]
+    private float _baseSpeed = 3.5f;
 
     /// <summary>
     /// This value determines the following distance of the brother.
@@ -68,6 +98,11 @@ public class BrotherAI : MonoBehaviour
     /// This value determines the range in wich a path considers to be completed to get to the next state.
     /// </summary>
     private const float _pathEndThreshold = 0.1f;
+
+    /// <summary>
+    /// Used to store a reference to the capsule collider of the brother
+    /// </summary>
+    private CapsuleCollider _capsuleCollider;
 
     /// <summary>
     /// The navmeshAgent component used for the movement of the brother.
@@ -95,15 +130,13 @@ public class BrotherAI : MonoBehaviour
     private int _interactableObjectHash;
     private int _stealthHash;
 
-    [Tooltip("This value determines if the brother is stealth.")]
-    [SerializeField] private bool _isStealth = false;
-
     /// <summary>
     /// In the start method the declaration for the input is made.
     /// </summary>
     void Start()
     {
         InputBehaviour.Instance.OnCallBrotherEvent += CallBrother;
+        InputBehaviour.Instance.OnToggleStealthEvent += OnStealthEvent;
         _velocityHash = Animator.StringToHash("forwardVelocity");
         _itemHeldHash = Animator.StringToHash("ItemHeld");
         _interactableObjectHash = Animator.StringToHash("InteractableObject");
@@ -116,7 +149,7 @@ public class BrotherAI : MonoBehaviour
     private void FixedUpdate()
     {
         _animator.SetFloat(_velocityHash, _navMeshAgent.velocity.magnitude);
-        _animator.SetBool(_stealthHash, _isStealth);
+        _animator.SetBool(_stealthHash, _isInStealth);
     }
 
     /// <summary>
@@ -171,6 +204,9 @@ public class BrotherAI : MonoBehaviour
         _findHidingSpot = GetComponent<FindHidingSpot>();
         _player = GameObject.FindGameObjectWithTag("Player");
         _animator = GetComponentInChildren<Animator>();
+        _capsuleCollider = gameObject.GetComponent<CapsuleCollider>();
+        _walkSpeed = _baseSpeed;
+
         CustomEvent.Trigger(this.gameObject, "Follow");
     }
 
@@ -260,16 +296,17 @@ public class BrotherAI : MonoBehaviour
     public void HideEnter()
     {
         MoveToLocation(_findHidingSpot.FindBestHidingSpot(), _walkSpeed);
+        if (!_isInStealth)
+        {
+            ToggleStealth();
+        }
     }
 
     /// <summary>
     /// The update method for the hide state
     /// </summary>
-    public void HideUpdate(){
-        if(PathCompleted())
-        {
-            _isStealth = true;
-        }    
+    public void HideUpdate()
+    {
     }
 
     /// <summary>
@@ -284,7 +321,10 @@ public class BrotherAI : MonoBehaviour
     /// </summary>
     public void HideExit()
     {
-        _isStealth = false;
+        if (_isInStealth)
+        {
+            ToggleStealth();
+        }
     }
 
     /// <summary>
