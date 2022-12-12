@@ -573,21 +573,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 4393969637856288563, guid: edf6c130850aa014bbc6fcc75be181fd,
-        type: 3}
-      propertyPath: DrawRayDebug
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5711806916828512293, guid: edf6c130850aa014bbc6fcc75be181fd,
         type: 3}
       propertyPath: _actionPromptText
       value: 
       objectReference: {fileID: 1617203443}
-    - target: {fileID: 6046585794520294825, guid: edf6c130850aa014bbc6fcc75be181fd,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7411901652909531837, guid: edf6c130850aa014bbc6fcc75be181fd,
         type: 3}
       propertyPath: _inventoryItemUI
@@ -620,6 +610,11 @@ PrefabInstance:
       objectReference: {fileID: 220050741}
     - target: {fileID: 7577174296461621592, guid: edf6c130850aa014bbc6fcc75be181fd,
         type: 3}
+      propertyPath: _options.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7577174296461621592, guid: edf6c130850aa014bbc6fcc75be181fd,
+        type: 3}
       propertyPath: _options.Array.data[0]
       value: 
       objectReference: {fileID: 1997925640}
@@ -627,37 +622,17 @@ PrefabInstance:
         type: 3}
       propertyPath: _options.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1997925638}
     - target: {fileID: 7577174296461621592, guid: edf6c130850aa014bbc6fcc75be181fd,
         type: 3}
       propertyPath: _options.Array.data[2]
       value: 
-      objectReference: {fileID: 1997925638}
-    - target: {fileID: 7577174296461621592, guid: edf6c130850aa014bbc6fcc75be181fd,
-        type: 3}
-      propertyPath: _options.Array.data[3]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7577174296461621592, guid: edf6c130850aa014bbc6fcc75be181fd,
-        type: 3}
-      propertyPath: _options.Array.data[4]
-      value: 
       objectReference: {fileID: 1997925636}
-    - target: {fileID: 8153487396341805333, guid: edf6c130850aa014bbc6fcc75be181fd,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8851431276582307822, guid: edf6c130850aa014bbc6fcc75be181fd,
         type: 3}
       propertyPath: _cam
       value: 
       objectReference: {fileID: 429615572}
-    - target: {fileID: 8851431276582307822, guid: edf6c130850aa014bbc6fcc75be181fd,
-        type: 3}
-      propertyPath: _throwForce
-      value: 20
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edf6c130850aa014bbc6fcc75be181fd, type: 3}
 --- !u!4 &735368614 stripped
@@ -937,7 +912,7 @@ PrefabInstance:
     - target: {fileID: 6293372639401233797, guid: dbb7173ab6cb8409b8a2f16502633b82,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.007898807
+      value: 0.007891654
       objectReference: {fileID: 0}
     - target: {fileID: 6293372639401233797, guid: dbb7173ab6cb8409b8a2f16502633b82,
         type: 3}
@@ -1008,22 +983,22 @@ PrefabInstance:
     - target: {fileID: 148922571331708080, guid: e1607e7955b8f90428569390943eead4,
         type: 3}
       propertyPath: m_FollowOffset.y
-      value: 0.7969692
+      value: 0.7128258
       objectReference: {fileID: 0}
     - target: {fileID: 148922571331708080, guid: e1607e7955b8f90428569390943eead4,
         type: 3}
       propertyPath: m_FollowOffset.z
-      value: -2.019644
+      value: -2.010364
       objectReference: {fileID: 0}
     - target: {fileID: 886294890051870261, guid: e1607e7955b8f90428569390943eead4,
         type: 3}
       propertyPath: m_FollowOffset.y
-      value: 0.7969692
+      value: 0.7128258
       objectReference: {fileID: 0}
     - target: {fileID: 886294890051870261, guid: e1607e7955b8f90428569390943eead4,
         type: 3}
       propertyPath: m_FollowOffset.z
-      value: -2.019644
+      value: -2.010364
       objectReference: {fileID: 0}
     - target: {fileID: 1682329235663821286, guid: e1607e7955b8f90428569390943eead4,
         type: 3}
@@ -1068,12 +1043,12 @@ PrefabInstance:
     - target: {fileID: 4016124910185873452, guid: e1607e7955b8f90428569390943eead4,
         type: 3}
       propertyPath: m_FollowOffset.y
-      value: 0.7969692
+      value: 0.7128258
       objectReference: {fileID: 0}
     - target: {fileID: 4016124910185873452, guid: e1607e7955b8f90428569390943eead4,
         type: 3}
       propertyPath: m_FollowOffset.z
-      value: -2.019644
+      value: -2.010364
       objectReference: {fileID: 0}
     - target: {fileID: 4471095755082783828, guid: e1607e7955b8f90428569390943eead4,
         type: 3}
