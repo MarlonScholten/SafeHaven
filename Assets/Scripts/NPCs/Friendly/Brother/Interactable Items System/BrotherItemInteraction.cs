@@ -7,20 +7,58 @@ using Random = UnityEngine.Random;
     namespace InteractableItemsSystem
     {
         /// <summary>
-        /// Don't use still work in progress by Jasper Driessen.
-        /// Will be for the brotherAI.
+        /// Author: Jasper Driessen <br/>
+        /// Modified by:  <br/>
+        /// Description: This script is used for making it so the brother can interact with items.
+        /// Pickup, drop and switch items.
+        /// 1. Drag the "BrotherAI Interact System" prefab under the BrotherAI GameObject.
+        /// The BrotherItemInteraction should already be on this prefab.
         /// </summary>
+        /// <list type="table">
+        ///	    <listheader>
+        ///         <term>On what GameObject</term>
+        ///         <term>Type</term>
+        ///         <term>Name of type</term>
+        ///         <term>Description</term>
+        ///     </listheader>
+        ///     <item>
+        ///         <term>Brother GameObject</term>
+        ///         <term>Prefab</term>
+        ///         <term>BrotherAI Interact System</term>
+        ///         <term>Used for controlling the interaction with items of the BrotherAI.</term>
+        ///     </item>
+        ///     <item>
+        ///         <term>BrotherAI Interact System</term>
+        ///         <term>Script</term>
+        ///         <term>Inventory</term>
+        ///         <term>Used for storing the item the player is holding.</term>
+        ///     </item>
+        ///      <item>
+        ///         <term>BrotherAI Interact System</term>
+        ///         <term>Component</term>
+        ///         <term>Box Collider - triggered</term>
+        ///         <term>Used for detecting items and adding them to a pickup list.</term>
+        ///     </item>
+        ///      <item>
+        ///         <term>Item GameObject</term>
+        ///         <term>Script</term>
+        ///         <term>Item Controller</term>
+        ///         <term>Used for storing the data of an item and controller the pickup and drop on the item.</term>
+        ///     </item>
+        /// </list>
+        [RequireComponent(typeof(BoxCollider))]
+        [RequireComponent(typeof(Inventory))]
         public class BrotherItemInteraction : MonoBehaviour
         {
-            private Inventory _inventory;
-        
-            [SerializeField] private GameObject _itemHolder;
-        
-            private ItemController _itemController;
+            [Tooltip("The GameObject where the item in the brothers inventory will be placed under.")][SerializeField] 
+            private GameObject _itemHolder;
 
             private bool _itemIsClose;
             private bool _isChangingItem;
 
+            private Inventory _inventory;
+            private ItemController _itemController;
+            
             private List<GameObject> _itemsCloseToBrother = new List<GameObject>();
 
             private void Start()

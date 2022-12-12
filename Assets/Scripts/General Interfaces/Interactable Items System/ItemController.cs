@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace InteractableItemsSystem
@@ -53,10 +55,12 @@ namespace InteractableItemsSystem
     ///         So the raycast is also casted on that layer.</term>
     ///     </item>
     /// </list>
+    [RequireComponent(typeof(Rigidbody))]
+    [RequireComponent(typeof(Collider))]
     public class ItemController : MonoBehaviour
     {
         [Tooltip("Add scriptable object Item of the item you want.")][SerializeField]private ItemSO _item;
-        
+
         /// <summary>
         /// Stores the data of an item.
         /// </summary>
@@ -64,11 +68,21 @@ namespace InteractableItemsSystem
 
         private Rigidbody _rb;
         private Collider _col;
-
+        
         private void Start()
         {
             _rb = GetComponent<Rigidbody>();
             _col = GetComponent<Collider>();
+
+            if (_item == null)
+            {
+                Debug.LogError("Item in " + this + " has not been assigned!");
+            }
+            else
+            {
+                if(_item.Name == "") Debug.LogError(_item + " doesn't have a name assigned!");
+                if(_item.Sort == "") Debug.LogError(_item + " doesn't have a sort assigned!");
+            }
         }
 
         /// <summary>

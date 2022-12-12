@@ -6,7 +6,7 @@ namespace PlayerCharacter.Movement
 {
     /// <summary>
     /// Author: Marlon Scholten <br/>
-    /// Modified by: Hugo Verweij, Hugo Ulfman <br/>
+    /// Modified by: Hugo Verweij, Hugo Ulfman<br/>
     /// Description: PlayerController behaviour. Controller for everything related to the player character's state, movement and actions. <br />
     /// Controls the states, and updates the correct parameters when the player inputs movement buttons. <br />
     /// Installation steps: <br />

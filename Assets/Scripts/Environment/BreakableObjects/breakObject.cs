@@ -36,6 +36,7 @@ namespace BreakableObjects
         /// </summary>
         /// <param name="col">The object that it collides with.</param>
         private void OnCollisionEnter(Collision col) {
+            Debug.Log(col.relativeVelocity.magnitude);
             if(col.relativeVelocity.magnitude > thresholdToBreak) objectIsBroken?.Invoke();
         }
         
