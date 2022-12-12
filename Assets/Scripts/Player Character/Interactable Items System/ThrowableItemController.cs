@@ -56,6 +56,10 @@ namespace InteractableItemsSystem
     ///         <term>Used for creating the visual of the line where the item will land when throwing.</term>
     ///     </item>
     /// </list>
+    [RequireComponent(typeof(Inventory))]
+    [RequireComponent(typeof(PlayerItemInteraction))]
+    [RequireComponent(typeof(LineRenderer))]
+    [RequireComponent(typeof(DrawProjection))]
     public class ThrowableItemController : MonoBehaviour
     {
         [Tooltip("The force that you throw an item with.")][SerializeField] private float _throwForce = 20f;

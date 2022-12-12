@@ -47,6 +47,7 @@ namespace InteractableItemsSystem
     ///         So the raycast is also casted on that layer.</term>
     ///     </item>
     /// </list>
+    [RequireComponent(typeof(Collider))]
     public class InteractableObject : MonoBehaviour
     {
         [Tooltip("Item ScriptableObject that is needed for interaction with object.")][SerializeField] 

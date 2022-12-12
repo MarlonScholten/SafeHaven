@@ -53,6 +53,7 @@ namespace InteractableItemsSystem
     ///         <term>Used for making interactions between object and items possible.</term>
     ///     </item>
     /// </list>
+    [RequireComponent(typeof(Inventory))]
     public class PlayerItemInteraction : MonoBehaviour
     {
         [Tooltip("Interaction prompt for interacting with items or objects")] [SerializeField] TextMeshProUGUI _actionPromptText;

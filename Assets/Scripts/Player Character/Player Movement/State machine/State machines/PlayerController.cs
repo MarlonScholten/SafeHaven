@@ -152,7 +152,7 @@ namespace PlayerCharacter.Movement
             ApplyGravity();
             transform.rotation = _rotation;
             CharacterController.Move(_movement * Time.deltaTime);
-            /*_animator.SetFloat(_velocityHash, CharacterController.velocity.magnitude);*/
+            _animator.SetFloat(_velocityHash, CharacterController.velocity.magnitude);
         }
 
         /// <summary>

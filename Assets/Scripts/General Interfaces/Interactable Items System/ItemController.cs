@@ -55,6 +55,8 @@ namespace InteractableItemsSystem
     ///         So the raycast is also casted on that layer.</term>
     ///     </item>
     /// </list>
+    [RequireComponent(typeof(Rigidbody))]
+    [RequireComponent(typeof(Collider))]
     public class ItemController : MonoBehaviour
     {
         [Tooltip("Add scriptable object Item of the item you want.")][SerializeField]private ItemSO _item;

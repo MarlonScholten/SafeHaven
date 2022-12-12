@@ -63,6 +63,10 @@ namespace InteractableItemsSystem
     ///         <term>Used for creating the visual of the line where the item will land when throwing.</term>
     ///     </item>
     /// </list>
+    [RequireComponent(typeof(LineRenderer))]
+    [RequireComponent(typeof(Inventory))]
+    [RequireComponent(typeof(ThrowableItemController))]
+    [RequireComponent(typeof(PlayerItemInteraction))]
     public class DrawProjection : MonoBehaviour
     {
         [Tooltip("Number of points on the line.")] [SerializeField] [Range(10, 100)]

@@ -46,6 +46,8 @@ using Random = UnityEngine.Random;
         ///         <term>Used for storing the data of an item and controller the pickup and drop on the item.</term>
         ///     </item>
         /// </list>
+        [RequireComponent(typeof(BoxCollider))]
+        [RequireComponent(typeof(Inventory))]
         public class BrotherItemInteraction : MonoBehaviour
         {
             [Tooltip("The GameObject where the item in the brothers inventory will be placed under.")][SerializeField] 
