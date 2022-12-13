@@ -1,4 +1,5 @@
 using System.Collections;
+using PlayerCharacter.Movement;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -64,34 +65,25 @@ public abstract class AbstractPingController : MonoBehaviour
     protected Vector3 _pingPosition;
 
     /// <summary>
+    /// The PlayerController's raycasthit to see what the player is looking at.
+    /// </summary>
+    protected RaycastHit _playerRayCastHit;
+
+    /// <summary>
     /// Fetches the reference to the brotherAI script.
     /// </summary>
     protected virtual void Awake()
     {
         _brotherAI = _brother.GetComponent<BrotherAI>();
-    }
-
-    /// <summary>
-    /// Calculates a ray from the camera towards the direction of the mouse.
-    /// </summary>
-    /// <returns>The ray in the direction of the mouse.</returns>
-    protected Ray GetRayFromCameraToMousePosition()
-    {
-        var mousePosition = new Vector2(Mouse.current.position.ReadValue().x, Mouse.current.position.ReadValue().y);
-        var ray = _camera.ScreenPointToRay(mousePosition);
-        return ray;
+        _playerRayCastHit = GetComponent<PlayerController>().CamRayCastHit;
     }
 
     /// <summary>
     /// Performs the actual ping and updates the position variable.
     /// </summary>
-    /// <param name="ray">The ray that is used to calculate the position of a ping.</param>
-    protected void SetPingPosition(Ray ray)
+    protected void SetPingPosition(Vector3 point)
     {
-        Debug.DrawRay(ray.origin, ray.direction, Color.red, 3);
-
-        if (!Physics.Raycast(ray.origin, ray.direction, out var hit)) return;
-        _pingPosition = hit.point;
+        _pingPosition = point;
     }
 
     /// <summary>

@@ -4,7 +4,7 @@ using UnityEngine;
 
 /// <summary>
 /// Author: Hugo Ulfman </br>
-/// Modified by:  </br>
+/// Modified by: Hugo Verweij. </br>
 /// This script implements the ITrigger interface.
 /// This object will be triggered when an object enters the triggerbox which has this object in its list.
 /// This script can be attached to any gameobject, it will move upwards when triggered.
@@ -24,8 +24,8 @@ public class BirdsTrigger : MonoBehaviour, ITrigger
     [SerializeField] private float _timeBeforeDestroy = 5f; //time before the object is destroyed
     private float _timeTriggered = 0f; //time the object has been triggered
 
-    //trigger the object
-    public void trigger()
+    /// <inheritdoc />
+    public void TriggerEnter(GameObject instigator = null)
     {
         // The object is triggered
         _triggered = true;

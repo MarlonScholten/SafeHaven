@@ -9,6 +9,86 @@
 							<ObjectRef Name="System" ID="{9FB7954A-1A63-4801-A6CB-BF4A60931FE0}" WorkUnitID="{C1CE9100-057E-4D57-882D-7B72AAEA6C9E}"/>
 						</Reference>
 					</ReferenceList>
+					<ChildrenList>
+						<Bus Name="SFX" ID="{DC6803C8-E376-4E53-8874-5A4177EC1378}">
+							<PropertyList>
+								<Property Name="OutputBusVolume" Type="Real64">
+									<ValueList>
+										<Value>-6</Value>
+									</ValueList>
+								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>10</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ObjectLists/>
+							<DuckingList>
+								<DuckItem>
+									<BusRef Name="Ambient" ID="{691888D0-FE14-4467-BBE9-5FBD9C2E181F}"/>
+									<DuckingParam>
+										<Volume>-3</Volume>
+										<FadeInTime>0.5</FadeInTime>
+										<FadeOutTime>0.5</FadeOutTime>
+										<FadeCurve>FadeLinear</FadeCurve>
+									</DuckingParam>
+								</DuckItem>
+								<DuckItem>
+									<BusRef Name="Music" ID="{1DBB9241-A231-454E-A04D-7BEAAAD3D644}"/>
+									<DuckingParam>
+										<Volume>-5</Volume>
+										<FadeInTime>0.5</FadeInTime>
+										<FadeOutTime>0.5</FadeOutTime>
+										<FadeCurve>FadeLinear</FadeCurve>
+									</DuckingParam>
+								</DuckItem>
+							</DuckingList>
+						</Bus>
+						<Bus Name="Music" ID="{1DBB9241-A231-454E-A04D-7BEAAAD3D644}">
+							<PropertyList>
+								<Property Name="OutputBusVolume" Type="Real64">
+									<ValueList>
+										<Value>-20</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ObjectLists/>
+							<DuckingList>
+								<DuckItem>
+									<BusRef Name="SFX" ID="{DC6803C8-E376-4E53-8874-5A4177EC1378}"/>
+									<DuckingParam>
+										<Volume>-11</Volume>
+										<FadeInTime>1</FadeInTime>
+										<FadeOutTime>1</FadeOutTime>
+										<FadeCurve>FadeLinear</FadeCurve>
+									</DuckingParam>
+								</DuckItem>
+								<DuckItem>
+									<BusRef Name="Ambient" ID="{691888D0-FE14-4467-BBE9-5FBD9C2E181F}"/>
+									<DuckingParam>
+										<Volume>-100</Volume>
+										<FadeInTime>1</FadeInTime>
+										<FadeOutTime>1</FadeOutTime>
+										<FadeCurve>FadeLinear</FadeCurve>
+									</DuckingParam>
+								</DuckItem>
+							</DuckingList>
+						</Bus>
+						<Bus Name="Ambient" ID="{691888D0-FE14-4467-BBE9-5FBD9C2E181F}">
+							<PropertyList>
+								<Property Name="OutputBusVolume" Type="Real64">
+									<ValueList>
+										<Value>-10</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ObjectLists/>
+						</Bus>
+						<Bus Name="Footsteps" ID="{643284DC-418C-480B-9A5B-E9CC8E3A6BED}">
+							<ObjectLists/>
+						</Bus>
+					</ChildrenList>
 					<ObjectLists/>
 				</Bus>
 			</ChildrenList>
