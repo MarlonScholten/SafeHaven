@@ -316,7 +316,7 @@ public class MenuPingController : AbstractPingController
             case PingType.Interact:
                 _marker = Instantiate(_markerPrefabInteract, position, Quaternion.identity);
                 break;
-            case PingType.Run:
+            case PingType.Move:
                 _marker = Instantiate(_markerPrefab, position, Quaternion.identity);
                 break;
         }
