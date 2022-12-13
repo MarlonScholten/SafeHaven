@@ -18,23 +18,6 @@ Go to [Unity Folder Structure](https://github.com/AIM-GAME-PROJECT-group-b/SafeH
 
 The changelog for what was changed and added for every sprint.
 
-## Changelog sprint 1
-
-### Programming
-- Debugging tools. Explanation on usage go to [the Wiki](https://github.com/AIM-GAME-PROJECT-group-b/SafeHaven/wiki/How-to-use-the-debugging-tool)
-- Debugging scene with exapmles for the debugging tool.
-- Character movement and basic camera rotation.
-- Proximity triggers.
-
-### Art
-- Vine covered building asset.
-- Roadblock asset.
-
-### Design
-- Street level basic layout.
-- A test environment scene with mesurements for models.
-- Proof of concept animation controller.
-
 ## Changelog sprint 2
 
 ### Programming
@@ -66,3 +49,22 @@ The changelog for what was changed and added for every sprint.
 - Added Wwise plugin
 - Menu music
 - Ambient game music
+
+## Changelog sprint 1
+
+### Programming
+- Debugging tools. Explanation on usage go to [the Wiki](https://github.com/AIM-GAME-PROJECT-group-b/SafeHaven/wiki/How-to-use-the-debugging-tool)
+- Debugging scene with exapmles for the debugging tool.
+- Character movement and basic camera rotation.
+- Proximity triggers.
+
+### Art
+- Vine covered building asset.
+- Roadblock asset.
+
+### Design
+- Street level basic layout.
+- A test environment scene with mesurements for models.
+- Proof of concept animation controller.
+
+
