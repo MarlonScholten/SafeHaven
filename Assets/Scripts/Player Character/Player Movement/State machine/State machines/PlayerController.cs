@@ -61,40 +61,55 @@ namespace PlayerCharacter.Movement
     /// </list>
     public class PlayerController : MonoBehaviour
     {
-        [SerializeField] [Range(1f, 20f)]
-        [Tooltip("How fast the character is able to move through the world")]
+        [SerializeField] [Range(1f, 20f)] [Tooltip("How fast the character is able to move through the world")]
         private float _movementSpeed = 5f;
-        [SerializeField] [Range(0.01f, 0.5f)]
-        [Tooltip("Smoothing strength for the rotation of the character")]
+
+        [SerializeField] [Range(0.01f, 0.5f)] [Tooltip("Smoothing strength for the rotation of the character")]
         private float _smoothTurnTime = 0.1f;
-        [SerializeField]
-        [Tooltip("Toggle whether or not the player can move while in the air.")]
+
+        [SerializeField] [Tooltip("Toggle whether or not the player can move while in the air.")]
         private bool _canMoveInAir = true;
-        [SerializeField]
-        [Tooltip("Gravity strength multiplier for faster or slower falling speed")]
+
+        [SerializeField] [Tooltip("Gravity strength multiplier for faster or slower falling speed")]
         private float _gravityMultiplier = 1f;
-        [SerializeField]
-        [Tooltip("The layers that the camera raycast should hit")]
+
+        [SerializeField] [Tooltip("The layers that the camera raycast should hit")]
         private LayerMask _camRayCastLayers;
-        [SerializeField] [Range(1f, 200f)]
-        [Tooltip("The length of the camera raycast")]
+
+        [SerializeField] [Range(1f, 200f)] [Tooltip("The length of the camera raycast")]
         private float _camRayCastLength = 40f;
-        [SerializeField]
-        [Tooltip("Show the raycast as a red line or not, make sure gizmos are acivated to see it!")]
+
+        [SerializeField] [Tooltip("Show the raycast as a red line or not, make sure gizmos are acivated to see it!")]
         private bool DrawRayDebug = false;
 
         public bool CanMoveInAir => _canMoveInAir;
+
         /// <summary>
         /// Access this raycast to get the info of what the player cam is looking at.
         /// Change the layermask (in the inspector) to include any layers your environment or interactable items live on.
         /// </summary>
         public RaycastHit CamRayCastHit => _camRayCastHit;
+
         public PlayerBaseState CurrentState { get; set; }
-        public Vector3 Movement { set => _movement = value; }
-        public Vector2 MovementInput { get => InputBehaviour.Instance.OnMoveVector; }
+
+        public Vector3 Movement
+        {
+            set => _movement = value;
+        }
+
+        public Vector2 MovementInput
+        {
+            get => InputBehaviour.Instance.OnMoveVector;
+        }
+
         public float MovementSpeed => _movementSpeed;
         public Camera PlayerCamera => _playerCamera;
-        public Quaternion Rotation {set => _rotation = value; }
+
+        public Quaternion Rotation
+        {
+            set => _rotation = value;
+        }
+
         public float SmoothTurnTime => _smoothTurnTime;
 
         private CharacterController CharacterController { get; set; }
@@ -106,7 +121,7 @@ namespace PlayerCharacter.Movement
         private float _verticalSpeed;
         private Ray _playerCamRay;
         private RaycastHit _camRayCastHit;
-        
+
         private Animator _animator;
         private int _velocityHash;
         private int _itemHeldHash;
@@ -120,7 +135,7 @@ namespace PlayerCharacter.Movement
             _states = new PlayerStateFactory(this);
             CurrentState = _states.Idle();
             CurrentState.EnterState();
-            
+
             CharacterController = GetComponent<CharacterController>();
             _playerCamera = Camera.main;
             _playerCamRay = PlayerCamera.ScreenPointToRay(Input.mousePosition);
@@ -167,11 +182,15 @@ namespace PlayerCharacter.Movement
         /// <summary>
         /// adjusts the movement speed of the player if the OnToggleStealthEvent is invoked.
         /// </summary>
-        private void Crouch() {
+        private void Crouch()
+        {
             _crouching = !_crouching;
-            if (_crouching) {
+            if (_crouching)
+            {
                 _movementSpeed = 2f;
-            } else {
+            }
+            else
+            {
                 _movementSpeed = 5f;
             }
         }
@@ -214,8 +233,9 @@ namespace PlayerCharacter.Movement
                 if (Physics.Raycast(_playerCamRay, out hit, _camRayCastLength, _camRayCastLayers))
                 {
                     _camRayCastHit = hit;
-                    if(DrawRayDebug)
-                        Debug.DrawRay(_playerCamRay.origin, _playerCamera.transform.forward * _camRayCastLength, Color.red);
+                    if (DrawRayDebug)
+                        Debug.DrawRay(_playerCamRay.origin, _playerCamera.transform.forward * _camRayCastLength,
+                            Color.red);
                 }
                 else
                 {
@@ -225,6 +245,14 @@ namespace PlayerCharacter.Movement
 
                 yield return new WaitForSeconds(0.1f);
             }
+        }
+
+        /// <summary>
+        /// Allows other scripts to see if the player is crouching
+        /// </summary>
+        public bool GetCrouching()
+        {
+            return _crouching;
         }
     }
 }

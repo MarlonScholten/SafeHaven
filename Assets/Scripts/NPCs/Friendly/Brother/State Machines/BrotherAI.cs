@@ -1,3 +1,4 @@
+using PlayerCharacter.Movement;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -123,6 +124,12 @@ public class BrotherAI : MonoBehaviour
     /// </summary>
     private GameObject _player;
 
+    
+    /// <summary>
+    /// This contains a reference to the playerController script
+    /// </summary>
+    private PlayerController _playerController;
+
     /// <summary>
     /// A bool to check if this is the first time the script has started
     /// </summary>
@@ -163,7 +170,7 @@ public class BrotherAI : MonoBehaviour
     /// </summary>
     private void OnStealthEvent()
     {
-        if (!hide)
+        if (_playerController.GetCrouching() == _isInStealth)
         {
             ToggleStealth();
         }
@@ -260,6 +267,7 @@ public class BrotherAI : MonoBehaviour
         _capsuleCollider = gameObject.GetComponent<CapsuleCollider>();
         _animator = GetComponentInChildren<Animator>();
         _walkSpeed = _baseSpeed;
+        _playerController = _player.GetComponent<PlayerController>();
 
         CustomEvent.Trigger(this.gameObject, "Follow");
     }
@@ -409,10 +417,11 @@ public class BrotherAI : MonoBehaviour
     /// </summary>
     public void PassiveHideEnter(){
         MoveToLocation(_pingLocation, _walkSpeed);
-        if (!_isInStealth)
-        {
-            ToggleStealth();
-        }
+        // if (!_isInStealth)
+        // {
+            // ToggleStealth();
+        // }
+        _isInStealth = true;
     }
 
     /// <summary>
