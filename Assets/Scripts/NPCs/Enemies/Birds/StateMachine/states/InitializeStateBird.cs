@@ -2,6 +2,8 @@ using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
+namespace Bird
+{
     /// <summary>
     /// Author: Marlon Kerstens<br/>
     /// Modified by: N/A<br/>
@@ -28,6 +30,8 @@ using UnityEngine;
     ///		    <term>This script need to be added to the Bird with the BirdVisualScripting</term>
     ///	    </item>
     /// </list>
+    [RequireComponent(typeof(StateMachine))]
+    [RequireComponent(typeof(BirdStateManager))]
     public class InitializeStateBird : MonoBehaviour
     {
         /// <summary>
@@ -65,3 +69,4 @@ using UnityEngine;
             CustomEvent.Trigger(this.gameObject, "Walking");
         }
     }
+}
