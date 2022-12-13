@@ -16,13 +16,13 @@ using UnityEngine;
     ///         <term>Description</term>
     ///     </listheader>
     ///     <item>
-    ///         <term>Bird (Assets/Prefabs/NPCs/Enemies/Bird/Bird.prefab)</term>
+    ///         <term>BirdObject (Assets/Prefabs/NPCs/Enemies/Bird/BirdObject.prefab)</term>
     ///		    <term>Component</term>
-    ///         <term>Bird</term>
+    ///         <term>BirdObject</term>
     ///		    <term>This script contains the ENTER/(FIXED)UPDATE/EXIT methods for the Initialize states.</term>
     ///	    </item>
     ///	    <item>
-    ///         <term>Bird</term>
+    ///         <term>BirdObject</term>
     ///		    <term>Visual scripting</term>
     ///         <term>BirdVisualScripting (Assets/Scripts/NPCs/Enemies/Birds/StateMachine/visualScripting/BirdVisualScripting.asset)</term>
     ///		    <term>This script need to be added to the Bird with the BirdVisualScripting</term>

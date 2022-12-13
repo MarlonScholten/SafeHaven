@@ -1,6 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Author: Marlon Kerstens<br/>
+/// Modified by:  N/A <br/>
+/// Description: Scriptable object for the Bird.
+/// </summary>
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/BirdScriptableObject", order = 2)] 
 public class BirdScriptableObject : ScriptableObject
 {
@@ -27,5 +32,4 @@ public class BirdScriptableObject : ScriptableObject
     [Tooltip("The time the bird will stay at rest point")]
     [SerializeField] private int timeAtRestPoint = 3;
     public int TimeAtRestPoint => timeAtRestPoint;
-
 }
