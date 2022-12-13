@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 969599533}
   - component: {fileID: 969599532}
-  - component: {fileID: 969599531}
   - component: {fileID: 969599530}
   m_Layer: 0
   m_Name: DangerZone
@@ -26,10 +25,10 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 969599529}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
-  m_ConstrainProportionsScale: 1
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9192136294638346622}
   m_RootOrder: 1
@@ -47,22 +46,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &969599531
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 969599529}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &969599530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,12 +232,38 @@ MonoBehaviour:
   playEvent:
     idInternal: 0
     valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: cd553bf516ef1ca4eae922c798907e6b,
+    WwiseObjectReference: {fileID: 11400000, guid: da5d780e3c505d0428d91a48106a4a36,
       type: 2}
   stopEvent:
     idInternal: 0
     valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: a6b2f42c3b855cf45ad183382d7a4f9d,
+    WwiseObjectReference: {fileID: 11400000, guid: b8296b4bf41a7854f8e7ea02261b1816,
+      type: 2}
+  switchEvent: []
+  states:
+  - idInternal: 0
+    valueGuidInternal: 
+    groupIdInternal: 0
+    groupGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 6dfbbd7e3c4c91141b67ebd29755feb2,
+      type: 2}
+  - idInternal: 0
+    valueGuidInternal: 
+    groupIdInternal: 0
+    groupGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 22e98a2c2f67afb489561085c44aceff,
+      type: 2}
+  - idInternal: 0
+    valueGuidInternal: 
+    groupIdInternal: 0
+    groupGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 657426249b547954cb13d47b2b43f382,
+      type: 2}
+  - idInternal: 0
+    valueGuidInternal: 
+    groupIdInternal: 0
+    groupGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: a124f7428d4d4f8498193c7263dfe510,
       type: 2}
   _volume: 50
   _attenuation: 50

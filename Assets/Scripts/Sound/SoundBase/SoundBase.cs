@@ -31,15 +31,21 @@ namespace SoundManager
 
         [SerializeField]
         public AK.Wwise.Event stopEvent = null;
+        
+        [SerializeField]
+        public List<AK.Wwise.Switch> switchEvent;
 
-        public AK.Wwise.Trigger test;
+        [SerializeField]
+        public List<AK.Wwise.State> states;
 
         [SerializeField]
         [Range(0, 100)]
+        [Tooltip("Changes the volume")]
         protected int _volume = 50;
 
         [SerializeField]
         [Range(0, 100)]
+        [Tooltip("Does nothing because of limitations of Wwise")]
         protected int _attenuation = 50;
 
         [SerializeField]
@@ -47,15 +53,6 @@ namespace SoundManager
 
         protected GameObject _gameObject;
 
-        protected enum MusicState
-        {
-            Calm,
-            Hidden,
-            Invest,
-            Chase
-        };
-
-        protected MusicState _musicState = MusicState.Calm;
 
         protected virtual void playSound(GameObject soundGameObject = null)
         {
@@ -74,6 +71,7 @@ namespace SoundManager
         {
             if (stopEvent.IsValid())
             {
+                Debug.Log("stop");
                 stopEvent.Post(_gameObject);
             }
             else

@@ -14,6 +14,12 @@ namespace SoundManager
         public event EnemyStateWachterEvent OnChasing;
         public event EnemyStateWachterEvent OnZeroInvestegating;
         public event EnemyStateWachterEvent OnZeroChasing;
+        public event EnemyStateWachterEvent StopIt;
+
+        public void StopSound()
+        {
+            StopIt?.Invoke();
+        }
 
         public void isInvestegating(bool investegating)
         {

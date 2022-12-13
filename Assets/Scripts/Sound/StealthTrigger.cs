@@ -6,13 +6,11 @@ using UnityEngine.Events;
 namespace SoundManager
 {
     [RequireComponent(typeof(BoxCollider))]
-    [RequireComponent(typeof(Rigidbody))]
     public class StealthTrigger : MonoBehaviour
     {
         public delegate void DangerZoneEvent();
         public event DangerZoneEvent OnDangerEnter;
         public event DangerZoneEvent OnDangerExit;
-
 
         private GameObject _player;
 
@@ -25,6 +23,7 @@ namespace SoundManager
         {
             if (other.gameObject == _player)
             {
+                Debug.LogWarning(other.gameObject);
                 OnDangerEnter?.Invoke();
             }
         }
