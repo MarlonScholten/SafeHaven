@@ -18,10 +18,37 @@ using UnityEngine;
 /// </summary>
 public class LightTrigger : MonoBehaviour, ITrigger
 {
-    //trigger the objects
-    public void trigger()
+    [SerializeField]
+    private List<GameObject> _objectsInRange;
+
+    private void Awake()
     {
-        //set object active
-        gameObject.SetActive(!gameObject.activeSelf);
+        _objectsInRange = new();
+    }
+
+    /// <remarks>Param not optional.</remarks>
+    /// <inheritdoc />
+    public void TriggerEnter(GameObject instigator)
+    {
+        // Checks if the object doesn't live within the list, and adds it.
+        if (!_objectsInRange.Contains(instigator))
+            _objectsInRange.Add(instigator);
+
+        // Set the state to active if it's not already, and there's more than 1 object.
+        if (!gameObject.activeSelf && _objectsInRange.Count > 0)
+            gameObject.SetActive(true);
+    }
+
+    /// <remarks>Param not optional.</remarks>
+    /// <inheritdoc />
+    public void TriggerExit(GameObject instigator)
+    {
+        // Checks if the object lives within the list, and removes it.
+        if (_objectsInRange.Contains(instigator))
+            _objectsInRange.Remove(instigator);
+
+        // Set the state to inactive if it's not already, and there's less or equal to 0 objects.
+        if (gameObject.activeSelf && _objectsInRange.Count <= 0)
+            gameObject.SetActive(false);
     }
 }

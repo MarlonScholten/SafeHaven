@@ -68,6 +68,11 @@ public class HeardASoundEvent : UnityEvent<SoundSource>
 ///		    <term>This script needs EnemyWaypoints to patrol.</term>
 ///	    </item>
 /// </list>
+///
+/// <summary>
+/// This requireComponent is used for the triggers. The AkComponents needs that the object to trigger the trigger has an rigidbody. But make it kineMatic so it does not affect anything.
+/// </summary>
+[RequireComponent(typeof(Rigidbody))]
 public class EnemyAiStateManager : MonoBehaviour
 {
     [Tooltip("Scriptable object that contains the adjustable variables for the enemy")]
@@ -75,9 +80,9 @@ public class EnemyAiStateManager : MonoBehaviour
 
     [Tooltip("Boolean to set if the enemy is an guard or not")]
     public bool isGuard; // if the enemy is a guard or not
-
-    [HideInInspector] public List<Transform> wayPoints; // List of waypoints if not a guard
-    [HideInInspector] public Transform guardWaypoint; // Waypoint if guard
+    
+    [HideInInspector] public List<GameObject> wayPoints; // List of waypoints if not a guard
+    [HideInInspector] public GameObject guardWaypoint; // Waypoint if guard
     [NonSerialized] public NavMeshAgent navMeshAgent; // Navmesh agent component
     [NonSerialized] public Vector3 targetWpLocation; // Location of the current target waypoint
     [NonSerialized] public int currentWpIndex; // Index of the current target waypoint

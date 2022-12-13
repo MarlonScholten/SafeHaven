@@ -6,7 +6,7 @@ namespace PlayerCharacter.Movement
 {
     /// <summary>
     /// Author: Marlon Scholten <br/>
-    /// Modified by: Hugo Verweij, Hugo Ulfman <br/>
+    /// Modified by: Hugo Verweij, Hugo Ulfman<br/>
     /// Description: PlayerController behaviour. Controller for everything related to the player character's state, movement and actions. <br />
     /// Controls the states, and updates the correct parameters when the player inputs movement buttons. <br />
     /// Installation steps: <br />
@@ -106,6 +106,12 @@ namespace PlayerCharacter.Movement
         private float _verticalSpeed;
         private Ray _playerCamRay;
         private RaycastHit _camRayCastHit;
+        
+        private Animator _animator;
+        private int _velocityHash;
+        private int _itemHeldHash;
+        private int _interactableObjectHash;
+        private int _stealthHash;
 
         private bool _crouching;
 
@@ -118,12 +124,17 @@ namespace PlayerCharacter.Movement
             CharacterController = GetComponent<CharacterController>();
             _playerCamera = Camera.main;
             _playerCamRay = PlayerCamera.ScreenPointToRay(Input.mousePosition);
+            _animator = GetComponentInChildren<Animator>();
         }
 
         private void Start()
         {
             InputBehaviour.Instance.OnToggleStealthEvent += Crouch;
             StartCoroutine(CastLookingRay());
+            _velocityHash = Animator.StringToHash("forwardVelocity");
+            _itemHeldHash = Animator.StringToHash("ItemHeld");
+            _interactableObjectHash = Animator.StringToHash("InteractableObject");
+            _stealthHash = Animator.StringToHash("Stealth");
         }
 
         private void OnDestroy()
@@ -141,6 +152,7 @@ namespace PlayerCharacter.Movement
             ApplyGravity();
             transform.rotation = _rotation;
             CharacterController.Move(_movement * Time.deltaTime);
+            _animator.SetFloat(_velocityHash, CharacterController.velocity.magnitude);
         }
 
         /// <summary>
@@ -198,15 +210,20 @@ namespace PlayerCharacter.Movement
             while (true)
             {
                 RaycastHit hit;
-                _playerCamRay = PlayerCamera.ScreenPointToRay(Input.mousePosition);
+                _playerCamRay = new Ray(PlayerCamera.transform.position, PlayerCamera.transform.forward);
                 if (Physics.Raycast(_playerCamRay, out hit, _camRayCastLength, _camRayCastLayers))
                 {
                     _camRayCastHit = hit;
                     if(DrawRayDebug)
-                        Debug.DrawLine(_playerCamRay.origin, _camRayCastHit.point, Color.red);
+                        Debug.DrawRay(_playerCamRay.origin, _playerCamera.transform.forward * _camRayCastLength, Color.red);
+                }
+                else
+                {
+                    var nullCastHit = new RaycastHit();
+                    _camRayCastHit = nullCastHit;
                 }
 
-                yield return new WaitForSeconds(0.2f);
+                yield return new WaitForSeconds(0.1f);
             }
         }
     }

@@ -41,7 +41,7 @@ using UnityEngine;
             {
                 // A foldout to show or hide the waypoints.
                 _showWaypoints = EditorGUILayout.Foldout(_showWaypoints, "Waypoints", true);
-                List<Transform> wayPoints = enemyAiStateManager.wayPoints;
+                List<GameObject> wayPoints = enemyAiStateManager.wayPoints;
                 // If the foldout is open.
                 if (_showWaypoints)
                 {
@@ -58,8 +58,8 @@ using UnityEngine;
                     for (var i = 0; i < wayPoints.Count; i++)
                     {
                         wayPoints[i] =
-                            EditorGUILayout.ObjectField("Waypoint " + i, wayPoints[i], typeof(Transform),
-                                true) as Transform;
+                            EditorGUILayout.ObjectField("Waypoint " + i, wayPoints[i], typeof(GameObject),
+                                true) as GameObject;
                     }
                     EditorGUI.indentLevel--;
                 }
@@ -67,7 +67,7 @@ using UnityEngine;
             else
             { 
                 // Enemy is a guard.
-                enemyAiStateManager.guardWaypoint = EditorGUILayout.ObjectField("Guard Waypoint", enemyAiStateManager.guardWaypoint, typeof(Transform), true) as Transform;
+                enemyAiStateManager.guardWaypoint = EditorGUILayout.ObjectField("Guard Waypoint", enemyAiStateManager.guardWaypoint, typeof(GameObject), true) as GameObject;
             }
             if (EditorGUI.EndChangeCheck()) EditorUtility.SetDirty(enemyAiStateManager);
         }
