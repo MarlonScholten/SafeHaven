@@ -59,13 +59,13 @@ public class BrotherAI : MonoBehaviour
     /// <summary>
     /// This value determines the height of the brother collider.
     /// </summary>
-    [Range(1.0f, 2.0f), Tooltip("This value determines the height of the brother collider when in stealth.")]
+    [Range(0f, 2.0f), Tooltip("This value determines the height of the brother collider when in stealth.")]
     [SerializeField]
-    private float _colliderHeightStealth = 1f;
+    private float _colliderHeightStealth = 0.5f;
 
-    [Range(1.0f, 2.0f), Tooltip("This value determines the height of the brother collider when not in stealth.")]
+    [Range(0f, 2.0f), Tooltip("This value determines the height of the brother collider when not in stealth.")]
     [SerializeField]
-    private float _colliderHeightBase = 2f;
+    private float _colliderHeightBase = 1f;
 
     /// <summary>
     /// This value shows if the brother is currently in stealth mode, this should also be used by a sound script to make footsteps less loud during stealth.
@@ -182,13 +182,13 @@ public class BrotherAI : MonoBehaviour
 
         if (_isInStealth)
         {
-            SetCapsuleCollider(_colliderHeightStealth, 0, -0.5f, 0);
+            SetCapsuleCollider(_colliderHeightStealth, 0, 0.25f, 0);
             _walkSpeed = _stealthSpeed;
         }
         else
         {
             _walkSpeed = _baseSpeed;
-            SetCapsuleCollider(_colliderHeightBase, 0, 0, 0);
+            SetCapsuleCollider(_colliderHeightBase, 0, 0.5f, 0);
         }
     }
 
