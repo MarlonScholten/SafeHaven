@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 4636886200913047671}
   m_Layer: 0
   m_Name: brotherTest
-  m_TagString: Untagged
+  m_TagString: Brother
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -118,7 +118,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _walkSpeed: 5
-  _isStealth: 0
+  _colliderHeightStealth: 1
+  _colliderHeightBase: 2
+  _isInStealth: 0
+  _stealthSpeed: 2
+  _baseSpeed: 3.5
+  _followDistance: 1.5
 --- !u!114 &4130807608511132513
 MonoBehaviour:
   m_ObjectHideFlags: 0
