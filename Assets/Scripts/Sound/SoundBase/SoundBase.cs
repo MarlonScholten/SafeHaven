@@ -8,20 +8,6 @@ namespace SoundManager
     /// Modified by:  <br/>
     /// Description: a base class for a sound class
     /// </summary>
-    /// <list type="table">
-    ///	    <listheader>
-    ///         <term>On what GameObject</term>
-    ///         <term>Type</term>
-    ///         <term>Name of type</term>
-    ///         <term>Description</term>
-    ///     </listheader>
-    ///     <item>
-    ///         <term>ON_WHAT</term>
-    ///         <term>TYPE</term>
-    ///         <term>NAME</term>
-    ///         <term>DISCRIPTION</term>
-    ///     </item>
-    /// </list>
 
     [RequireComponent(typeof(AkGameObj))]
     public class SoundBase : MonoBehaviour
@@ -31,7 +17,7 @@ namespace SoundManager
 
         [SerializeField]
         public AK.Wwise.Event stopEvent = null;
-        
+
         [SerializeField]
         public List<AK.Wwise.Switch> switchEvent;
 
@@ -41,7 +27,7 @@ namespace SoundManager
         [SerializeField]
         [Range(0, 100)]
         [Tooltip("Changes the volume")]
-        protected int _volume = 50;
+        protected List<float> _volume;
 
         [SerializeField]
         [Range(0, 100)]

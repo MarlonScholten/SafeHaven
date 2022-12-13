@@ -7,7 +7,7 @@ namespace SoundManager
     /// <summary>
     /// Author: Thomas van den Oever <br/>
     /// Modified by:  <br/>
-    /// Description: Toggles the stealth music on and off. also changes the state of the music depending on the events that are called
+    /// Description: Toggles the stealth music on and off. also changes the state of the music depending on the event
     /// <br/>I am so sorry for this mess I had no time to make an actual state machine
     /// </summary>
     /// <list type="table">
@@ -18,10 +18,10 @@ namespace SoundManager
     ///         <term>Description</term>
     ///     </listheader>
     ///     <item>
-    ///         <term>ON_WHAT</term>
-    ///         <term>TYPE</term>
-    ///         <term>NAME</term>
-    ///         <term>DISCRIPTION</term>
+    ///         <term>MusicLoader</term>
+    ///         <term>Script</term>
+    ///         <term>This Script</term>
+    ///         <term>This lives on the prefabs of MainBankManager and MenuBankManager</term>
     ///     </item>
     /// </list>
     public class ToggleStealthMusic : SoundBase
@@ -30,6 +30,10 @@ namespace SoundManager
         private bool _isInvestigating = false;
         private bool _isChasing = false;
 
+        /// <summary>
+        /// MusicState enums should line up with the songs on the prefabs. (Needs to be done manually)<br/>
+        /// Mostly done so it reads a bit better in the functions, that way you can read to what state the music changes instead of looking at an int
+        /// </summary>
         protected enum MusicState
         {
             None = 0,
@@ -52,13 +56,14 @@ namespace SoundManager
         }
 
         //TODO: refactor this mess into a state machine, I'm so sorry
+
         private void StartStealthMusic()
         {
             states[(int)MusicState.Hidden].SetValue();
             playSound(gameObject);
         }
 
-        public void StopStealthMusic()
+        private void StopStealthMusic()
         {
             states[(int)MusicState.None].SetValue();
             stopSound();
@@ -107,12 +112,18 @@ namespace SoundManager
 
         }
 
+        /// <summary>
+        /// OnDestroy doesn't get called when the scene is reloaded
+        /// </summary>
         private void OnDestroy()
         {
-            Debug.LogWarning("DESTORY SOUND");
+            //Debug.LogWarning("DESTORY SOUND");
             stopSound();
         }
 
+        /// <summary>
+        /// A manual way to stop the music, this function is subscribed to the event StopIt which gets called in EnemyAiStateManager.cs
+        /// </summary>
         private void StopMusic()
         {
             stopSound();
