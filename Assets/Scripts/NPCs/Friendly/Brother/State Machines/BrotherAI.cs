@@ -141,7 +141,7 @@ public class BrotherAI : MonoBehaviour
     private int _stealthHash;
 
     /// <summary>
-    /// In the start method the declaration for the input is made.
+    /// In the start method the declaration for the input is made. test
     /// </summary>
     void Start(){
         InputBehaviour.Instance.OnCallBrotherEvent += CallBrother;
