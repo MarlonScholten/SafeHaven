@@ -163,7 +163,10 @@ public class BrotherAI : MonoBehaviour
     /// </summary>
     private void OnStealthEvent()
     {
-        ToggleStealth();
+        if (!hide)
+        {
+            ToggleStealth();
+        }
     }
 
     private void ToggleStealth()
