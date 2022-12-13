@@ -4,6 +4,11 @@ using UnityEngine;
 
 namespace SoundManager
 {
+    /// <summary>
+    /// Author: Thomas van den Oever <br/>
+    /// Modified by:  <br/>
+    /// Description: Not Used/Reserved, holds all events for sound
+    /// </summary>
     public class SoundEventHandler : MonoBehaviour
     {
         /*public delegate void DangerZoneEvent();

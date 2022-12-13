@@ -4,6 +4,25 @@ using UnityEngine;
 
 namespace SoundManager
 {
+    /// <summary>
+    /// Author: Thomas van den Oever <br/>
+    /// Modified by:  <br/>
+    /// Description: Helper function to kind of interface with the soundsystem 
+    /// </summary>
+    /// <list type="table">
+    ///	    <listheader>
+    ///         <term>On what GameObject</term>
+    ///         <term>Type</term>
+    ///         <term>Name of type</term>
+    ///         <term>Description</term>
+    ///     </listheader>
+    ///     <item>
+    ///         <term>Enemy prefabs</term>
+    ///         <term>Prefab</term>
+    ///         <term>EnemyObject</term>
+    ///         <term>multiple scripts on that prefab use this scripts functions</term>
+    ///     </item>
+    /// </list>
     public class EnemyStateWatcher : MonoBehaviour
     {
         private int _isInvestegating = 0;
@@ -16,11 +35,18 @@ namespace SoundManager
         public event EnemyStateWachterEvent OnZeroChasing;
         public event EnemyStateWachterEvent StopIt;
 
+        /// <summary>
+        /// Invoke the stop sound event
+        /// </summary>
         public void StopSound()
         {
             StopIt?.Invoke();
         }
 
+        /// <summary>
+        /// Invokes the OnInvestegating and OnZeroInvestegating events based on if enemy's are investagating
+        /// </summary>
+        /// <param name="investegating">set true if enemy starts investegating, set false if enemy stops investegating</param>
         public void isInvestegating(bool investegating)
         {
             if (investegating)
@@ -41,6 +67,10 @@ namespace SoundManager
             }
         }
 
+        /// <summary>
+        /// Invokes the OnChasing and OnZeroChasing events based on if there enemy's are chasing
+        /// </summary>
+        /// <param name="chasing">set true if enemy starts chasing, set false if enemy stops chasing</param>
         public void isChasing(bool chasing)
         {
             if (chasing)
