@@ -38,8 +38,42 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy/Default Work Unit
     guid: 6aa9472e3829cf40a5afba51ed972e73
     GuidInternal: 
-    m_lastTime: -8585306823603460421
+    m_lastTime: -8585306783166191471
     List:
+    - name: Ambient
+      guid: d088186914fe6744bbe95fbd9c2e181f
+      id: 77978275
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 6aa9472e3829cf40a5afba51ed972e73
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: Ambient
+        ObjectType: 2
+        guid: d088186914fe6744bbe95fbd9c2e181f
+      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/Ambient
+    - name: Footsteps
+      guid: dc8432648c410b489a5be9cc8e3a6bed
+      id: 2385628198
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 6aa9472e3829cf40a5afba51ed972e73
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: Footsteps
+        ObjectType: 2
+        guid: dc8432648c410b489a5be9cc8e3a6bed
+      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/Footsteps
     - name: Master Audio Bus
       guid: d8a41415a61d2a41a17e75ca0c2149f3
       id: 3803692087
@@ -54,6 +88,40 @@ MonoBehaviour:
         ObjectType: 2
         guid: d8a41415a61d2a41a17e75ca0c2149f3
       Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus
+    - name: Music
+      guid: 4192bb1d31a24e45a04d7beaaad3d644
+      id: 3991942870
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 6aa9472e3829cf40a5afba51ed972e73
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: Music
+        ObjectType: 2
+        guid: 4192bb1d31a24e45a04d7beaaad3d644
+      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/Music
+    - name: SFX
+      guid: c80368dc76e3534e88745a4177ec1378
+      id: 393239870
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 6aa9472e3829cf40a5afba51ed972e73
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: SFX
+        ObjectType: 2
+        guid: c80368dc76e3534e88745a4177ec1378
+      Path: Master-Mixer Hierarchy/Default Work Unit/Master Audio Bus/SFX
   BankWwu:
   - PhysicalPath: SoundBanks/Default Work Unit.wwu
     PathAndIcons:
@@ -66,7 +134,7 @@ MonoBehaviour:
     ParentPath: SoundBanks/Default Work Unit
     guid: e1fef6f5a4cdc54bbb7e45386721e0a2
     GuidInternal: 
-    m_lastTime: -8585306823603442244
+    m_lastTime: -8585306783158611951
     List:
     - name: Main
       guid: ef2b2be943a42047bfc339ca9a1fa5cb
@@ -108,8 +176,507 @@ MonoBehaviour:
     ParentPath: Events/Default Work Unit
     guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
     GuidInternal: 
-    m_lastTime: -8585306823613254790
-    List: []
+    m_lastTime: -8585306783172604975
+    List:
+    - name: Footsteps
+      guid: cded247796e5fe458488517d65139664
+      id: 2385628198
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Footsteps
+        ObjectType: 4
+        guid: cded247796e5fe458488517d65139664
+      Path: Events/Default Work Unit/Main/Footsteps
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Main
+      guid: ae06bf3d9bde2f4185163b3fa933efc9
+      id: 3161908922
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      Path: Events/Default Work Unit/Main
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Menu
+      guid: fd5f059e6994944a9de33ce4ecc841b1
+      id: 2607556080
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Menu
+        ObjectType: 4
+        guid: fd5f059e6994944a9de33ce4ecc841b1
+      Path: Events/Default Work Unit/Menu
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Music
+      guid: 875a8e1fad62e446bd08cd0378cade5f
+      id: 3991942870
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Menu
+        ObjectType: 4
+        guid: fd5f059e6994944a9de33ce4ecc841b1
+      - ElementName: Music
+        ObjectType: 4
+        guid: 875a8e1fad62e446bd08cd0378cade5f
+      Path: Events/Default Work Unit/Menu/Music
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Music
+      guid: 09519cd714b613419484f26205679109
+      id: 3991942870
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Music
+        ObjectType: 4
+        guid: 09519cd714b613419484f26205679109
+      Path: Events/Default Work Unit/Main/Music
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_Footsteps
+      guid: b382e08be19b1e458687ff9dab386f9b
+      id: 3854155799
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Footsteps
+        ObjectType: 4
+        guid: cded247796e5fe458488517d65139664
+      - ElementName: Play_Footsteps
+        ObjectType: 3
+        guid: b382e08be19b1e458687ff9dab386f9b
+      Path: Events/Default Work Unit/Main/Footsteps/Play_Footsteps
+      maxAttenuation: 0
+      maxDuration: 0.813201
+      minDuration: 0.358693
+    - name: Play_Menu_Music
+      guid: 3d8d9814e93e594bba3e543a53cdc690
+      id: 2228153899
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Menu
+        ObjectType: 4
+        guid: fd5f059e6994944a9de33ce4ecc841b1
+      - ElementName: Music
+        ObjectType: 4
+        guid: 875a8e1fad62e446bd08cd0378cade5f
+      - ElementName: Play_Menu_Music
+        ObjectType: 3
+        guid: 3d8d9814e93e594bba3e543a53cdc690
+      Path: Events/Default Work Unit/Menu/Music/Play_Menu_Music
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_ParameterTest
+      guid: 8591ed2c1aa83d438bf9c772371b2db5
+      id: 4229740275
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: TestSounds
+        ObjectType: 4
+        guid: fe7afa231d76924da329170aa0cbe68b
+      - ElementName: Play_ParameterTest
+        ObjectType: 3
+        guid: 8591ed2c1aa83d438bf9c772371b2db5
+      Path: Events/Default Work Unit/Main/TestSounds/Play_ParameterTest
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_Proxlamp_Draft1_Click
+      guid: cb8eac078a8acc44b15912fbc7764420
+      id: 2579192193
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: ProximityLamp
+        ObjectType: 4
+        guid: 4e7210d9ee58454ab151c51f00dd48a9
+      - ElementName: Play_Proxlamp_Draft1_Click
+        ObjectType: 3
+        guid: cb8eac078a8acc44b15912fbc7764420
+      Path: Events/Default Work Unit/Main/ProximityLamp/Play_Proxlamp_Draft1_Click
+      maxAttenuation: 15
+      maxDuration: 0.421121
+      minDuration: 0.279931
+    - name: Play_Proxlamp_Draft1_V2
+      guid: 9b10dcbf2e0d64458a7e62a3016965b1
+      id: 1416161311
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: ProximityLamp
+        ObjectType: 4
+        guid: 4e7210d9ee58454ab151c51f00dd48a9
+      - ElementName: Play_Proxlamp_Draft1_V2
+        ObjectType: 3
+        guid: 9b10dcbf2e0d64458a7e62a3016965b1
+      Path: Events/Default Work Unit/Main/ProximityLamp/Play_Proxlamp_Draft1_V2
+      maxAttenuation: 5
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_Stealth_Music
+      guid: 8b24fc5070b561489203400a296b2d94
+      id: 674798631
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Music
+        ObjectType: 4
+        guid: 09519cd714b613419484f26205679109
+      - ElementName: Play_Stealth_Music
+        ObjectType: 3
+        guid: 8b24fc5070b561489203400a296b2d94
+      Path: Events/Default Work Unit/Main/Music/Play_Stealth_Music
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_TestSound_Loop
+      guid: ae6337567e192e4b80f0ada94ae082d7
+      id: 2024687188
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: TestSounds
+        ObjectType: 4
+        guid: fe7afa231d76924da329170aa0cbe68b
+      - ElementName: Play_TestSound_Loop
+        ObjectType: 3
+        guid: ae6337567e192e4b80f0ada94ae082d7
+      Path: Events/Default Work Unit/Main/TestSounds/Play_TestSound_Loop
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_TestSound_Single
+      guid: 3969d6b1525a7c4ea6f9e46377098c90
+      id: 4206196186
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: TestSounds
+        ObjectType: 4
+        guid: fe7afa231d76924da329170aa0cbe68b
+      - ElementName: Play_TestSound_Single
+        ObjectType: 3
+        guid: 3969d6b1525a7c4ea6f9e46377098c90
+      Path: Events/Default Work Unit/Main/TestSounds/Play_TestSound_Single
+      maxAttenuation: 0
+      maxDuration: 2.125398
+      minDuration: 2.125398
+    - name: Play_Wind_PlaceHolder
+      guid: ce647153160f4543b00c6183edd3a21b
+      id: 3498798050
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Wind
+        ObjectType: 4
+        guid: 1f30f7a6ed29be42a7c95e5b6d663e4a
+      - ElementName: Play_Wind_PlaceHolder
+        ObjectType: 3
+        guid: ce647153160f4543b00c6183edd3a21b
+      Path: Events/Default Work Unit/Main/Wind/Play_Wind_PlaceHolder
+      maxAttenuation: 0
+      maxDuration: 124.029396
+      minDuration: 124.029396
+    - name: ProximityLamp
+      guid: 4e7210d9ee58454ab151c51f00dd48a9
+      id: 2267874046
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: ProximityLamp
+        ObjectType: 4
+        guid: 4e7210d9ee58454ab151c51f00dd48a9
+      Path: Events/Default Work Unit/Main/ProximityLamp
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Stop_Menu_Music
+      guid: d1894a99ac52e44692ff2edf2cf87a23
+      id: 3945748993
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Menu
+        ObjectType: 4
+        guid: fd5f059e6994944a9de33ce4ecc841b1
+      - ElementName: Music
+        ObjectType: 4
+        guid: 875a8e1fad62e446bd08cd0378cade5f
+      - ElementName: Stop_Menu_Music
+        ObjectType: 3
+        guid: d1894a99ac52e44692ff2edf2cf87a23
+      Path: Events/Default Work Unit/Menu/Music/Stop_Menu_Music
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_ParameterTest
+      guid: 8d30644db9536241b122ccc97ff3eeea
+      id: 2756796529
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: TestSounds
+        ObjectType: 4
+        guid: fe7afa231d76924da329170aa0cbe68b
+      - ElementName: Stop_ParameterTest
+        ObjectType: 3
+        guid: 8d30644db9536241b122ccc97ff3eeea
+      Path: Events/Default Work Unit/Main/TestSounds/Stop_ParameterTest
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_Proxlamp_Draft1_V2
+      guid: acff699e01e3284dad2f6131242695bf
+      id: 2594172909
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: ProximityLamp
+        ObjectType: 4
+        guid: 4e7210d9ee58454ab151c51f00dd48a9
+      - ElementName: Stop_Proxlamp_Draft1_V2
+        ObjectType: 3
+        guid: acff699e01e3284dad2f6131242695bf
+      Path: Events/Default Work Unit/Main/ProximityLamp/Stop_Proxlamp_Draft1_V2
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_Stealth_Music
+      guid: 5db439c2000c124ab37eda05cb0fa716
+      id: 3876103401
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Music
+        ObjectType: 4
+        guid: 09519cd714b613419484f26205679109
+      - ElementName: Stop_Stealth_Music
+        ObjectType: 3
+        guid: 5db439c2000c124ab37eda05cb0fa716
+      Path: Events/Default Work Unit/Main/Music/Stop_Stealth_Music
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_TestSound_Loop
+      guid: ee957b165f6019408f78869c1d6e410c
+      id: 3467245854
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: TestSounds
+        ObjectType: 4
+        guid: fe7afa231d76924da329170aa0cbe68b
+      - ElementName: Stop_TestSound_Loop
+        ObjectType: 3
+        guid: ee957b165f6019408f78869c1d6e410c
+      Path: Events/Default Work Unit/Main/TestSounds/Stop_TestSound_Loop
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_TestSound_Single
+      guid: aa84aabbb9cb2f45890b629ba17aff6b
+      id: 25015968
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: TestSounds
+        ObjectType: 4
+        guid: fe7afa231d76924da329170aa0cbe68b
+      - ElementName: Stop_TestSound_Single
+        ObjectType: 3
+        guid: aa84aabbb9cb2f45890b629ba17aff6b
+      Path: Events/Default Work Unit/Main/TestSounds/Stop_TestSound_Single
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: TestSounds
+      guid: fe7afa231d76924da329170aa0cbe68b
+      id: 1573350505
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: TestSounds
+        ObjectType: 4
+        guid: fe7afa231d76924da329170aa0cbe68b
+      Path: Events/Default Work Unit/Main/TestSounds
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Wind
+      guid: 1f30f7a6ed29be42a7c95e5b6d663e4a
+      id: 1537061107
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Wind
+        ObjectType: 4
+        guid: 1f30f7a6ed29be42a7c95e5b6d663e4a
+      Path: Events/Default Work Unit/Main/Wind
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
   RtpcWwu:
   - PhysicalPath: Game Parameters/Default Work Unit.wwu
     PathAndIcons:
@@ -122,8 +689,22 @@ MonoBehaviour:
     ParentPath: Game Parameters/Default Work Unit
     guid: f3ebc415cd262b47bf4b0e07d50ce918
     GuidInternal: 
-    m_lastTime: -8585306823613251021
-    List: []
+    m_lastTime: -8585306783172602082
+    List:
+    - name: TestParameter
+      guid: 97500b05ae817748bc5590c23cbf8a83
+      id: 2010788230
+      PathAndIcons:
+      - ElementName: Game Parameters
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: f3ebc415cd262b47bf4b0e07d50ce918
+      - ElementName: TestParameter
+        ObjectType: 13
+        guid: 97500b05ae817748bc5590c23cbf8a83
+      Path: Game Parameters/Default Work Unit/TestParameter
   StateWwu:
   - PhysicalPath: States/Default Work Unit.wwu
     PathAndIcons:
@@ -136,8 +717,156 @@ MonoBehaviour:
     ParentPath: States/Default Work Unit
     guid: 83242f9fd7a7c14f9f081a57f41225eb
     GuidInternal: 
-    m_lastTime: -8585306823603436720
-    List: []
+    m_lastTime: -8585306783158604092
+    List:
+    - name: StateTest
+      guid: ede15ecd97a305479da3c8f8200e1883
+      id: 3275448284
+      PathAndIcons:
+      - ElementName: States
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 83242f9fd7a7c14f9f081a57f41225eb
+      - ElementName: StateTest
+        ObjectType: 9
+        guid: ede15ecd97a305479da3c8f8200e1883
+      Path: States/Default Work Unit/StateTest
+      values:
+      - name: None
+        guid: a9005cfc62866440b1df6cc3facb1e00
+        id: 748895195
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 83242f9fd7a7c14f9f081a57f41225eb
+        - ElementName: StateTest
+          ObjectType: 9
+          guid: ede15ecd97a305479da3c8f8200e1883
+        - ElementName: None
+          ObjectType: 8
+          guid: a9005cfc62866440b1df6cc3facb1e00
+      - name: Off
+        guid: 08988548d8a99545a9e71213c6407f8f
+        id: 930712164
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 83242f9fd7a7c14f9f081a57f41225eb
+        - ElementName: StateTest
+          ObjectType: 9
+          guid: ede15ecd97a305479da3c8f8200e1883
+        - ElementName: Off
+          ObjectType: 8
+          guid: 08988548d8a99545a9e71213c6407f8f
+      - name: On
+        guid: 4b38663046f45746a8a301c32a7c06f7
+        id: 1651971902
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 83242f9fd7a7c14f9f081a57f41225eb
+        - ElementName: StateTest
+          ObjectType: 9
+          guid: ede15ecd97a305479da3c8f8200e1883
+        - ElementName: On
+          ObjectType: 8
+          guid: 4b38663046f45746a8a301c32a7c06f7
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
+    - name: StealthState
+      guid: 6d483294141b35448aeb491a1fbc3828
+      id: 2413224833
+      PathAndIcons:
+      - ElementName: States
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 83242f9fd7a7c14f9f081a57f41225eb
+      - ElementName: StealthState
+        ObjectType: 9
+        guid: 6d483294141b35448aeb491a1fbc3828
+      Path: States/Default Work Unit/StealthState
+      values:
+      - name: Alerted
+        guid: 69107f3f7462544f943766be22e816a2
+        id: 250639526
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 83242f9fd7a7c14f9f081a57f41225eb
+        - ElementName: StealthState
+          ObjectType: 9
+          guid: 6d483294141b35448aeb491a1fbc3828
+        - ElementName: Alerted
+          ObjectType: 8
+          guid: 69107f3f7462544f943766be22e816a2
+      - name: Caution
+        guid: 09e15f8703c1bd43ab7738650bc64823
+        id: 1777167952
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 83242f9fd7a7c14f9f081a57f41225eb
+        - ElementName: StealthState
+          ObjectType: 9
+          guid: 6d483294141b35448aeb491a1fbc3828
+        - ElementName: Caution
+          ObjectType: 8
+          guid: 09e15f8703c1bd43ab7738650bc64823
+      - name: Hidden
+        guid: 76a069fec30bdc499a9f3e7c4eac2dc5
+        id: 3621873013
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 83242f9fd7a7c14f9f081a57f41225eb
+        - ElementName: StealthState
+          ObjectType: 9
+          guid: 6d483294141b35448aeb491a1fbc3828
+        - ElementName: Hidden
+          ObjectType: 8
+          guid: 76a069fec30bdc499a9f3e7c4eac2dc5
+      - name: None
+        guid: bc2e96ffa3aaf44b9e2a07d2e6d10b3f
+        id: 748895195
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 83242f9fd7a7c14f9f081a57f41225eb
+        - ElementName: StealthState
+          ObjectType: 9
+          guid: 6d483294141b35448aeb491a1fbc3828
+        - ElementName: None
+          ObjectType: 8
+          guid: bc2e96ffa3aaf44b9e2a07d2e6d10b3f
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
   SwitchWwu:
   - PhysicalPath: Switches/Default Work Unit.wwu
     PathAndIcons:
@@ -150,8 +879,74 @@ MonoBehaviour:
     ParentPath: Switches/Default Work Unit
     guid: b97329d927c5b748a4004f220cf740bf
     GuidInternal: 
-    m_lastTime: -8585306823603434094
-    List: []
+    m_lastTime: -8585306783158600211
+    List:
+    - name: Footsteps
+      guid: e0bdf8a6e55f3a4f84fe166a57a03a62
+      id: 2385628198
+      PathAndIcons:
+      - ElementName: Switches
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: b97329d927c5b748a4004f220cf740bf
+      - ElementName: Footsteps
+        ObjectType: 11
+        guid: e0bdf8a6e55f3a4f84fe166a57a03a62
+      Path: Switches/Default Work Unit/Footsteps
+      values:
+      - name: Concrete
+        guid: dc98ea91b94af847818d66098df694b0
+        id: 841620460
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: b97329d927c5b748a4004f220cf740bf
+        - ElementName: Footsteps
+          ObjectType: 11
+          guid: e0bdf8a6e55f3a4f84fe166a57a03a62
+        - ElementName: Concrete
+          ObjectType: 10
+          guid: dc98ea91b94af847818d66098df694b0
+      - name: Grass
+        guid: 7d4d8c793ffbf44382b26b4bdf580d8b
+        id: 4248645337
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: b97329d927c5b748a4004f220cf740bf
+        - ElementName: Footsteps
+          ObjectType: 11
+          guid: e0bdf8a6e55f3a4f84fe166a57a03a62
+        - ElementName: Grass
+          ObjectType: 10
+          guid: 7d4d8c793ffbf44382b26b4bdf580d8b
+      - name: Gravel
+        guid: 7e083bdae5fb9a43b01f748e31e3da71
+        id: 2185786256
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: b97329d927c5b748a4004f220cf740bf
+        - ElementName: Footsteps
+          ObjectType: 11
+          guid: e0bdf8a6e55f3a4f84fe166a57a03a62
+        - ElementName: Gravel
+          ObjectType: 10
+          guid: 7e083bdae5fb9a43b01f748e31e3da71
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
   TriggerWwu:
   - PhysicalPath: Triggers/Default Work Unit.wwu
     PathAndIcons:
