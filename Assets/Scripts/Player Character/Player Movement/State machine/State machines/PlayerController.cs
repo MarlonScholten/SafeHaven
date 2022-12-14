@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using Animation;
 using PlayerCharacter.States;
 using UnityEngine;
 
@@ -168,7 +167,7 @@ namespace PlayerCharacter.Movement
         private Vector2 smooth;
         void Update()
         {
-             current = Vector2.SmoothDamp(current, MovementInput * _movementSpeed, ref smooth, .5f);
+             current = Vector2.SmoothDamp(current, MovementInput * _movementSpeed, ref smooth, .3f);
             
             CurrentState.UpdateState();
             ApplyGravity();
