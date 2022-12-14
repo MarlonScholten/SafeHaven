@@ -11,12 +11,17 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Language="SFX" Hash="207585741">
+		<SoundBank Id="1355168291" Language="SFX" Hash="3046464411">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
+			<GameParameters>
+				<GameParameter Id="960544891" Name="Footsteps_Volume" ObjectPath="\Game Parameters\Default Work Unit\Footsteps_Volume"/>
+				<GameParameter Id="1006694123" Name="Music_Volume" ObjectPath="\Game Parameters\Default Work Unit\Music_Volume"/>
+				<GameParameter Id="1564184899" Name="SFX_Volume" ObjectPath="\Game Parameters\Default Work Unit\SFX_Volume"/>
+			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="2607556080" Language="SFX" Hash="1443411809">
+		<SoundBank Id="2607556080" Language="SFX" Hash="2846218401">
 			<ObjectPath>\SoundBanks\Default Work Unit\Menu</ObjectPath>
 			<ShortName>Menu</ShortName>
 			<Path>Menu.bnk</Path>
@@ -36,7 +41,7 @@
 				<Event Id="3945748993" Name="Stop_Menu_Music" ObjectPath="\Events\Default Work Unit\Menu\Music\Stop_Menu_Music" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 			</IncludedEvents>
 		</SoundBank>
-		<SoundBank Id="3161908922" Language="SFX" Hash="2812002819">
+		<SoundBank Id="3161908922" Language="SFX" Hash="2843005718">
 			<ObjectPath>\SoundBanks\Default Work Unit\Main</ObjectPath>
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>

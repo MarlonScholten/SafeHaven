@@ -4,7 +4,7 @@ using UnityEngine;
 
 /// <summary>
 /// Author: Marlon Kerstens<br/>
-/// Modified by: Hugo Ulfman<br/>
+/// Modified by: Hugo Ulfman, Thomas van den Oever<br/>
 /// Description: This script is a the Investigate state of the enemy.
 /// </summary>
 /// <list type="table">
@@ -57,6 +57,8 @@ public class InvestigateState : MonoBehaviour
         if (_stateManager.alertedBySound) _stateManager.CheckPositionReachable(_stateManager.locationOfNoise);
         else if(_stateManager.alertedByVision) _stateManager.CheckPositionReachable(_stateManager.spottedPlayerLastPosition);
         else if(_stateManager.alertedByGuard) _stateManager.CheckPositionReachable(_stateManager.recievedLocationFromGuard);
+
+        GameObject.Find("EnemyStateWatcher").GetComponent<SoundManager.EnemyStateWatcher>().isInvestegating(true);
     }
     
     /// <summary>
@@ -137,5 +139,7 @@ public class InvestigateState : MonoBehaviour
         //Stop the waiting at waypoint coroutine
         if(_waitingAtWaypointDuringInvestigationCoroutineIsRunning)StopCoroutine(_waitingAtWaypointDuringInvestigationCoroutine);
         _waitingAtWaypointDuringInvestigationCoroutineIsRunning = false;
+
+        GameObject.Find("EnemyStateWatcher").GetComponent<SoundManager.EnemyStateWatcher>().isInvestegating(false);
     }
 }

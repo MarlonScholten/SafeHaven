@@ -217,6 +217,7 @@ public class EnemyAiStateManager : MonoBehaviour
     ///</summary>
     public static void CatchChild()
     {
+        GameObject.Find("EnemyStateWatcher").GetComponent<SoundManager.EnemyStateWatcher>().StopSound();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
