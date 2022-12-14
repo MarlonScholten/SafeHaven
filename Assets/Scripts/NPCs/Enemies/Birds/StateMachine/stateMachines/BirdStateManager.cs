@@ -109,19 +109,14 @@ namespace Bird
             var endCurve = Vector3.Lerp(position, destination, 0.75f);
             endCurve.y = destination.y;
 
-            // if destination is 5 lower than position, start will be 5 lower than position
-            
             if (destination.y >= position.y && destination.y <= position.y + 2)
             {
                 startCurve.y = position.y + 2;
             }
-
             var bezierPath = new BezierPath(new List<Vector3> { position, startCurve, endCurve, destination }, false)
             {
                 FlipNormals = position.x < destination.x,
             };
-            // set global angle for each point
-
             createdPath.bezierPath = bezierPath;
             createdPath.bezierPath.ControlPointMode = BezierPath.ControlMode.Automatic;
             return createdPath;

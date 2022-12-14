@@ -1,5 +1,6 @@
 using System.Linq;
 using PathCreation;
+using PathCreation.Utility;
 using Unity.VisualScripting;
 using UnityEngine;
 
