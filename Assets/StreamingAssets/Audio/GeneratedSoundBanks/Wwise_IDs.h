@@ -32,18 +32,6 @@ namespace AK
 
     namespace STATES
     {
-        namespace STATETEST
-        {
-            static const AkUniqueID GROUP = 3275448284U;
-
-            namespace STATE
-            {
-                static const AkUniqueID NONE = 748895195U;
-                static const AkUniqueID OFF = 930712164U;
-                static const AkUniqueID ON = 1651971902U;
-            } // namespace STATE
-        } // namespace STATETEST
-
         namespace STEALTHSTATE
         {
             static const AkUniqueID GROUP = 2413224833U;
@@ -77,6 +65,9 @@ namespace AK
 
     namespace GAME_PARAMETERS
     {
+        static const AkUniqueID FOOTSTEPS_VOLUME = 960544891U;
+        static const AkUniqueID MUSIC_VOLUME = 1006694123U;
+        static const AkUniqueID SFX_VOLUME = 1564184899U;
         static const AkUniqueID TESTPARAMETER = 2010788230U;
     } // namespace GAME_PARAMETERS
 
