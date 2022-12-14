@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using Animation;
 using PlayerCharacter.States;
 using UnityEngine;
 
@@ -161,13 +163,18 @@ namespace PlayerCharacter.Movement
         /// Call the Update function of whatever state we are in on every frame and move the player according to rotation.
         /// </summary>
         /// <remarks>Movement is here too because gravity influences all kinds of movement</remarks>
+
+        private Vector2 current;
+        private Vector2 smooth;
         void Update()
         {
+             current = Vector2.SmoothDamp(current, MovementInput * _movementSpeed, ref smooth, .5f);
+            
             CurrentState.UpdateState();
             ApplyGravity();
             transform.rotation = _rotation;
             CharacterController.Move(_movement * Time.deltaTime);
-            _animator.SetFloat(_velocityHash, CharacterController.velocity.magnitude);
+            _animator.SetFloat(_velocityHash, current.magnitude);
         }
 
         /// <summary>
