@@ -46,6 +46,18 @@ public abstract class AbstractPingController : MonoBehaviour
     /// </summary>
     [Tooltip("The reference to the prefab of the marker.")]
     [SerializeField] protected GameObject _markerPrefab;
+    
+    /// <summary>
+    /// Contains a reference to the prefab of the marker that is shown when a hide ping is performed.
+    /// </summary>
+    [Tooltip("The reference to the prefab of the marker.")]
+    [SerializeField] protected GameObject _markerPrefabHide;
+    
+    /// <summary>
+    /// Contains a reference to the prefab of the marker that is shown when a interact ping is performed.
+    /// </summary>
+    [Tooltip("The reference to the prefab of the marker.")]
+    [SerializeField] protected GameObject _markerPrefabInteract;
 
     /// <summary>
     /// Contains a reference to the radial menu in the current scene, which can be set manually.
