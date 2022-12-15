@@ -242,7 +242,9 @@ public class PatrolState : MonoBehaviour
             }
         }
         // if the enemy should not wait at the waypoint.
-        if (!HasToWaitAtCurrentWaypoint() && Vector3.Distance(transform.position, _stateManager.targetWpLocation) <= 3f)
+        if (_stateManager.isGuard) return;
+        if (!HasToWaitAtCurrentWaypoint() &&
+            Vector3.Distance(transform.position, _stateManager.targetWpLocation) <= 3f)
         {
             DetermineNextWaypoint();
         }
