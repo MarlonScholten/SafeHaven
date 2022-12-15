@@ -18,6 +18,45 @@ Go to [Unity Folder Structure](https://github.com/AIM-GAME-PROJECT-group-b/SafeH
 
 The changelog for what was changed and added for every sprint.
 
+## Changelog sprint 3
+
+### Programming
+- Dynamic music system
+- Trigger improvements
+- Dialog system
+- Interactible improvements (aiming)
+- VFX (fire, smoke, rain, sparks)
+- Enemy AI improvements
+- Cutscenes system
+- Shaders (water, waterfall)
+- Bird AI
+- Radial menu updated
+- New splinetool
+- Brother stealth
+
+### Art
+- Gazebo with brigdes
+- Icecream stand
+- Supermarket
+- Coffeeshop
+- Dumpster
+- Metal barricade
+- Supermaket decals
+- Trash
+- Shopping cart
+- Coffee stool
+- Soldier
+- Placeholder folliage
+- Poster (on instagram)
+
+### Design
+- Park redesign
+- New enemy partolling patterns
+
+### Sound
+- Dynamic stealth music
+- New menu music
+
 ## Changelog sprint 2
 
 ### Programming
