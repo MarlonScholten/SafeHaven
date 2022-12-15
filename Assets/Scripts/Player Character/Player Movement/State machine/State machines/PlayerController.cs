@@ -86,7 +86,7 @@ namespace PlayerCharacter.Movement
 
         [Header("Stealth")]
         [SerializeField]
-        private float _crouchHeight = 1f;
+        private float _crouchHeight = 0.7f;
 
         [SerializeField]
         private float _normalHeight = 1.5f;
@@ -206,7 +206,7 @@ namespace PlayerCharacter.Movement
             if (_crouching)
             {
                 _movementSpeed = 2f;
-                _collider.SetCapsuleCollider(_crouchHeight, 0, -0.5f, 0);
+                _collider.SetCapsuleCollider(_crouchHeight, 0, -0.61f, 0);
             }
             else
             {
