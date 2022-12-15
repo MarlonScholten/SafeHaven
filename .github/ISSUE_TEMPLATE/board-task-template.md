@@ -2,8 +2,8 @@
 name: Board Task Template
 about: Custom board task template
 title: TASK NAME HERE
-labels: bug, programming
-assignees: giopde1ste
+labels: bug, programming, research
+assignees: ''
 
 ---
 
