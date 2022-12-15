@@ -51,6 +51,7 @@ jobs:
           targetPlatform: StandaloneWindows64
           versioning: Semantic
           customParameters: -Development -AllowDebugging
+          buildName: "Safe Haven"
 
       # Output
       - uses: actions/upload-artifact@v3
