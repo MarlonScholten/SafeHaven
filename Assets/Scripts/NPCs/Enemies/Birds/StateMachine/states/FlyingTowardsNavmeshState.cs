@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using PathCreation;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -112,7 +113,7 @@ namespace Bird
             Destroy(_birdStateManager.pathGameObject);
             _distanceTravelled = 0;
             _birdStateManager.restPoint = null;
-            _birdStateManager.lastRestPoint = Vector3.zero;
+            _birdStateManager.lastRestPoints = new List<Vector3>();
         }
 
         /// <summary>

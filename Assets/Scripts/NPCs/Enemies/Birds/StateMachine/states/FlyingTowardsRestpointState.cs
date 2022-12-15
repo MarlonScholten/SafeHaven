@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using PathCreation;
 using PathCreation.Utility;
@@ -110,7 +111,6 @@ namespace Bird
             _path = null;
             Destroy(_birdStateManager.pathGameObject);
             _distanceTravelled = 0;
-            _birdStateManager.lastRestPoint = _birdStateManager.restPoint.transform.position;
         }
 
         /// <summary>
@@ -122,17 +122,23 @@ namespace Bird
             var restPoints = GameObject.FindGameObjectsWithTag("BirdRestPoint");
             Transform closest = null;
             var distance = Mathf.Infinity;
-            var position = transform.position;
+            var position = transform.position; 
             foreach (var restPointObject in restPoints.Select(rp => rp.transform))
             {
                 if (restPointObject.transform.position == transform.position) continue;
+                if (_birdStateManager.lastRestPoints.Contains(restPointObject.transform.position)) continue;
                 var diff = restPointObject.transform.position - position;
                 var curDistance = diff.sqrMagnitude;
                 if (curDistance >= distance) continue;
                 closest = restPointObject.transform;
                 distance = curDistance;
             }
-
+            if(closest == null)
+            {
+                _birdStateManager.lastRestPoints = new List<Vector3>();
+                return GetClosestRestPoint();
+            }
+            _birdStateManager.lastRestPoints.Add(closest.position);
             return closest;
         }
 

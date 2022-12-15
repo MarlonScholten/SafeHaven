@@ -66,7 +66,7 @@ namespace Bird
         /// <summary>
         /// The last rest point that the bird was at.
         /// </summary>
-        [NonSerialized] public Vector3 lastRestPoint;
+        [NonSerialized] public List<Vector3> lastRestPoints;
 
         /// <summary>
         /// The ground height where it can walk.
@@ -81,6 +81,7 @@ namespace Bird
         private void Awake()
         {
             navMeshAgent = GetComponent<NavMeshAgent>();
+            lastRestPoints = new List<Vector3>();
         }
 
         /// <summary>
