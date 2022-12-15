@@ -60,6 +60,7 @@ namespace PlayerCharacter.Movement
     ///         <term>The Cinemachine collider will collide with anything on this layer, preventing clipping through objects and obstructing view of the player</term>
     ///	    </item>
     /// </list>
+    [RequireComponent(typeof(CapsuleCollider))]
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] [Range(1f, 20f)] [Tooltip("How fast the character is able to move through the world")]
@@ -82,6 +83,13 @@ namespace PlayerCharacter.Movement
 
         [SerializeField] [Tooltip("Show the raycast as a red line or not, make sure gizmos are acivated to see it!")]
         private bool DrawRayDebug = false;
+
+        [Header("Stealth")]
+        [SerializeField]
+        private float _crouchHeight = 1f;
+
+        [SerializeField]
+        private float _normalHeight = 1.5f;
 
         public bool CanMoveInAir => _canMoveInAir;
 
@@ -129,7 +137,10 @@ namespace PlayerCharacter.Movement
         private int _interactableObjectHash;
         private int _stealthHash;
 
+        private CapsuleCollider _collider;
         private bool _crouching;
+        private Vector2 _current;
+        private Vector2 _smooth;
 
         private void Awake()
         {
@@ -141,6 +152,7 @@ namespace PlayerCharacter.Movement
             _playerCamera = Camera.main;
             _playerCamRay = PlayerCamera.ScreenPointToRay(Input.mousePosition);
             _animator = GetComponentInChildren<Animator>();
+            _collider = GetComponent<CapsuleCollider>();
         }
 
         private void Start()
@@ -162,18 +174,15 @@ namespace PlayerCharacter.Movement
         /// Call the Update function of whatever state we are in on every frame and move the player according to rotation.
         /// </summary>
         /// <remarks>Movement is here too because gravity influences all kinds of movement</remarks>
-
-        private Vector2 current;
-        private Vector2 smooth;
         void Update()
         {
-             current = Vector2.SmoothDamp(current, MovementInput * _movementSpeed, ref smooth, .3f);
+             _current = Vector2.SmoothDamp(_current, MovementInput * _movementSpeed, ref _smooth, .3f);
             
             CurrentState.UpdateState();
             ApplyGravity();
             transform.rotation = _rotation;
             CharacterController.Move(_movement * Time.deltaTime);
-            _animator.SetFloat(_velocityHash, current.magnitude);
+            _animator.SetFloat(_velocityHash, _current.magnitude);
         }
 
         /// <summary>
@@ -191,13 +200,18 @@ namespace PlayerCharacter.Movement
         private void Crouch()
         {
             _crouching = !_crouching;
+
+            _animator.SetBool("Stealth", _crouching);
+
             if (_crouching)
             {
                 _movementSpeed = 2f;
+                _collider.SetCapsuleCollider(_crouchHeight, 0, -0.5f, 0);
             }
             else
             {
                 _movementSpeed = 5f;
+                _collider.SetCapsuleCollider(_normalHeight, 0, -0.22f, 0);
             }
         }
 
