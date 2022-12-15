@@ -60,7 +60,6 @@ namespace PlayerCharacter.Movement
     ///         <term>The Cinemachine collider will collide with anything on this layer, preventing clipping through objects and obstructing view of the player</term>
     ///	    </item>
     /// </list>
-    [RequireComponent(typeof(CapsuleCollider))]
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] [Range(1f, 20f)] [Tooltip("How fast the character is able to move through the world")]
@@ -84,12 +83,12 @@ namespace PlayerCharacter.Movement
         [SerializeField] [Tooltip("Show the raycast as a red line or not, make sure gizmos are acivated to see it!")]
         private bool DrawRayDebug = false;
 
-        [Header("Stealth")]
+        [Header("References")]
         [SerializeField]
-        private float _crouchHeight = 0.7f;
+        private GameObject _standCollider;
 
         [SerializeField]
-        private float _normalHeight = 1.5f;
+        private GameObject _crouchCollider;
 
         public bool CanMoveInAir => _canMoveInAir;
 
@@ -137,7 +136,6 @@ namespace PlayerCharacter.Movement
         private int _interactableObjectHash;
         private int _stealthHash;
 
-        private CapsuleCollider _collider;
         private bool _crouching;
         private Vector2 _current;
         private Vector2 _smooth;
@@ -152,7 +150,6 @@ namespace PlayerCharacter.Movement
             _playerCamera = Camera.main;
             _playerCamRay = PlayerCamera.ScreenPointToRay(Input.mousePosition);
             _animator = GetComponentInChildren<Animator>();
-            _collider = GetComponent<CapsuleCollider>();
         }
 
         private void Start()
@@ -203,16 +200,10 @@ namespace PlayerCharacter.Movement
 
             _animator.SetBool("Stealth", _crouching);
 
-            if (_crouching)
-            {
-                _movementSpeed = 2f;
-                _collider.SetCapsuleCollider(_crouchHeight, 0, -0.61f, 0);
-            }
-            else
-            {
-                _movementSpeed = 5f;
-                _collider.SetCapsuleCollider(_normalHeight, 0, -0.22f, 0);
-            }
+            _crouchCollider.SetActive(_crouching);
+            _standCollider.SetActive(!_crouching);
+
+            _movementSpeed = _crouching ? 2f : 5f;
         }
 
         /// <summary>
