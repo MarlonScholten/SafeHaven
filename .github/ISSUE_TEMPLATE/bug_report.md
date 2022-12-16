@@ -3,7 +3,7 @@ name: Bug report
 about: Create a report to help us improve
 title: "[BUG] your title"
 labels: bug, programming
-assignees: Kajirinn, Nyekyoo
+assignees: ''
 
 ---
 
