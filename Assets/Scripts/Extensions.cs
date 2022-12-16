@@ -41,4 +41,17 @@ public static class Extensions
     }
 
     #endregion
+
+    /// <summary>
+    /// Sets the bounds of the capsuleCollider, it is used for adjusting the collider of the brother when entering stealth.
+    /// </summary>
+    /// <param name="height">Determines the Height of the capsuleCollider.</param>
+    /// /// <param name="centerBoundX">Determines the X position of the center of the capsuleCollider.</param>
+    /// /// <param name="centerBoundY">Determines the Y position of the center of the capsuleCollider.</param>
+    /// /// <param name="centerBoundZ">Determines the Z position of the center of the capsuleCollider.</param>
+    public static void SetCapsuleCollider(this CapsuleCollider collider, float height, float centerBoundX, float centerBoundY, float centerBoundZ)
+    {
+        collider.center = new Vector3(centerBoundX, centerBoundY, centerBoundZ);
+        collider.height = height;
+    }
 }

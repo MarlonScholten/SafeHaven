@@ -4,7 +4,7 @@ using UnityEngine;
 
 /// <summary>
 /// Author: Marlon Kerstens<br/>
-/// Modified by: Hugo Ulfman<br/>
+/// Modified by: Hugo Ulfman, Thomas van den Oever<br/>
 /// Description: This script is a the Investigate state of the enemy.
 /// </summary>
 /// <list type="table">
@@ -40,13 +40,15 @@ public class InvestigateState : MonoBehaviour
     private bool _investigateCoroutineIsRunning; // a bool that is used to check if the coroutine is running
     private IEnumerator _waitingAtWaypointDuringInvestigationCoroutine; // a coroutine that is used to wait for a certain amount of time before going to the next investigate waypoint
     private bool _waitingAtWaypointDuringInvestigationCoroutineIsRunning; // a bool that is used to check if the coroutine is running
-   
+    private SoundManager.EnemyStateWatcher _enemyStateWatcher;
+    
     /// <summary>
     /// Awake is called when the script instance is being loaded.
     /// </summary>
     void Awake()
     {
         _stateManager = GetComponent<EnemyAiStateManager>();
+        _enemyStateWatcher = GameObject.Find("EnemyStateWatcher").GetComponent<SoundManager.EnemyStateWatcher>();
     }
    
     /// <summary>
@@ -57,6 +59,8 @@ public class InvestigateState : MonoBehaviour
         if (_stateManager.alertedBySound) _stateManager.CheckPositionReachable(_stateManager.locationOfNoise);
         else if(_stateManager.alertedByVision) _stateManager.CheckPositionReachable(_stateManager.spottedPlayerLastPosition);
         else if(_stateManager.alertedByGuard) _stateManager.CheckPositionReachable(_stateManager.recievedLocationFromGuard);
+
+        GameObject.Find("EnemyStateWatcher").GetComponent<SoundManager.EnemyStateWatcher>().isInvestegating(true);
     }
     
     /// <summary>
@@ -137,5 +141,7 @@ public class InvestigateState : MonoBehaviour
         //Stop the waiting at waypoint coroutine
         if(_waitingAtWaypointDuringInvestigationCoroutineIsRunning)StopCoroutine(_waitingAtWaypointDuringInvestigationCoroutine);
         _waitingAtWaypointDuringInvestigationCoroutineIsRunning = false;
+
+        _enemyStateWatcher.isInvestegating(false);
     }
 }

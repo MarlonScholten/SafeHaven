@@ -1,10 +1,9 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-
 /// <summary>
 /// Author: Marlon Kerstens<br/>
-/// Modified by: Hugo Ulfman<br/>
+/// Modified by: Hugo Ulfman, Thomas van den Oever<br/>
 /// Description: This script is a the Chasing state of the enemy.
 /// </summary>
 /// <list type="table">
@@ -36,6 +35,7 @@ using UnityEngine;
 public class ChasingState : MonoBehaviour
 {
     private EnemyAiStateManager _stateManager; // Reference to the state manager
+    private SoundManager.EnemyStateWatcher _enemyStateWatcher;
     
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -43,12 +43,14 @@ public class ChasingState : MonoBehaviour
     void Awake()
     {
         _stateManager = GetComponent<EnemyAiStateManager>();
+        _enemyStateWatcher = GameObject.Find("EnemyStateWatcher").GetComponent<SoundManager.EnemyStateWatcher>();
     }
     /// <summary>
     /// Enter chasing state
     /// </summary>
     public void Enter_Chasing()
     {
+        GameObject.Find("EnemyStateWatcher").GetComponent<SoundManager.EnemyStateWatcher>().isChasing(true);
     }
     
     /// <summary>
@@ -89,5 +91,7 @@ public class ChasingState : MonoBehaviour
     public void Exit_Chasing()
     {
         //Reset spotted player/brother.
+
+        _enemyStateWatcher.isChasing(false);
     }
 }

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Windows;
 
 /// <summary>
 /// Author: Tom Cornelissen <br/>
@@ -39,10 +40,15 @@ public class SettingsMenu : MonoBehaviour
     [SerializeField]
     [Tooltip("A reference to the button UI element that exits this menu")]
     private Button _exitButton;
+    
+    [SerializeField]
+    [Tooltip("A reference to the button UI element that resets the keybindings")]
+    private Button _resetKeybindingsButton;
 
     private void Start()
     {
         _exitButton.onClick.AddListener(CloseMenu);
+        _resetKeybindingsButton.onClick.AddListener(ResetKeybindings);
         
         _exitButton.Select();
     }
@@ -61,5 +67,15 @@ public class SettingsMenu : MonoBehaviour
         _previousMenu.SetActive(true);
         
         Destroy(gameObject);
+    }
+
+    private void ResetKeybindings()
+    {
+        FindObjectOfType<KeybindingSettings>()?.ResetKeybindings();
+
+        foreach (KeybindingUI keybindingUI in GetComponentsInChildren<KeybindingUI>())
+        {
+            keybindingUI.RefreshRebindingButton();
+        }
     }
 }

@@ -1,6 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{6C6E3BC7-4578-4602-9547-A0248B2E7BEC}" SchemaVersion="103">
 	<SoundcasterSessions>
-		<WorkUnit Name="Default Work Unit" ID="{6C6E3BC7-4578-4602-9547-A0248B2E7BEC}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{6C6E3BC7-4578-4602-9547-A0248B2E7BEC}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundcasterSession Name="New Soundcaster Session" ID="{16487AEF-0B94-4DFE-9E14-5497F3449480}">
+					<ModuleList>
+						<Module>
+							<ObjectRef Name="Play_Wind_PlaceHolder" ID="{537164CE-0F16-4345-B00C-6183EDD3A21B}" WorkUnitID="{5DF81475-BB3E-4C5F-B0BC-98A43D4B8830}"/>
+							<Position X="0" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Play_Proxlamp_Draft1_Click" ID="{07AC8ECB-8A8A-44CC-B159-12FBC7764420}" WorkUnitID="{5DF81475-BB3E-4C5F-B0BC-98A43D4B8830}"/>
+							<Position X="1" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Play_Proxlamp_Draft1_V2" ID="{BFDC109B-0D2E-4564-8A7E-62A3016965B1}" WorkUnitID="{5DF81475-BB3E-4C5F-B0BC-98A43D4B8830}"/>
+							<Position X="2" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Play_Stealth_Music" ID="{50FC248B-B570-4861-9203-400A296B2D94}" WorkUnitID="{5DF81475-BB3E-4C5F-B0BC-98A43D4B8830}"/>
+							<Position X="3" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Play_Footsteps" ID="{8BE082B3-9BE1-451E-8687-FF9DAB386F9B}" WorkUnitID="{5DF81475-BB3E-4C5F-B0BC-98A43D4B8830}"/>
+							<Position X="4" Y="0"/>
+						</Module>
+					</ModuleList>
+					<RTPCValueList ShowAll="true">
+						<RTPCValue>
+							<GameParameterRef Name="TestParameter" ID="{050B5097-81AE-4877-BC55-90C23CBF8A83}"/>
+							<Value>49</Value>
+						</RTPCValue>
+					</RTPCValueList>
+					<CurrentStateList ShowAll="true"/>
+					<CurrentSwitchList ShowAll="true">
+						<CurrentSwitchRef Name="Concrete" ID="{91EA98DC-4AB9-47F8-818D-66098DF694B0}"/>
+					</CurrentSwitchList>
+				</SoundcasterSession>
+			</ChildrenList>
+		</WorkUnit>
 	</SoundcasterSessions>
 </WwiseDocument>
