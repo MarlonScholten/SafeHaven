@@ -4,6 +4,17 @@
 		<WorkUnit Name="Default Work Unit" ID="{15C4EBF3-26CD-472B-BF4B-0E07D50CE918}" PersistMode="Standalone">
 			<ChildrenList>
 				<GameParameter Name="TestParameter" ID="{050B5097-81AE-4877-BC55-90C23CBF8A83}"/>
+				<GameParameter Name="Music_Volume" ID="{F6AF792F-1440-4CA2-8F45-86F0DD60C9AB}"/>
+				<GameParameter Name="SFX_Volume" ID="{AF74D64D-12E4-4E96-A727-C9C60DD9ABBD}">
+					<PropertyList>
+						<Property Name="InitialValue" Type="Real64" Value="75"/>
+					</PropertyList>
+				</GameParameter>
+				<GameParameter Name="Footsteps_Volume" ID="{74B318A5-9A21-416B-94A2-A1E34FBBE994}">
+					<PropertyList>
+						<Property Name="InitialValue" Type="Real64" Value="75"/>
+					</PropertyList>
+				</GameParameter>
 			</ChildrenList>
 		</WorkUnit>
 	</GameParameters>

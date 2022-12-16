@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using PlayerCharacter.States;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace PlayerCharacter.Movement
 {
@@ -59,6 +61,7 @@ namespace PlayerCharacter.Movement
     ///         <term>The Cinemachine collider will collide with anything on this layer, preventing clipping through objects and obstructing view of the player</term>
     ///	    </item>
     /// </list>
+    [RequireComponent(typeof(NavMeshObstacle))]
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] [Range(1f, 20f)] [Tooltip("How fast the character is able to move through the world")]
@@ -81,6 +84,13 @@ namespace PlayerCharacter.Movement
 
         [SerializeField] [Tooltip("Show the raycast as a red line or not, make sure gizmos are acivated to see it!")]
         private bool DrawRayDebug = false;
+
+        [Header("References")]
+        [SerializeField]
+        private GameObject _standCollider;
+
+        [SerializeField]
+        private GameObject _crouchCollider;
 
         public bool CanMoveInAir => _canMoveInAir;
 
@@ -129,6 +139,8 @@ namespace PlayerCharacter.Movement
         private int _stealthHash;
 
         private bool _crouching;
+        private Vector2 _current;
+        private Vector2 _smooth;
 
         private void Awake()
         {
@@ -163,11 +175,13 @@ namespace PlayerCharacter.Movement
         /// <remarks>Movement is here too because gravity influences all kinds of movement</remarks>
         void Update()
         {
+             _current = Vector2.SmoothDamp(_current, MovementInput * _movementSpeed, ref _smooth, .3f);
+            
             CurrentState.UpdateState();
             ApplyGravity();
             transform.rotation = _rotation;
             CharacterController.Move(_movement * Time.deltaTime);
-            _animator.SetFloat(_velocityHash, CharacterController.velocity.magnitude);
+            _animator.SetFloat(_velocityHash, _current.magnitude);
         }
 
         /// <summary>
@@ -185,14 +199,13 @@ namespace PlayerCharacter.Movement
         private void Crouch()
         {
             _crouching = !_crouching;
-            if (_crouching)
-            {
-                _movementSpeed = 2f;
-            }
-            else
-            {
-                _movementSpeed = 5f;
-            }
+
+            _animator.SetBool("Stealth", _crouching);
+
+            _crouchCollider.SetActive(_crouching);
+            _standCollider.SetActive(!_crouching);
+
+            _movementSpeed = _crouching ? 2f : 5f;
         }
 
         /// <summary>

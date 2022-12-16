@@ -40,13 +40,15 @@ public class InvestigateState : MonoBehaviour
     private bool _investigateCoroutineIsRunning; // a bool that is used to check if the coroutine is running
     private IEnumerator _waitingAtWaypointDuringInvestigationCoroutine; // a coroutine that is used to wait for a certain amount of time before going to the next investigate waypoint
     private bool _waitingAtWaypointDuringInvestigationCoroutineIsRunning; // a bool that is used to check if the coroutine is running
-   
+    private SoundManager.EnemyStateWatcher _enemyStateWatcher;
+    
     /// <summary>
     /// Awake is called when the script instance is being loaded.
     /// </summary>
     void Awake()
     {
         _stateManager = GetComponent<EnemyAiStateManager>();
+        _enemyStateWatcher = GameObject.Find("EnemyStateWatcher").GetComponent<SoundManager.EnemyStateWatcher>();
     }
    
     /// <summary>
@@ -140,6 +142,6 @@ public class InvestigateState : MonoBehaviour
         if(_waitingAtWaypointDuringInvestigationCoroutineIsRunning)StopCoroutine(_waitingAtWaypointDuringInvestigationCoroutine);
         _waitingAtWaypointDuringInvestigationCoroutineIsRunning = false;
 
-        GameObject.Find("EnemyStateWatcher").GetComponent<SoundManager.EnemyStateWatcher>().isInvestegating(false);
+        _enemyStateWatcher.isInvestegating(false);
     }
 }
