@@ -47,6 +47,8 @@ public class PlaceObjectsLine : MonoBehaviour
     /// </summary>
     [Tooltip("The distance between the instantiated objects.")]
     [SerializeField] float spaceBetweenObjects = 3.0f;
+
+    [SerializeField] private bool _regenerate = true;
     
     /// <summary>
     /// The minimal distance between the instantiated objects.
@@ -83,8 +85,12 @@ public class PlaceObjectsLine : MonoBehaviour
     /// </summary>
     private void Update()
     {
+        if (!_regenerate) return;
+        
         if (_isPathCreatorNull) return;
         CreatePath();
+
+        _regenerate = false;
     }
 
     /// <summary>
