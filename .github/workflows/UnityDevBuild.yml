@@ -1,9 +1,6 @@
-name: UnityBuild
+name: UnityDevBuild
 
 on:
-  pull_request:
-    branches:
-      ['main', 'develop']
   workflow_dispatch: {}
 
 jobs:
@@ -50,9 +47,10 @@ jobs:
         with:
           targetPlatform: StandaloneWindows64
           versioning: Semantic
+          customParameters: -Development -AllowDebugging
 
       # Output
       - uses: actions/upload-artifact@v3
         with:
-          name: SafeHavenBuild
+          name: Build
           path: build

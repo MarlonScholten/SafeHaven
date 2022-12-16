@@ -1,3 +1,12 @@
+---
+name: Research issue template
+about: For research related issues
+title: TASK NAME HERE
+labels: research
+assignees: ''
+
+---
+
 # Subject: {Fill in yourself}
 ### Research question: {Fill in yourself}
 ## Description
