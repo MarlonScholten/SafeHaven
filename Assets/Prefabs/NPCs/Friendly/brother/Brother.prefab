@@ -53,7 +53,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 2
+  m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -74,8 +74,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _walkSpeed: 3
-  _colliderHeightStealth: 1
-  _colliderHeightBase: 2
+  _colliderHeightStealth: 0.5
+  _colliderHeightBase: 1
   _isInStealth: 0
   _stealthSpeed: 2
   _baseSpeed: 3.5

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using PlayerCharacter.States;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace PlayerCharacter.Movement
 {
@@ -60,6 +61,7 @@ namespace PlayerCharacter.Movement
     ///         <term>The Cinemachine collider will collide with anything on this layer, preventing clipping through objects and obstructing view of the player</term>
     ///	    </item>
     /// </list>
+    [RequireComponent(typeof(NavMeshObstacle))]
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] [Range(1f, 20f)] [Tooltip("How fast the character is able to move through the world")]
