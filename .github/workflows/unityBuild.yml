@@ -50,7 +50,6 @@ jobs:
         with:
           targetPlatform: StandaloneWindows64
           versioning: Semantic
-          customParameters: -Development -AllowDebugging
 
       # Output
       - uses: actions/upload-artifact@v3
