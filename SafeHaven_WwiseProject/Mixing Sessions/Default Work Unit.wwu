@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{A6E5B5F1-0B47-4609-9A93-D3D729D16B16}" SchemaVersion="103">
 	<MixingSessions>
-		<WorkUnit Name="Default Work Unit" ID="{A6E5B5F1-0B47-4609-9A93-D3D729D16B16}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{A6E5B5F1-0B47-4609-9A93-D3D729D16B16}" PersistMode="Standalone">
+			<ChildrenList>
+				<MixingSession Name="New Mixing Session" ID="{1BEF78C8-9E63-4ABF-BCC7-B28CCC27A6BA}">
+					<ObjectList>
+						<ObjectRef Name="SFX" ID="{DC6803C8-E376-4E53-8874-5A4177EC1378}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+						<ObjectRef Name="Music" ID="{1DBB9241-A231-454E-A04D-7BEAAAD3D644}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+						<ObjectRef Name="Ambient" ID="{691888D0-FE14-4467-BBE9-5FBD9C2E181F}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+						<ObjectRef Name="Footsteps" ID="{643284DC-418C-480B-9A5B-E9CC8E3A6BED}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+						<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+					</ObjectList>
+				</MixingSession>
+			</ChildrenList>
+		</WorkUnit>
 	</MixingSessions>
 </WwiseDocument>

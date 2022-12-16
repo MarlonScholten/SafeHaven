@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -30,7 +31,7 @@ public class MainMenu : MonoBehaviour
     
     [SerializeField]
     [Tooltip("The id from the scene to load when the start button is pressed. The scene needs to be added to the build settings, the id is the place of the scene in that list.")]
-    private int _startSceneId;
+    private List<int> _startSceneId;
 
     [Header("Loading screen")] 
     
@@ -88,6 +89,8 @@ public class MainMenu : MonoBehaviour
     [Tooltip("A reference to the settings menu UI prefab")]
     private GameObject _settingsMenu;
 
+    private int _scenesLoaded;
+
     private bool _wantsToLeave;
 
     private void Start()
@@ -109,9 +112,13 @@ public class MainMenu : MonoBehaviour
 
     private void OnStart()
     {
-        Instantiate(_loadingScreenPrefab);
+        Scene loadingScreenScene = SceneManager.CreateScene("LoadingScreenScene");
+        SceneManager.SetActiveScene(loadingScreenScene);
         
-        SceneManager.LoadSceneAsync(_startSceneId, LoadSceneMode.Single);
+        GameObject loadingScreenGameObject = Instantiate(_loadingScreenPrefab);
+        LoadingScreen loadingScreen = loadingScreenGameObject.GetComponent<LoadingScreen>();
+
+        loadingScreen.StartLoading(new List<int> {gameObject.scene.buildIndex}, _startSceneId);
     }
 
     private void OnLoad()

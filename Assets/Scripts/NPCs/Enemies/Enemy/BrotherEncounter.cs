@@ -41,7 +41,7 @@ public class BrotherEncounter : MonoBehaviour
     /// </summary>
     private void OnTriggerStay(Collider other)
     {
-        if (!other.gameObject.CompareTag("Brother")) return;
+        if (!other.gameObject.CompareTag("BrotherView")) return;
         var fearSystem = other.GetComponentInParent<FearSystem>();
         fearSystem.CheckEnemyEncounter(this.gameObject);
     }

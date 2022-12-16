@@ -1,4 +1,8 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 
 namespace InteractableItemsSystem
@@ -43,11 +47,46 @@ namespace InteractableItemsSystem
     ///         So the raycast is also casted on that layer.</term>
     ///     </item>
     /// </list>
+    [RequireComponent(typeof(Collider))]
     public class InteractableObject : MonoBehaviour
     {
         [Tooltip("Item ScriptableObject that is needed for interaction with object.")][SerializeField] 
         private ItemSO _itemNeededToInteract;
         [Tooltip("Determines if the name should be important or not.")][SerializeField] private bool _nameImportant;
+
+        [Tooltip("Event to listen to so that other scripts can be triggered when interacted with interactable object.")]
+        [SerializeField]
+        private UnityEvent _interactWithObjectEvent;
+
+        [Tooltip(
+            "Event to listen to so that other scripts can be triggered when interacted with interactable object is not possible, because the player has no items in his inventory.")]
+        [SerializeField]
+        private UnityEvent _canNotInteractWithObjectNoItemEvent;
+        [Tooltip(
+            "Event to listen to so that other scripts can be triggered when interacted with interactable object is not possible, because the player got the wrong item/wrong item sort in his inventory.")]
+        [SerializeField]
+        private UnityEvent _canNotInteractWithObjectWrongItemEvent;
+        [Tooltip(
+            "Event to listen to so that other scripts can be triggered when interacted with interactable object is not possible, because the player got an item with the wrong name in his inventory.")]
+        [SerializeField]
+        private UnityEvent _canNotInteractWithObjectWrongNameEvent;
+
+        /// <summary>
+        /// Trigger this event when the player can interact with the interactable object.
+        /// </summary>
+        public UnityEvent InteractWithObjectEvent => _interactWithObjectEvent;
+        /// <summary>
+        /// Trigger this event when the player can't interact, because the player has no items in his inventory.
+        /// </summary>
+        public UnityEvent CanNotInteractWithObjectNoItemEvent => _canNotInteractWithObjectNoItemEvent;
+        /// <summary>
+        /// Trigger this event when the player can't interact, because the player got the wrong item/wrong item sort in his inventory.
+        /// </summary>
+        public UnityEvent CanNotInteractWithObjectWrongItemEvent => _canNotInteractWithObjectWrongItemEvent;
+        /// <summary>
+        /// Trigger this event when the player can't interact, because the player got an item with the wrong name in his inventory.
+        /// </summary>
+        public UnityEvent CanNotInteractWithObjectWrongNameEvent => _canNotInteractWithObjectWrongNameEvent;
         
         /// <summary>
         /// Stores which item is needed for the player to interact with the object.
@@ -57,6 +96,36 @@ namespace InteractableItemsSystem
         /// Determines if the name should be important or not.
         /// </summary>
         public bool NameImportant => _nameImportant;
+
+        private void Start()
+        {
+            if (_itemNeededToInteract == null)
+            {
+                Debug.LogError("Item Needed To Interact in " + this + " has not been assigned!");
+            }
+        }
+        
+        
+        //These functions are only for testing the unity events, won't be used in finished product.
+        public static void InteractWithObject()
+        {
+            Debug.Log("Interacted");
+        }
+        
+        public static void CanNotInteractNoItem()
+        {
+            Debug.Log("No Item");
+        }
+        
+        public static void CanNotInteractWrongItem()
+        {
+            Debug.Log("Wrong Item");
+        }
+        
+        public static void CanNotInteractWrongName()
+        {
+            Debug.Log("Wrong Name");
+        }
     }
 }
 

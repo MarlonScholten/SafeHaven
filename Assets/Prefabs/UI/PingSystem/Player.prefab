@@ -114,11 +114,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 648a154739180634ea5b641fb9b1e33a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _camera: {fileID: 2672865519699567717, guid: 51027b5b3e498874da13157bbfd48bcc, type: 3}
+  _brother: {fileID: 0}
+  _camera: {fileID: 0}
   _markerPrefab: {fileID: 4852335383087449349, guid: 51f106024b02e1c4c98cb73e851ad245,
     type: 3}
-  _radialMenu: {fileID: 5349670134834561438, guid: c25b2e8594aa4c44682e5ba43f6d65d9,
-    type: 3}
+  _radialMenu: {fileID: 0}
+  durationMarkerVisible: 1
 --- !u!114 &2453363585952259596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,24 +132,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b75838c0c4093164da44f8be19742f20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _brother: {fileID: 0}
   _camera: {fileID: 2672865519699567717, guid: 51027b5b3e498874da13157bbfd48bcc, type: 3}
   _markerPrefab: {fileID: 4852335383087449349, guid: 51f106024b02e1c4c98cb73e851ad245,
     type: 3}
   _radialMenu: {fileID: 5349670134834561438, guid: c25b2e8594aa4c44682e5ba43f6d65d9,
     type: 3}
+  durationMarkerVisible: 1
   _highlightedOption: {fileID: 5825727684663592497, guid: 3c196c0359ac64148810681913ed85de,
     type: 3}
   _slowmotionFactor: 4
-  options:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  cancel: {fileID: 4628354478537861322, guid: 035f5a085dbf07d43bf2016c2a0b6476, type: 3}
-  radialMenuNormal: {r: 1, g: 1, b: 1, a: 1}
-  radialMenuOptionHovered: {r: 0.015686275, g: 0.33333334, b: 0.5294118, a: 1}
-  radialMenuCancel: {r: 0.5943396, g: 0, b: 0, a: 0.7607843}
+  _radialMenuNormal: {r: 0, g: 0, b: 0, a: 0}
+  _radialMenuOptionHovered: {r: 0, g: 0, b: 0, a: 0}
+  _radialMenuCancel: {r: 0, g: 0, b: 0, a: 0}
+  _options: []
+  _cancel: {fileID: 0}
 --- !u!114 &2453363585952259591
 MonoBehaviour:
   m_ObjectHideFlags: 0
