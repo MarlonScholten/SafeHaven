@@ -1,4 +1,7 @@
+using System.Collections;
+using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.Windows;
 
@@ -44,6 +47,12 @@ public class SettingsMenu : MonoBehaviour
     [SerializeField]
     [Tooltip("A reference to the button UI element that resets the keybindings")]
     private Button _resetKeybindingsButton;
+    
+    [SerializeField]
+    [Tooltip("A reference to the input actions asset")]
+    private InputActionAsset _controls;
+
+    private bool _confirmation = false;
 
     private void Start()
     {
@@ -64,9 +73,48 @@ public class SettingsMenu : MonoBehaviour
 
     private void CloseMenu()
     {
-        _previousMenu.SetActive(true);
+        // User accepts the keybindings unbound warning
+        if (_confirmation)
+        {
+            _previousMenu.SetActive(true);
+            Destroy(gameObject);
+            return;
+        }
+
+        // Check if keybindings are unbound
+        foreach (var inputBinding in _controls.FindActionMap("Player").bindings)
+        {
+            if (inputBinding.effectivePath == "")
+            {
+                TMP_Text exitText = _exitButton.GetComponentInChildren<TMP_Text>();
+                
+                exitText.SetText("You have unbound settings,\nare you sure you want to continue?");
+                exitText.color = Color.red;
+                exitText.fontSize = 16.0f;
+
+                _confirmation = true;
+                
+                StartCoroutine(ConfirmationTimeout());
+                return;
+            }
+        }
         
+        // All keybindings are bound
+        _previousMenu.SetActive(true);
         Destroy(gameObject);
+    }
+
+    private IEnumerator ConfirmationTimeout()
+    {
+        yield return new WaitForSeconds(3.0f);
+        
+        TMP_Text exitText = _exitButton.GetComponentInChildren<TMP_Text>();
+                
+        exitText.SetText("Back");
+        exitText.color = Color.white;
+        exitText.fontSize = 24.0f;
+
+        _confirmation = false;
     }
 
     private void ResetKeybindings()
