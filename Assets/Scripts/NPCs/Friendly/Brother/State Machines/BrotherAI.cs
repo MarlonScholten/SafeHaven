@@ -335,6 +335,7 @@ public class BrotherAI : MonoBehaviour
     /// </summary>
     public void HideExit()
     {
+        Debug.Log("Exit hide stealth state before: ");
         if (_isInStealth)
         {
             ToggleStealth();

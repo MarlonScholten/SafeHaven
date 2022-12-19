@@ -37,6 +37,8 @@ public class FindHidingSpot : MonoBehaviour
 
     [SerializeField , Tooltip("Please put the playerCamera in this field.")] private Camera _playerCamera;
 
+    private float viewRange = 30f;
+
     /// <summary>
     /// This script gahters all hiding spots and then calculates depending on the grade, distance and visibility to the enemy the best hiding spot for the brother.
     /// </summary> 
@@ -47,6 +49,7 @@ public class FindHidingSpot : MonoBehaviour
         foreach(var spot in hidingSpots)
         {
             // if (!CheckHidingSpotInView(spot)) continue;
+            if (Vector3.Distance(gameObject.transform.position, spot.transform.position) > viewRange) continue;
             // Now we calculate the obscurity value for the current hiding spot to be checked.
             HidingSpot hidingSpot = spot.GetComponent<HidingSpot>();
             CalculateObscurityValue(spot);
@@ -60,11 +63,10 @@ public class FindHidingSpot : MonoBehaviour
             // If a spot was found return the position of the hiding spot.
             return bestSpot.transform.position;
         }
-        else {
-            // If there wasn't a hiding spot near, go back to the follow state.
-            CustomEvent.Trigger(this.gameObject, "Follow");
-            return new Vector3();
-        }    
+
+        // If there wasn't a hiding spot near, go back to the follow state.
+        CustomEvent.Trigger(this.gameObject, "Follow");
+        return new Vector3();
     }
 
     /// <summary>
