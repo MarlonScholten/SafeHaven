@@ -57,7 +57,6 @@ namespace SoundManager
         {
             if (stopEvent.IsValid())
             {
-                Debug.Log("stop");
                 stopEvent.Post(_gameObject);
             }
             else
