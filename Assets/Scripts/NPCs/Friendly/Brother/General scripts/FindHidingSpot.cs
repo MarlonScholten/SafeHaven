@@ -51,7 +51,7 @@ public class FindHidingSpot : MonoBehaviour
             // Now we calculate the obscurity value for the current hiding spot to be checked.
             HidingSpot hidingSpot = spot.GetComponent<HidingSpot>();
             CalculateObscurityValue(spot);
-            // If there isn't currently not an bestpot this spot is automaticly the new best spot.
+            // If there isn't currently not an bestpot this spot is automaticaly the new best spot.
             // If there is an best spot it checks if the value is higher than the current best spot value.           
             if ((!bestSpotValue.Equals(-1)) && (!(bestSpotValue < hidingSpot._obscurityValue))) continue;
             bestSpot = spot;
