@@ -208,7 +208,7 @@ public class BrotherAI : MonoBehaviour
     /// <summary>
     /// This method checks if the path is completed.
     /// </summary>
-    private bool PathCompleted(){
+    public bool PathCompleted(){
         return _navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance + _pathEndThreshold;
     }
 
