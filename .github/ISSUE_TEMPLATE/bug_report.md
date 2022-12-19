@@ -26,6 +26,7 @@ If applicable, add screenshots to help explain your problem.
 **Desktop (please complete the following information):**
  - OS: [e.g. iOS]
  - Branch: [e.g. dev-prog]
+ - Scene: [e.g. TT3Level]
 
 **Additional context**
 Add any other context about the problem here.
