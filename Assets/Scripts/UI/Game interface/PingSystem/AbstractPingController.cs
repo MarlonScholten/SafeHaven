@@ -105,11 +105,7 @@ public abstract class AbstractPingController : MonoBehaviour
     /// <returns>Returns a WaitForSeconds.</returns>
     protected IEnumerator MarkerDuration(GameObject marker)
     {
-        //check if the player is at destination, if he is not, keep the marker
-        while (!_brotherAI.PathCompleted())
-        {
-            yield return null;
-        }
+        yield return new WaitForSeconds(durationMarkerVisible);
         Destroy(marker);
     }
 
