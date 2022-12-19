@@ -50,6 +50,7 @@ public class ChasingState : MonoBehaviour
     /// </summary>
     public void Enter_Chasing()
     {
+        //shows the current state as text above the enemy when this is enabled in the inspector.
         if (_stateManager.enemyAiScriptableObject.showCurrentState)
         {
             _stateManager.textMesh.text = "Chasing";

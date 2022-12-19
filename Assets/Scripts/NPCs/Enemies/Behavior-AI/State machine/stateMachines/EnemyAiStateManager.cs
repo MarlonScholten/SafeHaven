@@ -104,6 +104,8 @@ public class EnemyAiStateManager : MonoBehaviour
     
     private void Awake()
     {
+        
+        //Fetches if the option to show the state of the enemy is selected and makes it empty if not used.
         textMesh = GetComponentInChildren<TextMeshPro>();
         if (!enemyAiScriptableObject.showCurrentState)
         {

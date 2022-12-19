@@ -63,6 +63,7 @@ public class AlertedState : MonoBehaviour
     /// </summary>
     public void Enter_Alerted()
     {
+        //shows the current state as text above the enemy when this is enabled in the inspector.
         if (_stateManager.enemyAiScriptableObject.showCurrentState)
         {
             _stateManager.textMesh.text = "Alerted";
