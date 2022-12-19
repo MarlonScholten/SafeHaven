@@ -99,14 +99,22 @@ public abstract class AbstractPingController : MonoBehaviour
     }
 
     /// <summary>
-    /// Timer to destroy a ping marker after a set amount of time.
+    /// Timer to destroy a ping marker after the brother reached the ping position.
     /// </summary>
     /// <param name="marker">Reference to the marker that appeared after a ping.</param>
     /// <returns>Returns a WaitForSeconds.</returns>
     protected IEnumerator MarkerDuration(GameObject marker)
     {
-        yield return new WaitForSeconds(durationMarkerVisible);
-        Destroy(marker);
+        //check if the player is at destination, if he is not, keep the marker
+        while (!_brotherAI.PathCompleted())
+        {
+            yield return null;
+        }
+
+        if (_brotherAI.PathCompleted())
+        {
+            Destroy(marker);
+        }
     }
 
     /// <summary>
