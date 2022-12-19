@@ -35,9 +35,7 @@ public class FindHidingSpot : MonoBehaviour
     [SerializeField, Range(0.0f, 0.2f), Tooltip("This value determines the weight of the distance of the hiding spot.")] 
     private float _hidingSpotDistanceWeight = 0.05f;
 
-    [SerializeField , Tooltip("Please put the playerCamera in this field.")] private Camera _playerCamera;
-
-    [SerializeField]
+    [SerializeField, Range(0.0f, 50.0f), Tooltip("This value determines the maximum distance for an hidingSpot to be considered desirable.")]
     private float viewRange = 30f;
 
     /// <summary>
