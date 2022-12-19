@@ -50,6 +50,12 @@ public class ChasingState : MonoBehaviour
     /// </summary>
     public void Enter_Chasing()
     {
+        if (_stateManager.enemyAiScriptableObject.showCurrentState)
+        {
+            _stateManager.textMesh.text = "Chasing";
+            _stateManager.textMesh.color = Color.red;
+        }
+
         GameObject.Find("EnemyStateWatcher").GetComponent<SoundManager.EnemyStateWatcher>().isChasing(true);
     }
     

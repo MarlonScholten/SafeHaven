@@ -56,6 +56,12 @@ public class InvestigateState : MonoBehaviour
     /// </summary>
     public void Enter_Investigate()
     {
+        if (_stateManager.enemyAiScriptableObject.showCurrentState)
+        {
+            _stateManager.textMesh.text = "Investigate";
+            _stateManager.textMesh.color = Color.magenta;
+        }
+
         if (_stateManager.alertedBySound) _stateManager.CheckPositionReachable(_stateManager.locationOfNoise);
         else if(_stateManager.alertedByVision) _stateManager.CheckPositionReachable(_stateManager.spottedPlayerLastPosition);
         else if(_stateManager.alertedByGuard) _stateManager.CheckPositionReachable(_stateManager.recievedLocationFromGuard);

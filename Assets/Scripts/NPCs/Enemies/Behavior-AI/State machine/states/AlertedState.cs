@@ -63,6 +63,12 @@ public class AlertedState : MonoBehaviour
     /// </summary>
     public void Enter_Alerted()
     {
+        if (_stateManager.enemyAiScriptableObject.showCurrentState)
+        {
+            _stateManager.textMesh.text = "Alerted";
+            _stateManager.textMesh.color = Color.yellow;
+        }
+        
         //If the enemy is alerted by sound, it will look around for a few seconds
         if (_stateManager.alertedBySound || _stateManager.isGuard)
         {
