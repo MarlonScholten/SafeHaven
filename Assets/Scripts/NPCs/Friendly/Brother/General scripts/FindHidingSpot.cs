@@ -37,6 +37,7 @@ public class FindHidingSpot : MonoBehaviour
 
     [SerializeField , Tooltip("Please put the playerCamera in this field.")] private Camera _playerCamera;
 
+    [SerializeField]
     private float viewRange = 30f;
 
     /// <summary>
@@ -48,7 +49,6 @@ public class FindHidingSpot : MonoBehaviour
         float bestSpotValue = -1;
         foreach(var spot in hidingSpots)
         {
-            // if (!CheckHidingSpotInView(spot)) continue;
             if (Vector3.Distance(gameObject.transform.position, spot.transform.position) > viewRange) continue;
             // Now we calculate the obscurity value for the current hiding spot to be checked.
             HidingSpot hidingSpot = spot.GetComponent<HidingSpot>();
@@ -59,53 +59,13 @@ public class FindHidingSpot : MonoBehaviour
             bestSpot = spot;
             bestSpotValue = hidingSpot._obscurityValue;
         }
-        if(bestSpot != null){
-            // If a spot was found return the position of the hiding spot.
-            return bestSpot.transform.position;
-        }
 
-        // If there wasn't a hiding spot near, go back to the follow state.
-        CustomEvent.Trigger(this.gameObject, "Follow");
-        return new Vector3();
+        // If a spot was found return the position of the hiding spot.
+        return bestSpot != null ? bestSpot.transform.position :
+            // If there wasn't a hiding spot near, return empty vector.
+            new Vector3();
     }
 
-    /// <summary>
-    /// This function checks if the hidingspot is in the view of the camera. If so it returns true else it returns false.
-    /// </summary>
-    /// <param name="hidingSpot">The hiding spot to be checked if it is in the view.</param>
-    /// <returns>True for hidingspots in camera view, false if not in camera view</returns>
-    private bool CheckHidingSpotInView(GameObject hidingSpot){
-        var hidingSpotPosition = hidingSpot.transform.position;
-        Vector3 viewport = _playerCamera.WorldToViewportPoint(hidingSpotPosition);
-         var inCameraFrustum = IsBetween0And1(viewport.x) && IsBetween0And1(viewport.y);
-         var inFrontOfCamera = viewport.z > 0;
- 
-         RaycastHit depthCheck;
-         var objectBlockingPoint = false;
-
-         var cameraPosition = _playerCamera.transform.position;
-         Vector3 directionBetween = hidingSpotPosition - cameraPosition;
-         directionBetween = directionBetween.normalized;
- 
-         var distance = Vector3.Distance(cameraPosition, hidingSpotPosition);
- 
-         if(Physics.Raycast(_playerCamera.transform.position, directionBetween, out depthCheck, distance + 0.05f)) {
-             if(depthCheck.point != hidingSpot.transform.position) {
-                 objectBlockingPoint = true;
-             }
-         }
- 
-         return inCameraFrustum && inFrontOfCamera && !objectBlockingPoint;
-    }
-
-    /// <summary>
-    /// This function simply checks if an value is between 0 and 1.
-    /// </summary>
-    /// <param name="a">Value to be checked if it is between 0 and 1</param>
-    /// <returns>True for values between 0 and 1</returns>
-    private bool IsBetween0And1(float a) {
-         return (a > 0) && (a < 1);
-    }
 
     /// <summary>
     /// This function calculates the ObscurityValue for the hiding spot.
@@ -120,8 +80,6 @@ public class FindHidingSpot : MonoBehaviour
             hidingSpot._obscurityValue *= _hidingSpotInEnemyViewWeight;
         }
     }
-
-
 
     /// <summary>
     /// This function checks if the hiding spot is in the enemy fov.
