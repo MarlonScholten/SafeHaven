@@ -132,11 +132,35 @@ public class EnemyAiStateManager : MonoBehaviour
     {
         var foundObjects = Physics.OverlapSphere(transform.position, enemyAiScriptableObject.VisionRange);
         var player = GetPlayer(foundObjects);
+        // check if the player/brother is in immediateChaseRadius
+        if(player != null)Debug.Log("CheckVision");
+        if (player != null && Vector3.Distance(transform.position, player.transform.position) < enemyAiScriptableObject.ImmediateChaseRadius)
+        {
+            // raycast towards player object to check if it is in the vision of the enemy
+            Debug.Log("Player in range");
+            // draw a raycast to the player
+            Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.red);
+            if (Physics.Raycast(transform.position + new Vector3(0f, transform.lossyScale.y / 2, 0f), player.transform.position - transform.position, out var hit1, enemyAiScriptableObject.ImmediateChaseRadius))
+            {
+                Debug.Log("Check compareTag");
+                if (hit1.collider.CompareTag("Player") || hit1.collider.CompareTag("Brother"))
+                {
+                    
+                    spottedPlayer = hit1.collider.gameObject;
+                    spottedPlayerLastPosition = hit1.collider.transform.position;
+                    alertedByVision = true;
+                    alertedBySound = false;
+                    alertedByGuard = false;
+                    timePlayerLastSpotted = Time.time;
+                    Debug.Log("Player spotted");
+                    return true;
+                }
+            }
+        }
         if (player == null) return false;
         var transform1 = transform;
         var directionToPlayer = player.transform.position - transform1.position;
         var angleToPlayer = Vector3.Angle(transform1.forward, directionToPlayer);
-
         if (angleToPlayer >= enemyAiScriptableObject.VisionAngle)
             return false; // Check if the player is in set vision angle
         if (!Physics.Raycast(transform.position + new Vector3(0f, transform.lossyScale.y / 2, 0f), directionToPlayer,
