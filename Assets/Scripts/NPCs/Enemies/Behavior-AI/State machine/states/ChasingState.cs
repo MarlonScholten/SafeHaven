@@ -64,15 +64,11 @@ public class ChasingState : MonoBehaviour
             _stateManager.spottedPlayerLastPosition = _stateManager.spottedPlayer.transform.position;
             CustomEvent.Trigger(gameObject, "Investigate");
         }
-        //get distance between player/brother and enemy
-        float distance = Vector3.Distance(_stateManager.spottedPlayer.transform.position, transform.position);
-        //If the distance between the player/brother and enemy is less than the set distance, the enemy catches the player/brother.
-        if (distance < _stateManager.enemyAiScriptableObject.CatchDistance)
-        {
-            EnemyAiStateManager.CatchChild();
-        }
+        _stateManager.CheckForCatching();
     }
-    
+
+
+
     /// <summary>
     /// Fixed update chasing state
     /// </summary>

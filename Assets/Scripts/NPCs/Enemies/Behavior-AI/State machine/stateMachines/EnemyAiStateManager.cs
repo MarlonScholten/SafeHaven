@@ -132,31 +132,7 @@ public class EnemyAiStateManager : MonoBehaviour
     {
         var foundObjects = Physics.OverlapSphere(transform.position, enemyAiScriptableObject.VisionRange);
         var player = GetPlayer(foundObjects);
-        // check if the player/brother is in immediateChaseRadius
-        if(player != null)Debug.Log("CheckVision");
-        if (player != null && Vector3.Distance(transform.position, player.transform.position) < enemyAiScriptableObject.ImmediateChaseRadius)
-        {
-            // raycast towards player object to check if it is in the vision of the enemy
-            Debug.Log("Player in range");
-            // draw a raycast to the player
-            Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.red);
-            if (Physics.Raycast(transform.position + new Vector3(0f, transform.lossyScale.y / 2, 0f), player.transform.position - transform.position, out var hit1, enemyAiScriptableObject.ImmediateChaseRadius))
-            {
-                Debug.Log("Check compareTag");
-                if (hit1.collider.CompareTag("Player") || hit1.collider.CompareTag("Brother"))
-                {
-                    
-                    spottedPlayer = hit1.collider.gameObject;
-                    spottedPlayerLastPosition = hit1.collider.transform.position;
-                    alertedByVision = true;
-                    alertedBySound = false;
-                    alertedByGuard = false;
-                    timePlayerLastSpotted = Time.time;
-                    Debug.Log("Player spotted");
-                    return true;
-                }
-            }
-        }
+        if (CheckIfIsInImmediateChaseRadius(player)) return true;
         if (player == null) return false;
         var transform1 = transform;
         var directionToPlayer = player.transform.position - transform1.position;
@@ -175,6 +151,22 @@ public class EnemyAiStateManager : MonoBehaviour
         var hitPlayer = hit.collider.gameObject;
         spottedPlayer = hitPlayer;
         spottedPlayerLastPosition = hitPlayer.transform.position;
+        alertedByVision = true;
+        alertedBySound = false;
+        alertedByGuard = false;
+        timePlayerLastSpotted = Time.time;
+        return true;
+    }
+
+    private bool CheckIfIsInImmediateChaseRadius(Collider player)
+    {
+        if (player == null || Vector3.Distance(transform.position, player.transform.position) >= enemyAiScriptableObject.ImmediateChaseRadius) return false;
+        if (!Physics.Raycast(transform.position + new Vector3(0f, transform.lossyScale.y / 2, 0f),
+                player.transform.position - transform.position, out var hit1,
+                enemyAiScriptableObject.ImmediateChaseRadius)) return false;
+        if (!hit1.collider.CompareTag("Player") && !hit1.collider.CompareTag("Brother")) return false;
+        spottedPlayer = hit1.collider.gameObject;
+        spottedPlayerLastPosition = hit1.collider.transform.position;
         alertedByVision = true;
         alertedBySound = false;
         alertedByGuard = false;
@@ -254,5 +246,17 @@ public class EnemyAiStateManager : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation,
             Quaternion.LookRotation(target - transform.position),
             2 * Time.deltaTime);
+    }
+    /// <summary>
+    /// This method checks if the spotted Tag is in catchable range.
+    /// </summary>
+    public void CheckForCatching()
+    {
+        Debug.Log("Check for catching");
+        var distance = Vector3.Distance(spottedPlayer.transform.position, transform.position);
+        if (distance < enemyAiScriptableObject.CatchDistance)
+        {
+            CatchChild();
+        }
     }
 }

@@ -84,11 +84,15 @@ public class AlertedState : MonoBehaviour
     /// </summary>
     public void Update_Alerted()
     {
+        if (_stateManager.isGuard)
+        {
+            AlertOtherEnemies();
+            _stateManager.CheckForCatching();
+        }
         //stop if the coroutine is already running.
         if (_alertedCoroutineIsRunning) return;
         if (_stateManager.isGuard)
         {
-            AlertOtherEnemies();
             CustomEvent.Trigger(gameObject, "Patrol");
         }
         //If the enemy is alerted by sound it will investigate the sound.
