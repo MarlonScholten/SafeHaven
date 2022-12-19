@@ -150,7 +150,7 @@ namespace Bird
         {
             _distanceTravelled += _birdStateManager.birdScriptableObject.FlySpeed * Time.deltaTime;
             transform.position = path.path.GetPointAtDistance(_distanceTravelled, EndOfPathInstruction);
-            transform.rotation = path.path.GetRotationAtDistance(_distanceTravelled, EndOfPathInstruction);
+            transform.rotation = Quaternion.LookRotation(path.path.GetDirectionAtDistance(_distanceTravelled, EndOfPathInstruction), Vector3.up);
         }
 
         /// <summary>

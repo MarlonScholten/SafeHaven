@@ -71,6 +71,22 @@ namespace Bird
         /// Check of the _rotateCoroutine is running
         /// </summary>
         private bool _rotateCoroutineIsRunning;
+        
+        
+        /// <summary>
+        /// Coroutine for set that the bird can be alerted.
+        /// </summary>
+        private IEnumerator _alertCoroutine;
+
+        /// <summary>
+        /// Check if the alert coroutine is running.
+        /// </summary>
+        private bool _alertCoroutineIsRunning;
+
+        /// <summary>
+        /// Check if the bird can be alerted.
+        /// </summary>
+        private bool _canBeAlerted;
 
         /// <summary>
         /// The awake method is called when the script instance is being loaded.
@@ -85,6 +101,8 @@ namespace Bird
         /// </summary>
         public void Enter_Walking_State()
         {
+            _alertCoroutine = _birdStateManager.CallFunctionAfterSeconds(_birdStateManager.birdScriptableObject.TimeBetweenLadingAndAlert, () => _canBeAlerted = true);
+            StartCoroutine(_alertCoroutine);
             var position = transform.position;
             _birdStateManager.groundHeight = position.y;
             startPoint = position;
@@ -96,7 +114,7 @@ namespace Bird
         /// </summary>
         public void Update_Walking_State()
         {
-            if (_birdStateManager.CheckIfAlertingObjectsAreNearby(_birdStateManager.birdScriptableObject.AlertTags))
+            if (_birdStateManager.CheckIfAlertingObjectsAreNearby(_birdStateManager.birdScriptableObject.AlertTags) && _canBeAlerted)
             {
                 CustomEvent.Trigger(gameObject, "FlyingTowardsRestPoint");
             }
@@ -123,6 +141,9 @@ namespace Bird
             _birdStateManager.groundHeight = transform.position.y;
             if (_rotateCoroutineIsRunning) StopCoroutine(_rotateCoroutine);
             _rotateCoroutineIsRunning = false;
+            if(_alertCoroutineIsRunning) StopCoroutine(_alertCoroutine);
+            _alertCoroutineIsRunning = false;
+            _canBeAlerted = false;
         }
 
         /// <summary>
