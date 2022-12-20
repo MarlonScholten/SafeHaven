@@ -252,7 +252,6 @@ public class EnemyAiStateManager : MonoBehaviour
     /// </summary>
     public void CheckForCatching()
     {
-        Debug.Log("Check for catching");
         var distance = Vector3.Distance(spottedPlayer.transform.position, transform.position);
         if (distance < enemyAiScriptableObject.CatchDistance)
         {
