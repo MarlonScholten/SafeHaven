@@ -157,11 +157,22 @@ namespace PlayerCharacter.Movement
         private void Start()
         {
             InputBehaviour.Instance.OnToggleStealthEvent += Crouch;
+            InputBehaviour.Instance.OnRunningEvent += Running;
+            
             StartCoroutine(CastLookingRay());
             _velocityHash = Animator.StringToHash("forwardVelocity");
             _itemHeldHash = Animator.StringToHash("ItemHeld");
             _interactableObjectHash = Animator.StringToHash("InteractableObject");
             _stealthHash = Animator.StringToHash("Stealth");
+        }
+
+        private void Running()
+        {
+            Debug.Log("HEREEEEEEEEEEEE");
+            if(Input.anyKey)
+            {
+                Debug.Log(Input.inputString);
+            } 
         }
 
         private void OnDestroy()
