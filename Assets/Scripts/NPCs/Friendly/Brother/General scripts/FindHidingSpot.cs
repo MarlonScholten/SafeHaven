@@ -28,7 +28,6 @@ using Unity.VisualScripting;
 ///	    </item>
 /// </list>
 
-[RequireComponent(typeof(BrotherAI))]
 public class FindHidingSpot : MonoBehaviour
 {
     [SerializeField, Range(0.0f, 0.1f), Tooltip("This value determines by how much the hiding spot gets multiplied if it is in an enemy view")] 

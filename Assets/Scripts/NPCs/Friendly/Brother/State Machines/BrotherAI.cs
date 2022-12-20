@@ -47,7 +47,7 @@ using UnityEngine.AI;
 ///	    </item>
 /// </list>
 
-
+[RequireComponent(typeof(FindHidingSpot),typeof(FearSystem))]
 public class BrotherAI : MonoBehaviour
 {
     /// <summary>
