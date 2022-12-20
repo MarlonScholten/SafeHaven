@@ -57,7 +57,7 @@ public class ChasingState : MonoBehaviour
             _stateManager.textMesh.color = Color.red;
         }
 
-        GameObject.Find("EnemyStateWatcher").GetComponent<SoundManager.EnemyStateWatcher>().isChasing(true);
+        GameObject.Find("EnemyStateWatcher").GetComponent<SoundManager.EnemyStateWatcher>().IsChasing(true);
     }
     
     /// <summary>
@@ -76,7 +76,7 @@ public class ChasingState : MonoBehaviour
         //If the distance between the player/brother and enemy is less than the set distance, the enemy catches the player/brother.
         if (distance < _stateManager.enemyAiScriptableObject.CatchDistance)
         {
-            EnemyAiStateManager.CatchChild();
+            _stateManager.CatchChild(_stateManager.spottedPlayer);
         }
     }
     
@@ -99,6 +99,6 @@ public class ChasingState : MonoBehaviour
     {
         //Reset spotted player/brother.
 
-        _enemyStateWatcher.isChasing(false);
+        _enemyStateWatcher.IsChasing(false);
     }
 }

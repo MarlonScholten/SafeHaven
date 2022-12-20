@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using NPC;
+using SoundManager;
 using TMPro;
 using Unity.VisualScripting;
 
@@ -100,18 +101,20 @@ public class EnemyAiStateManager : MonoBehaviour
     [NonSerialized] public float timePlayerLastSpotted; // Time when the enemy last spotted the player/brother
     
     [NonSerialized] public TextMeshPro textMesh; // TextMesh component for state visualization
-    
-    
+
+    private EnemyStateWatcher _enemyStateWatcher;
+
+
     private void Awake()
     {
-        
         //Fetches if the option to show the state of the enemy is selected and makes it empty if not used.
         textMesh = GetComponentInChildren<TextMeshPro>();
         if (!enemyAiScriptableObject.showCurrentState)
         {
             textMesh.text = "";
         }
-        
+
+        _enemyStateWatcher = GameObject.Find("EnemyStateWatcher").GetComponent<SoundManager.EnemyStateWatcher>();
     }
 
     private void Update()
@@ -239,12 +242,15 @@ public class EnemyAiStateManager : MonoBehaviour
     }
 
     ///<summary>
-    /// This method catches the child (reloads the scene for now).
+    /// This method catches the child, and invokes the corresponding <see cref="OnSisterCaught"/> and <see cref="OnBrotherCaught"/> events.
     ///</summary>
-    public static void CatchChild()
+    public void CatchChild(GameObject child)
     {
-        GameObject.Find("EnemyStateWatcher").GetComponent<SoundManager.EnemyStateWatcher>().StopSound();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        // Invoke the correct caught event.
+        if (child.CompareTag("Brother"))
+            _enemyStateWatcher.OnBrotherCaught();
+        else if (child.CompareTag("Sister"))
+            _enemyStateWatcher.OnSisterCaught();
     }
 
     /// <summary>
