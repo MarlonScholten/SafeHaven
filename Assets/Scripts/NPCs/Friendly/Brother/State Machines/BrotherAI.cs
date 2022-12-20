@@ -95,6 +95,12 @@ public class BrotherAI : MonoBehaviour
     [SerializeField] private float _followDistance = 1.5f;
 
     /// <summary>
+    /// This value determines the max distance between the brother and player.
+    /// If distance is greater than this distance, the brother will follow again.
+    /// </summary>
+    [Range(10.0f, 30.0f), Tooltip(" This value determines the max distance between the brother and player. If distance is greater than this distance, the brother will follow again.")]
+    public float _brotherRange = 20f;
+    /// <summary>
     /// This value determines the range in wich a path considers to be completed to get to the next state.
     /// </summary>
     private const float _pathEndThreshold = 0.1f;
@@ -123,7 +129,7 @@ public class BrotherAI : MonoBehaviour
     /// This is the sister (the player)
     /// </summary>
     private GameObject _player;
-
+    
     
     /// <summary>
     /// This contains a reference to the playerController script
@@ -196,6 +202,11 @@ public class BrotherAI : MonoBehaviour
     {
         _animator.SetFloat(_velocityHash, _navMeshAgent.velocity.magnitude);
         _animator.SetBool(_stealthHash, _isInStealth);
+        
+        if (Vector3.Distance(_player.transform.position, transform.position) > _brotherRange)
+        {
+            CallBrother();
+        }
     }
 
     /// <summary>
