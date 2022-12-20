@@ -2,7 +2,7 @@
 name: Board Task Template
 about: Custom board task template
 title: TASK NAME HERE
-labels: bug, programming, research
+labels: programming
 assignees: ''
 
 ---
