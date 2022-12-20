@@ -86,7 +86,7 @@ public class BrotherAI : MonoBehaviour
     /// </summary>
     [Range(2.0f, 10.0f), Tooltip("This value determines the maximum walkspeed of the brother when not in stealth.")]
     [SerializeField]
-    private float _baseSpeed = 7f;
+    private float _baseSpeed = 5f;
 
     /// <summary>
     /// This value determines the following distance of the brother.
@@ -158,16 +158,17 @@ public class BrotherAI : MonoBehaviour
     /// </summary>
     private void OnStealthEvent()
     {
-        if (_playerController.GetCrouching() == _isInStealth)
-        {
-            ToggleStealth();
-        }
+        // if (_playerController.GetCrouching() == _isInStealth)
+        // {
+        //     ToggleStealth();
+        // }
+        ToggleStealth(_playerController.GetCrouching());
     }
 
-    private void ToggleStealth()
+    private void ToggleStealth(bool stealth)
     {
-        _isInStealth = !_isInStealth;
-
+        //_isInStealth = !_isInStealth;
+        _isInStealth = stealth;
         if (_isInStealth)
         {
             _capsuleCollider.SetCapsuleCollider(_colliderHeightStealth, 0, 0.25f, 0);
@@ -300,7 +301,7 @@ public class BrotherAI : MonoBehaviour
         MoveToLocation(_findHidingSpot.FindBestHidingSpot(), _walkSpeed);
         if (!_isInStealth)
         {
-            ToggleStealth();
+            ToggleStealth(true);
         }
     }
 
@@ -325,7 +326,7 @@ public class BrotherAI : MonoBehaviour
     {
         if (_isInStealth)
         {
-            ToggleStealth();
+            ToggleStealth(false);
         }
     }
 
@@ -419,8 +420,7 @@ public class BrotherAI : MonoBehaviour
     public void PassiveHideExit(){
         if (_isInStealth)
         {
-            ToggleStealth();
+            ToggleStealth(false);
         }
     }
-
 }

@@ -143,8 +143,8 @@ namespace PlayerCharacter.Movement
         private Vector2 _smooth;
 
         private const float StealthSpeed = 2.0f;
-        private const float MoveSpeed = 5.0f;
-        private const float RunningSpeed = 10.0f;
+        private const float MoveSpeed = 4.0f;
+        private const float RunningSpeed = 6.0f;
 
         private bool _running;
 
@@ -179,20 +179,17 @@ namespace PlayerCharacter.Movement
             _running = true;
             _crouching = false;
                 
-            ColliderStealthAnimation();
-            _movementSpeed = RunningSpeed;
-        }
-
-        private void ColliderStealthAnimation()
-        {
             _animator.SetBool("Stealth", _crouching);
 
             _crouchCollider.SetActive(_crouching);
             _standCollider.SetActive(!_crouching);
+            
+            _movementSpeed = RunningSpeed;
         }
 
         private void RunningCancelled()
         {
+            _running = false;
             _movementSpeed = MovementSpeed;
         }
 
@@ -230,10 +227,14 @@ namespace PlayerCharacter.Movement
         /// </summary>
         private void Crouch()
         {
+            if (_running.Equals(true)) return;
             _crouching = !_crouching;
             _running = false;
 
-            ColliderStealthAnimation();
+            _animator.SetBool("Stealth", _crouching);
+
+            _crouchCollider.SetActive(_crouching);
+            _standCollider.SetActive(!_crouching);
 
             if (_crouching)
                 _movementSpeed = StealthSpeed;
