@@ -164,6 +164,7 @@ namespace PlayerCharacter.Movement
         {
             InputBehaviour.Instance.OnToggleStealthEvent += Crouch;
             InputBehaviour.Instance.OnRunningEvent += Running;
+            InputBehaviour.Instance.OnRunningCancelledEvent += RunningCancelled;
             
             StartCoroutine(CastLookingRay());
             _velocityHash = Animator.StringToHash("forwardVelocity");
@@ -174,19 +175,25 @@ namespace PlayerCharacter.Movement
 
         private void Running()
         {
-            if (IsMoving())
-            {
-                _running = true;
-                _crouching = false;
+            if (!IsMoving()) return;
+            _running = true;
+            _crouching = false;
                 
-                _animator.SetBool("Stealth", _crouching);
+            ColliderStealthAnimation();
+            _movementSpeed = RunningSpeed;
+        }
 
-                _crouchCollider.SetActive(!_crouching);
-                _standCollider.SetActive(_crouching);
-                
-                _movementSpeed = RunningSpeed;
-                Debug.Log("SPEED" + _movementSpeed);
-            }
+        private void ColliderStealthAnimation()
+        {
+            _animator.SetBool("Stealth", _crouching);
+
+            _crouchCollider.SetActive(_crouching);
+            _standCollider.SetActive(!_crouching);
+        }
+
+        private void RunningCancelled()
+        {
+            _movementSpeed = MovementSpeed;
         }
 
         private void OnDestroy()
@@ -226,10 +233,7 @@ namespace PlayerCharacter.Movement
             _crouching = !_crouching;
             _running = false;
 
-            _animator.SetBool("Stealth", _crouching);
-
-            _crouchCollider.SetActive(_crouching);
-            _standCollider.SetActive(!_crouching);
+            ColliderStealthAnimation();
 
             if (_crouching)
                 _movementSpeed = StealthSpeed;
