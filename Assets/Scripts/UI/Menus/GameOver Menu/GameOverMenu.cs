@@ -1,10 +1,24 @@
+using SoundManager;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameOverMenu : MonoBehaviour
 {
-    [Header("References")]
+    /// <summary>
+    /// Sets and returns the corresponding <see cref="TMP_Text"/> element, which displays the game over message.
+    /// </summary>
+    public string GameOverMessage
+    {
+        get => _message.text;
+        set => _message.text = value;
+    }
+
+    [SerializeField]
+    [Tooltip("The game over message, will change depending on the state of the game.")]
+    private TMP_Text _message;
+
     [SerializeField]
     [Tooltip("The retry, 'start again' button. Should restart the level.")]
     private Button _retry;
@@ -22,6 +36,13 @@ public class GameOverMenu : MonoBehaviour
     [Tooltip("The id from the scene to load when the main menu button is pressed. The scene needs to be added to the build settings, the id is the place of the scene in that list.")]
     private int _mainMenuSceneId;
 
+    private EnemyStateWatcher _enemyStateWatcher;
+
+    private void Awake()
+    {
+        _enemyStateWatcher = FindObjectOfType<EnemyStateWatcher>();
+    }
+
     private void Start()
     {
         _retry.onClick.AddListener(OnRetry);
@@ -32,13 +53,14 @@ public class GameOverMenu : MonoBehaviour
 
     private void OnRetry()
     {
-
+        _enemyStateWatcher.StopSound();
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void OnReturn()
     {
         Instantiate(_loadingScreen);
-        GameObject.Find("EnemyStateWatcher").GetComponent<SoundManager.EnemyStateWatcher>().StopSound();
+        _enemyStateWatcher.StopSound();
         SceneManager.LoadSceneAsync(_mainMenuSceneId, LoadSceneMode.Single);
     }
 }

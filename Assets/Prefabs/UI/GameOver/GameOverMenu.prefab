@@ -388,7 +388,7 @@ GameObject:
   - component: {fileID: 1549644247499934832}
   - component: {fileID: 2617489471377919672}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Retry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -611,6 +611,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7df31acbb0edac142aed2c095cf365a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _message: {fileID: 4665606819360922456}
+  _retry: {fileID: 2617489471377919672}
+  _return: {fileID: 3573023341044306389}
+  _loadingScreen: {fileID: 5102930339703117343, guid: 5f5b70e973bc54d4fb5f5ac113a0f0a7,
+    type: 3}
+  _mainMenuSceneId: 0
 --- !u!1 &8347609108779387624
 GameObject:
   m_ObjectHideFlags: 0
@@ -759,7 +765,7 @@ GameObject:
   - component: {fileID: 1820704120858568143}
   - component: {fileID: 3573023341044306389}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Return
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

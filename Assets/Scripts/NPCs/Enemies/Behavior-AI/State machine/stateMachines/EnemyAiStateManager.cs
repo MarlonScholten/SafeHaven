@@ -114,7 +114,7 @@ public class EnemyAiStateManager : MonoBehaviour
             textMesh.text = "";
         }
 
-        _enemyStateWatcher = GameObject.Find("EnemyStateWatcher").GetComponent<SoundManager.EnemyStateWatcher>();
+        _enemyStateWatcher = FindObjectOfType<EnemyStateWatcher>();
     }
 
     private void Update()
@@ -242,15 +242,15 @@ public class EnemyAiStateManager : MonoBehaviour
     }
 
     ///<summary>
-    /// This method catches the child, and invokes the corresponding <see cref="OnSisterCaught"/> and <see cref="OnBrotherCaught"/> events.
+    /// This method catches the child, and invokes the corresponding <see cref="EnemyStateWatcher.OnSisterCaught"/> and <see cref="EnemyStateWatcher.OnBrotherCaught"/> events with the help of a relay.
     ///</summary>
     public void CatchChild(GameObject child)
     {
         // Invoke the correct caught event.
         if (child.CompareTag("Brother"))
-            _enemyStateWatcher.OnBrotherCaught();
-        else if (child.CompareTag("Sister"))
-            _enemyStateWatcher.OnSisterCaught();
+            _enemyStateWatcher.BrotherCaught();
+        else if (child.CompareTag("Player"))
+            _enemyStateWatcher.SisterCaught();
     }
 
     /// <summary>

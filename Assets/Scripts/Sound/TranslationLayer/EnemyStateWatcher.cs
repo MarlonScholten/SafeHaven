@@ -37,6 +37,14 @@ namespace SoundManager
         public event EnemyStateWachterEvent OnZeroInvestegating;
         public event EnemyStateWachterEvent OnZeroChasing;
         public event EnemyStateWachterEvent StopIt;
+        /// <summary>
+        /// Sister caught event, fires when sister is caught.
+        /// </summary>
+        public event EnemyStateWachterEvent OnSisterCaught;
+        /// <summary>
+        /// Brother caught event, fires when brother is caught.
+        /// </summary>
+        public event EnemyStateWachterEvent OnBrotherCaught;
 
         /// <summary>
         /// Invoke the stop sound event
@@ -94,14 +102,14 @@ namespace SoundManager
             }
         }
 
-        public void OnSisterCaught()
-        {
+        /// <summary>
+        /// Relays the caught event to a centralized component like <see cref="EnemyStateWatcher"/>. See <see cref="EnemyAiStateManager.CatchChild(GameObject)"/> for documentation.
+        /// </summary>
+        public void SisterCaught() => OnSisterCaught?.Invoke();
 
-        }
-
-        public void OnBrotherCaught()
-        {
-
-        }
+        /// <summary>
+        /// Relays the caught event to a centralized component like <see cref="EnemyStateWatcher"/>. See <see cref="EnemyAiStateManager.CatchChild(GameObject)"/> for documentation.
+        /// </summary>
+        public void BrotherCaught() => OnBrotherCaught?.Invoke();
     }
 }
