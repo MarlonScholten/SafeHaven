@@ -142,6 +142,12 @@ namespace PlayerCharacter.Movement
         private Vector2 _current;
         private Vector2 _smooth;
 
+        private const float StealthSpeed = 2.0f;
+        private const float MoveSpeed = 5.0f;
+        private const float RunningSpeed = 10.0f;
+
+        private bool _running = false;
+
         private void Awake()
         {
             _states = new PlayerStateFactory(this);
@@ -168,11 +174,19 @@ namespace PlayerCharacter.Movement
 
         private void Running()
         {
-            Debug.Log("HEREEEEEEEEEEEE");
-            if(Input.anyKey)
+            if (IsMoving())
             {
-                Debug.Log(Input.inputString);
-            } 
+                _running = true;
+                _crouching = false;
+                
+                _animator.SetBool("Stealth", _crouching);
+
+                _crouchCollider.SetActive(!_crouching);
+                _standCollider.SetActive(_crouching);
+                
+                _movementSpeed = RunningSpeed;
+                Debug.Log("SPEED" + _movementSpeed);
+            }
         }
 
         private void OnDestroy()
@@ -210,13 +224,19 @@ namespace PlayerCharacter.Movement
         private void Crouch()
         {
             _crouching = !_crouching;
+            _running = false;
 
             _animator.SetBool("Stealth", _crouching);
 
             _crouchCollider.SetActive(_crouching);
             _standCollider.SetActive(!_crouching);
 
-            _movementSpeed = _crouching ? 2f : 5f;
+            if (_crouching)
+                _movementSpeed = StealthSpeed;
+            else if (_running)
+                _movementSpeed = RunningSpeed;
+            else 
+                _movementSpeed = MoveSpeed;
         }
 
         /// <summary>
