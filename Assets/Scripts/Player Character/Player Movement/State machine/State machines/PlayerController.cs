@@ -146,7 +146,7 @@ namespace PlayerCharacter.Movement
         private const float MoveSpeed = 5.0f;
         private const float RunningSpeed = 10.0f;
 
-        private bool _running = false;
+        private bool _running;
 
         private void Awake()
         {

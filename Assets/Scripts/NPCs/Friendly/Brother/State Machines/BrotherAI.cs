@@ -153,18 +153,6 @@ public class BrotherAI : MonoBehaviour
     }
 
     /// <summary>
-    /// In the fixedUpdate the animations variables are updated.
-    /// </summary>
-    ///
-    void Awake()
-    {
-        /* _navMeshAgent = GetComponent<NavMeshAgent>();
-        _findHidingSpot = gameObject.GetComponent<FindHidingSpot>();
-        _player = GameObject.FindGameObjectWithTag("Player"); */
-        //TODO: add initializer state for Awake function and remove this form the enter state
-    }
-
-    /// <summary>
     /// When the player presses the stealth button, this method gets called to determine if the brother should enter stealth mode.
     /// It slows the player and decreases the collider size when in stealth mode.
     /// </summary>
