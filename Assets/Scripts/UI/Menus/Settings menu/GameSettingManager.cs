@@ -22,6 +22,22 @@ using UnityEngine;
 /// </list>
 public class GameSettingManager : MonoBehaviour
 {
+    [SerializeField]
+    [Tooltip("A reference to the Wwise RTPC for the music volume")]
+    private AK.Wwise.RTPC _musicVolume;
+    
+    [SerializeField]
+    [Tooltip("A reference to the Wwise RTPC for the SFX volume")]
+    private AK.Wwise.RTPC _sfxVolume;
+    
+    [SerializeField]
+    [Tooltip("A reference to the Wwise RTPC for the footsteps volume")]
+    private AK.Wwise.RTPC _footstepsVolume;
+
+    [SerializeField]
+    [Tooltip("Show debug logs for audio settings")]
+    private bool _debugAudioSettings = true;
+    
     private void Start()
     {
         ApplySettings();
@@ -32,8 +48,6 @@ public class GameSettingManager : MonoBehaviour
     /// </summary>
     public void ApplySettings()
     {
-        AudioListener.volume = PlayerPrefs.GetFloat("Volume", 0.75f);
-        
         float sensitivity = Mathf.Max(0.1f , PlayerPrefs.GetFloat("Sensitivity", 1.0f) * 4.0f);
         
         var cameras = FindObjectsOfType<CinemachineFreeLook>();
@@ -42,5 +56,21 @@ public class GameSettingManager : MonoBehaviour
             cinemachineFreeLook.m_XAxis.m_MaxSpeed = 2f * sensitivity;
             cinemachineFreeLook.m_YAxis.m_MaxSpeed = 0.02f * sensitivity;
         }
+        
+        ApplyAudioSettings();
+    }
+
+    private void ApplyAudioSettings()
+    {
+        if (_debugAudioSettings)
+        {
+            Debug.Log("Music volume set to " + PlayerPrefs.GetFloat("Music", 1.0f) * 100.0f);
+            Debug.Log("SFX volume set to " + PlayerPrefs.GetFloat("SFX", 1.0f) * 100.0f);
+            Debug.Log("Footsteps volume set to " + PlayerPrefs.GetFloat("Footsteps", 1.0f) * 100.0f);
+        }
+        
+        _musicVolume.SetGlobalValue(PlayerPrefs.GetFloat("Music", 1.0f) * 100.0f);
+        _sfxVolume.SetGlobalValue(PlayerPrefs.GetFloat("SFX", 1.0f) * 100.0f);
+        _footstepsVolume.SetGlobalValue(PlayerPrefs.GetFloat("Footsteps", 1.0f) * 100.0f);
     }
 }
