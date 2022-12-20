@@ -61,7 +61,7 @@ namespace Bird
         /// <summary>
         /// The rest point that the bird is currently going to.
         /// </summary>
-        [NonSerialized] public Transform restPoint;
+        [NonSerialized] public GameObject restPoint;
 
         /// <summary>
         /// The last rest point that the bird was at.

@@ -71,7 +71,7 @@ namespace Bird
         {
             // get rotation of _birdStateManager.restPoint
 
-            transform.rotation = _birdStateManager.restPoint.rotation;
+            transform.rotation = _birdStateManager.restPoint.transform.rotation;
             _sittingCoroutineIsRunning = true;
             _sittingCoroutine = _birdStateManager.CallFunctionAfterSeconds(
                 _birdStateManager.birdScriptableObject.TimeAtRestPoint,
@@ -108,6 +108,7 @@ namespace Bird
         {
             if (_sittingCoroutineIsRunning) StopCoroutine(_sittingCoroutine);
             _sittingCoroutineIsRunning = false;
+            _birdStateManager.restPoint.GetComponent<BirdRestPointVariables>().isBirdOnRestPoint = false;
         }
     }
 }
