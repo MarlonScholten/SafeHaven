@@ -107,6 +107,12 @@ public class InputBehaviour : MonoBehaviour
     public event InputBehaviourEvent OnRunningEvent;
 
     /// <summary>
+    /// 'Enter & Exit running mode.'
+    /// Uses (SHIFT) Control as the action key.
+    /// </summary>
+    public event InputBehaviourEvent OnRunningCancelledEvent;
+
+    /// <summary>
     /// 'Gets past an obstacle.'
     /// Uses Space as the action key.
     /// </summary>
@@ -143,7 +149,19 @@ public class InputBehaviour : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context) => _onMoveVector = context.ReadValue<Vector2>();
     public void OnLook(InputAction.CallbackContext context) => _onLookVector = context.ReadValue<Vector2>();
-    public void OnRunning(InputAction.CallbackContext context) => OnRunningEvent?.Invoke();
+    public void OnRunning(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            OnRunningEvent?.Invoke();
+        }
+        else if (context.canceled)
+        {
+            OnRunningCancelledEvent?.Invoke();
+        }
+
+    }
+
     public void OnThrow(InputAction.CallbackContext context)
     {
         if (context.canceled)
