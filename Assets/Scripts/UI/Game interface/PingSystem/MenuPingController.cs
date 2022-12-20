@@ -257,7 +257,8 @@ public class MenuPingController : AbstractPingController
         _playerRayCastHit = GetComponent<PlayerController>().CamRayCastHit;
         if (_playerRayCastHit.point == Vector3.zero) return;
         _radialMenuIsSetActive = true;
-        Cursor.lockState = CursorLockMode.None;
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
 
         SetPingPosition(_playerRayCastHit.point);
 
@@ -287,6 +288,8 @@ public class MenuPingController : AbstractPingController
     private void CloseRadialMenu()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        
         _radialMenuIsSetActive = false;
         _radialMenu.SetActive(_radialMenuIsSetActive);
 
