@@ -131,11 +131,11 @@ public class EnemyAiStateManager : MonoBehaviour
     public bool CheckVision()
     {
         var foundObjects = Physics.OverlapSphere(transform.position, enemyAiScriptableObject.VisionRange);
-        var player = GetPlayer(foundObjects);
-        if (CheckIfIsInImmediateChaseRadius(player)) return true;
-        if (player == null) return false;
+        var playerOrBrother = GetPlayerOrBrotherOutOfColliderList(foundObjects);
+        if (CheckIfIsInImmediateChaseRadius(playerOrBrother)) return true;
+        if (playerOrBrother == null) return false;
         var transform1 = transform;
-        var directionToPlayer = player.transform.position - transform1.position;
+        var directionToPlayer = playerOrBrother.transform.position - transform1.position;
         var angleToPlayer = Vector3.Angle(transform1.forward, directionToPlayer);
         if (angleToPlayer >= enemyAiScriptableObject.VisionAngle)
             return false; // Check if the player is in set vision angle
@@ -179,7 +179,7 @@ public class EnemyAiStateManager : MonoBehaviour
     /// <param name="objects">Collided objects.</param>
     /// <returns>The player/brother collider if exists.</returns>
     /// </summary>
-    private static Collider GetPlayer(IEnumerable<Collider> objects)
+    private static Collider GetPlayerOrBrotherOutOfColliderList(IEnumerable<Collider> objects)
     {
         return objects.FirstOrDefault(
             obj => obj.gameObject.CompareTag("Player") || obj.gameObject.CompareTag("Brother"));
