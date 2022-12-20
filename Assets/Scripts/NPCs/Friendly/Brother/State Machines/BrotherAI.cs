@@ -84,9 +84,9 @@ public class BrotherAI : MonoBehaviour
     /// <summary>
     /// This value represents the speed the brother must move at when not in stealth.
     /// </summary>
-    [Range(2.0f, 4.0f), Tooltip("This value determines the maximum walkspeed of the brother when not in stealth.")]
+    [Range(2.0f, 10.0f), Tooltip("This value determines the maximum walkspeed of the brother when not in stealth.")]
     [SerializeField]
-    private float _baseSpeed = 3.5f;
+    private float _baseSpeed = 7f;
 
     /// <summary>
     /// This value determines the following distance of the brother.
