@@ -119,30 +119,36 @@ namespace Bird
         /// </summary>
         private GameObject GetClosestRestPoint()
         {
-            var restPoints = GameObject.FindGameObjectsWithTag("BirdRestPoint");
-            GameObject closest = null;
-            var distance = Mathf.Infinity;
-            var position = transform.position; 
-            foreach (var restPointObject in restPoints.Select(rp => rp))
+            var numberOfChecks = 0;
+            while (true)
             {
-                if(restPointObject.GetComponent<BirdRestPointVariables>().isBirdOnRestPoint) continue;
-                if (restPointObject.transform.position == transform.position) continue;
-                if (_birdStateManager.lastRestPoints.Contains(restPointObject.transform.position)) continue;
-                var diff = restPointObject.transform.position - position;
-                var curDistance = diff.sqrMagnitude;
-                if (curDistance >= distance) continue;
-                closest = restPointObject;
-                distance = curDistance;
-            }
-            if(closest == null)
-            {
-                _birdStateManager.lastRestPoints = new List<Vector3>();
-                return GetClosestRestPoint();
-            }
+                var restPoints = GameObject.FindGameObjectsWithTag("BirdRestPoint");
+                GameObject closest = null;
+                var distance = Mathf.Infinity;
+                var position = transform.position;
+                foreach (var restPointObject in restPoints.Select(rp => rp))
+                {
+                    if (restPointObject.GetComponent<BirdRestPointVariables>().isBirdOnRestPoint && numberOfChecks < 1) continue;
+                    if (restPointObject.transform.position == transform.position) continue;
+                    if (_birdStateManager.lastRestPoints.Contains(restPointObject.transform.position)) continue;
+                    var diff = restPointObject.transform.position - position;
+                    var curDistance = diff.sqrMagnitude;
+                    if (curDistance >= distance) continue;
+                    closest = restPointObject;
+                    distance = curDistance;
+                }
 
-            closest.GetComponent<BirdRestPointVariables>().isBirdOnRestPoint = true;
-            _birdStateManager.lastRestPoints.Add(closest.transform.position);
-            return closest;
+                if (closest == null)
+                {
+                    numberOfChecks++;
+                    _birdStateManager.lastRestPoints = new List<Vector3>();
+                    continue;
+                }
+
+                closest.GetComponent<BirdRestPointVariables>().isBirdOnRestPoint = true;
+                _birdStateManager.lastRestPoints.Add(closest.transform.position);
+                return closest;
+            }
         }
 
         /// <summary>
