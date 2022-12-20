@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Material_Grass
+  m_Shader: {fileID: -6465566751694194690, guid: 2692d6e7bdcdd064c9ae14cd5bfc8837,
+    type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 2
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _SampleTexture2DLOD_3b475d9244854443996659b5605e37b9_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 453e3bebc6c5adc4a8aee5f4a34d79de, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2DLOD_7aff5ea1896c4e4e907de5be9f21e448_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 453e3bebc6c5adc4a8aee5f4a34d79de, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_5044b3184ff54151a3a6a8dc0af17bed_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 71741e12aeeb3494290d69e47c7f4a9c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_5ba680f773b94971922576298f8f0630_Texture_1:
+        m_Texture: {fileID: 2800000, guid: ff1719a984e6fc44986c44cfbb2d377e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _MacroWindMagnitude: 1
+    - _MacroWindSpeed: 1
+    - _MicroWindMagnitude: 0.5
+    - _MicroWindSpeed: 2.5
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _WindDirection: 114.7
+    m_Colors:
+    - _Color: {r: 0, g: 0.49019605, b: 0.10980386, a: 0}
+    - _ColorHighlight: {r: 0, g: 0.7843137, b: 0.17647055, a: 0}
+  m_BuildTextureStacks: []
+--- !u!114 &7353194066035437625
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 5
