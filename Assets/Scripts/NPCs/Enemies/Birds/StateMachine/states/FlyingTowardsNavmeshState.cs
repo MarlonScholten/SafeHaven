@@ -79,6 +79,7 @@ namespace Bird
         /// </summary>
         public void Enter_Flying_Towards_Navmesh_State()
         {
+            _birdStateManager.animator.SetInteger("state", 2);
             _destinationAtNavmesh = GetPointOnNavmesh();
             _path = _birdStateManager.CreatePathToClosestPointOnGivenPath(_destinationAtNavmesh);
         }

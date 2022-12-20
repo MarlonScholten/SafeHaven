@@ -77,11 +77,17 @@ namespace Bird
         /// Save the game object so it can be deleted from the scene
         /// </summary>
         [NonSerialized] public GameObject pathGameObject;
+        
+        /// <summary>
+        /// The animator component.
+        /// </summary>
+        [NonSerialized] public Animator animator;
 
         private void Awake()
         {
             navMeshAgent = GetComponent<NavMeshAgent>();
             lastRestPoints = new List<Vector3>();
+            animator = GetComponent<Animator>();
         }
 
         /// <summary>

@@ -67,7 +67,7 @@ namespace Bird
         /// </summary>
         public void Awake()
         {
-            _birdStateManager = GetComponent<BirdStateManager>();
+            _birdStateManager = GetComponentInChildren<BirdStateManager>();
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace Bird
         /// </summary>
         public void Enter_Flying_Towards_Rest_Point_State()
         {
-
+            _birdStateManager.animator.SetInteger("state", 2);
             DetachFromNavmesh();
             _birdStateManager.restPoint = GetClosestRestPoint();
             _path = _birdStateManager.CreatePathToClosestPointOnGivenPath(_birdStateManager.restPoint.transform.position);

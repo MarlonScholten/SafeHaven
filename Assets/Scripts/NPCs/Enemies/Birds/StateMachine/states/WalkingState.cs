@@ -101,6 +101,7 @@ namespace Bird
         /// </summary>
         public void Enter_Walking_State()
         {
+            _birdStateManager.animator.SetInteger("state", 1);
             _alertCoroutine = _birdStateManager.CallFunctionAfterSeconds(_birdStateManager.birdScriptableObject.TimeBetweenLadingAndAlert, () => _canBeAlerted = true);
             StartCoroutine(_alertCoroutine);
             var position = transform.position;
