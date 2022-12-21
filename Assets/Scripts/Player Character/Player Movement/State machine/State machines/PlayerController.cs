@@ -64,6 +64,17 @@ namespace PlayerCharacter.Movement
     [RequireComponent(typeof(NavMeshObstacle))]
     public class PlayerController : MonoBehaviour
     {
+        /// <summary>
+        /// The event handler for <see cref="PlayerController"/>.
+        /// </summary>
+        /// <param name="sender"></param>
+        public delegate void PlayerControllerEvent(object sender);
+
+        /// <summary>
+        /// The <see cref="OnStealthToggle"/> event of the player, fires when the player presses the crouch button.
+        /// </summary>
+        public event PlayerControllerEvent OnStealthToggle;
+
         [SerializeField] [Range(1f, 20f)] [Tooltip("How fast the character is able to move through the world")]
         private float _movementSpeed = 5f;
 
@@ -240,10 +251,11 @@ namespace PlayerCharacter.Movement
         {
             if (_running.Equals(true)) return;
             _crouching = !_crouching;
+
+            OnStealthToggle?.Invoke(_crouching);
+
             _running = false;
-
             _animator.SetBool("Stealth", _crouching);
-
             _crouchCollider.SetActive(_crouching);
             _standCollider.SetActive(!_crouching);
 
@@ -310,9 +322,9 @@ namespace PlayerCharacter.Movement
         /// <summary>
         /// Allows other scripts to see if the player is crouching
         /// </summary>
-        public bool GetCrouching()
-        {
-            return _crouching;
-        }
+        //public bool GetCrouching()
+        //{
+        //    return _crouching;
+        //}
     }
 }

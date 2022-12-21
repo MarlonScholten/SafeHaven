@@ -131,6 +131,12 @@ public class BrotherAI : MonoBehaviour
     /// A bool to check if this is the first time the script has started
     /// </summary>
     private bool _firstStart = true;
+
+    /// <summary>
+    /// Governs if the little brother should be allowed to go into stealth upon the player's invokation of <see cref="OnStealthEvent(object)"/>.
+    /// </summary>
+    private bool _canStealth = true;
+
     private Animator _animator;
     private int _velocityHash;
     private int _itemHeldHash;
@@ -142,7 +148,7 @@ public class BrotherAI : MonoBehaviour
     /// </summary>
     void Start(){
         InputBehaviour.Instance.OnCallBrotherEvent += CallBrother;
-        InputBehaviour.Instance.OnToggleStealthEvent += OnStealthEvent;
+        _playerController.OnStealthToggle += OnStealthEvent;
         _velocityHash = Animator.StringToHash("forwardVelocity");
         _itemHeldHash = Animator.StringToHash("ItemHeld");
         _interactableObjectHash = Animator.StringToHash("InteractableObject");
@@ -153,9 +159,10 @@ public class BrotherAI : MonoBehaviour
     /// When the player presses the stealth button, this method gets called to determine if the brother should enter stealth mode.
     /// It slows the player and decreases the collider size when in stealth mode.
     /// </summary>
-    private void OnStealthEvent()
+    private void OnStealthEvent(object sender)
     {
-        ToggleStealth(_playerController.GetCrouching());
+        if (sender is bool stealth)
+            ToggleStealth(stealth);
     }
 
     /// <summary>
@@ -164,6 +171,10 @@ public class BrotherAI : MonoBehaviour
     /// /// <param name="isPlayerInStealth">Bool to know if the player is in stealth or not. Based on that the brother goes in stealth or not.</param>
     private void ToggleStealth(bool isPlayerInStealth)
     {
+        // Return if the brother is doing an action that prevents him from going in and out of stealth upon the player's crouch invokation.
+        if (!_canStealth)
+            return;
+
         _isInStealth = isPlayerInStealth;
         if (_isInStealth)
         {
@@ -303,6 +314,10 @@ public class BrotherAI : MonoBehaviour
     public void HideEnter()
     {
         MoveToLocation(_findHidingSpot.FindBestHidingSpot(), _walkSpeed);
+
+        // Disallow manual stealth/crouch requests.
+        _canStealth = false;
+
         if (!_isInStealth)
         {
             ToggleStealth(true);
@@ -333,6 +348,9 @@ public class BrotherAI : MonoBehaviour
         {
             ToggleStealth(false);
         }
+
+        // Allow manual stealth/crouch requests.
+        _canStealth = true;
     }
 
     /// <summary>
