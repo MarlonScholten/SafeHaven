@@ -157,12 +157,12 @@ public class EnemyAiStateManager : MonoBehaviour
     public bool CheckVision()
     {
         var foundObjects = Physics.OverlapSphere(transform.position, enemyAiScriptableObject.VisionRange);
-        var player = GetPlayer(foundObjects);
-        if (player == null) return false;
+        var playerOrBrother = GetPlayerOrBrotherOutOfColliderList(foundObjects);
+        if (CheckIfIsInImmediateChaseRadius(playerOrBrother)) return true;
+        if (playerOrBrother == null) return false;
         var transform1 = transform;
-        var directionToPlayer = player.transform.position - transform1.position;
+        var directionToPlayer = playerOrBrother.transform.position - transform1.position;
         var angleToPlayer = Vector3.Angle(transform1.forward, directionToPlayer);
-
         if (angleToPlayer >= enemyAiScriptableObject.VisionAngle)
             return false; // Check if the player is in set vision angle
         if (!Physics.Raycast(transform.position + new Vector3(0f, transform.lossyScale.y / 2, 0f), directionToPlayer,
@@ -184,12 +184,28 @@ public class EnemyAiStateManager : MonoBehaviour
         return true;
     }
 
+    private bool CheckIfIsInImmediateChaseRadius(Collider player)
+    {
+        if (player == null || Vector3.Distance(transform.position, player.transform.position) >= enemyAiScriptableObject.ImmediateChaseRadius) return false;
+        if (!Physics.Raycast(transform.position + new Vector3(0f, transform.lossyScale.y / 2, 0f),
+                player.transform.position - transform.position, out var hit1,
+                enemyAiScriptableObject.ImmediateChaseRadius)) return false;
+        if (!hit1.collider.CompareTag("Player") && !hit1.collider.CompareTag("Brother")) return false;
+        spottedPlayer = hit1.collider.gameObject;
+        spottedPlayerLastPosition = hit1.collider.transform.position;
+        alertedByVision = true;
+        alertedBySound = false;
+        alertedByGuard = false;
+        timePlayerLastSpotted = Time.time;
+        return true;
+    }
+
     /// <summary>
     /// This method check if the player/brother is in the list of colliders.
     /// <param name="objects">Collided objects.</param>
     /// <returns>The player/brother collider if exists.</returns>
     /// </summary>
-    private static Collider GetPlayer(IEnumerable<Collider> objects)
+    private static Collider GetPlayerOrBrotherOutOfColliderList(IEnumerable<Collider> objects)
     {
         return objects.FirstOrDefault(
             obj => obj.gameObject.CompareTag("Player") || obj.gameObject.CompareTag("Brother"));
@@ -256,5 +272,16 @@ public class EnemyAiStateManager : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation,
             Quaternion.LookRotation(target - transform.position),
             2 * Time.deltaTime);
+    }
+    /// <summary>
+    /// This method checks if the spotted Tag is in catchable range.
+    /// </summary>
+    public void CheckForCatching()
+    {
+        var distance = Vector3.Distance(spottedPlayer.transform.position, transform.position);
+        if (distance < enemyAiScriptableObject.CatchDistance)
+        {
+            CatchChild();
+        }
     }
 }
