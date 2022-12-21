@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Language="SFX" Hash="2225696624">
+		<SoundBank Id="1355168291" Language="SFX" Hash="372892678">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
@@ -20,6 +20,7 @@
 				<GameParameter Id="1006694123" Name="Music_Volume" ObjectPath="\Game Parameters\Default Work Unit\Music_Volume"/>
 				<GameParameter Id="1564184899" Name="SFX_Volume" ObjectPath="\Game Parameters\Default Work Unit\SFX_Volume"/>
 				<GameParameter Id="3538560642" Name="Voice_Volume" ObjectPath="\Game Parameters\Default Work Unit\Voice_Volume"/>
+				<GameParameter Id="4179668880" Name="Master_Volume" ObjectPath="\Game Parameters\Default Work Unit\Master_Volume"/>
 			</GameParameters>
 		</SoundBank>
 		<SoundBank Id="2607556080" Language="SFX" Hash="915402758">
@@ -42,7 +43,7 @@
 				<Event Id="3945748993" Name="Stop_Menu_Music" ObjectPath="\Events\Default Work Unit\Menu\Music\Stop_Menu_Music" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 			</IncludedEvents>
 		</SoundBank>
-		<SoundBank Id="3161908922" Language="English(US)" Hash="37646803">
+		<SoundBank Id="3161908922" Language="English(US)" Hash="2917584060">
 			<ObjectPath>\SoundBanks\Default Work Unit\Main</ObjectPath>
 			<ShortName>Main</ShortName>
 			<Path>English(US)\Main.bnk</Path>
@@ -202,7 +203,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="1104522247" Name="Play_Scene1" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene1\Play_Scene1" DurationType="OneShot" DurationMin="2.204535" DurationMax="5.">
+				<Event Id="1104522247" Name="Play_Scene1" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene1\Play_Scene1" DurationType="OneShot" DurationMin="1.63805" DurationMax="5.">
 					<IncludedMemoryFiles>
 						<File Id="14219814" Language="English(US)">
 							<ShortName>Scene 1-2 Samoya.wav</ShortName>
@@ -250,7 +251,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="2858274612" Name="Play_Scene11" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene11\Play_Scene11" DurationType="OneShot" DurationMin="3.5" DurationMax="3.5">
+				<Event Id="2858274612" Name="Play_Scene11" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene11\Play_Scene11" DurationType="OneShot" DurationMin="3.659546" DurationMax="3.659546">
 					<IncludedMemoryFiles>
 						<File Id="889051793" Language="English(US)">
 							<ShortName>Scene 11-1 Samoya.wav</ShortName>
@@ -258,7 +259,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="2858274615" Name="Play_Scene12" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene12\Play_Scene12" DurationType="OneShot" DurationMin="2.29" DurationMax="2.29">
+				<Event Id="2858274615" Name="Play_Scene12" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene12\Play_Scene12" DurationType="OneShot" DurationMin="1.63805" DurationMax="1.63805">
 					<IncludedMemoryFiles>
 						<File Id="662914978" Language="English(US)">
 							<ShortName>Scene 12-1 Samoya.wav</ShortName>
@@ -266,11 +267,11 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="1104522244" Name="Play_Scene2" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene2\Play_Scene2" DurationType="OneShot" DurationMin="1.645624" DurationMax="1.95">
+				<Event Id="1104522244" Name="Play_Scene2" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene2\Play_Scene2" DurationType="OneShot" DurationMin="1.63805" DurationMax="1.95">
 					<IncludedMemoryFiles>
-						<File Id="796677914" Language="English(US)">
-							<ShortName>Scene 2-2 Nova.wav</ShortName>
-							<Path>Voices\English(US)\Scene 2-2 Nova_10C4C929.wem</Path>
+						<File Id="837867106" Language="English(US)">
+							<ShortName>Scene 2-2 Samoya.wav</ShortName>
+							<Path>Voices\English(US)\Scene 2-2 Samoya_10C4C929.wem</Path>
 						</File>
 						<File Id="911333310" Language="English(US)">
 							<ShortName>Scene 2-1 Samoya.wav</ShortName>
@@ -326,7 +327,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="1104522240" Name="Play_Scene6" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene6\Play_Scene6" DurationType="OneShot" DurationMin="2.5" DurationMax="4.31">
+				<Event Id="1104522240" Name="Play_Scene6" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene6\Play_Scene6" DurationType="OneShot" DurationMin="1.63805" DurationMax="4.31">
 					<IncludedMemoryFiles>
 						<File Id="205936441" Language="English(US)">
 							<ShortName>Scene 6-3 Nova.wav</ShortName>
@@ -430,334 +431,6 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="2917536103" Name="Play_Scene_10_1_1_Samoya" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene10\Play_Scene_10_1_1_Samoya" DurationType="OneShot" DurationMin="2.225215" DurationMax="2.225215">
-					<IncludedMemoryFiles>
-						<File Id="958667224" Language="English(US)">
-							<ShortName>Scene 10-1-1 Samoya.wav</ShortName>
-							<Path>Voices\English(US)\Scene 10-1-1 Samoya_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="56258654" Name="Play_Scene_10_2_1_Samoya" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene10\Play_Scene_10_2_1_Samoya" DurationType="OneShot" DurationMin="2.12" DurationMax="2.12">
-					<IncludedMemoryFiles>
-						<File Id="807644913" Language="English(US)">
-							<ShortName>Scene 10-2-1 Samoya.wav</ShortName>
-							<Path>Voices\English(US)\Scene 10-2-1 Samoya_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="775191851" Name="Play_Scene_10_2_2_Nova" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene10\Play_Scene_10_2_2_Nova" DurationType="OneShot" DurationMin="2.6261" DurationMax="2.6261">
-					<IncludedMemoryFiles>
-						<File Id="171087633" Language="English(US)">
-							<ShortName>Scene 10-2-2 Nova.wav</ShortName>
-							<Path>Voices\English(US)\Scene 10-2-2 Nova_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="4010749632" Name="Play_Scene_10_2_3_Samoya" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene10\Play_Scene_10_2_3_Samoya" DurationType="OneShot" DurationMin="2.378549" DurationMax="2.378549">
-					<IncludedMemoryFiles>
-						<File Id="721712852" Language="English(US)">
-							<ShortName>Scene 10-2-3 Samoya.wav</ShortName>
-							<Path>Voices\English(US)\Scene 10-2-3 Samoya_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="1217970497" Name="Play_Scene_10_2_4_Nova" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene10\Play_Scene_10_2_4_Nova" DurationType="OneShot" DurationMin="3.19" DurationMax="3.19">
-					<IncludedMemoryFiles>
-						<File Id="893888051" Language="English(US)">
-							<ShortName>Scene 10-2-4 Nova.wav</ShortName>
-							<Path>Voices\English(US)\Scene 10-2-4 Nova_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="980162386" Name="Play_Scene_10_2_5_Samoya" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene10\Play_Scene_10_2_5_Samoya" DurationType="OneShot" DurationMin="2.655918" DurationMax="2.655918">
-					<IncludedMemoryFiles>
-						<File Id="1036006912" Language="English(US)">
-							<ShortName>Scene 10-2-5 Samoya.wav</ShortName>
-							<Path>Voices\English(US)\Scene 10-2-5 Samoya_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="1113723655" Name="Play_Scene_10_2_6_Nova" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene10\Play_Scene_10_2_6_Nova" DurationType="OneShot" DurationMin="1.44" DurationMax="1.44">
-					<IncludedMemoryFiles>
-						<File Id="952531526" Language="English(US)">
-							<ShortName>Scene 10-2-6 Nova.wav</ShortName>
-							<Path>Voices\English(US)\Scene 10-2-6 Nova_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="3439453260" Name="Play_Scene_11_1_Samoya" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene11\Play_Scene_11_1_Samoya" DurationType="OneShot" DurationMin="3.5" DurationMax="3.5">
-					<IncludedMemoryFiles>
-						<File Id="889051793" Language="English(US)">
-							<ShortName>Scene 11-1 Samoya.wav</ShortName>
-							<Path>Voices\English(US)\Scene 11-1 Samoya_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="1913157017" Name="Play_Scene_12_1_Samoya" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene12\Play_Scene_12_1_Samoya" DurationType="OneShot" DurationMin="2.29" DurationMax="2.29">
-					<IncludedMemoryFiles>
-						<File Id="662914978" Language="English(US)">
-							<ShortName>Scene 12-1 Samoya.wav</ShortName>
-							<Path>Voices\English(US)\Scene 12-1 Samoya_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="2649539219" Name="Play_Scene_1_1_Nova" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene1\Play_Scene_1_1_Nova" DurationType="OneShot" DurationMin="5." DurationMax="5.">
-					<IncludedMemoryFiles>
-						<File Id="858678185" Language="English(US)">
-							<ShortName>Scene 1-1 Nova.wav</ShortName>
-							<Path>Voices\English(US)\Scene 1-1 Nova_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="3274224790" Name="Play_Scene_1_2_Samoya" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene1\Play_Scene_1_2_Samoya" DurationType="OneShot" DurationMin="2.204535" DurationMax="2.204535">
-					<IncludedMemoryFiles>
-						<File Id="14219814" Language="English(US)">
-							<ShortName>Scene 1-2 Samoya.wav</ShortName>
-							<Path>Voices\English(US)\Scene 1-2 Samoya_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="1519770701" Name="Play_Scene_1_3_Nova" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene1\Play_Scene_1_3_Nova" DurationType="OneShot" DurationMin="2.931927" DurationMax="2.931927">
-					<IncludedMemoryFiles>
-						<File Id="417299471" Language="English(US)">
-							<ShortName>Scene 1-3 Nova.wav</ShortName>
-							<Path>Voices\English(US)\Scene 1-3 Nova_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="3084340994" Name="Play_Scene_2_1_Samoya" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene2\Play_Scene_2_1_Samoya" DurationType="OneShot" DurationMin="1.95" DurationMax="1.95">
-					<IncludedMemoryFiles>
-						<File Id="911333310" Language="English(US)">
-							<ShortName>Scene 2-1 Samoya.wav</ShortName>
-							<Path>Voices\English(US)\Scene 2-1 Samoya_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="4250740055" Name="Play_Scene_2_2_Nova" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene2\Play_Scene_2_2_Nova" DurationType="OneShot" DurationMin="1.645624" DurationMax="1.645624">
-					<IncludedMemoryFiles>
-						<File Id="796677914" Language="English(US)">
-							<ShortName>Scene 2-2 Nova.wav</ShortName>
-							<Path>Voices\English(US)\Scene 2-2 Nova_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="3393948672" Name="Play_Scene_3_1_Soldier1" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene3\Play_Scene_3_1_Soldier1" DurationType="OneShot" DurationMin="2.807551" DurationMax="2.807551">
-					<IncludedMemoryFiles>
-						<File Id="469133648" Language="English(US)">
-							<ShortName>Scene 3-1 Soldier1.wav</ShortName>
-							<Path>Voices\English(US)\Scene 3-1 Soldier1_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="2369167746" Name="Play_Scene_3_2_Soldier2" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene3\Play_Scene_3_2_Soldier2" DurationType="OneShot" DurationMin="4.65" DurationMax="4.65">
-					<IncludedMemoryFiles>
-						<File Id="589497124" Language="English(US)">
-							<ShortName>Scene 3-2 Soldier2.wav</ShortName>
-							<Path>Voices\English(US)\Scene 3-2 Soldier2_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="641482734" Name="Play_Scene_3_3_Soldier1" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene3\Play_Scene_3_3_Soldier1" DurationType="OneShot" DurationMin="5.61" DurationMax="5.61">
-					<IncludedMemoryFiles>
-						<File Id="907075062" Language="English(US)">
-							<ShortName>Scene 3-3 Soldier1.wav</ShortName>
-							<Path>Voices\English(US)\Scene 3-3 Soldier1_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="1030327484" Name="Play_Scene_3_4_Soldier2" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene3\Play_Scene_3_4_Soldier2" DurationType="OneShot" DurationMin="4.147233" DurationMax="4.147233">
-					<IncludedMemoryFiles>
-						<File Id="235943088" Language="English(US)">
-							<ShortName>Scene 3-4 Soldier2.wav</ShortName>
-							<Path>Voices\English(US)\Scene 3-4 Soldier2_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="1763189452" Name="Play_Scene_3_5_Soldier1" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene3\Play_Scene_3_5_Soldier1" DurationType="OneShot" DurationMin="5." DurationMax="5.">
-					<IncludedMemoryFiles>
-						<File Id="714256079" Language="English(US)">
-							<ShortName>Scene 3-5 Soldier1.wav</ShortName>
-							<Path>Voices\English(US)\Scene 3-5 Soldier1_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="3862166974" Name="Play_Scene_3_6_Soldier2" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene3\Play_Scene_3_6_Soldier2" DurationType="OneShot" DurationMin="2.264172" DurationMax="2.264172">
-					<IncludedMemoryFiles>
-						<File Id="872796647" Language="English(US)">
-							<ShortName>Scene 3-6 Soldier2.wav</ShortName>
-							<Path>Voices\English(US)\Scene 3-6 Soldier2_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="3243105953" Name="Play_Scene_4_1_Soldier1" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene4\Play_Scene_4_1_Soldier1" DurationType="OneShot" DurationMin="3.906349" DurationMax="3.906349">
-					<IncludedMemoryFiles>
-						<File Id="234982618" Language="English(US)">
-							<ShortName>Scene 4-1 Soldier1.wav</ShortName>
-							<Path>Voices\English(US)\Scene 4-1 Soldier1_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="4288708131" Name="Play_Scene_4_2_Soldier2" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene4\Play_Scene_4_2_Soldier2" DurationType="OneShot" DurationMin="2.278095" DurationMax="2.278095">
-					<IncludedMemoryFiles>
-						<File Id="848797450" Language="English(US)">
-							<ShortName>Scene 4-2 Soldier2.wav</ShortName>
-							<Path>Voices\English(US)\Scene 4-2 Soldier2_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="3972607570" Name="Play_Scene_5_2_Nova" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene5\Play_Scene_5_2_Nova" DurationType="OneShot" DurationMin="2.005465" DurationMax="2.005465">
-					<IncludedMemoryFiles>
-						<File Id="556244115" Language="English(US)">
-							<ShortName>Scene 5-2 Nova.wav</ShortName>
-							<Path>Voices\English(US)\Scene 5-2 Nova_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="1988492078" Name="Play_Scene_6_1_Samoya" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene6\Play_Scene_6_1_Samoya" DurationType="OneShot" DurationMin="2.5" DurationMax="2.5">
-					<IncludedMemoryFiles>
-						<File Id="980856784" Language="English(US)">
-							<ShortName>Scene 6-1 Samoya.wav</ShortName>
-							<Path>Voices\English(US)\Scene 6-1 Samoya_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="367624923" Name="Play_Scene_6_2_Nova" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene6\Play_Scene_6_2_Nova" DurationType="OneShot" DurationMin="3." DurationMax="3.">
-					<IncludedMemoryFiles>
-						<File Id="1072788648" Language="English(US)">
-							<ShortName>Scene 6-2 Nova.wav</ShortName>
-							<Path>Voices\English(US)\Scene 6-2 Nova_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="3790913612" Name="Play_Scene_6_3_Nova" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene6\Play_Scene_6_3_Nova" DurationType="OneShot" DurationMin="4.31" DurationMax="4.31">
-					<IncludedMemoryFiles>
-						<File Id="205936441" Language="English(US)">
-							<ShortName>Scene 6-3 Nova.wav</ShortName>
-							<Path>Voices\English(US)\Scene 6-3 Nova_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="242375997" Name="Play_Scene_7_1_Nova" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene7\Play_Scene_7_1_Nova" DurationType="OneShot" DurationMin="7.34" DurationMax="7.34">
-					<IncludedMemoryFiles>
-						<File Id="1004051367" Language="English(US)">
-							<ShortName>Scene 7-1 Nova.wav</ShortName>
-							<Path>Voices\English(US)\Scene 7-1 Nova_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="2718412340" Name="Play_Scene_7_2_Nova" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene7\Play_Scene_7_2_Nova" DurationType="OneShot" DurationMin="2.276349" DurationMax="2.276349">
-					<IncludedMemoryFiles>
-						<File Id="819375132" Language="English(US)">
-							<ShortName>Scene 7-2 Nova.wav</ShortName>
-							<Path>Voices\English(US)\Scene 7-2 Nova_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="3016798637" Name="Play_Scene_8_1_1_Soldier1" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene8\Scene8-1\Play_Scene_8_1_1_Soldier1" DurationType="OneShot" DurationMin="2.5" DurationMax="2.5">
-					<IncludedMemoryFiles>
-						<File Id="560258610" Language="English(US)">
-							<ShortName>Scene 8-1-1 Soldier1.wav</ShortName>
-							<Path>Voices\English(US)\Scene 8-1-1 Soldier1_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="3077350719" Name="Play_Scene_8_1_2_Soldier2" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene8\Scene8-1\Play_Scene_8_1_2_Soldier2" DurationType="OneShot" DurationMin="1.4" DurationMax="1.4">
-					<IncludedMemoryFiles>
-						<File Id="979341660" Language="English(US)">
-							<ShortName>Scene 8-1-2 Soldier2.wav</ShortName>
-							<Path>Voices\English(US)\Scene 8-1-2 Soldier2_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="790123375" Name="Play_Scene_8_1_3_Soldier1" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene8\Scene8-1\Play_Scene_8_1_3_Soldier1" DurationType="OneShot" DurationMin="4.62" DurationMax="4.62">
-					<IncludedMemoryFiles>
-						<File Id="680509314" Language="English(US)">
-							<ShortName>Scene 8-1-3 Soldier1.wav</ShortName>
-							<Path>Voices\English(US)\Scene 8-1-3 Soldier1_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="1755263576" Name="Play_Scene_8_2_1_Soldier1" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene8\Scene8-2\Play_Scene_8_2_1_Soldier1" DurationType="OneShot" DurationMin="4.387393" DurationMax="4.387393">
-					<IncludedMemoryFiles>
-						<File Id="135794846" Language="English(US)">
-							<ShortName>Scene 8-2-1 Soldier1.wav</ShortName>
-							<Path>Voices\English(US)\Scene 8-2-1 Soldier1_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="1061444858" Name="Play_Scene_8_2_2_Soldier2" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene8\Scene8-2\Play_Scene_8_2_2_Soldier2" DurationType="OneShot" DurationMin="2.203197" DurationMax="2.203197">
-					<IncludedMemoryFiles>
-						<File Id="766855694" Language="English(US)">
-							<ShortName>Scene 8-2-2 Soldier2.wav</ShortName>
-							<Path>Voices\English(US)\Scene 8-2-2 Soldier2_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="2275525651" Name="Play_Scene_8_3_1_Soldier1" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene8\Scene8-3\Play_Scene_8_3_1_Soldier1" DurationType="OneShot" DurationMin="4.29" DurationMax="4.29">
-					<IncludedMemoryFiles>
-						<File Id="135804781" Language="English(US)">
-							<ShortName>Scene 8-3-1 Soldier1.wav</ShortName>
-							<Path>Voices\English(US)\Scene 8-3-1 Soldier1_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="1633134751" Name="Play_Scene_8_3_2_Samoya" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene8\Scene8-3\Play_Scene_8_3_2_Samoya" DurationType="OneShot" DurationMin="1.79" DurationMax="1.79">
-					<IncludedMemoryFiles>
-						<File Id="265231330" Language="English(US)">
-							<ShortName>Scene 8-3-2 Samoya.wav</ShortName>
-							<Path>Voices\English(US)\Scene 8-3-2 Samoya_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="704830160" Name="Play_Scene_8_3_3_Nova" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene8\Scene8-3\Play_Scene_8_3_3_Nova" DurationType="OneShot" DurationMin="1.34" DurationMax="1.34">
-					<IncludedMemoryFiles>
-						<File Id="514266116" Language="English(US)">
-							<ShortName>Scene 8-3-3 Nova.wav</ShortName>
-							<Path>Voices\English(US)\Scene 8-3-3 Nova_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="2501978334" Name="Play_Scene_8_4_1_Soldier1" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene8\Scene8-4\Play_Scene_8_4_1_Soldier1" DurationType="OneShot" DurationMin="3.170748" DurationMax="3.170748">
-					<IncludedMemoryFiles>
-						<File Id="255763295" Language="English(US)">
-							<ShortName>Scene 8-4-1 Soldier1.wav</ShortName>
-							<Path>Voices\English(US)\Scene 8-4-1 Soldier1_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="1267178112" Name="Play_Scene_8_4_2_Soldier2" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene8\Scene8-4\Play_Scene_8_4_2_Soldier2" DurationType="OneShot" DurationMin="3.22" DurationMax="3.22">
-					<IncludedMemoryFiles>
-						<File Id="202535530" Language="English(US)">
-							<ShortName>Scene 8-4-2 Soldier2.wav</ShortName>
-							<Path>Voices\English(US)\Scene 8-4-2 Soldier2_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="3171187609" Name="Play_Scene_8_5_1_Soldier1" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene8\Scene8-5\Play_Scene_8_5_1_Soldier1" DurationType="OneShot" DurationMin="6.053152" DurationMax="6.053152">
-					<IncludedMemoryFiles>
-						<File Id="765461482" Language="English(US)">
-							<ShortName>Scene 8-5-1 Soldier1.wav</ShortName>
-							<Path>Voices\English(US)\Scene 8-5-1 Soldier1_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="1781676305" Name="Play_Scene_9_1_Soldier2" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene9\Play_Scene_9_1_Soldier2" DurationType="OneShot" DurationMin="2.73" DurationMax="2.73">
-					<IncludedMemoryFiles>
-						<File Id="512508823" Language="English(US)">
-							<ShortName>Scene 9-1 Soldier2.wav</ShortName>
-							<Path>Voices\English(US)\Scene 9-1 Soldier2_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="1852701895" Name="Play_Scene_9_2_Soldier1" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene9\Play_Scene_9_2_Soldier1" DurationType="OneShot" DurationMin="3.87" DurationMax="3.87">
-					<IncludedMemoryFiles>
-						<File Id="174196361" Language="English(US)">
-							<ShortName>Scene 9-2 Soldier1.wav</ShortName>
-							<Path>Voices\English(US)\Scene 9-2 Soldier1_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
 				<Event Id="674798631" Name="Play_Stealth_Music" ObjectPath="\Events\Default Work Unit\Main\Music\Play_Stealth_Music" DurationType="Infinite">
 					<IncludedMemoryFiles>
 						<File Id="47949605" Language="SFX">
@@ -791,22 +464,6 @@
 						</SwitchContainer>
 					</SwitchContainers>
 				</Event>
-				<Event Id="2024687188" Name="Play_TestSound_Loop" ObjectPath="\Events\Default Work Unit\Main\TestSounds\Play_TestSound_Loop" DurationType="Infinite">
-					<IncludedMemoryFiles>
-						<File Id="9335138" Language="SFX">
-							<ShortName>TestSounds\TestSound_Loop.wav</ShortName>
-							<Path>SFX\TestSounds\TestSound_Loop_96065C5B.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="4206196186" Name="Play_TestSound_Single" ObjectPath="\Events\Default Work Unit\Main\TestSounds\Play_TestSound_Single" DurationType="OneShot" DurationMin="2.125398" DurationMax="2.125398">
-					<IncludedMemoryFiles>
-						<File Id="10365183" Language="SFX">
-							<ShortName>TestSounds\TestSound_Single.wav</ShortName>
-							<Path>SFX\TestSounds\TestSound_Single_C4BD416F.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
 				<Event Id="1372183391" Name="Reset_Playlist_Scene1" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene1\Reset_Playlist_Scene1" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 				<Event Id="532960957" Name="Reset_Playlist_Scene10" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene10\Reset_Playlist_Scene10" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 				<Event Id="532960956" Name="Reset_Playlist_Scene11" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene11\Reset_Playlist_Scene11" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
@@ -824,50 +481,7 @@
 				<Event Id="335394866" Name="Reset_Playlist_Scene8_5" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene8\Scene8-5\Reset_Playlist_Scene8_5" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 				<Event Id="1372183383" Name="Reset_Playlist_Scene9" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene9\Reset_Playlist_Scene9" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 				<Event Id="2594172909" Name="Stop_Proxlamp_Draft1_V2" ObjectPath="\Events\Default Work Unit\Main\ProximityLamp\Stop_Proxlamp_Draft1_V2" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="1644119437" Name="Stop_Scene_10_1_1_Samoya" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene10\Stop_Scene_10_1_1_Samoya" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="2375702736" Name="Stop_Scene_10_2_1_Samoya" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene10\Stop_Scene_10_2_1_Samoya" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="1100610069" Name="Stop_Scene_10_2_2_Nova" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene10\Stop_Scene_10_2_2_Nova" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="1804646958" Name="Stop_Scene_10_2_3_Samoya" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene10\Stop_Scene_10_2_3_Samoya" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="3924007031" Name="Stop_Scene_10_2_4_Nova" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene10\Stop_Scene_10_2_4_Nova" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="3997042228" Name="Stop_Scene_10_2_5_Samoya" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene10\Stop_Scene_10_2_5_Samoya" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="528909105" Name="Stop_Scene_10_2_6_Nova" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene10\Stop_Scene_10_2_6_Nova" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="3935676294" Name="Stop_Scene_11_1_Samoya" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene11\Stop_Scene_11_1_Samoya" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="689067727" Name="Stop_Scene_12_1_Samoya" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene12\Stop_Scene_12_1_Samoya" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="249749069" Name="Stop_Scene_1_1_Nova" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene1\Stop_Scene_1_1_Nova" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="3844854616" Name="Stop_Scene_1_2_Samoya" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene1\Stop_Scene_1_2_Samoya" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="1379517587" Name="Stop_Scene_1_3_Nova" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene1\Stop_Scene_1_3_Nova" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="1088812732" Name="Stop_Scene_2_1_Samoya" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene2\Stop_Scene_2_1_Samoya" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="3129160617" Name="Stop_Scene_2_2_Nova" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene2\Stop_Scene_2_2_Nova" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="2408826646" Name="Stop_Scene_3_1_Soldier1" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene3\Stop_Scene_3_1_Soldier1" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="4263359512" Name="Stop_Scene_3_2_Soldier2" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene3\Stop_Scene_3_2_Soldier2" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="1747146248" Name="Stop_Scene_3_3_Soldier1" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene3\Stop_Scene_3_3_Soldier1" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="3954392038" Name="Stop_Scene_3_4_Soldier2" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene3\Stop_Scene_3_4_Soldier2" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="1044332786" Name="Stop_Scene_3_5_Soldier1" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene3\Stop_Scene_3_5_Soldier1" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="1071688740" Name="Stop_Scene_3_6_Soldier2" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene3\Stop_Scene_3_6_Soldier2" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="1437680811" Name="Stop_Scene_4_1_Soldier1" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene4\Stop_Scene_4_1_Soldier1" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="3114529317" Name="Stop_Scene_4_2_Soldier2" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene4\Stop_Scene_4_2_Soldier2" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="1112839968" Name="Stop_Scene_5_2_Nova" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene5\Stop_Scene_5_2_Nova" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="1917088304" Name="Stop_Scene_6_1_Samoya" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene6\Stop_Scene_6_1_Samoya" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="1228470901" Name="Stop_Scene_6_2_Nova" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene6\Stop_Scene_6_2_Nova" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="3327897446" Name="Stop_Scene_6_3_Nova" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene6\Stop_Scene_6_3_Nova" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="1057597091" Name="Stop_Scene_7_1_Nova" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene7\Stop_Scene_7_1_Nova" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="3637555374" Name="Stop_Scene_7_2_Nova" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene7\Stop_Scene_7_2_Nova" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="3039397075" Name="Stop_Scene_8_1_1_Soldier1" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene8\Scene8-1\Stop_Scene_8_1_1_Soldier1" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="1475783021" Name="Stop_Scene_8_1_2_Soldier2" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene8\Scene8-1\Stop_Scene_8_1_2_Soldier2" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="3203468033" Name="Stop_Scene_8_1_3_Soldier1" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene8\Scene8-1\Stop_Scene_8_1_3_Soldier1" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="3653798194" Name="Stop_Scene_8_2_1_Soldier1" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene8\Scene8-2\Stop_Scene_8_2_1_Soldier1" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="138571876" Name="Stop_Scene_8_2_2_Soldier2" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene8\Scene8-2\Stop_Scene_8_2_2_Soldier2" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="3313730669" Name="Stop_Scene_8_3_1_Soldier1" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene8\Scene8-3\Stop_Scene_8_3_1_Soldier1" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="1303388937" Name="Stop_Scene_8_3_2_Samoya" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene8\Scene8-3\Stop_Scene_8_3_2_Samoya" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="2644261470" Name="Stop_Scene_8_3_3_Nova" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene8\Scene8-3\Stop_Scene_8_3_3_Nova" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="1660281188" Name="Stop_Scene_8_4_1_Soldier1" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene8\Scene8-4\Stop_Scene_8_4_1_Soldier1" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="3484278166" Name="Stop_Scene_8_4_2_Soldier2" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene8\Scene8-4\Stop_Scene_8_4_2_Soldier2" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="3657246623" Name="Stop_Scene_8_5_1_Soldier1" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene8\Scene8-5\Stop_Scene_8_5_1_Soldier1" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="2435401943" Name="Stop_Scene_9_1_Soldier2" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene9\Stop_Scene_9_1_Soldier2" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="1047632773" Name="Stop_Scene_9_2_Soldier1" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Individual Files\Scene9\Stop_Scene_9_2_Soldier1" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 				<Event Id="3876103401" Name="Stop_Stealth_Music" ObjectPath="\Events\Default Work Unit\Main\Music\Stop_Stealth_Music" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="3467245854" Name="Stop_TestSound_Loop" ObjectPath="\Events\Default Work Unit\Main\TestSounds\Stop_TestSound_Loop" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="25015968" Name="Stop_TestSound_Single" ObjectPath="\Events\Default Work Unit\Main\TestSounds\Stop_TestSound_Single" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 			</IncludedEvents>
 			<StateGroups>
 				<StateGroup Id="2413224833" Name="StealthState" ObjectPath="\States\Default Work Unit\StealthState" GUID="{9432486D-1B14-4435-8AEB-491A1FBC3828}">
