@@ -83,5 +83,8 @@ public class FSM_Scriptable_Object : ScriptableObject
     [Tooltip("The time to forget the object that the enemy communicated with. (This is to prevent the enemy from communicating with the same object over and over again)")]
     [SerializeField] private int timeToForgetCommunicationWithEnemy = 2;
     public int TimeToForgetCommunicationWithEnemy => timeToForgetCommunicationWithEnemy;
+    
+    [Tooltip("Bool to either show or not show current state")]
+    [SerializeField] public bool showCurrentState = true;
 }
 
