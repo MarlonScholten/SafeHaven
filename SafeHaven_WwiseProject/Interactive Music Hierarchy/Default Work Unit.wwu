@@ -4,6 +4,13 @@
 		<WorkUnit Name="Default Work Unit" ID="{42A9CC91-4865-4079-810A-C294ED1644D3}" PersistMode="Standalone">
 			<ChildrenList>
 				<MusicSwitchContainer Name="Stealth Music" ID="{DB9480C5-0003-4AF3-B2C0-970F2EBF816F}" ShortID="374661889">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>12</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
@@ -14,6 +21,13 @@
 					</ReferenceList>
 					<ChildrenList>
 						<MusicPlaylistContainer Name="Music_Stealth_Alerted" ID="{25B364D9-AB71-488D-80F7-898909C33698}" ShortID="324088538">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>12</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
@@ -136,6 +150,13 @@
 							</Playlist>
 						</MusicPlaylistContainer>
 						<MusicPlaylistContainer Name="Music_Stealth_Caution" ID="{EF811EDD-F0AE-48F9-A2DA-870571747073}" ShortID="908449962">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>12</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
@@ -258,6 +279,13 @@
 							</Playlist>
 						</MusicPlaylistContainer>
 						<MusicPlaylistContainer Name="Music_Stealth_Hidden" ID="{2FCA35F5-37AC-4A66-A3F6-E9166FE832E0}" ShortID="1017054320">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>12</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
@@ -573,6 +601,11 @@
 						<MusicSegment Name="Music_Menu_Theme_Intro" ID="{A318D277-14FA-4C8E-8A4C-8F047E146AAA}" ShortID="1004454948">
 							<PropertyList>
 								<Property Name="EndPosition" Type="Real64" Value="49187.641723356"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>12</Value>
+									</ValueList>
+								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
@@ -729,6 +762,11 @@
 						<MusicSegment Name="Music_Menu_Theme_Loop" ID="{BA3FEC2E-A439-43BF-8813-0F64F8A939DF}" ShortID="979525518">
 							<PropertyList>
 								<Property Name="EndPosition" Type="Real64" Value="45187.641723356"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>12</Value>
+									</ValueList>
+								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
