@@ -94,6 +94,7 @@ public class SettingsMenu : MonoBehaviour
 
                 _confirmation = true;
                 
+                Debug.Log("Coroutine started");
                 StartCoroutine(ConfirmationTimeout());
                 return;
             }
@@ -106,8 +107,8 @@ public class SettingsMenu : MonoBehaviour
 
     private IEnumerator ConfirmationTimeout()
     {
-        yield return new WaitForSeconds(3.0f);
-        
+        yield return new WaitForSecondsRealtime(3.0f);
+
         TMP_Text exitText = _exitButton.GetComponentInChildren<TMP_Text>();
                 
         exitText.SetText("Back");
