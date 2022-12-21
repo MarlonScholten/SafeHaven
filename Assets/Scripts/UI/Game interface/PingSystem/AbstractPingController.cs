@@ -69,7 +69,7 @@ public abstract class AbstractPingController : MonoBehaviour
     /// Contains a value that represents the duration in seconds a marker will be visible after a ping, which can be set manually.
     /// </summary>
     [Tooltip("The duration of the visibility from the marker.")]
-    [SerializeField] private float durationMarkerVisible = 1.0f;
+    [SerializeField] private float durationMarkerVisible = 0.1f;
 
     /// <summary>
     /// Contains the position of the last ping.
@@ -105,16 +105,13 @@ public abstract class AbstractPingController : MonoBehaviour
     /// <returns>Returns a WaitForSeconds.</returns>
     protected IEnumerator MarkerDuration(GameObject marker)
     {
+        yield return new WaitForSeconds(durationMarkerVisible);
         //check if the player is at destination, if he is not, keep the marker
         while (!_brotherAI.PathCompleted())
         {
             yield return null;
         }
-
-        if (_brotherAI.PathCompleted())
-        {
-            Destroy(marker);
-        }
+        Destroy(marker);
     }
 
     /// <summary>

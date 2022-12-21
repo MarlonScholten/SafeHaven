@@ -277,9 +277,8 @@ public class MenuPingController : AbstractPingController
     private void SelectAction()
     {
         _pingAction = _chosenAction;
-        _brotherAI.PingBrother(_pingAction, _pingPosition);
-        
         ShowMarker(_pingPosition);
+        _brotherAI.PingBrother(_pingAction, _pingPosition);
     }
 
     /// <summary>
