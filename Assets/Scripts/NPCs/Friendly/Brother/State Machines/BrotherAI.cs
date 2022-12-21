@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 /// <summary>
 /// Author: Jelco van der Straaten </para>
-/// Modified by: Thijs Orsel and Iris Giezen, Thomas van den Oever</para>
+/// Modified by: Thijs Orsel and Iris Giezen, Thomas van den Oever </para>
 /// This script controls the state of the brotherAI. In this script al the calculation for the states are made.
 /// </summary>
 /// <list type="table">
@@ -72,7 +72,6 @@ public class BrotherAI : MonoBehaviour
     /// </summary>
     [SerializeField] private bool _isInStealth = false;
 
-    
     /// <summary>
     /// This value represents the speed the brother must move at during stealth.
     /// </summary>
@@ -80,13 +79,12 @@ public class BrotherAI : MonoBehaviour
     [SerializeField]
     private float _stealthSpeed = 2.0f;
 
-    
     /// <summary>
     /// This value represents the speed the brother must move at when not in stealth.
     /// </summary>
     [Range(2.0f, 10.0f), Tooltip("This value determines the maximum walkspeed of the brother when not in stealth.")]
     [SerializeField]
-    private float _baseSpeed = 5f;
+    private float _baseSpeed = 5.0f;
 
     /// <summary>
     /// This value determines the following distance of the brother.
@@ -123,7 +121,6 @@ public class BrotherAI : MonoBehaviour
     /// This is the sister (the player)
     /// </summary>
     private GameObject _player;
-
     
     /// <summary>
     /// This contains a reference to the playerController script
@@ -158,16 +155,14 @@ public class BrotherAI : MonoBehaviour
     /// </summary>
     private void OnStealthEvent()
     {
-        // if (_playerController.GetCrouching() == _isInStealth)
-        // {
-        //     ToggleStealth();
-        // }
         ToggleStealth(_playerController.GetCrouching());
     }
 
+    /// <summary>
+    /// Checks in stealth mode or not and based on that the speed and the collider height gets set.
+    /// </summary>
     private void ToggleStealth(bool stealth)
     {
-        //_isInStealth = !_isInStealth;
         _isInStealth = stealth;
         if (_isInStealth)
         {
@@ -273,6 +268,7 @@ public class BrotherAI : MonoBehaviour
     {
         _navMeshAgent.stoppingDistance = _followDistance;
     }
+    
     /// <summary>
     /// The update method for the follow state
     /// </summary>
@@ -393,10 +389,6 @@ public class BrotherAI : MonoBehaviour
     /// </summary>
     public void PassiveHideEnter(){
         MoveToLocation(_pingLocation, _walkSpeed);
-        // if (!_isInStealth)
-        // {
-            // ToggleStealth();
-        // }
         _isInStealth = true;
     }
 
