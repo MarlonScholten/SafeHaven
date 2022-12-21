@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using NPC;
+using TMPro;
+using Unity.VisualScripting;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -96,6 +98,30 @@ public class EnemyAiStateManager : MonoBehaviour
     [NonSerialized] public bool waitingAtWaypoint; // Boolean to check if the enemy is waiting at a waypoint
     [NonSerialized] public Vector3 locationOfNoise; // Location of the noise that the enemy heard
     [NonSerialized] public float timePlayerLastSpotted; // Time when the enemy last spotted the player/brother
+    
+    [NonSerialized] public TextMeshPro textMesh; // TextMesh component for state visualization
+    
+    
+    private void Awake()
+    {
+        
+        //Fetches if the option to show the state of the enemy is selected and makes it empty if not used.
+        textMesh = GetComponentInChildren<TextMeshPro>();
+        if (!enemyAiScriptableObject.showCurrentState)
+        {
+            textMesh.text = "";
+        }
+        
+    }
+
+    private void Update()
+    {
+        if (enemyAiScriptableObject.showCurrentState)
+        {
+            textMesh.transform.rotation = Camera.main.transform.rotation;
+        }
+        
+    }
 
     /// <summary>
     /// This method rotates the enemy to a random direction.
