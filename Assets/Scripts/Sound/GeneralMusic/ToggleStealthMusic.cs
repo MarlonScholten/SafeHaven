@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 namespace SoundManager
 {
@@ -27,9 +26,7 @@ namespace SoundManager
     /// </list>
     public class ToggleStealthMusic : SoundBase
     {
-
         private EnemyStateWatcher _watcher;
-        private OnEventTrigger UnloadBank;
         private bool _isInvestigating = false;
         private bool _isChasing = false;
 
@@ -56,8 +53,6 @@ namespace SoundManager
             _watcher.OnChasing += StartChasing;
             _watcher.OnZeroChasing += StopChasing;
             _watcher.StopIt += StopMusic;
-
-            UnloadBank = GameObject.Find("MainBankManager").GetComponent<OnEventTrigger>();
         }
 
         //TODO: refactor this mess into a state machine, I'm so sorry
@@ -123,7 +118,7 @@ namespace SoundManager
         private void OnDestroy()
         {
             //Debug.LogWarning("DESTORY SOUND");
-            //stopSound();
+            stopSound();
         }
 
         /// <summary>
@@ -132,7 +127,6 @@ namespace SoundManager
         private void StopMusic()
         {
             stopSound();
-            UnloadBank.EventTrigger();
         }
     }
 }

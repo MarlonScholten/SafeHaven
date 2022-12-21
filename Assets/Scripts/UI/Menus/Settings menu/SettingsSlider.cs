@@ -47,14 +47,10 @@ public class SettingsSlider : MonoBehaviour
     [Tooltip("The name of the setting to be changed")]
     private string _settingName;
     
-    [SerializeField]
-    [Tooltip("The default value of the setting to be changed")]
-    private float _defaultValue = 1.0f;
-    
     private void Start()
     {
         _text.text = _settingName;
-        _slider.value = PlayerPrefs.GetFloat(_settingName, _defaultValue);
+        _slider.value = PlayerPrefs.GetFloat(_settingName);
         
         _slider.onValueChanged.AddListener(OnValueChanged);
     }

@@ -10,14 +10,6 @@
 							<Position X="0" Y="0"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="Scene 1-2 Samoya" ID="{6F581C10-1296-4A1E-9549-2DCC853F494E}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
-							<Position X="0" Y="1"/>
-						</Module>
-						<Module>
-							<ObjectRef Name="Scene 1-3 Nova" ID="{D951DAC4-C675-4F7F-A579-36A7627D9AB5}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
-							<Position X="0" Y="2"/>
-						</Module>
-						<Module>
 							<ObjectRef Name="Play_Proxlamp_Draft1_Click" ID="{07AC8ECB-8A8A-44CC-B159-12FBC7764420}" WorkUnitID="{5DF81475-BB3E-4C5F-B0BC-98A43D4B8830}"/>
 							<Position X="1" Y="0"/>
 						</Module>
@@ -36,20 +28,28 @@
 					</ModuleList>
 					<RTPCValueList ShowAll="true">
 						<RTPCValue>
+							<GameParameterRef Name="Master_Volume" ID="{A91BC6D3-1140-4BAE-BCD6-C05E6DD53F69}"/>
+							<Value>51</Value>
+						</RTPCValue>
+						<RTPCValue>
 							<GameParameterRef Name="Footsteps_Volume" ID="{AB7336C4-9445-4C16-B48B-FD7E961A8F04}"/>
 							<Value>75</Value>
 						</RTPCValue>
 						<RTPCValue>
 							<GameParameterRef Name="Voice_Volume" ID="{10AA0A62-F416-4C43-B2A6-1BE7DF01656D}"/>
-							<Value>58</Value>
+							<Value>50</Value>
 						</RTPCValue>
 						<RTPCValue>
 							<GameParameterRef Name="Music_Volume" ID="{F6AF792F-1440-4CA2-8F45-86F0DD60C9AB}"/>
 							<Value>50</Value>
 						</RTPCValue>
 						<RTPCValue>
+							<GameParameterRef Name="SFX_No_Footsteps_Volume" ID="{47B8573F-E3D8-4CF9-84A6-1CC3BB3DA8DA}"/>
+							<Value>51</Value>
+						</RTPCValue>
+						<RTPCValue>
 							<GameParameterRef Name="SFX_Volume" ID="{AF74D64D-12E4-4E96-A727-C9C60DD9ABBD}"/>
-							<Value>50</Value>
+							<Value>52</Value>
 						</RTPCValue>
 					</RTPCValueList>
 					<CurrentStateList ShowAll="true">

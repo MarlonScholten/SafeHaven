@@ -1,4 +1,3 @@
-using Cinemachine;
 using UnityEngine;
 
 /// <summary>
@@ -32,15 +31,6 @@ public class GameSettingManager : MonoBehaviour
     /// </summary>
     public void ApplySettings()
     {
-        AudioListener.volume = PlayerPrefs.GetFloat("Volume", 0.75f);
-        
-        float sensitivity = Mathf.Max(0.1f , PlayerPrefs.GetFloat("Sensitivity", 1.0f) * 4.0f);
-        
-        var cameras = FindObjectsOfType<CinemachineFreeLook>();
-        foreach (CinemachineFreeLook cinemachineFreeLook in cameras)
-        {
-            cinemachineFreeLook.m_XAxis.m_MaxSpeed = 2f * sensitivity;
-            cinemachineFreeLook.m_YAxis.m_MaxSpeed = 0.02f * sensitivity;
-        }
+        AudioListener.volume = PlayerPrefs.GetFloat("Volume");
     }
 }
