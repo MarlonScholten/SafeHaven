@@ -253,20 +253,26 @@ public class MenuPingController : AbstractPingController
     /// </summary>
     private void OnMenuPing()
     {
-        if (_radialMenuIsSetActive) return;
-        _playerRayCastHit = GetComponent<PlayerController>().CamRayCastHit;
-        if (_playerRayCastHit.point == Vector3.zero) return;
-        _radialMenuIsSetActive = true;
-        Cursor.lockState = CursorLockMode.Confined;
-        Cursor.visible = true;
+        if (_radialMenuIsSetActive)
+        {
+            CloseRadialMenu();
+        }
+        else
+        {
+            _playerRayCastHit = GetComponent<PlayerController>().CamRayCastHit;
+            if (_playerRayCastHit.point == Vector3.zero) return;
+            _radialMenuIsSetActive = true;
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
 
-        SetPingPosition(_playerRayCastHit.point);
+            SetPingPosition(_playerRayCastHit.point);
 
-        Time.timeScale /= _slowmotionFactor;
+            Time.timeScale /= _slowmotionFactor;
 
-        // Override camera input with 0 and save old behaviour
-        _cameraInput = CinemachineCore.GetInputAxis;
-        CinemachineCore.GetInputAxis = axisName => 0;
+            // Override camera input with 0 and save old behaviour
+            _cameraInput = CinemachineCore.GetInputAxis;
+            CinemachineCore.GetInputAxis = axisName => 0;
+        }
     }
 
     /// <summary>
