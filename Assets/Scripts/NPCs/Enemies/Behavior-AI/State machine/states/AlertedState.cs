@@ -63,6 +63,13 @@ public class AlertedState : MonoBehaviour
     /// </summary>
     public void Enter_Alerted()
     {
+        //shows the current state as text above the enemy when this is enabled in the inspector.
+        if (_stateManager.enemyAiScriptableObject.showCurrentState)
+        {
+            _stateManager.textMesh.text = "Alerted";
+            _stateManager.textMesh.color = Color.yellow;
+        }
+        
         //If the enemy is alerted by sound, it will look around for a few seconds
         if (_stateManager.alertedBySound || _stateManager.isGuard)
         {
@@ -84,11 +91,15 @@ public class AlertedState : MonoBehaviour
     /// </summary>
     public void Update_Alerted()
     {
+        if (_stateManager.isGuard)
+        {
+            AlertOtherEnemies();
+            _stateManager.CheckForCatching();
+        }
         //stop if the coroutine is already running.
         if (_alertedCoroutineIsRunning) return;
         if (_stateManager.isGuard)
         {
-            AlertOtherEnemies();
             CustomEvent.Trigger(gameObject, "Patrol");
         }
         //If the enemy is alerted by sound it will investigate the sound.

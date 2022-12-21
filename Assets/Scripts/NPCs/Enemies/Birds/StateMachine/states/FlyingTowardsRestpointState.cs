@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using System.Linq;
 using PathCreation;
+using PathCreation.Utility;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -65,7 +67,7 @@ namespace Bird
         /// </summary>
         public void Awake()
         {
-            _birdStateManager = GetComponent<BirdStateManager>();
+            _birdStateManager = GetComponentInChildren<BirdStateManager>();
         }
 
         /// <summary>
@@ -73,10 +75,10 @@ namespace Bird
         /// </summary>
         public void Enter_Flying_Towards_Rest_Point_State()
         {
-
+            _birdStateManager.animator.SetInteger("state", 2);
             DetachFromNavmesh();
             _birdStateManager.restPoint = GetClosestRestPoint();
-            _path = _birdStateManager.CreatePathToClosestPointOnGivenPath(_birdStateManager.restPoint.position);
+            _path = _birdStateManager.CreatePathToClosestPointOnGivenPath(_birdStateManager.restPoint.transform.position);
         }
 
         /// <summary>
@@ -84,7 +86,7 @@ namespace Bird
         /// </summary>
         public void Update_Flying_Towards_Rest_Point_State()
         {
-            if (transform.position == _birdStateManager.restPoint.position)
+            if (transform.position == _birdStateManager.restPoint.transform.position)
             {
                 CustomEvent.Trigger(gameObject, "Sitting");
             }
@@ -95,7 +97,7 @@ namespace Bird
         /// </summary>
         public void Fixed_Update_Flying_Towards_Rest_Point_State()
         {
-            if (transform.position != _birdStateManager.restPoint.position)
+            if (transform.position != _birdStateManager.restPoint.transform.position)
             {
                 TravelPath(_path);
             }
@@ -109,30 +111,44 @@ namespace Bird
             _path = null;
             Destroy(_birdStateManager.pathGameObject);
             _distanceTravelled = 0;
-            _birdStateManager.lastRestPoint = _birdStateManager.restPoint.transform.position;
         }
 
         /// <summary>
         /// This method checks which rest point is the closest to the bird
         /// <returns>Transform</returns>
         /// </summary>
-        private Transform GetClosestRestPoint()
+        private GameObject GetClosestRestPoint()
         {
-            var restPoints = GameObject.FindGameObjectsWithTag("BirdRestPoint");
-            Transform closest = null;
-            var distance = Mathf.Infinity;
-            var position = transform.position;
-            foreach (var restPointObject in restPoints.Select(rp => rp.transform))
+            var numberOfChecks = 0;
+            while (true)
             {
-                if (restPointObject.transform.position == transform.position) continue;
-                var diff = restPointObject.transform.position - position;
-                var curDistance = diff.sqrMagnitude;
-                if (curDistance >= distance) continue;
-                closest = restPointObject.transform;
-                distance = curDistance;
-            }
+                var restPoints = GameObject.FindGameObjectsWithTag("BirdRestPoint");
+                GameObject closest = null;
+                var distance = Mathf.Infinity;
+                var position = transform.position;
+                foreach (var restPointObject in restPoints.Select(rp => rp))
+                {
+                    if (restPointObject.GetComponent<BirdRestPointVariables>().isBirdOnRestPoint && numberOfChecks < 1) continue;
+                    if (restPointObject.transform.position == transform.position) continue;
+                    if (_birdStateManager.lastRestPoints.Contains(restPointObject.transform.position)) continue;
+                    var diff = restPointObject.transform.position - position;
+                    var curDistance = diff.sqrMagnitude;
+                    if (curDistance >= distance) continue;
+                    closest = restPointObject;
+                    distance = curDistance;
+                }
 
-            return closest;
+                if (closest == null)
+                {
+                    numberOfChecks++;
+                    _birdStateManager.lastRestPoints = new List<Vector3>();
+                    continue;
+                }
+
+                closest.GetComponent<BirdRestPointVariables>().isBirdOnRestPoint = true;
+                _birdStateManager.lastRestPoints.Add(closest.transform.position);
+                return closest;
+            }
         }
 
         /// <summary>
@@ -143,7 +159,7 @@ namespace Bird
         {
             _distanceTravelled += _birdStateManager.birdScriptableObject.FlySpeed * Time.deltaTime;
             transform.position = path.path.GetPointAtDistance(_distanceTravelled, EndOfPathInstruction);
-            transform.rotation = path.path.GetRotationAtDistance(_distanceTravelled, EndOfPathInstruction);
+            transform.rotation = Quaternion.LookRotation(path.path.GetDirectionAtDistance(_distanceTravelled, EndOfPathInstruction), Vector3.up);
         }
 
         /// <summary>
