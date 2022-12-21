@@ -33,6 +33,10 @@ public class GameSettingManager : MonoBehaviour
     [SerializeField]
     [Tooltip("A reference to the Wwise RTPC for the footsteps volume")]
     private AK.Wwise.RTPC _footstepsVolume;
+    
+    [SerializeField]
+    [Tooltip("A reference to the Wwise RTPC for the voicelines volume")]
+    private AK.Wwise.RTPC _voicelinesVolume;
 
     [SerializeField]
     [Tooltip("Show debug logs for audio settings")]
@@ -67,10 +71,12 @@ public class GameSettingManager : MonoBehaviour
             Debug.Log("Music volume set to " + PlayerPrefs.GetFloat("Music", 1.0f) * 100.0f);
             Debug.Log("SFX volume set to " + PlayerPrefs.GetFloat("SFX", 1.0f) * 100.0f);
             Debug.Log("Footsteps volume set to " + PlayerPrefs.GetFloat("Footsteps", 1.0f) * 100.0f);
+            Debug.Log("Voicelines volume set to " + PlayerPrefs.GetFloat("Voicelines", 1.0f) * 100.0f);
         }
         
         _musicVolume.SetGlobalValue(PlayerPrefs.GetFloat("Music", 1.0f) * 100.0f);
         _sfxVolume.SetGlobalValue(PlayerPrefs.GetFloat("SFX", 1.0f) * 100.0f);
         _footstepsVolume.SetGlobalValue(PlayerPrefs.GetFloat("Footsteps", 1.0f) * 100.0f);
+        _voicelinesVolume.SetGlobalValue(PlayerPrefs.GetFloat("Voicelines", 1.0f) * 100.0f);
     }
 }
