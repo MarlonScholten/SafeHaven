@@ -24,7 +24,7 @@ MonoBehaviour:
     ParentPath: Virtual Acoustics\Default Work Unit
     guid: b84df308d3571747999906ad99c70c5a
     GuidInternal: 
-    m_lastTime: -8585318835402283137
+    m_lastTime: -8585317104856039730
     List: []
   AuxBusWwu:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
@@ -38,7 +38,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy\Default Work Unit
     guid: 6aa9472e3829cf40a5afba51ed972e73
     GuidInternal: 
-    m_lastTime: -8585305114230092832
+    m_lastTime: -8585299925228748718
     List:
     - name: Ambient
       guid: d088186914fe6744bbe95fbd9c2e181f
@@ -58,7 +58,7 @@ MonoBehaviour:
         guid: d088186914fe6744bbe95fbd9c2e181f
       Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Ambient
     - name: Footsteps
-      guid: dc8432648c410b489a5be9cc8e3a6bed
+      guid: 60eddbf4d9fc35489ef0a0da63b5a1a5
       id: 2385628198
       PathAndIcons:
       - ElementName: Master-Mixer Hierarchy
@@ -72,7 +72,7 @@ MonoBehaviour:
         guid: d8a41415a61d2a41a17e75ca0c2149f3
       - ElementName: Footsteps
         ObjectType: 2
-        guid: dc8432648c410b489a5be9cc8e3a6bed
+        guid: 60eddbf4d9fc35489ef0a0da63b5a1a5
       Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Footsteps
     - name: Master Audio Bus
       guid: d8a41415a61d2a41a17e75ca0c2149f3
@@ -122,6 +122,23 @@ MonoBehaviour:
         ObjectType: 2
         guid: c80368dc76e3534e88745a4177ec1378
       Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\SFX
+    - name: Voice Over
+      guid: 580dac10228b7c46ad4348395effcbc5
+      id: 372659017
+      PathAndIcons:
+      - ElementName: Master-Mixer Hierarchy
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 6aa9472e3829cf40a5afba51ed972e73
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+        guid: d8a41415a61d2a41a17e75ca0c2149f3
+      - ElementName: Voice Over
+        ObjectType: 2
+        guid: 580dac10228b7c46ad4348395effcbc5
+      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Voice Over
   BankWwu:
   - PhysicalPath: SoundBanks\Default Work Unit.wwu
     PathAndIcons:
@@ -134,7 +151,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: e1fef6f5a4cdc54bbb7e45386721e0a2
     GuidInternal: 
-    m_lastTime: -8585305114219354192
+    m_lastTime: -8585299925211807004
     List:
     - name: Main
       guid: ef2b2be943a42047bfc339ca9a1fa5cb
@@ -176,7 +193,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
     GuidInternal: 
-    m_lastTime: -8585305114236098079
+    m_lastTime: -8585299925315485917
     List:
     - name: Footsteps
       guid: cded247796e5fe458488517d65139664
@@ -195,6 +212,29 @@ MonoBehaviour:
         ObjectType: 4
         guid: cded247796e5fe458488517d65139664
       Path: Events\Default Work Unit\Main\Footsteps
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Individual Files
+      guid: c20bcab915b58e4b933a86b176b3b275
+      id: 1887775341
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -233,26 +273,6 @@ MonoBehaviour:
       maxDuration: -1
       minDuration: -1
     - name: Music
-      guid: 875a8e1fad62e446bd08cd0378cade5f
-      id: 3991942870
-      PathAndIcons:
-      - ElementName: Events
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: Default Work Unit
-        ObjectType: 12
-        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
-      - ElementName: Menu
-        ObjectType: 4
-        guid: fd5f059e6994944a9de33ce4ecc841b1
-      - ElementName: Music
-        ObjectType: 4
-        guid: 875a8e1fad62e446bd08cd0378cade5f
-      Path: Events\Default Work Unit\Menu\Music
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
-    - name: Music
       guid: 09519cd714b613419484f26205679109
       id: 3991942870
       PathAndIcons:
@@ -269,6 +289,26 @@ MonoBehaviour:
         ObjectType: 4
         guid: 09519cd714b613419484f26205679109
       Path: Events\Default Work Unit\Main\Music
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Music
+      guid: 875a8e1fad62e446bd08cd0378cade5f
+      id: 3991942870
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Menu
+        ObjectType: 4
+        guid: fd5f059e6994944a9de33ce4ecc841b1
+      - ElementName: Music
+        ObjectType: 4
+        guid: 875a8e1fad62e446bd08cd0378cade5f
+      Path: Events\Default Work Unit\Menu\Music
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -318,29 +358,6 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
-    - name: Play_ParameterTest
-      guid: 8591ed2c1aa83d438bf9c772371b2db5
-      id: 4229740275
-      PathAndIcons:
-      - ElementName: Events
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: Default Work Unit
-        ObjectType: 12
-        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
-      - ElementName: Main
-        ObjectType: 4
-        guid: ae06bf3d9bde2f4185163b3fa933efc9
-      - ElementName: TestSounds
-        ObjectType: 4
-        guid: fe7afa231d76924da329170aa0cbe68b
-      - ElementName: Play_ParameterTest
-        ObjectType: 3
-        guid: 8591ed2c1aa83d438bf9c772371b2db5
-      Path: Events\Default Work Unit\Main\TestSounds\Play_ParameterTest
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
     - name: Play_Proxlamp_Draft1_Click
       guid: cb8eac078a8acc44b15912fbc7764420
       id: 2579192193
@@ -387,6 +404,1707 @@ MonoBehaviour:
       maxAttenuation: 5
       maxDuration: -1
       minDuration: -1
+    - name: Play_Scene_1_1_Nova
+      guid: ad098c76b66cd74babc1a356980bff91
+      id: 2649539219
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene1
+        ObjectType: 4
+        guid: 3fc74f339da499478c7dab73bbc54889
+      - ElementName: Play_Scene_1_1_Nova
+        ObjectType: 3
+        guid: ad098c76b66cd74babc1a356980bff91
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene1\Play_Scene_1_1_Nova
+      maxAttenuation: 0
+      maxDuration: 5
+      minDuration: 5
+    - name: Play_Scene_1_2_Samoya
+      guid: 6f1e9961a8a7b94ba739188e5817411a
+      id: 3274224790
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene1
+        ObjectType: 4
+        guid: 3fc74f339da499478c7dab73bbc54889
+      - ElementName: Play_Scene_1_2_Samoya
+        ObjectType: 3
+        guid: 6f1e9961a8a7b94ba739188e5817411a
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene1\Play_Scene_1_2_Samoya
+      maxAttenuation: 0
+      maxDuration: 2.204535
+      minDuration: 2.204535
+    - name: Play_Scene_1_3_Nova
+      guid: 2a25b689fe888e4dbeacebcddfad0b19
+      id: 1519770701
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene1
+        ObjectType: 4
+        guid: 3fc74f339da499478c7dab73bbc54889
+      - ElementName: Play_Scene_1_3_Nova
+        ObjectType: 3
+        guid: 2a25b689fe888e4dbeacebcddfad0b19
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene1\Play_Scene_1_3_Nova
+      maxAttenuation: 0
+      maxDuration: 2.931927
+      minDuration: 2.931927
+    - name: Play_Scene_10_1_1_Samoya
+      guid: 6f89cd8c0acd5443be017927e2d43bc2
+      id: 2917536103
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene10
+        ObjectType: 4
+        guid: 0ebaf8eda7001741bcf134de87c1b732
+      - ElementName: Play_Scene_10_1_1_Samoya
+        ObjectType: 3
+        guid: 6f89cd8c0acd5443be017927e2d43bc2
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene10\Play_Scene_10_1_1_Samoya
+      maxAttenuation: 0
+      maxDuration: 2.225215
+      minDuration: 2.225215
+    - name: Play_Scene_10_2_1_Samoya
+      guid: ff424de7d2588747b2a3f2a46f534018
+      id: 56258654
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene10
+        ObjectType: 4
+        guid: 0ebaf8eda7001741bcf134de87c1b732
+      - ElementName: Play_Scene_10_2_1_Samoya
+        ObjectType: 3
+        guid: ff424de7d2588747b2a3f2a46f534018
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene10\Play_Scene_10_2_1_Samoya
+      maxAttenuation: 0
+      maxDuration: 2.12
+      minDuration: 2.12
+    - name: Play_Scene_10_2_2_Nova
+      guid: 8a0d1b1231fb884c94e5bb0ad8f294e6
+      id: 775191851
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene10
+        ObjectType: 4
+        guid: 0ebaf8eda7001741bcf134de87c1b732
+      - ElementName: Play_Scene_10_2_2_Nova
+        ObjectType: 3
+        guid: 8a0d1b1231fb884c94e5bb0ad8f294e6
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene10\Play_Scene_10_2_2_Nova
+      maxAttenuation: 0
+      maxDuration: 2.6261
+      minDuration: 2.6261
+    - name: Play_Scene_10_2_3_Samoya
+      guid: 97d2e4c02a13094aade3ef6bb6073208
+      id: 4010749632
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene10
+        ObjectType: 4
+        guid: 0ebaf8eda7001741bcf134de87c1b732
+      - ElementName: Play_Scene_10_2_3_Samoya
+        ObjectType: 3
+        guid: 97d2e4c02a13094aade3ef6bb6073208
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene10\Play_Scene_10_2_3_Samoya
+      maxAttenuation: 0
+      maxDuration: 2.378549
+      minDuration: 2.378549
+    - name: Play_Scene_10_2_4_Nova
+      guid: 4ddda152ad0cac4e9b5e69c76ffceafd
+      id: 1217970497
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene10
+        ObjectType: 4
+        guid: 0ebaf8eda7001741bcf134de87c1b732
+      - ElementName: Play_Scene_10_2_4_Nova
+        ObjectType: 3
+        guid: 4ddda152ad0cac4e9b5e69c76ffceafd
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene10\Play_Scene_10_2_4_Nova
+      maxAttenuation: 0
+      maxDuration: 3.19
+      minDuration: 3.19
+    - name: Play_Scene_10_2_5_Samoya
+      guid: 18ce71f649cecb4d83b654551bf8c862
+      id: 980162386
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene10
+        ObjectType: 4
+        guid: 0ebaf8eda7001741bcf134de87c1b732
+      - ElementName: Play_Scene_10_2_5_Samoya
+        ObjectType: 3
+        guid: 18ce71f649cecb4d83b654551bf8c862
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene10\Play_Scene_10_2_5_Samoya
+      maxAttenuation: 0
+      maxDuration: 2.655918
+      minDuration: 2.655918
+    - name: Play_Scene_10_2_6_Nova
+      guid: 328081d51f048d4eb881e0bb26005486
+      id: 1113723655
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene10
+        ObjectType: 4
+        guid: 0ebaf8eda7001741bcf134de87c1b732
+      - ElementName: Play_Scene_10_2_6_Nova
+        ObjectType: 3
+        guid: 328081d51f048d4eb881e0bb26005486
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene10\Play_Scene_10_2_6_Nova
+      maxAttenuation: 0
+      maxDuration: 1.44
+      minDuration: 1.44
+    - name: Play_Scene_11_1_Samoya
+      guid: b48ece4f3b78964282873b922f7cfc8e
+      id: 3439453260
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene11
+        ObjectType: 4
+        guid: 7b542bd405b053499df20bb840c78f7f
+      - ElementName: Play_Scene_11_1_Samoya
+        ObjectType: 3
+        guid: b48ece4f3b78964282873b922f7cfc8e
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene11\Play_Scene_11_1_Samoya
+      maxAttenuation: 0
+      maxDuration: 3.5
+      minDuration: 3.5
+    - name: Play_Scene_12_1_Samoya
+      guid: d4be7495696a4040b9d4b5fdfc62c3c9
+      id: 1913157017
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene12
+        ObjectType: 4
+        guid: 94437f540d4bd7489b608741465b49ab
+      - ElementName: Play_Scene_12_1_Samoya
+        ObjectType: 3
+        guid: d4be7495696a4040b9d4b5fdfc62c3c9
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene12\Play_Scene_12_1_Samoya
+      maxAttenuation: 0
+      maxDuration: 2.29
+      minDuration: 2.29
+    - name: Play_Scene_2_1_Samoya
+      guid: ab8fce5041dbcf4eafff91f07b2946c7
+      id: 3084340994
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene2
+        ObjectType: 4
+        guid: ef7c4d4d2258f8418197a0c767e53b50
+      - ElementName: Play_Scene_2_1_Samoya
+        ObjectType: 3
+        guid: ab8fce5041dbcf4eafff91f07b2946c7
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene2\Play_Scene_2_1_Samoya
+      maxAttenuation: 0
+      maxDuration: 1.95
+      minDuration: 1.95
+    - name: Play_Scene_2_2_Nova
+      guid: 55f032fe2f534d4989d58c8346399d05
+      id: 4250740055
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene2
+        ObjectType: 4
+        guid: ef7c4d4d2258f8418197a0c767e53b50
+      - ElementName: Play_Scene_2_2_Nova
+        ObjectType: 3
+        guid: 55f032fe2f534d4989d58c8346399d05
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene2\Play_Scene_2_2_Nova
+      maxAttenuation: 0
+      maxDuration: 1.645624
+      minDuration: 1.645624
+    - name: Play_Scene_3_1_Soldier1
+      guid: b5529a5fb8fd43448bddd9ea13bdfdf0
+      id: 3393948672
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene3
+        ObjectType: 4
+        guid: 6558d6c86976604097abebef9942135c
+      - ElementName: Play_Scene_3_1_Soldier1
+        ObjectType: 3
+        guid: b5529a5fb8fd43448bddd9ea13bdfdf0
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene3\Play_Scene_3_1_Soldier1
+      maxAttenuation: 0
+      maxDuration: 2.807551
+      minDuration: 2.807551
+    - name: Play_Scene_3_2_Soldier2
+      guid: 89ae98942a48794b934b05244c875430
+      id: 2369167746
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene3
+        ObjectType: 4
+        guid: 6558d6c86976604097abebef9942135c
+      - ElementName: Play_Scene_3_2_Soldier2
+        ObjectType: 3
+        guid: 89ae98942a48794b934b05244c875430
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene3\Play_Scene_3_2_Soldier2
+      maxAttenuation: 0
+      maxDuration: 4.65
+      minDuration: 4.65
+    - name: Play_Scene_3_3_Soldier1
+      guid: 9f8e95d50d1e394785f40d8a3dfa749f
+      id: 641482734
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene3
+        ObjectType: 4
+        guid: 6558d6c86976604097abebef9942135c
+      - ElementName: Play_Scene_3_3_Soldier1
+        ObjectType: 3
+        guid: 9f8e95d50d1e394785f40d8a3dfa749f
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene3\Play_Scene_3_3_Soldier1
+      maxAttenuation: 0
+      maxDuration: 5.61
+      minDuration: 5.61
+    - name: Play_Scene_3_4_Soldier2
+      guid: 8b9f6639005cd64e8ac7d3dbbcc2c944
+      id: 1030327484
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene3
+        ObjectType: 4
+        guid: 6558d6c86976604097abebef9942135c
+      - ElementName: Play_Scene_3_4_Soldier2
+        ObjectType: 3
+        guid: 8b9f6639005cd64e8ac7d3dbbcc2c944
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene3\Play_Scene_3_4_Soldier2
+      maxAttenuation: 0
+      maxDuration: 4.147233
+      minDuration: 4.147233
+    - name: Play_Scene_3_5_Soldier1
+      guid: 78924b603bcd7543abf7203a7dfa67b1
+      id: 1763189452
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene3
+        ObjectType: 4
+        guid: 6558d6c86976604097abebef9942135c
+      - ElementName: Play_Scene_3_5_Soldier1
+        ObjectType: 3
+        guid: 78924b603bcd7543abf7203a7dfa67b1
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene3\Play_Scene_3_5_Soldier1
+      maxAttenuation: 0
+      maxDuration: 5
+      minDuration: 5
+    - name: Play_Scene_3_6_Soldier2
+      guid: 679b96c97f5a03468b21888a7d153df3
+      id: 3862166974
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene3
+        ObjectType: 4
+        guid: 6558d6c86976604097abebef9942135c
+      - ElementName: Play_Scene_3_6_Soldier2
+        ObjectType: 3
+        guid: 679b96c97f5a03468b21888a7d153df3
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene3\Play_Scene_3_6_Soldier2
+      maxAttenuation: 0
+      maxDuration: 2.264172
+      minDuration: 2.264172
+    - name: Play_Scene_4_1_Soldier1
+      guid: 99787365fd89d04e8407e0789fae269d
+      id: 3243105953
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene4
+        ObjectType: 4
+        guid: 957c55771f0414498b471325f935e491
+      - ElementName: Play_Scene_4_1_Soldier1
+        ObjectType: 3
+        guid: 99787365fd89d04e8407e0789fae269d
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene4\Play_Scene_4_1_Soldier1
+      maxAttenuation: 0
+      maxDuration: 3.906349
+      minDuration: 3.906349
+    - name: Play_Scene_4_2_Soldier2
+      guid: 7b895bb22c901048afe9f4a99fcdb9a5
+      id: 4288708131
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene4
+        ObjectType: 4
+        guid: 957c55771f0414498b471325f935e491
+      - ElementName: Play_Scene_4_2_Soldier2
+        ObjectType: 3
+        guid: 7b895bb22c901048afe9f4a99fcdb9a5
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene4\Play_Scene_4_2_Soldier2
+      maxAttenuation: 0
+      maxDuration: 2.278095
+      minDuration: 2.278095
+    - name: Play_Scene_5_2_Nova
+      guid: 5d773575fca9a040922ce1f7f8bdc8ef
+      id: 3972607570
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene5
+        ObjectType: 4
+        guid: e4c3366c806eeb4ba26e9229ff05ed00
+      - ElementName: Play_Scene_5_2_Nova
+        ObjectType: 3
+        guid: 5d773575fca9a040922ce1f7f8bdc8ef
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene5\Play_Scene_5_2_Nova
+      maxAttenuation: 0
+      maxDuration: 2.005465
+      minDuration: 2.005465
+    - name: Play_Scene_6_1_Samoya
+      guid: ba11733e193dbf4dbbbfe79a490217bb
+      id: 1988492078
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene6
+        ObjectType: 4
+        guid: bb7329e933daac47872982746bbdf176
+      - ElementName: Play_Scene_6_1_Samoya
+        ObjectType: 3
+        guid: ba11733e193dbf4dbbbfe79a490217bb
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene6\Play_Scene_6_1_Samoya
+      maxAttenuation: 0
+      maxDuration: 2.5
+      minDuration: 2.5
+    - name: Play_Scene_6_2_Nova
+      guid: c11ade2ff900a044a62075a352d58e96
+      id: 367624923
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene6
+        ObjectType: 4
+        guid: bb7329e933daac47872982746bbdf176
+      - ElementName: Play_Scene_6_2_Nova
+        ObjectType: 3
+        guid: c11ade2ff900a044a62075a352d58e96
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene6\Play_Scene_6_2_Nova
+      maxAttenuation: 0
+      maxDuration: 3
+      minDuration: 3
+    - name: Play_Scene_6_3_Nova
+      guid: 840f53a3c9834c47bbacf7875c00ee6b
+      id: 3790913612
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene6
+        ObjectType: 4
+        guid: bb7329e933daac47872982746bbdf176
+      - ElementName: Play_Scene_6_3_Nova
+        ObjectType: 3
+        guid: 840f53a3c9834c47bbacf7875c00ee6b
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene6\Play_Scene_6_3_Nova
+      maxAttenuation: 0
+      maxDuration: 4.31
+      minDuration: 4.31
+    - name: Play_Scene_7_1_Nova
+      guid: 7a15867bb552da48a65fea19447ae19e
+      id: 242375997
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene7
+        ObjectType: 4
+        guid: 4bc6f0f6c15f504d803f4c04ad04cb7f
+      - ElementName: Play_Scene_7_1_Nova
+        ObjectType: 3
+        guid: 7a15867bb552da48a65fea19447ae19e
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene7\Play_Scene_7_1_Nova
+      maxAttenuation: 0
+      maxDuration: 7.34
+      minDuration: 7.34
+    - name: Play_Scene_7_2_Nova
+      guid: c07babfffac512429e2c26da4e8b2001
+      id: 2718412340
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene7
+        ObjectType: 4
+        guid: 4bc6f0f6c15f504d803f4c04ad04cb7f
+      - ElementName: Play_Scene_7_2_Nova
+        ObjectType: 3
+        guid: c07babfffac512429e2c26da4e8b2001
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene7\Play_Scene_7_2_Nova
+      maxAttenuation: 0
+      maxDuration: 2.276349
+      minDuration: 2.276349
+    - name: Play_Scene_8_1_1_Soldier1
+      guid: 3b40157d316f0549846eda4a684d90c7
+      id: 3016798637
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene8
+        ObjectType: 4
+        guid: f641779c5b69be44a2bf4838b5c9a752
+      - ElementName: Scene8-1
+        ObjectType: 4
+        guid: 28d2ef5d4c05844a8d44a11eeb257a0a
+      - ElementName: Play_Scene_8_1_1_Soldier1
+        ObjectType: 3
+        guid: 3b40157d316f0549846eda4a684d90c7
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene8\Scene8-1\Play_Scene_8_1_1_Soldier1
+      maxAttenuation: 0
+      maxDuration: 2.5
+      minDuration: 2.5
+    - name: Play_Scene_8_1_2_Soldier2
+      guid: 696e316dd3b20d409275022dcc48f448
+      id: 3077350719
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene8
+        ObjectType: 4
+        guid: f641779c5b69be44a2bf4838b5c9a752
+      - ElementName: Scene8-1
+        ObjectType: 4
+        guid: 28d2ef5d4c05844a8d44a11eeb257a0a
+      - ElementName: Play_Scene_8_1_2_Soldier2
+        ObjectType: 3
+        guid: 696e316dd3b20d409275022dcc48f448
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene8\Scene8-1\Play_Scene_8_1_2_Soldier2
+      maxAttenuation: 0
+      maxDuration: 1.4
+      minDuration: 1.4
+    - name: Play_Scene_8_1_3_Soldier1
+      guid: ec37420313eead44b827b61580fc8039
+      id: 790123375
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene8
+        ObjectType: 4
+        guid: f641779c5b69be44a2bf4838b5c9a752
+      - ElementName: Scene8-1
+        ObjectType: 4
+        guid: 28d2ef5d4c05844a8d44a11eeb257a0a
+      - ElementName: Play_Scene_8_1_3_Soldier1
+        ObjectType: 3
+        guid: ec37420313eead44b827b61580fc8039
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene8\Scene8-1\Play_Scene_8_1_3_Soldier1
+      maxAttenuation: 0
+      maxDuration: 4.62
+      minDuration: 4.62
+    - name: Play_Scene_8_2_1_Soldier1
+      guid: c0c37c8a6f4018458ad4b52ec0776e2a
+      id: 1755263576
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene8
+        ObjectType: 4
+        guid: f641779c5b69be44a2bf4838b5c9a752
+      - ElementName: Scene8-2
+        ObjectType: 4
+        guid: 0ae6d76fadf1474785c40788a9b515c5
+      - ElementName: Play_Scene_8_2_1_Soldier1
+        ObjectType: 3
+        guid: c0c37c8a6f4018458ad4b52ec0776e2a
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene8\Scene8-2\Play_Scene_8_2_1_Soldier1
+      maxAttenuation: 0
+      maxDuration: 4.387393
+      minDuration: 4.387393
+    - name: Play_Scene_8_2_2_Soldier2
+      guid: 090e1d4f16d57f4d956756751b4399a5
+      id: 1061444858
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene8
+        ObjectType: 4
+        guid: f641779c5b69be44a2bf4838b5c9a752
+      - ElementName: Scene8-2
+        ObjectType: 4
+        guid: 0ae6d76fadf1474785c40788a9b515c5
+      - ElementName: Play_Scene_8_2_2_Soldier2
+        ObjectType: 3
+        guid: 090e1d4f16d57f4d956756751b4399a5
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene8\Scene8-2\Play_Scene_8_2_2_Soldier2
+      maxAttenuation: 0
+      maxDuration: 2.203197
+      minDuration: 2.203197
+    - name: Play_Scene_8_3_1_Soldier1
+      guid: db2d0f4911f51644a6961258192eeb8d
+      id: 2275525651
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene8
+        ObjectType: 4
+        guid: f641779c5b69be44a2bf4838b5c9a752
+      - ElementName: Scene8-3
+        ObjectType: 4
+        guid: 08b7fc530b77274889bb6df1a1e4241e
+      - ElementName: Play_Scene_8_3_1_Soldier1
+        ObjectType: 3
+        guid: db2d0f4911f51644a6961258192eeb8d
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene8\Scene8-3\Play_Scene_8_3_1_Soldier1
+      maxAttenuation: 0
+      maxDuration: 4.29
+      minDuration: 4.29
+    - name: Play_Scene_8_3_2_Samoya
+      guid: 590a664ecf6aa6418d764c022821b5a3
+      id: 1633134751
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene8
+        ObjectType: 4
+        guid: f641779c5b69be44a2bf4838b5c9a752
+      - ElementName: Scene8-3
+        ObjectType: 4
+        guid: 08b7fc530b77274889bb6df1a1e4241e
+      - ElementName: Play_Scene_8_3_2_Samoya
+        ObjectType: 3
+        guid: 590a664ecf6aa6418d764c022821b5a3
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene8\Scene8-3\Play_Scene_8_3_2_Samoya
+      maxAttenuation: 0
+      maxDuration: 1.79
+      minDuration: 1.79
+    - name: Play_Scene_8_3_3_Nova
+      guid: eec279013a7e8e4c9fa33709608ac7b0
+      id: 704830160
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene8
+        ObjectType: 4
+        guid: f641779c5b69be44a2bf4838b5c9a752
+      - ElementName: Scene8-3
+        ObjectType: 4
+        guid: 08b7fc530b77274889bb6df1a1e4241e
+      - ElementName: Play_Scene_8_3_3_Nova
+        ObjectType: 3
+        guid: eec279013a7e8e4c9fa33709608ac7b0
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene8\Scene8-3\Play_Scene_8_3_3_Nova
+      maxAttenuation: 0
+      maxDuration: 1.34
+      minDuration: 1.34
+    - name: Play_Scene_8_4_1_Soldier1
+      guid: b9d9d4d45ae2244e9c2415d07e71f971
+      id: 2501978334
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene8
+        ObjectType: 4
+        guid: f641779c5b69be44a2bf4838b5c9a752
+      - ElementName: Scene8-4
+        ObjectType: 4
+        guid: a117db7bf9f2b844b9ce299dd540dca4
+      - ElementName: Play_Scene_8_4_1_Soldier1
+        ObjectType: 3
+        guid: b9d9d4d45ae2244e9c2415d07e71f971
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene8\Scene8-4\Play_Scene_8_4_1_Soldier1
+      maxAttenuation: 0
+      maxDuration: 3.170748
+      minDuration: 3.170748
+    - name: Play_Scene_8_4_2_Soldier2
+      guid: 85640d09dfb7e341af8361387db34663
+      id: 1267178112
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene8
+        ObjectType: 4
+        guid: f641779c5b69be44a2bf4838b5c9a752
+      - ElementName: Scene8-4
+        ObjectType: 4
+        guid: a117db7bf9f2b844b9ce299dd540dca4
+      - ElementName: Play_Scene_8_4_2_Soldier2
+        ObjectType: 3
+        guid: 85640d09dfb7e341af8361387db34663
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene8\Scene8-4\Play_Scene_8_4_2_Soldier2
+      maxAttenuation: 0
+      maxDuration: 3.22
+      minDuration: 3.22
+    - name: Play_Scene_8_5_1_Soldier1
+      guid: 3f3910cb969d6749b810cb126009d5d9
+      id: 3171187609
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene8
+        ObjectType: 4
+        guid: f641779c5b69be44a2bf4838b5c9a752
+      - ElementName: Scene8-5
+        ObjectType: 4
+        guid: 6b53f2034d17b9459ac383b6365c43cb
+      - ElementName: Play_Scene_8_5_1_Soldier1
+        ObjectType: 3
+        guid: 3f3910cb969d6749b810cb126009d5d9
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene8\Scene8-5\Play_Scene_8_5_1_Soldier1
+      maxAttenuation: 0
+      maxDuration: 6.053152
+      minDuration: 6.053152
+    - name: Play_Scene_9_1_Soldier2
+      guid: aa748cd18242d34c88a7af1f4d0633f1
+      id: 1781676305
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene9
+        ObjectType: 4
+        guid: 12330c0b456e65478a528bc4350557e4
+      - ElementName: Play_Scene_9_1_Soldier2
+        ObjectType: 3
+        guid: aa748cd18242d34c88a7af1f4d0633f1
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene9\Play_Scene_9_1_Soldier2
+      maxAttenuation: 0
+      maxDuration: 2.73
+      minDuration: 2.73
+    - name: Play_Scene_9_2_Soldier1
+      guid: 9fa8f58deed2e34d8bc46c00effe8983
+      id: 1852701895
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene9
+        ObjectType: 4
+        guid: 12330c0b456e65478a528bc4350557e4
+      - ElementName: Play_Scene_9_2_Soldier1
+        ObjectType: 3
+        guid: 9fa8f58deed2e34d8bc46c00effe8983
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene9\Play_Scene_9_2_Soldier1
+      maxAttenuation: 0
+      maxDuration: 3.87
+      minDuration: 3.87
+    - name: Play_Scene1
+      guid: 548478bdeea9044bbd0a4fb4be1593e3
+      id: 1104522247
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Sequences Playlists
+        ObjectType: 4
+        guid: 18e88139f29a984295b45089a58d9f71
+      - ElementName: Scene1
+        ObjectType: 4
+        guid: 490872fc8a35274eb009c9a02b908919
+      - ElementName: Play_Scene1
+        ObjectType: 3
+        guid: 548478bdeea9044bbd0a4fb4be1593e3
+      Path: Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene1\Play_Scene1
+      maxAttenuation: 0
+      maxDuration: 5
+      minDuration: 2.204535
+    - name: Play_Scene10
+      guid: b237ef338cf20043bd07d3dc1ba2fed9
+      id: 2858274613
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Sequences Playlists
+        ObjectType: 4
+        guid: 18e88139f29a984295b45089a58d9f71
+      - ElementName: Scene10
+        ObjectType: 4
+        guid: 3e184b1702da0b40a9d9ef9afe190783
+      - ElementName: Play_Scene10
+        ObjectType: 3
+        guid: b237ef338cf20043bd07d3dc1ba2fed9
+      Path: Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene10\Play_Scene10
+      maxAttenuation: 0
+      maxDuration: 3.19
+      minDuration: 1.44
+    - name: Play_Scene11
+      guid: 1435337f3ac59b42808f3016dd83b005
+      id: 2858274612
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Sequences Playlists
+        ObjectType: 4
+        guid: 18e88139f29a984295b45089a58d9f71
+      - ElementName: Scene11
+        ObjectType: 4
+        guid: b43fa1ebcb168343a51b05ecac37b58f
+      - ElementName: Play_Scene11
+        ObjectType: 3
+        guid: 1435337f3ac59b42808f3016dd83b005
+      Path: Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene11\Play_Scene11
+      maxAttenuation: 0
+      maxDuration: 3.5
+      minDuration: 3.5
+    - name: Play_Scene12
+      guid: 767e70dbf13f6949b30f9b667beb6143
+      id: 2858274615
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Sequences Playlists
+        ObjectType: 4
+        guid: 18e88139f29a984295b45089a58d9f71
+      - ElementName: Scene12
+        ObjectType: 4
+        guid: 230ee95dfa80084387bfe7f1eb5df8e1
+      - ElementName: Play_Scene12
+        ObjectType: 3
+        guid: 767e70dbf13f6949b30f9b667beb6143
+      Path: Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene12\Play_Scene12
+      maxAttenuation: 0
+      maxDuration: 2.29
+      minDuration: 2.29
+    - name: Play_Scene2
+      guid: 161736142aca254885ca8ef6b13a80d1
+      id: 1104522244
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Sequences Playlists
+        ObjectType: 4
+        guid: 18e88139f29a984295b45089a58d9f71
+      - ElementName: Scene2
+        ObjectType: 4
+        guid: cfb6288ce8466f418bcdc99ba96ebc86
+      - ElementName: Play_Scene2
+        ObjectType: 3
+        guid: 161736142aca254885ca8ef6b13a80d1
+      Path: Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene2\Play_Scene2
+      maxAttenuation: 0
+      maxDuration: 1.95
+      minDuration: 1.645624
+    - name: Play_Scene3
+      guid: 8f4d8e725f3075458cd616843cdff45c
+      id: 1104522245
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Sequences Playlists
+        ObjectType: 4
+        guid: 18e88139f29a984295b45089a58d9f71
+      - ElementName: Scene3
+        ObjectType: 4
+        guid: e1873dba9e18c045912fc54bd8bc84a0
+      - ElementName: Play_Scene3
+        ObjectType: 3
+        guid: 8f4d8e725f3075458cd616843cdff45c
+      Path: Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene3\Play_Scene3
+      maxAttenuation: 0
+      maxDuration: 5.61
+      minDuration: 2.264172
+    - name: Play_Scene4
+      guid: e3c72839f344b5459219e9e4f1bc471d
+      id: 1104522242
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Sequences Playlists
+        ObjectType: 4
+        guid: 18e88139f29a984295b45089a58d9f71
+      - ElementName: Scene4
+        ObjectType: 4
+        guid: fb4680adeb29c84e847e2cbc5055ead1
+      - ElementName: Play_Scene4
+        ObjectType: 3
+        guid: e3c72839f344b5459219e9e4f1bc471d
+      Path: Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene4\Play_Scene4
+      maxAttenuation: 0
+      maxDuration: 3.906349
+      minDuration: 2.278095
+    - name: Play_Scene5
+      guid: b4b93d11d463ec409ac8ed1e6f36e010
+      id: 1104522243
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Sequences Playlists
+        ObjectType: 4
+        guid: 18e88139f29a984295b45089a58d9f71
+      - ElementName: Scene5
+        ObjectType: 4
+        guid: f276ae3c5811f842a554454eb99cfb39
+      - ElementName: Play_Scene5
+        ObjectType: 3
+        guid: b4b93d11d463ec409ac8ed1e6f36e010
+      Path: Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene5\Play_Scene5
+      maxAttenuation: 0
+      maxDuration: 2.005465
+      minDuration: 2.005465
+    - name: Play_Scene6
+      guid: 3ac27c0ecbf9e34bb47970cc1ba25a5d
+      id: 1104522240
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Sequences Playlists
+        ObjectType: 4
+        guid: 18e88139f29a984295b45089a58d9f71
+      - ElementName: Scene6
+        ObjectType: 4
+        guid: 5c81a7f6535c964bbbfe7ca99beb1ff8
+      - ElementName: Play_Scene6
+        ObjectType: 3
+        guid: 3ac27c0ecbf9e34bb47970cc1ba25a5d
+      Path: Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene6\Play_Scene6
+      maxAttenuation: 0
+      maxDuration: 4.31
+      minDuration: 2.5
+    - name: Play_Scene7
+      guid: 80417cbc8470d74984a5df1ab49339bc
+      id: 1104522241
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Sequences Playlists
+        ObjectType: 4
+        guid: 18e88139f29a984295b45089a58d9f71
+      - ElementName: Scene7
+        ObjectType: 4
+        guid: b2db54c8c3c25f479daa21ec0eb999b9
+      - ElementName: Play_Scene7
+        ObjectType: 3
+        guid: 80417cbc8470d74984a5df1ab49339bc
+      Path: Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene7\Play_Scene7
+      maxAttenuation: 0
+      maxDuration: 7.34
+      minDuration: 2.276349
+    - name: Play_Scene8_1
+      guid: ef96175cf59e8d4ca9534f8bd901118a
+      id: 2344530942
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Sequences Playlists
+        ObjectType: 4
+        guid: 18e88139f29a984295b45089a58d9f71
+      - ElementName: Scene8
+        ObjectType: 4
+        guid: e0fa5c0427feac4281dd9782438e2171
+      - ElementName: Scene8-1
+        ObjectType: 4
+        guid: 97950f6803a6bb4bbabc3ef7c9aceb3f
+      - ElementName: Play_Scene8_1
+        ObjectType: 3
+        guid: ef96175cf59e8d4ca9534f8bd901118a
+      Path: Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene8\Scene8-1\Play_Scene8_1
+      maxAttenuation: 0
+      maxDuration: 4.62
+      minDuration: 1.4
+    - name: Play_Scene8_2
+      guid: 8400923019ca8a4d9396ed196bc62731
+      id: 2344530941
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Sequences Playlists
+        ObjectType: 4
+        guid: 18e88139f29a984295b45089a58d9f71
+      - ElementName: Scene8
+        ObjectType: 4
+        guid: e0fa5c0427feac4281dd9782438e2171
+      - ElementName: Scene8-2
+        ObjectType: 4
+        guid: f7ea7e1b25a24a4f941747a46f5caf7f
+      - ElementName: Play_Scene8_2
+        ObjectType: 3
+        guid: 8400923019ca8a4d9396ed196bc62731
+      Path: Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene8\Scene8-2\Play_Scene8_2
+      maxAttenuation: 0
+      maxDuration: 4.387393
+      minDuration: 2.203197
+    - name: Play_Scene8_3
+      guid: e864a37f059e3a48a9b6ca01fc39809d
+      id: 2344530940
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Sequences Playlists
+        ObjectType: 4
+        guid: 18e88139f29a984295b45089a58d9f71
+      - ElementName: Scene8
+        ObjectType: 4
+        guid: e0fa5c0427feac4281dd9782438e2171
+      - ElementName: Scene8-3
+        ObjectType: 4
+        guid: 07a1753b8672f8408235552d0888eae1
+      - ElementName: Play_Scene8_3
+        ObjectType: 3
+        guid: e864a37f059e3a48a9b6ca01fc39809d
+      Path: Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene8\Scene8-3\Play_Scene8_3
+      maxAttenuation: 0
+      maxDuration: 4.29
+      minDuration: 1.34
+    - name: Play_Scene8_4
+      guid: c911fbe1489b9f44ae217203c3336fd4
+      id: 2344530939
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Sequences Playlists
+        ObjectType: 4
+        guid: 18e88139f29a984295b45089a58d9f71
+      - ElementName: Scene8
+        ObjectType: 4
+        guid: e0fa5c0427feac4281dd9782438e2171
+      - ElementName: Scene8-4
+        ObjectType: 4
+        guid: 005ef8b2571aae4d9b265c8a51fb2fe2
+      - ElementName: Play_Scene8_4
+        ObjectType: 3
+        guid: c911fbe1489b9f44ae217203c3336fd4
+      Path: Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene8\Scene8-4\Play_Scene8_4
+      maxAttenuation: 0
+      maxDuration: 3.22
+      minDuration: 3.170748
+    - name: Play_Scene8_5
+      guid: dc008f1333e99745a1dcd34aa6b68acd
+      id: 2344530938
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Sequences Playlists
+        ObjectType: 4
+        guid: 18e88139f29a984295b45089a58d9f71
+      - ElementName: Scene8
+        ObjectType: 4
+        guid: e0fa5c0427feac4281dd9782438e2171
+      - ElementName: Scene8-5
+        ObjectType: 4
+        guid: 7f257031ba51b2458c7623713f49a336
+      - ElementName: Play_Scene8_5
+        ObjectType: 3
+        guid: dc008f1333e99745a1dcd34aa6b68acd
+      Path: Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene8\Scene8-5\Play_Scene8_5
+      maxAttenuation: 0
+      maxDuration: 6.053152
+      minDuration: 6.053152
+    - name: Play_Scene9
+      guid: 9a9355771f47d34cb23fdd83fe190a94
+      id: 1104522255
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Sequences Playlists
+        ObjectType: 4
+        guid: 18e88139f29a984295b45089a58d9f71
+      - ElementName: Scene9
+        ObjectType: 4
+        guid: 87ccbf8ca763e747a905d00b06970605
+      - ElementName: Play_Scene9
+        ObjectType: 3
+        guid: 9a9355771f47d34cb23fdd83fe190a94
+      Path: Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene9\Play_Scene9
+      maxAttenuation: 0
+      maxDuration: 3.87
+      minDuration: 2.73
     - name: Play_Stealth_Music
       guid: 8b24fc5070b561489203400a296b2d94
       id: 674798631
@@ -411,7 +2129,7 @@ MonoBehaviour:
       maxDuration: -1
       minDuration: -1
     - name: Play_TestSound_Loop
-      guid: ae6337567e192e4b80f0ada94ae082d7
+      guid: 4a06d4e5f1b15441b5323b1848713a9b
       id: 2024687188
       PathAndIcons:
       - ElementName: Events
@@ -428,13 +2146,13 @@ MonoBehaviour:
         guid: fe7afa231d76924da329170aa0cbe68b
       - ElementName: Play_TestSound_Loop
         ObjectType: 3
-        guid: ae6337567e192e4b80f0ada94ae082d7
+        guid: 4a06d4e5f1b15441b5323b1848713a9b
       Path: Events\Default Work Unit\Main\TestSounds\Play_TestSound_Loop
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
     - name: Play_TestSound_Single
-      guid: 3969d6b1525a7c4ea6f9e46377098c90
+      guid: 99f2a611cfa1f34ca2721ed0b2485c8f
       id: 4206196186
       PathAndIcons:
       - ElementName: Events
@@ -451,34 +2169,11 @@ MonoBehaviour:
         guid: fe7afa231d76924da329170aa0cbe68b
       - ElementName: Play_TestSound_Single
         ObjectType: 3
-        guid: 3969d6b1525a7c4ea6f9e46377098c90
+        guid: 99f2a611cfa1f34ca2721ed0b2485c8f
       Path: Events\Default Work Unit\Main\TestSounds\Play_TestSound_Single
       maxAttenuation: 0
       maxDuration: 2.125398
       minDuration: 2.125398
-    - name: Play_Wind_PlaceHolder
-      guid: ce647153160f4543b00c6183edd3a21b
-      id: 3498798050
-      PathAndIcons:
-      - ElementName: Events
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: Default Work Unit
-        ObjectType: 12
-        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
-      - ElementName: Main
-        ObjectType: 4
-        guid: ae06bf3d9bde2f4185163b3fa933efc9
-      - ElementName: Wind
-        ObjectType: 4
-        guid: 1f30f7a6ed29be42a7c95e5b6d663e4a
-      - ElementName: Play_Wind_PlaceHolder
-        ObjectType: 3
-        guid: ce647153160f4543b00c6183edd3a21b
-      Path: Events\Default Work Unit\Main\Wind\Play_Wind_PlaceHolder
-      maxAttenuation: 0
-      maxDuration: 124.029396
-      minDuration: 124.029396
     - name: ProximityLamp
       guid: 4e7210d9ee58454ab151c51f00dd48a9
       id: 2267874046
@@ -496,6 +2191,1422 @@ MonoBehaviour:
         ObjectType: 4
         guid: 4e7210d9ee58454ab151c51f00dd48a9
       Path: Events\Default Work Unit\Main\ProximityLamp
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Reset_Playlist_Scene1
+      guid: c87f406262392e468c148f26baa2a7c4
+      id: 1372183391
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Sequences Playlists
+        ObjectType: 4
+        guid: 18e88139f29a984295b45089a58d9f71
+      - ElementName: Scene1
+        ObjectType: 4
+        guid: 490872fc8a35274eb009c9a02b908919
+      - ElementName: Reset_Playlist_Scene1
+        ObjectType: 3
+        guid: c87f406262392e468c148f26baa2a7c4
+      Path: Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene1\Reset_Playlist_Scene1
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Reset_Playlist_Scene10
+      guid: 4aceb8c00b30b54e8ab9b208355d0d3b
+      id: 532960957
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Sequences Playlists
+        ObjectType: 4
+        guid: 18e88139f29a984295b45089a58d9f71
+      - ElementName: Scene10
+        ObjectType: 4
+        guid: 3e184b1702da0b40a9d9ef9afe190783
+      - ElementName: Reset_Playlist_Scene10
+        ObjectType: 3
+        guid: 4aceb8c00b30b54e8ab9b208355d0d3b
+      Path: Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene10\Reset_Playlist_Scene10
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Reset_Playlist_Scene11
+      guid: 7a7bc26ca91ace47aca15b46fb1e38c3
+      id: 532960956
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Sequences Playlists
+        ObjectType: 4
+        guid: 18e88139f29a984295b45089a58d9f71
+      - ElementName: Scene11
+        ObjectType: 4
+        guid: b43fa1ebcb168343a51b05ecac37b58f
+      - ElementName: Reset_Playlist_Scene11
+        ObjectType: 3
+        guid: 7a7bc26ca91ace47aca15b46fb1e38c3
+      Path: Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene11\Reset_Playlist_Scene11
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Reset_Playlist_Scene12
+      guid: 885e8569d8984646ac6dc586d51bf78e
+      id: 532960959
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Sequences Playlists
+        ObjectType: 4
+        guid: 18e88139f29a984295b45089a58d9f71
+      - ElementName: Scene12
+        ObjectType: 4
+        guid: 230ee95dfa80084387bfe7f1eb5df8e1
+      - ElementName: Reset_Playlist_Scene12
+        ObjectType: 3
+        guid: 885e8569d8984646ac6dc586d51bf78e
+      Path: Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene12\Reset_Playlist_Scene12
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Reset_Playlist_Scene2
+      guid: 000662a139516641a3e6906896c096cd
+      id: 1372183388
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Sequences Playlists
+        ObjectType: 4
+        guid: 18e88139f29a984295b45089a58d9f71
+      - ElementName: Scene2
+        ObjectType: 4
+        guid: cfb6288ce8466f418bcdc99ba96ebc86
+      - ElementName: Reset_Playlist_Scene2
+        ObjectType: 3
+        guid: 000662a139516641a3e6906896c096cd
+      Path: Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene2\Reset_Playlist_Scene2
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Reset_Playlist_Scene3
+      guid: ca71fb261e77ca4da7e54dc6d94ec2fc
+      id: 1372183389
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Sequences Playlists
+        ObjectType: 4
+        guid: 18e88139f29a984295b45089a58d9f71
+      - ElementName: Scene3
+        ObjectType: 4
+        guid: e1873dba9e18c045912fc54bd8bc84a0
+      - ElementName: Reset_Playlist_Scene3
+        ObjectType: 3
+        guid: ca71fb261e77ca4da7e54dc6d94ec2fc
+      Path: Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene3\Reset_Playlist_Scene3
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Reset_Playlist_Scene4
+      guid: 6456cb0907c53648959b3843475294e4
+      id: 1372183386
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Sequences Playlists
+        ObjectType: 4
+        guid: 18e88139f29a984295b45089a58d9f71
+      - ElementName: Scene4
+        ObjectType: 4
+        guid: fb4680adeb29c84e847e2cbc5055ead1
+      - ElementName: Reset_Playlist_Scene4
+        ObjectType: 3
+        guid: 6456cb0907c53648959b3843475294e4
+      Path: Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene4\Reset_Playlist_Scene4
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Reset_Playlist_Scene5
+      guid: 70b8f45052f3e14aa65dad67df80cdfe
+      id: 1372183387
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Sequences Playlists
+        ObjectType: 4
+        guid: 18e88139f29a984295b45089a58d9f71
+      - ElementName: Scene5
+        ObjectType: 4
+        guid: f276ae3c5811f842a554454eb99cfb39
+      - ElementName: Reset_Playlist_Scene5
+        ObjectType: 3
+        guid: 70b8f45052f3e14aa65dad67df80cdfe
+      Path: Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene5\Reset_Playlist_Scene5
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Reset_Playlist_Scene6
+      guid: d52dc43ea738e94b8a49392e3518e970
+      id: 1372183384
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Sequences Playlists
+        ObjectType: 4
+        guid: 18e88139f29a984295b45089a58d9f71
+      - ElementName: Scene6
+        ObjectType: 4
+        guid: 5c81a7f6535c964bbbfe7ca99beb1ff8
+      - ElementName: Reset_Playlist_Scene6
+        ObjectType: 3
+        guid: d52dc43ea738e94b8a49392e3518e970
+      Path: Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene6\Reset_Playlist_Scene6
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Reset_Playlist_Scene7
+      guid: b9de93314a396546a06808e6d75e1cf1
+      id: 1372183385
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Sequences Playlists
+        ObjectType: 4
+        guid: 18e88139f29a984295b45089a58d9f71
+      - ElementName: Scene7
+        ObjectType: 4
+        guid: b2db54c8c3c25f479daa21ec0eb999b9
+      - ElementName: Reset_Playlist_Scene7
+        ObjectType: 3
+        guid: b9de93314a396546a06808e6d75e1cf1
+      Path: Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene7\Reset_Playlist_Scene7
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Reset_Playlist_Scene8_1
+      guid: bdb5b02bb7cce8439367eb879cc099ec
+      id: 335394870
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Sequences Playlists
+        ObjectType: 4
+        guid: 18e88139f29a984295b45089a58d9f71
+      - ElementName: Scene8
+        ObjectType: 4
+        guid: e0fa5c0427feac4281dd9782438e2171
+      - ElementName: Scene8-1
+        ObjectType: 4
+        guid: 97950f6803a6bb4bbabc3ef7c9aceb3f
+      - ElementName: Reset_Playlist_Scene8_1
+        ObjectType: 3
+        guid: bdb5b02bb7cce8439367eb879cc099ec
+      Path: Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene8\Scene8-1\Reset_Playlist_Scene8_1
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Reset_Playlist_Scene8_2
+      guid: 33efaa5262a12e45beef2578c1ad9e3f
+      id: 335394869
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Sequences Playlists
+        ObjectType: 4
+        guid: 18e88139f29a984295b45089a58d9f71
+      - ElementName: Scene8
+        ObjectType: 4
+        guid: e0fa5c0427feac4281dd9782438e2171
+      - ElementName: Scene8-2
+        ObjectType: 4
+        guid: f7ea7e1b25a24a4f941747a46f5caf7f
+      - ElementName: Reset_Playlist_Scene8_2
+        ObjectType: 3
+        guid: 33efaa5262a12e45beef2578c1ad9e3f
+      Path: Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene8\Scene8-2\Reset_Playlist_Scene8_2
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Reset_Playlist_Scene8_3
+      guid: ccead0a117909545818d38fb0c65cb03
+      id: 335394868
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Sequences Playlists
+        ObjectType: 4
+        guid: 18e88139f29a984295b45089a58d9f71
+      - ElementName: Scene8
+        ObjectType: 4
+        guid: e0fa5c0427feac4281dd9782438e2171
+      - ElementName: Scene8-3
+        ObjectType: 4
+        guid: 07a1753b8672f8408235552d0888eae1
+      - ElementName: Reset_Playlist_Scene8_3
+        ObjectType: 3
+        guid: ccead0a117909545818d38fb0c65cb03
+      Path: Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene8\Scene8-3\Reset_Playlist_Scene8_3
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Reset_Playlist_Scene8_4
+      guid: 86006411eb93534092b2c621cfe76e0d
+      id: 335394867
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Sequences Playlists
+        ObjectType: 4
+        guid: 18e88139f29a984295b45089a58d9f71
+      - ElementName: Scene8
+        ObjectType: 4
+        guid: e0fa5c0427feac4281dd9782438e2171
+      - ElementName: Scene8-4
+        ObjectType: 4
+        guid: 005ef8b2571aae4d9b265c8a51fb2fe2
+      - ElementName: Reset_Playlist_Scene8_4
+        ObjectType: 3
+        guid: 86006411eb93534092b2c621cfe76e0d
+      Path: Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene8\Scene8-4\Reset_Playlist_Scene8_4
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Reset_Playlist_Scene8_5
+      guid: 57c4180541f7bb498f770ffa724c5344
+      id: 335394866
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Sequences Playlists
+        ObjectType: 4
+        guid: 18e88139f29a984295b45089a58d9f71
+      - ElementName: Scene8
+        ObjectType: 4
+        guid: e0fa5c0427feac4281dd9782438e2171
+      - ElementName: Scene8-5
+        ObjectType: 4
+        guid: 7f257031ba51b2458c7623713f49a336
+      - ElementName: Reset_Playlist_Scene8_5
+        ObjectType: 3
+        guid: 57c4180541f7bb498f770ffa724c5344
+      Path: Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene8\Scene8-5\Reset_Playlist_Scene8_5
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Reset_Playlist_Scene9
+      guid: f25f52f47ccd474db7eeaec2a5105ee1
+      id: 1372183383
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Sequences Playlists
+        ObjectType: 4
+        guid: 18e88139f29a984295b45089a58d9f71
+      - ElementName: Scene9
+        ObjectType: 4
+        guid: 87ccbf8ca763e747a905d00b06970605
+      - ElementName: Reset_Playlist_Scene9
+        ObjectType: 3
+        guid: f25f52f47ccd474db7eeaec2a5105ee1
+      Path: Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene9\Reset_Playlist_Scene9
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Scene1
+      guid: 490872fc8a35274eb009c9a02b908919
+      id: 1544306476
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Sequences Playlists
+        ObjectType: 4
+        guid: 18e88139f29a984295b45089a58d9f71
+      - ElementName: Scene1
+        ObjectType: 4
+        guid: 490872fc8a35274eb009c9a02b908919
+      Path: Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene1
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Scene1
+      guid: 3fc74f339da499478c7dab73bbc54889
+      id: 1544306476
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene1
+        ObjectType: 4
+        guid: 3fc74f339da499478c7dab73bbc54889
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene1
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Scene10
+      guid: 3e184b1702da0b40a9d9ef9afe190783
+      id: 323449460
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Sequences Playlists
+        ObjectType: 4
+        guid: 18e88139f29a984295b45089a58d9f71
+      - ElementName: Scene10
+        ObjectType: 4
+        guid: 3e184b1702da0b40a9d9ef9afe190783
+      Path: Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene10
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Scene10
+      guid: 0ebaf8eda7001741bcf134de87c1b732
+      id: 323449460
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene10
+        ObjectType: 4
+        guid: 0ebaf8eda7001741bcf134de87c1b732
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene10
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Scene11
+      guid: 7b542bd405b053499df20bb840c78f7f
+      id: 323449461
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene11
+        ObjectType: 4
+        guid: 7b542bd405b053499df20bb840c78f7f
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene11
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Scene11
+      guid: b43fa1ebcb168343a51b05ecac37b58f
+      id: 323449461
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Sequences Playlists
+        ObjectType: 4
+        guid: 18e88139f29a984295b45089a58d9f71
+      - ElementName: Scene11
+        ObjectType: 4
+        guid: b43fa1ebcb168343a51b05ecac37b58f
+      Path: Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene11
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Scene12
+      guid: 230ee95dfa80084387bfe7f1eb5df8e1
+      id: 323449462
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Sequences Playlists
+        ObjectType: 4
+        guid: 18e88139f29a984295b45089a58d9f71
+      - ElementName: Scene12
+        ObjectType: 4
+        guid: 230ee95dfa80084387bfe7f1eb5df8e1
+      Path: Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene12
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Scene12
+      guid: 94437f540d4bd7489b608741465b49ab
+      id: 323449462
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene12
+        ObjectType: 4
+        guid: 94437f540d4bd7489b608741465b49ab
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene12
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Scene2
+      guid: ef7c4d4d2258f8418197a0c767e53b50
+      id: 1544306479
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene2
+        ObjectType: 4
+        guid: ef7c4d4d2258f8418197a0c767e53b50
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene2
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Scene2
+      guid: cfb6288ce8466f418bcdc99ba96ebc86
+      id: 1544306479
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Sequences Playlists
+        ObjectType: 4
+        guid: 18e88139f29a984295b45089a58d9f71
+      - ElementName: Scene2
+        ObjectType: 4
+        guid: cfb6288ce8466f418bcdc99ba96ebc86
+      Path: Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene2
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Scene3
+      guid: 6558d6c86976604097abebef9942135c
+      id: 1544306478
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene3
+        ObjectType: 4
+        guid: 6558d6c86976604097abebef9942135c
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene3
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Scene3
+      guid: e1873dba9e18c045912fc54bd8bc84a0
+      id: 1544306478
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Sequences Playlists
+        ObjectType: 4
+        guid: 18e88139f29a984295b45089a58d9f71
+      - ElementName: Scene3
+        ObjectType: 4
+        guid: e1873dba9e18c045912fc54bd8bc84a0
+      Path: Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene3
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Scene4
+      guid: fb4680adeb29c84e847e2cbc5055ead1
+      id: 1544306473
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Sequences Playlists
+        ObjectType: 4
+        guid: 18e88139f29a984295b45089a58d9f71
+      - ElementName: Scene4
+        ObjectType: 4
+        guid: fb4680adeb29c84e847e2cbc5055ead1
+      Path: Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene4
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Scene4
+      guid: 957c55771f0414498b471325f935e491
+      id: 1544306473
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene4
+        ObjectType: 4
+        guid: 957c55771f0414498b471325f935e491
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene4
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Scene5
+      guid: f276ae3c5811f842a554454eb99cfb39
+      id: 1544306472
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Sequences Playlists
+        ObjectType: 4
+        guid: 18e88139f29a984295b45089a58d9f71
+      - ElementName: Scene5
+        ObjectType: 4
+        guid: f276ae3c5811f842a554454eb99cfb39
+      Path: Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene5
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Scene5
+      guid: e4c3366c806eeb4ba26e9229ff05ed00
+      id: 1544306472
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene5
+        ObjectType: 4
+        guid: e4c3366c806eeb4ba26e9229ff05ed00
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene5
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Scene6
+      guid: 5c81a7f6535c964bbbfe7ca99beb1ff8
+      id: 1544306475
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Sequences Playlists
+        ObjectType: 4
+        guid: 18e88139f29a984295b45089a58d9f71
+      - ElementName: Scene6
+        ObjectType: 4
+        guid: 5c81a7f6535c964bbbfe7ca99beb1ff8
+      Path: Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene6
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Scene6
+      guid: bb7329e933daac47872982746bbdf176
+      id: 1544306475
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene6
+        ObjectType: 4
+        guid: bb7329e933daac47872982746bbdf176
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene6
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Scene7
+      guid: b2db54c8c3c25f479daa21ec0eb999b9
+      id: 1544306474
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Sequences Playlists
+        ObjectType: 4
+        guid: 18e88139f29a984295b45089a58d9f71
+      - ElementName: Scene7
+        ObjectType: 4
+        guid: b2db54c8c3c25f479daa21ec0eb999b9
+      Path: Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene7
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Scene7
+      guid: 4bc6f0f6c15f504d803f4c04ad04cb7f
+      id: 1544306474
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene7
+        ObjectType: 4
+        guid: 4bc6f0f6c15f504d803f4c04ad04cb7f
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene7
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Scene8
+      guid: f641779c5b69be44a2bf4838b5c9a752
+      id: 1544306469
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene8
+        ObjectType: 4
+        guid: f641779c5b69be44a2bf4838b5c9a752
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene8
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Scene8
+      guid: e0fa5c0427feac4281dd9782438e2171
+      id: 1544306469
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Sequences Playlists
+        ObjectType: 4
+        guid: 18e88139f29a984295b45089a58d9f71
+      - ElementName: Scene8
+        ObjectType: 4
+        guid: e0fa5c0427feac4281dd9782438e2171
+      Path: Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene8
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Scene8-1
+      guid: 28d2ef5d4c05844a8d44a11eeb257a0a
+      id: 1718042983
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene8
+        ObjectType: 4
+        guid: f641779c5b69be44a2bf4838b5c9a752
+      - ElementName: Scene8-1
+        ObjectType: 4
+        guid: 28d2ef5d4c05844a8d44a11eeb257a0a
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene8\Scene8-1
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Scene8-1
+      guid: 97950f6803a6bb4bbabc3ef7c9aceb3f
+      id: 1718042983
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Sequences Playlists
+        ObjectType: 4
+        guid: 18e88139f29a984295b45089a58d9f71
+      - ElementName: Scene8
+        ObjectType: 4
+        guid: e0fa5c0427feac4281dd9782438e2171
+      - ElementName: Scene8-1
+        ObjectType: 4
+        guid: 97950f6803a6bb4bbabc3ef7c9aceb3f
+      Path: Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene8\Scene8-1
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Scene8-2
+      guid: f7ea7e1b25a24a4f941747a46f5caf7f
+      id: 1718042980
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Sequences Playlists
+        ObjectType: 4
+        guid: 18e88139f29a984295b45089a58d9f71
+      - ElementName: Scene8
+        ObjectType: 4
+        guid: e0fa5c0427feac4281dd9782438e2171
+      - ElementName: Scene8-2
+        ObjectType: 4
+        guid: f7ea7e1b25a24a4f941747a46f5caf7f
+      Path: Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene8\Scene8-2
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Scene8-2
+      guid: 0ae6d76fadf1474785c40788a9b515c5
+      id: 1718042980
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene8
+        ObjectType: 4
+        guid: f641779c5b69be44a2bf4838b5c9a752
+      - ElementName: Scene8-2
+        ObjectType: 4
+        guid: 0ae6d76fadf1474785c40788a9b515c5
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene8\Scene8-2
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Scene8-3
+      guid: 08b7fc530b77274889bb6df1a1e4241e
+      id: 1718042981
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene8
+        ObjectType: 4
+        guid: f641779c5b69be44a2bf4838b5c9a752
+      - ElementName: Scene8-3
+        ObjectType: 4
+        guid: 08b7fc530b77274889bb6df1a1e4241e
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene8\Scene8-3
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Scene8-3
+      guid: 07a1753b8672f8408235552d0888eae1
+      id: 1718042981
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Sequences Playlists
+        ObjectType: 4
+        guid: 18e88139f29a984295b45089a58d9f71
+      - ElementName: Scene8
+        ObjectType: 4
+        guid: e0fa5c0427feac4281dd9782438e2171
+      - ElementName: Scene8-3
+        ObjectType: 4
+        guid: 07a1753b8672f8408235552d0888eae1
+      Path: Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene8\Scene8-3
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Scene8-4
+      guid: 005ef8b2571aae4d9b265c8a51fb2fe2
+      id: 1718042978
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Sequences Playlists
+        ObjectType: 4
+        guid: 18e88139f29a984295b45089a58d9f71
+      - ElementName: Scene8
+        ObjectType: 4
+        guid: e0fa5c0427feac4281dd9782438e2171
+      - ElementName: Scene8-4
+        ObjectType: 4
+        guid: 005ef8b2571aae4d9b265c8a51fb2fe2
+      Path: Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene8\Scene8-4
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Scene8-4
+      guid: a117db7bf9f2b844b9ce299dd540dca4
+      id: 1718042978
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene8
+        ObjectType: 4
+        guid: f641779c5b69be44a2bf4838b5c9a752
+      - ElementName: Scene8-4
+        ObjectType: 4
+        guid: a117db7bf9f2b844b9ce299dd540dca4
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene8\Scene8-4
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Scene8-5
+      guid: 7f257031ba51b2458c7623713f49a336
+      id: 1718042979
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Sequences Playlists
+        ObjectType: 4
+        guid: 18e88139f29a984295b45089a58d9f71
+      - ElementName: Scene8
+        ObjectType: 4
+        guid: e0fa5c0427feac4281dd9782438e2171
+      - ElementName: Scene8-5
+        ObjectType: 4
+        guid: 7f257031ba51b2458c7623713f49a336
+      Path: Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene8\Scene8-5
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Scene8-5
+      guid: 6b53f2034d17b9459ac383b6365c43cb
+      id: 1718042979
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene8
+        ObjectType: 4
+        guid: f641779c5b69be44a2bf4838b5c9a752
+      - ElementName: Scene8-5
+        ObjectType: 4
+        guid: 6b53f2034d17b9459ac383b6365c43cb
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene8\Scene8-5
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Scene9
+      guid: 12330c0b456e65478a528bc4350557e4
+      id: 1544306468
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene9
+        ObjectType: 4
+        guid: 12330c0b456e65478a528bc4350557e4
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene9
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Scene9
+      guid: 87ccbf8ca763e747a905d00b06970605
+      id: 1544306468
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Sequences Playlists
+        ObjectType: 4
+        guid: 18e88139f29a984295b45089a58d9f71
+      - ElementName: Scene9
+        ObjectType: 4
+        guid: 87ccbf8ca763e747a905d00b06970605
+      Path: Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene9
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Sequences Playlists
+      guid: 18e88139f29a984295b45089a58d9f71
+      id: 278350800
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Sequences Playlists
+        ObjectType: 4
+        guid: 18e88139f29a984295b45089a58d9f71
+      Path: Events\Default Work Unit\Main\Voice Over\Sequences Playlists
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -522,29 +3633,6 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
-    - name: Stop_ParameterTest
-      guid: 8d30644db9536241b122ccc97ff3eeea
-      id: 2756796529
-      PathAndIcons:
-      - ElementName: Events
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: Default Work Unit
-        ObjectType: 12
-        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
-      - ElementName: Main
-        ObjectType: 4
-        guid: ae06bf3d9bde2f4185163b3fa933efc9
-      - ElementName: TestSounds
-        ObjectType: 4
-        guid: fe7afa231d76924da329170aa0cbe68b
-      - ElementName: Stop_ParameterTest
-        ObjectType: 3
-        guid: 8d30644db9536241b122ccc97ff3eeea
-      Path: Events\Default Work Unit\Main\TestSounds\Stop_ParameterTest
-      maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
     - name: Stop_Proxlamp_Draft1_V2
       guid: acff699e01e3284dad2f6131242695bf
       id: 2594172909
@@ -565,6 +3653,1228 @@ MonoBehaviour:
         ObjectType: 3
         guid: acff699e01e3284dad2f6131242695bf
       Path: Events\Default Work Unit\Main\ProximityLamp\Stop_Proxlamp_Draft1_V2
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_Scene_1_1_Nova
+      guid: 6f46fc8ab369e64e86cfd417d4b994c3
+      id: 249749069
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene1
+        ObjectType: 4
+        guid: 3fc74f339da499478c7dab73bbc54889
+      - ElementName: Stop_Scene_1_1_Nova
+        ObjectType: 3
+        guid: 6f46fc8ab369e64e86cfd417d4b994c3
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene1\Stop_Scene_1_1_Nova
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_Scene_1_2_Samoya
+      guid: 42e79f389b9e284e8b6c760d8ea51cf8
+      id: 3844854616
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene1
+        ObjectType: 4
+        guid: 3fc74f339da499478c7dab73bbc54889
+      - ElementName: Stop_Scene_1_2_Samoya
+        ObjectType: 3
+        guid: 42e79f389b9e284e8b6c760d8ea51cf8
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene1\Stop_Scene_1_2_Samoya
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_Scene_1_3_Nova
+      guid: 6c485c3535c9a94baa75759ce866533f
+      id: 1379517587
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene1
+        ObjectType: 4
+        guid: 3fc74f339da499478c7dab73bbc54889
+      - ElementName: Stop_Scene_1_3_Nova
+        ObjectType: 3
+        guid: 6c485c3535c9a94baa75759ce866533f
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene1\Stop_Scene_1_3_Nova
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_Scene_10_1_1_Samoya
+      guid: 5ed4b8fc3f30904f856760ba557f6338
+      id: 1644119437
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene10
+        ObjectType: 4
+        guid: 0ebaf8eda7001741bcf134de87c1b732
+      - ElementName: Stop_Scene_10_1_1_Samoya
+        ObjectType: 3
+        guid: 5ed4b8fc3f30904f856760ba557f6338
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene10\Stop_Scene_10_1_1_Samoya
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_Scene_10_2_1_Samoya
+      guid: 601c56e5e6fbcf49bd1b9fa886ac5a66
+      id: 2375702736
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene10
+        ObjectType: 4
+        guid: 0ebaf8eda7001741bcf134de87c1b732
+      - ElementName: Stop_Scene_10_2_1_Samoya
+        ObjectType: 3
+        guid: 601c56e5e6fbcf49bd1b9fa886ac5a66
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene10\Stop_Scene_10_2_1_Samoya
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_Scene_10_2_2_Nova
+      guid: 7a79ca704447c8488e74d4ddfac8696c
+      id: 1100610069
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene10
+        ObjectType: 4
+        guid: 0ebaf8eda7001741bcf134de87c1b732
+      - ElementName: Stop_Scene_10_2_2_Nova
+        ObjectType: 3
+        guid: 7a79ca704447c8488e74d4ddfac8696c
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene10\Stop_Scene_10_2_2_Nova
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_Scene_10_2_3_Samoya
+      guid: 40b8980549b3024d9dc7f1f8ecc76416
+      id: 1804646958
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene10
+        ObjectType: 4
+        guid: 0ebaf8eda7001741bcf134de87c1b732
+      - ElementName: Stop_Scene_10_2_3_Samoya
+        ObjectType: 3
+        guid: 40b8980549b3024d9dc7f1f8ecc76416
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene10\Stop_Scene_10_2_3_Samoya
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_Scene_10_2_4_Nova
+      guid: 10390297b0aa2843974f108e36a6110c
+      id: 3924007031
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene10
+        ObjectType: 4
+        guid: 0ebaf8eda7001741bcf134de87c1b732
+      - ElementName: Stop_Scene_10_2_4_Nova
+        ObjectType: 3
+        guid: 10390297b0aa2843974f108e36a6110c
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene10\Stop_Scene_10_2_4_Nova
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_Scene_10_2_5_Samoya
+      guid: 9d36876e6bfafb4880e86097d2928acc
+      id: 3997042228
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene10
+        ObjectType: 4
+        guid: 0ebaf8eda7001741bcf134de87c1b732
+      - ElementName: Stop_Scene_10_2_5_Samoya
+        ObjectType: 3
+        guid: 9d36876e6bfafb4880e86097d2928acc
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene10\Stop_Scene_10_2_5_Samoya
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_Scene_10_2_6_Nova
+      guid: 4b36f3006712ae4db492e7237da473ac
+      id: 528909105
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene10
+        ObjectType: 4
+        guid: 0ebaf8eda7001741bcf134de87c1b732
+      - ElementName: Stop_Scene_10_2_6_Nova
+        ObjectType: 3
+        guid: 4b36f3006712ae4db492e7237da473ac
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene10\Stop_Scene_10_2_6_Nova
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_Scene_11_1_Samoya
+      guid: 2e4b39c95e60f5449b4917bc176f32f4
+      id: 3935676294
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene11
+        ObjectType: 4
+        guid: 7b542bd405b053499df20bb840c78f7f
+      - ElementName: Stop_Scene_11_1_Samoya
+        ObjectType: 3
+        guid: 2e4b39c95e60f5449b4917bc176f32f4
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene11\Stop_Scene_11_1_Samoya
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_Scene_12_1_Samoya
+      guid: 3d18857cb7f7ae40af0314393d9a2e5b
+      id: 689067727
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene12
+        ObjectType: 4
+        guid: 94437f540d4bd7489b608741465b49ab
+      - ElementName: Stop_Scene_12_1_Samoya
+        ObjectType: 3
+        guid: 3d18857cb7f7ae40af0314393d9a2e5b
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene12\Stop_Scene_12_1_Samoya
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_Scene_2_1_Samoya
+      guid: e52a82560ddadf4396eb612e4a354864
+      id: 1088812732
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene2
+        ObjectType: 4
+        guid: ef7c4d4d2258f8418197a0c767e53b50
+      - ElementName: Stop_Scene_2_1_Samoya
+        ObjectType: 3
+        guid: e52a82560ddadf4396eb612e4a354864
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene2\Stop_Scene_2_1_Samoya
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_Scene_2_2_Nova
+      guid: 83c722f56abfdd4e8b04e15c934ed3b1
+      id: 3129160617
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene2
+        ObjectType: 4
+        guid: ef7c4d4d2258f8418197a0c767e53b50
+      - ElementName: Stop_Scene_2_2_Nova
+        ObjectType: 3
+        guid: 83c722f56abfdd4e8b04e15c934ed3b1
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene2\Stop_Scene_2_2_Nova
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_Scene_3_1_Soldier1
+      guid: 77fea25e0272114490a2616997b82e86
+      id: 2408826646
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene3
+        ObjectType: 4
+        guid: 6558d6c86976604097abebef9942135c
+      - ElementName: Stop_Scene_3_1_Soldier1
+        ObjectType: 3
+        guid: 77fea25e0272114490a2616997b82e86
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene3\Stop_Scene_3_1_Soldier1
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_Scene_3_2_Soldier2
+      guid: 868ee4353a1a74478728a61c0747f9d1
+      id: 4263359512
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene3
+        ObjectType: 4
+        guid: 6558d6c86976604097abebef9942135c
+      - ElementName: Stop_Scene_3_2_Soldier2
+        ObjectType: 3
+        guid: 868ee4353a1a74478728a61c0747f9d1
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene3\Stop_Scene_3_2_Soldier2
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_Scene_3_3_Soldier1
+      guid: 5d96d0a23597484cab9492ed213f0e12
+      id: 1747146248
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene3
+        ObjectType: 4
+        guid: 6558d6c86976604097abebef9942135c
+      - ElementName: Stop_Scene_3_3_Soldier1
+        ObjectType: 3
+        guid: 5d96d0a23597484cab9492ed213f0e12
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene3\Stop_Scene_3_3_Soldier1
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_Scene_3_4_Soldier2
+      guid: dfd52e015ecba9478a3284ad910395f8
+      id: 3954392038
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene3
+        ObjectType: 4
+        guid: 6558d6c86976604097abebef9942135c
+      - ElementName: Stop_Scene_3_4_Soldier2
+        ObjectType: 3
+        guid: dfd52e015ecba9478a3284ad910395f8
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene3\Stop_Scene_3_4_Soldier2
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_Scene_3_5_Soldier1
+      guid: 5ad551b20501b64b8a2739d7815ebaa6
+      id: 1044332786
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene3
+        ObjectType: 4
+        guid: 6558d6c86976604097abebef9942135c
+      - ElementName: Stop_Scene_3_5_Soldier1
+        ObjectType: 3
+        guid: 5ad551b20501b64b8a2739d7815ebaa6
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene3\Stop_Scene_3_5_Soldier1
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_Scene_3_6_Soldier2
+      guid: 6efa6a68bbf8724ab80c712deeb60e8d
+      id: 1071688740
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene3
+        ObjectType: 4
+        guid: 6558d6c86976604097abebef9942135c
+      - ElementName: Stop_Scene_3_6_Soldier2
+        ObjectType: 3
+        guid: 6efa6a68bbf8724ab80c712deeb60e8d
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene3\Stop_Scene_3_6_Soldier2
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_Scene_4_1_Soldier1
+      guid: d1654eeb2ec16f479f36adec30e06db4
+      id: 1437680811
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene4
+        ObjectType: 4
+        guid: 957c55771f0414498b471325f935e491
+      - ElementName: Stop_Scene_4_1_Soldier1
+        ObjectType: 3
+        guid: d1654eeb2ec16f479f36adec30e06db4
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene4\Stop_Scene_4_1_Soldier1
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_Scene_4_2_Soldier2
+      guid: 92d1155f9b3e4348acc7c0686e439511
+      id: 3114529317
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene4
+        ObjectType: 4
+        guid: 957c55771f0414498b471325f935e491
+      - ElementName: Stop_Scene_4_2_Soldier2
+        ObjectType: 3
+        guid: 92d1155f9b3e4348acc7c0686e439511
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene4\Stop_Scene_4_2_Soldier2
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_Scene_5_2_Nova
+      guid: 6da851743b0ae04d825e4bd7ba8dd93d
+      id: 1112839968
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene5
+        ObjectType: 4
+        guid: e4c3366c806eeb4ba26e9229ff05ed00
+      - ElementName: Stop_Scene_5_2_Nova
+        ObjectType: 3
+        guid: 6da851743b0ae04d825e4bd7ba8dd93d
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene5\Stop_Scene_5_2_Nova
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_Scene_6_1_Samoya
+      guid: 726b237e573bd343bd4e710082a2ed54
+      id: 1917088304
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene6
+        ObjectType: 4
+        guid: bb7329e933daac47872982746bbdf176
+      - ElementName: Stop_Scene_6_1_Samoya
+        ObjectType: 3
+        guid: 726b237e573bd343bd4e710082a2ed54
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene6\Stop_Scene_6_1_Samoya
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_Scene_6_2_Nova
+      guid: e715c6fb426e7b49a85e8a0f2afe88b7
+      id: 1228470901
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene6
+        ObjectType: 4
+        guid: bb7329e933daac47872982746bbdf176
+      - ElementName: Stop_Scene_6_2_Nova
+        ObjectType: 3
+        guid: e715c6fb426e7b49a85e8a0f2afe88b7
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene6\Stop_Scene_6_2_Nova
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_Scene_6_3_Nova
+      guid: 4c41cd633ef2f54894b009eee41547c6
+      id: 3327897446
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene6
+        ObjectType: 4
+        guid: bb7329e933daac47872982746bbdf176
+      - ElementName: Stop_Scene_6_3_Nova
+        ObjectType: 3
+        guid: 4c41cd633ef2f54894b009eee41547c6
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene6\Stop_Scene_6_3_Nova
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_Scene_7_1_Nova
+      guid: 22f6a917e749e742bf0dad259fbf8a57
+      id: 1057597091
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene7
+        ObjectType: 4
+        guid: 4bc6f0f6c15f504d803f4c04ad04cb7f
+      - ElementName: Stop_Scene_7_1_Nova
+        ObjectType: 3
+        guid: 22f6a917e749e742bf0dad259fbf8a57
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene7\Stop_Scene_7_1_Nova
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_Scene_7_2_Nova
+      guid: 81fac5df525e2441bb610ae6f0b2aba1
+      id: 3637555374
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene7
+        ObjectType: 4
+        guid: 4bc6f0f6c15f504d803f4c04ad04cb7f
+      - ElementName: Stop_Scene_7_2_Nova
+        ObjectType: 3
+        guid: 81fac5df525e2441bb610ae6f0b2aba1
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene7\Stop_Scene_7_2_Nova
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_Scene_8_1_1_Soldier1
+      guid: 4b93ed6debf72a47afae804c888cacf1
+      id: 3039397075
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene8
+        ObjectType: 4
+        guid: f641779c5b69be44a2bf4838b5c9a752
+      - ElementName: Scene8-1
+        ObjectType: 4
+        guid: 28d2ef5d4c05844a8d44a11eeb257a0a
+      - ElementName: Stop_Scene_8_1_1_Soldier1
+        ObjectType: 3
+        guid: 4b93ed6debf72a47afae804c888cacf1
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene8\Scene8-1\Stop_Scene_8_1_1_Soldier1
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_Scene_8_1_2_Soldier2
+      guid: f3231476eee8354dafce8b65719c52f2
+      id: 1475783021
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene8
+        ObjectType: 4
+        guid: f641779c5b69be44a2bf4838b5c9a752
+      - ElementName: Scene8-1
+        ObjectType: 4
+        guid: 28d2ef5d4c05844a8d44a11eeb257a0a
+      - ElementName: Stop_Scene_8_1_2_Soldier2
+        ObjectType: 3
+        guid: f3231476eee8354dafce8b65719c52f2
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene8\Scene8-1\Stop_Scene_8_1_2_Soldier2
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_Scene_8_1_3_Soldier1
+      guid: 8cda90b8aaa7e04383dcf09eed903e0a
+      id: 3203468033
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene8
+        ObjectType: 4
+        guid: f641779c5b69be44a2bf4838b5c9a752
+      - ElementName: Scene8-1
+        ObjectType: 4
+        guid: 28d2ef5d4c05844a8d44a11eeb257a0a
+      - ElementName: Stop_Scene_8_1_3_Soldier1
+        ObjectType: 3
+        guid: 8cda90b8aaa7e04383dcf09eed903e0a
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene8\Scene8-1\Stop_Scene_8_1_3_Soldier1
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_Scene_8_2_1_Soldier1
+      guid: d9ae9149b866b740b482991cb3350361
+      id: 3653798194
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene8
+        ObjectType: 4
+        guid: f641779c5b69be44a2bf4838b5c9a752
+      - ElementName: Scene8-2
+        ObjectType: 4
+        guid: 0ae6d76fadf1474785c40788a9b515c5
+      - ElementName: Stop_Scene_8_2_1_Soldier1
+        ObjectType: 3
+        guid: d9ae9149b866b740b482991cb3350361
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene8\Scene8-2\Stop_Scene_8_2_1_Soldier1
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_Scene_8_2_2_Soldier2
+      guid: aa1883252c5cae4091f715ec9ea9ca97
+      id: 138571876
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene8
+        ObjectType: 4
+        guid: f641779c5b69be44a2bf4838b5c9a752
+      - ElementName: Scene8-2
+        ObjectType: 4
+        guid: 0ae6d76fadf1474785c40788a9b515c5
+      - ElementName: Stop_Scene_8_2_2_Soldier2
+        ObjectType: 3
+        guid: aa1883252c5cae4091f715ec9ea9ca97
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene8\Scene8-2\Stop_Scene_8_2_2_Soldier2
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_Scene_8_3_1_Soldier1
+      guid: 7d11a8ce6b50e04ba99b46d550d88ae9
+      id: 3313730669
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene8
+        ObjectType: 4
+        guid: f641779c5b69be44a2bf4838b5c9a752
+      - ElementName: Scene8-3
+        ObjectType: 4
+        guid: 08b7fc530b77274889bb6df1a1e4241e
+      - ElementName: Stop_Scene_8_3_1_Soldier1
+        ObjectType: 3
+        guid: 7d11a8ce6b50e04ba99b46d550d88ae9
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene8\Scene8-3\Stop_Scene_8_3_1_Soldier1
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_Scene_8_3_2_Samoya
+      guid: f57f392628be09488c49d8ca42e0fefb
+      id: 1303388937
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene8
+        ObjectType: 4
+        guid: f641779c5b69be44a2bf4838b5c9a752
+      - ElementName: Scene8-3
+        ObjectType: 4
+        guid: 08b7fc530b77274889bb6df1a1e4241e
+      - ElementName: Stop_Scene_8_3_2_Samoya
+        ObjectType: 3
+        guid: f57f392628be09488c49d8ca42e0fefb
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene8\Scene8-3\Stop_Scene_8_3_2_Samoya
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_Scene_8_3_3_Nova
+      guid: d8f3913eb15f454d9ab6ca6403eca370
+      id: 2644261470
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene8
+        ObjectType: 4
+        guid: f641779c5b69be44a2bf4838b5c9a752
+      - ElementName: Scene8-3
+        ObjectType: 4
+        guid: 08b7fc530b77274889bb6df1a1e4241e
+      - ElementName: Stop_Scene_8_3_3_Nova
+        ObjectType: 3
+        guid: d8f3913eb15f454d9ab6ca6403eca370
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene8\Scene8-3\Stop_Scene_8_3_3_Nova
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_Scene_8_4_1_Soldier1
+      guid: 0c0c3ad44247774ca684b7d31bbdc74d
+      id: 1660281188
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene8
+        ObjectType: 4
+        guid: f641779c5b69be44a2bf4838b5c9a752
+      - ElementName: Scene8-4
+        ObjectType: 4
+        guid: a117db7bf9f2b844b9ce299dd540dca4
+      - ElementName: Stop_Scene_8_4_1_Soldier1
+        ObjectType: 3
+        guid: 0c0c3ad44247774ca684b7d31bbdc74d
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene8\Scene8-4\Stop_Scene_8_4_1_Soldier1
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_Scene_8_4_2_Soldier2
+      guid: 8bbb8eea6d30114abb58b6e7888160a3
+      id: 3484278166
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene8
+        ObjectType: 4
+        guid: f641779c5b69be44a2bf4838b5c9a752
+      - ElementName: Scene8-4
+        ObjectType: 4
+        guid: a117db7bf9f2b844b9ce299dd540dca4
+      - ElementName: Stop_Scene_8_4_2_Soldier2
+        ObjectType: 3
+        guid: 8bbb8eea6d30114abb58b6e7888160a3
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene8\Scene8-4\Stop_Scene_8_4_2_Soldier2
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_Scene_8_5_1_Soldier1
+      guid: 435a1c6b02e0fd4d91f47a7a6df15abc
+      id: 3657246623
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene8
+        ObjectType: 4
+        guid: f641779c5b69be44a2bf4838b5c9a752
+      - ElementName: Scene8-5
+        ObjectType: 4
+        guid: 6b53f2034d17b9459ac383b6365c43cb
+      - ElementName: Stop_Scene_8_5_1_Soldier1
+        ObjectType: 3
+        guid: 435a1c6b02e0fd4d91f47a7a6df15abc
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene8\Scene8-5\Stop_Scene_8_5_1_Soldier1
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_Scene_9_1_Soldier2
+      guid: 2a7a051d30306e4dbf3d0a996cd4a596
+      id: 2435401943
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene9
+        ObjectType: 4
+        guid: 12330c0b456e65478a528bc4350557e4
+      - ElementName: Stop_Scene_9_1_Soldier2
+        ObjectType: 3
+        guid: 2a7a051d30306e4dbf3d0a996cd4a596
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene9\Stop_Scene_9_1_Soldier2
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_Scene_9_2_Soldier1
+      guid: beec1169260e6f48a96df347d9a231c2
+      id: 1047632773
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 7514f85d3ebb5f4cb0bc98a43d4b8830
+      - ElementName: Main
+        ObjectType: 4
+        guid: ae06bf3d9bde2f4185163b3fa933efc9
+      - ElementName: Voice Over
+        ObjectType: 4
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      - ElementName: Individual Files
+        ObjectType: 4
+        guid: c20bcab915b58e4b933a86b176b3b275
+      - ElementName: Scene9
+        ObjectType: 4
+        guid: 12330c0b456e65478a528bc4350557e4
+      - ElementName: Stop_Scene_9_2_Soldier1
+        ObjectType: 3
+        guid: beec1169260e6f48a96df347d9a231c2
+      Path: Events\Default Work Unit\Main\Voice Over\Individual Files\Scene9\Stop_Scene_9_2_Soldier1
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
@@ -657,9 +4967,9 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
-    - name: Wind
-      guid: 1f30f7a6ed29be42a7c95e5b6d663e4a
-      id: 1537061107
+    - name: Voice Over
+      guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      id: 372659017
       PathAndIcons:
       - ElementName: Events
         ObjectType: 5
@@ -670,10 +4980,10 @@ MonoBehaviour:
       - ElementName: Main
         ObjectType: 4
         guid: ae06bf3d9bde2f4185163b3fa933efc9
-      - ElementName: Wind
+      - ElementName: Voice Over
         ObjectType: 4
-        guid: 1f30f7a6ed29be42a7c95e5b6d663e4a
-      Path: Events\Default Work Unit\Main\Wind
+        guid: fc86cf5ce5fe8a4ca69cbe4ef94a01a2
+      Path: Events\Default Work Unit\Main\Voice Over
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -689,10 +4999,10 @@ MonoBehaviour:
     ParentPath: Game Parameters\Default Work Unit
     guid: f3ebc415cd262b47bf4b0e07d50ce918
     GuidInternal: 
-    m_lastTime: -8585305114236098079
+    m_lastTime: -8585299925315473580
     List:
     - name: Footsteps_Volume
-      guid: a518b374219a6b4194a2a1e34fbbe994
+      guid: c43673ab4594164cb48bfd7e961a8f04
       id: 960544891
       PathAndIcons:
       - ElementName: Game Parameters
@@ -703,7 +5013,7 @@ MonoBehaviour:
         guid: f3ebc415cd262b47bf4b0e07d50ce918
       - ElementName: Footsteps_Volume
         ObjectType: 13
-        guid: a518b374219a6b4194a2a1e34fbbe994
+        guid: c43673ab4594164cb48bfd7e961a8f04
       Path: Game Parameters\Default Work Unit\Footsteps_Volume
     - name: Music_Volume
       guid: 2f79aff64014a24c8f4586f0dd60c9ab
@@ -733,9 +5043,9 @@ MonoBehaviour:
         ObjectType: 13
         guid: 4dd674afe412964ea727c9c60dd9abbd
       Path: Game Parameters\Default Work Unit\SFX_Volume
-    - name: TestParameter
-      guid: 97500b05ae817748bc5590c23cbf8a83
-      id: 2010788230
+    - name: Voice_Volume
+      guid: 620aaa1016f4434cb2a61be7df01656d
+      id: 3538560642
       PathAndIcons:
       - ElementName: Game Parameters
         ObjectType: 5
@@ -743,10 +5053,10 @@ MonoBehaviour:
       - ElementName: Default Work Unit
         ObjectType: 12
         guid: f3ebc415cd262b47bf4b0e07d50ce918
-      - ElementName: TestParameter
+      - ElementName: Voice_Volume
         ObjectType: 13
-        guid: 97500b05ae817748bc5590c23cbf8a83
-      Path: Game Parameters\Default Work Unit\TestParameter
+        guid: 620aaa1016f4434cb2a61be7df01656d
+      Path: Game Parameters\Default Work Unit\Voice_Volume
   StateWwu:
   - PhysicalPath: States\Default Work Unit.wwu
     PathAndIcons:
@@ -759,7 +5069,7 @@ MonoBehaviour:
     ParentPath: States\Default Work Unit
     guid: 83242f9fd7a7c14f9f081a57f41225eb
     GuidInternal: 
-    m_lastTime: -8585305114219344194
+    m_lastTime: -8585299933891536254
     List:
     - name: StealthState
       guid: 6d483294141b35448aeb491a1fbc3828
@@ -855,7 +5165,7 @@ MonoBehaviour:
     ParentPath: Switches\Default Work Unit
     guid: b97329d927c5b748a4004f220cf740bf
     GuidInternal: 
-    m_lastTime: -8585305114219344194
+    m_lastTime: -8585307543944816613
     List:
     - name: Footsteps
       guid: e0bdf8a6e55f3a4f84fe166a57a03a62
@@ -935,11 +5245,11 @@ MonoBehaviour:
     ParentPath: Triggers\Default Work Unit
     guid: 550755600be0c741bc6d1c7825c40fe2
     GuidInternal: 
-    m_lastTime: -8585318835402292347
+    m_lastTime: -8585317104856044358
     List: []
-  ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 
+  ExpandedFileSystemItemIds: 1500000016000000
+  ExpandedWaapiItemIds: 1500000016000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
-  currentDataSource: 0
+  currentDataSource: 1
   CurrentPluginConfig: 
