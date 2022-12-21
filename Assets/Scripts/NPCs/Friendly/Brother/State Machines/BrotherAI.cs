@@ -47,7 +47,7 @@ using UnityEngine.AI;
 ///	    </item>
 /// </list>
 
-
+[RequireComponent(typeof(FindHidingSpot),typeof(FearSystem))]
 public class BrotherAI : MonoBehaviour
 {
     /// <summary>
@@ -95,6 +95,12 @@ public class BrotherAI : MonoBehaviour
     [SerializeField] private float _followDistance = 1.5f;
 
     /// <summary>
+    /// This value determines the max distance between the brother and player.
+    /// If distance is greater than this distance, the brother will follow again.
+    /// </summary>
+    [Range(15.0f, 35.0f), Tooltip(" This value determines the max distance between the brother and player. If distance is greater than this distance, the brother will follow again.")]
+    public float _brotherRange = 25f;
+    /// <summary>
     /// This value determines the range in wich a path considers to be completed to get to the next state.
     /// </summary>
     private const float _pathEndThreshold = 0.1f;
@@ -123,7 +129,7 @@ public class BrotherAI : MonoBehaviour
     /// This is the sister (the player)
     /// </summary>
     private GameObject _player;
-
+    
     
     /// <summary>
     /// This contains a reference to the playerController script
@@ -196,6 +202,11 @@ public class BrotherAI : MonoBehaviour
     {
         _animator.SetFloat(_velocityHash, _navMeshAgent.velocity.magnitude);
         _animator.SetBool(_stealthHash, _isInStealth);
+        
+        if (Vector3.Distance(_player.transform.position, transform.position) > _brotherRange)
+        {
+            CallBrother();
+        }
     }
 
     /// <summary>
@@ -239,7 +250,7 @@ public class BrotherAI : MonoBehaviour
             CustomEvent.Trigger(this.gameObject, "PassiveHide");
         }
 
-        if (ping == PingType.Hide && _findHidingSpot.FindBestHidingSpot().Equals(new Vector3()))
+        if (ping == PingType.Hide && _findHidingSpot.FindBestHidingSpot(_player.transform.position ,_brotherRange).Equals(new Vector3()))
         {
             CustomEvent.Trigger(this.gameObject, "Follow");
         }
@@ -316,11 +327,10 @@ public class BrotherAI : MonoBehaviour
     /// </summary>
     public void HideEnter()
     {
-        MoveToLocation(_findHidingSpot.FindBestHidingSpot(), _walkSpeed);
+        MoveToLocation(_findHidingSpot.FindBestHidingSpot(_player.transform.position ,_brotherRange), _walkSpeed);
         if (!_isInStealth)
         {
             ToggleStealth();
-            Debug.Log("Stealth enter" + _isInStealth);
         }
     }
 
