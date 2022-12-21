@@ -16,6 +16,10 @@ public class FSM_Scriptable_Object : ScriptableObject
     [SerializeField] private float visionAngle = 90f; 
     public float VisionAngle => visionAngle;
     
+    [Tooltip("The range that the enemy immediate chase the tag if it's in range")]
+    [SerializeField] private float immediateChaseRadius = 5f; 
+    public float ImmediateChaseRadius => immediateChaseRadius;
+    
     [Tooltip("The threshold for small sounds that the enemy can hear")]
     [SerializeField] private float thresholdSmallSounds = 0.1f;
     public float ThresholdSmallSounds => thresholdSmallSounds;
