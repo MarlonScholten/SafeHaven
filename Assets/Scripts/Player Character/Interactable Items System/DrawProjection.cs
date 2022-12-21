@@ -105,23 +105,16 @@ namespace InteractableItemsSystem
 
         private void OnInteractionWithItem()
         {
-            // drop = !drop;
-            // if (drop)
-            // {
-            //     drop = false;
-            //     DrawLine = false;
-            // }
             if (_inventory.HasItemInInventory)
             {
+                _lineRenderer.enabled = false;
                 DrawLine = false;
             }
-            // Debug.Log("Drawline == " + DrawLine);
-            // Debug.Log("Drop == " + drop);
         }
 
         private void StartDrawingLine()
         {
-            if (!_inventory.HasItemInInventory) return;
+             if (!_inventory.HasItemInInventory) return;
             DrawLine = true;
         }
 
@@ -135,6 +128,7 @@ namespace InteractableItemsSystem
 
         private void DrawProjectionLine()
         {
+            Debug.Log("drawprojection before check");
             
             if (!_inventory.HasItemInInventory) return;
 
