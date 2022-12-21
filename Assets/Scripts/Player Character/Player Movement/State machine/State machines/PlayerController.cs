@@ -8,7 +8,7 @@ namespace PlayerCharacter.Movement
 {
     /// <summary>
     /// Author: Marlon Scholten <br/>
-    /// Modified by: Hugo Verweij, Hugo Ulfman<br/>
+    /// Modified by: Hugo Verweij, Hugo Ulfman and Iris Giezen <br/>
     /// Description: PlayerController behaviour. Controller for everything related to the player character's state, movement and actions. <br />
     /// Controls the states, and updates the correct parameters when the player inputs movement buttons. <br />
     /// Installation steps: <br />
@@ -85,12 +85,19 @@ namespace PlayerCharacter.Movement
         [SerializeField] [Tooltip("Show the raycast as a red line or not, make sure gizmos are acivated to see it!")]
         private bool DrawRayDebug = false;
 
-        [Header("References")]
-        [SerializeField]
+        [SerializeField] [Tooltip("Speed of the player when in stealth.")]
+        private float _stealthSpeed = 2.0f;
+
+        [SerializeField] [Tooltip("Speed of the player when moving.")]
+        private float _moveSpeed = 4.0f;
+
+        [SerializeField] [Tooltip("Speed of the player when running.")]
+        private float _runningSpeed = 6.0f;
+
+        [Header("References")] [SerializeField]
         private GameObject _standCollider;
 
-        [SerializeField]
-        private GameObject _crouchCollider;
+        [SerializeField] private GameObject _crouchCollider;
 
         public bool CanMoveInAir => _canMoveInAir;
 
@@ -142,10 +149,6 @@ namespace PlayerCharacter.Movement
         private Vector2 _current;
         private Vector2 _smooth;
 
-        private const float StealthSpeed = 2.0f;
-        private const float MoveSpeed = 4.0f;
-        private const float RunningSpeed = 6.0f;
-
         private bool _running;
 
         private void Awake()
@@ -165,32 +168,12 @@ namespace PlayerCharacter.Movement
             InputBehaviour.Instance.OnToggleStealthEvent += Crouch;
             InputBehaviour.Instance.OnRunningEvent += Running;
             InputBehaviour.Instance.OnRunningCancelledEvent += RunningCancelled;
-            
+
             StartCoroutine(CastLookingRay());
             _velocityHash = Animator.StringToHash("forwardVelocity");
             _itemHeldHash = Animator.StringToHash("ItemHeld");
             _interactableObjectHash = Animator.StringToHash("InteractableObject");
             _stealthHash = Animator.StringToHash("Stealth");
-        }
-
-        private void Running()
-        {
-            if (!IsMoving()) return;
-            _running = true;
-            _crouching = false;
-                
-            _animator.SetBool("Stealth", _crouching);
-
-            _crouchCollider.SetActive(_crouching);
-            _standCollider.SetActive(!_crouching);
-            
-            _movementSpeed = RunningSpeed;
-        }
-
-        private void RunningCancelled()
-        {
-            _running = false;
-            _movementSpeed = MovementSpeed;
         }
 
         private void OnDestroy()
@@ -204,8 +187,8 @@ namespace PlayerCharacter.Movement
         /// <remarks>Movement is here too because gravity influences all kinds of movement</remarks>
         void Update()
         {
-             _current = Vector2.SmoothDamp(_current, MovementInput * _movementSpeed, ref _smooth, .3f);
-            
+            _current = Vector2.SmoothDamp(_current, MovementInput * _movementSpeed, ref _smooth, .3f);
+
             CurrentState.UpdateState();
             ApplyGravity();
             transform.rotation = _rotation;
@@ -223,6 +206,34 @@ namespace PlayerCharacter.Movement
         }
 
         /// <summary>
+        /// Adjusts the speed of the player, animation and the collider when running.
+        /// Activated by the player when holding shift.
+        /// </summary>
+        private void Running()
+        {
+            if (!IsMoving()) return;
+            _running = true;
+            _crouching = false;
+
+            _animator.SetBool("Stealth", _crouching);
+
+            _crouchCollider.SetActive(_crouching);
+            _standCollider.SetActive(!_crouching);
+
+            _movementSpeed = _runningSpeed;
+        }
+
+        /// <summary>
+        /// Adjusts the speed of the player when stopping with running.
+        /// Activated by the player when releasing shift.
+        /// </summary>
+        private void RunningCancelled()
+        {
+            _running = false;
+            _movementSpeed = MovementSpeed;
+        }
+
+        /// <summary>
         /// adjusts the movement speed of the player if the OnToggleStealthEvent is invoked.
         /// </summary>
         private void Crouch()
@@ -237,11 +248,11 @@ namespace PlayerCharacter.Movement
             _standCollider.SetActive(!_crouching);
 
             if (_crouching)
-                _movementSpeed = StealthSpeed;
+                _movementSpeed = _stealthSpeed;
             else if (_running)
-                _movementSpeed = RunningSpeed;
-            else 
-                _movementSpeed = MoveSpeed;
+                _movementSpeed = _runningSpeed;
+            else
+                _movementSpeed = _moveSpeed;
         }
 
         /// <summary>

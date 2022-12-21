@@ -161,9 +161,10 @@ public class BrotherAI : MonoBehaviour
     /// <summary>
     /// Checks in stealth mode or not and based on that the speed and the collider height gets set.
     /// </summary>
-    private void ToggleStealth(bool stealth)
+    /// /// <param name="isPlayerInStealth">Bool to know if the player is in stealth or not. Based on that the brother goes in stealth or not.</param>
+    private void ToggleStealth(bool isPlayerInStealth)
     {
-        _isInStealth = stealth;
+        _isInStealth = isPlayerInStealth;
         if (_isInStealth)
         {
             _capsuleCollider.SetCapsuleCollider(_colliderHeightStealth, 0, 0.25f, 0);
