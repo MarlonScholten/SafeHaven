@@ -86,6 +86,8 @@ public class SettingsMenu : MonoBehaviour
         {
             if (inputBinding.effectivePath == "")
             {
+                Debug.Log(inputBinding.action + " is missing");
+                
                 TMP_Text exitText = _exitButton.GetComponentInChildren<TMP_Text>();
                 
                 exitText.SetText("You have unbound settings,\nare you sure you want to continue?");
