@@ -82,6 +82,8 @@ namespace InteractableItemsSystem
         /// Determines if a line should be drawn or not.
         /// </summary>
         [NonSerialized] public bool DrawLine;
+        
+        [NonSerialized] public bool drop;
 
         private Renderer _renderer;
         
@@ -98,15 +100,35 @@ namespace InteractableItemsSystem
             _throwableItemController = GetComponent<ThrowableItemController>();
             _playerItemInteraction = GetComponent<PlayerItemInteraction>();
             InputBehaviour.Instance.OnThrowEvent += StartDrawingLine;
+           InputBehaviour.Instance.OnItemInteractEvent += OnInteractionWithItem;
+        }
+
+        private void OnInteractionWithItem()
+        {
+            // drop = !drop;
+            // if (drop)
+            // {
+            //     drop = false;
+            //     DrawLine = false;
+            // }
+            if (_inventory.HasItemInInventory)
+            {
+                DrawLine = false;
+            }
+            // Debug.Log("Drawline == " + DrawLine);
+            // Debug.Log("Drop == " + drop);
         }
 
         private void StartDrawingLine()
         {
+            if (!_inventory.HasItemInInventory) return;
             DrawLine = true;
         }
 
         private void Update()
         {
+            Debug.Log("Drawline == " + DrawLine);
+           // Debug.Log("Drop == " + drop);
             if(_renderer != null) _renderer.material.DisableKeyword("_EMISSION");
             if (DrawLine) DrawProjectionLine();
         }
