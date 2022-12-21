@@ -83,8 +83,6 @@ namespace InteractableItemsSystem
         /// </summary>
         [NonSerialized] public bool DrawLine;
         
-        [NonSerialized] public bool drop;
-
         private Renderer _renderer;
         
         private LineRenderer _lineRenderer;
@@ -120,16 +118,12 @@ namespace InteractableItemsSystem
 
         private void Update()
         {
-            Debug.Log("Drawline == " + DrawLine);
-           // Debug.Log("Drop == " + drop);
             if(_renderer != null) _renderer.material.DisableKeyword("_EMISSION");
             if (DrawLine) DrawProjectionLine();
         }
 
         private void DrawProjectionLine()
         {
-            Debug.Log("drawprojection before check");
-            
             if (!_inventory.HasItemInInventory) return;
 
             _lineRenderer.enabled = true;
