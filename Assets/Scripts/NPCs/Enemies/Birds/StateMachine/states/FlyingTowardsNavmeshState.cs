@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using PathCreation;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -78,6 +79,7 @@ namespace Bird
         /// </summary>
         public void Enter_Flying_Towards_Navmesh_State()
         {
+            _birdStateManager.animator.SetInteger("state", 2);
             _destinationAtNavmesh = GetPointOnNavmesh();
             _path = _birdStateManager.CreatePathToClosestPointOnGivenPath(_destinationAtNavmesh);
         }
@@ -112,7 +114,7 @@ namespace Bird
             Destroy(_birdStateManager.pathGameObject);
             _distanceTravelled = 0;
             _birdStateManager.restPoint = null;
-            _birdStateManager.lastRestPoint = Vector3.zero;
+            _birdStateManager.lastRestPoints = new List<Vector3>();
         }
 
         /// <summary>
@@ -123,7 +125,7 @@ namespace Bird
         {
             _distanceTravelled += _birdStateManager.birdScriptableObject.FlySpeed * Time.deltaTime;
             transform.position = path.path.GetPointAtDistance(_distanceTravelled, EndOfPathInstruction);
-            transform.rotation = path.path.GetRotationAtDistance(_distanceTravelled, EndOfPathInstruction);
+            transform.rotation = Quaternion.LookRotation(path.path.GetDirectionAtDistance(_distanceTravelled, EndOfPathInstruction), Vector3.up);
         }
 
         /// <summary>
