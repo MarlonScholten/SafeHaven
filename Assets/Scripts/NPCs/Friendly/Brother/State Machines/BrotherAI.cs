@@ -230,12 +230,18 @@ public class BrotherAI : MonoBehaviour
     /// <summary>
     /// <para>This method is used by the pinging system.</para>
     /// The method gets called when a ping is made. This method changes the state of the brother depending on the ping.
+    /// If no hiding spot near, follow brother.
     /// </summary>
     public void PingBrother(PingType ping, Vector3 location){
         _pingLocation = location;
         if (ping == PingType.Move && _isInStealth)
         {
             CustomEvent.Trigger(this.gameObject, "PassiveHide");
+        }
+
+        if (ping == PingType.Hide && _findHidingSpot.FindBestHidingSpot().Equals(new Vector3()))
+        {
+            CustomEvent.Trigger(this.gameObject, "Follow");
         }
         else
         {
@@ -308,11 +314,13 @@ public class BrotherAI : MonoBehaviour
     /// <summary>
     /// The enter method for the hide state
     /// </summary>
-    public void HideEnter(){
+    public void HideEnter()
+    {
         MoveToLocation(_findHidingSpot.FindBestHidingSpot(), _walkSpeed);
         if (!_isInStealth)
         {
             ToggleStealth();
+            Debug.Log("Stealth enter" + _isInStealth);
         }
     }
 
@@ -335,6 +343,7 @@ public class BrotherAI : MonoBehaviour
     /// </summary>
     public void HideExit()
     {
+        Debug.Log("Exit hide stealth state before: " + _isInStealth);
         if (_isInStealth)
         {
             ToggleStealth();
