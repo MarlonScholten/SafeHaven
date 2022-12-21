@@ -9,6 +9,8 @@ using UnityEngine.Events;
 using Random = UnityEngine.Random;
 using Vector3 = UnityEngine.Vector3;
 
+
+
 /// <summary>
 /// Author: Marlon Kerstens<br/>
 /// Modified by: Thomas van den Oever<br/>
@@ -142,6 +144,13 @@ public class PatrolState : MonoBehaviour
     /// </summary>
     public void Enter_Patrol()
     {
+        //shows the current state as text above the enemy when this is enabled in the inspector.
+        if (_stateManager.enemyAiScriptableObject.showCurrentState)
+        {
+            _stateManager.textMesh.text = "Patrol";
+            _stateManager.textMesh.color = Color.green;
+        }
+
         _stateManager.alertedBySound = false;
         _stateManager.alertedByGuard = false;
         _stateManager.alertedBySound = false;
