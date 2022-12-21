@@ -242,6 +242,37 @@ CapsuleCollider:
   m_Height: 1.5
   m_Direction: 1
   m_Center: {x: 0, y: -0.22, z: 0}
+--- !u!1 &9174217100155700626
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5453983877437709182}
+  m_Layer: 0
+  m_Name: Item Holder (In Hand)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5453983877437709182
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9174217100155700626}
+  m_LocalRotation: {x: -0.015508279, y: 0.015062524, z: 0.80850405, w: 0.5880935}
+  m_LocalPosition: {x: -0.0276, y: 0.0894, z: 0.0219}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4288890660949407411}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: -2.441, y: -0.422, z: 107.946}
 --- !u!1001 &1643400659
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -447,6 +478,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2463644503283255675}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &4288890660949407411 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1852576806548013000, guid: 34019bdb80e75ce4cb6eee47a32085fe,
+    type: 3}
+  m_PrefabInstance: {fileID: 2463644503283255675}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5159684511932819647
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -454,6 +491,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4393969637856288560}
     m_Modifications:
+    - target: {fileID: 639101687083690138, guid: 9ff07334feda6604cb62d6f362911e5f,
+        type: 3}
+      propertyPath: _itemHolder
+      value: 
+      objectReference: {fileID: 9174217100155700626}
     - target: {fileID: 1473565515834789142, guid: 9ff07334feda6604cb62d6f362911e5f,
         type: 3}
       propertyPath: _timeBetweenPoints
