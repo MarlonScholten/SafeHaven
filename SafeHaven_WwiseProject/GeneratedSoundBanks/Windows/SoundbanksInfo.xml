@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="12" SoundbankVersion="140">
 	<RootPaths>
-		<ProjectRoot>C:\Users\samil\Desktop\Project_SafeHaven\SafeHaven\SafeHaven_WwiseProject\</ProjectRoot>
-		<SourceFilesRoot>C:\Users\samil\Desktop\Project_SafeHaven\SafeHaven\SafeHaven_WwiseProject\.cache\Windows\</SourceFilesRoot>
-		<SoundBanksRoot>C:\Users\samil\Desktop\Project_SafeHaven\SafeHaven\SafeHaven_WwiseProject\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ProjectRoot>D:\Repos\GAMEminor\SafeHaven\SafeHaven_WwiseProject\</ProjectRoot>
+		<SourceFilesRoot>D:\Repos\GAMEminor\SafeHaven\SafeHaven_WwiseProject\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>D:\Repos\GAMEminor\SafeHaven\SafeHaven_WwiseProject\GeneratedSoundBanks\Windows\</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>C:\Users\samil\Desktop\Project_SafeHaven\SafeHaven\SafeHaven_WwiseProject\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>D:\Repos\GAMEminor\SafeHaven\SafeHaven_WwiseProject\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<StreamedFiles/>
@@ -22,7 +22,7 @@
 				<GameParameter Id="3538560642" Name="Voice_Volume" ObjectPath="\Game Parameters\Default Work Unit\Voice_Volume"/>
 			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="2607556080" Language="SFX" Hash="915402758">
+		<SoundBank Id="2607556080" Language="SFX" Hash="1940983561">
 			<ObjectPath>\SoundBanks\Default Work Unit\Menu</ObjectPath>
 			<ShortName>Menu</ShortName>
 			<Path>Menu.bnk</Path>
@@ -41,8 +41,11 @@
 				</Event>
 				<Event Id="3945748993" Name="Stop_Menu_Music" ObjectPath="\Events\Default Work Unit\Menu\Music\Stop_Menu_Music" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 			</IncludedEvents>
+			<GameParameters>
+				<GameParameter Id="1006694123" Name="Music_Volume" ObjectPath="\Game Parameters\Default Work Unit\Music_Volume"/>
+			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="3161908922" Language="English(US)" Hash="37646803">
+		<SoundBank Id="3161908922" Language="English(US)" Hash="302570383">
 			<ObjectPath>\SoundBanks\Default Work Unit\Main</ObjectPath>
 			<ShortName>Main</ShortName>
 			<Path>English(US)\Main.bnk</Path>
