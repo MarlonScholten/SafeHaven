@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 /// <summary>
 /// Author: Tom Cornelissen <br/>
-/// Modified by:  <br/>
+/// Modified by:  Thomas van den Oever<br/>
 /// Description: PauseMenu handles all the interactions of the user with the pause menu
 /// </summary>
 /// <list type="table">
@@ -132,7 +132,7 @@ public class PauseMenu : MonoBehaviour
         if (_wantsToReturnToMainMenu)
         { 
             Instantiate(_loadingScreen);
-        
+            GameObject.Find("EnemyStateWatcher").GetComponent<SoundManager.EnemyStateWatcher>().StopSound();
             SceneManager.LoadSceneAsync(_mainMenuSceneId, LoadSceneMode.Single);
             return;
         }
