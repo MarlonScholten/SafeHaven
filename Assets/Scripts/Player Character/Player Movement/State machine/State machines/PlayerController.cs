@@ -1,14 +1,16 @@
 using System;
 using System.Collections;
+using Cinemachine;
 using PlayerCharacter.States;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.InputSystem;
 
 namespace PlayerCharacter.Movement
 {
     /// <summary>
     /// Author: Marlon Scholten <br/>
-    /// Modified by: Hugo Verweij, Hugo Ulfman<br/>
+    /// Modified by: Hugo Verweij, Hugo Ulfman, Jasper Driessen<br/>
     /// Description: PlayerController behaviour. Controller for everything related to the player character's state, movement and actions. <br />
     /// Controls the states, and updates the correct parameters when the player inputs movement buttons. <br />
     /// Installation steps: <br />
@@ -91,6 +93,11 @@ namespace PlayerCharacter.Movement
 
         [SerializeField]
         private GameObject _crouchCollider;
+        
+        [Tooltip("Sensitivity for the camera while in throwing")][SerializeField]private float _throwCameraSensitivity = 10f;
+
+        [Tooltip("Camera were you look through while throwing")] [SerializeField]
+        private CinemachineVirtualCamera _throwCam;
 
         public bool CanMoveInAir => _canMoveInAir;
 
@@ -142,6 +149,8 @@ namespace PlayerCharacter.Movement
         private Vector2 _current;
         private Vector2 _smooth;
 
+        private bool _playerIsThrowing;
+
         private void Awake()
         {
             _states = new PlayerStateFactory(this);
@@ -175,13 +184,27 @@ namespace PlayerCharacter.Movement
         /// <remarks>Movement is here too because gravity influences all kinds of movement</remarks>
         void Update()
         {
-             _current = Vector2.SmoothDamp(_current, MovementInput * _movementSpeed, ref _smooth, .3f);
+            if (!_playerIsThrowing)
+            {
+                _current = Vector2.SmoothDamp(_current, MovementInput * _movementSpeed, ref _smooth, .3f);
             
-            CurrentState.UpdateState();
-            ApplyGravity();
-            transform.rotation = _rotation;
-            CharacterController.Move(_movement * Time.deltaTime);
-            _animator.SetFloat(_velocityHash, _current.magnitude);
+                CurrentState.UpdateState();
+                ApplyGravity();
+                transform.rotation = _rotation;
+                CharacterController.Move(_movement * Time.deltaTime);
+                _animator.SetFloat(_velocityHash, _current.magnitude);
+            }
+            else
+            {
+                _current = Vector2.SmoothDamp(_current, new Vector2(0,0), ref _smooth, .3f);
+                _animator.SetFloat(_velocityHash, _current.magnitude);
+               
+                float mouseX = Input.GetAxis("Mouse X");
+                float mouseY = Input.GetAxis("Mouse Y");
+               
+                transform.Rotate(Vector3.up * mouseX * _throwCameraSensitivity * Time.deltaTime);
+                _throwCam.transform.Rotate(Vector3.right * -mouseY * _throwCameraSensitivity * Time.deltaTime);
+            }
         }
 
         /// <summary>
@@ -266,6 +289,28 @@ namespace PlayerCharacter.Movement
         public bool GetCrouching()
         {
             return _crouching;
+        }
+
+        /// <summary>
+        /// Makes it so the player can't move
+        /// </summary>
+        public void DisableMovement()
+        {
+            if (CharacterController.enabled == true)
+            {
+                CharacterController.Move(new Vector3(0,0,0));
+                _throwCam.transform.rotation = new Quaternion(0f,0f,0f, 0f);
+            }
+            CharacterController.enabled = false;
+            _playerIsThrowing = true;
+            _throwCam.Priority = 100;
+        }
+
+        public void EnableMovement()
+        {
+            CharacterController.enabled = true;
+            _playerIsThrowing = false;
+            _throwCam.Priority = 0;
         }
     }
 }

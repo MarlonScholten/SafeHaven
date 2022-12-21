@@ -64,7 +64,7 @@ namespace InteractableItemsSystem
     {
         [Tooltip("The force that you throw an item with.")][SerializeField] private float _throwForce = 20f;
         [Tooltip("Main camera that the player uses.")][SerializeField] private Camera _cam;
-        
+
         /// <summary>
         /// The force an item is thrown with.
         /// </summary>
@@ -111,6 +111,8 @@ namespace InteractableItemsSystem
 
             itemInInventoryRigidbody.AddForce(_cam.transform.forward * _throwForce, ForceMode.Impulse);
 
+            _playerItemInteraction.PlayerController.EnableMovement();
+            
             _drawProjection.DrawLine = false;
             yield return new WaitForSeconds(0.5f);
             _playerItemInteraction.IsThrowingItem = false;

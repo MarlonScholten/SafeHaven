@@ -116,6 +116,8 @@ namespace InteractableItemsSystem
             
             if (!_inventory.HasItemInInventory) return;
 
+            _playerItemInteraction.PlayerController.DisableMovement();
+            
             _lineRenderer.enabled = true;
             _lineRenderer.positionCount = Mathf.CeilToInt(_numPoints / _timeBetweenPoints) + 1;
             Vector3 startPosition = _playerItemInteraction.ItemHolder.transform.position;
