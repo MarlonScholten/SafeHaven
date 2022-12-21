@@ -318,13 +318,5 @@ namespace PlayerCharacter.Movement
                 yield return new WaitForSeconds(0.1f);
             }
         }
-
-        /// <summary>
-        /// Allows other scripts to see if the player is crouching
-        /// </summary>
-        //public bool GetCrouching()
-        //{
-        //    return _crouching;
-        //}
     }
 }
