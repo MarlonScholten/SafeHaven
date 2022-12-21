@@ -94,7 +94,6 @@ public class SettingsMenu : MonoBehaviour
 
                 _confirmation = true;
                 
-                Debug.Log("Coroutine started");
                 StartCoroutine(ConfirmationTimeout());
                 return;
             }
