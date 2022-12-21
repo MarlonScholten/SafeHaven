@@ -167,7 +167,7 @@ public class PauseMenu : MonoBehaviour
 
     private IEnumerator MainMenuConfirmationTimeout()
     {
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSecondsRealtime(2.0f);
 
         var buttonTextComponent = _mainMenuButton.GetComponentInChildren<TMP_Text>();
         buttonTextComponent.SetText("Main menu");
@@ -177,7 +177,7 @@ public class PauseMenu : MonoBehaviour
 
     private IEnumerator ExitConfirmationTimeout()
     {
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSecondsRealtime(2.0f);
 
         var buttonTextComponent = _exitButton.GetComponentInChildren<TMP_Text>();
         buttonTextComponent.SetText("Exit");
