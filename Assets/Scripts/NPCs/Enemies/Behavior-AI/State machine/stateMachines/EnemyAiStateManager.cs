@@ -263,4 +263,16 @@ public class EnemyAiStateManager : MonoBehaviour
             Quaternion.LookRotation(target - transform.position),
             2 * Time.deltaTime);
     }
+
+    /// <summary>
+    /// This method checks if the spotted Tag is in catchable range.
+    /// </summary>
+    public void CheckForCatching(GameObject spotted)
+    {
+        var distance = Vector3.Distance(spottedPlayer.transform.position, transform.position);
+        if (distance < enemyAiScriptableObject.CatchDistance)
+        {
+            CatchChild(spotted);
+        }
+    }
 }
