@@ -96,7 +96,7 @@ public class BrotherAI : MonoBehaviour
     /// This value determines the max distance between the brother and player.
     /// If distance is greater than this distance, the brother will follow again.
     /// </summary>
-    [Range(15.0f, 35.0f), Tooltip(" This value determines the max distance between the brother and player. If distance is greater than this distance, the brother will follow again.")]
+    [Range(10.0f, 50.0f), Tooltip("This value determines the max distance between the brother and player. If distance is greater than this distance, the brother will follow again.")]
     public float _brotherRange = 25f;
     /// <summary>
     /// This value determines the range in wich a path considers to be completed to get to the next state.
@@ -246,7 +246,7 @@ public class BrotherAI : MonoBehaviour
             CustomEvent.Trigger(this.gameObject, "PassiveHide");
         }
 
-        if (ping == PingType.Hide && _findHidingSpot.FindBestHidingSpot(_player.transform.position ,_brotherRange).Equals(new Vector3()))
+        if (ping == PingType.Hide && _findHidingSpot.FindBestHidingSpot(_player.transform.position).Equals(new Vector3()))
         {
             CustomEvent.Trigger(this.gameObject, "Follow");
         }
@@ -324,7 +324,7 @@ public class BrotherAI : MonoBehaviour
     /// </summary>
     public void HideEnter()
     {
-        MoveToLocation(_findHidingSpot.FindBestHidingSpot(_player.transform.position ,_brotherRange), _walkSpeed);
+        MoveToLocation(_findHidingSpot.FindBestHidingSpot(_player.transform.position), _walkSpeed);
 
         // Disallow manual stealth/crouch requests.
         _canStealth = false;
