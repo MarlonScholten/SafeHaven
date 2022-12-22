@@ -65,7 +65,7 @@ namespace SoundManager
         private void StartStealthMusic()
         {
             states[(int)MusicState.Hidden].SetValue();
-            playSound(gameObject);
+            playSound(soundGameObject:gameObject);
         }
 
         private void StopStealthMusic()
