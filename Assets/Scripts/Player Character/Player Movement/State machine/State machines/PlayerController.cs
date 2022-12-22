@@ -150,6 +150,8 @@ namespace PlayerCharacter.Movement
         private Vector2 _smooth;
 
         private bool _playerIsThrowing;
+        private float _xRotation;
+        private float _camTransitionTime = 0.5f;
 
         private void Awake()
         {
@@ -171,6 +173,7 @@ namespace PlayerCharacter.Movement
             _itemHeldHash = Animator.StringToHash("ItemHeld");
             _interactableObjectHash = Animator.StringToHash("InteractableObject");
             _stealthHash = Animator.StringToHash("Stealth");
+            _camTransitionTime = _playerCamera.GetComponent<CinemachineBrain>().m_DefaultBlend.m_Time;
         }
 
         private void OnDestroy()
@@ -196,14 +199,7 @@ namespace PlayerCharacter.Movement
             }
             else
             {
-                _current = Vector2.SmoothDamp(_current, new Vector2(0,0), ref _smooth, .3f);
-                _animator.SetFloat(_velocityHash, _current.magnitude);
-               
-                float mouseX = Input.GetAxis("Mouse X");
-                float mouseY = Input.GetAxis("Mouse Y");
-               
-                transform.Rotate(Vector3.up * mouseX * _throwCameraSensitivity * Time.deltaTime);
-                _throwCam.transform.Rotate(Vector3.right * -mouseY * _throwCameraSensitivity * Time.deltaTime);
+                ThrowCameraControl();
             }
         }
 
@@ -292,25 +288,47 @@ namespace PlayerCharacter.Movement
         }
 
         /// <summary>
-        /// Makes it so the player can't move
+        /// Makes it so the player can't move, when going into throw state. Also changes the camera to the throw camera.
         /// </summary>
         public void DisableMovement()
         {
-            if (CharacterController.enabled == true)
+            if (CharacterController.enabled)
             {
                 CharacterController.Move(new Vector3(0,0,0));
                 _throwCam.transform.rotation = new Quaternion(0f,0f,0f, 0f);
             }
             CharacterController.enabled = false;
             _playerIsThrowing = true;
+
+            transform.forward = _playerCamera.transform.forward;
+            
             _throwCam.Priority = 100;
         }
 
-        public void EnableMovement()
+        /// <summary>
+        /// Makes it so the player can move again after throwing and switches camera back to third person camera.
+        /// </summary>
+        public IEnumerator EnableMovement()
         {
+            _throwCam.Priority = 0;
+            yield return new WaitForSeconds(_camTransitionTime);
             CharacterController.enabled = true;
             _playerIsThrowing = false;
-            _throwCam.Priority = 0;
+        }
+
+        private void ThrowCameraControl()
+        {
+            _current = Vector2.SmoothDamp(_current, new Vector2(0,0), ref _smooth, .3f);
+            _animator.SetFloat(_velocityHash, _current.magnitude);
+               
+            float mouseX = Input.GetAxis("Mouse X") * _throwCameraSensitivity * Time.deltaTime;
+            float mouseY = Input.GetAxis("Mouse Y") * _throwCameraSensitivity * Time.deltaTime;
+
+            _xRotation -= mouseY;
+            _xRotation = Mathf.Clamp(_xRotation, -20f, 5f);
+                
+            transform.Rotate(Vector3.up * mouseX);
+            _throwCam.transform.localRotation = Quaternion.Euler(_xRotation, 0f, 0f);
         }
     }
 }

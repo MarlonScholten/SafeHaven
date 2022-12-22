@@ -103,6 +103,7 @@ namespace InteractableItemsSystem
         private void StartDrawingLine()
         {
             DrawLine = true;
+            _playerItemInteraction.PlayerController.DisableMovement();
         }
 
         private void Update()
@@ -115,8 +116,7 @@ namespace InteractableItemsSystem
         {
             
             if (!_inventory.HasItemInInventory) return;
-
-            _playerItemInteraction.PlayerController.DisableMovement();
+            
             
             _lineRenderer.enabled = true;
             _lineRenderer.positionCount = Mathf.CeilToInt(_numPoints / _timeBetweenPoints) + 1;
