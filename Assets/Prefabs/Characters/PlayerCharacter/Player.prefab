@@ -117,7 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9077fd5bef66a9040b6a77ccc6e5ef1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movementSpeed: 5
+  _movementSpeed: 4
   _smoothTurnTime: 0.15
   _canMoveInAir: 1
   _gravityMultiplier: 1
@@ -126,6 +126,9 @@ MonoBehaviour:
     m_Bits: 264
   _camRayCastLength: 100
   DrawRayDebug: 1
+  _stealthSpeed: 2
+  _moveSpeed: 4
+  _runningSpeed: 6
   _standCollider: {fileID: 7153754025646794028}
   _crouchCollider: {fileID: 700493309310897204}
 --- !u!114 &1711711202
