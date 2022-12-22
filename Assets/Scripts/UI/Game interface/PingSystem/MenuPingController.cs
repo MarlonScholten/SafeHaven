@@ -3,6 +3,7 @@ using Cinemachine;
 using PlayerCharacter.Movement;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.UI;
 
 /// <summary>
@@ -142,6 +143,16 @@ public class MenuPingController : AbstractPingController
     {
         if (!_radialMenuIsSetActive) return;
         ActivateRadialMenu();
+        ConstrainMouse();
+
+    }
+
+    private void ConstrainMouse()
+    {
+        // Force the mouse to be in the middle of the screen
+        Vector2 warpPosition = new Vector2(200,200);  // never let it move
+        Mouse.current.WarpCursorPosition(warpPosition);
+        InputState.Change(Mouse.current.position, warpPosition);
     }
     
     /// <summary>
