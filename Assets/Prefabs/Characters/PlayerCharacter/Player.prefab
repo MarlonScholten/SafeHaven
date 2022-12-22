@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4393969637856288560}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &8297779311250522727
 CapsuleCollider:
@@ -81,7 +81,6 @@ Transform:
   m_Children:
   - {fileID: 2718528077473230480}
   - {fileID: 6780000184730561731}
-  - {fileID: 1099548061290355364}
   - {fileID: 6549664319064843129}
   - {fileID: 6573365531898788790}
   - {fileID: 4144060417407570263}
@@ -118,7 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9077fd5bef66a9040b6a77ccc6e5ef1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movementSpeed: 5
+  _movementSpeed: 4
   _smoothTurnTime: 0.15
   _canMoveInAir: 1
   _gravityMultiplier: 1
@@ -127,6 +126,9 @@ MonoBehaviour:
     m_Bits: 264
   _camRayCastLength: 100
   DrawRayDebug: 1
+  _stealthSpeed: 2
+  _moveSpeed: 4
+  _runningSpeed: 6
   _standCollider: {fileID: 7153754025646794028}
   _crouchCollider: {fileID: 700493309310897204}
   _throwCameraSensitivity: 10
@@ -300,7 +302,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4393969637856288560}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &7502747181381218814
 CapsuleCollider:

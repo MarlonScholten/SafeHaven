@@ -51,9 +51,8 @@ public class QuickPingController : AbstractPingController
         _quickCancelled = false;
 
         SetPingPosition(_playerRayCastHit.point);
-        ShowMarker(_pingPosition);
-
         _brotherAI.PingBrother(PingType.Move, _pingPosition);
+        ShowMarker(_pingPosition);
     }
 
     /// <summary>
@@ -62,10 +61,12 @@ public class QuickPingController : AbstractPingController
     /// <param name="position">The position the marker should be shown at.</param>
     protected override void ShowMarker(Vector3 position)
     {
-        if (_marker) Destroy(_marker);
-        
+        if (_marker != null){
+            Destroy(_marker);
+        }
         _marker = Instantiate(_markerPrefab, position, Quaternion.identity);
         StartCoroutine(MarkerDuration(_marker));
+        
     }
 
     /// <summary>

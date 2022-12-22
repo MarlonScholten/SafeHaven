@@ -67,7 +67,7 @@ public class InvestigateState : MonoBehaviour
         else if(_stateManager.alertedByVision) _stateManager.CheckPositionReachable(_stateManager.spottedPlayerLastPosition);
         else if(_stateManager.alertedByGuard) _stateManager.CheckPositionReachable(_stateManager.recievedLocationFromGuard);
 
-        GameObject.Find("EnemyStateWatcher").GetComponent<SoundManager.EnemyStateWatcher>().isInvestegating(true);
+        _enemyStateWatcher.IsInvestegating(true);
     }
     
     /// <summary>
@@ -149,6 +149,6 @@ public class InvestigateState : MonoBehaviour
         if(_waitingAtWaypointDuringInvestigationCoroutineIsRunning)StopCoroutine(_waitingAtWaypointDuringInvestigationCoroutine);
         _waitingAtWaypointDuringInvestigationCoroutineIsRunning = false;
 
-        _enemyStateWatcher.isInvestegating(false);
+        _enemyStateWatcher.IsInvestegating(false);
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -85,6 +86,23 @@ public class KeybindingSettings : MonoBehaviour
             .OnCancel(operation => SuccessfulRebinding?.Invoke(null))
             .OnComplete(operation => {
                 operation.Dispose();
+
+                // Find bindings that are the same
+                foreach (var inputBinding in _controls.FindActionMap("Player").bindings
+                     .Where(inputBinding => inputBinding.effectivePath.Equals(actionToRebind.bindings[targetBinding].effectivePath))
+                     .Where(inputBinding => inputBinding.id != actionToRebind.bindings[targetBinding].id))
+                {
+                    // Find binding index in action
+                    for (int i = 0; i < _controls.FindAction(inputBinding.action).bindings.Count; i++)
+                    {
+                        if (!_controls.FindAction(inputBinding.action).bindings[i].id.Equals(inputBinding.id)) continue;
+                        
+                        // Clear binding
+                        _controls.FindAction(inputBinding.action).ApplyBindingOverride(i, "");
+                        AddOverrideToDictionary(_controls.FindAction(inputBinding.action).id, "", i);
+                    }
+                }
+                
                 AddOverrideToDictionary(actionToRebind.id, actionToRebind.bindings[targetBinding].effectivePath, targetBinding);
                 SaveControlOverrides();
                 SuccessfulRebinding?.Invoke(actionToRebind);

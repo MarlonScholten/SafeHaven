@@ -155,7 +155,7 @@ public class MainMenu : MonoBehaviour
 
     private IEnumerator ExitConfirmationTimeout()
     {
-        yield return new WaitForSeconds(_exitButtonConfirmationTimeout);
+        yield return new WaitForSecondsRealtime(_exitButtonConfirmationTimeout);
 
         var buttonTextComponent = _exitButton.GetComponentInChildren<TMP_Text>();
         buttonTextComponent.SetText("Exit");
