@@ -67,6 +67,60 @@
 								</Event>
 							</ChildrenList>
 						</Folder>
+						<Folder Name="TestSounds" ID="{23FA7AFE-761D-4D92-A329-170AA0CBE68B}" ShortID="197225459">
+							<ChildrenList>
+								<Event Name="Stop_TestSound_Loop" ID="{167B95EE-605F-4019-8F78-869C1D6E410C}">
+									<ChildrenList>
+										<Action Name="" ID="{23CAC83F-304E-483A-A8D7-AE76A708BEBE}" ShortID="244603472">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="2"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="TestSound_Loop" ID="{C4BEBEB7-B95A-42A7-AB65-A867B62E7AD5}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Stop_TestSound_Single" ID="{BBAA84AA-CBB9-452F-890B-629BA17AFF6B}">
+									<ChildrenList>
+										<Action Name="" ID="{E200FF6A-05CA-4069-A500-E5FBD1BC32DF}" ShortID="203600983">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="2"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="TestSound_Single" ID="{33687EB3-E550-49B5-AAF4-25D2CDD6A97B}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Play_TestSound_Loop" ID="{E5D4064A-B1F1-4154-B532-3B1848713A9B}">
+									<ChildrenList>
+										<Action Name="" ID="{10F91846-01F7-44C6-933C-F7D9315FE24E}" ShortID="302162016">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="TestSound_Loop" ID="{C4BEBEB7-B95A-42A7-AB65-A867B62E7AD5}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Play_TestSound_Single" ID="{11A6F299-A1CF-4CF3-A272-1ED0B2485C8F}">
+									<ChildrenList>
+										<Action Name="" ID="{3F152E4D-E97E-42A9-B68B-310B867E7ED8}" ShortID="211549263">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="TestSound_Single" ID="{33687EB3-E550-49B5-AAF4-25D2CDD6A97B}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
 						<Folder Name="ProximityLamp" ID="{D910724E-58EE-4A45-B151-C51F00DD48A9}" ShortID="234663427">
 							<ChildrenList>
 								<Event Name="Play_Proxlamp_Draft1_Click" ID="{07AC8ECB-8A8A-44CC-B159-12FBC7764420}">
@@ -509,12 +563,9 @@
 										</Folder>
 										<Folder Name="Scene10" ID="{174B183E-DA02-400B-A9D9-EF9AFE190783}" ShortID="294945886">
 											<ChildrenList>
-												<Event Name="Reset_Playlist_Scene10" ID="{BA79E553-AB8E-4DC0-B17A-3E5E9F45E2BF}">
+												<Event Name="Play_Scene10" ID="{33EF37B2-F28C-4300-BD07-D3DC1BA2FED9}">
 													<ChildrenList>
-														<Action Name="" ID="{84E5B56F-F925-408E-A336-D132412DA188}" ShortID="657470142">
-															<PropertyList>
-																<Property Name="ActionType" Type="int16" Value="42"/>
-															</PropertyList>
+														<Action Name="" ID="{C34A8881-21BC-4F55-92EB-984BD512F12E}" ShortID="659380870">
 															<ReferenceList>
 																<Reference Name="Target">
 																	<ObjectRef Name="Scene10" ID="{CEC473DC-965E-41F3-B2A0-DB2B2C9983F2}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
@@ -523,9 +574,12 @@
 														</Action>
 													</ChildrenList>
 												</Event>
-												<Event Name="Play_Scene10" ID="{F972F260-6CB7-4EF2-8D25-038DDCBE6AF3}">
+												<Event Name="Reset_Playlist_Scene10" ID="{C0B8CE4A-300B-4EB5-8AB9-B208355D0D3B}">
 													<ChildrenList>
-														<Action Name="" ID="{F980C32F-8027-4504-8A97-F605730EA5EE}" ShortID="619525367">
+														<Action Name="" ID="{9E949A71-A4EA-4B26-93A1-AA0F77DAB178}" ShortID="131203072">
+															<PropertyList>
+																<Property Name="ActionType" Type="int16" Value="42"/>
+															</PropertyList>
 															<ReferenceList>
 																<Reference Name="Target">
 																	<ObjectRef Name="Scene10" ID="{CEC473DC-965E-41F3-B2A0-DB2B2C9983F2}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
@@ -587,6 +641,1103 @@
 															<ReferenceList>
 																<Reference Name="Target">
 																	<ObjectRef Name="Scene12" ID="{A1A69233-E082-4D2E-89F3-092AE29A9259}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+											</ChildrenList>
+										</Folder>
+									</ChildrenList>
+								</Folder>
+								<Folder Name="Individual Files" ID="{B9CA0BC2-B515-4B8E-933A-86B176B3B275}" ShortID="446790">
+									<ChildrenList>
+										<Folder Name="Scene1" ID="{334FC73F-A49D-4799-8C7D-AB73BBC54889}" ShortID="619725280">
+											<ChildrenList>
+												<Event Name="Play_Scene_1_1_Nova" ID="{768C09AD-6CB6-4BD7-ABC1-A356980BFF91}">
+													<ChildrenList>
+														<Action Name="" ID="{D2AF7EDC-E706-4F9D-854C-FE39CB3A9DE6}" ShortID="95560710">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 1-1 Nova" ID="{12B0CFAC-1838-4CBF-B45F-1DE678AC8236}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Play_Scene_1_2_Samoya" ID="{61991E6F-A7A8-4BB9-A739-188E5817411A}">
+													<ChildrenList>
+														<Action Name="" ID="{0FBEE590-FD15-4F00-877E-C0AF63C869E6}" ShortID="581610747">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 1-2 Samoya" ID="{2A917230-A35D-40BF-846B-340444733019}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Play_Scene_1_3_Nova" ID="{89B6252A-88FE-4D8E-BEAC-EBCDDFAD0B19}">
+													<ChildrenList>
+														<Action Name="" ID="{BC80B00C-EE2E-49A8-BD94-DC51E5721B4D}" ShortID="768847777">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 1-3 Nova" ID="{F5856C21-9F82-4508-ABBD-8196056C340D}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Stop_Scene_1_1_Nova" ID="{8AFC466F-69B3-4EE6-86CF-D417D4B994C3}">
+													<ChildrenList>
+														<Action Name="" ID="{84ED04F6-9799-43C9-859C-557191404350}" ShortID="1029055333">
+															<PropertyList>
+																<Property Name="ActionType" Type="int16" Value="2"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 1-1 Nova" ID="{12B0CFAC-1838-4CBF-B45F-1DE678AC8236}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Stop_Scene_1_2_Samoya" ID="{389FE742-9E9B-4E28-8B6C-760D8EA51CF8}">
+													<ChildrenList>
+														<Action Name="" ID="{3422E185-F8C1-4B27-9F59-BE963FEEB35F}" ShortID="778922900">
+															<PropertyList>
+																<Property Name="ActionType" Type="int16" Value="2"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 1-2 Samoya" ID="{2A917230-A35D-40BF-846B-340444733019}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Stop_Scene_1_3_Nova" ID="{355C486C-C935-4BA9-AA75-759CE866533F}">
+													<ChildrenList>
+														<Action Name="" ID="{C884538D-3C10-4B38-B6A9-8E3BAF8A0025}" ShortID="639073953">
+															<PropertyList>
+																<Property Name="ActionType" Type="int16" Value="2"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 1-3 Nova" ID="{F5856C21-9F82-4508-ABBD-8196056C340D}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+											</ChildrenList>
+										</Folder>
+										<Folder Name="Scene2" ID="{4D4D7CEF-5822-41F8-8197-A0C767E53B50}" ShortID="785308359">
+											<ChildrenList>
+												<Event Name="Play_Scene_2_1_Samoya" ID="{50CE8FAB-DB41-4ECF-AFFF-91F07B2946C7}">
+													<ChildrenList>
+														<Action Name="" ID="{E50BAB31-AAAA-4BED-A410-31D431651937}" ShortID="310461695">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 2-1 Samoya" ID="{EF450CB2-2438-4947-8E31-AC443C5F7E8D}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Play_Scene_2_2_Nova" ID="{FE32F055-532F-494D-89D5-8C8346399D05}">
+													<ChildrenList>
+														<Action Name="" ID="{32D0A914-C3B9-44F1-BE6F-77AD7A7726F8}" ShortID="917084986">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 2-2 Nova" ID="{0F3F66F8-5BDA-417C-A0DD-B3E9BE094AB7}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Stop_Scene_2_1_Samoya" ID="{56822AE5-DA0D-43DF-96EB-612E4A354864}">
+													<ChildrenList>
+														<Action Name="" ID="{F9C87C46-CD14-4A07-88E8-FD28533FB85C}" ShortID="171308078">
+															<PropertyList>
+																<Property Name="ActionType" Type="int16" Value="2"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 2-1 Samoya" ID="{EF450CB2-2438-4947-8E31-AC443C5F7E8D}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Stop_Scene_2_2_Nova" ID="{F522C783-BF6A-4EDD-8B04-E15C934ED3B1}">
+													<ChildrenList>
+														<Action Name="" ID="{ACE1B9BB-495D-4E6A-8DDA-D32DB4543F15}" ShortID="975722877">
+															<PropertyList>
+																<Property Name="ActionType" Type="int16" Value="2"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 2-2 Nova" ID="{0F3F66F8-5BDA-417C-A0DD-B3E9BE094AB7}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+											</ChildrenList>
+										</Folder>
+										<Folder Name="Scene3" ID="{C8D65865-7669-4060-97AB-EBEF9942135C}" ShortID="150823045">
+											<ChildrenList>
+												<Event Name="Play_Scene_3_1_Soldier1" ID="{5F9A52B5-FDB8-4443-8BDD-D9EA13BDFDF0}">
+													<ChildrenList>
+														<Action Name="" ID="{504465A2-6C88-4278-B0F0-5FAA4839E647}" ShortID="1045057449">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 3-1 Soldier1" ID="{980B8028-11EC-49D3-A894-170EA60D923A}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Play_Scene_3_2_Soldier2" ID="{9498AE89-482A-4B79-934B-05244C875430}">
+													<ChildrenList>
+														<Action Name="" ID="{A134318B-BA70-43D2-9C56-BC6F102C811C}" ShortID="1025213888">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 3-2 Soldier2" ID="{50065730-ECFB-4D9E-879A-EFC9E511EE3D}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Play_Scene_3_3_Soldier1" ID="{D5958E9F-1E0D-4739-85F4-0D8A3DFA749F}">
+													<ChildrenList>
+														<Action Name="" ID="{2FCC1A1E-281C-414B-961E-BDEB5E83C309}" ShortID="548292579">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 3-3 Soldier1" ID="{9EA79727-4336-446E-A0BF-E3955CD8082C}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Play_Scene_3_4_Soldier2" ID="{39669F8B-5C00-4ED6-8AC7-D3DBBCC2C944}">
+													<ChildrenList>
+														<Action Name="" ID="{AC239DBB-2349-4E13-A15B-3314558CC6CB}" ShortID="737698968">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 3-4 Soldier2" ID="{B4F45AB4-A38D-4C9E-BD8A-B661246C7D95}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Play_Scene_3_5_Soldier1" ID="{604B9278-CD3B-4375-ABF7-203A7DFA67B1}">
+													<ChildrenList>
+														<Action Name="" ID="{E1156957-C505-488C-A32C-42EBD13C0A0D}" ShortID="992781108">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 3-5 Soldier1" ID="{C8C83DC2-4B37-4B22-9F8C-563E81457246}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Play_Scene_3_6_Soldier2" ID="{C9969B67-5A7F-4603-8B21-888A7D153DF3}">
+													<ChildrenList>
+														<Action Name="" ID="{DA209382-05E3-4C57-8E0F-B61283B13094}" ShortID="260888057">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 3-6 Soldier2" ID="{32BD561F-DD0D-42D3-97A5-8596066268BE}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Stop_Scene_3_1_Soldier1" ID="{5EA2FE77-7202-4411-90A2-616997B82E86}">
+													<ChildrenList>
+														<Action Name="" ID="{9A12FAC8-9734-47E3-BAE9-2C84A55C0F0E}" ShortID="59410285">
+															<PropertyList>
+																<Property Name="ActionType" Type="int16" Value="2"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 3-1 Soldier1" ID="{980B8028-11EC-49D3-A894-170EA60D923A}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Stop_Scene_3_2_Soldier2" ID="{35E48E86-1A3A-4774-8728-A61C0747F9D1}">
+													<ChildrenList>
+														<Action Name="" ID="{486A99A5-81B7-4522-8CFB-D9A4099F76D8}" ShortID="234537642">
+															<PropertyList>
+																<Property Name="ActionType" Type="int16" Value="2"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 3-2 Soldier2" ID="{50065730-ECFB-4D9E-879A-EFC9E511EE3D}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Stop_Scene_3_3_Soldier1" ID="{A2D0965D-9735-4C48-AB94-92ED213F0E12}">
+													<ChildrenList>
+														<Action Name="" ID="{043AA64F-6DAA-41F1-9EB7-4C21AA26DA4B}" ShortID="853203637">
+															<PropertyList>
+																<Property Name="ActionType" Type="int16" Value="2"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 3-3 Soldier1" ID="{9EA79727-4336-446E-A0BF-E3955CD8082C}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Stop_Scene_3_4_Soldier2" ID="{012ED5DF-CB5E-47A9-8A32-84AD910395F8}">
+													<ChildrenList>
+														<Action Name="" ID="{F3FCCF2D-B7E9-4EBA-9350-0B2DA9D29BC6}" ShortID="537495688">
+															<PropertyList>
+																<Property Name="ActionType" Type="int16" Value="2"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 3-4 Soldier2" ID="{B4F45AB4-A38D-4C9E-BD8A-B661246C7D95}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Stop_Scene_3_5_Soldier1" ID="{B251D55A-0105-4BB6-8A27-39D7815EBAA6}">
+													<ChildrenList>
+														<Action Name="" ID="{C0E57738-3467-4352-A86C-C28E2BE7E3A6}" ShortID="70713648">
+															<PropertyList>
+																<Property Name="ActionType" Type="int16" Value="2"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 3-5 Soldier1" ID="{C8C83DC2-4B37-4B22-9F8C-563E81457246}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Stop_Scene_3_6_Soldier2" ID="{686AFA6E-F8BB-4A72-B80C-712DEEB60E8D}">
+													<ChildrenList>
+														<Action Name="" ID="{F360D291-9B83-41E7-82C5-6C674E3CA403}" ShortID="691897522">
+															<PropertyList>
+																<Property Name="ActionType" Type="int16" Value="2"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 3-6 Soldier2" ID="{32BD561F-DD0D-42D3-97A5-8596066268BE}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+											</ChildrenList>
+										</Folder>
+										<Folder Name="Scene4" ID="{77557C95-041F-4914-8B47-1325F935E491}" ShortID="692086522">
+											<ChildrenList>
+												<Event Name="Play_Scene_4_1_Soldier1" ID="{65737899-89FD-4ED0-8407-E0789FAE269D}">
+													<ChildrenList>
+														<Action Name="" ID="{51C9B53D-E3BA-435C-B123-C99ED69BB0E2}" ShortID="486281321">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 4-1 Soldier1" ID="{FA03C3F0-4685-49A5-BB6D-44B5EDB453B9}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Play_Scene_4_2_Soldier2" ID="{B25B897B-902C-4810-AFE9-F4A99FCDB9A5}">
+													<ChildrenList>
+														<Action Name="" ID="{88B1FEE4-AF5D-43E0-B6BE-EAC35892A3D3}" ShortID="395207726">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 4-2 Soldier2" ID="{A6E4A216-FD9C-4700-B0E5-C9B9E349E3B9}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Stop_Scene_4_1_Soldier1" ID="{EB4E65D1-C12E-476F-9F36-ADEC30E06DB4}">
+													<ChildrenList>
+														<Action Name="" ID="{61C00769-9D54-4712-9EF3-91AC92DE4BA0}" ShortID="830240910">
+															<PropertyList>
+																<Property Name="ActionType" Type="int16" Value="2"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 4-1 Soldier1" ID="{FA03C3F0-4685-49A5-BB6D-44B5EDB453B9}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Stop_Scene_4_2_Soldier2" ID="{5F15D192-3E9B-4843-ACC7-C0686E439511}">
+													<ChildrenList>
+														<Action Name="" ID="{DFF3A6D8-0516-44E9-9A75-9A68FDEA7D6A}" ShortID="652585756">
+															<PropertyList>
+																<Property Name="ActionType" Type="int16" Value="2"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 4-2 Soldier2" ID="{A6E4A216-FD9C-4700-B0E5-C9B9E349E3B9}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+											</ChildrenList>
+										</Folder>
+										<Folder Name="Scene5" ID="{6C36C3E4-6E80-4BEB-A26E-9229FF05ED00}" ShortID="824067011">
+											<ChildrenList>
+												<Event Name="Play_Scene_5_2_Nova" ID="{7535775D-A9FC-40A0-922C-E1F7F8BDC8EF}">
+													<ChildrenList>
+														<Action Name="" ID="{D0D6E3A6-40EA-4FF4-B404-A8922E81C36D}" ShortID="331546890">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 5-2 Nova" ID="{FBF26815-CF8A-4A20-9C57-ECD671B7A756}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Stop_Scene_5_2_Nova" ID="{7451A86D-0A3B-4DE0-825E-4BD7BA8DD93D}">
+													<ChildrenList>
+														<Action Name="" ID="{375DF6BB-CCA7-4B4A-A02E-29053574EDB1}" ShortID="261703143">
+															<PropertyList>
+																<Property Name="ActionType" Type="int16" Value="2"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 5-2 Nova" ID="{FBF26815-CF8A-4A20-9C57-ECD671B7A756}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+											</ChildrenList>
+										</Folder>
+										<Folder Name="Scene6" ID="{E92973BB-DA33-47AC-8729-82746BBDF176}" ShortID="959522186">
+											<ChildrenList>
+												<Event Name="Play_Scene_6_1_Samoya" ID="{3E7311BA-3D19-4DBF-BBBF-E79A490217BB}">
+													<ChildrenList>
+														<Action Name="" ID="{ACD0EAB7-51E3-4995-9C7F-DC6B557069D8}" ShortID="290634401">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 6-1 Samoya" ID="{DA4ED3A7-3004-405A-8774-F21F919D4B24}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Play_Scene_6_2_Nova" ID="{2FDE1AC1-00F9-44A0-A620-75A352D58E96}">
+													<ChildrenList>
+														<Action Name="" ID="{AE6374F1-5697-4F15-AB1D-F9401A20602A}" ShortID="780536302">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 6-2 Nova" ID="{8E82BB5E-B746-42E3-8BA6-E8530187EF22}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Play_Scene_6_3_Nova" ID="{A3530F84-83C9-474C-BBAC-F7875C00EE6B}">
+													<ChildrenList>
+														<Action Name="" ID="{22A285B5-A494-4EC1-B264-AB248046F6B1}" ShortID="322058985">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 6-3 Nova" ID="{3E43AAB1-3B70-411A-9E75-E9F1BB974AB6}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Stop_Scene_6_1_Samoya" ID="{7E236B72-3B57-43D3-BD4E-710082A2ED54}">
+													<ChildrenList>
+														<Action Name="" ID="{BFAB86BF-EF03-456F-A0C2-94E66B14032F}" ShortID="705093446">
+															<PropertyList>
+																<Property Name="ActionType" Type="int16" Value="2"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 6-1 Samoya" ID="{DA4ED3A7-3004-405A-8774-F21F919D4B24}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Stop_Scene_6_2_Nova" ID="{FBC615E7-6E42-497B-A85E-8A0F2AFE88B7}">
+													<ChildrenList>
+														<Action Name="" ID="{32499874-C0E2-40C6-B17F-16662777D73E}" ShortID="70259845">
+															<PropertyList>
+																<Property Name="ActionType" Type="int16" Value="2"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 6-2 Nova" ID="{8E82BB5E-B746-42E3-8BA6-E8530187EF22}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Stop_Scene_6_3_Nova" ID="{63CD414C-F23E-48F5-94B0-09EEE41547C6}">
+													<ChildrenList>
+														<Action Name="" ID="{6952D081-A191-4E95-82C9-C051F3EE42E5}" ShortID="560767622">
+															<PropertyList>
+																<Property Name="ActionType" Type="int16" Value="2"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 6-3 Nova" ID="{3E43AAB1-3B70-411A-9E75-E9F1BB974AB6}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+											</ChildrenList>
+										</Folder>
+										<Folder Name="Scene7" ID="{F6F0C64B-5FC1-4D50-803F-4C04AD04CB7F}" ShortID="689021011">
+											<ChildrenList>
+												<Event Name="Play_Scene_7_1_Nova" ID="{7B86157A-52B5-48DA-A65F-EA19447AE19E}">
+													<ChildrenList>
+														<Action Name="" ID="{BC2BF764-6884-4E6D-92FC-0D93D06CE302}" ShortID="600365849">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 7-1 Nova" ID="{DF1D357E-FC9D-4BC6-B093-D2BE1BB0F9DF}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Play_Scene_7_2_Nova" ID="{FFAB7BC0-C5FA-4212-9E2C-26DA4E8B2001}">
+													<ChildrenList>
+														<Action Name="" ID="{97F2EAE4-92B8-4D1E-B826-9EAC4BAE4868}" ShortID="724911287">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 7-2 Nova" ID="{6B632737-03E3-4CBC-91D1-7B7C7E9C07CB}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Stop_Scene_7_1_Nova" ID="{17A9F622-49E7-42E7-BF0D-AD259FBF8A57}">
+													<ChildrenList>
+														<Action Name="" ID="{FDA5C3C4-F31F-4F04-8670-6D25C20E4676}" ShortID="654634355">
+															<PropertyList>
+																<Property Name="ActionType" Type="int16" Value="2"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 7-1 Nova" ID="{DF1D357E-FC9D-4BC6-B093-D2BE1BB0F9DF}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Stop_Scene_7_2_Nova" ID="{DFC5FA81-5E52-4124-BB61-0AE6F0B2ABA1}">
+													<ChildrenList>
+														<Action Name="" ID="{7C1890B7-4326-4BD5-8EFA-988CA52A1806}" ShortID="140024969">
+															<PropertyList>
+																<Property Name="ActionType" Type="int16" Value="2"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 7-2 Nova" ID="{6B632737-03E3-4CBC-91D1-7B7C7E9C07CB}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+											</ChildrenList>
+										</Folder>
+										<Folder Name="Scene8" ID="{9C7741F6-695B-44BE-A2BF-4838B5C9A752}" ShortID="790960329">
+											<ChildrenList>
+												<Folder Name="Scene8-1" ID="{5DEFD228-054C-4A84-8D44-A11EEB257A0A}" ShortID="37342028">
+													<ChildrenList>
+														<Event Name="Play_Scene_8_1_1_Soldier1" ID="{7D15403B-6F31-4905-846E-DA4A684D90C7}">
+															<ChildrenList>
+																<Action Name="" ID="{5DC158A7-31D2-4922-8AD0-AE392887E406}" ShortID="683606866">
+																	<ReferenceList>
+																		<Reference Name="Target">
+																			<ObjectRef Name="Scene 8-1-1 Soldier1" ID="{E581B74A-3A18-4815-8E3E-342136C80D61}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																		</Reference>
+																	</ReferenceList>
+																</Action>
+															</ChildrenList>
+														</Event>
+														<Event Name="Play_Scene_8_1_2_Soldier2" ID="{6D316E69-B2D3-400D-9275-022DCC48F448}">
+															<ChildrenList>
+																<Action Name="" ID="{E2E286D6-5CD2-42DF-B082-08D41E61B5F8}" ShortID="404678815">
+																	<ReferenceList>
+																		<Reference Name="Target">
+																			<ObjectRef Name="Scene 8-1-2 Soldier2" ID="{435F9BFD-D886-4110-B5C8-8277073B9D33}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																		</Reference>
+																	</ReferenceList>
+																</Action>
+															</ChildrenList>
+														</Event>
+														<Event Name="Play_Scene_8_1_3_Soldier1" ID="{034237EC-EE13-44AD-B827-B61580FC8039}">
+															<ChildrenList>
+																<Action Name="" ID="{00EB1438-F3B4-49F7-8BC9-441896D1F2AF}" ShortID="486187074">
+																	<ReferenceList>
+																		<Reference Name="Target">
+																			<ObjectRef Name="Scene 8-1-3 Soldier1" ID="{0A33BF49-AEA7-4E17-9C0C-819D5AD37C3B}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																		</Reference>
+																	</ReferenceList>
+																</Action>
+															</ChildrenList>
+														</Event>
+														<Event Name="Stop_Scene_8_1_1_Soldier1" ID="{6DED934B-F7EB-472A-AFAE-804C888CACF1}">
+															<ChildrenList>
+																<Action Name="" ID="{89A9754C-8C4A-46D0-8921-66C7FE5B2C7E}" ShortID="891851134">
+																	<PropertyList>
+																		<Property Name="ActionType" Type="int16" Value="2"/>
+																	</PropertyList>
+																	<ReferenceList>
+																		<Reference Name="Target">
+																			<ObjectRef Name="Scene 8-1-1 Soldier1" ID="{E581B74A-3A18-4815-8E3E-342136C80D61}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																		</Reference>
+																	</ReferenceList>
+																</Action>
+															</ChildrenList>
+														</Event>
+														<Event Name="Stop_Scene_8_1_2_Soldier2" ID="{761423F3-E8EE-4D35-AFCE-8B65719C52F2}">
+															<ChildrenList>
+																<Action Name="" ID="{D60636C2-2B39-41AF-A732-4E44FABCB557}" ShortID="325033341">
+																	<PropertyList>
+																		<Property Name="ActionType" Type="int16" Value="2"/>
+																	</PropertyList>
+																	<ReferenceList>
+																		<Reference Name="Target">
+																			<ObjectRef Name="Scene 8-1-2 Soldier2" ID="{435F9BFD-D886-4110-B5C8-8277073B9D33}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																		</Reference>
+																	</ReferenceList>
+																</Action>
+															</ChildrenList>
+														</Event>
+														<Event Name="Stop_Scene_8_1_3_Soldier1" ID="{B890DA8C-A7AA-43E0-83DC-F09EED903E0A}">
+															<ChildrenList>
+																<Action Name="" ID="{99264068-BA44-4032-A745-38DA886E7316}" ShortID="193366760">
+																	<PropertyList>
+																		<Property Name="ActionType" Type="int16" Value="2"/>
+																	</PropertyList>
+																	<ReferenceList>
+																		<Reference Name="Target">
+																			<ObjectRef Name="Scene 8-1-3 Soldier1" ID="{0A33BF49-AEA7-4E17-9C0C-819D5AD37C3B}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																		</Reference>
+																	</ReferenceList>
+																</Action>
+															</ChildrenList>
+														</Event>
+													</ChildrenList>
+												</Folder>
+												<Folder Name="Scene8-2" ID="{6FD7E60A-F1AD-4747-85C4-0788A9B515C5}" ShortID="153480056">
+													<ChildrenList>
+														<Event Name="Play_Scene_8_2_1_Soldier1" ID="{8A7CC3C0-406F-4518-8AD4-B52EC0776E2A}">
+															<ChildrenList>
+																<Action Name="" ID="{B319C664-E372-4F57-A1A8-0B03216E366E}" ShortID="954638985">
+																	<ReferenceList>
+																		<Reference Name="Target">
+																			<ObjectRef Name="Scene 8-2-1 Soldier1" ID="{21A09F5D-B41C-4F20-AC03-ED5C0CCC8F0D}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																		</Reference>
+																	</ReferenceList>
+																</Action>
+															</ChildrenList>
+														</Event>
+														<Event Name="Play_Scene_8_2_2_Soldier2" ID="{4F1D0E09-D516-4D7F-9567-56751B4399A5}">
+															<ChildrenList>
+																<Action Name="" ID="{50DC1826-78F4-4B90-A206-E279FA02C80F}" ShortID="749381688">
+																	<ReferenceList>
+																		<Reference Name="Target">
+																			<ObjectRef Name="Scene 8-2-2 Soldier2" ID="{A11942C3-0876-4AC0-9F5C-06266D220A02}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																		</Reference>
+																	</ReferenceList>
+																</Action>
+															</ChildrenList>
+														</Event>
+														<Event Name="Stop_Scene_8_2_1_Soldier1" ID="{4991AED9-66B8-40B7-B482-991CB3350361}">
+															<ChildrenList>
+																<Action Name="" ID="{E29930F6-6FAD-439A-B758-6FC0F6D54F1F}" ShortID="411592443">
+																	<PropertyList>
+																		<Property Name="ActionType" Type="int16" Value="2"/>
+																	</PropertyList>
+																	<ReferenceList>
+																		<Reference Name="Target">
+																			<ObjectRef Name="Scene 8-2-1 Soldier1" ID="{21A09F5D-B41C-4F20-AC03-ED5C0CCC8F0D}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																		</Reference>
+																	</ReferenceList>
+																</Action>
+															</ChildrenList>
+														</Event>
+														<Event Name="Stop_Scene_8_2_2_Soldier2" ID="{258318AA-5C2C-40AE-91F7-15EC9EA9CA97}">
+															<ChildrenList>
+																<Action Name="" ID="{DDF7AEEF-FEEE-45E2-9AC3-DBE7C40EDEC8}" ShortID="993552456">
+																	<PropertyList>
+																		<Property Name="ActionType" Type="int16" Value="2"/>
+																	</PropertyList>
+																	<ReferenceList>
+																		<Reference Name="Target">
+																			<ObjectRef Name="Scene 8-2-2 Soldier2" ID="{A11942C3-0876-4AC0-9F5C-06266D220A02}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																		</Reference>
+																	</ReferenceList>
+																</Action>
+															</ChildrenList>
+														</Event>
+													</ChildrenList>
+												</Folder>
+												<Folder Name="Scene8-3" ID="{53FCB708-770B-4827-89BB-6DF1A1E4241E}" ShortID="105629202">
+													<ChildrenList>
+														<Event Name="Play_Scene_8_3_1_Soldier1" ID="{490F2DDB-F511-4416-A696-1258192EEB8D}">
+															<ChildrenList>
+																<Action Name="" ID="{80724CF9-E6DA-440D-B39A-D73F01978E25}" ShortID="1047424929">
+																	<ReferenceList>
+																		<Reference Name="Target">
+																			<ObjectRef Name="Scene 8-3-1 Soldier1" ID="{424A62DE-E014-4799-904F-A9173A67525F}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																		</Reference>
+																	</ReferenceList>
+																</Action>
+															</ChildrenList>
+														</Event>
+														<Event Name="Play_Scene_8_3_2_Samoya" ID="{4E660A59-6ACF-41A6-8D76-4C022821B5A3}">
+															<ChildrenList>
+																<Action Name="" ID="{3A075829-E69A-4498-86F5-F392775E6809}" ShortID="284448879">
+																	<ReferenceList>
+																		<Reference Name="Target">
+																			<ObjectRef Name="Scene 8-3-2 Samoya" ID="{5085985B-A77D-45AF-A9E2-ECBD764B8BD3}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																		</Reference>
+																	</ReferenceList>
+																</Action>
+															</ChildrenList>
+														</Event>
+														<Event Name="Play_Scene_8_3_3_Nova" ID="{0179C2EE-7E3A-4C8E-9FA3-3709608AC7B0}">
+															<ChildrenList>
+																<Action Name="" ID="{8073A337-B3C7-4297-A834-D43EA6FFC82F}" ShortID="509673840">
+																	<ReferenceList>
+																		<Reference Name="Target">
+																			<ObjectRef Name="Scene 8-3-3 Nova" ID="{535482D8-523B-4F68-8661-691367791330}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																		</Reference>
+																	</ReferenceList>
+																</Action>
+															</ChildrenList>
+														</Event>
+														<Event Name="Stop_Scene_8_3_1_Soldier1" ID="{CEA8117D-506B-4BE0-A99B-46D550D88AE9}">
+															<ChildrenList>
+																<Action Name="" ID="{91245754-D597-4C00-8581-3CA52E19499F}" ShortID="473413712">
+																	<PropertyList>
+																		<Property Name="ActionType" Type="int16" Value="2"/>
+																	</PropertyList>
+																	<ReferenceList>
+																		<Reference Name="Target">
+																			<ObjectRef Name="Scene 8-3-1 Soldier1" ID="{424A62DE-E014-4799-904F-A9173A67525F}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																		</Reference>
+																	</ReferenceList>
+																</Action>
+															</ChildrenList>
+														</Event>
+														<Event Name="Stop_Scene_8_3_2_Samoya" ID="{26397FF5-BE28-4809-8C49-D8CA42E0FEFB}">
+															<ChildrenList>
+																<Action Name="" ID="{072B1CF5-8D95-43F0-AD6B-8D0178D28F7C}" ShortID="839284689">
+																	<PropertyList>
+																		<Property Name="ActionType" Type="int16" Value="2"/>
+																	</PropertyList>
+																	<ReferenceList>
+																		<Reference Name="Target">
+																			<ObjectRef Name="Scene 8-3-2 Samoya" ID="{5085985B-A77D-45AF-A9E2-ECBD764B8BD3}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																		</Reference>
+																	</ReferenceList>
+																</Action>
+															</ChildrenList>
+														</Event>
+														<Event Name="Stop_Scene_8_3_3_Nova" ID="{3E91F3D8-5FB1-4D45-9AB6-CA6403ECA370}">
+															<ChildrenList>
+																<Action Name="" ID="{EFF5D934-1D5A-4B5E-BF39-50577EBB2116}" ShortID="800379859">
+																	<PropertyList>
+																		<Property Name="ActionType" Type="int16" Value="2"/>
+																	</PropertyList>
+																	<ReferenceList>
+																		<Reference Name="Target">
+																			<ObjectRef Name="Scene 8-3-3 Nova" ID="{535482D8-523B-4F68-8661-691367791330}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																		</Reference>
+																	</ReferenceList>
+																</Action>
+															</ChildrenList>
+														</Event>
+													</ChildrenList>
+												</Folder>
+												<Folder Name="Scene8-4" ID="{7BDB17A1-F2F9-44B8-B9CE-299DD540DCA4}" ShortID="1038649181">
+													<ChildrenList>
+														<Event Name="Play_Scene_8_4_1_Soldier1" ID="{D4D4D9B9-E25A-4E24-9C24-15D07E71F971}">
+															<ChildrenList>
+																<Action Name="" ID="{6F4EF36C-D485-4D75-8C93-C699FC057F79}" ShortID="964882110">
+																	<ReferenceList>
+																		<Reference Name="Target">
+																			<ObjectRef Name="Scene 8-4-1 Soldier1" ID="{A7B7BC2E-7812-4B78-9A93-151058834FA9}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																		</Reference>
+																	</ReferenceList>
+																</Action>
+															</ChildrenList>
+														</Event>
+														<Event Name="Play_Scene_8_4_2_Soldier2" ID="{090D6485-B7DF-41E3-AF83-61387DB34663}">
+															<ChildrenList>
+																<Action Name="" ID="{E5012E7F-3403-4977-A285-78FE8633451C}" ShortID="708896416">
+																	<ReferenceList>
+																		<Reference Name="Target">
+																			<ObjectRef Name="Scene 8-4-2 Soldier2" ID="{9A6D9DDB-4F18-45DD-AE15-48DBB92B8254}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																		</Reference>
+																	</ReferenceList>
+																</Action>
+															</ChildrenList>
+														</Event>
+														<Event Name="Stop_Scene_8_4_1_Soldier1" ID="{D43A0C0C-4742-4C77-A684-B7D31BBDC74D}">
+															<ChildrenList>
+																<Action Name="" ID="{EF2A7ECD-F1C3-4179-AC96-0752596C3D65}" ShortID="428601789">
+																	<PropertyList>
+																		<Property Name="ActionType" Type="int16" Value="2"/>
+																	</PropertyList>
+																	<ReferenceList>
+																		<Reference Name="Target">
+																			<ObjectRef Name="Scene 8-4-1 Soldier1" ID="{A7B7BC2E-7812-4B78-9A93-151058834FA9}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																		</Reference>
+																	</ReferenceList>
+																</Action>
+															</ChildrenList>
+														</Event>
+														<Event Name="Stop_Scene_8_4_2_Soldier2" ID="{EA8EBB8B-306D-4A11-BB58-B6E7888160A3}">
+															<ChildrenList>
+																<Action Name="" ID="{D91A2E87-1155-4E87-8BF7-2C203E53190D}" ShortID="87653171">
+																	<PropertyList>
+																		<Property Name="ActionType" Type="int16" Value="2"/>
+																	</PropertyList>
+																	<ReferenceList>
+																		<Reference Name="Target">
+																			<ObjectRef Name="Scene 8-4-2 Soldier2" ID="{9A6D9DDB-4F18-45DD-AE15-48DBB92B8254}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																		</Reference>
+																	</ReferenceList>
+																</Action>
+															</ChildrenList>
+														</Event>
+													</ChildrenList>
+												</Folder>
+												<Folder Name="Scene8-5" ID="{03F2536B-174D-45B9-9AC3-83B6365C43CB}" ShortID="128024942">
+													<ChildrenList>
+														<Event Name="Play_Scene_8_5_1_Soldier1" ID="{CB10393F-9D96-4967-B810-CB126009D5D9}">
+															<ChildrenList>
+																<Action Name="" ID="{04B63AAB-1811-4B45-85AE-850C4E530999}" ShortID="675217117">
+																	<ReferenceList>
+																		<Reference Name="Target">
+																			<ObjectRef Name="Scene 8-5-1 Soldier1" ID="{37371AE7-0FE4-4DE1-9BA9-97FBC9C90AE3}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																		</Reference>
+																	</ReferenceList>
+																</Action>
+															</ChildrenList>
+														</Event>
+														<Event Name="Stop_Scene_8_5_1_Soldier1" ID="{6B1C5A43-E002-4DFD-91F4-7A7A6DF15ABC}">
+															<ChildrenList>
+																<Action Name="" ID="{1B50DD79-F39B-4886-A8C9-3CF74A6E698A}" ShortID="759997210">
+																	<PropertyList>
+																		<Property Name="ActionType" Type="int16" Value="2"/>
+																	</PropertyList>
+																	<ReferenceList>
+																		<Reference Name="Target">
+																			<ObjectRef Name="Scene 8-5-1 Soldier1" ID="{37371AE7-0FE4-4DE1-9BA9-97FBC9C90AE3}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																		</Reference>
+																	</ReferenceList>
+																</Action>
+															</ChildrenList>
+														</Event>
+													</ChildrenList>
+												</Folder>
+											</ChildrenList>
+										</Folder>
+										<Folder Name="Scene9" ID="{0B0C3312-6E45-4765-8A52-8BC4350557E4}" ShortID="786004202">
+											<ChildrenList>
+												<Event Name="Play_Scene_9_1_Soldier2" ID="{D18C74AA-4282-4CD3-88A7-AF1F4D0633F1}">
+													<ChildrenList>
+														<Action Name="" ID="{3F801311-FBF5-46A4-B491-187976DBAEE0}" ShortID="184665870">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 9-1 Soldier2" ID="{4F91FCE8-6114-4823-B7AE-2F5B195EBD95}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Play_Scene_9_2_Soldier1" ID="{8DF5A89F-D2EE-4DE3-8BC4-6C00EFFE8983}">
+													<ChildrenList>
+														<Action Name="" ID="{A585D760-D95C-414B-A3A8-2D53BA126F8E}" ShortID="589512970">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 9-2 Soldier1" ID="{3A053EA2-DA2B-4A04-8860-8AE52D4682D4}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Stop_Scene_9_1_Soldier2" ID="{1D057A2A-3030-4D6E-BF3D-0A996CD4A596}">
+													<ChildrenList>
+														<Action Name="" ID="{26F7C70A-C729-4C29-9601-C8DD86FF4FA5}" ShortID="782931615">
+															<PropertyList>
+																<Property Name="ActionType" Type="int16" Value="2"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 9-1 Soldier2" ID="{4F91FCE8-6114-4823-B7AE-2F5B195EBD95}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Stop_Scene_9_2_Soldier1" ID="{6911ECBE-0E26-486F-A96D-F347D9A231C2}">
+													<ChildrenList>
+														<Action Name="" ID="{13AD8719-AFC4-4D57-81CB-5D61056F3372}" ShortID="871949687">
+															<PropertyList>
+																<Property Name="ActionType" Type="int16" Value="2"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 9-2 Soldier1" ID="{3A053EA2-DA2B-4A04-8860-8AE52D4682D4}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+											</ChildrenList>
+										</Folder>
+										<Folder Name="Scene10" ID="{EDF8BA0E-00A7-4117-BCF1-34DE87C1B732}" ShortID="1016857024">
+											<ChildrenList>
+												<Event Name="Play_Scene_10_1_1_Samoya" ID="{8CCD896F-CD0A-4354-BE01-7927E2D43BC2}">
+													<ChildrenList>
+														<Action Name="" ID="{9F2F3C94-C5EA-4674-B234-984DB8334122}" ShortID="1063453363">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 10-1-1 Samoya" ID="{01ECCA58-35D5-43F6-9E7A-2B515BE37CB6}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Play_Scene_10_2_1_Samoya" ID="{E74D42FF-58D2-4787-B2A3-F2A46F534018}">
+													<ChildrenList>
+														<Action Name="" ID="{BD34281A-4FA6-4960-BC0B-5F6C514B2013}" ShortID="42910734">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 10-2-1 Samoya" ID="{38714322-BAD8-4735-8CD7-901A763574FF}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Play_Scene_10_2_2_Nova" ID="{121B0D8A-FB31-4C88-94E5-BB0AD8F294E6}">
+													<ChildrenList>
+														<Action Name="" ID="{2688CFE3-14AC-49BF-9927-5C5EB73B0E37}" ShortID="811340737">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 10-2-2 Nova" ID="{F8754086-D00A-4BB7-BBEA-27A34F022EFB}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Play_Scene_10_2_3_Samoya" ID="{C0E4D297-132A-4A09-ADE3-EF6BB6073208}">
+													<ChildrenList>
+														<Action Name="" ID="{47967914-4650-40D8-814D-52507773EDAF}" ShortID="93252043">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 10-2-3 Samoya" ID="{5AD8529D-E517-4456-9ECA-6BB5D59DCB43}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Play_Scene_10_2_4_Nova" ID="{52A1DD4D-0CAD-4EAC-9B5E-69C76FFCEAFD}">
+													<ChildrenList>
+														<Action Name="" ID="{D3566A52-1746-41C5-A06E-88F15A2E4FA3}" ShortID="710535269">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 10-2-4 Nova" ID="{06CC3E26-90D8-4598-AA2A-D989A4692797}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Play_Scene_10_2_5_Samoya" ID="{F671CE18-CE49-4DCB-83B6-54551BF8C862}">
+													<ChildrenList>
+														<Action Name="" ID="{3070FF01-91DB-4274-9F23-762C426CACFF}" ShortID="596335997">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 10-2-5 Samoya" ID="{F9337920-D867-436C-A112-85900DB4F951}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Play_Scene_10_2_6_Nova" ID="{D5818032-041F-4E8D-B881-E0BB26005486}">
+													<ChildrenList>
+														<Action Name="" ID="{C27BACD1-0EE7-4B7C-88BD-7184FB140496}" ShortID="372890830">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 10-2-6 Nova" ID="{B7E4279A-99EE-4C60-BD30-6D8D3552321E}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Stop_Scene_10_1_1_Samoya" ID="{FCB8D45E-303F-4F90-8567-60BA557F6338}">
+													<ChildrenList>
+														<Action Name="" ID="{5B878559-D2DE-4AAB-BCB8-46F4A24BC719}" ShortID="84399579">
+															<PropertyList>
+																<Property Name="ActionType" Type="int16" Value="2"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 10-1-1 Samoya" ID="{01ECCA58-35D5-43F6-9E7A-2B515BE37CB6}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Stop_Scene_10_2_1_Samoya" ID="{E5561C60-FBE6-49CF-BD1B-9FA886AC5A66}">
+													<ChildrenList>
+														<Action Name="" ID="{307BFA2B-1E6C-4077-A83D-1C7F20076AD8}" ShortID="117868676">
+															<PropertyList>
+																<Property Name="ActionType" Type="int16" Value="2"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 10-2-1 Samoya" ID="{38714322-BAD8-4735-8CD7-901A763574FF}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Stop_Scene_10_2_2_Nova" ID="{70CA797A-4744-48C8-8E74-D4DDFAC8696C}">
+													<ChildrenList>
+														<Action Name="" ID="{23A7D953-89BE-4F91-B1A1-6F37935E2FE2}" ShortID="397274730">
+															<PropertyList>
+																<Property Name="ActionType" Type="int16" Value="2"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 10-2-2 Nova" ID="{F8754086-D00A-4BB7-BBEA-27A34F022EFB}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Stop_Scene_10_2_3_Samoya" ID="{0598B840-B349-4D02-9DC7-F1F8ECC76416}">
+													<ChildrenList>
+														<Action Name="" ID="{E4A50177-940B-4525-A747-A10F0296CD07}" ShortID="49475334">
+															<PropertyList>
+																<Property Name="ActionType" Type="int16" Value="2"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 10-2-3 Samoya" ID="{5AD8529D-E517-4456-9ECA-6BB5D59DCB43}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Stop_Scene_10_2_4_Nova" ID="{97023910-AAB0-4328-974F-108E36A6110C}">
+													<ChildrenList>
+														<Action Name="" ID="{D5A723FB-7CD6-4E95-8012-993420B2D034}" ShortID="295920307">
+															<PropertyList>
+																<Property Name="ActionType" Type="int16" Value="2"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 10-2-4 Nova" ID="{06CC3E26-90D8-4598-AA2A-D989A4692797}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Stop_Scene_10_2_5_Samoya" ID="{6E87369D-FA6B-48FB-80E8-6097D2928ACC}">
+													<ChildrenList>
+														<Action Name="" ID="{BDFD80E6-6045-45C1-A9BE-E78E33C78DB7}" ShortID="771993934">
+															<PropertyList>
+																<Property Name="ActionType" Type="int16" Value="2"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 10-2-5 Samoya" ID="{F9337920-D867-436C-A112-85900DB4F951}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Stop_Scene_10_2_6_Nova" ID="{00F3364B-1267-4DAE-B492-E7237DA473AC}">
+													<ChildrenList>
+														<Action Name="" ID="{B5B1C934-4B33-43C7-9FA7-AD398866DC98}" ShortID="299392589">
+															<PropertyList>
+																<Property Name="ActionType" Type="int16" Value="2"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 10-2-6 Nova" ID="{B7E4279A-99EE-4C60-BD30-6D8D3552321E}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+											</ChildrenList>
+										</Folder>
+										<Folder Name="Scene11" ID="{D42B547B-B005-4953-9DF2-0BB840C78F7F}" ShortID="900797146">
+											<ChildrenList>
+												<Event Name="Play_Scene_11_1_Samoya" ID="{4FCE8EB4-783B-4296-8287-3B922F7CFC8E}">
+													<ChildrenList>
+														<Action Name="" ID="{67A12846-0C72-4DD4-AC97-49DFB3060AF9}" ShortID="484955961">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 11-1 Samoya" ID="{8B8DA5E6-90A3-4227-AD58-4D0F1A65EC34}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Stop_Scene_11_1_Samoya" ID="{C9394B2E-605E-44F5-9B49-17BC176F32F4}">
+													<ChildrenList>
+														<Action Name="" ID="{3E183ABC-8631-4BB2-8759-B925354C1386}" ShortID="22379345">
+															<PropertyList>
+																<Property Name="ActionType" Type="int16" Value="2"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 11-1 Samoya" ID="{8B8DA5E6-90A3-4227-AD58-4D0F1A65EC34}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+											</ChildrenList>
+										</Folder>
+										<Folder Name="Scene12" ID="{547F4394-4B0D-48D7-9B60-8741465B49AB}" ShortID="254335823">
+											<ChildrenList>
+												<Event Name="Play_Scene_12_1_Samoya" ID="{9574BED4-6A69-4040-B9D4-B5FDFC62C3C9}">
+													<ChildrenList>
+														<Action Name="" ID="{29FC6838-0BA3-4185-B69F-149732651B54}" ShortID="934673938">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 12-1 Samoya" ID="{2ACEE624-5871-43A4-A2FE-40A31B11CBC7}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Stop_Scene_12_1_Samoya" ID="{7C85183D-F7B7-40AE-AF03-14393D9A2E5B}">
+													<ChildrenList>
+														<Action Name="" ID="{F3F10705-E11B-4FF3-AA21-C584BEE17F0F}" ShortID="702259358">
+															<PropertyList>
+																<Property Name="ActionType" Type="int16" Value="2"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene 12-1 Samoya" ID="{2ACEE624-5871-43A4-A2FE-40A31B11CBC7}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
 																</Reference>
 															</ReferenceList>
 														</Action>

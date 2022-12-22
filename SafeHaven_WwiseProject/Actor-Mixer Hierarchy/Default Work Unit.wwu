@@ -46,7 +46,7 @@
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
 								</Reference>
 								<Reference Name="OutputBus">
-									<ObjectRef Name="SFX_No_Footsteps" ID="{6D835D3B-FA47-4C67-8995-92EEF3E34AEA}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+									<ObjectRef Name="SFX" ID="{DC6803C8-E376-4E53-8874-5A4177EC1378}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
@@ -126,6 +126,81 @@
 							<ObjectLists/>
 							<ActiveSourceList>
 								<ActiveSource Name="Proxlamp_Draft1" ID="{8F29FE50-500E-4D73-9D35-F36F7398FC28}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="TestSounds" ID="{5AC98489-3A14-4016-81A9-4B259983CC42}" ShortID="860164671">
+					<ChildrenList>
+						<Sound Name="TestSound_Loop" ID="{C4BEBEB7-B95A-42A7-AB65-A867B62E7AD5}" ShortID="969704064">
+							<PropertyList>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>12</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="SFX" ID="{DC6803C8-E376-4E53-8874-5A4177EC1378}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="TestSound_Loop" ID="{06B4E5E8-EB0E-4635-938D-47A1D538C6C6}">
+									<PropertyList>
+										<Property Name="LoopBegin" Type="Real64" Value="0.596940741614565"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimBegin" Type="Real64" Value="0.557144692173594"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>TestSounds\TestSound_Loop.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="9335138"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="TestSound_Loop" ID="{06B4E5E8-EB0E-4635-938D-47A1D538C6C6}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="TestSound_Single" ID="{33687EB3-E550-49B5-AAF4-25D2CDD6A97B}" ShortID="942469713">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>12</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="SFX" ID="{DC6803C8-E376-4E53-8874-5A4177EC1378}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="TestSound_Single" ID="{9F3D1303-9C72-4A7B-A74C-F383A04CA28B}">
+									<PropertyList>
+										<Property Name="LoopBegin" Type="Real64" Value="0.12693798906846"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimBegin" Type="Real64" Value="0.12693798906846"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>TestSounds\TestSound_Single.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="10365183"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists/>
+							<ActiveSourceList>
+								<ActiveSource Name="TestSound_Single" ID="{9F3D1303-9C72-4A7B-A74C-F383A04CA28B}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>
@@ -1029,6 +1104,1144 @@
 				</Folder>
 				<Folder Name="Voice Over" ID="{D0FCA1BB-0E51-459A-B28F-7BA1C4921DC0}" ShortID="900867171">
 					<ChildrenList>
+						<Folder Name="Folders" ID="{72238A86-7386-4BF5-9055-7A44B4959B56}" ShortID="689447894">
+							<ChildrenList>
+								<Folder Name="Scene5" ID="{0173BF25-1918-4656-9AB9-6B2D1EABE8B3}" ShortID="340651341">
+									<ChildrenList>
+										<Sound Name="Scene 5-2 Nova" ID="{FBF26815-CF8A-4A20-9C57-ECD671B7A756}" ShortID="1066317727">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 5-2 Nova" ID="{222F9DB5-2AA6-47FF-A1D5-ADB5A29F815F}">
+													<Language>English(US)</Language>
+													<AudioFile>Scene 5-2 Nova.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="556244115"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 5-2 Nova" ID="{222F9DB5-2AA6-47FF-A1D5-ADB5A29F815F}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</Folder>
+								<Folder Name="Scene6" ID="{962FD513-A4EA-48FF-97A4-CC7E34FACE3A}" ShortID="172455835">
+									<ChildrenList>
+										<Sound Name="Scene 6-1 Samoya" ID="{DA4ED3A7-3004-405A-8774-F21F919D4B24}" ShortID="574909664">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 6-1 Samoya" ID="{FB6A401F-B654-4D85-9634-4DE12250109A}">
+													<Language>English(US)</Language>
+													<AudioFile>Scene 6-1 Samoya.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="980856784"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 6-1 Samoya" ID="{FB6A401F-B654-4D85-9634-4DE12250109A}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Scene 6-2 Nova" ID="{8E82BB5E-B746-42E3-8BA6-E8530187EF22}" ShortID="535068839">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 6-2 Nova" ID="{D092EE13-B737-4DB5-96BF-799817DABA72}">
+													<Language>English(US)</Language>
+													<AudioFile>Scene 6-2 Nova.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="1072788648"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 6-2 Nova" ID="{D092EE13-B737-4DB5-96BF-799817DABA72}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Scene 6-3 Nova" ID="{3E43AAB1-3B70-411A-9E75-E9F1BB974AB6}" ShortID="1057572178">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 6-3 Nova" ID="{6109B49B-49FE-48DD-B443-D6F6AE1FA8DD}">
+													<Language>English(US)</Language>
+													<AudioFile>Scene 6-3 Nova.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="205936441"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 6-3 Nova" ID="{6109B49B-49FE-48DD-B443-D6F6AE1FA8DD}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</Folder>
+								<Folder Name="Scene4" ID="{896CE24E-55AE-4001-9D0B-BDD889F9CE10}" ShortID="392864981">
+									<ChildrenList>
+										<Sound Name="Scene 4-1 Soldier1" ID="{FA03C3F0-4685-49A5-BB6D-44B5EDB453B9}" ShortID="47913763">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 4-1 Soldier1" ID="{A5562393-C96D-4F77-8B5F-92470AEB098A}">
+													<Language>English(US)</Language>
+													<AudioFile>Scene 4-1 Soldier1.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="234982618"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 4-1 Soldier1" ID="{A5562393-C96D-4F77-8B5F-92470AEB098A}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Scene 4-2 Soldier2" ID="{A6E4A216-FD9C-4700-B0E5-C9B9E349E3B9}" ShortID="547428152">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 4-2 Soldier2" ID="{463AB799-65E7-4518-AAFE-AC2CE2D6AD94}">
+													<Language>English(US)</Language>
+													<AudioFile>Scene 4-2 Soldier2.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="848797450"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 4-2 Soldier2" ID="{463AB799-65E7-4518-AAFE-AC2CE2D6AD94}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</Folder>
+								<Folder Name="Scene1" ID="{A648EBDF-1FC0-4052-AD3C-7E653B558754}" ShortID="775921928">
+									<ChildrenList>
+										<Sound Name="Scene 1-1 Nova" ID="{12B0CFAC-1838-4CBF-B45F-1DE678AC8236}" ShortID="927870123">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 1-1 Nova" ID="{401EEF16-78D1-488A-A8C0-93B15CA51C0D}">
+													<Language>English(US)</Language>
+													<AudioFile>Scene 1-1 Nova.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="858678185"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 1-1 Nova" ID="{401EEF16-78D1-488A-A8C0-93B15CA51C0D}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Scene 1-2 Samoya" ID="{2A917230-A35D-40BF-846B-340444733019}" ShortID="598776588">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 1-2 Samoya" ID="{070BCFC4-C322-4DDC-A682-10EFDC5B4F19}">
+													<Language>English(US)</Language>
+													<AudioFile>Scene 1-2 Samoya.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="14219814"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 1-2 Samoya" ID="{070BCFC4-C322-4DDC-A682-10EFDC5B4F19}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Scene 1-3 Nova" ID="{F5856C21-9F82-4508-ABBD-8196056C340D}" ShortID="915459113">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 1-3 Nova" ID="{E84F53ED-5E65-4D2D-A24A-EBB7CB58DAA9}">
+													<Language>English(US)</Language>
+													<AudioFile>Scene 1-3 Nova.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="417299471"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 1-3 Nova" ID="{E84F53ED-5E65-4D2D-A24A-EBB7CB58DAA9}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</Folder>
+								<Folder Name="Scene2" ID="{411FE077-788C-4278-BB4A-7376295EF9D2}" ShortID="994708122">
+									<ChildrenList>
+										<Sound Name="Scene 2-1 Samoya" ID="{EF450CB2-2438-4947-8E31-AC443C5F7E8D}" ShortID="622359595">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 2-1 Samoya" ID="{73277587-6F63-4A0E-904D-4323A33D1668}">
+													<Language>English(US)</Language>
+													<AudioFile>Scene 2-1 Samoya.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="911333310"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 2-1 Samoya" ID="{73277587-6F63-4A0E-904D-4323A33D1668}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Scene 2-2 Nova" ID="{0F3F66F8-5BDA-417C-A0DD-B3E9BE094AB7}" ShortID="984483819">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 2-2 Nova" ID="{55F4BA02-3C81-411D-87AC-813F76A087B2}">
+													<Language>English(US)</Language>
+													<AudioFile>Scene 2-2 Nova.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="796677914"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 2-2 Nova" ID="{55F4BA02-3C81-411D-87AC-813F76A087B2}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</Folder>
+								<Folder Name="Scene3" ID="{B508D845-FF93-4E44-B551-DD774FD1B127}" ShortID="363560078">
+									<ChildrenList>
+										<Sound Name="Scene 3-1 Soldier1" ID="{980B8028-11EC-49D3-A894-170EA60D923A}" ShortID="395506081">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 3-1 Soldier1" ID="{073D1FA3-0F85-4621-90C1-2EEC0B721032}">
+													<Language>English(US)</Language>
+													<AudioFile>Scene 3-1 Soldier1.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="469133648"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 3-1 Soldier1" ID="{073D1FA3-0F85-4621-90C1-2EEC0B721032}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Scene 3-2 Soldier2" ID="{50065730-ECFB-4D9E-879A-EFC9E511EE3D}" ShortID="183942312">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 3-2 Soldier2" ID="{838459F2-E83A-481B-8C91-2E10AE86D147}">
+													<Language>English(US)</Language>
+													<AudioFile>Scene 3-2 Soldier2.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="589497124"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 3-2 Soldier2" ID="{838459F2-E83A-481B-8C91-2E10AE86D147}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Scene 3-3 Soldier1" ID="{9EA79727-4336-446E-A0BF-E3955CD8082C}" ShortID="252377937">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 3-3 Soldier1" ID="{8D57D499-98DF-4C46-BCDA-2F2441C4E826}">
+													<Language>English(US)</Language>
+													<AudioFile>Scene 3-3 Soldier1.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="907075062"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 3-3 Soldier1" ID="{8D57D499-98DF-4C46-BCDA-2F2441C4E826}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Scene 3-4 Soldier2" ID="{B4F45AB4-A38D-4C9E-BD8A-B661246C7D95}" ShortID="1060755884">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 3-4 Soldier2" ID="{41588698-BF31-4C68-8ACE-DE722C3D180B}">
+													<Language>English(US)</Language>
+													<AudioFile>Scene 3-4 Soldier2.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="235943088"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 3-4 Soldier2" ID="{41588698-BF31-4C68-8ACE-DE722C3D180B}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Scene 3-5 Soldier1" ID="{C8C83DC2-4B37-4B22-9F8C-563E81457246}" ShortID="61174726">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 3-5 Soldier1" ID="{E37AE9D7-2A34-4C89-AE18-9009A1F80B77}">
+													<Language>English(US)</Language>
+													<AudioFile>Scene 3-5 Soldier1.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="714256079"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 3-5 Soldier1" ID="{E37AE9D7-2A34-4C89-AE18-9009A1F80B77}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Scene 3-6 Soldier2" ID="{32BD561F-DD0D-42D3-97A5-8596066268BE}" ShortID="1017399149">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 3-6 Soldier2" ID="{BD52EF58-A197-4058-A461-D99AE67274A8}">
+													<Language>English(US)</Language>
+													<AudioFile>Scene 3-6 Soldier2.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="872796647"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 3-6 Soldier2" ID="{BD52EF58-A197-4058-A461-D99AE67274A8}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</Folder>
+								<Folder Name="Scene7" ID="{62EB9B93-2D90-40AD-9957-4D27148098BB}" ShortID="483223780">
+									<ChildrenList>
+										<Sound Name="Scene 7-1 Nova" ID="{DF1D357E-FC9D-4BC6-B093-D2BE1BB0F9DF}" ShortID="260104522">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 7-1 Nova" ID="{961CE3A6-727E-4987-98BE-E6BF234F40EB}">
+													<Language>English(US)</Language>
+													<AudioFile>Scene 7-1 Nova.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="1004051367"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 7-1 Nova" ID="{961CE3A6-727E-4987-98BE-E6BF234F40EB}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Scene 7-2 Nova" ID="{6B632737-03E3-4CBC-91D1-7B7C7E9C07CB}" ShortID="159530633">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 7-2 Nova" ID="{70BC1ABA-AB1F-472E-A493-7E29036ECE46}">
+													<Language>English(US)</Language>
+													<AudioFile>Scene 7-2 Nova.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="819375132"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 7-2 Nova" ID="{70BC1ABA-AB1F-472E-A493-7E29036ECE46}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</Folder>
+								<Folder Name="Scene10" ID="{846FC7FA-22F6-4806-9AB7-DE15AD470DC8}" ShortID="70110454">
+									<ChildrenList>
+										<Sound Name="Scene 10-1-1 Samoya" ID="{01ECCA58-35D5-43F6-9E7A-2B515BE37CB6}" ShortID="941402531">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 10-1-1 Samoya" ID="{F35DCE0F-1A6B-4E7F-BC8C-C7DB4893C89B}">
+													<Language>English(US)</Language>
+													<AudioFile>Scene 10-1-1 Samoya.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="958667224"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 10-1-1 Samoya" ID="{F35DCE0F-1A6B-4E7F-BC8C-C7DB4893C89B}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Scene 10-2-1 Samoya" ID="{38714322-BAD8-4735-8CD7-901A763574FF}" ShortID="1039756870">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 10-2-1 Samoya" ID="{761F0D0C-6EFD-492B-B088-4984AFCFAB86}">
+													<Language>English(US)</Language>
+													<AudioFile>Scene 10-2-1 Samoya.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="807644913"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 10-2-1 Samoya" ID="{761F0D0C-6EFD-492B-B088-4984AFCFAB86}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Scene 10-2-2 Nova" ID="{F8754086-D00A-4BB7-BBEA-27A34F022EFB}" ShortID="395036214">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 10-2-2 Nova" ID="{8C9F9D8A-2B1F-4922-A1F4-DC2B33B44278}">
+													<Language>English(US)</Language>
+													<AudioFile>Scene 10-2-2 Nova.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="171087633"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 10-2-2 Nova" ID="{8C9F9D8A-2B1F-4922-A1F4-DC2B33B44278}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Scene 10-2-3 Samoya" ID="{5AD8529D-E517-4456-9ECA-6BB5D59DCB43}" ShortID="971805862">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 10-2-3 Samoya" ID="{32AFC276-244E-4EAA-BD5F-A2BA44F64A46}">
+													<Language>English(US)</Language>
+													<AudioFile>Scene 10-2-3 Samoya.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="721712852"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 10-2-3 Samoya" ID="{32AFC276-244E-4EAA-BD5F-A2BA44F64A46}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Scene 10-2-4 Nova" ID="{06CC3E26-90D8-4598-AA2A-D989A4692797}" ShortID="754719719">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 10-2-4 Nova" ID="{2F108193-FC84-4B78-91E7-1D2CDA8D764D}">
+													<Language>English(US)</Language>
+													<AudioFile>Scene 10-2-4 Nova.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="893888051"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 10-2-4 Nova" ID="{2F108193-FC84-4B78-91E7-1D2CDA8D764D}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Scene 10-2-5 Samoya" ID="{F9337920-D867-436C-A112-85900DB4F951}" ShortID="827116479">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 10-2-5 Samoya" ID="{782CCF92-14BF-4CCD-8227-1747632E5002}">
+													<Language>English(US)</Language>
+													<AudioFile>Scene 10-2-5 Samoya.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="1036006912"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 10-2-5 Samoya" ID="{782CCF92-14BF-4CCD-8227-1747632E5002}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Scene 10-2-6 Nova" ID="{B7E4279A-99EE-4C60-BD30-6D8D3552321E}" ShortID="226489261">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 10-2-6 Nova" ID="{CADE5F1E-1184-4F95-9CA6-97C91EBF9864}">
+													<Language>English(US)</Language>
+													<AudioFile>Scene 10-2-6 Nova.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="952531526"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 10-2-6 Nova" ID="{CADE5F1E-1184-4F95-9CA6-97C91EBF9864}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</Folder>
+								<Folder Name="Scene12" ID="{A346AFEF-7D1F-4103-9E40-BFCF3D1AAD8B}" ShortID="602713669">
+									<ChildrenList>
+										<Sound Name="Scene 12-1 Samoya" ID="{2ACEE624-5871-43A4-A2FE-40A31B11CBC7}" ShortID="813215301">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 12-1 Samoya" ID="{70134767-FFDA-4C74-AAC9-F1B5C6CE1298}">
+													<Language>English(US)</Language>
+													<AudioFile>Scene 12-1 Samoya.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="662914978"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 12-1 Samoya" ID="{70134767-FFDA-4C74-AAC9-F1B5C6CE1298}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</Folder>
+								<Folder Name="Scene11" ID="{E6AF8225-C11E-49BC-A10B-36E4F738CDCF}" ShortID="736749743">
+									<ChildrenList>
+										<Sound Name="Scene 11-1 Samoya" ID="{8B8DA5E6-90A3-4227-AD58-4D0F1A65EC34}" ShortID="931239170">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 11-1 Samoya" ID="{6C7ABF7D-D950-4D48-BB42-58747AD1B4B4}">
+													<Language>English(US)</Language>
+													<AudioFile>Scene 11-1 Samoya.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="889051793"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 11-1 Samoya" ID="{6C7ABF7D-D950-4D48-BB42-58747AD1B4B4}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</Folder>
+								<Folder Name="Scene9" ID="{D00C844B-9D32-47CD-86F3-9D533B1FFE40}" ShortID="551026346">
+									<ChildrenList>
+										<Sound Name="Scene 9-1 Soldier2" ID="{4F91FCE8-6114-4823-B7AE-2F5B195EBD95}" ShortID="506347669">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 9-1 Soldier2" ID="{38C99D1F-D42C-405D-A5CF-10E33E3BCB12}">
+													<Language>English(US)</Language>
+													<AudioFile>Scene 9-1 Soldier2.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="512508823"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 9-1 Soldier2" ID="{38C99D1F-D42C-405D-A5CF-10E33E3BCB12}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Scene 9-2 Soldier1" ID="{3A053EA2-DA2B-4A04-8860-8AE52D4682D4}" ShortID="904717642">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 9-2 Soldier1" ID="{723936A2-0ACF-462E-B79A-731A2677188C}">
+													<Language>English(US)</Language>
+													<AudioFile>Scene 9-2 Soldier1.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="174196361"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 9-2 Soldier1" ID="{723936A2-0ACF-462E-B79A-731A2677188C}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</Folder>
+								<Folder Name="Scene8" ID="{6238D67A-3987-4566-A2A6-2A7C8E2EC15E}" ShortID="478646276">
+									<ChildrenList>
+										<Folder Name="Scene8-1" ID="{95806F5F-F8BC-456C-8E92-CCEDF49108C6}" ShortID="859083848">
+											<ChildrenList>
+												<Sound Name="Scene 8-1-1 Soldier1" ID="{E581B74A-3A18-4815-8E3E-342136C80D61}" ShortID="959186801">
+													<PropertyList>
+														<Property Name="IsVoice" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Scene 8-1-1 Soldier1" ID="{74491D98-E6EA-400A-A01A-31F22DE507DC}">
+															<Language>English(US)</Language>
+															<AudioFile>Scene 8-1-1 Soldier1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="560258610"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="Scene 8-1-1 Soldier1" ID="{74491D98-E6EA-400A-A01A-31F22DE507DC}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Scene 8-1-2 Soldier2" ID="{435F9BFD-D886-4110-B5C8-8277073B9D33}" ShortID="379804352">
+													<PropertyList>
+														<Property Name="IsVoice" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Scene 8-1-2 Soldier2" ID="{EB2E987D-05CF-4B7E-AF84-9004C12E8EB6}">
+															<Language>English(US)</Language>
+															<AudioFile>Scene 8-1-2 Soldier2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="979341660"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="Scene 8-1-2 Soldier2" ID="{EB2E987D-05CF-4B7E-AF84-9004C12E8EB6}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Scene 8-1-3 Soldier1" ID="{0A33BF49-AEA7-4E17-9C0C-819D5AD37C3B}" ShortID="23908209">
+													<PropertyList>
+														<Property Name="IsVoice" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Scene 8-1-3 Soldier1" ID="{40D227BE-0263-4012-95F2-4CAC474922D7}">
+															<Language>English(US)</Language>
+															<AudioFile>Scene 8-1-3 Soldier1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="680509314"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="Scene 8-1-3 Soldier1" ID="{40D227BE-0263-4012-95F2-4CAC474922D7}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</Folder>
+										<Folder Name="Scene8-2" ID="{8AC7AB2A-6AD2-4A6B-B096-47AB39A668E6}" ShortID="942747960">
+											<ChildrenList>
+												<Sound Name="Scene 8-2-1 Soldier1" ID="{21A09F5D-B41C-4F20-AC03-ED5C0CCC8F0D}" ShortID="22840470">
+													<PropertyList>
+														<Property Name="IsVoice" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Scene 8-2-1 Soldier1" ID="{72B1F9D0-3BBB-42C5-997F-53DB473A03A6}">
+															<Language>English(US)</Language>
+															<AudioFile>Scene 8-2-1 Soldier1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="135794846"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="Scene 8-2-1 Soldier1" ID="{72B1F9D0-3BBB-42C5-997F-53DB473A03A6}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Scene 8-2-2 Soldier2" ID="{A11942C3-0876-4AC0-9F5C-06266D220A02}" ShortID="281779661">
+													<PropertyList>
+														<Property Name="IsVoice" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Scene 8-2-2 Soldier2" ID="{7370F0D9-080B-4C51-8A4C-FAFABD7D7677}">
+															<Language>English(US)</Language>
+															<AudioFile>Scene 8-2-2 Soldier2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="766855694"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="Scene 8-2-2 Soldier2" ID="{7370F0D9-080B-4C51-8A4C-FAFABD7D7677}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</Folder>
+										<Folder Name="Scene8-3" ID="{8D510815-B808-4EF7-A179-51D982D62158}" ShortID="86223853">
+											<ChildrenList>
+												<Sound Name="Scene 8-3-1 Soldier1" ID="{424A62DE-E014-4799-904F-A9173A67525F}" ShortID="760636607">
+													<PropertyList>
+														<Property Name="IsVoice" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Scene 8-3-1 Soldier1" ID="{259353FE-3443-4E0A-A782-E16C273AA4C6}">
+															<Language>English(US)</Language>
+															<AudioFile>Scene 8-3-1 Soldier1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="135804781"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="Scene 8-3-1 Soldier1" ID="{259353FE-3443-4E0A-A782-E16C273AA4C6}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Scene 8-3-2 Samoya" ID="{5085985B-A77D-45AF-A9E2-ECBD764B8BD3}" ShortID="48849351">
+													<PropertyList>
+														<Property Name="IsVoice" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Scene 8-3-2 Samoya" ID="{C255A4B7-1FF1-4E8E-9519-8B4FDF640AAE}">
+															<Language>English(US)</Language>
+															<AudioFile>Scene 8-3-2 Samoya.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="265231330"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="Scene 8-3-2 Samoya" ID="{C255A4B7-1FF1-4E8E-9519-8B4FDF640AAE}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Scene 8-3-3 Nova" ID="{535482D8-523B-4F68-8661-691367791330}" ShortID="432331961">
+													<PropertyList>
+														<Property Name="IsVoice" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Scene 8-3-3 Nova" ID="{2CB17177-6404-4159-8FFF-7980994E187B}">
+															<Language>English(US)</Language>
+															<AudioFile>Scene 8-3-3 Nova.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="514266116"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="Scene 8-3-3 Nova" ID="{2CB17177-6404-4159-8FFF-7980994E187B}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</Folder>
+										<Folder Name="Scene8-4" ID="{916E3AAC-C9A6-46B2-B985-704ACC4399AE}" ShortID="707419228">
+											<ChildrenList>
+												<Sound Name="Scene 8-4-1 Soldier1" ID="{A7B7BC2E-7812-4B78-9A93-151058834FA9}" ShortID="666976169">
+													<PropertyList>
+														<Property Name="IsVoice" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Scene 8-4-1 Soldier1" ID="{3243DD57-8B88-4CC6-B07C-F4588A5390DE}">
+															<Language>English(US)</Language>
+															<AudioFile>Scene 8-4-1 Soldier1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="255763295"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="Scene 8-4-1 Soldier1" ID="{3243DD57-8B88-4CC6-B07C-F4588A5390DE}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Scene 8-4-2 Soldier2" ID="{9A6D9DDB-4F18-45DD-AE15-48DBB92B8254}" ShortID="504179413">
+													<PropertyList>
+														<Property Name="IsVoice" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Scene 8-4-2 Soldier2" ID="{CD2C090E-662B-4F66-AF5D-946B28971B54}">
+															<Language>English(US)</Language>
+															<AudioFile>Scene 8-4-2 Soldier2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="202535530"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="Scene 8-4-2 Soldier2" ID="{CD2C090E-662B-4F66-AF5D-946B28971B54}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</Folder>
+										<Folder Name="Scene8-5" ID="{A18F6B37-9193-4B7E-933F-1CF821C1A5B0}" ShortID="551647279">
+											<ChildrenList>
+												<Sound Name="Scene 8-5-1 Soldier1" ID="{37371AE7-0FE4-4DE1-9BA9-97FBC9C90AE3}" ShortID="206563316">
+													<PropertyList>
+														<Property Name="IsVoice" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Scene 8-5-1 Soldier1" ID="{39D57C5B-60A4-4BC4-9FB5-F2482146643F}">
+															<Language>English(US)</Language>
+															<AudioFile>Scene 8-5-1 Soldier1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="765461482"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="Scene 8-5-1 Soldier1" ID="{39D57C5B-60A4-4BC4-9FB5-F2482146643F}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</Folder>
+									</ChildrenList>
+								</Folder>
+							</ChildrenList>
+						</Folder>
 						<Folder Name="Sequence Containers" ID="{AE9211D3-272C-4A4D-A143-42F0C3559E60}" ShortID="353583136">
 							<ChildrenList>
 								<RandomSequenceContainer Name="Scene1" ID="{C5CD969E-77E1-4F51-8D80-9726AA519370}" ShortID="398205109">
@@ -1070,6 +2283,32 @@
 												<ActiveSource Name="Scene 1-1 Nova" ID="{473C5627-4344-4D63-BA43-31957A8E2052}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
+										<Sound Name="Scene 1-2 Samoya" ID="{6F581C10-1296-4A1E-9549-2DCC853F494E}" ShortID="988765178">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 1-2 Samoya" ID="{CF0A957F-F957-4A7A-AE03-6E316AF70CA3}">
+													<Language>English(US)</Language>
+													<AudioFile>Scene 1-2 Samoya.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="14219814"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 1-2 Samoya" ID="{CF0A957F-F957-4A7A-AE03-6E316AF70CA3}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
 										<Sound Name="Scene 1-3 Nova" ID="{D951DAC4-C675-4F7F-A579-36A7627D9AB5}" ShortID="169059023">
 											<PropertyList>
 												<Property Name="IsVoice" Type="bool" Value="True"/>
@@ -1096,37 +2335,11 @@
 												<ActiveSource Name="Scene 1-3 Nova" ID="{60390EFD-40C6-4F98-BB9F-522B90C21A86}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Scene 1-2 Samoya" ID="{BCA284BF-1A60-4789-A5CA-05090A3651AA}" ShortID="13887995">
-											<PropertyList>
-												<Property Name="IsVoice" Type="bool" Value="True"/>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="Scene 1-2 Samoya" ID="{1A8ADF81-ED9A-430D-931E-018E3459F939}">
-													<Language>English(US)</Language>
-													<AudioFile>Scene 1-2 Samoya.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="14219814"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ObjectLists/>
-											<ActiveSourceList>
-												<ActiveSource Name="Scene 1-2 Samoya" ID="{1A8ADF81-ED9A-430D-931E-018E3459F939}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
 									</ChildrenList>
 									<ObjectLists/>
 									<Playlist>
 										<ItemRef Name="Scene 1-1 Nova" ID="{C48D3B9C-B2A0-4BEC-8F4D-5134DE593CE1}"/>
-										<ItemRef Name="Scene 1-2 Samoya" ID="{BCA284BF-1A60-4789-A5CA-05090A3651AA}"/>
+										<ItemRef Name="Scene 1-2 Samoya" ID="{6F581C10-1296-4A1E-9549-2DCC853F494E}"/>
 										<ItemRef Name="Scene 1-3 Nova" ID="{D951DAC4-C675-4F7F-A579-36A7627D9AB5}"/>
 									</Playlist>
 								</RandomSequenceContainer>
@@ -1143,7 +2356,7 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<Sound Name="Scene 2-1 Nova" ID="{CC093E6B-AEAA-40C6-AB1B-4FF53C6E0A15}" ShortID="588676282">
+										<Sound Name="Scene 2-1 Samoya" ID="{CC093E6B-AEAA-40C6-AB1B-4FF53C6E0A15}" ShortID="588676282">
 											<PropertyList>
 												<Property Name="IsVoice" Type="bool" Value="True"/>
 											</PropertyList>
@@ -1169,7 +2382,7 @@
 												<ActiveSource Name="Scene 2-1 Samoya" ID="{BABE205C-7EAE-4E27-808E-38B4F7592FDE}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Scene 2-2 Samoya" ID="{F3CD6D4B-2E12-4A7E-8B65-89DDDEB130BE}" ShortID="954337252">
+										<Sound Name="Scene 2-2 Nova" ID="{18A69B89-6B3B-4621-BEFA-0368951ADC5A}" ShortID="535879231">
 											<PropertyList>
 												<Property Name="IsVoice" Type="bool" Value="True"/>
 											</PropertyList>
@@ -1182,24 +2395,24 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<AudioFileSource Name="Scene 2-2 Samoya" ID="{ED2F5545-DD81-4AC3-9D04-548FFFBB4D89}">
+												<AudioFileSource Name="Scene 2-2 Nova" ID="{6163BE3F-A7F6-41B7-A298-BB28DC57F9AA}">
 													<Language>English(US)</Language>
-													<AudioFile>Scene 2-2 Samoya.wav</AudioFile>
+													<AudioFile>Scene 2-2 Nova.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="837867106"/>
+														<MediaID ID="796677914"/>
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
 											<ObjectLists/>
 											<ActiveSourceList>
-												<ActiveSource Name="Scene 2-2 Samoya" ID="{ED2F5545-DD81-4AC3-9D04-548FFFBB4D89}" Platform="Linked"/>
+												<ActiveSource Name="Scene 2-2 Nova" ID="{6163BE3F-A7F6-41B7-A298-BB28DC57F9AA}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
 									</ChildrenList>
 									<ObjectLists/>
 									<Playlist>
-										<ItemRef Name="Scene 2-1 Nova" ID="{CC093E6B-AEAA-40C6-AB1B-4FF53C6E0A15}"/>
-										<ItemRef Name="Scene 2-2 Samoya" ID="{F3CD6D4B-2E12-4A7E-8B65-89DDDEB130BE}"/>
+										<ItemRef Name="Scene 2-1 Samoya" ID="{CC093E6B-AEAA-40C6-AB1B-4FF53C6E0A15}"/>
+										<ItemRef Name="Scene 2-2 Nova" ID="{18A69B89-6B3B-4621-BEFA-0368951ADC5A}"/>
 									</Playlist>
 								</RandomSequenceContainer>
 								<RandomSequenceContainer Name="Scene3" ID="{9A358713-F43E-447A-B352-00616E87FF5C}" ShortID="327985193">
@@ -1512,6 +2725,32 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
+										<Sound Name="Scene 6-1 Samoya" ID="{3C344FFC-C994-4D2C-B964-14FF3A47E05B}" ShortID="139394050">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 6-1 Samoya" ID="{80371C79-386E-40EE-8668-365439C8515A}">
+													<Language>English(US)</Language>
+													<AudioFile>Scene 6-1 Samoya.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="980856784"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 6-1 Samoya" ID="{80371C79-386E-40EE-8668-365439C8515A}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
 										<Sound Name="Scene 6-2 Nova" ID="{F2E48949-F97A-485D-9A86-18535F6737D7}" ShortID="559050108">
 											<PropertyList>
 												<Property Name="IsVoice" Type="bool" Value="True"/>
@@ -1564,36 +2803,10 @@
 												<ActiveSource Name="Scene 6-3 Nova" ID="{1A5BC52C-07F0-42A7-A366-045435DBE3E3}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Scene 6-1 Samoya" ID="{1019971A-06B5-49BC-BC97-26C6F5C7D941}" ShortID="485284081">
-											<PropertyList>
-												<Property Name="IsVoice" Type="bool" Value="True"/>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="Scene 6-1 Samoya" ID="{AFF9AC07-FCDF-4291-A307-46EE03F1089B}">
-													<Language>English(US)</Language>
-													<AudioFile>Scene 6-1 Samoya.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="980856784"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ObjectLists/>
-											<ActiveSourceList>
-												<ActiveSource Name="Scene 6-1 Samoya" ID="{AFF9AC07-FCDF-4291-A307-46EE03F1089B}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
 									</ChildrenList>
 									<ObjectLists/>
 									<Playlist>
-										<ItemRef Name="Scene 6-1 Samoya" ID="{1019971A-06B5-49BC-BC97-26C6F5C7D941}"/>
+										<ItemRef Name="Scene 6-1 Samoya" ID="{3C344FFC-C994-4D2C-B964-14FF3A47E05B}"/>
 										<ItemRef Name="Scene 6-2 Nova" ID="{F2E48949-F97A-485D-9A86-18535F6737D7}"/>
 										<ItemRef Name="Scene 6-3 Nova" ID="{A0C4DCB0-8811-480E-9C3D-A35433E495BC}"/>
 									</Playlist>
@@ -1880,6 +3093,58 @@
 												<ActiveSource Name="Scene 10-2-6 Nova" ID="{B14DB353-5CDC-4A40-9805-1AFECA117CFE}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
+										<Sound Name="Scene 10-1-1 Samoya" ID="{2BC7F00A-E26E-46E2-9F66-A9DE36C14DB8}" ShortID="440350620">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 10-1-1 Samoya" ID="{EF390D1E-CF18-4036-B73E-A98E55262EBE}">
+													<Language>English(US)</Language>
+													<AudioFile>Scene 10-1-1 Samoya.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="958667224"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 10-1-1 Samoya" ID="{EF390D1E-CF18-4036-B73E-A98E55262EBE}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Scene 10-2-1 Samoya" ID="{2C6B94FA-19FE-4336-9CCF-9B4559F06313}" ShortID="660565558">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 10-2-1 Samoya" ID="{E7F5C7DD-D900-4AF8-BEC0-F51D33E86936}">
+													<Language>English(US)</Language>
+													<AudioFile>Scene 10-2-1 Samoya.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="807644913"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 10-2-1 Samoya" ID="{E7F5C7DD-D900-4AF8-BEC0-F51D33E86936}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
 										<Sound Name="Scene 10-2-2 Nova" ID="{F8DE594C-1B4A-4556-8F9A-24288682D28C}" ShortID="266154127">
 											<PropertyList>
 												<Property Name="IsVoice" Type="bool" Value="True"/>
@@ -1932,7 +3197,7 @@
 												<ActiveSource Name="Scene 10-2-4 Nova" ID="{D467BC27-8C03-4DAD-98AC-D23A49763734}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Scene 10-2-3 Samoya" ID="{2467D175-D69C-4002-A5BD-116F1EFEBABF}" ShortID="388664937">
+										<Sound Name="Scene 10-2-5 Samoya" ID="{E0254818-1A5A-41B3-9AB5-28BF34CD481C}" ShortID="381479292">
 											<PropertyList>
 												<Property Name="IsVoice" Type="bool" Value="True"/>
 											</PropertyList>
@@ -1945,90 +3210,7 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<AudioFileSource Name="Scene 10-2-3 Samoya" ID="{0F240895-806C-4B15-981A-1862182DE8C4}">
-													<Language>English(US)</Language>
-													<AudioFile>Scene 10-2-3 Samoya.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="721712852"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ObjectLists/>
-											<ActiveSourceList>
-												<ActiveSource Name="Scene 10-2-3 Samoya" ID="{0F240895-806C-4B15-981A-1862182DE8C4}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="Scene 10-1-1 Samoya" ID="{CB46D5A2-3780-4A27-8D15-B611D927BCCF}" ShortID="275418495">
-											<PropertyList>
-												<Property Name="IsVoice" Type="bool" Value="True"/>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="Scene 10-1-1 Samoya" ID="{3F9F86CE-AAEA-48C4-931E-28107A579CF7}">
-													<Language>English(US)</Language>
-													<AudioFile>Scene 10-1-1 Samoya.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="958667224"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ObjectLists/>
-											<ActiveSourceList>
-												<ActiveSource Name="Scene 10-1-1 Samoya" ID="{3F9F86CE-AAEA-48C4-931E-28107A579CF7}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="Scene 10-2-1 Samoya" ID="{A598DE86-82CC-451D-8DC9-DC043B5DE87D}" ShortID="556784155">
-											<PropertyList>
-												<Property Name="IsVoice" Type="bool" Value="True"/>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="Scene 10-2-1 Samoya" ID="{47B93D51-A716-4B8D-BF4A-EDE99FB705C8}">
-													<Language>English(US)</Language>
-													<AudioFile>Scene 10-2-1 Samoya.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="807644913"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ObjectLists/>
-											<ActiveSourceList>
-												<ActiveSource Name="Scene 10-2-1 Samoya" ID="{47B93D51-A716-4B8D-BF4A-EDE99FB705C8}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="Scene 10-2-5 Samoya" ID="{513FBC89-7F39-41C2-B539-4368C94343BF}" ShortID="97007865">
-											<PropertyList>
-												<Property Name="IsVoice" Type="bool" Value="True"/>
-												<Property Name="Volume" Type="Real64">
-													<ValueList>
-														<Value>20</Value>
-													</ValueList>
-												</Property>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="Scene 10-2-5 Samoya" ID="{84B5E0E7-4719-444F-8F44-A32C4312DC45}">
+												<AudioFileSource Name="Scene 10-2-5 Samoya" ID="{38663AC3-4D56-4E13-A3F3-C8DB68077617}">
 													<Language>English(US)</Language>
 													<AudioFile>Scene 10-2-5 Samoya.wav</AudioFile>
 													<MediaIDList>
@@ -2038,18 +3220,44 @@
 											</ChildrenList>
 											<ObjectLists/>
 											<ActiveSourceList>
-												<ActiveSource Name="Scene 10-2-5 Samoya" ID="{84B5E0E7-4719-444F-8F44-A32C4312DC45}" Platform="Linked"/>
+												<ActiveSource Name="Scene 10-2-5 Samoya" ID="{38663AC3-4D56-4E13-A3F3-C8DB68077617}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Scene 10-2-3 Samoya" ID="{2CA2F15D-93A5-46BB-85EF-C522F5624EAA}" ShortID="746488831">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 10-2-3 Samoya" ID="{3D03C970-296F-4763-93AF-2326AC832B7D}">
+													<Language>English(US)</Language>
+													<AudioFile>Scene 10-2-3 Samoya.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="721712852"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 10-2-3 Samoya" ID="{3D03C970-296F-4763-93AF-2326AC832B7D}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
 									</ChildrenList>
 									<ObjectLists/>
 									<Playlist>
-										<ItemRef Name="Scene 10-1-1 Samoya" ID="{CB46D5A2-3780-4A27-8D15-B611D927BCCF}"/>
-										<ItemRef Name="Scene 10-2-1 Samoya" ID="{A598DE86-82CC-451D-8DC9-DC043B5DE87D}"/>
+										<ItemRef Name="Scene 10-1-1 Samoya" ID="{2BC7F00A-E26E-46E2-9F66-A9DE36C14DB8}"/>
+										<ItemRef Name="Scene 10-2-1 Samoya" ID="{2C6B94FA-19FE-4336-9CCF-9B4559F06313}"/>
 										<ItemRef Name="Scene 10-2-2 Nova" ID="{F8DE594C-1B4A-4556-8F9A-24288682D28C}"/>
-										<ItemRef Name="Scene 10-2-3 Samoya" ID="{2467D175-D69C-4002-A5BD-116F1EFEBABF}"/>
+										<ItemRef Name="Scene 10-2-3 Samoya" ID="{2CA2F15D-93A5-46BB-85EF-C522F5624EAA}"/>
 										<ItemRef Name="Scene 10-2-4 Nova" ID="{C8F7D55D-6B4F-410B-8A6B-C82197136DFF}"/>
-										<ItemRef Name="Scene 10-2-5 Samoya" ID="{513FBC89-7F39-41C2-B539-4368C94343BF}"/>
+										<ItemRef Name="Scene 10-2-5 Samoya" ID="{E0254818-1A5A-41B3-9AB5-28BF34CD481C}"/>
 										<ItemRef Name="Scene 10-2-6 Nova" ID="{BEF8370B-1C41-47E2-9D4F-778936337848}"/>
 									</Playlist>
 								</RandomSequenceContainer>
@@ -2066,7 +3274,7 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<Sound Name="Scene 11-1 Samoya" ID="{6F521E2F-190F-4E4D-B942-A109A64DE9FC}" ShortID="260425667">
+										<Sound Name="Scene 11-1 Samoya" ID="{B24F2DAB-1B5B-480E-A41B-860BCD04402F}" ShortID="803638590">
 											<PropertyList>
 												<Property Name="IsVoice" Type="bool" Value="True"/>
 											</PropertyList>
@@ -2079,7 +3287,7 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<AudioFileSource Name="Scene 11-1 Samoya" ID="{8FEF27B6-EC66-432E-B221-6F5C7E801457}">
+												<AudioFileSource Name="Scene 11-1 Samoya" ID="{972FB5BD-1620-4C0C-A472-42E3E39FD5D7}">
 													<Language>English(US)</Language>
 													<AudioFile>Scene 11-1 Samoya.wav</AudioFile>
 													<MediaIDList>
@@ -2089,13 +3297,13 @@
 											</ChildrenList>
 											<ObjectLists/>
 											<ActiveSourceList>
-												<ActiveSource Name="Scene 11-1 Samoya" ID="{8FEF27B6-EC66-432E-B221-6F5C7E801457}" Platform="Linked"/>
+												<ActiveSource Name="Scene 11-1 Samoya" ID="{972FB5BD-1620-4C0C-A472-42E3E39FD5D7}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
 									</ChildrenList>
 									<ObjectLists/>
 									<Playlist>
-										<ItemRef Name="Scene 11-1 Samoya" ID="{6F521E2F-190F-4E4D-B942-A109A64DE9FC}"/>
+										<ItemRef Name="Scene 11-1 Samoya" ID="{B24F2DAB-1B5B-480E-A41B-860BCD04402F}"/>
 									</Playlist>
 								</RandomSequenceContainer>
 								<RandomSequenceContainer Name="Scene12" ID="{A1A69233-E082-4D2E-89F3-092AE29A9259}" ShortID="1042946381">
@@ -2111,7 +3319,7 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<Sound Name="Scene 12-1 Samoya" ID="{BBE3C8F7-72C3-47AA-9318-DDDDC34D4AA9}" ShortID="375651006">
+										<Sound Name="Scene 12-1 Samoya" ID="{B1E19A32-4009-4096-B6FE-6721F46D7ACE}" ShortID="613797897">
 											<PropertyList>
 												<Property Name="IsVoice" Type="bool" Value="True"/>
 											</PropertyList>
@@ -2124,7 +3332,7 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<AudioFileSource Name="Scene 12-1 Samoya" ID="{26F65685-4DC1-4FEF-B48B-D936E85AAF1E}">
+												<AudioFileSource Name="Scene 12-1 Samoya" ID="{B0FDEE16-D788-46E8-B9A5-C0AA8277BDC4}">
 													<Language>English(US)</Language>
 													<AudioFile>Scene 12-1 Samoya.wav</AudioFile>
 													<MediaIDList>
@@ -2134,13 +3342,13 @@
 											</ChildrenList>
 											<ObjectLists/>
 											<ActiveSourceList>
-												<ActiveSource Name="Scene 12-1 Samoya" ID="{26F65685-4DC1-4FEF-B48B-D936E85AAF1E}" Platform="Linked"/>
+												<ActiveSource Name="Scene 12-1 Samoya" ID="{B0FDEE16-D788-46E8-B9A5-C0AA8277BDC4}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
 									</ChildrenList>
 									<ObjectLists/>
 									<Playlist>
-										<ItemRef Name="Scene 12-1 Samoya" ID="{BBE3C8F7-72C3-47AA-9318-DDDDC34D4AA9}"/>
+										<ItemRef Name="Scene 12-1 Samoya" ID="{B1E19A32-4009-4096-B6FE-6721F46D7ACE}"/>
 									</Playlist>
 								</RandomSequenceContainer>
 								<RandomSequenceContainer Name="Scene8-2" ID="{E34AB16F-DB46-497E-9BE8-D2FD4ECD6B9D}" ShortID="883319251">
@@ -2280,7 +3488,7 @@
 												<ActiveSource Name="Scene 8-3-3 Nova" ID="{64FF2E21-E60F-4B19-8723-DE8EB5353992}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="Scene 8-3-2 Samoya" ID="{A5E08755-ECB2-44C9-9E16-4470751F8465}" ShortID="308180653">
+										<Sound Name="Scene 8-3-2 Samoya" ID="{311FA908-9703-4275-A0E5-9A4446DCD250}" ShortID="114223752">
 											<PropertyList>
 												<Property Name="IsVoice" Type="bool" Value="True"/>
 											</PropertyList>
@@ -2293,7 +3501,7 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<AudioFileSource Name="Scene 8-3-2 Samoya" ID="{A7FE9B66-6FC0-498F-8D59-ADA5FDF5A8D0}">
+												<AudioFileSource Name="Scene 8-3-2 Samoya" ID="{23280047-3C24-4C72-B730-BAF30D3CE043}">
 													<Language>English(US)</Language>
 													<AudioFile>Scene 8-3-2 Samoya.wav</AudioFile>
 													<MediaIDList>
@@ -2303,14 +3511,14 @@
 											</ChildrenList>
 											<ObjectLists/>
 											<ActiveSourceList>
-												<ActiveSource Name="Scene 8-3-2 Samoya" ID="{A7FE9B66-6FC0-498F-8D59-ADA5FDF5A8D0}" Platform="Linked"/>
+												<ActiveSource Name="Scene 8-3-2 Samoya" ID="{23280047-3C24-4C72-B730-BAF30D3CE043}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
 									</ChildrenList>
 									<ObjectLists/>
 									<Playlist>
 										<ItemRef Name="Scene 8-3-1 Soldier1" ID="{B1BCDE27-2F46-4E7F-9B25-A8CB818C997B}"/>
-										<ItemRef Name="Scene 8-3-2 Samoya" ID="{A5E08755-ECB2-44C9-9E16-4470751F8465}"/>
+										<ItemRef Name="Scene 8-3-2 Samoya" ID="{311FA908-9703-4275-A0E5-9A4446DCD250}"/>
 										<ItemRef Name="Scene 8-3-3 Nova" ID="{A23FB983-161C-4F79-8174-8DD85EBFE1BE}"/>
 									</Playlist>
 								</RandomSequenceContainer>

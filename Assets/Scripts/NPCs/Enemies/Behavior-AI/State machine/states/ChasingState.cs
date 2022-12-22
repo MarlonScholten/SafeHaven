@@ -50,7 +50,14 @@ public class ChasingState : MonoBehaviour
     /// </summary>
     public void Enter_Chasing()
     {
-        GameObject.Find("EnemyStateWatcher").GetComponent<SoundManager.EnemyStateWatcher>().isChasing(true);
+        //shows the current state as text above the enemy when this is enabled in the inspector.
+        if (_stateManager.enemyAiScriptableObject.showCurrentState)
+        {
+            _stateManager.textMesh.text = "Chasing";
+            _stateManager.textMesh.color = Color.red;
+        }
+
+        GameObject.Find("EnemyStateWatcher").GetComponent<SoundManager.EnemyStateWatcher>().IsChasing(true);
     }
     
     /// <summary>
@@ -64,15 +71,11 @@ public class ChasingState : MonoBehaviour
             _stateManager.spottedPlayerLastPosition = _stateManager.spottedPlayer.transform.position;
             CustomEvent.Trigger(gameObject, "Investigate");
         }
-        //get distance between player/brother and enemy
-        float distance = Vector3.Distance(_stateManager.spottedPlayer.transform.position, transform.position);
-        //If the distance between the player/brother and enemy is less than the set distance, the enemy catches the player/brother.
-        if (distance < _stateManager.enemyAiScriptableObject.CatchDistance)
-        {
-            EnemyAiStateManager.CatchChild();
-        }
+        _stateManager.CheckForCatching(_stateManager.spottedPlayer);
     }
-    
+
+
+
     /// <summary>
     /// Fixed update chasing state
     /// </summary>
@@ -92,6 +95,6 @@ public class ChasingState : MonoBehaviour
     {
         //Reset spotted player/brother.
 
-        _enemyStateWatcher.isChasing(false);
+        _enemyStateWatcher.IsChasing(false);
     }
 }

@@ -56,11 +56,18 @@ public class InvestigateState : MonoBehaviour
     /// </summary>
     public void Enter_Investigate()
     {
+        //shows the current state as text above the enemy when this is enabled in the inspector.
+        if (_stateManager.enemyAiScriptableObject.showCurrentState)
+        {
+            _stateManager.textMesh.text = "Investigate";
+            _stateManager.textMesh.color = Color.magenta;
+        }
+
         if (_stateManager.alertedBySound) _stateManager.CheckPositionReachable(_stateManager.locationOfNoise);
         else if(_stateManager.alertedByVision) _stateManager.CheckPositionReachable(_stateManager.spottedPlayerLastPosition);
         else if(_stateManager.alertedByGuard) _stateManager.CheckPositionReachable(_stateManager.recievedLocationFromGuard);
 
-        GameObject.Find("EnemyStateWatcher").GetComponent<SoundManager.EnemyStateWatcher>().isInvestegating(true);
+        _enemyStateWatcher.IsInvestegating(true);
     }
     
     /// <summary>
@@ -142,6 +149,6 @@ public class InvestigateState : MonoBehaviour
         if(_waitingAtWaypointDuringInvestigationCoroutineIsRunning)StopCoroutine(_waitingAtWaypointDuringInvestigationCoroutine);
         _waitingAtWaypointDuringInvestigationCoroutineIsRunning = false;
 
-        _enemyStateWatcher.isInvestegating(false);
+        _enemyStateWatcher.IsInvestegating(false);
     }
 }
