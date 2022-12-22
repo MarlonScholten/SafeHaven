@@ -82,7 +82,7 @@ namespace InteractableItemsSystem
         /// Determines if a line should be drawn or not.
         /// </summary>
         [NonSerialized] public bool DrawLine;
-
+        
         private Renderer _renderer;
         
         private LineRenderer _lineRenderer;
@@ -98,10 +98,21 @@ namespace InteractableItemsSystem
             _throwableItemController = GetComponent<ThrowableItemController>();
             _playerItemInteraction = GetComponent<PlayerItemInteraction>();
             InputBehaviour.Instance.OnThrowEvent += StartDrawingLine;
+           InputBehaviour.Instance.OnItemInteractEvent += OnInteractionWithItem;
+        }
+
+        private void OnInteractionWithItem()
+        {
+            if (_inventory.HasItemInInventory)
+            {
+                _lineRenderer.enabled = false;
+                DrawLine = false;
+            }
         }
 
         private void StartDrawingLine()
         {
+             if (!_inventory.HasItemInInventory) return;
             DrawLine = true;
         }
 
@@ -113,7 +124,6 @@ namespace InteractableItemsSystem
 
         private void DrawProjectionLine()
         {
-            
             if (!_inventory.HasItemInInventory) return;
 
             _lineRenderer.enabled = true;
