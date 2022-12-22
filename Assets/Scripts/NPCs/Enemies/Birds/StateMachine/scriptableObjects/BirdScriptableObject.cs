@@ -32,4 +32,8 @@ public class BirdScriptableObject : ScriptableObject
     [Tooltip("The time the bird will stay at rest point")]
     [SerializeField] private int timeAtRestPoint = 3;
     public int TimeAtRestPoint => timeAtRestPoint;
+    
+    [Tooltip("The time the bird will be alerted after landing")]
+    [SerializeField] private int timeBetweenLadingAndAlert = 3;
+    public int TimeBetweenLadingAndAlert => timeBetweenLadingAndAlert;
 }

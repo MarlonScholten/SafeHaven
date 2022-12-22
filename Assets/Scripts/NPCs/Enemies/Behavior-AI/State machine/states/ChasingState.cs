@@ -73,7 +73,9 @@ public class ChasingState : MonoBehaviour
         }
         _stateManager.CheckForCatching(_stateManager.spottedPlayer);
     }
-    
+
+
+
     /// <summary>
     /// Fixed update chasing state
     /// </summary>
