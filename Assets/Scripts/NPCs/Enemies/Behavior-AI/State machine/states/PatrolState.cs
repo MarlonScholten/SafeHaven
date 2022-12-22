@@ -121,9 +121,9 @@ public class PatrolState : MonoBehaviour
 
     private bool _communicateWithOtherEnemy;
     private GameObject _communicateTowards;
-    private static readonly int CommunicateListenHash = Animator.StringToHash("CommunicateListen");
-    private static readonly int CommunicateTalkHash = Animator.StringToHash("CommunicateTalk");
-    private int _communicateAnimation = 0;
+    private static readonly int Communicate1 = Animator.StringToHash("Communicate1");
+    private static readonly int Communicate2 = Animator.StringToHash("Communicate2"); // Hash for the communicate talk animation
+    private int _communicateAnimation = 1; // the animation that is played when communicating
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -389,7 +389,7 @@ public class PatrolState : MonoBehaviour
         if (hit.collider.gameObject != enemy.gameObject) return;
         if (enemy.gameObject == _communicateTowards)
             return; // Check if the enemy is already communicating with the collided enemy
-        _communicateAnimation = 1;
+        _communicateAnimation = 2;
         StartCommunicating(enemy.gameObject);
         enemy.GetComponent<PatrolState>()._startCommunicationAlert.Invoke(gameObject);
     }
@@ -405,14 +405,14 @@ public class PatrolState : MonoBehaviour
         _stateManager.navMeshAgent.isStopped = true;
         _communicateWithOtherEnemyCoroutineIsRunning = true;
         
-        _stateManager.animator.SetBool(CommunicateListenHash, _communicateAnimation == 0);
-        _stateManager.animator.SetBool(CommunicateTalkHash, _communicateAnimation == 1);
+        _stateManager.animator.SetBool(Communicate1, _communicateAnimation == 1);
+        _stateManager.animator.SetBool(Communicate2, _communicateAnimation == 2);
         _communicateWithOtherEnemyCoroutine = _stateManager.CallFunctionAfterSeconds(
             _stateManager.enemyAiScriptableObject.CommunicationTime, () =>
             {
-                _stateManager.animator.SetBool(CommunicateListenHash, false);
-                _stateManager.animator.SetBool(CommunicateTalkHash, false);
-                _communicateAnimation = 0;
+                _stateManager.animator.SetBool(Communicate1, false);
+                _stateManager.animator.SetBool(Communicate2, false);
+                _communicateAnimation = 1;
                 _communicateWithOtherEnemyCoroutineIsRunning = false;
                 _communicateWithOtherEnemy = false;
                 _stateManager.navMeshAgent.isStopped = false;
