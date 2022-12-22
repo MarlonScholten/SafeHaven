@@ -50,6 +50,7 @@ public class AlertedState : MonoBehaviour
     private EnemyAiStateManager _stateManager; // Reference to the state manager
     private IEnumerator _alertedCoroutine; // a coroutine that is used to wait for a certain amount of time
     private bool _alertedCoroutineIsRunning; // a bool that is used to check if the coroutine is running
+    private static readonly int Alerted = Animator.StringToHash("Alerted");
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -63,6 +64,7 @@ public class AlertedState : MonoBehaviour
     /// </summary>
     public void Enter_Alerted()
     {
+        _stateManager.animator.SetBool(Alerted, true);
         //shows the current state as text above the enemy when this is enabled in the inspector.
         if (_stateManager.enemyAiScriptableObject.showCurrentState)
         {
@@ -146,6 +148,7 @@ public class AlertedState : MonoBehaviour
         //Stop the coroutine if it is running.
         if(_alertedCoroutineIsRunning)StopCoroutine(_alertedCoroutine);
         _alertedCoroutineIsRunning = false;
+        _stateManager.animator.SetBool(Alerted, false);
     }
 
     /// <summary>

@@ -85,6 +85,7 @@ public class EnemyAiStateManager : MonoBehaviour
     [HideInInspector] public List<GameObject> wayPoints; // List of waypoints if not a guard
     [HideInInspector] public GameObject guardWaypoint; // Waypoint if guard
     [NonSerialized] public NavMeshAgent navMeshAgent; // Navmesh agent component
+    [NonSerialized] public float defaultSpeed; // The speed of the enemy that is set in the navmesh agent
     [NonSerialized] public Vector3 targetWpLocation; // Location of the current target waypoint
     [NonSerialized] public int currentWpIndex; // Index of the current target waypoint
     [NonSerialized] public bool alertedBySound; // Boolean to check if the enemy is alerted by a sound
@@ -101,7 +102,10 @@ public class EnemyAiStateManager : MonoBehaviour
     
     [NonSerialized] public TextMeshPro textMesh; // TextMesh component for state visualization
     
-    
+    [NonSerialized] public Animator animator; // Animator component
+    private static readonly int ForwardVelocity = Animator.StringToHash("forwardVelocity"); // Animator parameter for forward velocity
+    private static readonly int StrafeVelocity = Animator.StringToHash("strafeVelocity"); // Animator parameter for strafe velocity
+
     private void Awake()
     {
         
@@ -114,6 +118,12 @@ public class EnemyAiStateManager : MonoBehaviour
         
     }
 
+    private void Start()
+    {
+        animator = GetComponentInChildren<Animator>();
+        defaultSpeed = navMeshAgent.speed;
+    }
+
     private void Update()
     {
         if (enemyAiScriptableObject.showCurrentState)
@@ -121,6 +131,14 @@ public class EnemyAiStateManager : MonoBehaviour
             textMesh.transform.rotation = Camera.main.transform.rotation;
         }
         
+    }
+
+    private void FixedUpdate()
+    {
+        animator.SetFloat(ForwardVelocity, navMeshAgent.velocity.magnitude);
+        // get the strafe velocity
+        Vector3 strafeVelocity = Vector3.Cross(transform.forward, navMeshAgent.velocity);
+        animator.SetFloat(StrafeVelocity, strafeVelocity.magnitude);
     }
 
     /// <summary>

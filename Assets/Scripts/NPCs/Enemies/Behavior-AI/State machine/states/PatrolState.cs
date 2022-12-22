@@ -121,6 +121,9 @@ public class PatrolState : MonoBehaviour
 
     private bool _communicateWithOtherEnemy;
     private GameObject _communicateTowards;
+    private static readonly int CommunicateListenHash = Animator.StringToHash("CommunicateListen");
+    private static readonly int CommunicateTalkHash = Animator.StringToHash("CommunicateTalk");
+    private int _communicateAnimation = 0;
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -144,6 +147,7 @@ public class PatrolState : MonoBehaviour
     /// </summary>
     public void Enter_Patrol()
     {
+        _stateManager.navMeshAgent.speed = _stateManager.defaultSpeed;
         //shows the current state as text above the enemy when this is enabled in the inspector.
         if (_stateManager.enemyAiScriptableObject.showCurrentState)
         {
@@ -283,6 +287,7 @@ public class PatrolState : MonoBehaviour
         _stateManager.navMeshAgent.isStopped = false;
         _communicateTowards = null;
         _numberOfSmallSoundsHeard = 0;
+        _communicateAnimation = 0;
     }
 
     /// <summary>
@@ -384,6 +389,7 @@ public class PatrolState : MonoBehaviour
         if (hit.collider.gameObject != enemy.gameObject) return;
         if (enemy.gameObject == _communicateTowards)
             return; // Check if the enemy is already communicating with the collided enemy
+        _communicateAnimation = 1;
         StartCommunicating(enemy.gameObject);
         enemy.GetComponent<PatrolState>()._startCommunicationAlert.Invoke(gameObject);
     }
@@ -398,9 +404,15 @@ public class PatrolState : MonoBehaviour
         _communicateWithOtherEnemy = true;
         _stateManager.navMeshAgent.isStopped = true;
         _communicateWithOtherEnemyCoroutineIsRunning = true;
+        
+        _stateManager.animator.SetBool(CommunicateListenHash, _communicateAnimation == 0);
+        _stateManager.animator.SetBool(CommunicateTalkHash, _communicateAnimation == 1);
         _communicateWithOtherEnemyCoroutine = _stateManager.CallFunctionAfterSeconds(
             _stateManager.enemyAiScriptableObject.CommunicationTime, () =>
             {
+                _stateManager.animator.SetBool(CommunicateListenHash, false);
+                _stateManager.animator.SetBool(CommunicateTalkHash, false);
+                _communicateAnimation = 0;
                 _communicateWithOtherEnemyCoroutineIsRunning = false;
                 _communicateWithOtherEnemy = false;
                 _stateManager.navMeshAgent.isStopped = false;

@@ -41,7 +41,8 @@ public class InvestigateState : MonoBehaviour
     private IEnumerator _waitingAtWaypointDuringInvestigationCoroutine; // a coroutine that is used to wait for a certain amount of time before going to the next investigate waypoint
     private bool _waitingAtWaypointDuringInvestigationCoroutineIsRunning; // a bool that is used to check if the coroutine is running
     private SoundManager.EnemyStateWatcher _enemyStateWatcher;
-    
+    private static readonly int InvestigateHash = Animator.StringToHash("Investigate");
+
     /// <summary>
     /// Awake is called when the script instance is being loaded.
     /// </summary>
@@ -56,6 +57,7 @@ public class InvestigateState : MonoBehaviour
     /// </summary>
     public void Enter_Investigate()
     {
+        _stateManager.navMeshAgent.speed = _stateManager.enemyAiScriptableObject.ToInvestigatePointSpeed;
         //shows the current state as text above the enemy when this is enabled in the inspector.
         if (_stateManager.enemyAiScriptableObject.showCurrentState)
         {
@@ -106,6 +108,7 @@ public class InvestigateState : MonoBehaviour
             //If the enemy is at the location, start the waiting coroutine
             if (_stateManager.waitingAtWaypoint && !_investigateCoroutineIsRunning)
             {
+                _stateManager.navMeshAgent.speed = _stateManager.defaultSpeed;
                 _investigateCoroutineIsRunning = true;
                 _investigateCoroutine =
                     _stateManager.CallFunctionAfterSeconds(_stateManager.enemyAiScriptableObject.InvestigateTime, () =>
@@ -135,6 +138,7 @@ public class InvestigateState : MonoBehaviour
             //look around at each waypoint.
             _stateManager.LookAround();
         }
+        _stateManager.animator.SetBool(InvestigateHash, _waitingAtWaypointDuringInvestigationCoroutineIsRunning);
     }
     
     /// <summary>
@@ -150,5 +154,6 @@ public class InvestigateState : MonoBehaviour
         _waitingAtWaypointDuringInvestigationCoroutineIsRunning = false;
 
         _enemyStateWatcher.isInvestegating(false);
+        _stateManager.animator.SetBool(InvestigateHash, false);
     }
 }
