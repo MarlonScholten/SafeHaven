@@ -149,10 +149,20 @@ public class MenuPingController : AbstractPingController
 
     private void ConstrainMouse()
     {
-        // Force the mouse to be in the middle of the screen
-        Vector2 warpPosition = new Vector2(200,200);  // never let it move
-        Mouse.current.WarpCursorPosition(warpPosition);
-        InputState.Change(Mouse.current.position, warpPosition);
+        Vector2 screenCenter = new Vector2(Screen.width / 2,Screen.height / 2);
+
+        if (Vector2.Distance(screenCenter, Mouse.current.position.ReadValue()) > 190)
+        {
+            Debug.Log("biem");
+        }
+        
+        
+        Debug.Log(Vector2.Distance(screenCenter, Mouse.current.position.ReadValue()));
+        
+        // // Force the mouse to be in the middle of the screen
+        // Vector2 warpPosition = screenCenter;  // never let it move
+        // Mouse.current.WarpCursorPosition(warpPosition);
+        // InputState.Change(Mouse.current.position, warpPosition);
     }
     
     /// <summary>
