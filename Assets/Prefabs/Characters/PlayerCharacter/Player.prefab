@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4393969637856288560}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &8297779311250522727
 CapsuleCollider:
@@ -81,6 +81,7 @@ Transform:
   m_Children:
   - {fileID: 2718528077473230480}
   - {fileID: 6780000184730561731}
+  - {fileID: 1099548061290355364}
   - {fileID: 6549664319064843129}
   - {fileID: 6573365531898788790}
   - {fileID: 4144060417407570263}
@@ -131,8 +132,8 @@ MonoBehaviour:
   _runningSpeed: 6
   _standCollider: {fileID: 7153754025646794028}
   _crouchCollider: {fileID: 700493309310897204}
-  _throwCameraSensitivity: 10
-  _throwCam: {fileID: 0}
+  _throwCameraSensitivity: 100
+  _throwCam: {fileID: 1060207271031472178}
 --- !u!114 &1711711202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,7 +227,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7077390466253007208}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.532, y: 0.63600004, z: -1.5739999}
+  m_LocalPosition: {x: 0.456, y: 0, z: -1.226}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -250,7 +251,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 10
+  m_Priority: 0
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 4393969637856288560}
@@ -302,7 +303,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4393969637856288560}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &7502747181381218814
 CapsuleCollider:
@@ -666,7 +667,12 @@ PrefabInstance:
         type: 3}
       propertyPath: _itemHolder
       value: 
-      objectReference: {fileID: 9174217100155700626}
+      objectReference: {fileID: 3407990885640428569}
+    - target: {fileID: 639101687083690138, guid: 9ff07334feda6604cb62d6f362911e5f,
+        type: 3}
+      propertyPath: _actionPromptText
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1473565515834789142, guid: 9ff07334feda6604cb62d6f362911e5f,
         type: 3}
       propertyPath: _timeBetweenPoints
@@ -789,6 +795,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ff07334feda6604cb62d6f362911e5f, type: 3}
+--- !u!1 &3407990885640428569 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7552954520759366822, guid: 9ff07334feda6604cb62d6f362911e5f,
+    type: 3}
+  m_PrefabInstance: {fileID: 5159684511932819647}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6780000184730561731 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1841276836775298172, guid: 9ff07334feda6604cb62d6f362911e5f,
