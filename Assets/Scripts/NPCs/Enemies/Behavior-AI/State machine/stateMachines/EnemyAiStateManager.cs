@@ -104,8 +104,7 @@ public class EnemyAiStateManager : MonoBehaviour
     
     [NonSerialized] public Animator animator; // Animator component
     private static readonly int ForwardVelocity = Animator.StringToHash("forwardVelocity"); // Animator parameter for forward velocity
-    private static readonly int StrafeVelocity = Animator.StringToHash("strafeVelocity"); // Animator parameter for strafe velocity
-
+    
     private void Awake()
     {
         
@@ -136,9 +135,6 @@ public class EnemyAiStateManager : MonoBehaviour
     private void FixedUpdate()
     {
         animator.SetFloat(ForwardVelocity, navMeshAgent.velocity.magnitude);
-        // get the strafe velocity
-        Vector3 strafeVelocity = Vector3.Cross(transform.forward, navMeshAgent.velocity);
-        animator.SetFloat(StrafeVelocity, strafeVelocity.magnitude);
     }
 
     /// <summary>
