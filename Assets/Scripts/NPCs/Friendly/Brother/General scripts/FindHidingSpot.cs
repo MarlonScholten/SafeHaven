@@ -30,23 +30,34 @@ using Unity.VisualScripting;
 
 public class FindHidingSpot : MonoBehaviour
 {
-    [SerializeField, Range(0.0f, 0.1f), Tooltip("This value determines by how much the hiding spot gets multiplied if it is in an enemy view")] 
+    /// <summary>
+    /// This value determines by how much the hiding spot gets multiplied if it is in an enemy view.
+    /// </summary>
+    [SerializeField, Range(0.0f, 0.1f), Tooltip("This value determines by how much the hiding spot gets multiplied if it is in an enemy view. So grade x 0.01 value gets very low, 0.08 is less dramatic.")] 
     private float _hidingSpotInEnemyViewWeight = 0.01f;
 
-    [SerializeField, Range(0.0f, 0.2f), Tooltip("This value determines the weight of the distance of the hiding spot.")] 
+    /// <summary>
+    /// This value determines the weight of the distance of the hiding spot. This is from the brother position to the spot.
+    /// </summary>
+    [SerializeField, Range(0.0f, 0.2f), Tooltip("This value determines the weight of the distance of the hiding spot. This is from the brother position to the spot.")] 
     private float _hidingSpotDistanceWeight = 0.05f;
     
+    /// <summary>
+    /// This value determines the max distance from the player to an hidingSpot to be recognized. Preferably this value will be lower than the Brother Range in the brother AI script.
+    /// </summary>
+    [SerializeField, Range(10.0f, 50f), Tooltip("This value determines the max distance from the player to an hidingSpot to be recognized. Preferably this value will be lower than the Brother Range in the brother AI script.")] 
+    private float _hidingRange = 20f;
 
     /// <summary>
     /// This script gahters all hiding spots and then calculates depending on the grade, distance and visibility to the enemy the best hiding spot for the brother.
     /// </summary> 
-    public Vector3 FindBestHidingSpot(Vector3 playerPos, float range){
+    public Vector3 FindBestHidingSpot(Vector3 playerPos){
         GameObject[] hidingSpots = GameObject.FindGameObjectsWithTag("hideable");
         GameObject bestSpot = null;
         float bestSpotValue = -1;
         foreach(var spot in hidingSpots)
         {
-            if (Vector3.Distance(playerPos, spot.transform.position) > range - 4f) continue;
+            if (Vector3.Distance(playerPos, spot.transform.position) > _hidingRange) continue;
             // Now we calculate the obscurity value for the current hiding spot to be checked.
             HidingSpot hidingSpot = spot.GetComponent<HidingSpot>();
             CalculateObscurityValue(spot);
