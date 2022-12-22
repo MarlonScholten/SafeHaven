@@ -241,7 +241,7 @@ namespace PlayerCharacter.Movement
         private void RunningCancelled()
         {
             _running = false;
-            _movementSpeed = MovementSpeed;
+            _movementSpeed = _moveSpeed;
         }
 
         /// <summary>
