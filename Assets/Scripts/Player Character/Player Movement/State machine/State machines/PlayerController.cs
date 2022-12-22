@@ -117,8 +117,6 @@ namespace PlayerCharacter.Movement
 
         [Tooltip("Camera were you look through while throwing")] [SerializeField]
         private CinemachineVirtualCamera _throwCam;
-        
-        [SerializeField] private GameObject _crouchCollider;
 
         public bool CanMoveInAir => _canMoveInAir;
 
