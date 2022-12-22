@@ -55,10 +55,30 @@ public class VoicelineTrigger : MonoBehaviour
     {
         for (int i = 0; i < _sequenceLength; i++)
         {
-            _voicelineSequence.Post(_voicelineSource[i]);
+            GameObject source;
+            if (_voicelineSource.Count <= i || _voicelineSource[i] is null)
+            {
+                Debug.LogWarning("No GameObject set for voiceline, using player!");
+                source = GameObject.FindGameObjectWithTag("Player");
+            }
+            else
+            {
+                source = _voicelineSource[i];
+            }
+
+            _voicelineSequence.Post(source);
 
             if (i >= _sequenceLength - 1) break;
-            yield return new WaitForSeconds(_voicelineInterval[i]);
+
+            if (_voicelineInterval.Count <= i)
+            {
+                Debug.LogWarning("No interval set for voiceline, using 5!");
+                yield return new WaitForSeconds(5.0f);
+            }
+            else
+            {
+                yield return new WaitForSeconds(_voicelineInterval[i]);
+            }
         }
     }
 }
