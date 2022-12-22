@@ -3,6 +3,25 @@ using SoundManager;
 using System.Linq;
 using UnityEngine;
 
+/// <summary>
+/// Author: Hugo Verweij <br/>
+/// Modified by:  <br/>
+/// Description: <see cref="GameOverManager"/> handles the state and creation of the <see cref="GameOverMenu"/>.
+/// </summary>
+/// <list type="table">
+///	    <listheader>
+///         <term>On what GameObject</term>
+///         <term>Type</term>
+///         <term>Name of type</term>
+///         <term>Description</term>
+///     </listheader>
+///     <item>
+///         <term>GameOverManager</term>
+///         <term>Prefab</term>
+///         <term>GameOverManager.cs</term>
+///         <term>The prefab contains all the information needed to handle the state of the <see cref="GameOverMenu"/>.</term>
+///     </item>
+/// </list>
 public class GameOverManager : MonoBehaviour
 {
     [Header("Settings")]

@@ -4,6 +4,26 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+
+/// <summary>
+/// Author: Hugo Verweij <br/>
+/// Modified by:  <br/>
+/// Description: Handles the creation and state of the GameOverMenu.
+/// </summary>
+/// <list type="table">
+///	    <listheader>
+///         <term>On what GameObject</term>
+///         <term>Type</term>
+///         <term>Name of type</term>
+///         <term>Description</term>
+///     </listheader>
+///     <item>
+///         <term>GameOverMenu</term>
+///         <term>Prefab</term>
+///         <term>GameOverMenu.cs</term>
+///         <term>The prefab contains all the information needed to handle the state of the <see cref="GameOverMenu"/>.</term>
+///     </item>
+/// </list>
 public class GameOverMenu : MonoBehaviour
 {
     /// <summary>
