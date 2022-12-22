@@ -16,6 +16,10 @@ public class FSM_Scriptable_Object : ScriptableObject
     [SerializeField] private float visionAngle = 90f; 
     public float VisionAngle => visionAngle;
     
+    [Tooltip("The range that the enemy immediate chase the tag if it's in range")]
+    [SerializeField] private float immediateChaseRadius = 5f; 
+    public float ImmediateChaseRadius => immediateChaseRadius;
+    
     [Tooltip("The threshold for small sounds that the enemy can hear")]
     [SerializeField] private float thresholdSmallSounds = 0.1f;
     public float ThresholdSmallSounds => thresholdSmallSounds;
@@ -79,5 +83,8 @@ public class FSM_Scriptable_Object : ScriptableObject
     [Tooltip("The time to forget the object that the enemy communicated with. (This is to prevent the enemy from communicating with the same object over and over again)")]
     [SerializeField] private int timeToForgetCommunicationWithEnemy = 2;
     public int TimeToForgetCommunicationWithEnemy => timeToForgetCommunicationWithEnemy;
+    
+    [Tooltip("Bool to either show or not show current state")]
+    [SerializeField] public bool showCurrentState = true;
 }
 
