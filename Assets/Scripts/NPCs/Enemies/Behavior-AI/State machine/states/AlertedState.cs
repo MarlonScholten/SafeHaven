@@ -96,7 +96,7 @@ public class AlertedState : MonoBehaviour
         if (_stateManager.isGuard)
         {
             AlertOtherEnemies();
-            _stateManager.CheckForCatching();
+            _stateManager.CheckForCatching(_stateManager.spottedPlayer);
         }
         //stop if the coroutine is already running.
         if (_alertedCoroutineIsRunning) return;

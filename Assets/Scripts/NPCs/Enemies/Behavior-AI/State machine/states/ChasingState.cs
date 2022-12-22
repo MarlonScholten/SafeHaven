@@ -58,7 +58,7 @@ public class ChasingState : MonoBehaviour
             _stateManager.textMesh.color = Color.red;
         }
 
-        GameObject.Find("EnemyStateWatcher").GetComponent<SoundManager.EnemyStateWatcher>().isChasing(true);
+        GameObject.Find("EnemyStateWatcher").GetComponent<SoundManager.EnemyStateWatcher>().IsChasing(true);
     }
     
     /// <summary>
@@ -72,7 +72,7 @@ public class ChasingState : MonoBehaviour
             _stateManager.spottedPlayerLastPosition = _stateManager.spottedPlayer.transform.position;
             CustomEvent.Trigger(gameObject, "Investigate");
         }
-        _stateManager.CheckForCatching();
+        _stateManager.CheckForCatching(_stateManager.spottedPlayer);
     }
 
 
@@ -96,6 +96,6 @@ public class ChasingState : MonoBehaviour
     {
         //Reset spotted player/brother.
         _stateManager.navMeshAgent.speed = _stateManager.defaultSpeed;
-        _enemyStateWatcher.isChasing(false);
+        _enemyStateWatcher.IsChasing(false);
     }
 }
