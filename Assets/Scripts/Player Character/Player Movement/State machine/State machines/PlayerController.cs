@@ -204,7 +204,8 @@ namespace PlayerCharacter.Movement
             ApplyGravity();
             transform.rotation = _rotation;
             CharacterController.Move(_movement * Time.deltaTime);
-            _animator.SetFloat(_velocityHash, _current.magnitude);
+            if(!_crouching)_animator.SetFloat(_velocityHash, _current.magnitude);
+            _animator.SetLayerWeight(_animator.GetLayerIndex("BasicLocomotion"), _crouching ? 0 : 1);
         }
 
         /// <summary>
