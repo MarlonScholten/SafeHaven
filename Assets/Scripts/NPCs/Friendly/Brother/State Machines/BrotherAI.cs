@@ -239,20 +239,22 @@ public class BrotherAI : MonoBehaviour
     /// The method gets called when a ping is made. This method changes the state of the brother depending on the ping.
     /// If no hiding spot near, follow brother.
     /// </summary>
-    public void PingBrother(PingType ping, Vector3 location){
+    public void PingBrother(PingType ping, Vector3 location)
+    {
         _pingLocation = location;
-        if (ping == PingType.Move && _isInStealth)
+        switch (ping)
         {
-            CustomEvent.Trigger(this.gameObject, "PassiveHide");
-        }
-
-        if (ping == PingType.Hide && _findHidingSpot.FindBestHidingSpot(_player.transform.position).Equals(new Vector3()))
-        {
-            CustomEvent.Trigger(this.gameObject, "Follow");
-        }
-        else
-        {
-            CustomEvent.Trigger(this.gameObject, ping.ToString());
+            case PingType.Move when _isInStealth:
+                CustomEvent.Trigger(this.gameObject, "PassiveHide");
+                break;
+            case PingType.Hide when _findHidingSpot.FindBestHidingSpot(_player.transform.position).Equals(new Vector3()):
+                CustomEvent.Trigger(this.gameObject, "Follow");
+                break;
+            case PingType.Interact:
+                break;
+            default:
+                CustomEvent.Trigger(this.gameObject, ping.ToString());
+                break;
         }
     }
 
