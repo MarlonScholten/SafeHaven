@@ -238,7 +238,6 @@ public class BrotherAI : MonoBehaviour
     /// <para>This method is used by the pinging system.</para>
     /// The method gets called when a ping is made. This method changes the state of the brother depending on the ping.
     /// If no hiding spot near, follow brother.
-    /// 
     /// </summary>
     public void PingBrother(PingType ping, Vector3 location)
     {
