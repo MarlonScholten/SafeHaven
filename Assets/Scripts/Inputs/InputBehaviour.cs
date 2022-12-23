@@ -99,6 +99,18 @@ public class InputBehaviour : MonoBehaviour
     /// Uses (LEFT) Control as the action key.
     /// </summary>
     public event InputBehaviourEvent OnToggleStealthEvent;
+    
+    /// <summary>
+    /// 'Enter & Exit running mode.'
+    /// Uses (SHIFT) Control as the action key.
+    /// </summary>
+    public event InputBehaviourEvent OnRunningEvent;
+
+    /// <summary>
+    /// 'Enter & Exit running mode.'
+    /// Uses (SHIFT) Control as the action key.
+    /// </summary>
+    public event InputBehaviourEvent OnRunningCancelledEvent;
 
     /// <summary>
     /// 'Gets past an obstacle.'
@@ -137,6 +149,18 @@ public class InputBehaviour : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context) => _onMoveVector = context.ReadValue<Vector2>();
     public void OnLook(InputAction.CallbackContext context) => _onLookVector = context.ReadValue<Vector2>();
+    public void OnRunning(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            OnRunningEvent?.Invoke();
+        }
+        else if (context.canceled)
+        {
+            OnRunningCancelledEvent?.Invoke();
+        }
+
+    }
     public void OnThrow(InputAction.CallbackContext context)
     {
         if (context.canceled)
@@ -147,7 +171,6 @@ public class InputBehaviour : MonoBehaviour
             OnThrowEvent?.Invoke();
         }
     }
-
     public void OnPingMenu(InputAction.CallbackContext context) => OnPingMenuEvent?.Invoke();
     public void OnComfort(InputAction.CallbackContext context) => OnComfortEvent?.Invoke();
     public void OnPingQuick(InputAction.CallbackContext context)
@@ -166,7 +189,11 @@ public class InputBehaviour : MonoBehaviour
     {
         if(context.performed) OnItemInteractEvent?.Invoke();
     }
-    public void OnToggleStealth(InputAction.CallbackContext context) => OnToggleStealthEvent?.Invoke();
+    public void OnToggleStealth(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+            OnToggleStealthEvent?.Invoke();
+    }
     public void OnObstacleInteract(InputAction.CallbackContext context) => OnObstacleInteractEvent?.Invoke();
     public void OnToggleDebugginTools(InputAction.CallbackContext context) => OnToggleDebugginToolsEvent?.Invoke();
     public void OnPause(InputAction.CallbackContext context)

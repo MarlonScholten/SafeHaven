@@ -13,10 +13,10 @@ namespace SoundManager
     public class SoundBase : MonoBehaviour
     {
         [SerializeField]
-        public AK.Wwise.Event playEvent;
+        public List<AK.Wwise.Event> playEvent;
 
         [SerializeField]
-        public AK.Wwise.Event stopEvent = null;
+        public List<AK.Wwise.Event> stopEvent = null;
 
         [SerializeField]
         public List<AK.Wwise.Switch> switchEvent;
@@ -40,28 +40,29 @@ namespace SoundManager
         protected GameObject _gameObject;
 
 
-        protected virtual void playSound(GameObject soundGameObject = null)
+        protected virtual void playSound(int index = 0, GameObject soundGameObject = null)
         {
             if(soundGameObject != null)
             {
                 _gameObject = soundGameObject;
             }
-
-            if (playEvent.IsValid())
+            
+            if (playEvent[index].IsValid())
             {
-                playEvent.Post(_gameObject);
+                playEvent[index].Post(_gameObject);
             }
         }
 
-        protected virtual void stopSound(int transitionTime = 0)
+        protected virtual void stopSound(int index = 0, int transitionTime = 0)
         {
-            if (stopEvent.IsValid())
+            if (stopEvent[index].IsValid())
             {
-                stopEvent.Post(_gameObject);
+                stopEvent[index].Post(_gameObject);
             }
             else
             {
-                playEvent.Stop(_gameObject, transitionTime);
+                Debug.LogWarning("The stop event does not exists, stopping play event " + index);
+                playEvent[index].Stop(_gameObject, transitionTime);
             }
         }
     }

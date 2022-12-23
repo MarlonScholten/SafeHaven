@@ -28,12 +28,23 @@ namespace SoundManager
         private int _isInvestegating = 0;
         private int _isChasing = 0;
 
+        /// <summary>
+        /// Event handler for the <see cref="EnemyStateWatcher"/>.
+        /// </summary>
         public delegate void EnemyStateWachterEvent();
         public event EnemyStateWachterEvent OnInvestegating;
         public event EnemyStateWachterEvent OnChasing;
         public event EnemyStateWachterEvent OnZeroInvestegating;
         public event EnemyStateWachterEvent OnZeroChasing;
         public event EnemyStateWachterEvent StopIt;
+        /// <summary>
+        /// Sister caught event, fires when sister is caught.
+        /// </summary>
+        public event EnemyStateWachterEvent OnSisterCaught;
+        /// <summary>
+        /// Brother caught event, fires when brother is caught.
+        /// </summary>
+        public event EnemyStateWachterEvent OnBrotherCaught;
 
         /// <summary>
         /// Invoke the stop sound event
@@ -47,7 +58,7 @@ namespace SoundManager
         /// Invokes the OnInvestegating and OnZeroInvestegating events based on if enemy's are investagating
         /// </summary>
         /// <param name="investegating">set true if enemy starts investegating, set false if enemy stops investegating</param>
-        public void isInvestegating(bool investegating)
+        public void IsInvestegating(bool investegating)
         {
             if (investegating)
             {
@@ -71,7 +82,7 @@ namespace SoundManager
         /// Invokes the OnChasing and OnZeroChasing events based on if there enemy's are chasing
         /// </summary>
         /// <param name="chasing">set true if enemy starts chasing, set false if enemy stops chasing</param>
-        public void isChasing(bool chasing)
+        public void IsChasing(bool chasing)
         {
             if (chasing)
             {
@@ -91,5 +102,14 @@ namespace SoundManager
             }
         }
 
+        /// <summary>
+        /// Relays the caught event to a centralized component like <see cref="EnemyStateWatcher"/>. See <see cref="EnemyAiStateManager.CatchChild(GameObject)"/> for documentation.
+        /// </summary>
+        public void SisterCaught() => OnSisterCaught?.Invoke();
+
+        /// <summary>
+        /// Relays the caught event to a centralized component like <see cref="EnemyStateWatcher"/>. See <see cref="EnemyAiStateManager.CatchChild(GameObject)"/> for documentation.
+        /// </summary>
+        public void BrotherCaught() => OnBrotherCaught?.Invoke();
     }
 }

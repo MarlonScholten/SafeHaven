@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 /// <summary>
 /// Author: Jelco van der Straaten </para>
-/// Modified by: Thijs Orsel and Iris Giezen, Thomas van den Oever</para>
+/// Modified by: Thijs Orsel and Iris Giezen, Thomas van den Oever </para>
 /// This script controls the state of the brotherAI. In this script al the calculation for the states are made.
 /// </summary>
 /// <list type="table">
@@ -72,7 +72,6 @@ public class BrotherAI : MonoBehaviour
     /// </summary>
     [SerializeField] private bool _isInStealth = false;
 
-    
     /// <summary>
     /// This value represents the speed the brother must move at during stealth.
     /// </summary>
@@ -80,13 +79,12 @@ public class BrotherAI : MonoBehaviour
     [SerializeField]
     private float _stealthSpeed = 2.0f;
 
-    
     /// <summary>
     /// This value represents the speed the brother must move at when not in stealth.
     /// </summary>
-    [Range(2.0f, 4.0f), Tooltip("This value determines the maximum walkspeed of the brother when not in stealth.")]
+    [Range(2.0f, 10.0f), Tooltip("This value determines the maximum walkspeed of the brother when not in stealth.")]
     [SerializeField]
-    private float _baseSpeed = 3.5f;
+    private float _baseSpeed = 5.0f;
 
     /// <summary>
     /// This value determines the following distance of the brother.
@@ -130,7 +128,6 @@ public class BrotherAI : MonoBehaviour
     /// </summary>
     private GameObject _player;
     
-    
     /// <summary>
     /// This contains a reference to the playerController script
     /// </summary>
@@ -140,6 +137,12 @@ public class BrotherAI : MonoBehaviour
     /// A bool to check if this is the first time the script has started
     /// </summary>
     private bool _firstStart = true;
+
+    /// <summary>
+    /// Governs if the little brother should be allowed to go into stealth upon the player's invokation of <see cref="OnStealthEvent(object)"/>.
+    /// </summary>
+    private bool _canStealth = true;
+
     private Animator _animator;
     private int _velocityHash;
     private int _itemHeldHash;
@@ -151,7 +154,7 @@ public class BrotherAI : MonoBehaviour
     /// </summary>
     void Start(){
         InputBehaviour.Instance.OnCallBrotherEvent += CallBrother;
-        InputBehaviour.Instance.OnToggleStealthEvent += OnStealthEvent;
+        _playerController.OnStealthToggle += OnStealthEvent;
         _velocityHash = Animator.StringToHash("forwardVelocity");
         _itemHeldHash = Animator.StringToHash("ItemHeld");
         _interactableObjectHash = Animator.StringToHash("InteractableObject");
@@ -159,33 +162,26 @@ public class BrotherAI : MonoBehaviour
     }
 
     /// <summary>
-    /// In the fixedUpdate the animations variables are updated.
-    /// </summary>
-    ///
-    void Awake()
-    {
-        /* _navMeshAgent = GetComponent<NavMeshAgent>();
-        _findHidingSpot = gameObject.GetComponent<FindHidingSpot>();
-        _player = GameObject.FindGameObjectWithTag("Player"); */
-        //TODO: add initializer state for Awake function and remove this form the enter state
-    }
-
-    /// <summary>
     /// When the player presses the stealth button, this method gets called to determine if the brother should enter stealth mode.
     /// It slows the player and decreases the collider size when in stealth mode.
     /// </summary>
-    private void OnStealthEvent()
+    private void OnStealthEvent(object sender)
     {
-        if (_playerController.GetCrouching() == _isInStealth)
-        {
-            ToggleStealth();
-        }
+        if (sender is bool stealth)
+            ToggleStealth(stealth);
     }
 
-    private void ToggleStealth()
+    /// <summary>
+    /// Checks in stealth mode or not and based on that the speed and the collider height gets set.
+    /// </summary>
+    /// /// <param name="isPlayerInStealth">Bool to know if the player is in stealth or not. Based on that the brother goes in stealth or not.</param>
+    private void ToggleStealth(bool isPlayerInStealth)
     {
-        _isInStealth = !_isInStealth;
+        // Return if the brother is doing an action that prevents him from going in and out of stealth upon the player's crouch invokation.
+        if (!_canStealth)
+            return;
 
+        _isInStealth = isPlayerInStealth;
         if (_isInStealth)
         {
             _capsuleCollider.SetCapsuleCollider(_colliderHeightStealth, 0, 0.25f, 0);
@@ -219,7 +215,7 @@ public class BrotherAI : MonoBehaviour
     /// <summary>
     /// This method checks if the path is completed.
     /// </summary>
-    private bool PathCompleted(){
+    public bool PathCompleted(){
         return _navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance + _pathEndThreshold;
     }
 
@@ -301,6 +297,7 @@ public class BrotherAI : MonoBehaviour
     {
         _navMeshAgent.stoppingDistance = _followDistance;
     }
+    
     /// <summary>
     /// The update method for the follow state
     /// </summary>
@@ -328,9 +325,13 @@ public class BrotherAI : MonoBehaviour
     public void HideEnter()
     {
         MoveToLocation(_findHidingSpot.FindBestHidingSpot(_player.transform.position), _walkSpeed);
+
+        // Disallow manual stealth/crouch requests.
+        _canStealth = false;
+
         if (!_isInStealth)
         {
-            ToggleStealth();
+            ToggleStealth(true);
         }
     }
 
@@ -356,8 +357,11 @@ public class BrotherAI : MonoBehaviour
         Debug.Log("Exit hide stealth state before: " + _isInStealth);
         if (_isInStealth)
         {
-            ToggleStealth();
+            ToggleStealth(false);
         }
+
+        // Allow manual stealth/crouch requests.
+        _canStealth = true;
     }
 
     /// <summary>
@@ -423,10 +427,6 @@ public class BrotherAI : MonoBehaviour
     /// </summary>
     public void PassiveHideEnter(){
         MoveToLocation(_pingLocation, _walkSpeed);
-        // if (!_isInStealth)
-        // {
-            // ToggleStealth();
-        // }
         _isInStealth = true;
     }
 
@@ -450,8 +450,7 @@ public class BrotherAI : MonoBehaviour
     public void PassiveHideExit(){
         if (_isInStealth)
         {
-            ToggleStealth();
+            ToggleStealth(false);
         }
     }
-
 }

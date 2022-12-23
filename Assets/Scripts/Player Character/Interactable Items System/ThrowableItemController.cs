@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 namespace InteractableItemsSystem
@@ -90,7 +91,7 @@ namespace InteractableItemsSystem
 
         private void OnThrowItem()
         {
-            if (!_inventory.HasItemInInventory) return;
+            if (!_inventory.HasItemInInventory || _drawProjection.DrawLine == false) return;
 
             if (!_inventory.ItemInInventory.IsThrowable)
             {
