@@ -251,7 +251,6 @@ public class BrotherAI : MonoBehaviour
                 CustomEvent.Trigger(this.gameObject, "Follow");
                 break;
             case PingType.Interact:
-                break;
             default:
                 CustomEvent.Trigger(this.gameObject, ping.ToString());
                 break;
