@@ -50,7 +50,7 @@ public class AlertedState : MonoBehaviour
     private EnemyAiStateManager _stateManager; // Reference to the state manager
     private IEnumerator _alertedCoroutine; // a coroutine that is used to wait for a certain amount of time
     private bool _alertedCoroutineIsRunning; // a bool that is used to check if the coroutine is running
-    private static readonly int Alerted = Animator.StringToHash("Alerted");
+    private static readonly int s_alerted = Animator.StringToHash("Alerted");
     private bool _alreadyAlertedOtherEnemies; // a bool that is used to check if the enemy already alerted other enemies
 
     /// <summary>
@@ -66,7 +66,7 @@ public class AlertedState : MonoBehaviour
     public void Enter_Alerted()
     {
         _alreadyAlertedOtherEnemies = false;
-        _stateManager.animator.SetBool(Alerted, true);
+        _stateManager.animator.SetBool(s_alerted, true);
         //shows the current state as text above the enemy when this is enabled in the inspector.
         if (_stateManager.enemyAiScriptableObject.showCurrentState)
         {
@@ -151,7 +151,7 @@ public class AlertedState : MonoBehaviour
         //Stop the coroutine if it is running.
         if(_alertedCoroutineIsRunning)StopCoroutine(_alertedCoroutine);
         _alertedCoroutineIsRunning = false;
-        _stateManager.animator.SetBool(Alerted, false);
+        _stateManager.animator.SetBool(s_alerted, false);
     }
 
     /// <summary>

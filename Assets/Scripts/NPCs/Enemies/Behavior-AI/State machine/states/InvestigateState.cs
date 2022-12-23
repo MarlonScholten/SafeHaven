@@ -43,7 +43,7 @@ public class InvestigateState : MonoBehaviour
     private IEnumerator _preventCheckIfEnemyIsStuckCoroutine; // a coroutine that is used to check if the enemy is stuck
     private bool _preventCheckIfEnemyIsStuckCoroutineIsRunning; // a bool that is used to check if the coroutine is running
     private SoundManager.EnemyStateWatcher _enemyStateWatcher; // a reference to the enemy state watcher
-    private static readonly int InvestigateHash = Animator.StringToHash("Investigate"); // a hash of the investigate animation
+    private static readonly int s_investigateHash = Animator.StringToHash("Investigate"); // a hash of the investigate animation
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -142,7 +142,7 @@ public class InvestigateState : MonoBehaviour
             //look around at each waypoint.
             _stateManager.LookAround();
         }
-        _stateManager.animator.SetBool(InvestigateHash, _waitingAtWaypointDuringInvestigationCoroutineIsRunning);
+        _stateManager.animator.SetBool(s_investigateHash, _waitingAtWaypointDuringInvestigationCoroutineIsRunning);
     }
     
     /// <summary>
@@ -161,6 +161,6 @@ public class InvestigateState : MonoBehaviour
         _preventCheckIfEnemyIsStuckCoroutineIsRunning = false;
 
         _enemyStateWatcher.IsInvestegating(false);
-        _stateManager.animator.SetBool(InvestigateHash, false);
+        _stateManager.animator.SetBool(s_investigateHash, false);
     }
 }

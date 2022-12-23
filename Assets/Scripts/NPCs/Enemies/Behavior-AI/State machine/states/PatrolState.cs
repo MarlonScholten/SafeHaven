@@ -145,12 +145,12 @@ public class PatrolState : MonoBehaviour
     /// <summary>
     /// The communicate1 animation bool hash
     /// </summary>
-    private static readonly int Communicate1 = Animator.StringToHash("Communicate1");
+    private static readonly int s_communicate1 = Animator.StringToHash("Communicate1");
     
     /// <summary>
     /// The communicate2 animation bool hash
     /// </summary>
-    private static readonly int Communicate2 = Animator.StringToHash("Communicate2");
+    private static readonly int s_communicate2 = Animator.StringToHash("Communicate2");
     
     /// <summary>
     /// The value to determine which animation to play
@@ -440,13 +440,13 @@ public class PatrolState : MonoBehaviour
         _stateManager.navMeshAgent.isStopped = true;
         _communicateWithOtherEnemyCoroutineIsRunning = true;
         
-        _stateManager.animator.SetBool(Communicate1, _communicateAnimation == 1);
-        _stateManager.animator.SetBool(Communicate2, _communicateAnimation == 2);
+        _stateManager.animator.SetBool(s_communicate1, _communicateAnimation == 1);
+        _stateManager.animator.SetBool(s_communicate2, _communicateAnimation == 2);
         _communicateWithOtherEnemyCoroutine = _stateManager.CallFunctionAfterSeconds(
             _stateManager.enemyAiScriptableObject.CommunicationTime, () =>
             {
-                _stateManager.animator.SetBool(Communicate1, false);
-                _stateManager.animator.SetBool(Communicate2, false);
+                _stateManager.animator.SetBool(s_communicate1, false);
+                _stateManager.animator.SetBool(s_communicate2, false);
                 _communicateAnimation = 1;
                 _communicateWithOtherEnemyCoroutineIsRunning = false;
                 _communicateWithOtherEnemy = false;

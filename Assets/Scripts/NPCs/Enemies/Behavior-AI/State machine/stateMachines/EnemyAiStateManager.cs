@@ -104,7 +104,7 @@ public class EnemyAiStateManager : MonoBehaviour
     [NonSerialized] public TextMeshPro textMesh; // TextMesh component for state visualization
     
     [NonSerialized] public Animator animator; // Animator component
-    private static readonly int ForwardVelocity = Animator.StringToHash("forwardVelocity"); // Animator parameter for forward velocity
+    private static readonly int s_forwardVelocity = Animator.StringToHash("forwardVelocity"); // Animator parameter for forward velocity
     
     private EnemyStateWatcher _enemyStateWatcher; // EnemyStateWatcher component
 
@@ -138,7 +138,7 @@ public class EnemyAiStateManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        animator.SetFloat(ForwardVelocity, navMeshAgent.velocity.magnitude);
+        animator.SetFloat(s_forwardVelocity, navMeshAgent.velocity.magnitude);
     }
 
     /// <summary>
