@@ -2,17 +2,11 @@
 
 The actual Unity game / Build of Safe Haven.
 
-## Coding guidelines
+## Install the game
 
-Go to [Coding Guidelines](https://github.com/AIM-GAME-PROJECT-group-b/SafeHaven/wiki/Coding-Guidelines) in the Wiki.
-
-## GIT and github rules/guidelines
-
-Go to [git rules and guidelines](https://github.com/AIM-GAME-PROJECT-group-b/SafeHaven/wiki/Git-rules-and-guidelines) in the Wiki.
-
-## Unity Folder Structure
-
-Go to [Unity Folder Structure](https://github.com/AIM-GAME-PROJECT-group-b/SafeHaven/wiki/Unity-folder-structure) in the Wiki.
+1. Download the game [here]()
+2. Extract the game from the .zip file
+3. Execute `StandaloneWindows64.exe`
 
 ## Changelog
 
