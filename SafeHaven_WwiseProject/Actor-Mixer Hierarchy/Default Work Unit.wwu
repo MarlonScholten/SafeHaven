@@ -3,1030 +3,6 @@
 	<AudioObjects>
 		<WorkUnit Name="Default Work Unit" ID="{6757C692-3565-4D37-8155-C2581B5B6450}" PersistMode="Standalone">
 			<ChildrenList>
-				<Folder Name="ProximityLamp" ID="{88B8B8F3-D015-4EA9-A458-CE7F95ED1F3F}" ShortID="711163972">
-					<ChildrenList>
-						<Sound Name="Proxlamp_Click" ID="{0AB8953F-AFD0-4622-B131-992366CAF40E}" ShortID="101401567">
-							<PropertyList>
-								<Property Name="3DSpatialization" Type="int16" Value="1"/>
-								<Property Name="Highpass" Type="int16">
-									<ModifierList>
-										<ModifierInfo>
-											<Modifier Name="" ID="{D608F4AF-0A1A-42BB-ACC1-1DCE389BBBCC}">
-												<PropertyList>
-													<Property Name="Min" Type="Real64" Value="-100"/>
-												</PropertyList>
-											</Modifier>
-										</ModifierInfo>
-									</ModifierList>
-								</Property>
-								<Property Name="Pitch" Type="int32">
-									<ModifierList>
-										<ModifierInfo>
-											<Modifier Name="" ID="{9A982A39-8BCA-41D3-AD5B-B3429C4D7D89}">
-												<PropertyList>
-													<Property Name="Enabled" Type="bool" Value="True"/>
-													<Property Name="Max" Type="Real64" Value="581"/>
-													<Property Name="Min" Type="Real64" Value="-126"/>
-												</PropertyList>
-											</Modifier>
-										</ModifierInfo>
-									</ModifierList>
-								</Property>
-								<Property Name="Volume" Type="Real64">
-									<ValueList>
-										<Value>8</Value>
-									</ValueList>
-								</Property>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Attenuation">
-									<ObjectRef Name="Click" ID="{4AE2AB7D-0B2A-488C-A2D2-2FA9B6CF4509}" WorkUnitID="{516E7887-F15F-428D-8E4E-38A731FED4D1}"/>
-								</Reference>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="SFX_No_Footsteps" ID="{6D835D3B-FA47-4C67-8995-92EEF3E34AEA}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<AudioFileSource Name="Proxlamp_Draft1_Click" ID="{D050F21E-56F6-48C0-8CE2-3FE2B7C04990}">
-									<PropertyList>
-										<Property Name="FadeOutDuration" Type="Real64" Value="0.391560825609324"/>
-										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-										<Property Name="TrimEnd" Type="Real64" Value="0.391560825609324"/>
-									</PropertyList>
-									<Language>SFX</Language>
-									<AudioFile>Proxlamp_Draft1_Click.wav</AudioFile>
-									<MediaIDList>
-										<MediaID ID="766224591"/>
-									</MediaIDList>
-								</AudioFileSource>
-							</ChildrenList>
-							<ObjectLists/>
-							<ActiveSourceList>
-								<ActiveSource Name="Proxlamp_Draft1_Click" ID="{D050F21E-56F6-48C0-8CE2-3FE2B7C04990}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
-						<Sound Name="Proxlamp_Buzz" ID="{05EBE607-DAF2-4E25-818C-8595744A7FBD}" ShortID="949888207">
-							<PropertyList>
-								<Property Name="3DSpatialization" Type="int16" Value="1"/>
-								<Property Name="Highpass" Type="int16">
-									<ValueList>
-										<Value>19</Value>
-									</ValueList>
-								</Property>
-								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
-								<Property Name="MakeUpGain" Type="Real64">
-									<ModifierList>
-										<ModifierInfo>
-											<Modifier Name="" ID="{3AA133BA-9851-44A9-B236-D6A43268AF29}">
-												<PropertyList>
-													<Property Name="Max" Type="Real64" Value="2"/>
-													<Property Name="Min" Type="Real64" Value="-5"/>
-												</PropertyList>
-											</Modifier>
-										</ModifierInfo>
-									</ModifierList>
-								</Property>
-								<Property Name="Volume" Type="Real64">
-									<ValueList>
-										<Value>12</Value>
-									</ValueList>
-								</Property>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Attenuation">
-									<ObjectRef Name="Lamp" ID="{E930E3F4-E86C-40A6-B48B-28DCAD56A7E0}" WorkUnitID="{516E7887-F15F-428D-8E4E-38A731FED4D1}"/>
-								</Reference>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="SFX" ID="{DC6803C8-E376-4E53-8874-5A4177EC1378}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<AudioFileSource Name="Proxlamp_Draft1" ID="{8F29FE50-500E-4D73-9D35-F36F7398FC28}">
-									<PropertyList>
-										<Property Name="FadeInDuration" Type="Real64" Value="1.65283083219645"/>
-										<Property Name="LoopBegin" Type="Real64" Value="2.88122570164578"/>
-										<Property Name="LoopEnd" Type="Real64" Value="7.0269512613458"/>
-										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-										<Property Name="TrimBegin" Type="Real64" Value="0.291030013642565"/>
-										<Property Name="TrimEnd" Type="Real64" Value="7.03793352601156"/>
-									</PropertyList>
-									<Language>SFX</Language>
-									<AudioFile>Proxlamp_Draft1.wav</AudioFile>
-									<MediaIDList>
-										<MediaID ID="698105604"/>
-									</MediaIDList>
-								</AudioFileSource>
-							</ChildrenList>
-							<ObjectLists/>
-							<ActiveSourceList>
-								<ActiveSource Name="Proxlamp_Draft1" ID="{8F29FE50-500E-4D73-9D35-F36F7398FC28}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
-					</ChildrenList>
-				</Folder>
-				<Folder Name="Footsteps" ID="{D1541E4B-1D5F-48DF-851B-37DD2E7C7527}" ShortID="661524755">
-					<ChildrenList>
-						<SwitchContainer Name="Footsteps" ID="{68BF3187-242F-4BBC-A8DC-25164F19DFBE}" ShortID="587031196">
-							<PropertyList>
-								<Property Name="Volume" Type="Real64">
-									<ValueList>
-										<Value>12</Value>
-									</ValueList>
-								</Property>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
-								</Reference>
-								<Reference Name="DefaultSwitchOrState">
-									<ObjectRef Name="Concrete" ID="{91EA98DC-4AB9-47F8-818D-66098DF694B0}" WorkUnitID="{D92973B9-C527-48B7-A400-4F220CF740BF}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Footsteps" ID="{F4DBED60-FCD9-4835-9EF0-A0DA63B5A1A5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
-								</Reference>
-								<Reference Name="SwitchGroupOrStateGroup">
-									<ObjectRef Name="Footsteps" ID="{A6F8BDE0-5FE5-4F3A-84FE-166A57A03A62}" WorkUnitID="{D92973B9-C527-48B7-A400-4F220CF740BF}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<RandomSequenceContainer Name="Footsteps_Concrete" ID="{6637C263-C7FE-416E-919B-992AB4D6E0C0}" ShortID="953202409">
-									<PropertyList>
-										<Property Name="OverrideEffect" Type="bool" Value="True"/>
-										<Property Name="Pitch" Type="int32">
-											<ModifierList>
-												<ModifierInfo>
-													<Modifier Name="" ID="{B1571298-60CB-40AB-9730-23472E2A42DC}">
-														<PropertyList>
-															<Property Name="Enabled" Type="bool" Value="True"/>
-															<Property Name="Max" Type="Real64" Value="227"/>
-															<Property Name="Min" Type="Real64" Value="-227"/>
-														</PropertyList>
-													</Modifier>
-												</ModifierInfo>
-											</ModifierList>
-										</Property>
-										<Property Name="Volume" Type="Real64">
-											<ValueList>
-												<Value>5</Value>
-											</ValueList>
-										</Property>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
-										</Reference>
-										<Reference Name="Effect0">
-											<Custom>
-												<Effect Name="Wwise Parametric EQ (Custom)" ID="{FE778980-9BB7-4C7E-8520-2F33CB5F0984}" ShortID="355234203" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
-													<PropertyList>
-														<Property Name="FrequencyBand3" Type="Real32" Value="4660"/>
-														<Property Name="GainBand3" Type="Real32" Value="-3"/>
-													</PropertyList>
-												</Effect>
-											</Custom>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<Sound Name="Footsteps_Concrete-2" ID="{26E05848-BC3E-4E8C-810D-CE3CA1E07820}" ShortID="745992100">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="ConcreteFootstps2_1-11" ID="{C912815F-4773-45A8-BEA8-2AFC3D953316}">
-													<PropertyList>
-														<Property Name="FadeOutDuration" Type="Real64" Value="0.198305042799294"/>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimEnd" Type="Real64" Value="0.526356135905931"/>
-													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>ConcreteFootstps2.1-11.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="173397512"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ObjectLists/>
-											<ActiveSourceList>
-												<ActiveSource Name="ConcreteFootstps2_1-11" ID="{C912815F-4773-45A8-BEA8-2AFC3D953316}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="Footsteps_Concrete-3" ID="{12E08159-361E-475B-8578-C53788713C1A}" ShortID="774464511">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="ConcreteFootstps2_1-12" ID="{96E1E8EC-DF85-41B7-A068-BB12AB9612E8}">
-													<PropertyList>
-														<Property Name="FadeOutDuration" Type="Real64" Value="0.118717258617863"/>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimEnd" Type="Real64" Value="0.566339709144231"/>
-													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>ConcreteFootstps2.1-12.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="108525736"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ObjectLists/>
-											<ActiveSourceList>
-												<ActiveSource Name="ConcreteFootstps2_1-12" ID="{96E1E8EC-DF85-41B7-A068-BB12AB9612E8}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="Footsteps_Concrete-4" ID="{70878271-B482-4808-A9FE-AB19770963AA}" ShortID="989914022">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="ConcreteFootstps2_1-13" ID="{25986666-1CEB-48D8-8EAC-6A66523E3692}">
-													<PropertyList>
-														<Property Name="FadeOutDuration" Type="Real64" Value="0.136085511967406"/>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimEnd" Type="Real64" Value="0.489907843082663"/>
-													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>ConcreteFootstps2.1-13.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="876437545"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ObjectLists/>
-											<ActiveSourceList>
-												<ActiveSource Name="ConcreteFootstps2_1-13" ID="{25986666-1CEB-48D8-8EAC-6A66523E3692}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="Footsteps_Concrete-5" ID="{2C0D2C7C-8BB2-442B-9E38-87D98F41BEEF}" ShortID="900204001">
-											<PropertyList>
-												<Property Name="Volume" Type="Real64">
-													<ValueList>
-														<Value>5</Value>
-													</ValueList>
-												</Property>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="ConcreteFootstps2_1-14" ID="{85E40761-F50F-405E-9D23-60CC60818268}">
-													<PropertyList>
-														<Property Name="FadeOutDuration" Type="Real64" Value="0.142366381750517"/>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimEnd" Type="Real64" Value="0.489907843082663"/>
-													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>ConcreteFootstps2.1-14.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="881666982"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ObjectLists/>
-											<ActiveSourceList>
-												<ActiveSource Name="ConcreteFootstps2_1-14" ID="{85E40761-F50F-405E-9D23-60CC60818268}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="Footsteps_Concrete-6" ID="{EFF551F2-C8CA-4FFC-806A-49475D222B3E}" ShortID="333186275">
-											<PropertyList>
-												<Property Name="Volume" Type="Real64">
-													<ValueList>
-														<Value>6</Value>
-													</ValueList>
-												</Property>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="ConcreteFootstps2_1-15" ID="{289C324A-668F-42BF-8A86-15EF2DC4FFBF}">
-													<PropertyList>
-														<Property Name="FadeOutDuration" Type="Real64" Value="0.169847147590278"/>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimEnd" Type="Real64" Value="0.572526426668894"/>
-													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>ConcreteFootstps2.1-15.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="782665099"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ObjectLists/>
-											<ActiveSourceList>
-												<ActiveSource Name="ConcreteFootstps2_1-15" ID="{289C324A-668F-42BF-8A86-15EF2DC4FFBF}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="Footsteps_Concrete-7" ID="{70A9EAA2-1A40-42E2-92D2-4BE88422D939}" ShortID="983488638">
-											<PropertyList>
-												<Property Name="Volume" Type="Real64">
-													<ValueList>
-														<Value>3</Value>
-													</ValueList>
-												</Property>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="ConcreteFootstps2_1-16" ID="{DE47BDD8-7C0A-40EE-8363-B557857E06F1}">
-													<PropertyList>
-														<Property Name="FadeOutDuration" Type="Real64" Value="0.150977717144156"/>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimEnd" Type="Real64" Value="0.470547218432621"/>
-													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>ConcreteFootstps2.1-16.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="631288090"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ObjectLists/>
-											<ActiveSourceList>
-												<ActiveSource Name="ConcreteFootstps2_1-16" ID="{DE47BDD8-7C0A-40EE-8363-B557857E06F1}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="Footsteps_Concrete-8" ID="{FCD2D5CC-2F6F-4CF5-A97B-3945AE65DD0A}" ShortID="479037356">
-											<PropertyList>
-												<Property Name="Volume" Type="Real64">
-													<ValueList>
-														<Value>3</Value>
-													</ValueList>
-												</Property>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="ConcreteFootstps2_1-20" ID="{F61E7EA2-9A22-435F-B588-A6238D571C8B}">
-													<PropertyList>
-														<Property Name="FadeOutDuration" Type="Real64" Value="0.171108079430044"/>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimEnd" Type="Real64" Value="0.430286493860846"/>
-													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>ConcreteFootstps2.1-20.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="807243836"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ObjectLists/>
-											<ActiveSourceList>
-												<ActiveSource Name="ConcreteFootstps2_1-20" ID="{F61E7EA2-9A22-435F-B588-A6238D571C8B}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="Footsteps_Concrete-9" ID="{081FD531-23EF-47A4-AA24-97FDED1DF521}" ShortID="894052490">
-											<PropertyList>
-												<Property Name="Volume" Type="Real64">
-													<ValueList>
-														<Value>2</Value>
-													</ValueList>
-												</Property>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="ConcreteFootstps2_1-21" ID="{0EB3A752-4B9A-458D-8B9C-8D3105C152C3}">
-													<PropertyList>
-														<Property Name="FadeOutDuration" Type="Real64" Value="0.395319857820345"/>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimEnd" Type="Real64" Value="0.713268244996953"/>
-													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>ConcreteFootstps2.1-21.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="662287762"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ObjectLists/>
-											<ActiveSourceList>
-												<ActiveSource Name="ConcreteFootstps2_1-21" ID="{0EB3A752-4B9A-458D-8B9C-8D3105C152C3}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="Footsteps_Concrete-1" ID="{5E28F222-E3E1-4006-839D-815F91CA76CC}" ShortID="151459234">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="ConcreteFootstps2_1" ID="{6DBC91AF-57A6-4300-BE8E-5975B253B61B}">
-													<PropertyList>
-														<Property Name="FadeOutDuration" Type="Real64" Value="0.259815639762044"/>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimEnd" Type="Real64" Value="0.633483076723186"/>
-													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>ConcreteFootstps2.1.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="1040209185"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ObjectLists/>
-											<ActiveSourceList>
-												<ActiveSource Name="ConcreteFootstps2_1" ID="{6DBC91AF-57A6-4300-BE8E-5975B253B61B}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-									</ChildrenList>
-									<ObjectLists/>
-								</RandomSequenceContainer>
-								<RandomSequenceContainer Name="Footsteps_Gravel" ID="{4701505C-FD69-4D71-A7C8-227CD81B17AB}" ShortID="784754020">
-									<PropertyList>
-										<Property Name="OverrideEffect" Type="bool" Value="True"/>
-										<Property Name="Pitch" Type="int32">
-											<ModifierList>
-												<ModifierInfo>
-													<Modifier Name="" ID="{784F4832-4C2A-4A62-B3F2-8298367BA9F3}">
-														<PropertyList>
-															<Property Name="Enabled" Type="bool" Value="True"/>
-															<Property Name="Max" Type="Real64" Value="152"/>
-															<Property Name="Min" Type="Real64" Value="-177"/>
-														</PropertyList>
-													</Modifier>
-												</ModifierInfo>
-											</ModifierList>
-										</Property>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
-										</Reference>
-										<Reference Name="Effect0">
-											<Custom>
-												<Effect Name="Wwise Parametric EQ (Custom)" ID="{2B39D630-812F-4CC5-AA43-306619A2637C}" ShortID="669819211" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
-													<PropertyList>
-														<Property Name="FrequencyBand3" Type="Real32" Value="3225"/>
-														<Property Name="GainBand3" Type="Real32" Value="-7"/>
-													</PropertyList>
-												</Effect>
-											</Custom>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<Sound Name="Footsteps_Gravel-2" ID="{811A8D98-9984-4EF7-9776-F41B5A50630D}" ShortID="115430921">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="gravel_footsteps-002" ID="{93430E05-06A1-4496-BA0C-AFBD8E044DB4}">
-													<PropertyList>
-														<Property Name="FadeOutDuration" Type="Real64" Value="0.166223515327004"/>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimEnd" Type="Real64" Value="0.566089873875881"/>
-													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>gravel_footsteps-002.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="454979101"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ObjectLists/>
-											<ActiveSourceList>
-												<ActiveSource Name="gravel_footsteps-002" ID="{93430E05-06A1-4496-BA0C-AFBD8E044DB4}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="Footsteps_Gravel-3" ID="{F33BF22D-D67C-4B9F-B2D0-A7EB19530C87}" ShortID="1017050366">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="gravel_footsteps-003" ID="{46337C23-A55C-4583-B4D5-8BB4DF05875A}">
-													<PropertyList>
-														<Property Name="FadeOutDuration" Type="Real64" Value="0.156924297686332"/>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimEnd" Type="Real64" Value="0.57771389592672"/>
-													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>gravel_footsteps-003.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="239243144"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ObjectLists/>
-											<ActiveSourceList>
-												<ActiveSource Name="gravel_footsteps-003" ID="{46337C23-A55C-4583-B4D5-8BB4DF05875A}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="Footsteps_Gravel-4" ID="{F13FAF23-1103-472D-9A3F-69DB5762BC7C}" ShortID="712249798">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="gravel_footsteps-004" ID="{5BE99598-5ABF-4C25-BD56-F5637DCC817A}">
-													<PropertyList>
-														<Property Name="FadeOutDuration" Type="Real64" Value="0.155761895481248"/>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimEnd" Type="Real64" Value="0.58352590695214"/>
-													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>gravel_footsteps-004.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="294943493"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ObjectLists/>
-											<ActiveSourceList>
-												<ActiveSource Name="gravel_footsteps-004" ID="{5BE99598-5ABF-4C25-BD56-F5637DCC817A}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="Footsteps_Gravel-5" ID="{AA3FF254-1A9A-41AC-B1C2-60F1E23CBFFF}" ShortID="893072316">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="gravel_footsteps-006" ID="{97D71EC0-A3DC-43DC-B87A-0AFCAABFFB8A}">
-													<PropertyList>
-														<Property Name="FadeOutDuration" Type="Real64" Value="0.113915416098226"/>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimEnd" Type="Real64" Value="0.563765069465713"/>
-													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>gravel_footsteps-006.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="583713647"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ObjectLists/>
-											<ActiveSourceList>
-												<ActiveSource Name="gravel_footsteps-006" ID="{97D71EC0-A3DC-43DC-B87A-0AFCAABFFB8A}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="Footsteps_Gravel-6" ID="{002380D9-E6EE-4C5D-879A-164E3AF7577C}" ShortID="187500520">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="gravel_footsteps-010" ID="{FE69D826-3B0F-4A3A-BA2E-0505CB4292DB}">
-													<PropertyList>
-														<Property Name="FadeOutDuration" Type="Real64" Value="0.244104463067628"/>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimEnd" Type="Real64" Value="0.518431383467439"/>
-													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>gravel_footsteps-010.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="1009190396"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ObjectLists/>
-											<ActiveSourceList>
-												<ActiveSource Name="gravel_footsteps-010" ID="{FE69D826-3B0F-4A3A-BA2E-0505CB4292DB}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="Footsteps_Gravel-7" ID="{FF1E5DC8-A76D-45F1-B48E-4935B778BE80}" ShortID="919696961">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="gravel_footsteps-011" ID="{0038F5F2-997A-4FB2-8CE5-6CF94E07A25F}">
-													<PropertyList>
-														<Property Name="FadeOutDuration" Type="Real64" Value="0.163898710916836"/>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimEnd" Type="Real64" Value="0.618397973104658"/>
-													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>gravel_footsteps-011.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="682554231"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ObjectLists/>
-											<ActiveSourceList>
-												<ActiveSource Name="gravel_footsteps-011" ID="{0038F5F2-997A-4FB2-8CE5-6CF94E07A25F}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="Footsteps_Gravel-8" ID="{212347F2-76BA-4221-B6F3-D4EF219010CB}" ShortID="849419086">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="gravel_footsteps-012" ID="{785A10B5-D574-4A04-86B3-B2B2CAC662E0}">
-													<PropertyList>
-														<Property Name="FadeOutDuration" Type="Real64" Value="0.129026644764318"/>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimEnd" Type="Real64" Value="0.510294568031851"/>
-													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>gravel_footsteps-012.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="396576064"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ObjectLists/>
-											<ActiveSourceList>
-												<ActiveSource Name="gravel_footsteps-012" ID="{785A10B5-D574-4A04-86B3-B2B2CAC662E0}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="Footsteps_Gravel-9" ID="{1E6B662F-EA3C-4B9F-B5C6-EE1539C26307}" ShortID="501525874">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="gravel_footsteps-027" ID="{AB5810A4-9155-4A7D-882A-14D861BE9E1C}">
-													<PropertyList>
-														<Property Name="FadeOutDuration" Type="Real64" Value="0.134838655789737"/>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimEnd" Type="Real64" Value="0.552141047414873"/>
-													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>gravel_footsteps-027.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="725502737"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ObjectLists/>
-											<ActiveSourceList>
-												<ActiveSource Name="gravel_footsteps-027" ID="{AB5810A4-9155-4A7D-882A-14D861BE9E1C}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="Footsteps_Gravel-10" ID="{98BD9AF7-F33E-4DC9-BCBB-35FB4CC741EA}" ShortID="846695697">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="gravel_footsteps-031" ID="{EB441797-8138-4630-ABCD-265A2DA54887}">
-													<PropertyList>
-														<Property Name="FadeOutDuration" Type="Real64" Value="0.181334743993095"/>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimEnd" Type="Real64" Value="0.546329036389454"/>
-													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>gravel_footsteps-031.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="356938175"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ObjectLists/>
-											<ActiveSourceList>
-												<ActiveSource Name="gravel_footsteps-031" ID="{EB441797-8138-4630-ABCD-265A2DA54887}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="Footsteps_Gravel-11" ID="{BB172F89-8602-444B-8C1A-99CD1DD801CB}" ShortID="591443059">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="gravel_footsteps-034" ID="{9FDA0172-2AC9-4C98-BA01-A549ABA300B8}">
-													<PropertyList>
-														<Property Name="FadeOutDuration" Type="Real64" Value="0.167385917532088"/>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimEnd" Type="Real64" Value="0.611423559874154"/>
-													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>gravel_footsteps-034.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="92334657"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ObjectLists/>
-											<ActiveSourceList>
-												<ActiveSource Name="gravel_footsteps-034" ID="{9FDA0172-2AC9-4C98-BA01-A549ABA300B8}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="Footsteps_Gravel-12" ID="{57040723-FC2E-4930-84B9-82AB08081D83}" ShortID="179737762">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="gravel_footsteps-040" ID="{95B20458-977A-49DE-AF54-64426D2433E9}">
-													<PropertyList>
-														<Property Name="FadeOutDuration" Type="Real64" Value="0.111590611688059"/>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimEnd" Type="Real64" Value="0.578876298131804"/>
-													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>gravel_footsteps-040.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="1033828981"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ObjectLists/>
-											<ActiveSourceList>
-												<ActiveSource Name="gravel_footsteps-040" ID="{95B20458-977A-49DE-AF54-64426D2433E9}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="Footsteps_Gravel-1" ID="{B5F22B51-2C01-4B3D-9B71-4C142D8563AE}" ShortID="822754233">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="gravel_footsteps" ID="{D5F3F71B-D9DD-4E3A-BBD0-016523C06274}">
-													<PropertyList>
-														<Property Name="FadeOutDuration" Type="Real64" Value="0.202257983684606"/>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimEnd" Type="Real64" Value="0.490533730545424"/>
-													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>gravel_footsteps.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="627651887"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ObjectLists/>
-											<ActiveSourceList>
-												<ActiveSource Name="gravel_footsteps" ID="{D5F3F71B-D9DD-4E3A-BBD0-016523C06274}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-									</ChildrenList>
-									<ObjectLists/>
-								</RandomSequenceContainer>
-								<RandomSequenceContainer Name="Footsteps_Grass" ID="{77329A08-5DD2-45FD-B7B1-3770CFDE384E}" ShortID="515464836">
-									<PropertyList>
-										<Property Name="OverrideEffect" Type="bool" Value="True"/>
-										<Property Name="Pitch" Type="int32">
-											<ModifierList>
-												<ModifierInfo>
-													<Modifier Name="" ID="{6CC331AD-0CAE-481F-BFBC-026CC4944754}">
-														<PropertyList>
-															<Property Name="Enabled" Type="bool" Value="True"/>
-															<Property Name="Max" Type="Real64" Value="354"/>
-															<Property Name="Min" Type="Real64" Value="-354"/>
-														</PropertyList>
-													</Modifier>
-												</ModifierInfo>
-											</ModifierList>
-										</Property>
-										<Property Name="Volume" Type="Real64">
-											<ValueList>
-												<Value>-8</Value>
-											</ValueList>
-										</Property>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
-										</Reference>
-										<Reference Name="Effect0">
-											<Custom>
-												<Effect Name="Wwise Parametric EQ (Custom)" ID="{131DFCCB-7A65-47B7-AED9-6283FFA461F5}" ShortID="643205741" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
-													<PropertyList>
-														<Property Name="FrequencyBand3" Type="Real32" Value="4660"/>
-														<Property Name="GainBand3" Type="Real32" Value="-11.5"/>
-													</PropertyList>
-												</Effect>
-											</Custom>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<Sound Name="Footsteps_Grass-2" ID="{F6745A84-C2AD-43F3-A818-6F4AE20A1C60}" ShortID="98487085">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="Grass_footsteps-003" ID="{E6466FF9-4E36-453E-A53E-7F33EC0FCECD}">
-													<PropertyList>
-														<Property Name="FadeOutDuration" Type="Real64" Value="0.17624916087399"/>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimEnd" Type="Real64" Value="0.535315774331561"/>
-													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>Grass_footsteps-003.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="817022413"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ObjectLists/>
-											<ActiveSourceList>
-												<ActiveSource Name="Grass_footsteps-003" ID="{E6466FF9-4E36-453E-A53E-7F33EC0FCECD}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="Footsteps_Grass-3" ID="{F16C4B12-FAC5-401F-B0A4-AB01C02A9B9B}" ShortID="189821717">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="Grass_footsteps-004" ID="{45F18FCF-F48C-47E2-B17A-4DE7F8625773}">
-													<PropertyList>
-														<Property Name="FadeOutDuration" Type="Real64" Value="0.128081688336999"/>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimEnd" Type="Real64" Value="0.44007554454251"/>
-													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>Grass_footsteps-004.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="1052622922"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ObjectLists/>
-											<ActiveSourceList>
-												<ActiveSource Name="Grass_footsteps-004" ID="{45F18FCF-F48C-47E2-B17A-4DE7F8625773}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="Footsteps_Grass-1" ID="{BC0A7D50-19D2-4666-9C2F-AF69ABD0D9EA}" ShortID="791733891">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="Grass_footsteps" ID="{B5BCD6A2-2D0E-40EE-BDF0-ADB36EDB76B5}">
-													<PropertyList>
-														<Property Name="FadeOutDuration" Type="Real64" Value="0.190480459578101"/>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimEnd" Type="Real64" Value="0.598809260857594"/>
-													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>Grass_footsteps.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="477488235"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ObjectLists/>
-											<ActiveSourceList>
-												<ActiveSource Name="Grass_footsteps" ID="{B5BCD6A2-2D0E-40EE-BDF0-ADB36EDB76B5}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-									</ChildrenList>
-									<ObjectLists/>
-								</RandomSequenceContainer>
-							</ChildrenList>
-							<ObjectLists/>
-							<GroupingInfo>
-								<GroupingBehaviorList>
-									<GroupingBehavior>
-										<ItemRef Name="Footsteps_Grass" ID="{77329A08-5DD2-45FD-B7B1-3770CFDE384E}"/>
-									</GroupingBehavior>
-									<GroupingBehavior>
-										<ItemRef Name="Footsteps_Gravel" ID="{4701505C-FD69-4D71-A7C8-227CD81B17AB}"/>
-									</GroupingBehavior>
-									<GroupingBehavior>
-										<ItemRef Name="Footsteps_Concrete" ID="{6637C263-C7FE-416E-919B-992AB4D6E0C0}"/>
-									</GroupingBehavior>
-								</GroupingBehaviorList>
-								<GroupingList>
-									<Grouping>
-										<SwitchRef Name="Grass" ID="{798C4D7D-FB3F-43F4-82B2-6B4BDF580D8B}"/>
-										<ItemList>
-											<ItemRef Name="Footsteps_Grass" ID="{77329A08-5DD2-45FD-B7B1-3770CFDE384E}"/>
-										</ItemList>
-									</Grouping>
-									<Grouping>
-										<SwitchRef Name="Gravel" ID="{DA3B087E-FBE5-439A-B01F-748E31E3DA71}"/>
-										<ItemList>
-											<ItemRef Name="Footsteps_Gravel" ID="{4701505C-FD69-4D71-A7C8-227CD81B17AB}"/>
-										</ItemList>
-									</Grouping>
-									<Grouping>
-										<SwitchRef Name="Concrete" ID="{91EA98DC-4AB9-47F8-818D-66098DF694B0}"/>
-										<ItemList>
-											<ItemRef Name="Footsteps_Concrete" ID="{6637C263-C7FE-416E-919B-992AB4D6E0C0}"/>
-										</ItemList>
-									</Grouping>
-								</GroupingList>
-							</GroupingInfo>
-						</SwitchContainer>
-					</ChildrenList>
-				</Folder>
 				<Folder Name="Voice Over" ID="{D0FCA1BB-0E51-459A-B28F-7BA1C4921DC0}" ShortID="900867171">
 					<ChildrenList>
 						<Folder Name="Sequence Containers" ID="{AE9211D3-272C-4A4D-A143-42F0C3559E60}" ShortID="353583136">
@@ -1274,6 +250,11 @@
 										<Sound Name="Scene 3-3 Soldier1" ID="{176BADCA-4C9B-46D1-BAA5-44868955E238}" ShortID="743255756">
 											<PropertyList>
 												<Property Name="IsVoice" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ValueList>
+														<Value>-75</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
@@ -1336,6 +317,11 @@
 										<Sound Name="Scene 3-1 Soldier1" ID="{B38378DC-452D-4489-A4B9-75290015B4B1}" ShortID="126178883">
 											<PropertyList>
 												<Property Name="IsVoice" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ValueList>
+														<Value>-75</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
@@ -1367,6 +353,11 @@
 										<Sound Name="Scene 3-5 Soldier1" ID="{DDE45CBF-EB1C-439A-9A04-403066729DBF}" ShortID="1072063321">
 											<PropertyList>
 												<Property Name="IsVoice" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ValueList>
+														<Value>-75</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
@@ -1453,6 +444,11 @@
 										<Sound Name="Scene 4-1 Soldier1" ID="{1FCBE76C-CCB2-458D-96FC-4981567619FB}" ShortID="368761325">
 											<PropertyList>
 												<Property Name="IsVoice" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ValueList>
+														<Value>-75</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
@@ -1812,6 +808,11 @@
 										<Sound Name="Scene 8-1-3 Soldier1" ID="{0EFA3329-E870-4E59-90F9-42E8543EEBCE}" ShortID="128582514">
 											<PropertyList>
 												<Property Name="IsVoice" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ValueList>
+														<Value>-75</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
@@ -1843,6 +844,11 @@
 										<Sound Name="Scene 8-1-1 Soldier1" ID="{C664DCE6-746E-4D2C-8B41-1B9BFEDDCE56}" ShortID="1029069035">
 											<PropertyList>
 												<Property Name="IsVoice" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ValueList>
+														<Value>-75</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
@@ -1926,6 +932,11 @@
 										<Sound Name="Scene 9-2 Soldier1" ID="{283212B1-F053-4E91-BE89-52AE7DD446A5}" ShortID="424302674">
 											<PropertyList>
 												<Property Name="IsVoice" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ValueList>
+														<Value>-75</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
@@ -2323,6 +1334,11 @@
 										<Sound Name="Scene 8-2-1 Soldier1" ID="{E87AD965-C647-4715-BF8E-04B9D2724924}" ShortID="681303371">
 											<PropertyList>
 												<Property Name="IsVoice" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ValueList>
+														<Value>-75</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
@@ -2405,6 +1421,11 @@
 										<Sound Name="Scene 8-3-1 Soldier1" ID="{B1BCDE27-2F46-4E7F-9B25-A8CB818C997B}" ShortID="594346053">
 											<PropertyList>
 												<Property Name="IsVoice" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ValueList>
+														<Value>-75</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
@@ -2519,6 +1540,11 @@
 										<Sound Name="Scene 8-4-1 Soldier1" ID="{07662C37-F140-4A26-9F6B-1D6C98A2B00C}" ShortID="123856638">
 											<PropertyList>
 												<Property Name="IsVoice" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ValueList>
+														<Value>-75</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
@@ -2601,6 +1627,11 @@
 										<Sound Name="Scene 8-5-1 Soldier1" ID="{BD97E1A6-2889-4EDC-B843-650B9087ADB8}" ShortID="153507116">
 											<PropertyList>
 												<Property Name="IsVoice" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ValueList>
+														<Value>-75</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
@@ -2639,27 +1670,535 @@
 						</Folder>
 					</ChildrenList>
 				</Folder>
-				<Folder Name="Bird Sounds" ID="{FA5F8CFC-80AE-4C77-B8B9-67BE7A829B99}" ShortID="711541868">
+				<Folder Name="SFX" ID="{7B1F7A9A-BA40-415A-B084-23B9AF4512AE}" ShortID="66539004">
 					<ChildrenList>
-						<Folder Name="Chirps" ID="{2639F9F6-7AE5-4231-A804-8F9C98DBF665}" ShortID="214358001">
+						<Folder Name="Bird Sounds" ID="{FA5F8CFC-80AE-4C77-B8B9-67BE7A829B99}" ShortID="711541868">
 							<ChildrenList>
-								<RandomSequenceContainer Name="Bird Chirps" ID="{DED55BB2-4A4D-4673-8A47-791F6EABD67C}" ShortID="33450565">
+								<Folder Name="Chirps" ID="{2639F9F6-7AE5-4231-A804-8F9C98DBF665}" ShortID="214358001">
+									<ChildrenList>
+										<RandomSequenceContainer Name="Bird Chirps" ID="{DED55BB2-4A4D-4673-8A47-791F6EABD67C}" ShortID="33450565">
+											<PropertyList>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{25DDDD25-BCBB-4484-9F89-C5D19825F8F7}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="152"/>
+																	<Property Name="Min" Type="Real64" Value="-101"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="SFX" ID="{DC6803C8-E376-4E53-8874-5A4177EC1378}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="Bird_Chirp1" ID="{951D01CB-52FF-438A-802D-5471F13AD465}" ShortID="167573936">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="BirdSFX1" ID="{22B464C7-B99A-4756-A6F8-92372744AF13}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.142033398725344"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.698330877066274"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>BirdSFX1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="957084106"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="BirdSFX1" ID="{22B464C7-B99A-4756-A6F8-92372744AF13}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Bird_Chirp2" ID="{7AAB8AA7-F8AA-406C-9B03-630A3F486112}" ShortID="181854972">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="BirdSFX2" ID="{373EB065-C86A-4FA9-8EF6-BAA57F0D7EEB}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.10163252292787"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.616885778701724"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>BirdSFX2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="272281193"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="BirdSFX2" ID="{373EB065-C86A-4FA9-8EF6-BAA57F0D7EEB}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Bird_Chirp3" ID="{11423B1C-ACDB-4337-B596-6A4721A40F8A}" ShortID="478484082">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="BirdSFX4" ID="{C4DDDDC2-4128-4F3A-A51E-539633556F72}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.105545567820624"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.440449773405297"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>BirdSFX4.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="679559396"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="BirdSFX4" ID="{C4DDDDC2-4128-4F3A-A51E-539633556F72}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Bird_Chirp4" ID="{DA558566-848F-4318-8201-B048B298A357}" ShortID="197871139">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="BirdSFX5" ID="{914ACCED-AFFC-40A2-B93C-3FAF3F8F3096}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.0654437384709981"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.407932636469222"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>BirdSFX5.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="389643100"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="BirdSFX5" ID="{914ACCED-AFFC-40A2-B93C-3FAF3F8F3096}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Bird_Chirp5" ID="{B63663B6-9E62-4DD0-A4F5-57D13A220C67}" ShortID="160335555">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="BirdSFX8" ID="{221B3A80-25D8-4C20-B43B-2A494FCBCDC6}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.0860832137733142"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.368005738880918"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>BirdSFX8.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="157710287"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="BirdSFX8" ID="{221B3A80-25D8-4C20-B43B-2A494FCBCDC6}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Bird_Chirp6" ID="{E989047E-0D65-4FE2-AD5E-136415318DB0}" ShortID="332579302">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="BirdSFX11" ID="{8D554B07-7219-4E94-A145-7F2FA09730A5}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.130379403794038"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.851457330899839"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>BirdSFX11.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="467669925"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="BirdSFX11" ID="{8D554B07-7219-4E94-A145-7F2FA09730A5}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Bird_Chirp7" ID="{9D33A841-CB69-4F96-8205-5CB4A20F2424}" ShortID="493597814">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="BirdSFX13" ID="{8051F7D5-8725-463F-81C5-F9F390B5F5E3}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.172166427546628"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.604734576757533"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>BirdSFX13.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="1027037673"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="BirdSFX13" ID="{8051F7D5-8725-463F-81C5-F9F390B5F5E3}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Bird_Chirp8" ID="{DFD8027B-84FC-4292-819C-5E13D1E5E487}" ShortID="467537036">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="BirdSFX14" ID="{500199C8-D574-409E-983D-0470EA6D2BAC}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.189383070301291"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="1.00430416068866"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>BirdSFX14.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="647611330"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="BirdSFX14" ID="{500199C8-D574-409E-983D-0470EA6D2BAC}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Bird_Chirp9" ID="{76A46CDB-E8CE-4EEE-8C1A-8716D0DF588A}" ShortID="374657072">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="BirdSFX16" ID="{0D9F65BE-C919-462D-AA68-DA0A930E0E43}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.252823080451693"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.998124453033246"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>BirdSFX16.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="1070252134"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="BirdSFX16" ID="{0D9F65BE-C919-462D-AA68-DA0A930E0E43}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Bird_Chirp10" ID="{7A6B050A-0F77-4AF8-9BC6-F5093AB09EF1}" ShortID="839305053">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="BirdSFX17" ID="{D4A14294-50A7-431C-8B42-F8AC15592627}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.118364418938307"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.365853658536585"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>BirdSFX17.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="998824188"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="BirdSFX17" ID="{D4A14294-50A7-431C-8B42-F8AC15592627}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Bird_Chirp11" ID="{7A60372D-70FD-4C39-8BF4-98C0D540451E}" ShortID="486989300">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="BirdSFX20" ID="{60F3D203-AD09-4E08-BF94-A86F908BF3AD}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.148856095283642"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.352024549657261"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>BirdSFX20.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="811949138"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="BirdSFX20" ID="{60F3D203-AD09-4E08-BF94-A86F908BF3AD}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Bird_Chirp12" ID="{9D90DE28-18FF-446B-9904-EDB3B4678CBF}" ShortID="906983165">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="BirdSFX22" ID="{F7CB36C5-C65D-47AC-9A4F-FA7274481E28}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.250356044856967"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.963491445358632"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>BirdSFX22.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="307038625"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="BirdSFX22" ID="{F7CB36C5-C65D-47AC-9A4F-FA7274481E28}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+											<ObjectLists/>
+										</RandomSequenceContainer>
+									</ChildrenList>
+								</Folder>
+								<Folder Name="Flight" ID="{F287FD5E-67F4-4C75-9A78-2BCB8F1DE06B}" ShortID="333383647">
+									<ChildrenList>
+										<RandomSequenceContainer Name="Bird Flight" ID="{08E87625-CAE6-430E-B773-875AE3849D43}" ShortID="43229195">
+											<PropertyList>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{3FC91FAE-090F-44CC-A2CF-0A6C8D4CC3C1}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="177"/>
+																	<Property Name="Min" Type="Real64" Value="-126"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="BirdFlight3" ID="{A6BA1738-893D-4BCE-9633-E195C70E81E1}" ShortID="695801665">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="BirdFlight3" ID="{7C1E4B31-35FD-4D29-BD9D-A2910B6DF92A}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.267804390048702"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="1.16801432768229"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>BirdFlight3.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="1057448238"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="BirdFlight3" ID="{7C1E4B31-35FD-4D29-BD9D-A2910B6DF92A}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="BirdFlight2" ID="{912A2BB0-8468-411F-9B74-381CF37BED77}" ShortID="812643733">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="BirdFlight2" ID="{6F67BBF3-B8E4-4EC9-9DD2-7D2251B71BD1}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.198242809318849"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="1.26025785924126"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>BirdFlight2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="957244702"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="BirdFlight2" ID="{6F67BBF3-B8E4-4EC9-9DD2-7D2251B71BD1}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="BirdFlight1" ID="{2E823414-595C-4C12-B5EB-E79E3F716AD0}" ShortID="211863068">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="SFX" ID="{DC6803C8-E376-4E53-8874-5A4177EC1378}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="BirdFlight1" ID="{2A55A034-9CA3-43E4-AEA4-61FB04188197}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.401036804965889"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="1.73914970866395"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>BirdFlight1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="899066847"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="BirdFlight1" ID="{2A55A034-9CA3-43E4-AEA4-61FB04188197}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+											<ObjectLists/>
+										</RandomSequenceContainer>
+									</ChildrenList>
+								</Folder>
+							</ChildrenList>
+						</Folder>
+						<Folder Name="ProximityLamp" ID="{88B8B8F3-D015-4EA9-A458-CE7F95ED1F3F}" ShortID="711163972">
+							<ChildrenList>
+								<Sound Name="Proxlamp_Click" ID="{0AB8953F-AFD0-4622-B131-992366CAF40E}" ShortID="101401567">
 									<PropertyList>
-										<Property Name="Pitch" Type="int32">
+										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="Highpass" Type="int16">
 											<ModifierList>
 												<ModifierInfo>
-													<Modifier Name="" ID="{25DDDD25-BCBB-4484-9F89-C5D19825F8F7}">
+													<Modifier Name="" ID="{D608F4AF-0A1A-42BB-ACC1-1DCE389BBBCC}">
 														<PropertyList>
-															<Property Name="Enabled" Type="bool" Value="True"/>
-															<Property Name="Max" Type="Real64" Value="152"/>
-															<Property Name="Min" Type="Real64" Value="-101"/>
+															<Property Name="Min" Type="Real64" Value="-100"/>
 														</PropertyList>
 													</Modifier>
 												</ModifierInfo>
 											</ModifierList>
 										</Property>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{9A982A39-8BCA-41D3-AD5B-B3429C4D7D89}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="581"/>
+															<Property Name="Min" Type="Real64" Value="-126"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>8</Value>
+											</ValueList>
+										</Property>
 									</PropertyList>
 									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="Click" ID="{4AE2AB7D-0B2A-488C-A2D2-2FA9B6CF4509}" WorkUnitID="{516E7887-F15F-428D-8E4E-38A731FED4D1}"/>
+										</Reference>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
 										</Reference>
@@ -2668,345 +2207,1235 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<Sound Name="Bird_Chirp1" ID="{951D01CB-52FF-438A-802D-5471F13AD465}" ShortID="167573936">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="BirdSFX1" ID="{22B464C7-B99A-4756-A6F8-92372744AF13}">
-													<PropertyList>
-														<Property Name="FadeOutDuration" Type="Real64" Value="0.142033398725344"/>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimEnd" Type="Real64" Value="0.698330877066274"/>
-													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>BirdSFX1.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="957084106"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ObjectLists/>
-											<ActiveSourceList>
-												<ActiveSource Name="BirdSFX1" ID="{22B464C7-B99A-4756-A6F8-92372744AF13}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="Bird_Chirp2" ID="{7AAB8AA7-F8AA-406C-9B03-630A3F486112}" ShortID="181854972">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="BirdSFX2" ID="{373EB065-C86A-4FA9-8EF6-BAA57F0D7EEB}">
-													<PropertyList>
-														<Property Name="FadeOutDuration" Type="Real64" Value="0.10163252292787"/>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimEnd" Type="Real64" Value="0.616885778701724"/>
-													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>BirdSFX2.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="272281193"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ObjectLists/>
-											<ActiveSourceList>
-												<ActiveSource Name="BirdSFX2" ID="{373EB065-C86A-4FA9-8EF6-BAA57F0D7EEB}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="Bird_Chirp3" ID="{11423B1C-ACDB-4337-B596-6A4721A40F8A}" ShortID="478484082">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="BirdSFX4" ID="{C4DDDDC2-4128-4F3A-A51E-539633556F72}">
-													<PropertyList>
-														<Property Name="FadeOutDuration" Type="Real64" Value="0.105545567820624"/>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimEnd" Type="Real64" Value="0.440449773405297"/>
-													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>BirdSFX4.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="679559396"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ObjectLists/>
-											<ActiveSourceList>
-												<ActiveSource Name="BirdSFX4" ID="{C4DDDDC2-4128-4F3A-A51E-539633556F72}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="Bird_Chirp4" ID="{DA558566-848F-4318-8201-B048B298A357}" ShortID="197871139">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="BirdSFX5" ID="{914ACCED-AFFC-40A2-B93C-3FAF3F8F3096}">
-													<PropertyList>
-														<Property Name="FadeOutDuration" Type="Real64" Value="0.0654437384709981"/>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimEnd" Type="Real64" Value="0.407932636469222"/>
-													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>BirdSFX5.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="389643100"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ObjectLists/>
-											<ActiveSourceList>
-												<ActiveSource Name="BirdSFX5" ID="{914ACCED-AFFC-40A2-B93C-3FAF3F8F3096}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="Bird_Chirp5" ID="{B63663B6-9E62-4DD0-A4F5-57D13A220C67}" ShortID="160335555">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="BirdSFX8" ID="{221B3A80-25D8-4C20-B43B-2A494FCBCDC6}">
-													<PropertyList>
-														<Property Name="FadeOutDuration" Type="Real64" Value="0.0860832137733142"/>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimEnd" Type="Real64" Value="0.368005738880918"/>
-													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>BirdSFX8.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="157710287"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ObjectLists/>
-											<ActiveSourceList>
-												<ActiveSource Name="BirdSFX8" ID="{221B3A80-25D8-4C20-B43B-2A494FCBCDC6}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="Bird_Chirp6" ID="{E989047E-0D65-4FE2-AD5E-136415318DB0}" ShortID="332579302">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="BirdSFX11" ID="{8D554B07-7219-4E94-A145-7F2FA09730A5}">
-													<PropertyList>
-														<Property Name="FadeOutDuration" Type="Real64" Value="0.130379403794038"/>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimEnd" Type="Real64" Value="0.851457330899839"/>
-													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>BirdSFX11.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="467669925"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ObjectLists/>
-											<ActiveSourceList>
-												<ActiveSource Name="BirdSFX11" ID="{8D554B07-7219-4E94-A145-7F2FA09730A5}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="Bird_Chirp7" ID="{9D33A841-CB69-4F96-8205-5CB4A20F2424}" ShortID="493597814">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="BirdSFX13" ID="{8051F7D5-8725-463F-81C5-F9F390B5F5E3}">
-													<PropertyList>
-														<Property Name="FadeOutDuration" Type="Real64" Value="0.172166427546628"/>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimEnd" Type="Real64" Value="0.604734576757533"/>
-													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>BirdSFX13.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="1027037673"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ObjectLists/>
-											<ActiveSourceList>
-												<ActiveSource Name="BirdSFX13" ID="{8051F7D5-8725-463F-81C5-F9F390B5F5E3}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="Bird_Chirp8" ID="{DFD8027B-84FC-4292-819C-5E13D1E5E487}" ShortID="467537036">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="BirdSFX14" ID="{500199C8-D574-409E-983D-0470EA6D2BAC}">
-													<PropertyList>
-														<Property Name="FadeOutDuration" Type="Real64" Value="0.189383070301291"/>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimEnd" Type="Real64" Value="1.00430416068866"/>
-													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>BirdSFX14.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="647611330"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ObjectLists/>
-											<ActiveSourceList>
-												<ActiveSource Name="BirdSFX14" ID="{500199C8-D574-409E-983D-0470EA6D2BAC}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="Bird_Chirp9" ID="{76A46CDB-E8CE-4EEE-8C1A-8716D0DF588A}" ShortID="374657072">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="BirdSFX16" ID="{0D9F65BE-C919-462D-AA68-DA0A930E0E43}">
-													<PropertyList>
-														<Property Name="FadeOutDuration" Type="Real64" Value="0.252823080451693"/>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimEnd" Type="Real64" Value="0.998124453033246"/>
-													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>BirdSFX16.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="1070252134"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ObjectLists/>
-											<ActiveSourceList>
-												<ActiveSource Name="BirdSFX16" ID="{0D9F65BE-C919-462D-AA68-DA0A930E0E43}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="Bird_Chirp10" ID="{7A6B050A-0F77-4AF8-9BC6-F5093AB09EF1}" ShortID="839305053">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="BirdSFX17" ID="{D4A14294-50A7-431C-8B42-F8AC15592627}">
-													<PropertyList>
-														<Property Name="FadeOutDuration" Type="Real64" Value="0.118364418938307"/>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimEnd" Type="Real64" Value="0.365853658536585"/>
-													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>BirdSFX17.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="998824188"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ObjectLists/>
-											<ActiveSourceList>
-												<ActiveSource Name="BirdSFX17" ID="{D4A14294-50A7-431C-8B42-F8AC15592627}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="Bird_Chirp11" ID="{7A60372D-70FD-4C39-8BF4-98C0D540451E}" ShortID="486989300">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="BirdSFX20" ID="{60F3D203-AD09-4E08-BF94-A86F908BF3AD}">
-													<PropertyList>
-														<Property Name="FadeOutDuration" Type="Real64" Value="0.148856095283642"/>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimEnd" Type="Real64" Value="0.352024549657261"/>
-													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>BirdSFX20.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="811949138"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ObjectLists/>
-											<ActiveSourceList>
-												<ActiveSource Name="BirdSFX20" ID="{60F3D203-AD09-4E08-BF94-A86F908BF3AD}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
-										<Sound Name="Bird_Chirp12" ID="{9D90DE28-18FF-446B-9904-EDB3B4678CBF}" ShortID="906983165">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="BirdSFX22" ID="{F7CB36C5-C65D-47AC-9A4F-FA7274481E28}">
-													<PropertyList>
-														<Property Name="FadeOutDuration" Type="Real64" Value="0.250356044856967"/>
-														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimEnd" Type="Real64" Value="0.963491445358632"/>
-													</PropertyList>
-													<Language>SFX</Language>
-													<AudioFile>BirdSFX22.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="307038625"/>
-													</MediaIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<ObjectLists/>
-											<ActiveSourceList>
-												<ActiveSource Name="BirdSFX22" ID="{F7CB36C5-C65D-47AC-9A4F-FA7274481E28}" Platform="Linked"/>
-											</ActiveSourceList>
-										</Sound>
+										<AudioFileSource Name="Proxlamp_Draft1_Click" ID="{D050F21E-56F6-48C0-8CE2-3FE2B7C04990}">
+											<PropertyList>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.391560825609324"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimEnd" Type="Real64" Value="0.391560825609324"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Proxlamp_Draft1_Click.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="766224591"/>
+											</MediaIDList>
+										</AudioFileSource>
 									</ChildrenList>
 									<ObjectLists/>
-								</RandomSequenceContainer>
+									<ActiveSourceList>
+										<ActiveSource Name="Proxlamp_Draft1_Click" ID="{D050F21E-56F6-48C0-8CE2-3FE2B7C04990}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Proxlamp_Buzz" ID="{05EBE607-DAF2-4E25-818C-8595744A7FBD}" ShortID="949888207">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="Highpass" Type="int16">
+											<ValueList>
+												<Value>19</Value>
+											</ValueList>
+										</Property>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+										<Property Name="MakeUpGain" Type="Real64">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{3AA133BA-9851-44A9-B236-D6A43268AF29}">
+														<PropertyList>
+															<Property Name="Max" Type="Real64" Value="2"/>
+															<Property Name="Min" Type="Real64" Value="-5"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>12</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="Lamp" ID="{E930E3F4-E86C-40A6-B48B-28DCAD56A7E0}" WorkUnitID="{516E7887-F15F-428D-8E4E-38A731FED4D1}"/>
+										</Reference>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="SFX" ID="{DC6803C8-E376-4E53-8874-5A4177EC1378}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Proxlamp_Draft1" ID="{8F29FE50-500E-4D73-9D35-F36F7398FC28}">
+											<PropertyList>
+												<Property Name="FadeInDuration" Type="Real64" Value="1.65283083219645"/>
+												<Property Name="LoopBegin" Type="Real64" Value="2.88122570164578"/>
+												<Property Name="LoopEnd" Type="Real64" Value="7.0269512613458"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.291030013642565"/>
+												<Property Name="TrimEnd" Type="Real64" Value="7.03793352601156"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Proxlamp_Draft1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="698105604"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="Proxlamp_Draft1" ID="{8F29FE50-500E-4D73-9D35-F36F7398FC28}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</Folder>
+						<Folder Name="Footsteps" ID="{D1541E4B-1D5F-48DF-851B-37DD2E7C7527}" ShortID="661524755">
+							<ChildrenList>
+								<SwitchContainer Name="Footsteps" ID="{68BF3187-242F-4BBC-A8DC-25164F19DFBE}" ShortID="587031196">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>12</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+										</Reference>
+										<Reference Name="DefaultSwitchOrState">
+											<ObjectRef Name="Concrete" ID="{91EA98DC-4AB9-47F8-818D-66098DF694B0}" WorkUnitID="{D92973B9-C527-48B7-A400-4F220CF740BF}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Footsteps" ID="{F4DBED60-FCD9-4835-9EF0-A0DA63B5A1A5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+										</Reference>
+										<Reference Name="SwitchGroupOrStateGroup">
+											<ObjectRef Name="Footsteps" ID="{A6F8BDE0-5FE5-4F3A-84FE-166A57A03A62}" WorkUnitID="{D92973B9-C527-48B7-A400-4F220CF740BF}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<RandomSequenceContainer Name="Footsteps_Concrete" ID="{6637C263-C7FE-416E-919B-992AB4D6E0C0}" ShortID="953202409">
+											<PropertyList>
+												<Property Name="OverrideEffect" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{B1571298-60CB-40AB-9730-23472E2A42DC}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="227"/>
+																	<Property Name="Min" Type="Real64" Value="-227"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>5</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="Effect0">
+													<Custom>
+														<Effect Name="Wwise Parametric EQ (Custom)" ID="{FE778980-9BB7-4C7E-8520-2F33CB5F0984}" ShortID="355234203" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+															<PropertyList>
+																<Property Name="FrequencyBand3" Type="Real32" Value="4660"/>
+																<Property Name="GainBand3" Type="Real32" Value="-3"/>
+															</PropertyList>
+														</Effect>
+													</Custom>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="Footsteps_Concrete-2" ID="{26E05848-BC3E-4E8C-810D-CE3CA1E07820}" ShortID="745992100">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="ConcreteFootstps2_1-11" ID="{C912815F-4773-45A8-BEA8-2AFC3D953316}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.198305042799294"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.526356135905931"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>ConcreteFootstps2.1-11.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="173397512"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="ConcreteFootstps2_1-11" ID="{C912815F-4773-45A8-BEA8-2AFC3D953316}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Footsteps_Concrete-3" ID="{12E08159-361E-475B-8578-C53788713C1A}" ShortID="774464511">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="ConcreteFootstps2_1-12" ID="{96E1E8EC-DF85-41B7-A068-BB12AB9612E8}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.118717258617863"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.566339709144231"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>ConcreteFootstps2.1-12.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="108525736"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="ConcreteFootstps2_1-12" ID="{96E1E8EC-DF85-41B7-A068-BB12AB9612E8}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Footsteps_Concrete-4" ID="{70878271-B482-4808-A9FE-AB19770963AA}" ShortID="989914022">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="ConcreteFootstps2_1-13" ID="{25986666-1CEB-48D8-8EAC-6A66523E3692}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.136085511967406"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.489907843082663"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>ConcreteFootstps2.1-13.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="876437545"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="ConcreteFootstps2_1-13" ID="{25986666-1CEB-48D8-8EAC-6A66523E3692}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Footsteps_Concrete-5" ID="{2C0D2C7C-8BB2-442B-9E38-87D98F41BEEF}" ShortID="900204001">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>5</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="ConcreteFootstps2_1-14" ID="{85E40761-F50F-405E-9D23-60CC60818268}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.142366381750517"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.489907843082663"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>ConcreteFootstps2.1-14.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="881666982"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="ConcreteFootstps2_1-14" ID="{85E40761-F50F-405E-9D23-60CC60818268}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Footsteps_Concrete-6" ID="{EFF551F2-C8CA-4FFC-806A-49475D222B3E}" ShortID="333186275">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>6</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="ConcreteFootstps2_1-15" ID="{289C324A-668F-42BF-8A86-15EF2DC4FFBF}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.169847147590278"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.572526426668894"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>ConcreteFootstps2.1-15.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="782665099"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="ConcreteFootstps2_1-15" ID="{289C324A-668F-42BF-8A86-15EF2DC4FFBF}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Footsteps_Concrete-7" ID="{70A9EAA2-1A40-42E2-92D2-4BE88422D939}" ShortID="983488638">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>3</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="ConcreteFootstps2_1-16" ID="{DE47BDD8-7C0A-40EE-8363-B557857E06F1}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.150977717144156"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.470547218432621"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>ConcreteFootstps2.1-16.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="631288090"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="ConcreteFootstps2_1-16" ID="{DE47BDD8-7C0A-40EE-8363-B557857E06F1}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Footsteps_Concrete-8" ID="{FCD2D5CC-2F6F-4CF5-A97B-3945AE65DD0A}" ShortID="479037356">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>3</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="ConcreteFootstps2_1-20" ID="{F61E7EA2-9A22-435F-B588-A6238D571C8B}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.171108079430044"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.430286493860846"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>ConcreteFootstps2.1-20.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="807243836"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="ConcreteFootstps2_1-20" ID="{F61E7EA2-9A22-435F-B588-A6238D571C8B}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Footsteps_Concrete-9" ID="{081FD531-23EF-47A4-AA24-97FDED1DF521}" ShortID="894052490">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>2</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="ConcreteFootstps2_1-21" ID="{0EB3A752-4B9A-458D-8B9C-8D3105C152C3}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.395319857820345"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.713268244996953"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>ConcreteFootstps2.1-21.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="662287762"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="ConcreteFootstps2_1-21" ID="{0EB3A752-4B9A-458D-8B9C-8D3105C152C3}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Footsteps_Concrete-1" ID="{5E28F222-E3E1-4006-839D-815F91CA76CC}" ShortID="151459234">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="ConcreteFootstps2_1" ID="{6DBC91AF-57A6-4300-BE8E-5975B253B61B}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.259815639762044"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.633483076723186"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>ConcreteFootstps2.1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="1040209185"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="ConcreteFootstps2_1" ID="{6DBC91AF-57A6-4300-BE8E-5975B253B61B}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+											<ObjectLists/>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Footsteps_Gravel" ID="{4701505C-FD69-4D71-A7C8-227CD81B17AB}" ShortID="784754020">
+											<PropertyList>
+												<Property Name="OverrideEffect" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{784F4832-4C2A-4A62-B3F2-8298367BA9F3}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="152"/>
+																	<Property Name="Min" Type="Real64" Value="-177"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="Effect0">
+													<Custom>
+														<Effect Name="Wwise Parametric EQ (Custom)" ID="{2B39D630-812F-4CC5-AA43-306619A2637C}" ShortID="669819211" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+															<PropertyList>
+																<Property Name="FrequencyBand3" Type="Real32" Value="3225"/>
+																<Property Name="GainBand3" Type="Real32" Value="-7"/>
+															</PropertyList>
+														</Effect>
+													</Custom>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="Footsteps_Gravel-2" ID="{811A8D98-9984-4EF7-9776-F41B5A50630D}" ShortID="115430921">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="gravel_footsteps-002" ID="{93430E05-06A1-4496-BA0C-AFBD8E044DB4}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.166223515327004"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.566089873875881"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>gravel_footsteps-002.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="454979101"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="gravel_footsteps-002" ID="{93430E05-06A1-4496-BA0C-AFBD8E044DB4}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Footsteps_Gravel-3" ID="{F33BF22D-D67C-4B9F-B2D0-A7EB19530C87}" ShortID="1017050366">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="gravel_footsteps-003" ID="{46337C23-A55C-4583-B4D5-8BB4DF05875A}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.156924297686332"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.57771389592672"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>gravel_footsteps-003.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="239243144"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="gravel_footsteps-003" ID="{46337C23-A55C-4583-B4D5-8BB4DF05875A}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Footsteps_Gravel-4" ID="{F13FAF23-1103-472D-9A3F-69DB5762BC7C}" ShortID="712249798">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="gravel_footsteps-004" ID="{5BE99598-5ABF-4C25-BD56-F5637DCC817A}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.155761895481248"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.58352590695214"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>gravel_footsteps-004.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="294943493"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="gravel_footsteps-004" ID="{5BE99598-5ABF-4C25-BD56-F5637DCC817A}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Footsteps_Gravel-5" ID="{AA3FF254-1A9A-41AC-B1C2-60F1E23CBFFF}" ShortID="893072316">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="gravel_footsteps-006" ID="{97D71EC0-A3DC-43DC-B87A-0AFCAABFFB8A}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.113915416098226"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.563765069465713"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>gravel_footsteps-006.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="583713647"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="gravel_footsteps-006" ID="{97D71EC0-A3DC-43DC-B87A-0AFCAABFFB8A}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Footsteps_Gravel-6" ID="{002380D9-E6EE-4C5D-879A-164E3AF7577C}" ShortID="187500520">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="gravel_footsteps-010" ID="{FE69D826-3B0F-4A3A-BA2E-0505CB4292DB}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.244104463067628"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.518431383467439"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>gravel_footsteps-010.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="1009190396"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="gravel_footsteps-010" ID="{FE69D826-3B0F-4A3A-BA2E-0505CB4292DB}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Footsteps_Gravel-7" ID="{FF1E5DC8-A76D-45F1-B48E-4935B778BE80}" ShortID="919696961">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="gravel_footsteps-011" ID="{0038F5F2-997A-4FB2-8CE5-6CF94E07A25F}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.163898710916836"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.618397973104658"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>gravel_footsteps-011.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="682554231"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="gravel_footsteps-011" ID="{0038F5F2-997A-4FB2-8CE5-6CF94E07A25F}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Footsteps_Gravel-8" ID="{212347F2-76BA-4221-B6F3-D4EF219010CB}" ShortID="849419086">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="gravel_footsteps-012" ID="{785A10B5-D574-4A04-86B3-B2B2CAC662E0}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.129026644764318"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.510294568031851"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>gravel_footsteps-012.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="396576064"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="gravel_footsteps-012" ID="{785A10B5-D574-4A04-86B3-B2B2CAC662E0}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Footsteps_Gravel-9" ID="{1E6B662F-EA3C-4B9F-B5C6-EE1539C26307}" ShortID="501525874">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="gravel_footsteps-027" ID="{AB5810A4-9155-4A7D-882A-14D861BE9E1C}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.134838655789737"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.552141047414873"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>gravel_footsteps-027.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="725502737"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="gravel_footsteps-027" ID="{AB5810A4-9155-4A7D-882A-14D861BE9E1C}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Footsteps_Gravel-10" ID="{98BD9AF7-F33E-4DC9-BCBB-35FB4CC741EA}" ShortID="846695697">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="gravel_footsteps-031" ID="{EB441797-8138-4630-ABCD-265A2DA54887}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.181334743993095"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.546329036389454"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>gravel_footsteps-031.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="356938175"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="gravel_footsteps-031" ID="{EB441797-8138-4630-ABCD-265A2DA54887}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Footsteps_Gravel-11" ID="{BB172F89-8602-444B-8C1A-99CD1DD801CB}" ShortID="591443059">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="gravel_footsteps-034" ID="{9FDA0172-2AC9-4C98-BA01-A549ABA300B8}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.167385917532088"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.611423559874154"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>gravel_footsteps-034.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="92334657"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="gravel_footsteps-034" ID="{9FDA0172-2AC9-4C98-BA01-A549ABA300B8}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Footsteps_Gravel-12" ID="{57040723-FC2E-4930-84B9-82AB08081D83}" ShortID="179737762">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="gravel_footsteps-040" ID="{95B20458-977A-49DE-AF54-64426D2433E9}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.111590611688059"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.578876298131804"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>gravel_footsteps-040.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="1033828981"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="gravel_footsteps-040" ID="{95B20458-977A-49DE-AF54-64426D2433E9}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Footsteps_Gravel-1" ID="{B5F22B51-2C01-4B3D-9B71-4C142D8563AE}" ShortID="822754233">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="gravel_footsteps" ID="{D5F3F71B-D9DD-4E3A-BBD0-016523C06274}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.202257983684606"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.490533730545424"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>gravel_footsteps.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="627651887"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="gravel_footsteps" ID="{D5F3F71B-D9DD-4E3A-BBD0-016523C06274}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+											<ObjectLists/>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Footsteps_Grass" ID="{77329A08-5DD2-45FD-B7B1-3770CFDE384E}" ShortID="515464836">
+											<PropertyList>
+												<Property Name="OverrideEffect" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{6CC331AD-0CAE-481F-BFBC-026CC4944754}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="354"/>
+																	<Property Name="Min" Type="Real64" Value="-354"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-8</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="Effect0">
+													<Custom>
+														<Effect Name="Wwise Parametric EQ (Custom)" ID="{131DFCCB-7A65-47B7-AED9-6283FFA461F5}" ShortID="643205741" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+															<PropertyList>
+																<Property Name="FrequencyBand3" Type="Real32" Value="4660"/>
+																<Property Name="GainBand3" Type="Real32" Value="-11.5"/>
+															</PropertyList>
+														</Effect>
+													</Custom>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="Footsteps_Grass-2" ID="{F6745A84-C2AD-43F3-A818-6F4AE20A1C60}" ShortID="98487085">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Grass_footsteps-003" ID="{E6466FF9-4E36-453E-A53E-7F33EC0FCECD}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.17624916087399"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.535315774331561"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Grass_footsteps-003.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="817022413"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="Grass_footsteps-003" ID="{E6466FF9-4E36-453E-A53E-7F33EC0FCECD}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Footsteps_Grass-3" ID="{F16C4B12-FAC5-401F-B0A4-AB01C02A9B9B}" ShortID="189821717">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Grass_footsteps-004" ID="{45F18FCF-F48C-47E2-B17A-4DE7F8625773}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.128081688336999"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.44007554454251"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Grass_footsteps-004.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="1052622922"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="Grass_footsteps-004" ID="{45F18FCF-F48C-47E2-B17A-4DE7F8625773}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Footsteps_Grass-1" ID="{BC0A7D50-19D2-4666-9C2F-AF69ABD0D9EA}" ShortID="791733891">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Grass_footsteps" ID="{B5BCD6A2-2D0E-40EE-BDF0-ADB36EDB76B5}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.190480459578101"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.598809260857594"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Grass_footsteps.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="477488235"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="Grass_footsteps" ID="{B5BCD6A2-2D0E-40EE-BDF0-ADB36EDB76B5}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+											<ObjectLists/>
+										</RandomSequenceContainer>
+									</ChildrenList>
+									<ObjectLists/>
+									<GroupingInfo>
+										<GroupingBehaviorList>
+											<GroupingBehavior>
+												<ItemRef Name="Footsteps_Grass" ID="{77329A08-5DD2-45FD-B7B1-3770CFDE384E}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Footsteps_Gravel" ID="{4701505C-FD69-4D71-A7C8-227CD81B17AB}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Footsteps_Concrete" ID="{6637C263-C7FE-416E-919B-992AB4D6E0C0}"/>
+											</GroupingBehavior>
+										</GroupingBehaviorList>
+										<GroupingList>
+											<Grouping>
+												<SwitchRef Name="Grass" ID="{798C4D7D-FB3F-43F4-82B2-6B4BDF580D8B}"/>
+												<ItemList>
+													<ItemRef Name="Footsteps_Grass" ID="{77329A08-5DD2-45FD-B7B1-3770CFDE384E}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Gravel" ID="{DA3B087E-FBE5-439A-B01F-748E31E3DA71}"/>
+												<ItemList>
+													<ItemRef Name="Footsteps_Gravel" ID="{4701505C-FD69-4D71-A7C8-227CD81B17AB}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Concrete" ID="{91EA98DC-4AB9-47F8-818D-66098DF694B0}"/>
+												<ItemList>
+													<ItemRef Name="Footsteps_Concrete" ID="{6637C263-C7FE-416E-919B-992AB4D6E0C0}"/>
+												</ItemList>
+											</Grouping>
+										</GroupingList>
+									</GroupingInfo>
+								</SwitchContainer>
+							</ChildrenList>
+						</Folder>
+						<Folder Name="Throwable Objects" ID="{581C08EA-170B-4273-9691-DBFA9A493BBD}" ShortID="669660746">
+							<ChildrenList>
+								<Folder Name="Item Pickup" ID="{722B85E1-4408-4EC3-8879-CA025CBC120F}" ShortID="450848847">
+									<ChildrenList>
+										<RandomSequenceContainer Name="Item_Pickup" ID="{77DE8A74-76DF-41D0-A834-4FD0522FBDB7}" ShortID="106479123">
+											<PropertyList>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{6F6B3245-3D11-4E93-BD07-5346ABF00BB3}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="152"/>
+																	<Property Name="Min" Type="Real64" Value="-152"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="SFX" ID="{DC6803C8-E376-4E53-8874-5A4177EC1378}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="Pickup2" ID="{0ACCA55A-051C-4066-AA16-FFF85876F952}" ShortID="268005099">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Pickup2" ID="{618AFC55-CF64-4FC1-8DB1-84D93E6695E3}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.118740178998429"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.259069481451117"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Pickup2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="304715264"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="Pickup2" ID="{618AFC55-CF64-4FC1-8DB1-84D93E6695E3}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Pickup1" ID="{D6008836-6F22-4F9F-8B12-726D9005BA1A}" ShortID="156189740">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Pickup1" ID="{79281C80-64C6-4C02-98CA-0D9FC451A94A}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.197851335656214"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.376859686964217"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Pickup1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="503986300"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="Pickup1" ID="{79281C80-64C6-4C02-98CA-0D9FC451A94A}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Pickup4" ID="{52E5205D-E2B9-42CF-A96B-D1C24BF216CE}" ShortID="780788365">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Pickup4" ID="{3DDC1817-DF6D-4B0B-938D-80903BDA2144}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.10047531207605"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.189228504409894"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Pickup4.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="229992108"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="Pickup4" ID="{3DDC1817-DF6D-4B0B-938D-80903BDA2144}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Pickup3" ID="{2C2024F5-6B94-4334-A92D-317A339E545B}" ShortID="215346797">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Pickup3" ID="{3C6548C9-8306-4E0C-A8E4-AC0F647C52EC}">
+															<PropertyList>
+																<Property Name="FadeOutDuration" Type="Real64" Value="0.117909472732182"/>
+																<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																<Property Name="TrimEnd" Type="Real64" Value="0.192640828689199"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Pickup3.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="524188673"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="Pickup3" ID="{3C6548C9-8306-4E0C-A8E4-AC0F647C52EC}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+											<ObjectLists/>
+										</RandomSequenceContainer>
+									</ChildrenList>
+								</Folder>
+								<Folder Name="Collision" ID="{6B965452-4B17-4FEF-9A88-2BEB322B3EAA}" ShortID="726898531">
+									<ChildrenList>
+										<RandomSequenceContainer Name="Collision" ID="{9377FFC6-5133-4023-9765-B3E28B45C4CB}" ShortID="294694160">
+											<PropertyList>
+												<Property Name="Lowpass" Type="int16">
+													<ValueList>
+														<Value>20</Value>
+													</ValueList>
+												</Property>
+												<Property Name="Pitch" Type="int32">
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{27E164EF-A449-4C24-B3AE-0980467BB660}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="177"/>
+																	<Property Name="Min" Type="Real64" Value="-25"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="ThrowSFX2" ID="{59D4CAAE-DCA8-4AE6-A31A-854DA888D357}" ShortID="151555276">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="ThrowSFX2" ID="{DC35ED20-1912-4C2A-AE8F-893949504970}">
+															<Language>SFX</Language>
+															<AudioFile>ThrowSFX2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="58739437"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="ThrowSFX2" ID="{DC35ED20-1912-4C2A-AE8F-893949504970}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="ThrowSFX3" ID="{D8854B1B-039C-4F15-96C1-A82A29517D50}" ShortID="95245728">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="ThrowSFX3" ID="{D82A92CA-7C7F-474F-941D-6DB0C806665C}">
+															<Language>SFX</Language>
+															<AudioFile>ThrowSFX3.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="622381060"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="ThrowSFX3" ID="{D82A92CA-7C7F-474F-941D-6DB0C806665C}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="ThrowSFX4" ID="{AAE06B27-9190-4622-9A67-089E98ED056A}" ShortID="369887360">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="ThrowSFX4" ID="{BD8FA3B5-F45D-41A3-938E-2C3639947D10}">
+															<Language>SFX</Language>
+															<AudioFile>ThrowSFX4.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="533891964"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="ThrowSFX4" ID="{BD8FA3B5-F45D-41A3-938E-2C3639947D10}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+											<ObjectLists/>
+										</RandomSequenceContainer>
+									</ChildrenList>
+								</Folder>
 							</ChildrenList>
 						</Folder>
 					</ChildrenList>

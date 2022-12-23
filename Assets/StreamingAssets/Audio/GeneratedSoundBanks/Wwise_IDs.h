@@ -14,10 +14,13 @@ namespace AK
     namespace EVENTS
     {
         static const AkUniqueID PLAY_BIRD_CHIRPS = 765543017U;
+        static const AkUniqueID PLAY_BIRD_FLIGHT = 1656044640U;
+        static const AkUniqueID PLAY_COLLISION = 1553219250U;
         static const AkUniqueID PLAY_FOOTSTEPS = 3854155799U;
+        static const AkUniqueID PLAY_ITEM_PICKUP = 2652605998U;
         static const AkUniqueID PLAY_MENU_MUSIC = 2228153899U;
-        static const AkUniqueID PLAY_PROXLAMP_DRAFT1_CLICK = 2579192193U;
-        static const AkUniqueID PLAY_PROXLAMP_DRAFT1_V2 = 1416161311U;
+        static const AkUniqueID PLAY_PROXLAMP_BUZZ = 4187993337U;
+        static const AkUniqueID PLAY_PROXLAMP_CLICK = 1462214242U;
         static const AkUniqueID PLAY_SCENE1 = 1104522247U;
         static const AkUniqueID PLAY_SCENE2 = 1104522244U;
         static const AkUniqueID PLAY_SCENE3 = 1104522245U;
@@ -53,7 +56,7 @@ namespace AK
         static const AkUniqueID RESET_PLAYLIST_SCENE11 = 532960956U;
         static const AkUniqueID RESET_PLAYLIST_SCENE12 = 532960959U;
         static const AkUniqueID STOP_MENU_MUSIC = 3945748993U;
-        static const AkUniqueID STOP_PROXLAMP_DRAFT1_V2 = 2594172909U;
+        static const AkUniqueID STOP_PROXLAMP_BUZZ = 1790680011U;
         static const AkUniqueID STOP_SECRET_MUSIC = 3052723240U;
         static const AkUniqueID STOP_STEALTH_MUSIC = 3876103401U;
     } // namespace EVENTS
