@@ -148,7 +148,7 @@ public class MenuPingController : AbstractPingController
     {
         if (!_radialMenuIsSetActive) return;
         ActivateRadialMenu();
-        //ConstrainMouse();
+        ConstrainMouse();
 
     }
 
@@ -156,6 +156,8 @@ public class MenuPingController : AbstractPingController
 
     private void ConstrainMouse()
     {
+        if (Time.timeScale <= 0) return;
+        
         Vector2 screenCenter = new Vector2(Screen.width / 2,Screen.height / 2);
         Vector2 mousePosition = Mouse.current.position.ReadValue();
 
