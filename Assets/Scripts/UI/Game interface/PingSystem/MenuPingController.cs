@@ -1,6 +1,7 @@
 using System;
 using Cinemachine;
 using PlayerCharacter.Movement;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
@@ -65,7 +66,7 @@ public class MenuPingController : AbstractPingController
     /// In here is the Text object from the cancel option.
     /// </summary>
     [Tooltip("The Text object for the cancel option.")]
-    [SerializeField] private Text _cancel;
+    [SerializeField] private GameObject _cancel;
 
     /// <summary>
     /// Vector2 variable that stores the input values of the mouse.
@@ -125,6 +126,8 @@ public class MenuPingController : AbstractPingController
 
     private CinemachineCore.AxisInputDelegate _cameraInput;
 
+    private Image _image;
+
     /// <summary>
     /// De-Activates the radial menu and initializes the input events.
     /// </summary>
@@ -134,6 +137,8 @@ public class MenuPingController : AbstractPingController
         _cancelled = NotCancelled;
         InputBehaviour.Instance.OnPingMenuEvent += OnMenuPing;
         InputBehaviour.Instance.OnPingQuickEvent += OnLeftMouseButton;
+        
+        _image = _cancel.GetComponent<Image>();
     }
 
     /// <summary>
@@ -143,7 +148,7 @@ public class MenuPingController : AbstractPingController
     {
         if (!_radialMenuIsSetActive) return;
         ActivateRadialMenu();
-        ConstrainMouse();
+        //ConstrainMouse();
 
     }
 
@@ -207,8 +212,12 @@ public class MenuPingController : AbstractPingController
     /// </summary>
     private void ControlSegmentHoveredOverMiddle()
     {
-        _cancel.color = _radialMenuCancel;
-        _highlightedOption.SetActive(false);
+        _image.color = _radialMenuCancel;
+
+
+           _highlightedOption.SetActive(false);
+        
+        //image.GetComponent<Image>().color = new Color32(255,255,225,100);
 
         foreach (var action in _options)
         {
@@ -221,7 +230,7 @@ public class MenuPingController : AbstractPingController
     /// </summary>
     private void ControlSegmentHoveredOutside(float angle)
     {
-        _cancel.color = Color.white;
+        _image.color = Color.white;
         for (var i = 0; i < _options.Length; i++)
         {
             _degreesPerSegment = DegreesFull / _options.Length;
