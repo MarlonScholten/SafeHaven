@@ -103,6 +103,19 @@ public class PatrolState : MonoBehaviour
     /// </summary>
     private bool
         _timeToForgetCommunicationWithEnemyCoroutineIsRunning;
+    
+    /// <summary>
+    /// A coroutine that is used to cool down communication.
+    /// </summary>
+    private IEnumerator
+        _communicateCooldownCoroutine;
+
+    /// <summary>
+    /// A bool that checks if the communicate cooldown coroutine is running.
+    /// </summary>
+    private bool
+        _communicateCooldownCoroutineIsRunning;
+    
 
     /// <summary>
     /// A event that other can call to make the enemy hear a sound.
@@ -119,8 +132,30 @@ public class PatrolState : MonoBehaviour
     /// </summary>
     [NonSerialized] private StartCommuncicationAlert _startCommunicationAlert;
 
+    /// <summary>
+    /// a bool that checks if communication is allowed.
+    /// </summary>
     private bool _communicateWithOtherEnemy;
+    
+    /// <summary>
+    /// The GameObject to communicate with.
+    /// </summary>
     private GameObject _communicateTowards;
+    
+    /// <summary>
+    /// The communicate1 animation bool hash
+    /// </summary>
+    private static readonly int s_communicate1 = Animator.StringToHash("Communicate1");
+    
+    /// <summary>
+    /// The communicate2 animation bool hash
+    /// </summary>
+    private static readonly int s_communicate2 = Animator.StringToHash("Communicate2");
+    
+    /// <summary>
+    /// The value to determine which animation to play
+    /// </summary>
+    private int _communicateAnimation = 1; // the animation that is played when communicating
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -129,6 +164,13 @@ public class PatrolState : MonoBehaviour
     {
         _stateManager = GetComponent<EnemyAiStateManager>();
         _stateManager.navMeshAgent = GetComponent<NavMeshAgent>();
+    }
+
+    /// <summary>
+    /// Enter patrol state
+    /// </summary>
+    public void Enter_Patrol()
+    {        
         HeardASoundEvent ??= new HeardASoundEvent();
         HeardASoundEvent.AddListener(HeardASoundFromPlayer);
 
@@ -137,20 +179,14 @@ public class PatrolState : MonoBehaviour
 
         _startCommunicationAlert ??= new StartCommuncicationAlert();
         _startCommunicationAlert.AddListener(StartCommunicating);
-    }
-
-    /// <summary>
-    /// Enter patrol state
-    /// </summary>
-    public void Enter_Patrol()
-    {
+        _stateManager.navMeshAgent.speed = _stateManager.defaultSpeed;
         //shows the current state as text above the enemy when this is enabled in the inspector.
         if (_stateManager.enemyAiScriptableObject.showCurrentState)
         {
             _stateManager.textMesh.text = "Patrol";
             _stateManager.textMesh.color = Color.green;
         }
-
+        CooldownCommunication(); // start the cooldown for communication to prevent immediate communication after investigating or chasing
         _stateManager.alertedBySound = false;
         _stateManager.alertedByGuard = false;
         _stateManager.alertedBySound = false;
@@ -158,7 +194,7 @@ public class PatrolState : MonoBehaviour
         DetermineNextWaypoint();
         // TODO: Play walk animation
     }
-
+    
     /// <summary>
     /// Update patrol state
     /// </summary>
@@ -215,8 +251,8 @@ public class PatrolState : MonoBehaviour
     {
         // if the enemy encounters another enemy, face the enemy, wait a certain amount of time and then continue patrol.
 
-        if (!_communicateWithOtherEnemy && _communicateTowards == null) CheckIfOtherEnemyIsInVision();
-        if (_communicateWithOtherEnemy && _communicateTowards != null)
+        if (!_communicateWithOtherEnemy && _communicateTowards == null && !_communicateCooldownCoroutineIsRunning) CheckIfOtherEnemyIsInVision();
+        if (_communicateWithOtherEnemy && _communicateTowards != null && !_communicateCooldownCoroutineIsRunning)
             Communicate(_communicateTowards.transform.position);
         // If the enemy is waiting at the waypoint, lookAround and determine the next waypoint after investigating the current one.
         if (_stateManager.CheckIfEnemyIsAtWaypoint())
@@ -283,6 +319,7 @@ public class PatrolState : MonoBehaviour
         _stateManager.navMeshAgent.isStopped = false;
         _communicateTowards = null;
         _numberOfSmallSoundsHeard = 0;
+        _communicateAnimation = 0;
     }
 
     /// <summary>
@@ -361,8 +398,11 @@ public class PatrolState : MonoBehaviour
     /// </summary>
     private void AlertedByGuard(Vector3 location)
     {
+        _stateManager.alertedBySound = false;
+        _stateManager.alertedByVision = false;
         _stateManager.alertedByGuard = true;
         _stateManager.recievedLocationFromGuard = location;
+        Debug.Log("Alerted by Guard" + gameObject.name);
     }
 
     /// <summary>
@@ -384,6 +424,7 @@ public class PatrolState : MonoBehaviour
         if (hit.collider.gameObject != enemy.gameObject) return;
         if (enemy.gameObject == _communicateTowards)
             return; // Check if the enemy is already communicating with the collided enemy
+        _communicateAnimation = 2;
         StartCommunicating(enemy.gameObject);
         enemy.GetComponent<PatrolState>()._startCommunicationAlert.Invoke(gameObject);
     }
@@ -398,9 +439,15 @@ public class PatrolState : MonoBehaviour
         _communicateWithOtherEnemy = true;
         _stateManager.navMeshAgent.isStopped = true;
         _communicateWithOtherEnemyCoroutineIsRunning = true;
+        
+        _stateManager.animator.SetBool(s_communicate1, _communicateAnimation == 1);
+        _stateManager.animator.SetBool(s_communicate2, _communicateAnimation == 2);
         _communicateWithOtherEnemyCoroutine = _stateManager.CallFunctionAfterSeconds(
             _stateManager.enemyAiScriptableObject.CommunicationTime, () =>
             {
+                _stateManager.animator.SetBool(s_communicate1, false);
+                _stateManager.animator.SetBool(s_communicate2, false);
+                _communicateAnimation = 1;
                 _communicateWithOtherEnemyCoroutineIsRunning = false;
                 _communicateWithOtherEnemy = false;
                 _stateManager.navMeshAgent.isStopped = false;
@@ -434,4 +481,16 @@ public class PatrolState : MonoBehaviour
         return _stateManager.wayPoints[_stateManager.currentWpIndex].GetComponent<EnemyWayPointController>()
             .isWaitingWayPoint;
     }
+    
+    /// <summary>
+    /// Cool down communication with other enemy.
+    /// </summary>
+    private void CooldownCommunication()
+    {
+        _communicateCooldownCoroutine =
+            _stateManager.CallFunctionAfterSeconds(3, () => _communicateCooldownCoroutineIsRunning = false);
+        _communicateCooldownCoroutineIsRunning = true;
+        StartCoroutine(_communicateCooldownCoroutine);
+    }
+
 }
