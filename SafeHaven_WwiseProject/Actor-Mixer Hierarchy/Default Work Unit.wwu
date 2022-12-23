@@ -2639,6 +2639,378 @@
 						</Folder>
 					</ChildrenList>
 				</Folder>
+				<Folder Name="Bird Sounds" ID="{FA5F8CFC-80AE-4C77-B8B9-67BE7A829B99}" ShortID="711541868">
+					<ChildrenList>
+						<Folder Name="Chirps" ID="{2639F9F6-7AE5-4231-A804-8F9C98DBF665}" ShortID="214358001">
+							<ChildrenList>
+								<RandomSequenceContainer Name="Bird Chirps" ID="{DED55BB2-4A4D-4673-8A47-791F6EABD67C}" ShortID="33450565">
+									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{25DDDD25-BCBB-4484-9F89-C5D19825F8F7}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="152"/>
+															<Property Name="Min" Type="Real64" Value="-101"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="SFX" ID="{DC6803C8-E376-4E53-8874-5A4177EC1378}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="Bird_Chirp1" ID="{951D01CB-52FF-438A-802D-5471F13AD465}" ShortID="167573936">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="BirdSFX1" ID="{22B464C7-B99A-4756-A6F8-92372744AF13}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.142033398725344"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.698330877066274"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>BirdSFX1.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="957084106"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="BirdSFX1" ID="{22B464C7-B99A-4756-A6F8-92372744AF13}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Bird_Chirp2" ID="{7AAB8AA7-F8AA-406C-9B03-630A3F486112}" ShortID="181854972">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="BirdSFX2" ID="{373EB065-C86A-4FA9-8EF6-BAA57F0D7EEB}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.10163252292787"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.616885778701724"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>BirdSFX2.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="272281193"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="BirdSFX2" ID="{373EB065-C86A-4FA9-8EF6-BAA57F0D7EEB}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Bird_Chirp3" ID="{11423B1C-ACDB-4337-B596-6A4721A40F8A}" ShortID="478484082">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="BirdSFX4" ID="{C4DDDDC2-4128-4F3A-A51E-539633556F72}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.105545567820624"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.440449773405297"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>BirdSFX4.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="679559396"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="BirdSFX4" ID="{C4DDDDC2-4128-4F3A-A51E-539633556F72}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Bird_Chirp4" ID="{DA558566-848F-4318-8201-B048B298A357}" ShortID="197871139">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="BirdSFX5" ID="{914ACCED-AFFC-40A2-B93C-3FAF3F8F3096}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.0654437384709981"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.407932636469222"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>BirdSFX5.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="389643100"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="BirdSFX5" ID="{914ACCED-AFFC-40A2-B93C-3FAF3F8F3096}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Bird_Chirp5" ID="{B63663B6-9E62-4DD0-A4F5-57D13A220C67}" ShortID="160335555">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="BirdSFX8" ID="{221B3A80-25D8-4C20-B43B-2A494FCBCDC6}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.0860832137733142"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.368005738880918"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>BirdSFX8.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="157710287"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="BirdSFX8" ID="{221B3A80-25D8-4C20-B43B-2A494FCBCDC6}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Bird_Chirp6" ID="{E989047E-0D65-4FE2-AD5E-136415318DB0}" ShortID="332579302">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="BirdSFX11" ID="{8D554B07-7219-4E94-A145-7F2FA09730A5}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.130379403794038"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.851457330899839"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>BirdSFX11.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="467669925"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="BirdSFX11" ID="{8D554B07-7219-4E94-A145-7F2FA09730A5}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Bird_Chirp7" ID="{9D33A841-CB69-4F96-8205-5CB4A20F2424}" ShortID="493597814">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="BirdSFX13" ID="{8051F7D5-8725-463F-81C5-F9F390B5F5E3}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.172166427546628"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.604734576757533"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>BirdSFX13.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="1027037673"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="BirdSFX13" ID="{8051F7D5-8725-463F-81C5-F9F390B5F5E3}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Bird_Chirp8" ID="{DFD8027B-84FC-4292-819C-5E13D1E5E487}" ShortID="467537036">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="BirdSFX14" ID="{500199C8-D574-409E-983D-0470EA6D2BAC}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.189383070301291"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="1.00430416068866"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>BirdSFX14.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="647611330"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="BirdSFX14" ID="{500199C8-D574-409E-983D-0470EA6D2BAC}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Bird_Chirp9" ID="{76A46CDB-E8CE-4EEE-8C1A-8716D0DF588A}" ShortID="374657072">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="BirdSFX16" ID="{0D9F65BE-C919-462D-AA68-DA0A930E0E43}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.252823080451693"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.998124453033246"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>BirdSFX16.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="1070252134"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="BirdSFX16" ID="{0D9F65BE-C919-462D-AA68-DA0A930E0E43}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Bird_Chirp10" ID="{7A6B050A-0F77-4AF8-9BC6-F5093AB09EF1}" ShortID="839305053">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="BirdSFX17" ID="{D4A14294-50A7-431C-8B42-F8AC15592627}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.118364418938307"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.365853658536585"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>BirdSFX17.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="998824188"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="BirdSFX17" ID="{D4A14294-50A7-431C-8B42-F8AC15592627}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Bird_Chirp11" ID="{7A60372D-70FD-4C39-8BF4-98C0D540451E}" ShortID="486989300">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="BirdSFX20" ID="{60F3D203-AD09-4E08-BF94-A86F908BF3AD}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.148856095283642"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.352024549657261"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>BirdSFX20.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="811949138"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="BirdSFX20" ID="{60F3D203-AD09-4E08-BF94-A86F908BF3AD}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Bird_Chirp12" ID="{9D90DE28-18FF-446B-9904-EDB3B4678CBF}" ShortID="906983165">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="BirdSFX22" ID="{F7CB36C5-C65D-47AC-9A4F-FA7274481E28}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.250356044856967"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.963491445358632"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>BirdSFX22.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="307038625"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="BirdSFX22" ID="{F7CB36C5-C65D-47AC-9A4F-FA7274481E28}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<ObjectLists/>
+								</RandomSequenceContainer>
+							</ChildrenList>
+						</Folder>
+					</ChildrenList>
+				</Folder>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>
