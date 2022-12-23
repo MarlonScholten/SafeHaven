@@ -47,6 +47,11 @@ The changelog for what was changed and added for every sprint.
 - [fix] Brother can stand still again
 - [fix] compile error
 
+### Design
+- Alleyway props placed in level
+- Scripted events placements with voicelines
+- monke
+
 ### Sound
 - Voice Lines
 - Removed Old sounds and test sounds
