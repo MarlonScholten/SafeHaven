@@ -47,6 +47,32 @@ The changelog for what was changed and added for every sprint.
 - [fix] Brother can stand still again
 - [fix] compile error
 
+### Art
+- Garbage bags
+- Flowers
+- Trees
+- bushes
+- Textured small stuff/trash and prefab smallstuff
+- Textured buildings and prefab buildings
+- Walls for park
+- New dumpster with textures
+- Nova animations
+- Samoya animations
+- Soldier animations
+- Bird animations
+- Nova texture
+- Samoya texture
+- New soldier texture
+- Bird model and texture
+- New gazebo bridge
+- Gazebo vines
+- Bridge vines
+- Chair model and texture
+- Bench model and texture
+- Under construction buildings
+- Protest/metal barricade
+- Rocks
+
 ### Design
 - Alleyway props placed in level
 - Scripted events placements with voicelines
