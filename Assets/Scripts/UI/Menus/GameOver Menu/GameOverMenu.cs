@@ -24,7 +24,7 @@ using UnityEngine.UI;
 ///         <term>The prefab contains all the information needed to handle the state of the <see cref="GameOverMenu"/>.</term>
 ///     </item>
 /// </list>
-public class GameOverMenu : MonoBehaviour
+public class GameOverMenu : UIScreen
 {
     /// <summary>
     /// Sets and returns the corresponding <see cref="TMP_Text"/> element, which displays the game over message.
@@ -58,13 +58,16 @@ public class GameOverMenu : MonoBehaviour
 
     private EnemyStateWatcher _enemyStateWatcher;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         _enemyStateWatcher = FindObjectOfType<EnemyStateWatcher>();
     }
 
     private void Start()
     {
+        Pause();
+
         _retry.onClick.AddListener(OnRetry);
         _return.onClick.AddListener(OnReturn);
 
