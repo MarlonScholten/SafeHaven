@@ -106,8 +106,7 @@ public class EnemyAiStateManager : MonoBehaviour
     [NonSerialized] public Animator animator; // Animator component
     private static readonly int ForwardVelocity = Animator.StringToHash("forwardVelocity"); // Animator parameter for forward velocity
     
-
-    private EnemyStateWatcher _enemyStateWatcher;
+    private EnemyStateWatcher _enemyStateWatcher; // EnemyStateWatcher component
 
 
     private void Awake()
@@ -255,10 +254,10 @@ public class EnemyAiStateManager : MonoBehaviour
     /// <summary>
     /// This method checks if the enemy can reach the player/brother position.
     /// </summary>
-    public void CheckPositionReachable(Vector3 playerPosition)
+    public void CheckPositionReachable(Vector3 position)
     {
         var path = new NavMeshPath();
-        navMeshAgent.CalculatePath(playerPosition, path);
+        navMeshAgent.CalculatePath(position, path);
         if (path.status is NavMeshPathStatus.PathPartial)
         {
             targetWpLocation = path.corners.Last();
@@ -268,8 +267,8 @@ public class EnemyAiStateManager : MonoBehaviour
         }
         else
         {
-            targetWpLocation = playerPosition;
-            navMeshAgent.SetDestination(playerPosition);
+            targetWpLocation = position;
+            navMeshAgent.SetDestination(position);
         }
     }
 

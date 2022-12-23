@@ -40,8 +40,10 @@ public class InvestigateState : MonoBehaviour
     private bool _investigateCoroutineIsRunning; // a bool that is used to check if the coroutine is running
     private IEnumerator _waitingAtWaypointDuringInvestigationCoroutine; // a coroutine that is used to wait for a certain amount of time before going to the next investigate waypoint
     private bool _waitingAtWaypointDuringInvestigationCoroutineIsRunning; // a bool that is used to check if the coroutine is running
-    private SoundManager.EnemyStateWatcher _enemyStateWatcher;
-    private static readonly int InvestigateHash = Animator.StringToHash("Investigate");
+    private IEnumerator _preventCheckIfEnemyIsStuckCoroutine; // a coroutine that is used to check if the enemy is stuck
+    private bool _preventCheckIfEnemyIsStuckCoroutineIsRunning; // a bool that is used to check if the coroutine is running
+    private SoundManager.EnemyStateWatcher _enemyStateWatcher; // a reference to the enemy state watcher
+    private static readonly int InvestigateHash = Animator.StringToHash("Investigate"); // a hash of the investigate animation
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -64,11 +66,13 @@ public class InvestigateState : MonoBehaviour
             _stateManager.textMesh.text = "Investigate";
             _stateManager.textMesh.color = Color.magenta;
         }
-
         if (_stateManager.alertedBySound) _stateManager.CheckPositionReachable(_stateManager.locationOfNoise);
         else if(_stateManager.alertedByVision) _stateManager.CheckPositionReachable(_stateManager.spottedPlayerLastPosition);
         else if(_stateManager.alertedByGuard) _stateManager.CheckPositionReachable(_stateManager.recievedLocationFromGuard);
-
+        _preventCheckIfEnemyIsStuckCoroutine =
+            _stateManager.CallFunctionAfterSeconds(3, () => _preventCheckIfEnemyIsStuckCoroutineIsRunning = false);
+        _preventCheckIfEnemyIsStuckCoroutineIsRunning = true;
+        StartCoroutine(_preventCheckIfEnemyIsStuckCoroutine);
         _enemyStateWatcher.IsInvestegating(true);
     }
     
@@ -97,7 +101,7 @@ public class InvestigateState : MonoBehaviour
         }
             
         //Check if navmesh agent is still moving
-        if (!_stateManager.waitingAtWaypoint && _stateManager.navMeshAgent.velocity.magnitude < 0.1f)
+        if (!_stateManager.waitingAtWaypoint && _stateManager.navMeshAgent.velocity.magnitude < 0.1f && !_preventCheckIfEnemyIsStuckCoroutineIsRunning)
         {
             _stateManager.CalculateInvestigateLocation(transform.position);
         }
@@ -152,6 +156,9 @@ public class InvestigateState : MonoBehaviour
         //Stop the waiting at waypoint coroutine
         if(_waitingAtWaypointDuringInvestigationCoroutineIsRunning)StopCoroutine(_waitingAtWaypointDuringInvestigationCoroutine);
         _waitingAtWaypointDuringInvestigationCoroutineIsRunning = false;
+        //Stop the prevent check if enemy is stuck coroutine
+        if(_preventCheckIfEnemyIsStuckCoroutineIsRunning)StopCoroutine(_preventCheckIfEnemyIsStuckCoroutine);
+        _preventCheckIfEnemyIsStuckCoroutineIsRunning = false;
 
         _enemyStateWatcher.IsInvestegating(false);
         _stateManager.animator.SetBool(InvestigateHash, false);
