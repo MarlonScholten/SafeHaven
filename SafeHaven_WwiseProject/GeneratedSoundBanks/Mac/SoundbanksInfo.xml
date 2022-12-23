@@ -43,12 +43,64 @@
 				<Event Id="3945748993" Name="Stop_Menu_Music" ObjectPath="\Events\Default Work Unit\Menu\Music\Stop_Menu_Music" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 			</IncludedEvents>
 		</SoundBank>
-		<SoundBank Id="3161908922" Language="English(US)" Hash="1207641520">
+		<SoundBank Id="3161908922" Language="English(US)" Hash="2495229396">
 			<ObjectPath>\SoundBanks\Default Work Unit\Main</ObjectPath>
 			<ShortName>Main</ShortName>
 			<Path>English(US)\Main.bnk</Path>
 			<IncludedEvents>
-				<Event Id="3854155799" Name="Play_Footsteps" ObjectPath="\Events\Default Work Unit\Main\Footsteps\Play_Footsteps" DurationType="OneShot" DurationMin="0.358693" DurationMax="0.813201">
+				<Event Id="765543017" Name="Play_Bird_Chirps" ObjectPath="\Events\Default Work Unit\Main\SFX\BirdChirps\Play_Bird_Chirps" DurationType="OneShot" DurationMin="0.322435" DurationMax="1.064638">
+					<IncludedMemoryFiles>
+						<File Id="157710287" Language="SFX">
+							<ShortName>BirdSFX8.wav</ShortName>
+							<Path>SFX\BirdSFX8_8C8205D9.wem</Path>
+						</File>
+						<File Id="272281193" Language="SFX">
+							<ShortName>BirdSFX2.wav</ShortName>
+							<Path>SFX\BirdSFX2_6689DCF8.wem</Path>
+						</File>
+						<File Id="307038625" Language="SFX">
+							<ShortName>BirdSFX22.wav</ShortName>
+							<Path>SFX\BirdSFX22_7047E5BC.wem</Path>
+						</File>
+						<File Id="389643100" Language="SFX">
+							<ShortName>BirdSFX5.wav</ShortName>
+							<Path>SFX\BirdSFX5_46901A37.wem</Path>
+						</File>
+						<File Id="467669925" Language="SFX">
+							<ShortName>BirdSFX11.wav</ShortName>
+							<Path>SFX\BirdSFX11_D8C2C34A.wem</Path>
+						</File>
+						<File Id="647611330" Language="SFX">
+							<ShortName>BirdSFX14.wav</ShortName>
+							<Path>SFX\BirdSFX14_BA982711.wem</Path>
+						</File>
+						<File Id="679559396" Language="SFX">
+							<ShortName>BirdSFX4.wav</ShortName>
+							<Path>SFX\BirdSFX4_365DC658.wem</Path>
+						</File>
+						<File Id="811949138" Language="SFX">
+							<ShortName>BirdSFX20.wav</ShortName>
+							<Path>SFX\BirdSFX20_F240394F.wem</Path>
+						</File>
+						<File Id="957084106" Language="SFX">
+							<ShortName>BirdSFX1.wav</ShortName>
+							<Path>SFX\BirdSFX1_673D8BFC.wem</Path>
+						</File>
+						<File Id="998824188" Language="SFX">
+							<ShortName>BirdSFX17.wav</ShortName>
+							<Path>SFX\BirdSFX17_FA4940FE.wem</Path>
+						</File>
+						<File Id="1027037673" Language="SFX">
+							<ShortName>BirdSFX13.wav</ShortName>
+							<Path>SFX\BirdSFX13_B7386E28.wem</Path>
+						</File>
+						<File Id="1070252134" Language="SFX">
+							<ShortName>BirdSFX16.wav</ShortName>
+							<Path>SFX\BirdSFX16_98876185.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3854155799" Name="Play_Footsteps" ObjectPath="\Events\Default Work Unit\Main\SFX\Footsteps\Play_Footsteps" DurationType="OneShot" DurationMin="0.358693" DurationMax="0.813201">
 					<IncludedMemoryFiles>
 						<File Id="92334657" Language="SFX">
 							<ShortName>gravel_footsteps-034.wav</ShortName>
@@ -187,7 +239,7 @@
 						</SwitchContainer>
 					</SwitchContainers>
 				</Event>
-				<Event Id="2579192193" Name="Play_Proxlamp_Draft1_Click" ObjectPath="\Events\Default Work Unit\Main\ProximityLamp\Play_Proxlamp_Draft1_Click" MaxAttenuation="6." DurationType="OneShot" DurationMin="0.279931" DurationMax="0.421121">
+				<Event Id="2579192193" Name="Play_Proxlamp_Draft1_Click" ObjectPath="\Events\Default Work Unit\Main\SFX\ProximityLamp\Play_Proxlamp_Draft1_Click" MaxAttenuation="6." DurationType="OneShot" DurationMin="0.279931" DurationMax="0.421121">
 					<IncludedMemoryFiles>
 						<File Id="766224591" Language="SFX">
 							<ShortName>Proxlamp_Draft1_Click.wav</ShortName>
@@ -195,7 +247,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="1416161311" Name="Play_Proxlamp_Draft1_V2" ObjectPath="\Events\Default Work Unit\Main\ProximityLamp\Play_Proxlamp_Draft1_V2" MaxAttenuation="6." DurationType="Infinite">
+				<Event Id="1416161311" Name="Play_Proxlamp_Draft1_V2" ObjectPath="\Events\Default Work Unit\Main\SFX\ProximityLamp\Play_Proxlamp_Draft1_V2" MaxAttenuation="6." DurationType="Infinite">
 					<IncludedMemoryFiles>
 						<File Id="698105604" Language="SFX">
 							<ShortName>Proxlamp_Draft1.wav</ShortName>
@@ -431,35 +483,43 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="674798631" Name="Play_Stealth_Music" ObjectPath="\Events\Default Work Unit\Main\Music\Play_Stealth_Music" DurationType="Infinite">
+				<Event Id="2782362570" Name="Play_Secret_Music" ObjectPath="\Events\Default Work Unit\Main\Music\Top Secret Monkey Music\Play_Secret_Music" DurationType="OneShot" DurationMin="0." DurationMax="0.">
 					<IncludedMemoryFiles>
-						<File Id="47949605" Language="SFX">
-							<ShortName>Stealth Music\Music_Stealth_Hidden.wav</ShortName>
-							<Path>SFX\Stealth Music\Music_Stealth_Hidden_D79FB2B7.wem</Path>
+						<File Id="742268224" Language="SFX">
+							<ShortName>Music_Secret.wav</ShortName>
+							<Path>SFX\Music_Secret_D79FB2B7.wem</Path>
 						</File>
-						<File Id="649488522" Language="SFX">
-							<ShortName>Stealth Music\Music_Stealth_Caution.wav</ShortName>
-							<Path>SFX\Stealth Music\Music_Stealth_Caution_D79FB2B7.wem</Path>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="674798631" Name="Play_Stealth_Music" ObjectPath="\Events\Default Work Unit\Main\Music\Stealth Music\Play_Stealth_Music" DurationType="Infinite">
+					<IncludedMemoryFiles>
+						<File Id="81963127" Language="SFX">
+							<ShortName>Music_Alert_130bpm_4-4.wav</ShortName>
+							<Path>SFX\Music_Alert_130bpm_4-4_D79FB2B7.wem</Path>
 						</File>
-						<File Id="822749122" Language="SFX">
-							<ShortName>Stealth Music\Music_Stealth_Alerted.wav</ShortName>
-							<Path>SFX\Stealth Music\Music_Stealth_Alerted_D79FB2B7.wem</Path>
+						<File Id="143674234" Language="SFX">
+							<ShortName>Music_Caution_130bpm_4-4.wav</ShortName>
+							<Path>SFX\Music_Caution_130bpm_4-4_D79FB2B7.wem</Path>
+						</File>
+						<File Id="343727426" Language="SFX">
+							<ShortName>Music_Sneaking_130bpm_4-4.wav</ShortName>
+							<Path>SFX\Music_Sneaking_130bpm_4-4_D79FB2B7.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 					<SwitchContainers>
 						<SwitchContainer SwitchValue="{3F7F1069-6274-4F54-9437-66BE22E816A2}">
 							<Media>
-								<File Id="822749122"/>
+								<File Id="81963127"/>
 							</Media>
 						</SwitchContainer>
 						<SwitchContainer SwitchValue="{875FE109-C103-43BD-AB77-38650BC64823}">
 							<Media>
-								<File Id="649488522"/>
+								<File Id="143674234"/>
 							</Media>
 						</SwitchContainer>
 						<SwitchContainer SwitchValue="{FE69A076-0BC3-49DC-9A9F-3E7C4EAC2DC5}">
 							<Media>
-								<File Id="47949605"/>
+								<File Id="343727426"/>
 							</Media>
 						</SwitchContainer>
 					</SwitchContainers>
@@ -480,8 +540,9 @@
 				<Event Id="335394867" Name="Reset_Playlist_Scene8_4" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene8\Scene8-4\Reset_Playlist_Scene8_4" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 				<Event Id="335394866" Name="Reset_Playlist_Scene8_5" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene8\Scene8-5\Reset_Playlist_Scene8_5" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 				<Event Id="1372183383" Name="Reset_Playlist_Scene9" ObjectPath="\Events\Default Work Unit\Main\Voice Over\Sequences Playlists\Scene9\Reset_Playlist_Scene9" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="2594172909" Name="Stop_Proxlamp_Draft1_V2" ObjectPath="\Events\Default Work Unit\Main\ProximityLamp\Stop_Proxlamp_Draft1_V2" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="3876103401" Name="Stop_Stealth_Music" ObjectPath="\Events\Default Work Unit\Main\Music\Stop_Stealth_Music" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
+				<Event Id="2594172909" Name="Stop_Proxlamp_Draft1_V2" ObjectPath="\Events\Default Work Unit\Main\SFX\ProximityLamp\Stop_Proxlamp_Draft1_V2" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
+				<Event Id="3052723240" Name="Stop_Secret_Music" ObjectPath="\Events\Default Work Unit\Main\Music\Top Secret Monkey Music\Stop_Secret_Music" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
+				<Event Id="3876103401" Name="Stop_Stealth_Music" ObjectPath="\Events\Default Work Unit\Main\Music\Stealth Music\Stop_Stealth_Music" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 			</IncludedEvents>
 			<StateGroups>
 				<StateGroup Id="2413224833" Name="StealthState" ObjectPath="\States\Default Work Unit\StealthState" GUID="{9432486D-1B14-4435-8AEB-491A1FBC3828}">
