@@ -23,7 +23,7 @@
 				<GameParameter Id="4179668880" Name="Master_Volume" ObjectPath="\Game Parameters\Default Work Unit\Master_Volume"/>
 			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="2607556080" Language="SFX" Hash="2953940437">
+		<SoundBank Id="2607556080" Language="SFX" Hash="2321262517">
 			<ObjectPath>\SoundBanks\Default Work Unit\Menu</ObjectPath>
 			<ShortName>Menu</ShortName>
 			<Path>Menu.bnk</Path>
@@ -37,6 +37,22 @@
 						<File Id="538199002" Language="SFX">
 							<ShortName>MenuTheme-Loop.wav</ShortName>
 							<Path>SFX\MenuTheme-Loop_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2553873617" Name="Play_MenuSFX1" ObjectPath="\Events\Default Work Unit\Menu\SFX\Play_MenuSFX1" DurationType="OneShot" DurationMin="0.557262" DurationMax="0.557262">
+					<IncludedMemoryFiles>
+						<File Id="754064771" Language="SFX">
+							<ShortName>MenuSFX1.wav</ShortName>
+							<Path>SFX\MenuSFX1_D4C1DBEB.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2553873618" Name="Play_MenuSFX2" ObjectPath="\Events\Default Work Unit\Menu\SFX\Play_MenuSFX2" DurationType="OneShot" DurationMin="0.540916" DurationMax="0.540916">
+					<IncludedMemoryFiles>
+						<File Id="268630592" Language="SFX">
+							<ShortName>MenuSFX3.wav</ShortName>
+							<Path>SFX\MenuSFX3_9672D151.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>

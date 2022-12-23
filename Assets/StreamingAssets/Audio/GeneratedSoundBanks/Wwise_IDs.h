@@ -19,6 +19,8 @@ namespace AK
         static const AkUniqueID PLAY_FOOTSTEPS = 3854155799U;
         static const AkUniqueID PLAY_ITEM_PICKUP = 2652605998U;
         static const AkUniqueID PLAY_MENU_MUSIC = 2228153899U;
+        static const AkUniqueID PLAY_MENUSFX1 = 2553873617U;
+        static const AkUniqueID PLAY_MENUSFX2 = 2553873618U;
         static const AkUniqueID PLAY_PROXLAMP_BUZZ = 4187993337U;
         static const AkUniqueID PLAY_PROXLAMP_CLICK = 1462214242U;
         static const AkUniqueID PLAY_SCENE1 = 1104522247U;

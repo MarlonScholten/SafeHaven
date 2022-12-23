@@ -3438,6 +3438,66 @@
 								</Folder>
 							</ChildrenList>
 						</Folder>
+						<Folder Name="Menu Sounds" ID="{93BE4457-CB69-46C4-B971-CC613449761B}" ShortID="345263806">
+							<ChildrenList>
+								<Sound Name="MenuSFX1" ID="{AFF14076-31BB-4004-8468-075C51C0028F}" ShortID="28945388">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="SFX" ID="{DC6803C8-E376-4E53-8874-5A4177EC1378}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="MenuSFX1" ID="{478BC41C-0CF6-4185-BED8-F9A609A09964}">
+											<PropertyList>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.317610296150981"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimEnd" Type="Real64" Value="0.557261701428538"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>MenuSFX1.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="754064771"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="MenuSFX1" ID="{478BC41C-0CF6-4185-BED8-F9A609A09964}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="MenuSFX2" ID="{592F76A9-F529-4642-BDEF-F922F42EA1B8}" ShortID="54157434">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="SFX" ID="{DC6803C8-E376-4E53-8874-5A4177EC1378}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="MenuSFX3" ID="{B713DD08-18B3-4BC6-A5D0-561F95841B68}">
+											<PropertyList>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.237475477996076"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimEnd" Type="Real64" Value="0.540916366546619"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>MenuSFX3.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="268630592"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ObjectLists/>
+									<ActiveSourceList>
+										<ActiveSource Name="MenuSFX3" ID="{B713DD08-18B3-4BC6-A5D0-561F95841B68}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</Folder>
 					</ChildrenList>
 				</Folder>
 			</ChildrenList>

@@ -34,6 +34,32 @@
 								</Event>
 							</ChildrenList>
 						</Folder>
+						<Folder Name="SFX" ID="{F81F86F4-637B-4B2B-8055-6F1500040B61}" ShortID="518332776">
+							<ChildrenList>
+								<Event Name="Play_MenuSFX1" ID="{B7E90F1A-EFC9-4C29-A7BE-770568B2CB73}">
+									<ChildrenList>
+										<Action Name="" ID="{9B1DAD16-CD08-499C-B40B-1F6868AE5B26}" ShortID="151868114">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="MenuSFX1" ID="{AFF14076-31BB-4004-8468-075C51C0028F}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Play_MenuSFX2" ID="{0E2EA89B-C66C-40AC-97F4-5622C823FBA1}">
+									<ChildrenList>
+										<Action Name="" ID="{DA088488-492A-4D3C-B0A7-4727606D7B32}" ShortID="301592310">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="MenuSFX2" ID="{592F76A9-F529-4642-BDEF-F922F42EA1B8}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="Main" ID="{3DBF06AE-DE9B-412F-8516-3B3FA933EFC9}" ShortID="493906790">
