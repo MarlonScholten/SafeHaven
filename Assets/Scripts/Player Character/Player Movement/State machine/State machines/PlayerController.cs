@@ -360,7 +360,9 @@ namespace PlayerCharacter.Movement
             CharacterController.enabled = false;
             _playerIsThrowing = true;
 
-            transform.forward = _playerCamera.transform.forward;
+            /*transform.forward = _playerCamera.transform.forward;*/
+            transform.right = _playerCamera.transform.right;
+            
             
             _throwCam.Priority = 100;
         }
@@ -370,6 +372,8 @@ namespace PlayerCharacter.Movement
         /// </summary>
         public IEnumerator EnableMovement()
         {
+
+            _rotation = transform.rotation;
             _throwCam.Priority = 0;
             yield return new WaitForSeconds(_camTransitionTime);
             CharacterController.enabled = true;
