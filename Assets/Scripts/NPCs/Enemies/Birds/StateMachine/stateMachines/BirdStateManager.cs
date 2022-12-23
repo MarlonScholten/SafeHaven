@@ -87,7 +87,7 @@ namespace Bird
         {
             navMeshAgent = GetComponent<NavMeshAgent>();
             lastRestPoints = new List<Vector3>();
-            animator = GetComponent<Animator>();
+            animator = GetComponentInChildren<Animator>();
         }
 
         /// <summary>
