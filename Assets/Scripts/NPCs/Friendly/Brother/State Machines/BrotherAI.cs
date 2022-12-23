@@ -154,6 +154,7 @@ public class BrotherAI : MonoBehaviour
     /// </summary>
     void Start(){
         InputBehaviour.Instance.OnCallBrotherEvent += CallBrother;
+        InputBehaviour.Instance.OnRunningEvent += OnPlayerRunning;
         _playerController.OnStealthToggle += OnStealthEvent;
         _velocityHash = Animator.StringToHash("forwardVelocity");
         _itemHeldHash = Animator.StringToHash("ItemHeld");
@@ -169,6 +170,13 @@ public class BrotherAI : MonoBehaviour
     {
         if (sender is bool stealth)
             ToggleStealth(stealth);
+    }
+    
+    private void OnPlayerRunning()
+    {
+        if(!_player.GetComponent<PlayerController>().IsMoving())
+            return;
+        _isInStealth = false;
     }
 
     /// <summary>
