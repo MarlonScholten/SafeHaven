@@ -86,5 +86,13 @@ public class FSM_Scriptable_Object : ScriptableObject
     
     [Tooltip("Bool to either show or not show current state")]
     [SerializeField] public bool showCurrentState = true;
+    
+    [Tooltip("Speed of the enemy while chasing")]
+    [SerializeField] private float chaseSpeed = 2f;
+    public float ChaseSpeed => chaseSpeed;
+    
+    [Tooltip("Speed of the enemy while go to investigate point")]
+    [SerializeField] private float toInvestigatePointSpeed = 1.5f;
+    public float ToInvestigatePointSpeed => toInvestigatePointSpeed;
 }
 
