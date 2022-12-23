@@ -127,6 +127,8 @@ public class MenuPingController : AbstractPingController
     private CinemachineCore.AxisInputDelegate _cameraInput;
 
     private Image _image;
+    
+    private Vector2 _previousMousePosition = new Vector2(Screen.width / 2,Screen.height / 2);
 
     /// <summary>
     /// De-Activates the radial menu and initializes the input events.
@@ -152,8 +154,6 @@ public class MenuPingController : AbstractPingController
 
     }
 
-    private Vector2 prev = new Vector2(Screen.width / 2,Screen.height / 2);
-
     private void ConstrainMouse()
     {
         if (Time.timeScale <= 0) return;
@@ -163,15 +163,12 @@ public class MenuPingController : AbstractPingController
 
         if (Vector2.Distance(screenCenter, mousePosition) > Screen.width/4.5)
         {
-            Vector2 warpPosition = prev; 
+            Vector2 warpPosition = _previousMousePosition; 
             warpPosition = Vector2.MoveTowards(warpPosition, screenCenter, 10);
             Mouse.current.WarpCursorPosition(warpPosition);
             InputState.Change(Mouse.current.position, warpPosition);
         }
-
-
-        prev = Mouse.current.position.ReadValue();
-
+        _previousMousePosition = Mouse.current.position.ReadValue();
     }
     
     /// <summary>
