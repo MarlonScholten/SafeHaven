@@ -196,10 +196,10 @@ public class BrotherAI : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(!_isInStealth)_animator.SetFloat(_velocityHash, _navMeshAgent.velocity.magnitude);
+        _animator.SetFloat(_velocityHash, _navMeshAgent.velocity.magnitude);
         _animator.SetBool(_stealthHash, _isInStealth);
         _animator.SetLayerWeight(_animator.GetLayerIndex("Locomotion"), _isInStealth ? 0 : 1);
-
+        _animator.SetLayerWeight(_animator.GetLayerIndex("Stealth"), _isInStealth ? 1 : 0);
         if (Vector3.Distance(_player.transform.position, transform.position) > _brotherRange)
         {
             CallBrother();
