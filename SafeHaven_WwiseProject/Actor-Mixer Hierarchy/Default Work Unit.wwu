@@ -5,7 +5,7 @@
 			<ChildrenList>
 				<Folder Name="ProximityLamp" ID="{88B8B8F3-D015-4EA9-A458-CE7F95ED1F3F}" ShortID="711163972">
 					<ChildrenList>
-						<Sound Name="Proxlamp_Draft1_Click" ID="{0AB8953F-AFD0-4622-B131-992366CAF40E}" ShortID="101401567">
+						<Sound Name="Proxlamp_Click" ID="{0AB8953F-AFD0-4622-B131-992366CAF40E}" ShortID="101401567">
 							<PropertyList>
 								<Property Name="3DSpatialization" Type="int16" Value="1"/>
 								<Property Name="Highpass" Type="int16">
@@ -34,7 +34,7 @@
 								</Property>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>-11</Value>
+										<Value>8</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -46,7 +46,7 @@
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
 								</Reference>
 								<Reference Name="OutputBus">
-									<ObjectRef Name="SFX" ID="{DC6803C8-E376-4E53-8874-5A4177EC1378}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+									<ObjectRef Name="SFX_No_Footsteps" ID="{6D835D3B-FA47-4C67-8995-92EEF3E34AEA}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
@@ -68,7 +68,7 @@
 								<ActiveSource Name="Proxlamp_Draft1_Click" ID="{D050F21E-56F6-48C0-8CE2-3FE2B7C04990}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
-						<Sound Name="Proxlamp_Draft1_V2" ID="{05EBE607-DAF2-4E25-818C-8595744A7FBD}" ShortID="949888207">
+						<Sound Name="Proxlamp_Buzz" ID="{05EBE607-DAF2-4E25-818C-8595744A7FBD}" ShortID="949888207">
 							<PropertyList>
 								<Property Name="3DSpatialization" Type="int16" Value="1"/>
 								<Property Name="Highpass" Type="int16">
@@ -88,6 +88,11 @@
 											</Modifier>
 										</ModifierInfo>
 									</ModifierList>
+								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>12</Value>
+									</ValueList>
 								</Property>
 							</PropertyList>
 							<ReferenceList>
@@ -125,165 +130,16 @@
 						</Sound>
 					</ChildrenList>
 				</Folder>
-				<Folder Name="Wind" ID="{12D68863-8F3F-470E-8D9B-8623F01A65D1}" ShortID="875187310">
-					<ChildrenList>
-						<Sound Name="Wind_PlaceHolder" ID="{33AE1AEA-54CD-4DF0-821A-0BDDEEB34E6B}" ShortID="687059831">
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Ambient" ID="{691888D0-FE14-4467-BBE9-5FBD9C2E181F}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<AudioFileSource Name="Wind_PlaceHolder" ID="{C325A17F-2849-42F7-83C3-4F2C02B31636}">
-									<PropertyList>
-										<Property Name="VolumeOffset" Type="Real64">
-											<ValueList>
-												<Value>2</Value>
-											</ValueList>
-										</Property>
-									</PropertyList>
-									<Language>SFX</Language>
-									<AudioFile>Wind_PlaceHolder.wav</AudioFile>
-									<MediaIDList>
-										<MediaID ID="472890637"/>
-									</MediaIDList>
-								</AudioFileSource>
-							</ChildrenList>
-							<ObjectLists/>
-							<ActiveSourceList>
-								<ActiveSource Name="Wind_PlaceHolder" ID="{C325A17F-2849-42F7-83C3-4F2C02B31636}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
-					</ChildrenList>
-				</Folder>
-				<Folder Name="TestSounds" ID="{5AC98489-3A14-4016-81A9-4B259983CC42}" ShortID="860164671">
-					<ChildrenList>
-						<Sound Name="TestSound_Loop" ID="{C4BEBEB7-B95A-42A7-AB65-A867B62E7AD5}" ShortID="969704064">
-							<PropertyList>
-								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<AudioFileSource Name="TestSound_Loop" ID="{06B4E5E8-EB0E-4635-938D-47A1D538C6C6}">
-									<PropertyList>
-										<Property Name="LoopBegin" Type="Real64" Value="0.596940741614565"/>
-										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-										<Property Name="TrimBegin" Type="Real64" Value="0.557144692173594"/>
-									</PropertyList>
-									<Language>SFX</Language>
-									<AudioFile>TestSounds\TestSound_Loop.wav</AudioFile>
-									<MediaIDList>
-										<MediaID ID="9335138"/>
-									</MediaIDList>
-								</AudioFileSource>
-							</ChildrenList>
-							<ObjectLists/>
-							<ActiveSourceList>
-								<ActiveSource Name="TestSound_Loop" ID="{06B4E5E8-EB0E-4635-938D-47A1D538C6C6}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
-						<Sound Name="TestSound_Single" ID="{33687EB3-E550-49B5-AAF4-25D2CDD6A97B}" ShortID="942469713">
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<AudioFileSource Name="TestSound_Single" ID="{9F3D1303-9C72-4A7B-A74C-F383A04CA28B}">
-									<PropertyList>
-										<Property Name="LoopBegin" Type="Real64" Value="0.12693798906846"/>
-										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-										<Property Name="TrimBegin" Type="Real64" Value="0.12693798906846"/>
-									</PropertyList>
-									<Language>SFX</Language>
-									<AudioFile>TestSounds\TestSound_Single.wav</AudioFile>
-									<MediaIDList>
-										<MediaID ID="10365183"/>
-									</MediaIDList>
-								</AudioFileSource>
-							</ChildrenList>
-							<ObjectLists/>
-							<ActiveSourceList>
-								<ActiveSource Name="TestSound_Single" ID="{9F3D1303-9C72-4A7B-A74C-F383A04CA28B}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
-						<Sound Name="ParameterTest" ID="{9D2EA0D0-D820-495B-8E96-3E275E52E575}" ShortID="856966231">
-							<PropertyList>
-								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
-								<Property Name="Pitch" Type="int32">
-									<RTPCList>
-										<RTPC Name="" ID="{8AFAFB98-D513-4EEB-9C4D-78FFABCAB5CF}" ShortID="177496330">
-											<ReferenceList>
-												<Reference Name="ControlInput">
-													<ObjectRef Name="TestParameter" ID="{050B5097-81AE-4877-BC55-90C23CBF8A83}" WorkUnitID="{15C4EBF3-26CD-472B-BF4B-0E07D50CE918}"/>
-												</Reference>
-											</ReferenceList>
-											<Curve Name="" ID="{909B34CE-03A7-4D91-B381-CC1E474A23BD}">
-												<PropertyList>
-													<Property Name="Flags" Type="int32" Value="65537"/>
-												</PropertyList>
-												<PointList>
-													<Point>
-														<XPos>0</XPos>
-														<YPos>-1896</YPos>
-														<Flags>5</Flags>
-													</Point>
-													<Point>
-														<XPos>100</XPos>
-														<YPos>4800</YPos>
-														<Flags>37</Flags>
-													</Point>
-												</PointList>
-											</Curve>
-										</RTPC>
-									</RTPCList>
-								</Property>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<AudioFileSource Name="ParameterTest" ID="{27883ADF-9B19-47A4-8978-D0AD63F8C99D}">
-									<PropertyList>
-										<Property Name="LoopEnd" Type="Real64" Value="25.548412419993"/>
-										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-										<Property Name="TrimBegin" Type="Real64" Value="18.7019628588134"/>
-									</PropertyList>
-									<Language>SFX</Language>
-									<AudioFile>ParameterTest.wav</AudioFile>
-									<MediaIDList>
-										<MediaID ID="803201654"/>
-									</MediaIDList>
-								</AudioFileSource>
-							</ChildrenList>
-							<ObjectLists/>
-							<ActiveSourceList>
-								<ActiveSource Name="ParameterTest" ID="{27883ADF-9B19-47A4-8978-D0AD63F8C99D}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
-					</ChildrenList>
-				</Folder>
 				<Folder Name="Footsteps" ID="{D1541E4B-1D5F-48DF-851B-37DD2E7C7527}" ShortID="661524755">
 					<ChildrenList>
 						<SwitchContainer Name="Footsteps" ID="{68BF3187-242F-4BBC-A8DC-25164F19DFBE}" ShortID="587031196">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>12</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
@@ -292,7 +148,7 @@
 									<ObjectRef Name="Concrete" ID="{91EA98DC-4AB9-47F8-818D-66098DF694B0}" WorkUnitID="{D92973B9-C527-48B7-A400-4F220CF740BF}"/>
 								</Reference>
 								<Reference Name="OutputBus">
-									<ObjectRef Name="Footsteps" ID="{643284DC-418C-480B-9A5B-E9CC8E3A6BED}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+									<ObjectRef Name="Footsteps" ID="{F4DBED60-FCD9-4835-9EF0-A0DA63B5A1A5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
 								</Reference>
 								<Reference Name="SwitchGroupOrStateGroup">
 									<ObjectRef Name="Footsteps" ID="{A6F8BDE0-5FE5-4F3A-84FE-166A57A03A62}" WorkUnitID="{D92973B9-C527-48B7-A400-4F220CF740BF}"/>
@@ -1169,6 +1025,1618 @@
 								</GroupingList>
 							</GroupingInfo>
 						</SwitchContainer>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Voice Over" ID="{D0FCA1BB-0E51-459A-B28F-7BA1C4921DC0}" ShortID="900867171">
+					<ChildrenList>
+						<Folder Name="Sequence Containers" ID="{AE9211D3-272C-4A4D-A143-42F0C3559E60}" ShortID="353583136">
+							<ChildrenList>
+								<RandomSequenceContainer Name="Scene1" ID="{C5CD969E-77E1-4F51-8D80-9726AA519370}" ShortID="398205109">
+									<PropertyList>
+										<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="Scene 1-1 Nova" ID="{C48D3B9C-B2A0-4BEC-8F4D-5134DE593CE1}" ShortID="890399927">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 1-1 Nova" ID="{473C5627-4344-4D63-BA43-31957A8E2052}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.171919770773639"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="4.00429799426934"/>
+													</PropertyList>
+													<Language>English(US)</Language>
+													<AudioFile>Scene 1-1 Nova.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="858678185"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 1-1 Nova" ID="{473C5627-4344-4D63-BA43-31957A8E2052}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Scene 1-3 Nova" ID="{D951DAC4-C675-4F7F-A579-36A7627D9AB5}" ShortID="169059023">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 1-3 Nova" ID="{60390EFD-40C6-4F98-BB9F-522B90C21A86}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.037804221975323"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="1.91961438252474"/>
+													</PropertyList>
+													<Language>English(US)</Language>
+													<AudioFile>Scene 1-3 Nova.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="417299471"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 1-3 Nova" ID="{60390EFD-40C6-4F98-BB9F-522B90C21A86}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Scene 1-2 Samoya" ID="{BCA284BF-1A60-4789-A5CA-05090A3651AA}" ShortID="13887995">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 1-2 Samoya" ID="{1A8ADF81-ED9A-430D-931E-018E3459F939}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.0422419741535583"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="1.1452268548298"/>
+													</PropertyList>
+													<Language>English(US)</Language>
+													<AudioFile>Scene 1-2 Samoya.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="14219814"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 1-2 Samoya" ID="{1A8ADF81-ED9A-430D-931E-018E3459F939}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<ObjectLists/>
+									<Playlist>
+										<ItemRef Name="Scene 1-1 Nova" ID="{C48D3B9C-B2A0-4BEC-8F4D-5134DE593CE1}"/>
+										<ItemRef Name="Scene 1-2 Samoya" ID="{BCA284BF-1A60-4789-A5CA-05090A3651AA}"/>
+										<ItemRef Name="Scene 1-3 Nova" ID="{D951DAC4-C675-4F7F-A579-36A7627D9AB5}"/>
+									</Playlist>
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="Scene2" ID="{C4EEC919-BC81-4610-AC34-6560A57247DA}" ShortID="449274126">
+									<PropertyList>
+										<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="Scene 2-1 Nova" ID="{CC093E6B-AEAA-40C6-AB1B-4FF53C6E0A15}" ShortID="588676282">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 2-1 Samoya" ID="{BABE205C-7EAE-4E27-808E-38B4F7592FDE}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.0335243553008596"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.877220630372493"/>
+													</PropertyList>
+													<Language>English(US)</Language>
+													<AudioFile>Scene 2-1 Samoya.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="911333310"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 2-1 Samoya" ID="{BABE205C-7EAE-4E27-808E-38B4F7592FDE}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Scene 2-2 Samoya" ID="{F3CD6D4B-2E12-4A7E-8B65-89DDDEB130BE}" ShortID="954337252">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 2-2 Samoya" ID="{ED2F5545-DD81-4AC3-9D04-548FFFBB4D89}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.0305080924442365"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.565573098389309"/>
+													</PropertyList>
+													<Language>English(US)</Language>
+													<AudioFile>Scene 2-2 Samoya.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="837867106"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 2-2 Samoya" ID="{ED2F5545-DD81-4AC3-9D04-548FFFBB4D89}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<ObjectLists/>
+									<Playlist>
+										<ItemRef Name="Scene 2-1 Nova" ID="{CC093E6B-AEAA-40C6-AB1B-4FF53C6E0A15}"/>
+										<ItemRef Name="Scene 2-2 Samoya" ID="{F3CD6D4B-2E12-4A7E-8B65-89DDDEB130BE}"/>
+									</Playlist>
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="Scene3" ID="{9A358713-F43E-447A-B352-00616E87FF5C}" ShortID="327985193">
+									<PropertyList>
+										<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="Scene 3-2 Soldier2" ID="{F86E193E-6E44-4398-937A-8A0FC900B060}" ShortID="488987808">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 3-2 Soldier2" ID="{6A1C8D28-2CA0-4D3D-A186-1B23F82506AD}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.119914040114613"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="3.62406876790831"/>
+													</PropertyList>
+													<Language>English(US)</Language>
+													<AudioFile>Scene 3-2 Soldier2.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="589497124"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 3-2 Soldier2" ID="{6A1C8D28-2CA0-4D3D-A186-1B23F82506AD}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Scene 3-3 Soldier1" ID="{176BADCA-4C9B-46D1-BAA5-44868955E238}" ShortID="743255756">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 3-3 Soldier1" ID="{F48434E6-5ED7-4F8E-A080-715281BA01FD}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.104484240687679"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="4.53300859598854"/>
+													</PropertyList>
+													<Language>English(US)</Language>
+													<AudioFile>Scene 3-3 Soldier1.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="907075062"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 3-3 Soldier1" ID="{F48434E6-5ED7-4F8E-A080-715281BA01FD}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Scene 3-4 Soldier2" ID="{D3A6818A-C1B8-4D62-B43A-DF672DB09177}" ShortID="1039046750">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 3-4 Soldier2" ID="{3E949E15-1677-40B0-9853-9AD79104A113}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.136656693240811"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="3.16687032597184"/>
+													</PropertyList>
+													<Language>English(US)</Language>
+													<AudioFile>Scene 3-4 Soldier2.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="235943088"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 3-4 Soldier2" ID="{3E949E15-1677-40B0-9853-9AD79104A113}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Scene 3-1 Soldier1" ID="{B38378DC-452D-4489-A4B9-75290015B4B1}" ShortID="126178883">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 3-1 Soldier1" ID="{F3D05E22-4A20-4B53-BA3F-AC1B8DDBFC1E}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.0241336763931934"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="1.8220925676861"/>
+													</PropertyList>
+													<Language>English(US)</Language>
+													<AudioFile>Scene 3-1 Soldier1.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="469133648"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 3-1 Soldier1" ID="{F3D05E22-4A20-4B53-BA3F-AC1B8DDBFC1E}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Scene 3-5 Soldier1" ID="{DDE45CBF-EB1C-439A-9A04-403066729DBF}" ShortID="1072063321">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 3-5 Soldier1" ID="{116F1259-BE47-4886-A990-A44D6196FCC6}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.0716332378223492"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="3.9971346704871"/>
+													</PropertyList>
+													<Language>English(US)</Language>
+													<AudioFile>Scene 3-5 Soldier1.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="714256079"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 3-5 Soldier1" ID="{116F1259-BE47-4886-A990-A44D6196FCC6}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Scene 3-6 Soldier2" ID="{DA37C4FF-0AEA-47B9-9F9A-037A1040030D}" ShortID="508292812">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 3-6 Soldier2" ID="{04AE3248-760F-4A5D-A5CC-35C313B42EC2}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.0454131987083277"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="1.25859436420222"/>
+													</PropertyList>
+													<Language>English(US)</Language>
+													<AudioFile>Scene 3-6 Soldier2.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="872796647"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 3-6 Soldier2" ID="{04AE3248-760F-4A5D-A5CC-35C313B42EC2}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<ObjectLists/>
+									<Playlist>
+										<ItemRef Name="Scene 3-1 Soldier1" ID="{B38378DC-452D-4489-A4B9-75290015B4B1}"/>
+										<ItemRef Name="Scene 3-2 Soldier2" ID="{F86E193E-6E44-4398-937A-8A0FC900B060}"/>
+										<ItemRef Name="Scene 3-3 Soldier1" ID="{176BADCA-4C9B-46D1-BAA5-44868955E238}"/>
+										<ItemRef Name="Scene 3-4 Soldier2" ID="{D3A6818A-C1B8-4D62-B43A-DF672DB09177}"/>
+										<ItemRef Name="Scene 3-5 Soldier1" ID="{DDE45CBF-EB1C-439A-9A04-403066729DBF}"/>
+										<ItemRef Name="Scene 3-6 Soldier2" ID="{DA37C4FF-0AEA-47B9-9F9A-037A1040030D}"/>
+									</Playlist>
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="Scene4" ID="{EF363395-906D-4AF1-BC0A-BEBE8B092065}" ShortID="694275949">
+									<PropertyList>
+										<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="Scene 4-1 Soldier1" ID="{1FCBE76C-CCB2-458D-96FC-4981567619FB}" ShortID="368761325">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 4-1 Soldier1" ID="{6808E227-5B64-4455-BE1E-7134D463D879}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.0503683995088005"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="2.93256014917906"/>
+													</PropertyList>
+													<Language>English(US)</Language>
+													<AudioFile>Scene 4-1 Soldier1.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="234982618"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 4-1 Soldier1" ID="{6808E227-5B64-4455-BE1E-7134D463D879}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Scene 4-2 Soldier2" ID="{18D8CC94-16DE-4A02-B7FF-D9CDD99C2E1C}" ShortID="866120356">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 4-2 Soldier2" ID="{A7B53CBF-7DFD-49A1-AE19-CB6346D91A98}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.0228462273161414"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="1.27938872970392"/>
+													</PropertyList>
+													<Language>English(US)</Language>
+													<AudioFile>Scene 4-2 Soldier2.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="848797450"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 4-2 Soldier2" ID="{A7B53CBF-7DFD-49A1-AE19-CB6346D91A98}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<ObjectLists/>
+									<Playlist>
+										<ItemRef Name="Scene 4-1 Soldier1" ID="{1FCBE76C-CCB2-458D-96FC-4981567619FB}"/>
+										<ItemRef Name="Scene 4-2 Soldier2" ID="{18D8CC94-16DE-4A02-B7FF-D9CDD99C2E1C}"/>
+									</Playlist>
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="Scene5" ID="{CCE36F0B-ECDA-4815-B06D-B5A1D397A83C}" ShortID="654600505">
+									<PropertyList>
+										<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="Scene 5-2 Nova" ID="{947A2AC1-BB59-462B-80F8-D1565D9FDD82}" ShortID="433946435">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 5-2 Nova" ID="{7AB6B056-FDB8-4F62-843D-0DD9164FC1B8}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.0258584293316181"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="1.00273242630385"/>
+													</PropertyList>
+													<Language>English(US)</Language>
+													<AudioFile>Scene 5-2 Nova.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="556244115"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 5-2 Nova" ID="{7AB6B056-FDB8-4F62-843D-0DD9164FC1B8}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<ObjectLists/>
+									<Playlist>
+										<ItemRef Name="Scene 5-2 Nova" ID="{947A2AC1-BB59-462B-80F8-D1565D9FDD82}"/>
+									</Playlist>
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="Scene6" ID="{B207C039-DE1C-4416-8E90-6A3D5FDAC87B}" ShortID="1042940070">
+									<PropertyList>
+										<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="Scene 6-2 Nova" ID="{F2E48949-F97A-485D-9A86-18535F6737D7}" ShortID="559050108">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 6-2 Nova" ID="{DE7329AB-46D3-4790-9B1F-A2E3BB3756E2}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.0386819484240688"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="2.02005730659026"/>
+													</PropertyList>
+													<Language>English(US)</Language>
+													<AudioFile>Scene 6-2 Nova.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="1072788648"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 6-2 Nova" ID="{DE7329AB-46D3-4790-9B1F-A2E3BB3756E2}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Scene 6-3 Nova" ID="{A0C4DCB0-8811-480E-9C3D-A35433E495BC}" ShortID="167142461">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 6-3 Nova" ID="{1A5BC52C-07F0-42A7-A366-045435DBE3E3}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.0679226361031522"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="3.3467335243553"/>
+													</PropertyList>
+													<Language>English(US)</Language>
+													<AudioFile>Scene 6-3 Nova.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="205936441"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 6-3 Nova" ID="{1A5BC52C-07F0-42A7-A366-045435DBE3E3}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Scene 6-1 Samoya" ID="{1019971A-06B5-49BC-BC97-26C6F5C7D941}" ShortID="485284081">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 6-1 Samoya" ID="{AFF9AC07-FCDF-4291-A307-46EE03F1089B}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.0187742107349147"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="1.49020297708386"/>
+													</PropertyList>
+													<Language>English(US)</Language>
+													<AudioFile>Scene 6-1 Samoya.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="980856784"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 6-1 Samoya" ID="{AFF9AC07-FCDF-4291-A307-46EE03F1089B}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<ObjectLists/>
+									<Playlist>
+										<ItemRef Name="Scene 6-1 Samoya" ID="{1019971A-06B5-49BC-BC97-26C6F5C7D941}"/>
+										<ItemRef Name="Scene 6-2 Nova" ID="{F2E48949-F97A-485D-9A86-18535F6737D7}"/>
+										<ItemRef Name="Scene 6-3 Nova" ID="{A0C4DCB0-8811-480E-9C3D-A35433E495BC}"/>
+									</Playlist>
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="Scene7" ID="{8C022FE2-3927-46FF-9911-2BBE7336E99F}" ShortID="920455818">
+									<PropertyList>
+										<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="Scene 7-2 Nova" ID="{C68824A5-B98A-47FF-BDF0-4CE3FF67237C}" ShortID="1021223553">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 7-2 Nova" ID="{3E57B7AB-0BD0-47DD-8CB7-5152235E4A46}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.0423961886569336"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="1.19035452767544"/>
+													</PropertyList>
+													<Language>English(US)</Language>
+													<AudioFile>Scene 7-2 Nova.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="819375132"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 7-2 Nova" ID="{3E57B7AB-0BD0-47DD-8CB7-5152235E4A46}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Scene 7-1 Nova" ID="{29D510B7-9BFB-46D6-985C-C76DDBF4DA86}" ShortID="306606347">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 7-1 Nova" ID="{B2810C68-ECE8-4711-B66C-8FB04E8F9389}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.0946418338108881"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="6.29893982808023"/>
+													</PropertyList>
+													<Language>English(US)</Language>
+													<AudioFile>Scene 7-1 Nova.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="1004051367"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 7-1 Nova" ID="{B2810C68-ECE8-4711-B66C-8FB04E8F9389}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<ObjectLists/>
+									<Playlist>
+										<ItemRef Name="Scene 7-1 Nova" ID="{29D510B7-9BFB-46D6-985C-C76DDBF4DA86}"/>
+										<ItemRef Name="Scene 7-2 Nova" ID="{C68824A5-B98A-47FF-BDF0-4CE3FF67237C}"/>
+									</Playlist>
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="Scene8-1" ID="{196839E4-299C-4B5E-A81B-8DA8995DA832}" ShortID="212494551">
+									<PropertyList>
+										<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="Scene 8-1-2 Soldier2" ID="{06363292-F1AA-41C8-A43A-180A9DC1057D}" ShortID="557880530">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 8-1-2 Soldier2" ID="{EDB46647-02AD-46AB-A7AA-32FC4D6E8F79}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.0441260744985673"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.451289398280803"/>
+													</PropertyList>
+													<Language>English(US)</Language>
+													<AudioFile>Scene 8-1-2 Soldier2.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="979341660"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 8-1-2 Soldier2" ID="{EDB46647-02AD-46AB-A7AA-32FC4D6E8F79}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Scene 8-1-3 Soldier1" ID="{0EFA3329-E870-4E59-90F9-42E8543EEBCE}" ShortID="128582514">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 8-1-3 Soldier1" ID="{1512AF22-2923-4957-A4C3-87939D064E47}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.0529512893982806"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="3.64702005730659"/>
+													</PropertyList>
+													<Language>English(US)</Language>
+													<AudioFile>Scene 8-1-3 Soldier1.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="680509314"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 8-1-3 Soldier1" ID="{1512AF22-2923-4957-A4C3-87939D064E47}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Scene 8-1-1 Soldier1" ID="{C664DCE6-746E-4D2C-8B41-1B9BFEDDCE56}" ShortID="1029069035">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 8-1-1 Soldier1" ID="{C5B7820C-B30E-44FC-AB25-45147C42F5C5}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.0537249283667622"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="1.51862464183381"/>
+													</PropertyList>
+													<Language>English(US)</Language>
+													<AudioFile>Scene 8-1-1 Soldier1.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="560258610"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 8-1-1 Soldier1" ID="{C5B7820C-B30E-44FC-AB25-45147C42F5C5}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<ObjectLists/>
+									<Playlist>
+										<ItemRef Name="Scene 8-1-1 Soldier1" ID="{C664DCE6-746E-4D2C-8B41-1B9BFEDDCE56}"/>
+										<ItemRef Name="Scene 8-1-2 Soldier2" ID="{06363292-F1AA-41C8-A43A-180A9DC1057D}"/>
+										<ItemRef Name="Scene 8-1-3 Soldier1" ID="{0EFA3329-E870-4E59-90F9-42E8543EEBCE}"/>
+									</Playlist>
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="Scene9" ID="{807568C0-055E-46C6-BA2E-E9B5DAD5209F}" ShortID="121102662">
+									<PropertyList>
+										<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="Scene 9-1 Soldier2" ID="{6CB5E5AB-0A40-442A-A35E-036774F834D2}" ShortID="328965002">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 9-1 Soldier2" ID="{04343608-1B64-47D3-B6D8-84B59E061AD1}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.0704011461318053"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="1.68962750716332"/>
+													</PropertyList>
+													<Language>English(US)</Language>
+													<AudioFile>Scene 9-1 Soldier2.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="512508823"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 9-1 Soldier2" ID="{04343608-1B64-47D3-B6D8-84B59E061AD1}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Scene 9-2 Soldier1" ID="{283212B1-F053-4E91-BE89-52AE7DD446A5}" ShortID="424302674">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 9-2 Soldier1" ID="{1F9E086A-E999-4D9E-96E8-25CE8E8BAD34}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.0720773638968479"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="2.86646131805158"/>
+													</PropertyList>
+													<Language>English(US)</Language>
+													<AudioFile>Scene 9-2 Soldier1.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="174196361"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 9-2 Soldier1" ID="{1F9E086A-E999-4D9E-96E8-25CE8E8BAD34}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<ObjectLists/>
+									<Playlist>
+										<ItemRef Name="Scene 9-1 Soldier2" ID="{6CB5E5AB-0A40-442A-A35E-036774F834D2}"/>
+										<ItemRef Name="Scene 9-2 Soldier1" ID="{283212B1-F053-4E91-BE89-52AE7DD446A5}"/>
+									</Playlist>
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="Scene10" ID="{CEC473DC-965E-41F3-B2A0-DB2B2C9983F2}" ShortID="600939595">
+									<PropertyList>
+										<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="Scene 10-2-6 Nova" ID="{BEF8370B-1C41-47E2-9D4F-778936337848}" ShortID="687817121">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 10-2-6 Nova" ID="{B14DB353-5CDC-4A40-9805-1AFECA117CFE}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.115530085959885"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.45593123209169"/>
+													</PropertyList>
+													<Language>English(US)</Language>
+													<AudioFile>Scene 10-2-6 Nova.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="952531526"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 10-2-6 Nova" ID="{B14DB353-5CDC-4A40-9805-1AFECA117CFE}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Scene 10-2-2 Nova" ID="{F8DE594C-1B4A-4556-8F9A-24288682D28C}" ShortID="266154127">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 10-2-2 Nova" ID="{BBFA8202-1127-4898-96F7-4C386DA3EEF5}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.0639594500646485"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="1.57265000747195"/>
+													</PropertyList>
+													<Language>English(US)</Language>
+													<AudioFile>Scene 10-2-2 Nova.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="171087633"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 10-2-2 Nova" ID="{BBFA8202-1127-4898-96F7-4C386DA3EEF5}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Scene 10-2-4 Nova" ID="{C8F7D55D-6B4F-410B-8A6B-C82197136DFF}" ShortID="599421310">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 10-2-4 Nova" ID="{D467BC27-8C03-4DAD-98AC-D23A49763734}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.10054441260745"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="2.15713467048711"/>
+													</PropertyList>
+													<Language>English(US)</Language>
+													<AudioFile>Scene 10-2-4 Nova.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="893888051"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 10-2-4 Nova" ID="{D467BC27-8C03-4DAD-98AC-D23A49763734}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Scene 10-2-3 Samoya" ID="{2467D175-D69C-4002-A5BD-116F1EFEBABF}" ShortID="388664937">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 10-2-3 Samoya" ID="{0F240895-806C-4B15-981A-1862182DE8C4}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.129072698802539"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="1.37051738364878"/>
+													</PropertyList>
+													<Language>English(US)</Language>
+													<AudioFile>Scene 10-2-3 Samoya.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="721712852"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 10-2-3 Samoya" ID="{0F240895-806C-4B15-981A-1862182DE8C4}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Scene 10-1-1 Samoya" ID="{CB46D5A2-3780-4A27-8D15-B611D927BCCF}" ShortID="275418495">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 10-1-1 Samoya" ID="{3F9F86CE-AAEA-48C4-931E-28107A579CF7}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.0727500665977949"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="1.24848501387183"/>
+													</PropertyList>
+													<Language>English(US)</Language>
+													<AudioFile>Scene 10-1-1 Samoya.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="958667224"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 10-1-1 Samoya" ID="{3F9F86CE-AAEA-48C4-931E-28107A579CF7}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Scene 10-2-1 Samoya" ID="{A598DE86-82CC-451D-8DC9-DC043B5DE87D}" ShortID="556784155">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 10-2-1 Samoya" ID="{47B93D51-A716-4B8D-BF4A-EDE99FB705C8}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.133766251486268"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="1.17338817093217"/>
+													</PropertyList>
+													<Language>English(US)</Language>
+													<AudioFile>Scene 10-2-1 Samoya.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="807644913"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 10-2-1 Samoya" ID="{47B93D51-A716-4B8D-BF4A-EDE99FB705C8}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Scene 10-2-5 Samoya" ID="{513FBC89-7F39-41C2-B539-4368C94343BF}" ShortID="97007865">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>15</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 10-2-5 Samoya" ID="{84B5E0E7-4719-444F-8F44-A32C4312DC45}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.0868307246489808"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+													</PropertyList>
+													<Language>English(US)</Language>
+													<AudioFile>Scene 10-2-5 Samoya.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="1036006912"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 10-2-5 Samoya" ID="{84B5E0E7-4719-444F-8F44-A32C4312DC45}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<ObjectLists/>
+									<Playlist>
+										<ItemRef Name="Scene 10-1-1 Samoya" ID="{CB46D5A2-3780-4A27-8D15-B611D927BCCF}"/>
+										<ItemRef Name="Scene 10-2-1 Samoya" ID="{A598DE86-82CC-451D-8DC9-DC043B5DE87D}"/>
+										<ItemRef Name="Scene 10-2-2 Nova" ID="{F8DE594C-1B4A-4556-8F9A-24288682D28C}"/>
+										<ItemRef Name="Scene 10-2-3 Samoya" ID="{2467D175-D69C-4002-A5BD-116F1EFEBABF}"/>
+										<ItemRef Name="Scene 10-2-4 Nova" ID="{C8F7D55D-6B4F-410B-8A6B-C82197136DFF}"/>
+										<ItemRef Name="Scene 10-2-5 Samoya" ID="{513FBC89-7F39-41C2-B539-4368C94343BF}"/>
+										<ItemRef Name="Scene 10-2-6 Nova" ID="{BEF8370B-1C41-47E2-9D4F-778936337848}"/>
+									</Playlist>
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="Scene11" ID="{0CE8AF39-6496-411A-B398-CED1B09C4538}" ShortID="157489305">
+									<PropertyList>
+										<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="Scene 11-1 Samoya" ID="{6F521E2F-190F-4E4D-B942-A109A64DE9FC}" ShortID="260425667">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 11-1 Samoya" ID="{8FEF27B6-EC66-432E-B221-6F5C7E801457}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.0996151622062387"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="2.55853679771813"/>
+													</PropertyList>
+													<Language>English(US)</Language>
+													<AudioFile>Scene 11-1 Samoya.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="889051793"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 11-1 Samoya" ID="{8FEF27B6-EC66-432E-B221-6F5C7E801457}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<ObjectLists/>
+									<Playlist>
+										<ItemRef Name="Scene 11-1 Samoya" ID="{6F521E2F-190F-4E4D-B942-A109A64DE9FC}"/>
+									</Playlist>
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="Scene12" ID="{A1A69233-E082-4D2E-89F3-092AE29A9259}" ShortID="1042946381">
+									<PropertyList>
+										<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="Scene 12-1 Samoya" ID="{BBE3C8F7-72C3-47AA-9318-DDDDC34D4AA9}" ShortID="375651006">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 12-1 Samoya" ID="{26F65685-4DC1-4FEF-B48B-D936E85AAF1E}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.103258159042031"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="1.31419475144404"/>
+													</PropertyList>
+													<Language>English(US)</Language>
+													<AudioFile>Scene 12-1 Samoya.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="662914978"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 12-1 Samoya" ID="{26F65685-4DC1-4FEF-B48B-D936E85AAF1E}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<ObjectLists/>
+									<Playlist>
+										<ItemRef Name="Scene 12-1 Samoya" ID="{BBE3C8F7-72C3-47AA-9318-DDDDC34D4AA9}"/>
+									</Playlist>
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="Scene8-2" ID="{E34AB16F-DB46-497E-9BE8-D2FD4ECD6B9D}" ShortID="883319251">
+									<PropertyList>
+										<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="Scene 8-2-1 Soldier1" ID="{E87AD965-C647-4715-BF8E-04B9D2724924}" ShortID="681303371">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 8-2-1 Soldier1" ID="{7AD00E02-F926-4309-8253-F290E074C0B8}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.106856259218109"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="3.4194002949795"/>
+													</PropertyList>
+													<Language>English(US)</Language>
+													<AudioFile>Scene 8-2-1 Soldier1.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="135794846"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 8-2-1 Soldier1" ID="{7AD00E02-F926-4309-8253-F290E074C0B8}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Scene 8-2-2 Soldier2" ID="{165F16F0-890A-4F2B-9914-A56E8A72F39C}" ShortID="1028146820">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 8-2-2 Soldier2" ID="{441F2308-A102-4566-8831-1CF771061F62}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.0505030894879441"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="1.21207414771066"/>
+													</PropertyList>
+													<Language>English(US)</Language>
+													<AudioFile>Scene 8-2-2 Soldier2.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="766855694"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 8-2-2 Soldier2" ID="{441F2308-A102-4566-8831-1CF771061F62}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<ObjectLists/>
+									<Playlist>
+										<ItemRef Name="Scene 8-2-1 Soldier1" ID="{E87AD965-C647-4715-BF8E-04B9D2724924}"/>
+										<ItemRef Name="Scene 8-2-2 Soldier2" ID="{165F16F0-890A-4F2B-9914-A56E8A72F39C}"/>
+									</Playlist>
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="Scene8-3" ID="{E1286E90-4B9D-4E43-A794-C90C458B1E63}" ShortID="916759615">
+									<PropertyList>
+										<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="Scene 8-3-1 Soldier1" ID="{B1BCDE27-2F46-4E7F-9B25-A8CB818C997B}" ShortID="594346053">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 8-3-1 Soldier1" ID="{150FC148-76AA-4865-93AE-3001F36C9F47}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.0368767908309455"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="3.31276504297994"/>
+													</PropertyList>
+													<Language>English(US)</Language>
+													<AudioFile>Scene 8-3-1 Soldier1.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="135804781"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 8-3-1 Soldier1" ID="{150FC148-76AA-4865-93AE-3001F36C9F47}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Scene 8-3-3 Nova" ID="{A23FB983-161C-4F79-8174-8DD85EBFE1BE}" ShortID="893839762">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 8-3-3 Nova" ID="{64FF2E21-E60F-4B19-8723-DE8EB5353992}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.0383954154727794"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.353237822349571"/>
+													</PropertyList>
+													<Language>English(US)</Language>
+													<AudioFile>Scene 8-3-3 Nova.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="514266116"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 8-3-3 Nova" ID="{64FF2E21-E60F-4B19-8723-DE8EB5353992}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Scene 8-3-2 Samoya" ID="{A5E08755-ECB2-44C9-9E16-4470751F8465}" ShortID="308180653">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 8-3-2 Samoya" ID="{A7FE9B66-6FC0-498F-8D59-ADA5FDF5A8D0}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.0422419741535583"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.800250732575743"/>
+													</PropertyList>
+													<Language>English(US)</Language>
+													<AudioFile>Scene 8-3-2 Samoya.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="265231330"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 8-3-2 Samoya" ID="{A7FE9B66-6FC0-498F-8D59-ADA5FDF5A8D0}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<ObjectLists/>
+									<Playlist>
+										<ItemRef Name="Scene 8-3-1 Soldier1" ID="{B1BCDE27-2F46-4E7F-9B25-A8CB818C997B}"/>
+										<ItemRef Name="Scene 8-3-2 Samoya" ID="{A5E08755-ECB2-44C9-9E16-4470751F8465}"/>
+										<ItemRef Name="Scene 8-3-3 Nova" ID="{A23FB983-161C-4F79-8174-8DD85EBFE1BE}"/>
+									</Playlist>
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="Scene8-4" ID="{DD2BEB7E-5648-42A2-A536-B1885F2EA2F7}" ShortID="365633734">
+									<PropertyList>
+										<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="Scene 8-4-1 Soldier1" ID="{07662C37-F140-4A26-9F6B-1D6C98A2B00C}" ShortID="123856638">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 8-4-1 Soldier1" ID="{14A891F5-70E8-462B-9726-98241C133221}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.095395006139992"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="2.12594585111982"/>
+													</PropertyList>
+													<Language>English(US)</Language>
+													<AudioFile>Scene 8-4-1 Soldier1.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="255763295"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 8-4-1 Soldier1" ID="{14A891F5-70E8-462B-9726-98241C133221}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Scene 8-4-2 Soldier2" ID="{82AA0CCA-800A-4405-B211-2905149AF916}" ShortID="942739223">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 8-4-2 Soldier2" ID="{116B4E93-3CAD-4858-85BD-F71D0C792EE5}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.0968767908309456"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="2.2558452722063"/>
+													</PropertyList>
+													<Language>English(US)</Language>
+													<AudioFile>Scene 8-4-2 Soldier2.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="202535530"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 8-4-2 Soldier2" ID="{116B4E93-3CAD-4858-85BD-F71D0C792EE5}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<ObjectLists/>
+									<Playlist>
+										<ItemRef Name="Scene 8-4-1 Soldier1" ID="{07662C37-F140-4A26-9F6B-1D6C98A2B00C}"/>
+										<ItemRef Name="Scene 8-4-2 Soldier2" ID="{82AA0CCA-800A-4405-B211-2905149AF916}"/>
+									</Playlist>
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="Scene8-5" ID="{480D6561-16E0-4AD0-A890-9503C07F03E4}" ShortID="228801997">
+									<PropertyList>
+										<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Voice Over" ID="{10AC0D58-8B22-467C-AD43-48395EFFCBC5}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="Scene 8-5-1 Soldier1" ID="{BD97E1A6-2889-4EDC-B843-650B9087ADB8}" ShortID="153507116">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F78F8065-1F9D-459D-8459-CCDD24425C45}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2E47A96A-2938-40CF-A5AF-BA51ED972E73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Scene 8-5-1 Soldier1" ID="{3088EAD9-247C-45FD-A92C-7AAFB13A4E05}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.156098473773463"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="5.09921680993314"/>
+													</PropertyList>
+													<Language>English(US)</Language>
+													<AudioFile>Scene 8-5-1 Soldier1.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="765461482"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ObjectLists/>
+											<ActiveSourceList>
+												<ActiveSource Name="Scene 8-5-1 Soldier1" ID="{3088EAD9-247C-45FD-A92C-7AAFB13A4E05}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<ObjectLists/>
+									<Playlist>
+										<ItemRef Name="Scene 8-5-1 Soldier1" ID="{BD97E1A6-2889-4EDC-B843-650B9087ADB8}"/>
+									</Playlist>
+								</RandomSequenceContainer>
+							</ChildrenList>
+						</Folder>
 					</ChildrenList>
 				</Folder>
 			</ChildrenList>

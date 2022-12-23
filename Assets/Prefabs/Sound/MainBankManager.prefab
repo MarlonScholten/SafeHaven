@@ -112,6 +112,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9192136294638346622}
   - component: {fileID: 7024775134492571373}
+  - component: {fileID: 5980340375274549162}
   m_Layer: 0
   m_Name: MainBankManager
   m_TagString: Untagged
@@ -159,9 +160,21 @@ MonoBehaviour:
   decodeBank: 0
   loadAsynchronous: 0
   saveDecodedBank: 0
-  unloadTriggerList: 958ca0ea
+  unloadTriggerList: ea8de1f0
   bankNameInternal: 
   valueGuidInternal: 
+--- !u!114 &5980340375274549162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9192136294638346621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97bf9d8efc1be974eac072cac951cd9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9192136295036293726
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,12 +243,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playEvent:
-    idInternal: 0
+  - idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: da5d780e3c505d0428d91a48106a4a36,
       type: 2}
   stopEvent:
-    idInternal: 0
+  - idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: b8296b4bf41a7854f8e7ea02261b1816,
       type: 2}
@@ -265,6 +278,6 @@ MonoBehaviour:
     groupGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: a124f7428d4d4f8498193c7263dfe510,
       type: 2}
-  _volume: 50
+  _volume: []
   _attenuation: 50
   _stealthTrigger: {fileID: 969599530}

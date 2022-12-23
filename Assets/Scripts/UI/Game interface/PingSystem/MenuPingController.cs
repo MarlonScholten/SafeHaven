@@ -253,19 +253,26 @@ public class MenuPingController : AbstractPingController
     /// </summary>
     private void OnMenuPing()
     {
-        if (_radialMenuIsSetActive) return;
-        _playerRayCastHit = GetComponent<PlayerController>().CamRayCastHit;
-        if (_playerRayCastHit.point == Vector3.zero) return;
-        _radialMenuIsSetActive = true;
-        Cursor.lockState = CursorLockMode.None;
+        if (_radialMenuIsSetActive)
+        {
+            CloseRadialMenu();
+        }
+        else
+        {
+            _playerRayCastHit = GetComponent<PlayerController>().CamRayCastHit;
+            if (_playerRayCastHit.point == Vector3.zero) return;
+            _radialMenuIsSetActive = true;
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
 
-        SetPingPosition(_playerRayCastHit.point);
+            SetPingPosition(_playerRayCastHit.point);
 
-        Time.timeScale /= _slowmotionFactor;
+            Time.timeScale /= _slowmotionFactor;
 
-        // Override camera input with 0 and save old behaviour
-        _cameraInput = CinemachineCore.GetInputAxis;
-        CinemachineCore.GetInputAxis = axisName => 0;
+            // Override camera input with 0 and save old behaviour
+            _cameraInput = CinemachineCore.GetInputAxis;
+            CinemachineCore.GetInputAxis = axisName => 0;
+        }
     }
 
     /// <summary>
@@ -276,9 +283,8 @@ public class MenuPingController : AbstractPingController
     private void SelectAction()
     {
         _pingAction = _chosenAction;
-        _brotherAI.PingBrother(_pingAction, _pingPosition);
-        
         ShowMarker(_pingPosition);
+        _brotherAI.PingBrother(_pingAction, _pingPosition);
     }
 
     /// <summary>
@@ -287,6 +293,8 @@ public class MenuPingController : AbstractPingController
     private void CloseRadialMenu()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        
         _radialMenuIsSetActive = false;
         _radialMenu.SetActive(_radialMenuIsSetActive);
 

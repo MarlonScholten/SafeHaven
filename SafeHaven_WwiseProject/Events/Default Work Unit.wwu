@@ -67,85 +67,6 @@
 								</Event>
 							</ChildrenList>
 						</Folder>
-						<Folder Name="TestSounds" ID="{23FA7AFE-761D-4D92-A329-170AA0CBE68B}" ShortID="197225459">
-							<ChildrenList>
-								<Event Name="Play_TestSound_Single" ID="{B1D66939-5A52-4E7C-A6F9-E46377098C90}">
-									<ChildrenList>
-										<Action Name="" ID="{25456F8C-81F2-44A3-9DDD-2BE4D50C6F08}" ShortID="523521936">
-											<ReferenceList>
-												<Reference Name="Target">
-													<ObjectRef Name="TestSound_Single" ID="{33687EB3-E550-49B5-AAF4-25D2CDD6A97B}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
-												</Reference>
-											</ReferenceList>
-										</Action>
-									</ChildrenList>
-								</Event>
-								<Event Name="Stop_TestSound_Loop" ID="{167B95EE-605F-4019-8F78-869C1D6E410C}">
-									<ChildrenList>
-										<Action Name="" ID="{23CAC83F-304E-483A-A8D7-AE76A708BEBE}" ShortID="244603472">
-											<PropertyList>
-												<Property Name="ActionType" Type="int16" Value="2"/>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Target">
-													<ObjectRef Name="TestSound_Loop" ID="{C4BEBEB7-B95A-42A7-AB65-A867B62E7AD5}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
-												</Reference>
-											</ReferenceList>
-										</Action>
-									</ChildrenList>
-								</Event>
-								<Event Name="Stop_TestSound_Single" ID="{BBAA84AA-CBB9-452F-890B-629BA17AFF6B}">
-									<ChildrenList>
-										<Action Name="" ID="{E200FF6A-05CA-4069-A500-E5FBD1BC32DF}" ShortID="203600983">
-											<PropertyList>
-												<Property Name="ActionType" Type="int16" Value="2"/>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Target">
-													<ObjectRef Name="TestSound_Single" ID="{33687EB3-E550-49B5-AAF4-25D2CDD6A97B}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
-												</Reference>
-											</ReferenceList>
-										</Action>
-									</ChildrenList>
-								</Event>
-								<Event Name="Play_TestSound_Loop" ID="{563763AE-197E-4B2E-80F0-ADA94AE082D7}">
-									<ChildrenList>
-										<Action Name="" ID="{95D4DE11-A702-4AB8-8DAD-19971B3FDD6F}" ShortID="989194851">
-											<ReferenceList>
-												<Reference Name="Target">
-													<ObjectRef Name="TestSound_Loop" ID="{C4BEBEB7-B95A-42A7-AB65-A867B62E7AD5}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
-												</Reference>
-											</ReferenceList>
-										</Action>
-									</ChildrenList>
-								</Event>
-								<Event Name="Play_ParameterTest" ID="{2CED9185-A81A-433D-8BF9-C772371B2DB5}">
-									<ChildrenList>
-										<Action Name="" ID="{A80047D0-270F-4FD0-B4DE-BCD8AFACDB40}" ShortID="900208036">
-											<ReferenceList>
-												<Reference Name="Target">
-													<ObjectRef Name="ParameterTest" ID="{9D2EA0D0-D820-495B-8E96-3E275E52E575}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
-												</Reference>
-											</ReferenceList>
-										</Action>
-									</ChildrenList>
-								</Event>
-								<Event Name="Stop_ParameterTest" ID="{4D64308D-53B9-4162-B122-CCC97FF3EEEA}">
-									<ChildrenList>
-										<Action Name="" ID="{10606E72-D538-490A-B0E5-D70F65A1E870}" ShortID="256600934">
-											<PropertyList>
-												<Property Name="ActionType" Type="int16" Value="2"/>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Target">
-													<ObjectRef Name="ParameterTest" ID="{9D2EA0D0-D820-495B-8E96-3E275E52E575}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
-												</Reference>
-											</ReferenceList>
-										</Action>
-									</ChildrenList>
-								</Event>
-							</ChildrenList>
-						</Folder>
 						<Folder Name="ProximityLamp" ID="{D910724E-58EE-4A45-B151-C51F00DD48A9}" ShortID="234663427">
 							<ChildrenList>
 								<Event Name="Play_Proxlamp_Draft1_Click" ID="{07AC8ECB-8A8A-44CC-B159-12FBC7764420}">
@@ -153,7 +74,7 @@
 										<Action Name="" ID="{4D753369-FDA1-4740-A180-B240CD41088D}" ShortID="352137513">
 											<ReferenceList>
 												<Reference Name="Target">
-													<ObjectRef Name="Proxlamp_Draft1_Click" ID="{0AB8953F-AFD0-4622-B131-992366CAF40E}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+													<ObjectRef Name="Proxlamp_Click" ID="{0AB8953F-AFD0-4622-B131-992366CAF40E}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
 												</Reference>
 											</ReferenceList>
 										</Action>
@@ -164,7 +85,7 @@
 										<Action Name="" ID="{2ACF3C04-8734-4749-AFA6-EE4306DD4422}" ShortID="4921934">
 											<ReferenceList>
 												<Reference Name="Target">
-													<ObjectRef Name="Proxlamp_Draft1_V2" ID="{05EBE607-DAF2-4E25-818C-8595744A7FBD}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+													<ObjectRef Name="Proxlamp_Buzz" ID="{05EBE607-DAF2-4E25-818C-8595744A7FBD}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
 												</Reference>
 											</ReferenceList>
 										</Action>
@@ -178,22 +99,7 @@
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Target">
-													<ObjectRef Name="Proxlamp_Draft1_V2" ID="{05EBE607-DAF2-4E25-818C-8595744A7FBD}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
-												</Reference>
-											</ReferenceList>
-										</Action>
-									</ChildrenList>
-								</Event>
-							</ChildrenList>
-						</Folder>
-						<Folder Name="Wind" ID="{A6F7301F-29ED-42BE-A7C9-5E5B6D663E4A}" ShortID="894527124">
-							<ChildrenList>
-								<Event Name="Play_Wind_PlaceHolder" ID="{537164CE-0F16-4345-B00C-6183EDD3A21B}">
-									<ChildrenList>
-										<Action Name="" ID="{D30E23AB-FA5C-4215-9E9F-B385D45D1EBF}" ShortID="442522140">
-											<ReferenceList>
-												<Reference Name="Target">
-													<ObjectRef Name="Wind_PlaceHolder" ID="{33AE1AEA-54CD-4DF0-821A-0BDDEEB34E6B}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+													<ObjectRef Name="Proxlamp_Buzz" ID="{05EBE607-DAF2-4E25-818C-8595744A7FBD}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
 												</Reference>
 											</ReferenceList>
 										</Action>
@@ -214,6 +120,482 @@
 										</Action>
 									</ChildrenList>
 								</Event>
+							</ChildrenList>
+						</Folder>
+						<Folder Name="Voice Over" ID="{5CCF86FC-FEE5-4C8A-A69C-BE4EF94A01A2}" ShortID="247704783">
+							<ChildrenList>
+								<Folder Name="Sequences Playlists" ID="{3981E818-9AF2-4298-95B4-5089A58D9F71}" ShortID="932306096">
+									<ChildrenList>
+										<Folder Name="Scene1" ID="{FC720849-358A-4E27-B009-C9A02B908919}" ShortID="298322004">
+											<ChildrenList>
+												<Event Name="Play_Scene1" ID="{BD788454-A9EE-4B04-BD0A-4FB4BE1593E3}">
+													<ChildrenList>
+														<Action Name="" ID="{C05ADA09-AC0D-4E43-A992-C159E704AD3C}" ShortID="425283656">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene1" ID="{C5CD969E-77E1-4F51-8D80-9726AA519370}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Reset_Playlist_Scene1" ID="{62407FC8-3962-462E-8C14-8F26BAA2A7C4}">
+													<ChildrenList>
+														<Action Name="" ID="{9D5B3B55-4F69-43D8-A9B3-833861E5CDF2}" ShortID="843623148">
+															<PropertyList>
+																<Property Name="ActionType" Type="int16" Value="42"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene1" ID="{C5CD969E-77E1-4F51-8D80-9726AA519370}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+											</ChildrenList>
+										</Folder>
+										<Folder Name="Scene2" ID="{8C28B6CF-46E8-416F-8BCD-C99BA96EBC86}" ShortID="893198497">
+											<ChildrenList>
+												<Event Name="Play_Scene2" ID="{14361716-CA2A-4825-85CA-8EF6B13A80D1}">
+													<ChildrenList>
+														<Action Name="" ID="{C5EEEBEE-E161-4BE5-BE3E-00281AC56094}" ShortID="473738783">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene2" ID="{C4EEC919-BC81-4610-AC34-6560A57247DA}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Reset_Playlist_Scene2" ID="{A1620600-5139-4166-A3E6-906896C096CD}">
+													<ChildrenList>
+														<Action Name="" ID="{2EBD2FE0-A407-4776-AC8F-FF0E3373C79E}" ShortID="729415195">
+															<PropertyList>
+																<Property Name="ActionType" Type="int16" Value="42"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene2" ID="{C4EEC919-BC81-4610-AC34-6560A57247DA}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+											</ChildrenList>
+										</Folder>
+										<Folder Name="Scene3" ID="{BA3D87E1-189E-45C0-912F-C54BD8BC84A0}" ShortID="276531994">
+											<ChildrenList>
+												<Event Name="Play_Scene3" ID="{728E4D8F-305F-4575-8CD6-16843CDFF45C}">
+													<ChildrenList>
+														<Action Name="" ID="{A5F738AC-CC9C-4DD6-A81D-A699D35B4C99}" ShortID="648562990">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene3" ID="{9A358713-F43E-447A-B352-00616E87FF5C}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Reset_Playlist_Scene3" ID="{26FB71CA-771E-4DCA-A7E5-4DC6D94EC2FC}">
+													<ChildrenList>
+														<Action Name="" ID="{F39A5C5C-8F39-4DBC-A2D2-1223C78D17D7}" ShortID="978894600">
+															<PropertyList>
+																<Property Name="ActionType" Type="int16" Value="42"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene3" ID="{9A358713-F43E-447A-B352-00616E87FF5C}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+											</ChildrenList>
+										</Folder>
+										<Folder Name="Scene4" ID="{AD8046FB-29EB-4EC8-847E-2CBC5055EAD1}" ShortID="609029935">
+											<ChildrenList>
+												<Event Name="Play_Scene4" ID="{3928C7E3-44F3-45B5-9219-E9E4F1BC471D}">
+													<ChildrenList>
+														<Action Name="" ID="{EF871090-7B79-4D7A-89D8-A932804A711D}" ShortID="44891030">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene4" ID="{EF363395-906D-4AF1-BC0A-BEBE8B092065}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Reset_Playlist_Scene4" ID="{09CB5664-C507-4836-959B-3843475294E4}">
+													<ChildrenList>
+														<Action Name="" ID="{0511A5A9-0426-4A4F-877F-29FDC25EDDFC}" ShortID="725229024">
+															<PropertyList>
+																<Property Name="ActionType" Type="int16" Value="42"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene4" ID="{EF363395-906D-4AF1-BC0A-BEBE8B092065}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+											</ChildrenList>
+										</Folder>
+										<Folder Name="Scene5" ID="{3CAE76F2-1158-42F8-A554-454EB99CFB39}" ShortID="1034344883">
+											<ChildrenList>
+												<Event Name="Play_Scene5" ID="{113DB9B4-63D4-40EC-9AC8-ED1E6F36E010}">
+													<ChildrenList>
+														<Action Name="" ID="{7A3023F9-7FD6-4635-9915-27119B3B6284}" ShortID="221763171">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene5" ID="{CCE36F0B-ECDA-4815-B06D-B5A1D397A83C}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Reset_Playlist_Scene5" ID="{50F4B870-F352-4AE1-A65D-AD67DF80CDFE}">
+													<ChildrenList>
+														<Action Name="" ID="{96CD92B6-79B1-4839-887E-83AE3AC9EFB5}" ShortID="167308941">
+															<PropertyList>
+																<Property Name="ActionType" Type="int16" Value="42"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene5" ID="{CCE36F0B-ECDA-4815-B06D-B5A1D397A83C}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+											</ChildrenList>
+										</Folder>
+										<Folder Name="Scene6" ID="{F6A7815C-5C53-4B96-BBFE-7CA99BEB1FF8}" ShortID="540534436">
+											<ChildrenList>
+												<Event Name="Play_Scene6" ID="{0E7CC23A-F9CB-4BE3-B479-70CC1BA25A5D}">
+													<ChildrenList>
+														<Action Name="" ID="{0D9ACB67-87DF-4323-B0F9-BA61F3EDE70A}" ShortID="716336497">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene6" ID="{B207C039-DE1C-4416-8E90-6A3D5FDAC87B}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Reset_Playlist_Scene6" ID="{3EC42DD5-38A7-4BE9-8A49-392E3518E970}">
+													<ChildrenList>
+														<Action Name="" ID="{3A9E4922-FE54-4526-8CEC-8B26266A46DF}" ShortID="642909284">
+															<PropertyList>
+																<Property Name="ActionType" Type="int16" Value="42"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene6" ID="{B207C039-DE1C-4416-8E90-6A3D5FDAC87B}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+											</ChildrenList>
+										</Folder>
+										<Folder Name="Scene7" ID="{C854DBB2-C2C3-475F-9DAA-21EC0EB999B9}" ShortID="783609326">
+											<ChildrenList>
+												<Event Name="Play_Scene7" ID="{BC7C4180-7084-49D7-84A5-DF1AB49339BC}">
+													<ChildrenList>
+														<Action Name="" ID="{5296153D-9EEC-4177-BB71-4D934B5157C4}" ShortID="1034440289">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene7" ID="{8C022FE2-3927-46FF-9911-2BBE7336E99F}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Reset_Playlist_Scene7" ID="{3193DEB9-394A-4665-A068-08E6D75E1CF1}">
+													<ChildrenList>
+														<Action Name="" ID="{5B19196D-04D6-4CA7-A2F8-7F438922CDDF}" ShortID="717824348">
+															<PropertyList>
+																<Property Name="ActionType" Type="int16" Value="42"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene7" ID="{8C022FE2-3927-46FF-9911-2BBE7336E99F}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+											</ChildrenList>
+										</Folder>
+										<Folder Name="Scene8" ID="{045CFAE0-FE27-42AC-81DD-9782438E2171}" ShortID="1065852515">
+											<ChildrenList>
+												<Folder Name="Scene8-1" ID="{680F9597-A603-4BBB-BABC-3EF7C9ACEB3F}" ShortID="941584451">
+													<ChildrenList>
+														<Event Name="Play_Scene8_1" ID="{5C1796EF-9EF5-4C8D-A953-4F8BD901118A}">
+															<ChildrenList>
+																<Action Name="" ID="{5702C827-1D85-4F56-807F-9C541EFF6FCC}" ShortID="766891987">
+																	<ReferenceList>
+																		<Reference Name="Target">
+																			<ObjectRef Name="Scene8-1" ID="{196839E4-299C-4B5E-A81B-8DA8995DA832}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																		</Reference>
+																	</ReferenceList>
+																</Action>
+															</ChildrenList>
+														</Event>
+														<Event Name="Reset_Playlist_Scene8_1" ID="{2BB0B5BD-CCB7-43E8-9367-EB879CC099EC}">
+															<ChildrenList>
+																<Action Name="" ID="{4EBB2309-B2EA-4191-A8C1-CE2A8E700260}" ShortID="640295934">
+																	<PropertyList>
+																		<Property Name="ActionType" Type="int16" Value="42"/>
+																	</PropertyList>
+																	<ReferenceList>
+																		<Reference Name="Target">
+																			<ObjectRef Name="Scene8-1" ID="{196839E4-299C-4B5E-A81B-8DA8995DA832}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																		</Reference>
+																	</ReferenceList>
+																</Action>
+															</ChildrenList>
+														</Event>
+													</ChildrenList>
+												</Folder>
+												<Folder Name="Scene8-2" ID="{1B7EEAF7-A225-4F4A-9417-47A46F5CAF7F}" ShortID="158079903">
+													<ChildrenList>
+														<Event Name="Play_Scene8_2" ID="{30920084-CA19-4D8A-9396-ED196BC62731}">
+															<ChildrenList>
+																<Action Name="" ID="{CFDD2806-BEA2-4862-B476-AC9CF2553FD3}" ShortID="1043935916">
+																	<ReferenceList>
+																		<Reference Name="Target">
+																			<ObjectRef Name="Scene8-2" ID="{E34AB16F-DB46-497E-9BE8-D2FD4ECD6B9D}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																		</Reference>
+																	</ReferenceList>
+																</Action>
+															</ChildrenList>
+														</Event>
+														<Event Name="Reset_Playlist_Scene8_2" ID="{52AAEF33-A162-452E-BEEF-2578C1AD9E3F}">
+															<ChildrenList>
+																<Action Name="" ID="{F38AA7E3-12CD-4DAA-B49C-2AE578561C9C}" ShortID="534054010">
+																	<PropertyList>
+																		<Property Name="ActionType" Type="int16" Value="42"/>
+																	</PropertyList>
+																	<ReferenceList>
+																		<Reference Name="Target">
+																			<ObjectRef Name="Scene8-2" ID="{E34AB16F-DB46-497E-9BE8-D2FD4ECD6B9D}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																		</Reference>
+																	</ReferenceList>
+																</Action>
+															</ChildrenList>
+														</Event>
+													</ChildrenList>
+												</Folder>
+												<Folder Name="Scene8-3" ID="{3B75A107-7286-40F8-8235-552D0888EAE1}" ShortID="215577640">
+													<ChildrenList>
+														<Event Name="Play_Scene8_3" ID="{7FA364E8-9E05-483A-A9B6-CA01FC39809D}">
+															<ChildrenList>
+																<Action Name="" ID="{E7176757-45EA-4469-99C8-D0914B4EAB72}" ShortID="544756083">
+																	<ReferenceList>
+																		<Reference Name="Target">
+																			<ObjectRef Name="Scene8-3" ID="{E1286E90-4B9D-4E43-A794-C90C458B1E63}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																		</Reference>
+																	</ReferenceList>
+																</Action>
+															</ChildrenList>
+														</Event>
+														<Event Name="Reset_Playlist_Scene8_3" ID="{A1D0EACC-9017-4595-818D-38FB0C65CB03}">
+															<ChildrenList>
+																<Action Name="" ID="{027D46CE-2668-4CD8-AD82-DA237A345532}" ShortID="310401528">
+																	<PropertyList>
+																		<Property Name="ActionType" Type="int16" Value="42"/>
+																	</PropertyList>
+																	<ReferenceList>
+																		<Reference Name="Target">
+																			<ObjectRef Name="Scene8-3" ID="{E1286E90-4B9D-4E43-A794-C90C458B1E63}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																		</Reference>
+																	</ReferenceList>
+																</Action>
+															</ChildrenList>
+														</Event>
+													</ChildrenList>
+												</Folder>
+												<Folder Name="Scene8-4" ID="{B2F85E00-1A57-4DAE-9B26-5C8A51FB2FE2}" ShortID="690854436">
+													<ChildrenList>
+														<Event Name="Play_Scene8_4" ID="{E1FB11C9-9B48-449F-AE21-7203C3336FD4}">
+															<ChildrenList>
+																<Action Name="" ID="{862B656C-5B6D-4A02-95B9-6C1E666EDA61}" ShortID="292665505">
+																	<ReferenceList>
+																		<Reference Name="Target">
+																			<ObjectRef Name="Scene8-4" ID="{DD2BEB7E-5648-42A2-A536-B1885F2EA2F7}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																		</Reference>
+																	</ReferenceList>
+																</Action>
+															</ChildrenList>
+														</Event>
+														<Event Name="Reset_Playlist_Scene8_4" ID="{11640086-93EB-4053-92B2-C621CFE76E0D}">
+															<ChildrenList>
+																<Action Name="" ID="{1634BC60-D447-436E-9DC7-0FE86CBFC946}" ShortID="966364981">
+																	<PropertyList>
+																		<Property Name="ActionType" Type="int16" Value="42"/>
+																	</PropertyList>
+																	<ReferenceList>
+																		<Reference Name="Target">
+																			<ObjectRef Name="Scene8-4" ID="{DD2BEB7E-5648-42A2-A536-B1885F2EA2F7}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																		</Reference>
+																	</ReferenceList>
+																</Action>
+															</ChildrenList>
+														</Event>
+													</ChildrenList>
+												</Folder>
+												<Folder Name="Scene8-5" ID="{3170257F-51BA-45B2-8C76-23713F49A336}" ShortID="46700833">
+													<ChildrenList>
+														<Event Name="Play_Scene8_5" ID="{138F00DC-E933-4597-A1DC-D34AA6B68ACD}">
+															<ChildrenList>
+																<Action Name="" ID="{8F01778B-5F12-43CF-8D38-15EC75DBC058}" ShortID="608284528">
+																	<ReferenceList>
+																		<Reference Name="Target">
+																			<ObjectRef Name="Scene8-5" ID="{480D6561-16E0-4AD0-A890-9503C07F03E4}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																		</Reference>
+																	</ReferenceList>
+																</Action>
+															</ChildrenList>
+														</Event>
+														<Event Name="Reset_Playlist_Scene8_5" ID="{0518C457-F741-49BB-8F77-0FFA724C5344}">
+															<ChildrenList>
+																<Action Name="" ID="{A2731F7C-9BD7-4A14-84B6-40744B77A372}" ShortID="466605903">
+																	<PropertyList>
+																		<Property Name="ActionType" Type="int16" Value="42"/>
+																	</PropertyList>
+																	<ReferenceList>
+																		<Reference Name="Target">
+																			<ObjectRef Name="Scene8-5" ID="{480D6561-16E0-4AD0-A890-9503C07F03E4}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																		</Reference>
+																	</ReferenceList>
+																</Action>
+															</ChildrenList>
+														</Event>
+													</ChildrenList>
+												</Folder>
+											</ChildrenList>
+										</Folder>
+										<Folder Name="Scene9" ID="{8CBFCC87-63A7-47E7-A905-D00B06970605}" ShortID="825436784">
+											<ChildrenList>
+												<Event Name="Play_Scene9" ID="{7755939A-471F-4CD3-B23F-DD83FE190A94}">
+													<ChildrenList>
+														<Action Name="" ID="{E02DBAAC-6BFF-4377-9BD7-C53D0BE79FEC}" ShortID="40021323">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene9" ID="{807568C0-055E-46C6-BA2E-E9B5DAD5209F}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Reset_Playlist_Scene9" ID="{F4525FF2-CD7C-4D47-B7EE-AEC2A5105EE1}">
+													<ChildrenList>
+														<Action Name="" ID="{64B8121B-F364-4A98-B843-9ED9A309B5FF}" ShortID="213433970">
+															<PropertyList>
+																<Property Name="ActionType" Type="int16" Value="42"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene9" ID="{807568C0-055E-46C6-BA2E-E9B5DAD5209F}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+											</ChildrenList>
+										</Folder>
+										<Folder Name="Scene10" ID="{174B183E-DA02-400B-A9D9-EF9AFE190783}" ShortID="294945886">
+											<ChildrenList>
+												<Event Name="Reset_Playlist_Scene10" ID="{BA79E553-AB8E-4DC0-B17A-3E5E9F45E2BF}">
+													<ChildrenList>
+														<Action Name="" ID="{84E5B56F-F925-408E-A336-D132412DA188}" ShortID="657470142">
+															<PropertyList>
+																<Property Name="ActionType" Type="int16" Value="42"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene10" ID="{CEC473DC-965E-41F3-B2A0-DB2B2C9983F2}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Play_Scene10" ID="{F972F260-6CB7-4EF2-8D25-038DDCBE6AF3}">
+													<ChildrenList>
+														<Action Name="" ID="{F980C32F-8027-4504-8A97-F605730EA5EE}" ShortID="619525367">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene10" ID="{CEC473DC-965E-41F3-B2A0-DB2B2C9983F2}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+											</ChildrenList>
+										</Folder>
+										<Folder Name="Scene11" ID="{EBA13FB4-16CB-4383-A51B-05ECAC37B58F}" ShortID="1017666852">
+											<ChildrenList>
+												<Event Name="Play_Scene11" ID="{7F333514-C53A-429B-808F-3016DD83B005}">
+													<ChildrenList>
+														<Action Name="" ID="{82F741F3-7B8D-4463-B752-902D377E6250}" ShortID="687257976">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene11" ID="{0CE8AF39-6496-411A-B398-CED1B09C4538}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Reset_Playlist_Scene11" ID="{6CC27B7A-1AA9-47CE-ACA1-5B46FB1E38C3}">
+													<ChildrenList>
+														<Action Name="" ID="{61E55360-2216-49A1-AE1A-87240DE5F158}" ShortID="925888607">
+															<PropertyList>
+																<Property Name="ActionType" Type="int16" Value="42"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene11" ID="{0CE8AF39-6496-411A-B398-CED1B09C4538}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+											</ChildrenList>
+										</Folder>
+										<Folder Name="Scene12" ID="{5DE90E23-80FA-4308-87BF-E7F1EB5DF8E1}" ShortID="256174447">
+											<ChildrenList>
+												<Event Name="Play_Scene12" ID="{DB707E76-3FF1-4969-B30F-9B667BEB6143}">
+													<ChildrenList>
+														<Action Name="" ID="{9B5A6081-BA11-4A9C-AC84-D78955FE0A91}" ShortID="140251638">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene12" ID="{A1A69233-E082-4D2E-89F3-092AE29A9259}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+												<Event Name="Reset_Playlist_Scene12" ID="{69855E88-98D8-4646-AC6D-C586D51BF78E}">
+													<ChildrenList>
+														<Action Name="" ID="{9E6766D0-176D-43B6-94B3-DBA4AACBB178}" ShortID="515753135">
+															<PropertyList>
+																<Property Name="ActionType" Type="int16" Value="42"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Scene12" ID="{A1A69233-E082-4D2E-89F3-092AE29A9259}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+											</ChildrenList>
+										</Folder>
+									</ChildrenList>
+								</Folder>
 							</ChildrenList>
 						</Folder>
 					</ChildrenList>

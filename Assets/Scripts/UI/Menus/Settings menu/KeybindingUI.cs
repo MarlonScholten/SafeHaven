@@ -65,6 +65,7 @@ public class KeybindingUI : MonoBehaviour
     private void Start()
     {
         _keybindingSettings = FindObjectOfType<KeybindingSettings>();
+        _keybindingSettings.SuccessfulRebinding += OnSuccessfulRebinding;
         
         _actionNameUI.text = _actionName;
         _actionBindingUI.text = _actionReference.action.GetBindingDisplayString(_bindingIndex);
@@ -76,14 +77,11 @@ public class KeybindingUI : MonoBehaviour
     {
         _actionBindingUI.text = "...";
         
-        _keybindingSettings.SuccessfulRebinding += OnSuccessfulRebinding;
         _keybindingSettings.RemapKeyboardAction(_actionReference.action, _bindingIndex);
     }
     
     private void OnSuccessfulRebinding(InputAction action)
     {
-        _keybindingSettings.SuccessfulRebinding -= OnSuccessfulRebinding;
-        
         _actionBindingUI.text = _actionReference.action.GetBindingDisplayString(_bindingIndex);
     }
 
