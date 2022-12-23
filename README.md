@@ -18,6 +18,41 @@ Go to [Unity Folder Structure](https://github.com/AIM-GAME-PROJECT-group-b/SafeH
 
 The changelog for what was changed and added for every sprint.
 
+## Changelog sprint 4.1
+
+### Programming
+- [fix] Borther and sister can get caught
+- Blinking light on radio tower
+- Broken flickering lights
+- Show state components for testing and debugging
+- [fix] Throw improvements
+- Music fix
+- [fix] Added sensitifity
+- Sound settings
+- Improvment to keybindings
+- New font
+- Gameover screen
+- [fix] Improved radial menu
+- Improved birds
+- Added follow range for brother
+- Improved brother hiding mechanic
+- [fix] brother can't be used as horse anymore
+- Highlight brother behind objects
+- [fix] Player won't get stuck behind benches
+- [fix] Ping indecator will now go away at the right moment
+- [fix] Player can now pick up things next to them
+- Animation controller for birds and enemy's
+- Added Running
+- Improved VFX
+- [fix] Brother can stand still again
+- [fix] compile error
+
+### Sound
+- Voice Lines
+- Removed Old sounds and test sounds
+- Volume sliders
+- attenuation fix for lamppost sfx
+
 ## Changelog sprint 3
 
 ### Programming
