@@ -11,6 +11,7 @@ public class IntroScreen : UIScreen
         base.Awake();
 
         _continue.onClick.AddListener(OnContinue);
+        _continue.Select();
     }
 
     private void Start()

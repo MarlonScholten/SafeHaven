@@ -11,7 +11,8 @@ public class IntroOutroManager : MonoBehaviour
 
     private void Start()
     {
-        StartIntro();
+        //StartIntro();
+        StartOutro();
     }
 
     public void StartIntro() => Instantiate(_introScreen);

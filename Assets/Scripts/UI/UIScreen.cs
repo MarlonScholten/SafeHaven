@@ -27,7 +27,6 @@ public class UIScreen : MonoBehaviour
 
     protected void Pause()
     {
-        Debug.Log("Pausing!");
         // Set the time.
         _scale = Time.timeScale;
         Time.timeScale = 0;
@@ -45,8 +44,6 @@ public class UIScreen : MonoBehaviour
         // Disable every enabled canvas.
         foreach (Canvas canvas in _canvases = FindObjectsOfType<Canvas>().Where(x => x.enabled && x != _canvas).ToList())
             canvas.enabled = false;
-
-        Debug.Log("Paused!");
     }
 
     protected void Resume()
