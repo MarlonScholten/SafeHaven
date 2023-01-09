@@ -1,11 +1,12 @@
 using System;
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class OutroScreen : UIScreen
 {
+    [SerializeField]
+    private float _movementSpeed = 10;
+
     [SerializeField]
     private RectTransform _container;
 
@@ -25,10 +26,14 @@ public class OutroScreen : UIScreen
     {
         while (true)
         {
-            yield return new WaitForSecondsRealtime(0.2f);
-            Vector2 pos = _container.position;
-            _container.pos = new Vector2(pos.x, pos.y + 2 * Time.deltaTime);
-            Debug.Log(pos);
+            yield return new WaitForSecondsRealtime(0.01f);
+
+            _container.transform.Translate(Vector3.up * Time.unscaledDeltaTime);
+
+            //Vector2 pos = _container.anchoredPosition;
+            //pos.y += _movementSpeed * Time.unscaledDeltaTime;
+            //Debug.Log(_movementSpeed * Time.unscaledDeltaTime + " | " + Time.unscaledDeltaTime);
+            //_container.anchoredPosition = pos;
         }
     }
 }
