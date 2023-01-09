@@ -47,7 +47,7 @@ public class OutroScreen : UIScreen
             _container.transform.Translate(Vector3.up);
         }
 
-        yield return new WaitForSeconds(_timeAfterCredits);
+        yield return new WaitForSecondsRealtime(_timeAfterCredits);
 
         // Return to main menu.
         Return();
