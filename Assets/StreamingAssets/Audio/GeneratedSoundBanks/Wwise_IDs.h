@@ -13,10 +13,16 @@ namespace AK
 {
     namespace EVENTS
     {
+        static const AkUniqueID PLAY_BIRD_CHIRPS = 765543017U;
+        static const AkUniqueID PLAY_BIRD_FLIGHT = 1656044640U;
+        static const AkUniqueID PLAY_COLLISION = 1553219250U;
         static const AkUniqueID PLAY_FOOTSTEPS = 3854155799U;
+        static const AkUniqueID PLAY_ITEM_PICKUP = 2652605998U;
         static const AkUniqueID PLAY_MENU_MUSIC = 2228153899U;
-        static const AkUniqueID PLAY_PROXLAMP_DRAFT1_CLICK = 2579192193U;
-        static const AkUniqueID PLAY_PROXLAMP_DRAFT1_V2 = 1416161311U;
+        static const AkUniqueID PLAY_MENUSFX1 = 2553873617U;
+        static const AkUniqueID PLAY_MENUSFX2 = 2553873618U;
+        static const AkUniqueID PLAY_PROXLAMP_BUZZ = 4187993337U;
+        static const AkUniqueID PLAY_PROXLAMP_CLICK = 1462214242U;
         static const AkUniqueID PLAY_SCENE1 = 1104522247U;
         static const AkUniqueID PLAY_SCENE2 = 1104522244U;
         static const AkUniqueID PLAY_SCENE3 = 1104522245U;
@@ -33,6 +39,7 @@ namespace AK
         static const AkUniqueID PLAY_SCENE10 = 2858274613U;
         static const AkUniqueID PLAY_SCENE11 = 2858274612U;
         static const AkUniqueID PLAY_SCENE12 = 2858274615U;
+        static const AkUniqueID PLAY_SECRET_MUSIC = 2782362570U;
         static const AkUniqueID PLAY_STEALTH_MUSIC = 674798631U;
         static const AkUniqueID RESET_PLAYLIST_SCENE1 = 1372183391U;
         static const AkUniqueID RESET_PLAYLIST_SCENE2 = 1372183388U;
@@ -51,7 +58,8 @@ namespace AK
         static const AkUniqueID RESET_PLAYLIST_SCENE11 = 532960956U;
         static const AkUniqueID RESET_PLAYLIST_SCENE12 = 532960959U;
         static const AkUniqueID STOP_MENU_MUSIC = 3945748993U;
-        static const AkUniqueID STOP_PROXLAMP_DRAFT1_V2 = 2594172909U;
+        static const AkUniqueID STOP_PROXLAMP_BUZZ = 1790680011U;
+        static const AkUniqueID STOP_SECRET_MUSIC = 3052723240U;
         static const AkUniqueID STOP_STEALTH_MUSIC = 3876103401U;
     } // namespace EVENTS
 
@@ -91,9 +99,7 @@ namespace AK
     namespace GAME_PARAMETERS
     {
         static const AkUniqueID FOOTSTEPS_VOLUME = 960544891U;
-        static const AkUniqueID MASTER_VOLUME = 4179668880U;
         static const AkUniqueID MUSIC_VOLUME = 1006694123U;
-        static const AkUniqueID SFX_NO_FOOTSTEPS_VOLUME = 641276233U;
         static const AkUniqueID SFX_VOLUME = 1564184899U;
         static const AkUniqueID VOICE_VOLUME = 3538560642U;
     } // namespace GAME_PARAMETERS
@@ -112,7 +118,6 @@ namespace AK
         static const AkUniqueID MASTER_AUDIO_BUS = 3803692087U;
         static const AkUniqueID MUSIC = 3991942870U;
         static const AkUniqueID SFX = 393239870U;
-        static const AkUniqueID SFX_NO_FOOTSTEPS = 3419091820U;
         static const AkUniqueID VOICE_OVER = 372659017U;
     } // namespace BUSSES
 
