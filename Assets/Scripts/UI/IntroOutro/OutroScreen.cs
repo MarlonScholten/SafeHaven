@@ -5,7 +5,8 @@ using UnityEngine;
 public class OutroScreen : UIScreen
 {
     [SerializeField]
-    private float _movementSpeed = 10;
+    [Range(1, 100)]
+    private float _movementSpeed;
 
     [SerializeField]
     private RectTransform _container;
@@ -18,15 +19,20 @@ public class OutroScreen : UIScreen
     private void Start()
     {
         Pause();
-        Debug.Log("Starting");
         StartCoroutine(CreditCoroutine());
     }
 
     private IEnumerator CreditCoroutine()
     {
+        // Remaps the clamped 0 to 100 range to 200 to 10.
+        float remapped = _movementSpeed.Map(0, 100, 200, 10);
+
         while (true)
         {
-            yield return new WaitForSecondsRealtime(0.02f);
+            float seconds = (float)TimeSpan.FromMilliseconds(remapped).TotalSeconds;
+            yield return new WaitForSecondsRealtime(seconds);
+
+            // Translate without deltatime, not needed due to WaitForSecondsRealTime.
             _container.transform.Translate(Vector3.up);
         }
     }
