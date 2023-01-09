@@ -205,8 +205,7 @@ namespace PlayerCharacter.Movement
             transform.rotation = _rotation;
             CharacterController.Move(_movement * Time.deltaTime);
             _animator.SetFloat(_velocityHash, _current.magnitude);
-            _animator.SetLayerWeight(_animator.GetLayerIndex("BasicLocomotion"), _crouching ? 0 : 1);
-            _animator.SetLayerWeight(_animator.GetLayerIndex("Stealth"), _crouching ? 1 : 0);
+            _animator.SetBool(_stealthHash, _crouching);
         }
 
         /// <summary>
