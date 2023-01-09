@@ -372,12 +372,11 @@ namespace PlayerCharacter.Movement
         /// </summary>
         public IEnumerator EnableMovement()
         {
-
+            _playerIsThrowing = false;
             _rotation = transform.rotation;
             _throwCam.Priority = 0;
             yield return new WaitForSeconds(_camTransitionTime);
             CharacterController.enabled = true;
-            _playerIsThrowing = false;
         }
 
         private void ThrowCameraControl()

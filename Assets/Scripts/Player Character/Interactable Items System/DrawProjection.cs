@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using InteractableItemsSystem;
 using UnityEngine;
 using BreakableObjects;
+using PlayerCharacter.Movement;
 
 namespace InteractableItemsSystem
 {
@@ -107,6 +108,7 @@ namespace InteractableItemsSystem
             {
                 _lineRenderer.enabled = false;
                 DrawLine = false;
+                _playerItemInteraction.PlayerController.StartCoroutine(nameof(PlayerController.EnableMovement));
             }
         }
 
