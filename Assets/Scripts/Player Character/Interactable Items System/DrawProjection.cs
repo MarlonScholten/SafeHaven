@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using InteractableItemsSystem;
 using UnityEngine;
 using BreakableObjects;
+using PlayerCharacter.Movement;
 
 namespace InteractableItemsSystem
 {
@@ -107,6 +108,7 @@ namespace InteractableItemsSystem
             {
                 _lineRenderer.enabled = false;
                 DrawLine = false;
+                _playerItemInteraction.PlayerController.StartCoroutine(nameof(PlayerController.EnableMovement));
             }
         }
 
@@ -114,6 +116,7 @@ namespace InteractableItemsSystem
         {
              if (!_inventory.HasItemInInventory) return;
             DrawLine = true;
+            _playerItemInteraction.PlayerController.DisableMovement();
         }
 
         private void Update()
@@ -125,7 +128,8 @@ namespace InteractableItemsSystem
         private void DrawProjectionLine()
         {
             if (!_inventory.HasItemInInventory) return;
-
+            
+            
             _lineRenderer.enabled = true;
             _lineRenderer.positionCount = Mathf.CeilToInt(_numPoints / _timeBetweenPoints) + 1;
             Vector3 startPosition = _playerItemInteraction.ItemHolder.transform.position;
