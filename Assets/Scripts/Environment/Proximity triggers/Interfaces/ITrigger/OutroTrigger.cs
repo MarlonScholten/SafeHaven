@@ -19,8 +19,6 @@ public class OutroTrigger : MonoBehaviour, ITrigger
         _playerWithinRange = instigator.CompareTag("Player") ? enter : _playerWithinRange;
         _brotherWithinRange = instigator.CompareTag("Brother") ? enter : _brotherWithinRange;
 
-        Debug.Log(_gameFinished + " | " + enter);
-
         if (enter && _gameFinished)
             FindObjectOfType<IntroOutroManager>().StartOutro();
     }
