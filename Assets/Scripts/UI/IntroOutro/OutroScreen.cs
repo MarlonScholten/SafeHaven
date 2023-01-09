@@ -26,14 +26,8 @@ public class OutroScreen : UIScreen
     {
         while (true)
         {
-            yield return new WaitForSecondsRealtime(0.01f);
-
-            _container.transform.Translate(Vector3.up * Time.unscaledDeltaTime);
-
-            //Vector2 pos = _container.anchoredPosition;
-            //pos.y += _movementSpeed * Time.unscaledDeltaTime;
-            //Debug.Log(_movementSpeed * Time.unscaledDeltaTime + " | " + Time.unscaledDeltaTime);
-            //_container.anchoredPosition = pos;
+            yield return new WaitForSecondsRealtime(0.02f);
+            _container.transform.Translate(Vector3.up);
         }
     }
 }
