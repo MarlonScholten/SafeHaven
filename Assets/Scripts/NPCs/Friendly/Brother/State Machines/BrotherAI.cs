@@ -206,7 +206,6 @@ public class BrotherAI : MonoBehaviour
     {
         _animator.SetFloat(_velocityHash, _navMeshAgent.velocity.magnitude);
         _animator.SetBool(_stealthHash, _isInStealth);
-        
         if (Vector3.Distance(_player.transform.position, transform.position) > _brotherRange)
         {
             CallBrother();
