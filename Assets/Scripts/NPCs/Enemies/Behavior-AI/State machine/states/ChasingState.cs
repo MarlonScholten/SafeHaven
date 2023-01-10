@@ -1,3 +1,4 @@
+using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -44,13 +45,14 @@ public class ChasingState : MonoBehaviour
     {
         _stateManager = GetComponent<EnemyAiStateManager>();
         _enemyStateWatcher = GameObject.Find("EnemyStateWatcher").GetComponent<SoundManager.EnemyStateWatcher>();
+
     }
     /// <summary>
     /// Enter chasing state
     /// </summary>
     public void Enter_Chasing()
     {
-        
+        _stateManager._postProcessing.GetComponent<ChasingVignette>().Increase();
         _stateManager.navMeshAgent.speed = _stateManager.enemyAiScriptableObject.ChaseSpeed;
         //shows the current state as text above the enemy when this is enabled in the inspector.
         if (_stateManager.enemyAiScriptableObject.showCurrentState)
@@ -58,8 +60,6 @@ public class ChasingState : MonoBehaviour
             _stateManager.textMesh.text = "Chasing";
             _stateManager.textMesh.color = Color.red;
         }
-
-        _stateManager.vignette.color.value = Color.red;
 
         GameObject.Find("EnemyStateWatcher").GetComponent<SoundManager.EnemyStateWatcher>().IsChasing(true);
     }
@@ -97,7 +97,7 @@ public class ChasingState : MonoBehaviour
     /// </summary>
     public void Exit_Chasing()
     {
-        _stateManager.vignette.color.value = Color.black;
+        _stateManager._postProcessing.GetComponent<ChasingVignette>().Decrease();
         //Reset spotted player/brother.
         _stateManager.navMeshAgent.speed = _stateManager.defaultSpeed;
         _enemyStateWatcher.IsChasing(false);

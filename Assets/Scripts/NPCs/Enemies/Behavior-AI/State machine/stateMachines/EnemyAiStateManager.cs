@@ -110,9 +110,9 @@ public class EnemyAiStateManager : MonoBehaviour
     
     private EnemyStateWatcher _enemyStateWatcher; // EnemyStateWatcher component
 
-    private Volume volume;
-    private GameObject PostProcessing;
-    public Vignette vignette;
+    public GameObject _postProcessing;
+
+    
 
 
     private void Awake()
@@ -125,9 +125,8 @@ public class EnemyAiStateManager : MonoBehaviour
         }
 
         _enemyStateWatcher = FindObjectOfType<EnemyStateWatcher>();
-        PostProcessing = GameObject.Find("PostProcessing");
-        volume = PostProcessing.GetComponent<Volume>();
-        volume.profile.TryGet(out vignette);
+        
+        _postProcessing = GameObject.Find("PostProcessing");
     }
 
     private void Start()
@@ -142,6 +141,8 @@ public class EnemyAiStateManager : MonoBehaviour
         {
             textMesh.transform.rotation = Camera.main.transform.rotation;
         }
+
+        
         
     }
 
