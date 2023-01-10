@@ -57,21 +57,6 @@ public class GameOverManager : MonoBehaviour
         _enemyStateWatcher.OnSisterCaught -= GameOverSister;
         _enemyStateWatcher.OnBrotherCaught -= GameOverBrother;
 
-        // Setup prerequisites for an interactable menu. 
-        Time.timeScale = 0;
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.Confined;
-        InputBehaviour.Instance.gameObject.SetActive(false);
-
-        // Disable the camera.
-        CinemachineBrain cinemachineBrain = FindObjectOfType<CinemachineBrain>();
-        if (cinemachineBrain)
-            cinemachineBrain.enabled = false;
-
-        // Disable every enabled canvas.
-        foreach (Canvas canvas in FindObjectsOfType<Canvas>().Where(x => x.enabled))
-            canvas.enabled = false;
-
         // Create the game over menu & set the message.
         GameOverMenu actual = Instantiate(_gameOverMenu).GetComponent<GameOverMenu>();
         actual.GameOverMessage = message;
