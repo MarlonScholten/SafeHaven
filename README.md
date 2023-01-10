@@ -4,7 +4,7 @@ The actual Unity game / Build of Safe Haven.
 
 ## Install the game
 
-1. Download the latest release version of the game [here](https://github.com/AIM-GAME-PROJECT-group-b/SafeHaven/releases/tag/v0.4.4A6)
+1. Download the latest release version of the game [here](https://github.com/AIM-GAME-PROJECT-group-b/SafeHaven/releases/tag/v0.4.68C)
 2. Extract the game from the .zip file
 3. Execute `StandaloneWindows64.exe`
 
