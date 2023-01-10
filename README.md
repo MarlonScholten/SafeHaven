@@ -12,6 +12,10 @@ The actual Unity game / Build of Safe Haven.
 
 The changelog for what was changed and added for every sprint.
 
+## Changelog sprint 4.2
+This build has been made for the dutch game garden
+changes TBA
+
 ## Changelog sprint 4.1
 
 ### Programming
