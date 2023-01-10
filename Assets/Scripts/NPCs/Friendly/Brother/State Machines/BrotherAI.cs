@@ -1,3 +1,4 @@
+using System;
 using PlayerCharacter.Movement;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -48,7 +49,7 @@ using UnityEngine.AI;
 /// </list>
 
 [RequireComponent(typeof(FindHidingSpot),typeof(FearSystem))]
-public class BrotherAI : MonoBehaviour
+public class BrotherAI : MonoBehaviour, ITrigger
 {
     /// <summary>
     /// This value determines the maximum walkspeed of the brother.
@@ -148,6 +149,7 @@ public class BrotherAI : MonoBehaviour
     private int _itemHeldHash;
     private int _interactableObjectHash;
     private int _stealthHash;
+    [NonSerialized] public bool isHidingInBush;
 
     /// <summary>
     /// In the start method the declaration for the input is made.
@@ -460,5 +462,15 @@ public class BrotherAI : MonoBehaviour
         {
             ToggleStealth(false);
         }
+    }
+    
+    public void TriggerEnter(GameObject instigator)
+    { 
+        isHidingInBush = true;
+    }
+
+    public void TriggerExit(GameObject instigator)
+    {
+        isHidingInBush = false;
     }
 }

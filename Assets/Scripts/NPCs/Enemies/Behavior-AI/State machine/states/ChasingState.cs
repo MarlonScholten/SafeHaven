@@ -50,6 +50,7 @@ public class ChasingState : MonoBehaviour
     /// </summary>
     public void Enter_Chasing()
     {
+        _stateManager.isChasing = true;
         _stateManager.navMeshAgent.speed = _stateManager.enemyAiScriptableObject.ChaseSpeed;
         //shows the current state as text above the enemy when this is enabled in the inspector.
         if (_stateManager.enemyAiScriptableObject.showCurrentState)
@@ -97,5 +98,6 @@ public class ChasingState : MonoBehaviour
         //Reset spotted player/brother.
         _stateManager.navMeshAgent.speed = _stateManager.defaultSpeed;
         _enemyStateWatcher.IsChasing(false);
+        _stateManager.isChasing = false;
     }
 }

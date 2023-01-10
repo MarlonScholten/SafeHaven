@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using NPC;
+using PlayerCharacter.Movement;
 using SoundManager;
 using TMPro;
 using Unity.VisualScripting;
@@ -107,6 +108,7 @@ public class EnemyAiStateManager : MonoBehaviour
     private static readonly int s_forwardVelocity = Animator.StringToHash("forwardVelocity"); // Animator parameter for forward velocity
     
     private EnemyStateWatcher _enemyStateWatcher; // EnemyStateWatcher component
+    [NonSerialized] public bool isChasing; // Boolean to check if the enemy is chasing the player/brother
 
 
     private void Awake()
@@ -191,7 +193,15 @@ public class EnemyAiStateManager : MonoBehaviour
         if (path.status == NavMeshPathStatus.PathPartial) return false; // Check if the player is reachable
         if (!hit.collider.gameObject.CompareTag("Player") && !hit.collider.gameObject.CompareTag("Brother"))
             return false; // Check if the object is the player/brother
-
+        if (isChasing)
+        {
+            if(hit.collider.gameObject.CompareTag("Player")){ 
+                if(hit.collider.gameObject.GetComponent<PlayerController>().isHidingInBush) return false;
+            }
+            if(hit.collider.gameObject.CompareTag("Brother")){
+                if(hit.collider.gameObject.GetComponent<BrotherAI>().isHidingInBush) return false;
+            }
+        }
         var hitPlayer = hit.collider.gameObject;
         spottedPlayer = hitPlayer;
         spottedPlayerLastPosition = hitPlayer.transform.position;
