@@ -15,6 +15,8 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using Quaternion = UnityEngine.Quaternion;
 using Random = UnityEngine.Random;
@@ -110,6 +112,10 @@ public class EnemyAiStateManager : MonoBehaviour
     private EnemyStateWatcher _enemyStateWatcher; // EnemyStateWatcher component
     [NonSerialized] public bool isChasing; // Boolean to check if the enemy is chasing the player/brother
 
+    public GameObject _postProcessing;
+
+    
+
 
     private void Awake()
     {
@@ -121,6 +127,8 @@ public class EnemyAiStateManager : MonoBehaviour
         }
 
         _enemyStateWatcher = FindObjectOfType<EnemyStateWatcher>();
+        
+        _postProcessing = GameObject.Find("PostProcessing");
     }
 
     private void Start()
@@ -135,6 +143,8 @@ public class EnemyAiStateManager : MonoBehaviour
         {
             textMesh.transform.rotation = Camera.main.transform.rotation;
         }
+
+        
         
     }
 

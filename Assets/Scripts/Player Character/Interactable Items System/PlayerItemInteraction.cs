@@ -80,6 +80,11 @@ namespace InteractableItemsSystem
         /// </summary>
         public Color HighlightColor => _highlightColor;
 
+        /// <summary>
+        /// Used for getting the PlayerController in the throwable objects script.
+        /// </summary>
+        public PlayerController PlayerController => _playerController;
+
         private float _distanceToItem;
 
         private bool _isChangingItem;

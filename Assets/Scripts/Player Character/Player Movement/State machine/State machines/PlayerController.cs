@@ -1,14 +1,16 @@
 using System;
 using System.Collections;
+using Cinemachine;
 using PlayerCharacter.States;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.InputSystem;
 
 namespace PlayerCharacter.Movement
 {
     /// <summary>
     /// Author: Marlon Scholten <br/>
-    /// Modified by: Hugo Verweij, Hugo Ulfman and Iris Giezen <br/>
+    /// Modified by: Hugo Verweij, Hugo Ulfman, Iris Giezen and Jasper Driessen<br/>
     /// Description: PlayerController behaviour. Controller for everything related to the player character's state, movement and actions. <br />
     /// Controls the states, and updates the correct parameters when the player inputs movement buttons. <br />
     /// Installation steps: <br />
@@ -108,7 +110,13 @@ namespace PlayerCharacter.Movement
         [Header("References")] [SerializeField]
         private GameObject _standCollider;
 
-        [SerializeField] private GameObject _crouchCollider;
+        [SerializeField]
+        private GameObject _crouchCollider;
+        
+        [Tooltip("Sensitivity for the camera while in throwing")][SerializeField]private float _throwCameraSensitivity = 10f;
+
+        [Tooltip("Camera were you look through while throwing")] [SerializeField]
+        private CinemachineVirtualCamera _throwCam;
 
         public bool CanMoveInAir => _canMoveInAir;
 
@@ -162,6 +170,10 @@ namespace PlayerCharacter.Movement
         private Vector2 _current;
         private Vector2 _smooth;
 
+        private bool _playerIsThrowing;
+        private float _xRotation;
+        private float _camTransitionTime = 0.5f;
+        
         private bool _running;
 
         private void Awake()
@@ -187,6 +199,7 @@ namespace PlayerCharacter.Movement
             _itemHeldHash = Animator.StringToHash("ItemHeld");
             _interactableObjectHash = Animator.StringToHash("InteractableObject");
             _stealthHash = Animator.StringToHash("Stealth");
+            _camTransitionTime = _playerCamera.GetComponent<CinemachineBrain>().m_DefaultBlend.m_Time;
         }
 
         private void OnDestroy()
@@ -200,13 +213,18 @@ namespace PlayerCharacter.Movement
         /// <remarks>Movement is here too because gravity influences all kinds of movement</remarks>
         void Update()
         {
-            _current = Vector2.SmoothDamp(_current, MovementInput * _movementSpeed, ref _smooth, .3f);
+            if (!_playerIsThrowing)
+            {_current = Vector2.SmoothDamp(_current, MovementInput * _movementSpeed, ref _smooth, .3f);
             CurrentState.UpdateState();
             ApplyGravity();
             transform.rotation = _rotation;
             CharacterController.Move(_movement * Time.deltaTime);
             _animator.SetFloat(_velocityHash, _current.magnitude);
-            _animator.SetBool(_stealthHash, _crouching);
+            }
+            else
+            {
+                ThrowCameraControl();
+            }
         }
 
         /// <summary>
@@ -320,6 +338,61 @@ namespace PlayerCharacter.Movement
 
                 yield return new WaitForSeconds(0.1f);
             }
+        }
+
+        /// <summary>
+        /// Allows other scripts to see if the player is crouching
+        /// </summary>
+        public bool GetCrouching()
+        {
+            return _crouching;
+        }
+
+        /// <summary>
+        /// Makes it so the player can't move, when going into throw state. Also changes the camera to the throw camera.
+        /// </summary>
+        public void DisableMovement()
+        {
+            if (CharacterController.enabled)
+            {
+                CharacterController.Move(new Vector3(0,0,0));
+                _throwCam.transform.rotation = new Quaternion(0f,0f,0f, 0f);
+            }
+            CharacterController.enabled = false;
+            _playerIsThrowing = true;
+
+            /*transform.forward = _playerCamera.transform.forward;*/
+            transform.right = _playerCamera.transform.right;
+            
+            
+            _throwCam.Priority = 100;
+        }
+
+        /// <summary>
+        /// Makes it so the player can move again after throwing and switches camera back to third person camera.
+        /// </summary>
+        public IEnumerator EnableMovement()
+        {
+            _playerIsThrowing = false;
+            _rotation = transform.rotation;
+            _throwCam.Priority = 0;
+            yield return new WaitForSeconds(_camTransitionTime);
+            CharacterController.enabled = true;
+        }
+
+        private void ThrowCameraControl()
+        {
+            _current = Vector2.SmoothDamp(_current, new Vector2(0,0), ref _smooth, .3f);
+            _animator.SetFloat(_velocityHash, _current.magnitude);
+               
+            float mouseX = Input.GetAxis("Mouse X") * _throwCameraSensitivity * Time.deltaTime;
+            float mouseY = Input.GetAxis("Mouse Y") * _throwCameraSensitivity * Time.deltaTime;
+
+            _xRotation -= mouseY;
+            _xRotation = Mathf.Clamp(_xRotation, -20f, 5f);
+                
+            transform.Rotate(Vector3.up * mouseX);
+            _throwCam.transform.localRotation = Quaternion.Euler(_xRotation, 0f, 0f);
         }
         public void TriggerEnter(GameObject instigator)
         {
