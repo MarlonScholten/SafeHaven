@@ -25,7 +25,6 @@ public class ChasingVignette : MonoBehaviour
 
     public void Update()
     {
-        Debug.Log(nrOfAgentsChasing + " --- " + vignette.intensity.value);
         if (nrOfAgentsChasing > 0)
         {
             vignette.intensity.value =
