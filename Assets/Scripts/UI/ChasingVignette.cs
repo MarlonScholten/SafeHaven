@@ -10,7 +10,8 @@ public class ChasingVignette : MonoBehaviour
     public Vignette vignette;
     
     private float _startVignetteIntensity;
-    private readonly float _chasedVignetteIntensity = 0.5f;
+    
+    public readonly float _chasedVignetteIntensity = 0.5f;
     private bool _vignettePulseIncrease = false;
 
     public int nrOfAgentsChasing = 0;
@@ -24,14 +25,16 @@ public class ChasingVignette : MonoBehaviour
 
     public void Update()
     {
-        Debug.Log(nrOfAgentsChasing);
+        Debug.Log(nrOfAgentsChasing + " --- " + vignette.intensity.value);
         if (nrOfAgentsChasing > 0)
         {
-            vignette.intensity.value = Mathf.Lerp(_startVignetteIntensity, _chasedVignetteIntensity, Time.deltaTime);
+            vignette.intensity.value =
+                Mathf.SmoothStep(_chasedVignetteIntensity, _startVignetteIntensity, Time.deltaTime);
         }
         else
         {
-            vignette.intensity.value = Mathf.Lerp(_startVignetteIntensity, _chasedVignetteIntensity, Time.deltaTime);
+            vignette.intensity.value =
+                Mathf.SmoothStep(_startVignetteIntensity, _chasedVignetteIntensity, Time.deltaTime);
         }
     }
 
