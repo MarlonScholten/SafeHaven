@@ -206,7 +206,7 @@ public class EnemyAiStateManager : MonoBehaviour
         if (isChasing)
         {
             if(hit.collider.gameObject.CompareTag("Player")){ 
-                if(hit.collider.gameObject.GetComponent<PlayerController>().isHidingInBush) return false;
+                if(hit.collider.gameObject.GetComponentInParent<PlayerController>().isHidingInBush) return false;
             }
             if(hit.collider.gameObject.CompareTag("Brother")){
                 if(hit.collider.gameObject.GetComponent<BrotherAI>().isHidingInBush) return false;
