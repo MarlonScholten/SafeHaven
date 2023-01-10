@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7762347544642704960}
+  - component: {fileID: 5214422575076999746}
+  - component: {fileID: 538623094111633608}
   m_Layer: 0
   m_Name: modular building no door 3
   m_TagString: Untagged
@@ -39,6 +41,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5214422575076999746
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9105844522859649458}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8.385188, y: 4.3859005, z: 1.5643166}
+  m_Center: {x: -0.11041021, y: 2.1345892, z: 0.40483588}
+--- !u!65 &538623094111633608
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9105844522859649458}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2.3003817, z: 0.68103814}
+  m_Center: {x: 0, y: 2.4167476, z: -0.67472637}
 --- !u!1001 &168848803550821635
 PrefabInstance:
   m_ObjectHideFlags: 0
