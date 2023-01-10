@@ -54,4 +54,9 @@ public static class Extensions
         collider.center = new Vector3(centerBoundX, centerBoundY, centerBoundZ);
         collider.height = height;
     }
+
+    public static float Map(this float value, float leftMin, float leftMax, float rightMin, float rightMax)
+    {
+        return rightMin + (value - leftMin) * (rightMax - rightMin) / (leftMax - leftMin);
+    }
 }

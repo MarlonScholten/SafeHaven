@@ -56,7 +56,7 @@ public class VoicelineTrigger : MonoBehaviour
         for (int i = 0; i < _sequenceLength; i++)
         {
             GameObject source;
-            if (_voicelineSource.Count <= i || _voicelineSource[i] is null)
+            if (_voicelineSource.Count <= i || _voicelineSource[i] is null || _voicelineSource[i].ToString() == "null")
             {
                 Debug.LogWarning("No GameObject set for voiceline, using player!");
                 source = GameObject.FindGameObjectWithTag("Player");
