@@ -41,6 +41,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8549245203574718610}
+  - {fileID: 6636681127577598051}
   - {fileID: 3537254896177116968}
   - {fileID: 5224243242498322236}
   m_Father: {fileID: 0}
@@ -454,7 +455,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1709185930900863173}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -471,7 +472,7 @@ PrefabInstance:
     - target: {fileID: 925397159035902812, guid: ac9edae503de07d49aa19b379f5643d1,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 925397159035902812, guid: ac9edae503de07d49aa19b379f5643d1,
         type: 3}
@@ -615,34 +616,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e67925bd1f48a274fad33e3d6b1cf0ef, type: 3}
---- !u!4 &2534528261045392748 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e67925bd1f48a274fad33e3d6b1cf0ef,
-    type: 3}
-  m_PrefabInstance: {fileID: 2641024160174830215}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2911476738372194262 stripped
+--- !u!1 &6292068531902964441 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e67925bd1f48a274fad33e3d6b1cf0ef,
     type: 3}
-  m_PrefabInstance: {fileID: 2641024160174830215}
+  m_PrefabInstance: {fileID: 6597917695582166920}
   m_PrefabAsset: {fileID: 0}
---- !u!222 &5472714757290614382
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2911476738372194262}
-  m_CullTransparentMesh: 1
---- !u!95 &7718898194893972679
+--- !u!95 &2423977610183062185
 Animator:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2911476738372194262}
+  m_GameObject: {fileID: 6292068531902964441}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 2af45bb9ae5b34929baf2e6552fb8d33, type: 2}
@@ -655,3 +642,9 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!4 &6636681127577598051 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e67925bd1f48a274fad33e3d6b1cf0ef,
+    type: 3}
+  m_PrefabInstance: {fileID: 6597917695582166920}
+  m_PrefabAsset: {fileID: 0}
