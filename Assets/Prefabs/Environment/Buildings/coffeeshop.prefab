@@ -9,12 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5467579647150564937}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: coffeeshop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5467579647150564937
 Transform:
@@ -44,12 +44,12 @@ GameObject:
   - component: {fileID: 1840357860998656599}
   - component: {fileID: 4851511365315712185}
   - component: {fileID: 5168110013147144459}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Building.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1840357860998656599
 Transform:
@@ -127,12 +127,13 @@ GameObject:
   - component: {fileID: 5580526010924481258}
   - component: {fileID: 8937487218501179620}
   - component: {fileID: 18164474039323442}
-  m_Layer: 0
+  - component: {fileID: 2313763977183688333}
+  m_Layer: 3
   m_Name: Building.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5580526010924481258
 Transform:
@@ -199,3 +200,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &2313763977183688333
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8972797747652078847}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -604256794933069789, guid: bc60918e0ca23bb4d9afadee4d07f20c, type: 3}
