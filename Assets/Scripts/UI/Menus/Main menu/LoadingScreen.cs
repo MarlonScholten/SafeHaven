@@ -55,7 +55,7 @@ public class LoadingScreen : MonoBehaviour
 
     private IEnumerator LoadScene(int id)
     {
-        var sceneAsync = SceneManager.LoadSceneAsync(id, LoadSceneMode.Additive);
+        var sceneAsync = SceneManager.LoadSceneAsync(id, LoadSceneMode.Single);//HOTFIX EVERYTHING BROKE used to say LoadSceneMode.Additive
 
         while (!sceneAsync.isDone) yield return null;
         
