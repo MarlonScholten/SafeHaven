@@ -9,12 +9,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7677384537484399727}
-  m_Layer: 0
+  - component: {fileID: 2573520012684637524}
+  m_Layer: 3
   m_Name: modular building no door 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7677384537484399727
 Transform:
@@ -50,6 +51,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2573520012684637524
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8697123040977861252}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 9.2003, y: 4.008552, z: 0.8136296}
+  m_Center: {x: -0.026624203, y: 1.9302657, z: 0.0931852}
 --- !u!1001 &246289761130277862
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -132,6 +146,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Building 3 Extruded window (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2277763550133151386, guid: eb29570f99c3f6a4698ce514e907e660,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2277763550133151386, guid: eb29570f99c3f6a4698ce514e907e660,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb29570f99c3f6a4698ce514e907e660, type: 3}
 --- !u!4 &1710543733520914374 stripped
@@ -207,6 +231,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Building 2 level devider (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 7509468970459339670, guid: b81f1a781eb589849b9bb3dff5b61c19,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7509468970459339670, guid: b81f1a781eb589849b9bb3dff5b61c19,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b81f1a781eb589849b9bb3dff5b61c19, type: 3}
 --- !u!4 &7398666534858240313 stripped
@@ -226,6 +260,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Building 2 Big wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 4640675545335036883, guid: 7340b1c6fa7eaca4e953d2fbb5f4547d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4640675545335036883, guid: 7340b1c6fa7eaca4e953d2fbb5f4547d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 5417035948925460841, guid: 7340b1c6fa7eaca4e953d2fbb5f4547d,
         type: 3}
@@ -357,6 +401,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Building 5 small ally window (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2070163691596811334, guid: 399d91249d2d0fa4bbd66bbe2eb21d8c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2070163691596811334, guid: 399d91249d2d0fa4bbd66bbe2eb21d8c,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 399d91249d2d0fa4bbd66bbe2eb21d8c, type: 3}
 --- !u!4 &2096889338842278968 stripped
@@ -376,6 +430,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Building 2 Small wall (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1566105001188200121, guid: 571a619504a3aab4b92043bf05501d70,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1566105001188200121, guid: 571a619504a3aab4b92043bf05501d70,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 2229348473146790915, guid: 571a619504a3aab4b92043bf05501d70,
         type: 3}
@@ -512,6 +576,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Building 5 small ally window (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2070163691596811334, guid: 399d91249d2d0fa4bbd66bbe2eb21d8c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2070163691596811334, guid: 399d91249d2d0fa4bbd66bbe2eb21d8c,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 399d91249d2d0fa4bbd66bbe2eb21d8c, type: 3}
 --- !u!4 &2096889338023751181 stripped
@@ -602,6 +676,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Building 3 Extruded window (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 2277763550133151386, guid: eb29570f99c3f6a4698ce514e907e660,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2277763550133151386, guid: eb29570f99c3f6a4698ce514e907e660,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb29570f99c3f6a4698ce514e907e660, type: 3}
 --- !u!4 &2276876358719276102 stripped
@@ -677,6 +761,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Building 2 level devider (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 7509468970459339670, guid: b81f1a781eb589849b9bb3dff5b61c19,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7509468970459339670, guid: b81f1a781eb589849b9bb3dff5b61c19,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b81f1a781eb589849b9bb3dff5b61c19, type: 3}
 --- !u!4 &8021783717047543462 stripped
@@ -751,6 +845,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Building 2 level devider (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7509468970459339670, guid: b81f1a781eb589849b9bb3dff5b61c19,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7509468970459339670, guid: b81f1a781eb589849b9bb3dff5b61c19,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b81f1a781eb589849b9bb3dff5b61c19, type: 3}
@@ -842,6 +946,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Building 3 Extruded window (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 2277763550133151386, guid: eb29570f99c3f6a4698ce514e907e660,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2277763550133151386, guid: eb29570f99c3f6a4698ce514e907e660,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb29570f99c3f6a4698ce514e907e660, type: 3}
 --- !u!4 &1028920337737178906 stripped
@@ -932,6 +1046,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Building 3 Extruded window (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2277763550133151386, guid: eb29570f99c3f6a4698ce514e907e660,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2277763550133151386, guid: eb29570f99c3f6a4698ce514e907e660,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb29570f99c3f6a4698ce514e907e660, type: 3}
 --- !u!4 &3494307288790042931 stripped
@@ -1007,6 +1131,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Building 2 level devider (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7509468970459339670, guid: b81f1a781eb589849b9bb3dff5b61c19,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7509468970459339670, guid: b81f1a781eb589849b9bb3dff5b61c19,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b81f1a781eb589849b9bb3dff5b61c19, type: 3}
 --- !u!4 &4969557245223149534 stripped
@@ -1081,6 +1215,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Building Round window (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 609403947075061548, guid: ff2c8a133cea8bd478dea4f49ed5bf01,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 609403947075061548, guid: ff2c8a133cea8bd478dea4f49ed5bf01,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff2c8a133cea8bd478dea4f49ed5bf01, type: 3}
@@ -1172,6 +1316,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Building 5 small ally window (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 2070163691596811334, guid: 399d91249d2d0fa4bbd66bbe2eb21d8c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2070163691596811334, guid: 399d91249d2d0fa4bbd66bbe2eb21d8c,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 399d91249d2d0fa4bbd66bbe2eb21d8c, type: 3}
 --- !u!4 &5437401562919278476 stripped
@@ -1191,6 +1345,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Building 2 Small wall (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1566105001188200121, guid: 571a619504a3aab4b92043bf05501d70,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1566105001188200121, guid: 571a619504a3aab4b92043bf05501d70,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 2229348473146790915, guid: 571a619504a3aab4b92043bf05501d70,
         type: 3}
@@ -1332,6 +1496,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Building 2 level devider (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7509468970459339670, guid: b81f1a781eb589849b9bb3dff5b61c19,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7509468970459339670, guid: b81f1a781eb589849b9bb3dff5b61c19,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b81f1a781eb589849b9bb3dff5b61c19, type: 3}
 --- !u!4 &140578721220914687 stripped
@@ -1406,6 +1580,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Building 2 level devider (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7509468970459339670, guid: b81f1a781eb589849b9bb3dff5b61c19,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7509468970459339670, guid: b81f1a781eb589849b9bb3dff5b61c19,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b81f1a781eb589849b9bb3dff5b61c19, type: 3}
@@ -1482,6 +1666,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Building 2 level devider (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 7509468970459339670, guid: b81f1a781eb589849b9bb3dff5b61c19,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7509468970459339670, guid: b81f1a781eb589849b9bb3dff5b61c19,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b81f1a781eb589849b9bb3dff5b61c19, type: 3}
 --- !u!4 &1916357864147930735 stripped
@@ -1556,6 +1750,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Building 2 level devider (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7509468970459339670, guid: b81f1a781eb589849b9bb3dff5b61c19,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7509468970459339670, guid: b81f1a781eb589849b9bb3dff5b61c19,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b81f1a781eb589849b9bb3dff5b61c19, type: 3}
