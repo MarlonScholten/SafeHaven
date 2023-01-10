@@ -14,6 +14,8 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using Quaternion = UnityEngine.Quaternion;
 using Random = UnityEngine.Random;
@@ -86,6 +88,7 @@ public class EnemyAiStateManager : MonoBehaviour
     [HideInInspector] public List<GameObject> wayPoints; // List of waypoints if not a guard
     [HideInInspector] public GameObject guardWaypoint; // Waypoint if guard
     [NonSerialized] public NavMeshAgent navMeshAgent; // Navmesh agent component
+    [NonSerialized] public float defaultSpeed; // The speed of the enemy that is set in the navmesh agent
     [NonSerialized] public Vector3 targetWpLocation; // Location of the current target waypoint
     [NonSerialized] public int currentWpIndex; // Index of the current target waypoint
     [NonSerialized] public bool alertedBySound; // Boolean to check if the enemy is alerted by a sound
@@ -101,8 +104,15 @@ public class EnemyAiStateManager : MonoBehaviour
     [NonSerialized] public float timePlayerLastSpotted; // Time when the enemy last spotted the player/brother
     
     [NonSerialized] public TextMeshPro textMesh; // TextMesh component for state visualization
+    
+    [NonSerialized] public Animator animator; // Animator component
+    private static readonly int s_forwardVelocity = Animator.StringToHash("forwardVelocity"); // Animator parameter for forward velocity
+    
+    private EnemyStateWatcher _enemyStateWatcher; // EnemyStateWatcher component
 
-    private EnemyStateWatcher _enemyStateWatcher;
+    public GameObject _postProcessing;
+
+    
 
 
     private void Awake()
@@ -115,6 +125,14 @@ public class EnemyAiStateManager : MonoBehaviour
         }
 
         _enemyStateWatcher = FindObjectOfType<EnemyStateWatcher>();
+        
+        _postProcessing = GameObject.Find("PostProcessing");
+    }
+
+    private void Start()
+    {
+        animator = GetComponentInChildren<Animator>();
+        defaultSpeed = navMeshAgent.speed;
     }
 
     private void Update()
@@ -123,7 +141,14 @@ public class EnemyAiStateManager : MonoBehaviour
         {
             textMesh.transform.rotation = Camera.main.transform.rotation;
         }
+
         
+        
+    }
+
+    private void FixedUpdate()
+    {
+        animator.SetFloat(s_forwardVelocity, navMeshAgent.velocity.magnitude);
     }
 
     /// <summary>
@@ -239,10 +264,10 @@ public class EnemyAiStateManager : MonoBehaviour
     /// <summary>
     /// This method checks if the enemy can reach the player/brother position.
     /// </summary>
-    public void CheckPositionReachable(Vector3 playerPosition)
+    public void CheckPositionReachable(Vector3 position)
     {
         var path = new NavMeshPath();
-        navMeshAgent.CalculatePath(playerPosition, path);
+        navMeshAgent.CalculatePath(position, path);
         if (path.status is NavMeshPathStatus.PathPartial)
         {
             targetWpLocation = path.corners.Last();
@@ -252,8 +277,8 @@ public class EnemyAiStateManager : MonoBehaviour
         }
         else
         {
-            targetWpLocation = playerPosition;
-            navMeshAgent.SetDestination(playerPosition);
+            targetWpLocation = position;
+            navMeshAgent.SetDestination(position);
         }
     }
 
