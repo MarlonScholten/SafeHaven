@@ -25,13 +25,13 @@ public class OutroScreen : UIScreen
     [SerializeField]
     private Image _image;
 
-    private float _startY;
+    [SerializeField]
+    private float _stopY = 2048;
+
 
     private void Start()
     {
         Pause();
-
-        _startY = _container.anchoredPosition.y;
 
         StartCoroutine(CreditCoroutine());
     }
@@ -53,7 +53,7 @@ public class OutroScreen : UIScreen
         float remapped = _movementSpeed.Map(0, 100, 200, 10);
 
         // Loop whilst the scrollable hasn't reached the end.
-        while (Mathf.Abs(_startY) >= _container.anchoredPosition.y)
+        while (_stopY >= _container.anchoredPosition.y)
         {
             float seconds = (float)TimeSpan.FromMilliseconds(remapped).TotalSeconds;
             yield return new WaitForSecondsRealtime(seconds);
