@@ -4,17 +4,27 @@ using UnityEngine;
 
 public class IntroOutroManager : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField]
     private GameObject _introScreen;
     [SerializeField]
     private GameObject _outroScreen;
 
+    [Header("Settings")]
+    [SerializeField]
+    private bool _introOnStartup = true;
+
     private void Start()
     {
-        StartIntro();
+        if (_introOnStartup)
+            StartIntro();
     }
 
     public void StartIntro() => Instantiate(_introScreen);
 
-    public void StartOutro() => Instantiate(_outroScreen);
+    public void StartOutro(float alpha = 185)
+    {
+        OutroScreen outro = Instantiate(_outroScreen).GetComponent<OutroScreen>();
+        outro.SetAlpha(185);
+    }
 }

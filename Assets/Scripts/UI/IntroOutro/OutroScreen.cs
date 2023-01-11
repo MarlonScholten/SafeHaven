@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class OutroScreen : UIScreen
 {
@@ -21,6 +22,9 @@ public class OutroScreen : UIScreen
     [SerializeField]
     private RectTransform _container;
 
+    [SerializeField]
+    private Image _image;
+
     private float _startY;
 
     private void Start()
@@ -30,6 +34,17 @@ public class OutroScreen : UIScreen
         _startY = _container.anchoredPosition.y;
 
         StartCoroutine(CreditCoroutine());
+    }
+
+    /// <summary>
+    /// Sets the alpha of the backpanel.
+    /// </summary>
+    /// <param name="a">The alpha, between 0 and 255.</param>
+    public void SetAlpha(float a)
+    {
+        Color temp = _image.color;
+        temp.a = a;
+        _image.color = temp;
     }
 
     private IEnumerator CreditCoroutine()
