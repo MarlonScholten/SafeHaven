@@ -17,11 +17,22 @@ public class TriggerObject : MonoBehaviour
 {
     //list of serializable ITrigger objects
     [SerializeField] private List<GameObject> _triggerObjects;
+    [SerializeField] private bool _SetPlayerOrBrotherAsTriggerObjects = false;
     
     /// <summary>
     /// This value determines which objects with which tags may trigger this trigger.
     /// </summary>
     [SerializeField,TagSelector, Tooltip("Select the tags of game object you want to trigger this trigger with.")] private String[] tags = new string[]{};
+
+    private void Start()
+    {
+        if (!_SetPlayerOrBrotherAsTriggerObjects) return;
+        if(tags.Contains("Player"))
+            _triggerObjects.Add(GameObject.FindGameObjectWithTag("Player"));
+        if(tags.Contains("Brother"))
+            _triggerObjects.Add(GameObject.FindGameObjectWithTag("Brother"));
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         //Debug.Log($"Collider hit ENTER {other.name}");
