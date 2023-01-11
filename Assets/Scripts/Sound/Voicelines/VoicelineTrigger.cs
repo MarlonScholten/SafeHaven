@@ -41,10 +41,17 @@ public class VoicelineTrigger : MonoBehaviour
 
     private bool _activated = false;
     
+    public bool isPlaying = false;
+
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
         if (_activated) return;
+        
+        foreach (VoicelineTrigger voicelineTrigger in FindObjectsOfType<VoicelineTrigger>())
+        {
+            if (voicelineTrigger.isPlaying) return;
+        }
 
         _activated = true;
 
@@ -53,6 +60,8 @@ public class VoicelineTrigger : MonoBehaviour
 
     private IEnumerator PlayVoicelines()
     {
+        isPlaying = true;
+        
         for (int i = 0; i < _sequenceLength; i++)
         {
             GameObject source;
@@ -67,9 +76,7 @@ public class VoicelineTrigger : MonoBehaviour
             }
 
             _voicelineSequence.Post(source);
-
-            if (i >= _sequenceLength - 1) break;
-
+            
             if (_voicelineInterval.Count <= i)
             {
                 Debug.LogWarning("No interval set for voiceline, using 5!");
@@ -80,5 +87,7 @@ public class VoicelineTrigger : MonoBehaviour
                 yield return new WaitForSeconds(_voicelineInterval[i]);
             }
         }
+        
+        isPlaying = false;
     }
 }

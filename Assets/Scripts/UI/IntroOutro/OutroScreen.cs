@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class OutroScreen : UIScreen
 {
@@ -21,15 +22,29 @@ public class OutroScreen : UIScreen
     [SerializeField]
     private RectTransform _container;
 
-    private float _startY;
+    [SerializeField]
+    private Image _image;
+
+    [SerializeField]
+    private float _stopY = 2048;
+
 
     private void Start()
     {
         Pause();
 
-        _startY = _container.anchoredPosition.y;
-
         StartCoroutine(CreditCoroutine());
+    }
+
+    /// <summary>
+    /// Sets the alpha of the backpanel.
+    /// </summary>
+    /// <param name="a">The alpha, between 0 and 255.</param>
+    public void SetAlpha(float a)
+    {
+        Color temp = _image.color;
+        temp.a = a;
+        _image.color = temp;
     }
 
     private IEnumerator CreditCoroutine()
@@ -38,7 +53,7 @@ public class OutroScreen : UIScreen
         float remapped = _movementSpeed.Map(0, 100, 200, 10);
 
         // Loop whilst the scrollable hasn't reached the end.
-        while (Mathf.Abs(_startY) >= _container.anchoredPosition.y)
+        while (_stopY >= _container.anchoredPosition.y)
         {
             float seconds = (float)TimeSpan.FromMilliseconds(remapped).TotalSeconds;
             yield return new WaitForSecondsRealtime(seconds);

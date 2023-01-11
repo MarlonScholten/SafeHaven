@@ -34,8 +34,8 @@ RectTransform:
   m_Father: {fileID: 6802884788138879108}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 684.15, y: 0}
   m_SizeDelta: {x: 1368.3, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -67,37 +67,20 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dictum,
-    lacus sed pellentesque malesuada, metus turpis finibus orci, eu semper risus
-    neque vitae massa. Nullam ullamcorper orci lectus, at ornare nisl dictum in.
-    Nam placerat ac nibh sit amet faucibus. Aliquam vestibulum accumsan enim, at
-    euismod ligula finibus vitae. Pellentesque sed lectus sed quam molestie rutrum.
-    Ut ut tellus eu odio venenatis mollis nec ac nunc. Maecenas accumsan quis ipsum
-    nec vulputate. Sed congue auctor ante posuere interdum.
-
-
-
-    Maecenas lacinia
-    metus libero, nec dignissim lacus semper nec. Nulla eros felis, efficitur eu
-    lorem ac, mattis accumsan turpis. Praesent nunc sapien, sagittis vitae metus
-    et, convallis porta dolor. Suspendisse aliquet magna at justo condimentum, vitae
-    imperdiet ex semper. Nullam nec orci condimentum, ultricies felis vel, mollis
-    ante. Fusce sed sapien neque. Donec euismod scelerisque condimentum. Curabitur
-    fringilla suscipit massa in accumsan. Quisque pellentesque, ligula sed suscipit
-    volutpat, augue nunc gravida justo, ac tempus nisl felis vel eros. Maecenas in
-    eros non lectus cursus volutpat in in orci.
-
-
-
-    Aliquam erat volutpat. Donec
-    bibendum sem vel urna efficitur ullamcorper. Sed in nibh tempor, sodales tellus
-    gravida, placerat tortor. Sed mollis quis nunc et tempus. Integer hendrerit iaculis
-    tortor vel pellentesque. Duis hendrerit nibh ac commodo sodales. Morbi vitae
-    placerat lacus, sed volutpat orci. Phasellus tellus augue, ultricies sed lorem
-    ut, condimentum faucibus ligula.
-
-
-    Thanks for playing!'
+  m_text: "\n\n\n\n\n\n\n\n\n\n\n\n\n\nWe need to get to the radio tower before the
+    morning, or we might get seen.\r\n\r\nI don't know if we have enough time. \r\n\r\nROLL
+    CREDITS\n\n\n\n\n\n\n\n\n\n\n\n\n\nA big Thanks to the Safe Haven Team!\n\nConcept
+    Owner\r\nKautto, KK Kerttu Kaarina\r\n\nProject Manager\r\nBeukers, DL Douwe\r\n\r\nSound
+    Lead\r\nLappalainen, ST Sami Tapani\r\n\nSound Team\r\nIsg\xFCzar, Z Can\r\nLinden,
+    GMW van der Gwyn\r\n\r\nArt Leads\r\nHamers, CL Camiel\r\nNafzger, N No\xEBl\r\n\nArtist\r\nPruissen,
+    S van Stijn\r\nSchoots, Y Youri\r\nKoppius, I Ilse\r\nMeijer, TL Timo\r\nBoer,
+    HA Hauke\r\n\r\nDesign Lead\r\nJansen, RJC Richard\r\n\nDesigners\r\nKruijssen,
+    I Ivo\r\nPetersen, X Xander\r\nHorst, S ter Sander\r\n\r\nProgramming Leads\r\nDiepstraten,
+    QJH Quinn\r\nSimpson, T Thomas\r\n\nProgrammers\r\nCornelissen, TAGW Tom\r\nDriessen,
+    JFC Jasper  \r\nGiezen, IJG Iris \r\nOrsel, TF Thijs\r\nStraaten, JM van der
+    Jelco  \r\nUlfman, HP Hugo\r\nVerweij, HM Hugo\r\nKerstens, MMW Marlon\r\n\r\nIntegration
+    Leads\r\nScholten, MC Marlon  \r\nOever, TCJ van den Thomas\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAnd
+    ofcourse You!\n\nThank you for playing gamer!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7aaa373d76c3cee4ebf4d06968aa9803, type: 2}
   m_sharedMaterial: {fileID: -3500309974330439957, guid: 7aaa373d76c3cee4ebf4d06968aa9803,
@@ -218,7 +201,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -191.69}
+  m_AnchoredPosition: {x: 0, y: -1209}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5499810674960467185
@@ -506,6 +489,8 @@ MonoBehaviour:
   _loadingScreen: {fileID: 5102930339703117343, guid: 5f5b70e973bc54d4fb5f5ac113a0f0a7,
     type: 3}
   _mainMenuSceneId: 0
-  _movementSpeed: 83
+  _movementSpeed: 100
   _timeAfterCredits: 3
   _container: {fileID: 6802884788138879108}
+  _image: {fileID: 7830679894562978503}
+  _stopY: 1677

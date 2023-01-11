@@ -7,11 +7,13 @@ using UnityEngine.Rendering.Universal;
 public class ChasingVignette : MonoBehaviour
 {
     private Volume _volume;
-    public Vignette vignette;
+    private Vignette vignette;
     
+    [SerializeField]
     private float _startVignetteIntensity;
     
-    public readonly float _chasedVignetteIntensity = 0.5f;
+    [SerializeField]
+    private float _chasedVignetteIntensity = 0.5f;
     private bool _vignettePulseIncrease = false;
 
     public int nrOfAgentsChasing = 0;
@@ -20,7 +22,12 @@ public class ChasingVignette : MonoBehaviour
     {
         _volume = GetComponent<Volume>();
         _volume.profile.TryGet(out vignette);
-        _startVignetteIntensity = vignette.intensity.value;
+    }
+
+    void Start()
+    {
+        vignette.intensity.value = _startVignetteIntensity;
+
     }
 
     public void Update()
@@ -28,7 +35,7 @@ public class ChasingVignette : MonoBehaviour
         if (nrOfAgentsChasing > 0)
         {
             vignette.intensity.value =
-                Mathf.SmoothStep(_chasedVignetteIntensity, _startVignetteIntensity, Time.deltaTime);
+                Mathf.SmoothStep(_chasedVignetteIntensity, _startVignetteIntensity,  Time.deltaTime);
         }
         else
         {

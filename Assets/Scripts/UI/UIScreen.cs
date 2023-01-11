@@ -76,14 +76,14 @@ public class UIScreen : MonoBehaviour
 
     protected void Restart()
     {
-        _enemyStateWatcher.StopSound();
+        _enemyStateWatcher?.StopSound();
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
     }
 
     protected void Return()
     {
         Instantiate(_loadingScreen);
-        _enemyStateWatcher.StopSound();
+        _enemyStateWatcher?.StopSound();
         SceneManager.LoadSceneAsync(_mainMenuSceneId, LoadSceneMode.Single);
     }
 }

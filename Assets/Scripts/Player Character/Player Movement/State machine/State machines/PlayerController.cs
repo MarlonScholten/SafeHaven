@@ -64,7 +64,7 @@ namespace PlayerCharacter.Movement
     ///	    </item>
     /// </list>
     [RequireComponent(typeof(NavMeshObstacle))]
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : MonoBehaviour, ITrigger
     {
         /// <summary>
         /// The event handler for <see cref="PlayerController"/>.
@@ -165,6 +165,8 @@ namespace PlayerCharacter.Movement
         private int _stealthHash;
 
         private bool _crouching;
+        [NonSerialized] public bool isHidingInBush;
+        private bool _isInBush;
         private Vector2 _current;
         private Vector2 _smooth;
 
@@ -212,14 +214,12 @@ namespace PlayerCharacter.Movement
         void Update()
         {
             if (!_playerIsThrowing)
-            {
-                _current = Vector2.SmoothDamp(_current, MovementInput * _movementSpeed, ref _smooth, .3f);
-            
-                CurrentState.UpdateState();
-                ApplyGravity();
-                transform.rotation = _rotation;
-                CharacterController.Move(_movement * Time.deltaTime);
-                _animator.SetFloat(_velocityHash, _current.magnitude);
+            {_current = Vector2.SmoothDamp(_current, MovementInput * _movementSpeed, ref _smooth, .3f);
+            CurrentState.UpdateState();
+            ApplyGravity();
+            transform.rotation = _rotation;
+            CharacterController.Move(_movement * Time.deltaTime);
+            _animator.SetFloat(_velocityHash, _current.magnitude);
             }
             else
             {
@@ -245,6 +245,7 @@ namespace PlayerCharacter.Movement
             if (!IsMoving()) return;
             _running = true;
             _crouching = false;
+            isHidingInBush = false;
 
             _animator.SetBool("Stealth", _crouching);
 
@@ -271,7 +272,7 @@ namespace PlayerCharacter.Movement
         {
             if (_running.Equals(true)) return;
             _crouching = !_crouching;
-
+            CheckForHiding();
             OnStealthToggle?.Invoke(_crouching);
 
             _running = false;
@@ -393,5 +394,29 @@ namespace PlayerCharacter.Movement
             transform.Rotate(Vector3.up * mouseX);
             _throwCam.transform.localRotation = Quaternion.Euler(_xRotation, 0f, 0f);
         }
+        public void TriggerEnter(GameObject instigator)
+        {
+            _isInBush = true;
+            CheckForHiding();
+        }
+
+        public void TriggerExit(GameObject instigator)
+        {
+            _isInBush = false;
+            isHidingInBush = false;
+        }
+        
+        private void CheckForHiding()
+        {
+            if (_crouching && _isInBush)
+            {
+                isHidingInBush = true;
+            }
+            else
+            {
+                isHidingInBush = false;
+            }
+        }
     }
+    
 }
