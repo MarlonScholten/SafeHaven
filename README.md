@@ -4,13 +4,18 @@ The actual Unity game / Build of Safe Haven.
 
 ## Install the game
 
-1. Download the latest release version of the game [here](https://github.com/AIM-GAME-PROJECT-group-b/SafeHaven/releases/tag/v0.4.68C)
+1. Download the latest release version of the game [here](https://github.com/AIM-GAME-PROJECT-group-b/SafeHaven/releases/tag/v0.4.6AB)
 2. Extract the game from the .zip file
 3. Execute `StandaloneWindows64.exe`
 
 ## Changelog
 
 The changelog for what was changed and added for every sprint.
+
+## Changelog sprint 4.3
+This build is a fallback build for TT4
+
+changes TBA
 
 ## Changelog sprint 4.2
 This build has been made for the dutch game garden
