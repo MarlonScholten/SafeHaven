@@ -57,6 +57,10 @@ public class MainMenu : MonoBehaviour
     [Tooltip("Determines if the exit button can be interacted with in the menu")]
     private bool _exitButtonEnabled = true;
 
+    [SerializeField]
+    [Tooltip("Determines if the credit button can be interacted with in the menu")]
+    private bool _creditsButtonEnabled = true;
+
     [SerializeField] 
     [Tooltip("Determines the amount of time the user has to confirm that they want to exit the game")]
     private float _exitButtonConfirmationTimeout = 2.0f;
@@ -78,7 +82,11 @@ public class MainMenu : MonoBehaviour
     [SerializeField] 
     [Tooltip("A reference to the exit button UI element in the hierarchy")]
     private Button _exitButton;
-    
+
+    [SerializeField]
+    [Tooltip("A reference to the credits button UI element in the hierarchy")]
+    private Button _creditsButton;
+
     [Header("Menu types")]
 
     [SerializeField] 
@@ -89,12 +97,16 @@ public class MainMenu : MonoBehaviour
     [Tooltip("A reference to the settings menu UI prefab")]
     private GameObject _settingsMenu;
 
+    private IntroOutroManager _introOutro;
+
     private int _scenesLoaded;
 
     private bool _wantsToLeave;
 
     private void Start()
     {
+        _introOutro = FindObjectOfType<IntroOutroManager>();
+
         InputBehaviour.Instance.gameObject.SetActive(false);
         
         _startButton.Select();
@@ -103,11 +115,13 @@ public class MainMenu : MonoBehaviour
         _loadButton.onClick.AddListener(OnLoad);
         _settingsButton.onClick.AddListener(OnSettings);
         _exitButton.onClick.AddListener(OnExit);
+        _creditsButton.onClick.AddListener(OnCredits);
         
         _startButton.interactable = _startButtonEnabled;
         _loadButton.interactable = _loadButtonEnabled;
         _settingsButton.interactable = _settingsButtonEnabled;
         _exitButton.interactable = _exitButtonEnabled;
+        _creditsButton.interactable = _creditsButtonEnabled;
     }
 
     private void OnStart()
@@ -151,6 +165,11 @@ public class MainMenu : MonoBehaviour
         _wantsToLeave = true;
 
         StartCoroutine(ExitConfirmationTimeout());
+    }
+
+    private void OnCredits()
+    {
+        _introOutro.StartOutro(255);
     }
 
     private IEnumerator ExitConfirmationTimeout()
