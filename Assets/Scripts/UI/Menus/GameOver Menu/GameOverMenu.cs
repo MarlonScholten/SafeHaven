@@ -24,7 +24,7 @@ using UnityEngine.UI;
 ///         <term>The prefab contains all the information needed to handle the state of the <see cref="GameOverMenu"/>.</term>
 ///     </item>
 /// </list>
-public class GameOverMenu : MonoBehaviour
+public class GameOverMenu : UIScreen
 {
     /// <summary>
     /// Sets and returns the corresponding <see cref="TMP_Text"/> element, which displays the game over message.
@@ -35,6 +35,7 @@ public class GameOverMenu : MonoBehaviour
         set => _message.text = value;
     }
 
+    [Header("References")]
     [SerializeField]
     [Tooltip("The game over message, will change depending on the state of the game.")]
     private TMP_Text _message;
@@ -47,40 +48,17 @@ public class GameOverMenu : MonoBehaviour
     [Tooltip("The return, 'return to menu' button. Should return you to the menu.")]
     private Button _return;
 
-    [Header("Duplicate")]
-    [SerializeField]
-    [Tooltip("The prefab that contains the UI for the loading screen.")]
-    private GameObject _loadingScreen;
-
-    [SerializeField]
-    [Tooltip("The id from the scene to load when the main menu button is pressed. The scene needs to be added to the build settings, the id is the place of the scene in that list.")]
-    private int _mainMenuSceneId;
-
-    private EnemyStateWatcher _enemyStateWatcher;
-
-    private void Awake()
-    {
-        _enemyStateWatcher = FindObjectOfType<EnemyStateWatcher>();
-    }
-
     private void Start()
     {
+        Pause();
+
         _retry.onClick.AddListener(OnRetry);
         _return.onClick.AddListener(OnReturn);
 
         _retry.Select();
     }
 
-    private void OnRetry()
-    {
-        _enemyStateWatcher.StopSound();
-        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
-    }
+    private void OnRetry() => Restart();
 
-    private void OnReturn()
-    {
-        Instantiate(_loadingScreen);
-        _enemyStateWatcher.StopSound();
-        SceneManager.LoadSceneAsync(_mainMenuSceneId, LoadSceneMode.Single);
-    }
+    private void OnReturn() => Return();
 }

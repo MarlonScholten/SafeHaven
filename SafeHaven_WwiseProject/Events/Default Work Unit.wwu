@@ -34,92 +34,96 @@
 								</Event>
 							</ChildrenList>
 						</Folder>
+						<Folder Name="SFX" ID="{F81F86F4-637B-4B2B-8055-6F1500040B61}" ShortID="518332776">
+							<ChildrenList>
+								<Event Name="Play_MenuSFX1" ID="{B7E90F1A-EFC9-4C29-A7BE-770568B2CB73}">
+									<ChildrenList>
+										<Action Name="" ID="{9B1DAD16-CD08-499C-B40B-1F6868AE5B26}" ShortID="151868114">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="MenuSFX1" ID="{AFF14076-31BB-4004-8468-075C51C0028F}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Play_MenuSFX2" ID="{0E2EA89B-C66C-40AC-97F4-5622C823FBA1}">
+									<ChildrenList>
+										<Action Name="" ID="{DA088488-492A-4D3C-B0A7-4727606D7B32}" ShortID="301592310">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="MenuSFX2" ID="{592F76A9-F529-4642-BDEF-F922F42EA1B8}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="Main" ID="{3DBF06AE-DE9B-412F-8516-3B3FA933EFC9}" ShortID="493906790">
 					<ChildrenList>
 						<Folder Name="Music" ID="{D79C5109-B614-4113-9484-F26205679109}" ShortID="673547202">
 							<ChildrenList>
-								<Event Name="Stop_Stealth_Music" ID="{C239B45D-0C00-4A12-B37E-DA05CB0FA716}">
+								<Folder Name="Stealth Music" ID="{7528E237-D341-433B-9D81-3D6E39F81928}" ShortID="943774320">
 									<ChildrenList>
-										<Action Name="" ID="{025735A2-23EE-4A0C-A04B-B60C6644B4C1}" ShortID="780994142">
-											<PropertyList>
-												<Property Name="ActionType" Type="int16" Value="2"/>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Target">
-													<ObjectRef Name="Stealth Music" ID="{DB9480C5-0003-4AF3-B2C0-970F2EBF816F}" WorkUnitID="{42A9CC91-4865-4079-810A-C294ED1644D3}"/>
-												</Reference>
-											</ReferenceList>
-										</Action>
+										<Event Name="Stop_Stealth_Music" ID="{C239B45D-0C00-4A12-B37E-DA05CB0FA716}">
+											<ChildrenList>
+												<Action Name="" ID="{025735A2-23EE-4A0C-A04B-B60C6644B4C1}" ShortID="780994142">
+													<PropertyList>
+														<Property Name="ActionType" Type="int16" Value="2"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Stealth Music" ID="{DB9480C5-0003-4AF3-B2C0-970F2EBF816F}" WorkUnitID="{42A9CC91-4865-4079-810A-C294ED1644D3}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="Play_Stealth_Music" ID="{50FC248B-B570-4861-9203-400A296B2D94}">
+											<ChildrenList>
+												<Action Name="" ID="{EBBAE886-B7BB-4E03-ACD5-B36005D9366A}" ShortID="1009623203">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Stealth Music" ID="{DB9480C5-0003-4AF3-B2C0-970F2EBF816F}" WorkUnitID="{42A9CC91-4865-4079-810A-C294ED1644D3}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
 									</ChildrenList>
-								</Event>
-								<Event Name="Play_Stealth_Music" ID="{50FC248B-B570-4861-9203-400A296B2D94}">
+								</Folder>
+								<Folder Name="Top Secret Monkey Music" ID="{B439F427-3843-4E02-8798-CD6A6A165D6D}" ShortID="831463526">
 									<ChildrenList>
-										<Action Name="" ID="{EBBAE886-B7BB-4E03-ACD5-B36005D9366A}" ShortID="1009623203">
-											<ReferenceList>
-												<Reference Name="Target">
-													<ObjectRef Name="Stealth Music" ID="{DB9480C5-0003-4AF3-B2C0-970F2EBF816F}" WorkUnitID="{42A9CC91-4865-4079-810A-C294ED1644D3}"/>
-												</Reference>
-											</ReferenceList>
-										</Action>
+										<Event Name="Play_Secret_Music" ID="{6195F14B-CEA7-4649-A2D2-7794C72E903A}">
+											<ChildrenList>
+												<Action Name="" ID="{33EDC1D7-5721-4465-8746-E665965D9EE5}" ShortID="299324558">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Secret Music" ID="{888022B8-5D3A-4D10-96A0-6C13D2D6EFAB}" WorkUnitID="{42A9CC91-4865-4079-810A-C294ED1644D3}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="Stop_Secret_Music" ID="{8A6DBD6A-E133-42D0-9399-3B49967E3051}">
+											<ChildrenList>
+												<Action Name="" ID="{756C0605-7B1A-4C7F-9B4E-CD0307DAAE1E}" ShortID="444326157">
+													<PropertyList>
+														<Property Name="ActionType" Type="int16" Value="2"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Secret Music" ID="{888022B8-5D3A-4D10-96A0-6C13D2D6EFAB}" WorkUnitID="{42A9CC91-4865-4079-810A-C294ED1644D3}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
 									</ChildrenList>
-								</Event>
-							</ChildrenList>
-						</Folder>
-						<Folder Name="ProximityLamp" ID="{D910724E-58EE-4A45-B151-C51F00DD48A9}" ShortID="234663427">
-							<ChildrenList>
-								<Event Name="Play_Proxlamp_Draft1_Click" ID="{07AC8ECB-8A8A-44CC-B159-12FBC7764420}">
-									<ChildrenList>
-										<Action Name="" ID="{4D753369-FDA1-4740-A180-B240CD41088D}" ShortID="352137513">
-											<ReferenceList>
-												<Reference Name="Target">
-													<ObjectRef Name="Proxlamp_Click" ID="{0AB8953F-AFD0-4622-B131-992366CAF40E}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
-												</Reference>
-											</ReferenceList>
-										</Action>
-									</ChildrenList>
-								</Event>
-								<Event Name="Play_Proxlamp_Draft1_V2" ID="{BFDC109B-0D2E-4564-8A7E-62A3016965B1}">
-									<ChildrenList>
-										<Action Name="" ID="{2ACF3C04-8734-4749-AFA6-EE4306DD4422}" ShortID="4921934">
-											<ReferenceList>
-												<Reference Name="Target">
-													<ObjectRef Name="Proxlamp_Buzz" ID="{05EBE607-DAF2-4E25-818C-8595744A7FBD}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
-												</Reference>
-											</ReferenceList>
-										</Action>
-									</ChildrenList>
-								</Event>
-								<Event Name="Stop_Proxlamp_Draft1_V2" ID="{9E69FFAC-E301-4D28-AD2F-6131242695BF}">
-									<ChildrenList>
-										<Action Name="" ID="{C1F3C98E-D3C9-4BB7-AFBF-E0DD3FEAD441}" ShortID="737904552">
-											<PropertyList>
-												<Property Name="ActionType" Type="int16" Value="2"/>
-											</PropertyList>
-											<ReferenceList>
-												<Reference Name="Target">
-													<ObjectRef Name="Proxlamp_Buzz" ID="{05EBE607-DAF2-4E25-818C-8595744A7FBD}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
-												</Reference>
-											</ReferenceList>
-										</Action>
-									</ChildrenList>
-								</Event>
-							</ChildrenList>
-						</Folder>
-						<Folder Name="Footsteps" ID="{7724EDCD-E596-45FE-8488-517D65139664}" ShortID="629030314">
-							<ChildrenList>
-								<Event Name="Play_Footsteps" ID="{8BE082B3-9BE1-451E-8687-FF9DAB386F9B}">
-									<ChildrenList>
-										<Action Name="" ID="{01E03A0F-A106-4EBB-BAF8-25A810399BED}" ShortID="790005169">
-											<ReferenceList>
-												<Reference Name="Target">
-													<ObjectRef Name="Footsteps" ID="{68BF3187-242F-4BBC-A8DC-25164F19DFBE}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
-												</Reference>
-											</ReferenceList>
-										</Action>
-									</ChildrenList>
-								</Event>
+								</Folder>
 							</ChildrenList>
 						</Folder>
 						<Folder Name="Voice Over" ID="{5CCF86FC-FEE5-4C8A-A69C-BE4EF94A01A2}" ShortID="247704783">
@@ -587,6 +591,133 @@
 															<ReferenceList>
 																<Reference Name="Target">
 																	<ObjectRef Name="Scene12" ID="{A1A69233-E082-4D2E-89F3-092AE29A9259}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+											</ChildrenList>
+										</Folder>
+									</ChildrenList>
+								</Folder>
+							</ChildrenList>
+						</Folder>
+						<Folder Name="SFX" ID="{D48FDA87-98C0-4AF5-A85A-582BF7152846}" ShortID="562070539">
+							<ChildrenList>
+								<Folder Name="Footsteps" ID="{7724EDCD-E596-45FE-8488-517D65139664}" ShortID="629030314">
+									<ChildrenList>
+										<Event Name="Play_Footsteps" ID="{8BE082B3-9BE1-451E-8687-FF9DAB386F9B}">
+											<ChildrenList>
+												<Action Name="" ID="{01E03A0F-A106-4EBB-BAF8-25A810399BED}" ShortID="790005169">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Footsteps" ID="{68BF3187-242F-4BBC-A8DC-25164F19DFBE}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+									</ChildrenList>
+								</Folder>
+								<Folder Name="ProximityLamp" ID="{D910724E-58EE-4A45-B151-C51F00DD48A9}" ShortID="234663427">
+									<ChildrenList>
+										<Event Name="Play_Proxlamp_Click" ID="{07AC8ECB-8A8A-44CC-B159-12FBC7764420}">
+											<ChildrenList>
+												<Action Name="" ID="{4D753369-FDA1-4740-A180-B240CD41088D}" ShortID="352137513">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Proxlamp_Click" ID="{0AB8953F-AFD0-4622-B131-992366CAF40E}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="Play_Proxlamp_Buzz" ID="{BFDC109B-0D2E-4564-8A7E-62A3016965B1}">
+											<ChildrenList>
+												<Action Name="" ID="{2ACF3C04-8734-4749-AFA6-EE4306DD4422}" ShortID="4921934">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Proxlamp_Buzz" ID="{05EBE607-DAF2-4E25-818C-8595744A7FBD}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="Stop_Proxlamp_Buzz" ID="{9E69FFAC-E301-4D28-AD2F-6131242695BF}">
+											<ChildrenList>
+												<Action Name="" ID="{C1F3C98E-D3C9-4BB7-AFBF-E0DD3FEAD441}" ShortID="737904552">
+													<PropertyList>
+														<Property Name="ActionType" Type="int16" Value="2"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Proxlamp_Buzz" ID="{05EBE607-DAF2-4E25-818C-8595744A7FBD}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+									</ChildrenList>
+								</Folder>
+								<Folder Name="BirdSounds" ID="{33FF0550-69CB-4ED2-9659-6778F699141D}" ShortID="159206116">
+									<ChildrenList>
+										<Folder Name="BirdChirps" ID="{062F6DE1-5550-4620-81B8-3CF2F0B5A6B3}" ShortID="186070415">
+											<ChildrenList>
+												<Event Name="Play_Bird_Chirps" ID="{B3C1ABBE-0040-44AD-B311-8F369C6A746A}">
+													<ChildrenList>
+														<Action Name="" ID="{5154B3BB-6C79-475F-90EB-91ECEF3D4FFC}" ShortID="908995167">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Bird Chirps" ID="{DED55BB2-4A4D-4673-8A47-791F6EABD67C}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+											</ChildrenList>
+										</Folder>
+										<Folder Name="BirdFlight" ID="{3AE882DB-4BDC-43A8-9A5B-1D1EE1EDE5B6}" ShortID="867994146">
+											<ChildrenList>
+												<Event Name="Play_Bird_Flight" ID="{1F7B2AFE-4138-4819-9109-7FAADFB1B013}">
+													<ChildrenList>
+														<Action Name="" ID="{B9F7F744-2E98-4029-A2C1-6361F32A0EF6}" ShortID="828439842">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Bird Flight" ID="{08E87625-CAE6-430E-B773-875AE3849D43}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+											</ChildrenList>
+										</Folder>
+									</ChildrenList>
+								</Folder>
+								<Folder Name="Throwable_Objects" ID="{2116EC8D-DFA7-4FE8-8912-F882703420AD}" ShortID="82337510">
+									<ChildrenList>
+										<Folder Name="ItemPickup" ID="{BC8AD020-ECC5-4347-820B-EEDBA4695E78}" ShortID="686268663">
+											<ChildrenList>
+												<Event Name="Play_Item_Pickup" ID="{69C52CC7-4038-47AE-9C72-3CD0CA7BEBF9}">
+													<ChildrenList>
+														<Action Name="" ID="{8CD05699-B33A-49C9-934C-6A733C1CE142}" ShortID="621383988">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Item_Pickup" ID="{77DE8A74-76DF-41D0-A834-4FD0522FBDB7}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
+																</Reference>
+															</ReferenceList>
+														</Action>
+													</ChildrenList>
+												</Event>
+											</ChildrenList>
+										</Folder>
+										<Folder Name="Object_Collision" ID="{35078416-46ED-4EC6-9309-8DC8358965D4}" ShortID="344414545">
+											<ChildrenList>
+												<Event Name="Play_Collision" ID="{F72ED649-E0A0-4E05-96CF-E33CF7242278}">
+													<ChildrenList>
+														<Action Name="" ID="{16D9BCFE-22D3-4538-A427-F9A87422AB6D}" ShortID="54393276">
+															<ReferenceList>
+																<Reference Name="Target">
+																	<ObjectRef Name="Collision" ID="{9377FFC6-5133-4023-9765-B3E28B45C4CB}" WorkUnitID="{6757C692-3565-4D37-8155-C2581B5B6450}"/>
 																</Reference>
 															</ReferenceList>
 														</Action>

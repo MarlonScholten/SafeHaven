@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
+using PlayerCharacter.Movement;
 using UnityEngine;
 
 namespace InteractableItemsSystem
@@ -65,7 +65,7 @@ namespace InteractableItemsSystem
     {
         [Tooltip("The force that you throw an item with.")][SerializeField] private float _throwForce = 20f;
         [Tooltip("Main camera that the player uses.")][SerializeField] private Camera _cam;
-        
+
         /// <summary>
         /// The force an item is thrown with.
         /// </summary>
@@ -86,6 +86,7 @@ namespace InteractableItemsSystem
             _playerItemInteraction = GetComponent<PlayerItemInteraction>();
             _lineRenderer = GetComponent<LineRenderer>();
             _drawProjection = GetComponent<DrawProjection>();
+
             InputBehaviour.Instance.OnThrowCancelledEvent += OnThrowItem;
         }
 
@@ -111,8 +112,11 @@ namespace InteractableItemsSystem
             _playerItemInteraction.DropItem();
 
             itemInInventoryRigidbody.AddForce(_cam.transform.forward * _throwForce, ForceMode.Impulse);
-
+            
+            _playerItemInteraction.PlayerController.StartCoroutine(nameof(PlayerController.EnableMovement));
+            
             _drawProjection.DrawLine = false;
+
             yield return new WaitForSeconds(0.5f);
             _playerItemInteraction.IsThrowingItem = false;
         }

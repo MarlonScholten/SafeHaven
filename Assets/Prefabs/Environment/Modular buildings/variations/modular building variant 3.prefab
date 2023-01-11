@@ -9,12 +9,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3085442101422525568}
-  m_Layer: 0
+  - component: {fileID: 5037389313291366909}
+  m_Layer: 3
   m_Name: modular building variant 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3085442101422525568
 Transform:
@@ -24,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2714147155097393515}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.76, y: 2.0026298, z: -8.459533}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -41,6 +42,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5037389313291366909
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2714147155097393515}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8.078624, y: 11.555843, z: 1.047544}
+  m_Center: {x: -1.3453526, y: 2.9183788, z: 0.5143678}
 --- !u!1001 &1321210361280638618
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -76,7 +90,7 @@ PrefabInstance:
     - target: {fileID: 1725268177836463868, guid: 399d91249d2d0fa4bbd66bbe2eb21d8c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.0873704
+      value: 7.5499997
       objectReference: {fileID: 0}
     - target: {fileID: 1725268177836463868, guid: 399d91249d2d0fa4bbd66bbe2eb21d8c,
         type: 3}
@@ -123,6 +137,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Building 5 small ally window (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2070163691596811334, guid: 399d91249d2d0fa4bbd66bbe2eb21d8c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2070163691596811334, guid: 399d91249d2d0fa4bbd66bbe2eb21d8c,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 399d91249d2d0fa4bbd66bbe2eb21d8c, type: 3}
 --- !u!4 &406594548845312102 stripped
@@ -151,7 +175,7 @@ PrefabInstance:
     - target: {fileID: 4851481674221078655, guid: 283cd4e49f0971a49a45c8a23947f56f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.5726299
+      value: 1.8899994
       objectReference: {fileID: 0}
     - target: {fileID: 4851481674221078655, guid: 283cd4e49f0971a49a45c8a23947f56f,
         type: 3}
@@ -198,6 +222,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Building 3 Balcony wall (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5194968469316276933, guid: 283cd4e49f0971a49a45c8a23947f56f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5194968469316276933, guid: 283cd4e49f0971a49a45c8a23947f56f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 283cd4e49f0971a49a45c8a23947f56f, type: 3}
 --- !u!4 &7158217159042209009 stripped
@@ -218,6 +252,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Building 3 Pipe wall 1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4988010112277984491, guid: 5830c96adfcb7dc4295754f84477d481,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4988010112277984491, guid: 5830c96adfcb7dc4295754f84477d481,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 5652906386113359441, guid: 5830c96adfcb7dc4295754f84477d481,
         type: 3}
       propertyPath: m_RootOrder
@@ -231,7 +275,7 @@ PrefabInstance:
     - target: {fileID: 5652906386113359441, guid: 5830c96adfcb7dc4295754f84477d481,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.2616196
+      value: 7.724249
       objectReference: {fileID: 0}
     - target: {fileID: 5652906386113359441, guid: 5830c96adfcb7dc4295754f84477d481,
         type: 3}
@@ -293,6 +337,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Building 3 lvl devider (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1163561530452779816, guid: dd053f35aec9ac24683d8691f38aa14d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1163561530452779816, guid: dd053f35aec9ac24683d8691f38aa14d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1976549861813844370, guid: dd053f35aec9ac24683d8691f38aa14d,
         type: 3}
       propertyPath: m_RootOrder
@@ -311,7 +365,7 @@ PrefabInstance:
     - target: {fileID: 1976549861813844370, guid: dd053f35aec9ac24683d8691f38aa14d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.98737
+      value: 10.45
       objectReference: {fileID: 0}
     - target: {fileID: 1976549861813844370, guid: dd053f35aec9ac24683d8691f38aa14d,
         type: 3}
@@ -373,6 +427,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Building 3 lvl devider (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1163561530452779816, guid: dd053f35aec9ac24683d8691f38aa14d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1163561530452779816, guid: dd053f35aec9ac24683d8691f38aa14d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1976549861813844370, guid: dd053f35aec9ac24683d8691f38aa14d,
         type: 3}
       propertyPath: m_RootOrder
@@ -386,7 +450,7 @@ PrefabInstance:
     - target: {fileID: 1976549861813844370, guid: dd053f35aec9ac24683d8691f38aa14d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.879159
+      value: 5.3417883
       objectReference: {fileID: 0}
     - target: {fileID: 1976549861813844370, guid: dd053f35aec9ac24683d8691f38aa14d,
         type: 3}
@@ -456,7 +520,7 @@ PrefabInstance:
     - target: {fileID: 4851481674221078655, guid: 283cd4e49f0971a49a45c8a23947f56f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.17737
+      value: 6.6399994
       objectReference: {fileID: 0}
     - target: {fileID: 4851481674221078655, guid: 283cd4e49f0971a49a45c8a23947f56f,
         type: 3}
@@ -503,6 +567,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Building 3 Balcony wall (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5194968469316276933, guid: 283cd4e49f0971a49a45c8a23947f56f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5194968469316276933, guid: 283cd4e49f0971a49a45c8a23947f56f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 283cd4e49f0971a49a45c8a23947f56f, type: 3}
 --- !u!4 &1196788620421942053 stripped
@@ -523,6 +597,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Building 3 Pipe wall 1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4988010112277984491, guid: 5830c96adfcb7dc4295754f84477d481,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4988010112277984491, guid: 5830c96adfcb7dc4295754f84477d481,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 5652906386113359441, guid: 5830c96adfcb7dc4295754f84477d481,
         type: 3}
       propertyPath: m_RootOrder
@@ -536,7 +620,7 @@ PrefabInstance:
     - target: {fileID: 5652906386113359441, guid: 5830c96adfcb7dc4295754f84477d481,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5170727
+      value: 2.979702
       objectReference: {fileID: 0}
     - target: {fileID: 5652906386113359441, guid: 5830c96adfcb7dc4295754f84477d481,
         type: 3}
@@ -606,7 +690,7 @@ PrefabInstance:
     - target: {fileID: 5785679475663894315, guid: b00fb91a22cd96040a2d1a9e4ea46604,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 2.4626293
       objectReference: {fileID: 0}
     - target: {fileID: 5785679475663894315, guid: b00fb91a22cd96040a2d1a9e4ea46604,
         type: 3}
@@ -653,6 +737,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Building 4 door (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6557536245479026065, guid: b00fb91a22cd96040a2d1a9e4ea46604,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6557536245479026065, guid: b00fb91a22cd96040a2d1a9e4ea46604,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b00fb91a22cd96040a2d1a9e4ea46604, type: 3}
 --- !u!4 &909296072926268850 stripped
@@ -673,6 +767,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Building 3 lvl devider (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1163561530452779816, guid: dd053f35aec9ac24683d8691f38aa14d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1163561530452779816, guid: dd053f35aec9ac24683d8691f38aa14d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1976549861813844370, guid: dd053f35aec9ac24683d8691f38aa14d,
         type: 3}
       propertyPath: m_RootOrder
@@ -691,7 +795,7 @@ PrefabInstance:
     - target: {fileID: 1976549861813844370, guid: dd053f35aec9ac24683d8691f38aa14d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.2326298
+      value: 0.22999954
       objectReference: {fileID: 0}
     - target: {fileID: 1976549861813844370, guid: dd053f35aec9ac24683d8691f38aa14d,
         type: 3}
@@ -753,6 +857,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Building 5 Stairs (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6265797972617437851, guid: 08e518cb1a719fc4db7d8348164f4dee,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6265797972617437851, guid: 08e518cb1a719fc4db7d8348164f4dee,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6755195629330888737, guid: 08e518cb1a719fc4db7d8348164f4dee,
         type: 3}
       propertyPath: m_RootOrder
@@ -766,7 +880,7 @@ PrefabInstance:
     - target: {fileID: 6755195629330888737, guid: 08e518cb1a719fc4db7d8348164f4dee,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.5526297
+      value: 0.9099996
       objectReference: {fileID: 0}
     - target: {fileID: 6755195629330888737, guid: 08e518cb1a719fc4db7d8348164f4dee,
         type: 3}
@@ -810,6 +924,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08e518cb1a719fc4db7d8348164f4dee, type: 3}
+--- !u!1 &2494748151690623656 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6265797972617437851, guid: 08e518cb1a719fc4db7d8348164f4dee,
+    type: 3}
+  m_PrefabInstance: {fileID: 8388999078543710259}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1697961819576309579
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2494748151690623656}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2684908662389870512, guid: 0ca73452711ac9745ac1392128024bcf, type: 3}
 --- !u!4 &3014298575290277906 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6755195629330888737, guid: 08e518cb1a719fc4db7d8348164f4dee,

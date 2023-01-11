@@ -154,6 +154,7 @@ public class BrotherAI : MonoBehaviour
     /// </summary>
     void Start(){
         InputBehaviour.Instance.OnCallBrotherEvent += CallBrother;
+        InputBehaviour.Instance.OnRunningEvent += OnPlayerRunning;
         _playerController.OnStealthToggle += OnStealthEvent;
         _velocityHash = Animator.StringToHash("forwardVelocity");
         _itemHeldHash = Animator.StringToHash("ItemHeld");
@@ -169,6 +170,13 @@ public class BrotherAI : MonoBehaviour
     {
         if (sender is bool stealth)
             ToggleStealth(stealth);
+    }
+    
+    private void OnPlayerRunning()
+    {
+        if(!_player.GetComponent<PlayerController>().IsMoving())
+            return;
+        _isInStealth = false;
     }
 
     /// <summary>
@@ -198,7 +206,6 @@ public class BrotherAI : MonoBehaviour
     {
         _animator.SetFloat(_velocityHash, _navMeshAgent.velocity.magnitude);
         _animator.SetBool(_stealthHash, _isInStealth);
-        
         if (Vector3.Distance(_player.transform.position, transform.position) > _brotherRange)
         {
             CallBrother();
@@ -239,20 +246,21 @@ public class BrotherAI : MonoBehaviour
     /// The method gets called when a ping is made. This method changes the state of the brother depending on the ping.
     /// If no hiding spot near, follow brother.
     /// </summary>
-    public void PingBrother(PingType ping, Vector3 location){
+    public void PingBrother(PingType ping, Vector3 location)
+    {
         _pingLocation = location;
-        if (ping == PingType.Move && _isInStealth)
+        switch (ping)
         {
-            CustomEvent.Trigger(this.gameObject, "PassiveHide");
-        }
-
-        if (ping == PingType.Hide && _findHidingSpot.FindBestHidingSpot(_player.transform.position).Equals(new Vector3()))
-        {
-            CustomEvent.Trigger(this.gameObject, "Follow");
-        }
-        else
-        {
-            CustomEvent.Trigger(this.gameObject, ping.ToString());
+            case PingType.Move when _isInStealth:
+                CustomEvent.Trigger(this.gameObject, "PassiveHide");
+                break;
+            case PingType.Hide when _findHidingSpot.FindBestHidingSpot(_player.transform.position).Equals(new Vector3()):
+                CustomEvent.Trigger(this.gameObject, "Follow");
+                break;
+            case PingType.Interact:
+            default:
+                CustomEvent.Trigger(this.gameObject, ping.ToString());
+                break;
         }
     }
 
