@@ -107,5 +107,6 @@ public class ChasingState : MonoBehaviour
         //Reset spotted player/brother.
         _stateManager.navMeshAgent.speed = _stateManager.defaultSpeed;
         _enemyStateWatcher.IsChasing(false);
+        _stateManager.isChasing = false;
     }
 }
