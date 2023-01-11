@@ -37,6 +37,8 @@ public class ChasingState : MonoBehaviour
 {
     private EnemyAiStateManager _stateManager; // Reference to the state manager
     private SoundManager.EnemyStateWatcher _enemyStateWatcher;
+
+    ChasingVignette chasingVignette;
     
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -45,15 +47,18 @@ public class ChasingState : MonoBehaviour
     {
         _stateManager = GetComponent<EnemyAiStateManager>();
         _enemyStateWatcher = GameObject.Find("EnemyStateWatcher").GetComponent<SoundManager.EnemyStateWatcher>();
-
     }
+
+    void Start() {
+        chasingVignette = _stateManager._postProcessing.GetComponent<ChasingVignette>();
+    }
+
     /// <summary>
     /// Enter chasing state
     /// </summary>
     public void Enter_Chasing()
     {
-        _stateManager.isChasing = true;
-        _stateManager._postProcessing.GetComponent<ChasingVignette>().Increase();
+        chasingVignette.Increase();
         _stateManager.navMeshAgent.speed = _stateManager.enemyAiScriptableObject.ChaseSpeed;
         //shows the current state as text above the enemy when this is enabled in the inspector.
         if (_stateManager.enemyAiScriptableObject.showCurrentState)
@@ -98,7 +103,7 @@ public class ChasingState : MonoBehaviour
     /// </summary>
     public void Exit_Chasing()
     {
-        _stateManager._postProcessing.GetComponent<ChasingVignette>().Decrease();
+        chasingVignette.Decrease();
         //Reset spotted player/brother.
         _stateManager.navMeshAgent.speed = _stateManager.defaultSpeed;
         _enemyStateWatcher.IsChasing(false);

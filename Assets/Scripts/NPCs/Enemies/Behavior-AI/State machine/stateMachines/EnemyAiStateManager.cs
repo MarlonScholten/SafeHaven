@@ -112,6 +112,7 @@ public class EnemyAiStateManager : MonoBehaviour
     private EnemyStateWatcher _enemyStateWatcher; // EnemyStateWatcher component
     [NonSerialized] public bool isChasing; // Boolean to check if the enemy is chasing the player/brother
 
+    [NonSerialized]
     public GameObject _postProcessing;
 
     
@@ -119,6 +120,7 @@ public class EnemyAiStateManager : MonoBehaviour
 
     private void Awake()
     {
+        _postProcessing = GameObject.Find("PostProcessing");
         //Fetches if the option to show the state of the enemy is selected and makes it empty if not used.
         textMesh = GetComponentInChildren<TextMeshPro>();
         if (!enemyAiScriptableObject.showCurrentState)
@@ -127,8 +129,6 @@ public class EnemyAiStateManager : MonoBehaviour
         }
 
         _enemyStateWatcher = FindObjectOfType<EnemyStateWatcher>();
-        
-        _postProcessing = GameObject.Find("PostProcessing");
     }
 
     private void Start()
