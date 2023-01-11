@@ -9,12 +9,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7762347544642704960}
-  m_Layer: 0
+  - component: {fileID: 5214422575076999746}
+  - component: {fileID: 538623094111633608}
+  m_Layer: 3
   m_Name: modular building no door 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7762347544642704960
 Transform:
@@ -39,6 +41,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5214422575076999746
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9105844522859649458}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8.385188, y: 4.3859005, z: 1.5643166}
+  m_Center: {x: -0.11041021, y: 2.1345892, z: 0.40483588}
+--- !u!65 &538623094111633608
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9105844522859649458}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2.3003817, z: 0.68103814}
+  m_Center: {x: 0, y: 2.4167476, z: -0.67472637}
 --- !u!1001 &168848803550821635
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50,6 +78,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Building 2 Big wall (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4640675545335036883, guid: 7340b1c6fa7eaca4e953d2fbb5f4547d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4640675545335036883, guid: 7340b1c6fa7eaca4e953d2fbb5f4547d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 5417035948925460841, guid: 7340b1c6fa7eaca4e953d2fbb5f4547d,
         type: 3}
@@ -186,6 +224,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Building 3 Extruded window (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2277763550133151386, guid: eb29570f99c3f6a4698ce514e907e660,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2277763550133151386, guid: eb29570f99c3f6a4698ce514e907e660,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb29570f99c3f6a4698ce514e907e660, type: 3}
 --- !u!4 &1904310121718402859 stripped
@@ -205,6 +253,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Building 3 Pipe wall 1 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4988010112277984491, guid: 5830c96adfcb7dc4295754f84477d481,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4988010112277984491, guid: 5830c96adfcb7dc4295754f84477d481,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 5652906386113359441, guid: 5830c96adfcb7dc4295754f84477d481,
         type: 3}
@@ -280,6 +338,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Building 3 Pipe wall 1 (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4988010112277984491, guid: 5830c96adfcb7dc4295754f84477d481,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4988010112277984491, guid: 5830c96adfcb7dc4295754f84477d481,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 5652906386113359441, guid: 5830c96adfcb7dc4295754f84477d481,
         type: 3}
@@ -371,6 +439,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Building 3 lvl devider (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1163561530452779816, guid: dd053f35aec9ac24683d8691f38aa14d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1163561530452779816, guid: dd053f35aec9ac24683d8691f38aa14d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1976549861813844370, guid: dd053f35aec9ac24683d8691f38aa14d,
         type: 3}
       propertyPath: m_RootOrder
@@ -450,6 +528,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Building 3 lvl devider (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1163561530452779816, guid: dd053f35aec9ac24683d8691f38aa14d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1163561530452779816, guid: dd053f35aec9ac24683d8691f38aa14d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 1976549861813844370, guid: dd053f35aec9ac24683d8691f38aa14d,
         type: 3}
@@ -586,6 +674,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Building 3 Extruded window (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2277763550133151386, guid: eb29570f99c3f6a4698ce514e907e660,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2277763550133151386, guid: eb29570f99c3f6a4698ce514e907e660,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb29570f99c3f6a4698ce514e907e660, type: 3}
 --- !u!4 &5208856938856572948 stripped
@@ -660,6 +758,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Building 5 Big ally window (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3430714205643374917, guid: 46012b4e92701fb4a8f4f8e237b9326a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3430714205643374917, guid: 46012b4e92701fb4a8f4f8e237b9326a,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46012b4e92701fb4a8f4f8e237b9326a, type: 3}
