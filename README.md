@@ -12,13 +12,55 @@ The actual Unity game / Build of Safe Haven.
 
 The changelog for what was changed and added for every sprint.
 
+## Changelog sprint 4.4
+This build is the final build for TT4
+
+### Programming
+- Complete visual overhall
+- Radio tower now has a blinking light
+- Added broken streetlamps
+- Added a way to see the state of enemeies (debug mode only)
+- Added sensitivity setting
+- Adjusted keybindings menu
+- New font added
+- Game over screen added
+- Intro and outro screen added
+- Added credits
+- Adjusted pinging wheel
+- Updated birds
+- Brother now has a max follow and hide range
+- Added SFX
+- Added voicelines again
+- Added volume slider
+- Birds are now animated
+- Added Vignette
+- [fix] Fixed lamp light states
+- [fix] Brother now hides when sister is hiding
+- [fix] Enemy detection system works better
+- [fix] Can't throw objects into own face anymore
+- [fix] Can't ride your brother anymore
+- [fix] Player can now run
+- [fix] Brother and sister can now get caught
+- [fix] Can't hug enemies anymore
+- [fix] Music won't play multiple times over itself anymore
+- [fix] Aimline now works more consitently
+- [fix] Brother and player are not transparent anymore
+- [fix] Brother highlight won't show anymore when behind the player
+- [fix] Player can't get stuck behind bench anymore
+- [fix] Player is now able to pick up item next to them
+- [fix] Improved performace
+
+### Art
+- TBA
+
+### Sound
+- TBA
+
+### Design
+- TBA
+
 ## Changelog sprint 4.3
 This build is a fallback build for TT4
-
-changes TBA
-
-## Changelog sprint 4.2
-This build has been made for the dutch game garden
 
 changes TBA
 
