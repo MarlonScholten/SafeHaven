@@ -50,7 +50,12 @@ This build is the final build for TT4
 - [fix] Improved performace
 
 ### Art
-- TBA
+- Walls for the park
+- Fixed animation and rig for characters
+- New wallpaper for the menu screen
+- Fixed and optimized trees
+- New prefab buildings
+- Fixed textures for street
 
 ### Sound
 - Added Voicelines with annenuation spheres
@@ -64,7 +69,19 @@ This build is the final build for TT4
 - [fix] Wwise
 
 ### Design
-- TBA
+- Improved game balance
+- Improved park design
+- Improved alleway design
+- Added "Pre-alpha" text
+- Removed Herobrine
+
+### Sivar
+- Removed Sivar's cake
+- Added tiredness
+- Improved humor
+- Added "21st century screenplay" to inventory
+- [fix] Removed burnout
+- [fix] sus
 
 ## Changelog sprint 4.3
 This build is a fallback build for TT4
