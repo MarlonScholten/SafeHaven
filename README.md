@@ -61,6 +61,7 @@ This build is the final build for TT4
 - Added Picking up and throwing SFX
 - Added ~~secret~~ music
 - [fix] Optimized sound files
+- [fix] Wwise
 
 ### Design
 - TBA
