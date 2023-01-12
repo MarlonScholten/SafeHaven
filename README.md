@@ -29,7 +29,6 @@ This build is the final build for TT4
 - Adjusted pinging wheel
 - Updated birds
 - Brother now has a max follow and hide range
-- Added SFX
 - Added voicelines again
 - Added volume slider
 - Birds are now animated
@@ -54,7 +53,14 @@ This build is the final build for TT4
 - TBA
 
 ### Sound
-- TBA
+- Added Voicelines with annenuation spheres
+- Added menu SFX
+- Added new steatlh music
+- Added stinger SFX when music changes
+- Added Bird SFX
+- Added Picking up and throwing SFX
+- Added ~~secret~~ music
+- [fix] Optimized sound files
 
 ### Design
 - TBA
